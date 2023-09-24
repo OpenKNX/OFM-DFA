@@ -43,4 +43,6 @@ class DfaChannel : public OpenKNX::Channel
     void setup() override;
     void loop() override;
     void processInputKo(GroupObject &ko) override;
+
+    bool processCommand(const std::string cmd, bool diagnoseKo);
 };

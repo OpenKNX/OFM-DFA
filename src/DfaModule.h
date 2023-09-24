@@ -19,4 +19,7 @@ class DfaModule : public OpenKNX::Module
     void loop() override;
 
     void processInputKo(GroupObject &ko) override;
+
+    void showHelp() override;
+    bool processCommand(const std::string cmd, bool diagnoseKo);
 };

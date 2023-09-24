@@ -164,3 +164,22 @@ void DfaChannel::endTimeout()
         _stateTimeoutDelay_ms = 1;
     }
 }
+
+bool DfaChannel::processCommand(const std::string cmd, bool diagnoseKo)
+{
+    if (cmd.substr(0, 3) == "dfa")
+    {
+        // TODO Check and refine command definitions after first tests and extension!
+        if (cmd.length() == 14 && cmd.substr(5, 9) == " timeout!")
+        {
+            uint16_t channelIdx = std::stoi(cmd.substr(3, 2)) - 1;
+            if (channelIdx == _channelIndex)
+            {
+                logDebugP("timeout end now!");
+                endTimeout();
+                return true;
+            }
+        }
+    }
+    return false;
+}
