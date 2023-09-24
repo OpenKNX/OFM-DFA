@@ -35,6 +35,8 @@ class DfaChannel : public OpenKNX::Channel
     void setState(const uint8_t nextState);
     void transfer(const uint8_t input);
 
+    void endTimeout();
+
   public:
     explicit DfaChannel(uint8_t index);
     const std::string name() override;

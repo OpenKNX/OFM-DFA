@@ -153,3 +153,14 @@ void DfaChannel::transfer(const uint8_t input)
         // ignore undefined transition
     }
 }
+
+void DfaChannel::endTimeout()
+{
+    if (_stateTimeoutDelay_ms > 0)
+    {
+        logDebugP("change timeout %d -> 1ms", _stateTimeoutDelay_ms);
+
+        // set to shortest possible valid timeout of 1ms; might result in up to 1ms delay until end, when executed directly after state change
+        _stateTimeoutDelay_ms = 1;
+    }
+}
