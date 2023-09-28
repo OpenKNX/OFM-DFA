@@ -52,6 +52,7 @@
                   <Enumeration Text="14" Value="13" Id="%ENID%" />
                   <Enumeration Text="15" Value="14" Id="%ENID%" />
                   <Enumeration Text="16" Value="15" Id="%ENID%" />
+                  <!--
                   <Enumeration Text="17" Value="16" Id="%ENID%" />
                   <Enumeration Text="18" Value="17" Id="%ENID%" />
                   <Enumeration Text="19" Value="18" Id="%ENID%" />
@@ -100,6 +101,7 @@
                   <Enumeration Text="62" Value="61" Id="%ENID%" />
                   <Enumeration Text="63" Value="62" Id="%ENID%" />
                   <Enumeration Text="64" Value="63" Id="%ENID%" />
+                  -->
                 </TypeRestriction>
               </ParameterType>
 
@@ -124,6 +126,7 @@
                   <Enumeration Text="14" Value="13" Id="%ENID%" />
                   <Enumeration Text="15" Value="14" Id="%ENID%" />
                   <Enumeration Text="16" Value="15" Id="%ENID%" />
+                  <!--
                   <Enumeration Text="17" Value="16" Id="%ENID%" />
                   <Enumeration Text="18" Value="17" Id="%ENID%" />
                   <Enumeration Text="19" Value="18" Id="%ENID%" />
@@ -172,6 +175,7 @@
                   <Enumeration Text="62" Value="61" Id="%ENID%" />
                   <Enumeration Text="63" Value="62" Id="%ENID%" />
                   <Enumeration Text="64" Value="63" Id="%ENID%" />
+                  -->
                 </TypeRestriction>
               </ParameterType>
 

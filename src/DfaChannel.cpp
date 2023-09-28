@@ -60,7 +60,6 @@ void DfaChannel::setup()
     logDebugP("setup: set initial state");
     // TODO define expected timing behaviour for first state with timeout
     // TODO add state restore
-    // TODO FIXME start-state >= DFA_DEF_STATES_COUNT
     setState(ParamDFA_fStateStart);
 }
 
@@ -126,7 +125,6 @@ bool DfaChannel::isValidState(const uint8_t state)
 void DfaChannel::setState(const uint8_t nextState)
 {
     logDebugP("setState");
-    // TODO FIXME Handling of States out of definition! Currently ignored without timer reset
     if (nextState < DFA_DEF_STATES_COUNT)
     {
         _state = nextState;
