@@ -40,6 +40,7 @@
               <Union SizeInBit="80"><Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
                 <!-- TODO add enable/disable -->
                 <Parameter Id="%AID%_UP-%T%%CCC%002" Name="f%C%StateStart" ParameterType="%AID%_PT-DfaScene" Offset="1" BitOffset="0" Text="Startzustand" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%005" Name="f%C%StateSetting" ParameterType="%AID%_PT-StateDirectSetting" Offset="2" BitOffset="0" Text="Direktes Setzen von Zustand erlauben?" Value="1" />
                 <!-- TODO reduce size! -->
               </Union>
 
@@ -316,6 +317,9 @@
             <ParameterRefs>
               <ParameterRef Id="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101" RefId="%AID%_P-%T%%CCC%001" />
               <ParameterRef Id="%AID%_UP-%T%%CCC%002_R-%T%%CCC%00201" RefId="%AID%_UP-%T%%CCC%002" />
+              <!-- 003 -->
+              <!-- 004 -->
+              <ParameterRef Id="%AID%_UP-%T%%CCC%005_R-%T%%CCC%00501" RefId="%AID%_UP-%T%%CCC%005" />
 
               <!-- TODO sort in regular order! -->
               <ParameterRef Id="%AID%_P-%T%%CCC%010_R-%T%%CCC%01001" RefId="%AID%_P-%T%%CCC%010" />
@@ -582,16 +586,6 @@
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="DEA-Definition" UIHint="Headline" />
                 <ParameterRefRef RefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101" />
 
-                <Channel Id="%AID%_CH-DFA%CC%" Name="f%CC%Dfa" Number="DFA%CC%" Text="DEA %CC%: {{0: ...}}" TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101">
-                  <!-- TODO add KO for enable/disable -->
-                  <ComObjectRefRef RefId="%AID%_O-%T%%CCC%000_R-%T%%CCC%00001" />
-                  <ComObjectRefRef RefId="%AID%_O-%T%%CCC%001_R-%T%%CCC%00101" />
-                  <ComObjectRefRef RefId="%AID%_O-%T%%CCC%002_R-%T%%CCC%00201" />
-                  <ComObjectRefRef RefId="%AID%_O-%T%%CCC%003_R-%T%%CCC%00301" />
-                  <ComObjectRefRef RefId="%AID%_O-%T%%CCC%004_R-%T%%CCC%00401" />
-                  <ComObjectRefRef RefId="%AID%_O-%T%%CCC%100_R-%T%%CCC%10001" />
-                </Channel>
-
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Eingabesymbole" UIHint="Headline" />
                 <ParameterBlock Id="%AID%_PB-03" Name="InputSymbols%C%" Text="x" Inline="true" Layout="Table">
                   <Rows>
@@ -642,6 +636,7 @@
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Zustände und Übergangsfunktion einschließlich zeitbasierter Folgezustände" UIHint="Headline" />
                 <!-- Startzustand -->
                 <ParameterRefRef RefId="%AID%_UP-%T%%CCC%002_R-%T%%CCC%00201" />
+                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%005_R-%T%%CCC%00501" />
                 <!-- Tabelle Zustände und Übergänge  -->
                 <ParameterBlock Id="%AID%_PB-02" Name="Transfer%C%" Text="d" Inline="true" Layout="Table">
                   <Rows>
@@ -960,6 +955,21 @@
                   </choose>
 
                 </ParameterBlock>
+
+                <Channel Id="%AID%_CH-DFA%CC%" Name="f%CC%Dfa" Number="DFA%CC%" Text="DEA %CC%: {{0: ...}}" TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101">
+                  <!-- TODO add KO for enable/disable -->
+                  <ComObjectRefRef RefId="%AID%_O-%T%%CCC%000_R-%T%%CCC%00001" />
+                  <ComObjectRefRef RefId="%AID%_O-%T%%CCC%001_R-%T%%CCC%00101" />
+                  <ComObjectRefRef RefId="%AID%_O-%T%%CCC%002_R-%T%%CCC%00201" />
+                  <ComObjectRefRef RefId="%AID%_O-%T%%CCC%003_R-%T%%CCC%00301" />
+                  <ComObjectRefRef RefId="%AID%_O-%T%%CCC%004_R-%T%%CCC%00401" />
+                 
+                  <choose ParamRefId="%AID%_UP-%T%%CCC%005_R-%T%%CCC%00501">
+                    <when test="1">
+                      <ComObjectRefRef RefId="%AID%_O-%T%%CCC%100_R-%T%%CCC%10001" />
+                    </when>
+                  </choose>                  
+                </Channel>
 
               </ParameterBlock>                
             </ChannelIndependentBlock>

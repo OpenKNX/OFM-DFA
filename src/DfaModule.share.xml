@@ -7,6 +7,14 @@
         <ApplicationProgram>
           <Static>
             <ParameterTypes>
+
+              <ParameterType Id="%AID%_PT-StateDirectSetting" Name="StateDirectSetting">
+                <TypeRestriction Base="Value" SizeInBit="1">
+                  <Enumeration Text="nein"   Value="0" Id="%ENID%" />
+                  <Enumeration Text="per KO" Value="1" Id="%ENID%" />
+                </TypeRestriction>
+              </ParameterType>
+
               <!-- Delay pattern (SHORT Labels) -->
               <ParameterType Id="%AID%_PT-DelayBaseShort" Name="DelayBaseShort">
                 <TypeRestriction Base="Value" SizeInBit="2">
