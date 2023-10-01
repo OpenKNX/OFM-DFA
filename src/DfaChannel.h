@@ -25,6 +25,13 @@ class DfaChannel : public OpenKNX::Channel
     static const uint8_t _transPRI[DFA_DEF_STATES_COUNT][DFA_DEF_INPUTS_COUNT];
     static const DfaStateTimeoutParamRelIdx _timeoutPRI[DFA_DEF_STATES_COUNT];
 
+    // is enabled in ETS?
+    bool _channelActive = true;
+
+    // is not paused (startup is ETS, later updated by KO)
+    bool _running = false;
+    uint32_t _pauseBegin = 0;
+
     uint8_t _state = DFA_STATE_UNDEFINED;
     uint32_t _stateTimeoutDelay_ms = 0;
     uint32_t _stateTimeoutBegin_ms = 0;
@@ -36,6 +43,8 @@ class DfaChannel : public OpenKNX::Channel
     void transfer(const uint8_t input);
 
     void endTimeout();
+
+    void setRunning(const bool requestRun, const bool first = false);
 
   public:
     explicit DfaChannel(uint8_t index);

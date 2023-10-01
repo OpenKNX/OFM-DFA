@@ -8,6 +8,24 @@
           <Static>
             <ParameterTypes>
 
+              <!-- channel master switch -->
+              <ParameterType Id="%AID%_PT-ChannelSwitchMaster" Name="ChannelSwitchMaster">
+                <TypeRestriction Base="Value" SizeInBit="2">
+                  <Enumeration Text="inaktiv"                                                Value="0" Id="%ENID%" /><!-- 0b00 -->
+                  <Enumeration Text="aktiv"                                                  Value="1" Id="%ENID%" /><!-- 0b01 -->
+                  <Enumeration Text="temporär inaktiv (KOs/Konfiguration sichtbar)"          Value="2" Id="%ENID%" /><!-- 0b10 -->
+                </TypeRestriction>
+              </ParameterType>
+
+              <!-- channel switch by KO -->
+              <ParameterType Id="%AID%_PT-ChannelSwitchByKo" Name="ChannelSwitchByKo">
+                <TypeRestriction Base="Value" SizeInBit="2">
+                  <Enumeration Text="immer aktiv (kein Pausieren)"       Value="3" Id="%ENID%" /><!-- 0b11 -->
+                  <Enumeration Text="per KO, nach Einschalten starten"   Value="1" Id="%ENID%" /><!-- 0b01 -->
+                  <Enumeration Text="per KO, warten auf Start-Telegramm" Value="0" Id="%ENID%" /><!-- 0b00 -->
+                </TypeRestriction>
+              </ParameterType>
+
               <ParameterType Id="%AID%_PT-StateDirectSetting" Name="StateDirectSetting">
                 <TypeRestriction Base="Value" SizeInBit="1">
                   <Enumeration Text="nein"   Value="0" Id="%ENID%" />

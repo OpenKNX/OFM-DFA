@@ -57,15 +57,22 @@ const std::string DfaChannel::name()
 
 void DfaChannel::setup()
 {
-    logDebugP("setup: set initial state");
+    _channelActive = (ParamDFA_fSwitchMaster == 0b01);
+    if (!_channelActive)
+        return; // ignore inactive channel
+
+    logDebugP("setup: initialize");
     // TODO define expected timing behaviour for first state with timeout
     // TODO add state restore
-    setState(ParamDFA_fStateStart);
+
+    // set to running. This includes setting the start state
+    setRunning(ParamDFA_fSwitchByKo != 0b00, true);
 }
 
 void DfaChannel::loop()
 {
-    if (_stateTimeoutDelay_ms > 0 && delayCheckMillis(_stateTimeoutBegin_ms, _stateTimeoutDelay_ms))
+    // !_channelActive will result in _running=false, so no need for checking
+    if (_running && _stateTimeoutDelay_ms > 0 && delayCheckMillis(_stateTimeoutBegin_ms, _stateTimeoutDelay_ms))
     {
         logDebugP("timeout reached");
         setState(getTimeoutState(_state));
@@ -74,36 +81,77 @@ void DfaChannel::loop()
 
 void DfaChannel::processInputKo(GroupObject &ko)
 {
+    if (!_channelActive)
+        return; // ignore inactive channel
+
     // TODO optimize check of ko-Number
     // TODO add inputs of other ko-Number
 
     const uint16_t koNumber = ko.asap();
-    if (koNumber == DFA_KoCalcNumber(DFA_KoKOfStateI))
+
+    if (koNumber == DFA_KoCalcNumber(DFA_KoKOfRunSet))
     {
-        logDebugP("processInputKo set state");
-        // TODO add conditions / depend on configuration
-        setState(ko.value(DPT_SceneNumber));
+        setRunning(ko.value(DPT_Start));
     }
-    else if (koNumber == DFA_KoCalcNumber(DFA_KoKOfInput1))
+
+    // TODO define expected behaviour when changed before; will be relevant for inputs by KO-Index
+    if (_running)
     {
-        logDebugP("processInputKo input1");
-        transfer(ko.value(DPT_Bool) ? 0 : 1);
+        if (koNumber == DFA_KoCalcNumber(DFA_KoKOfStateI))
+        {
+            logDebugP("processInputKo set state");
+            // TODO add conditions / depend on configuration
+            setState(ko.value(DPT_SceneNumber));
+        }
+        else if (koNumber == DFA_KoCalcNumber(DFA_KoKOfInput1))
+        {
+            logDebugP("processInputKo input1");
+            transfer(ko.value(DPT_Bool) ? 0 : 1);
+        }
+        else if (koNumber == DFA_KoCalcNumber(DFA_KoKOfInput2))
+        {
+            logDebugP("processInputKo input2");
+            transfer(ko.value(DPT_Bool) ? 2 : 3);
+        }
+        else if (koNumber == DFA_KoCalcNumber(DFA_KoKOfInput3))
+        {
+            logDebugP("processInputKo input3");
+            transfer(ko.value(DPT_Bool) ? 4 : 5);
+        }
+        else if (koNumber == DFA_KoCalcNumber(DFA_KoKOfInput4))
+        {
+            logDebugP("processInputKo input4");
+            transfer(ko.value(DPT_Bool) ? 6 : 7);
+        }
     }
-    else if (koNumber == DFA_KoCalcNumber(DFA_KoKOfInput2))
+}
+
+void DfaChannel::setRunning(const bool requestRun, const bool first /*= false*/)
+{
+    bool send = first;
+    if (_running != requestRun)
     {
-        logDebugP("processInputKo input2");
-        transfer(ko.value(DPT_Bool) ? 2 : 3);
+        if (!requestRun)
+        {
+            // suspend
+            _pauseBegin = millis();
+        }
+        else if (_state == DFA_STATE_UNDEFINED)
+        {
+            // first activation
+            setState(ParamDFA_fStateStart);
+        }
+        else
+        {
+            // resume & increase delay by pause time
+            _stateTimeoutBegin_ms += (millis() - _pauseBegin);
+        }
+        _running = requestRun;
+        send = true;
     }
-    else if (koNumber == DFA_KoCalcNumber(DFA_KoKOfInput3))
-    {
-        logDebugP("processInputKo input3");
-        transfer(ko.value(DPT_Bool) ? 4 : 5);
-    }
-    else if (koNumber == DFA_KoCalcNumber(DFA_KoKOfInput4))
-    {
-        logDebugP("processInputKo input4");
-        transfer(ko.value(DPT_Bool) ? 6 : 7);
-    }
+
+    if (send && (ParamDFA_fSwitchByKo < 0b10))
+        KoDFA_KOfRunning.value(_running, DPT_State);
 }
 
 uint32_t DfaChannel::getStateTimeoutDelay_ms(const uint8_t state)
@@ -174,6 +222,7 @@ bool DfaChannel::processCommand(const std::string cmd, bool diagnoseKo)
             if (channelIdx == _channelIndex)
             {
                 logDebugP("timeout end now!");
+                // TODO define behaviour when disabled
                 endTimeout();
                 return true;
             }
