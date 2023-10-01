@@ -119,7 +119,7 @@ uint8_t DfaChannel::getTimeoutState(const uint8_t state)
 
 bool DfaChannel::isValidState(const uint8_t state)
 {
-    return state < 64;
+    return state < DFA_DEF_STATES_COUNT;
 }
 
 void DfaChannel::setState(const uint8_t nextState)
