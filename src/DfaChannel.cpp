@@ -58,10 +58,10 @@ const std::string DfaChannel::name()
 void DfaChannel::setup()
 {
     _channelActive = (ParamDFA_fSwitchMaster == 0b01);
+    logDebugP("setup (act=%d run=%d)", _channelActive, ParamDFA_fSwitchByKo != 0b00);
     if (!_channelActive)
         return; // ignore inactive channel
 
-    logDebugP("setup: initialize");
     // TODO define expected timing behaviour for first state with timeout
     // TODO add state restore
 
@@ -74,7 +74,7 @@ void DfaChannel::loop()
     // !_channelActive will result in _running=false, so no need for checking
     if (_running && _stateTimeoutDelay_ms > 0 && delayCheckMillis(_stateTimeoutBegin_ms, _stateTimeoutDelay_ms))
     {
-        logDebugP("timeout reached");
+        logDebugP("timeout reached (@%d+%dms >=%d)", _stateTimeoutBegin_ms, _stateTimeoutDelay_ms, millis());
         setState(getTimeoutState(_state));
     }
 }
@@ -91,6 +91,7 @@ void DfaChannel::processInputKo(GroupObject &ko)
 
     if (koNumber == DFA_KoCalcNumber(DFA_KoKOfRunSet))
     {
+        logDebugP("processInputKo set running");
         setRunning(ko.value(DPT_Start));
     }
 
@@ -134,16 +135,19 @@ void DfaChannel::setRunning(const bool requestRun, const bool first /*= false*/)
         if (!requestRun)
         {
             // suspend
+            logDebugP("suspend");
             _pauseBegin = millis();
         }
         else if (_state == DFA_STATE_UNDEFINED)
         {
             // first activation
+            logDebugP("first activation");
             setState(ParamDFA_fStateStart);
         }
         else
         {
             // resume & increase delay by pause time
+            logDebugP("resume after sleeping %dms", (millis() - _pauseBegin));
             _stateTimeoutBegin_ms += (millis() - _pauseBegin);
         }
         _running = requestRun;
@@ -172,7 +176,7 @@ bool DfaChannel::isValidState(const uint8_t state)
 
 void DfaChannel::setState(const uint8_t nextState)
 {
-    logDebugP("setState");
+    logDebugP("setState %d->%d", _state, nextState);
     if (nextState < DFA_DEF_STATES_COUNT)
     {
         _state = nextState;
@@ -183,7 +187,8 @@ void DfaChannel::setState(const uint8_t nextState)
         // send state
         KoDFA_KOfState.value(_state, DPT_SceneNumber);
 
-        logDebugP("setState [done]");
+        if (_stateTimeoutDelay_ms > 0)
+            logDebugP("  with timeout state %d after %dms", getTimeoutState(nextState), _stateTimeoutDelay_ms);
     }
 }
 
@@ -194,6 +199,7 @@ void DfaChannel::transfer(const uint8_t input)
         const uint16_t nextStateParamIdx = DFA_ParamCalcIndex(_transPRI[_state][input]);
         const uint8_t nextState = knx.paramByte(nextStateParamIdx);
 
+        logDebugP("transfer(%d,%d)->%d", _state, input, nextState);
         if (isValidState(nextState))
             setState(nextState);
         // ignore undefined transition
