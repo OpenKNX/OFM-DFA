@@ -74,7 +74,7 @@ void DfaChannel::loop()
     // !_channelActive will result in _running=false, so no need for checking
     if (_running && _stateTimeoutDelay_ms > 0 && delayCheckMillis(_stateTimeoutBegin_ms, _stateTimeoutDelay_ms))
     {
-        logDebugP("timeout reached (@%d+%dms >=%d)", _stateTimeoutBegin_ms, _stateTimeoutDelay_ms, millis());
+        // logDebugP("timeout reached (@%d+%dms >=%d)", _stateTimeoutBegin_ms, _stateTimeoutDelay_ms, millis());
         setState(getTimeoutState(_state));
     }
 }
@@ -176,7 +176,7 @@ bool DfaChannel::isValidState(const uint8_t state)
 
 void DfaChannel::setState(const uint8_t nextState)
 {
-    logDebugP("setState %d->%d", _state, nextState);
+    // logDebugP("setState %d->%d", _state, nextState);
     if (nextState < DFA_DEF_STATES_COUNT)
     {
         _state = nextState;
@@ -187,8 +187,8 @@ void DfaChannel::setState(const uint8_t nextState)
         // send state
         KoDFA_KOfState.value(_state, DPT_SceneNumber);
 
-        if (_stateTimeoutDelay_ms > 0)
-            logDebugP("  with timeout state %d after %dms", getTimeoutState(nextState), _stateTimeoutDelay_ms);
+        // if (_stateTimeoutDelay_ms > 0)
+        //     logDebugP("  with timeout state %d after %dms", getTimeoutState(nextState), _stateTimeoutDelay_ms);
     }
 }
 
