@@ -100,8 +100,15 @@ void DfaChannel::processInputKo(GroupObject &ko)
     {
         if (koNumber == DFA_KoCalcNumber(DFA_KoKOfStateI))
         {
-            logDebugP("processInputKo set state");
-            // TODO add conditions / depend on configuration
+            // input only for visible KO, so no need to check:
+            // .. && ParamDFA_fStateSetting==0b01
+            logDebugP("processInputKo set state (separate)");
+            setState(ko.value(DPT_SceneNumber));
+        }
+        else if (koNumber == DFA_KoCalcNumber(DFA_KoKOfState) && ParamDFA_fStateSetting == 0b10)
+        {
+            // TODO ensure not processing when result of own sending!
+            logDebugP("processInputKo set state (combined)");
             setState(ko.value(DPT_SceneNumber));
         }
         else if (koNumber == DFA_KoCalcNumber(DFA_KoKOfInput1))
