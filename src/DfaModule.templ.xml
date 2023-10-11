@@ -40,9 +40,9 @@
               <Union SizeInBit="80"><Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%006" Name="f%C%SwitchMaster" ParameterType="%AID%_PT-ChannelSwitchMaster" Offset="0" BitOffset="0" Text="Kanal verwenden?"                      Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%007" Name="f%C%SwitchByKo"   ParameterType="%AID%_PT-ChannelSwitchByKo"   Offset="0" BitOffset="2" Text="Starten und Pausieren"                 Value="3" />
-                <!-- 4 bit unused -->
+                <Parameter Id="%AID%_UP-%T%%CCC%005" Name="f%C%StateSetting" ParameterType="%AID%_PT-StateDirectSetting"  Offset="0" BitOffset="4" Text="Direktes Setzen von Zustand erlauben?" Value="0" />
+                <!-- 2 bit unused -->
                 <Parameter Id="%AID%_UP-%T%%CCC%002" Name="f%C%StateStart"   ParameterType="%AID%_PT-DfaScene"            Offset="1" BitOffset="0" Text="Startzustand"                          Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%005" Name="f%C%StateSetting" ParameterType="%AID%_PT-StateDirectSetting"  Offset="2" BitOffset="0" Text="Direktes Setzen von Zustand erlauben?" Value="0" />
                 <!-- TODO reduce size! -->
               </Union>
 
@@ -567,7 +567,7 @@
 
             </ParameterRefs>
             <ComObjectTable>
-              <ComObject Id="%AID%_O-%T%%CCC%000" Name="KOf%C%State"   Text="Zustand"          Number="%K0%" FunctionText="DEA %C%, Zustand"               ObjectSize="1 Byte"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CCC%000" Name="KOf%C%State"   Text="Zustand"          Number="%K0%" FunctionText="DEA %C%, Ausgabe Zustand"       ObjectSize="1 Byte"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
               <ComObject Id="%AID%_O-%T%%CCC%001" Name="KOf%C%Input1"  Text="Eingang 1"        Number="%K1%" FunctionText="DEA %C%, Eingang 1"             ObjectSize="1 Bit"   ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
               <ComObject Id="%AID%_O-%T%%CCC%002" Name="KOf%C%Input2"  Text="Eingang 2"        Number="%K2%" FunctionText="DEA %C%, Eingang 2"             ObjectSize="1 Bit"   ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
               <ComObject Id="%AID%_O-%T%%CCC%003" Name="KOf%C%Input3"  Text="Eingang 3"        Number="%K3%" FunctionText="DEA %C%, Eingang 3"             ObjectSize="1 Bit"   ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
@@ -577,7 +577,12 @@
               <ComObject Id="%AID%_O-%T%%CCC%102" Name="KOf%C%Running" Text="Ausführen status" Number="%K7%" FunctionText="DEA %C%, Status Ausführend"     ObjectSize="1 Bit"   ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
             </ComObjectTable>
             <ComObjectRefs>
-              <ComObjectRef Id="%AID%_O-%T%%CCC%000_R-%T%%CCC%00001" RefId="%AID%_O-%T%%CCC%000" Text="{{0:Zustand}}"           ObjectSize="1 Byte"   DatapointType="DPST-17-1"    TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%000_R-%T%%CCC%00001" RefId="%AID%_O-%T%%CCC%000" Text="{{0:Aktueller Zustand}}" ObjectSize="1 Byte"   DatapointType="DPST-17-1"    TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%000_R-%T%%CCC%00002" RefId="%AID%_O-%T%%CCC%000" Text="{{0:Zustand}}"           ObjectSize="1 Byte"   DatapointType="DPST-17-1"    TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101"
+                FunctionText="DEA %C%, Ausgabe/Eingabe Zustand" 
+                WriteFlag="Enabled" UpdateFlag="Enabled" 
+              />
+
               <ComObjectRef Id="%AID%_O-%T%%CCC%001_R-%T%%CCC%00101" RefId="%AID%_O-%T%%CCC%001" Text="{{0:Eingang 1}}"         ObjectSize="1 Bit"    DatapointType="DPST-1-1"     TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%002_R-%T%%CCC%00201" RefId="%AID%_O-%T%%CCC%002" Text="{{0:Eingang 2}}"         ObjectSize="1 Bit"    DatapointType="DPST-1-1"     TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%003_R-%T%%CCC%00301" RefId="%AID%_O-%T%%CCC%003" Text="{{0:Eingang 3}}"         ObjectSize="1 Bit"    DatapointType="DPST-1-1"     TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101" />
@@ -973,17 +978,25 @@
                     <ParameterBlock Id="%AID%_PB-%C%04" Name="f%C%Dummy" Text="KO-Dummy" Inline="true">
                       <!-- TODO find better place... -->
                       <Channel Id="%AID%_CH-DFA%CC%" Name="f%CC%Dfa" Number="DFA%CC%" Text="DEA %CC%: {{0: ...}}" TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101">
-                        <ComObjectRefRef RefId="%AID%_O-%T%%CCC%000_R-%T%%CCC%00001" />
+                        <!-- KO depending on state settting -->
+                        <choose ParamRefId="%AID%_UP-%T%%CCC%005_R-%T%%CCC%00501">
+                          <when test="0 1">
+                            <!-- state KO for output only -->
+                            <ComObjectRefRef RefId="%AID%_O-%T%%CCC%000_R-%T%%CCC%00001" />
+                          </when>
+                          <when test="1">
+                            <!-- separate KO for directly setting the state -->
+                            <ComObjectRefRef RefId="%AID%_O-%T%%CCC%100_R-%T%%CCC%10001" />
+                          </when>
+                          <when test="2">
+                            <!-- combined KO for output/input state -->
+                            <ComObjectRefRef RefId="%AID%_O-%T%%CCC%000_R-%T%%CCC%00002" />
+                          </when>
+                        </choose>
                         <ComObjectRefRef RefId="%AID%_O-%T%%CCC%001_R-%T%%CCC%00101" />
                         <ComObjectRefRef RefId="%AID%_O-%T%%CCC%002_R-%T%%CCC%00201" />
                         <ComObjectRefRef RefId="%AID%_O-%T%%CCC%003_R-%T%%CCC%00301" />
                         <ComObjectRefRef RefId="%AID%_O-%T%%CCC%004_R-%T%%CCC%00401" />
-                        <!-- KO for directly setting the state -->
-                        <choose ParamRefId="%AID%_UP-%T%%CCC%005_R-%T%%CCC%00501">
-                          <when test="1">
-                            <ComObjectRefRef RefId="%AID%_O-%T%%CCC%100_R-%T%%CCC%10001" />
-                          </when>
-                        </choose>
                         <!-- KOs for enable/disable -->
                         <choose ParamRefId="%AID%_UP-%T%%CCC%007_R-%T%%CCC%00701">
                           <when test="0 1">

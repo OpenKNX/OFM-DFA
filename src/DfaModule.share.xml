@@ -27,9 +27,10 @@
               </ParameterType>
 
               <ParameterType Id="%AID%_PT-StateDirectSetting" Name="StateDirectSetting">
-                <TypeRestriction Base="Value" SizeInBit="1">
-                  <Enumeration Text="nein"   Value="0" Id="%ENID%" />
-                  <Enumeration Text="per KO" Value="1" Id="%ENID%" />
+                <TypeRestriction Base="Value" SizeInBit="2">
+                  <Enumeration Text="nein"                                    Value="0" Id="%ENID%" /><!-- 0b00 -->
+                  <Enumeration Text="über seperates KO"                       Value="1" Id="%ENID%" /><!-- 0b01 -->
+                  <Enumeration Text="über gemeinsames KO mit Zustandsausgabe" Value="2" Id="%ENID%" /><!-- 0b10 -->
                 </TypeRestriction>
               </ParameterType>
 
