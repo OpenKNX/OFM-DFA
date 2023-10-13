@@ -29,11 +29,15 @@
                   ab in [65;69]  ->  ??? (unused)
                   a = 7          -> Input Def
                   a = 8          ->  (mixed)
+                   bc in 00      ->  ??? (unused)
                    bc in [01;64] -> Timeout Base by State
-                   bc in [65;99] ->  ??? (unused)
+                   bc in [65;96] -> State-Output 1-32
+                   bc in [97;99] ->  ??? (unused)
                   a = 9          ->  (mixed)
+                   bc in 00      ->  ??? (unused)
                    bc in [01;64] -> Timeout Time by State
-                   bc in [65;99] ->  ??? (unused)
+                   bc in [65;96] -> State-Output 33-64
+                   bc in [97;99] ->  ??? (unused)
               -->
 
               <Parameter Id="%AID%_P-%T%%CCC%001" Name="f%C%Name" ParameterType="%AID%_PT-Text40Byte" Text="Beschreibung des DEA" Value="" />
