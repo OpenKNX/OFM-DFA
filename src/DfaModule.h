@@ -19,6 +19,7 @@ class DfaModule : public OpenKNX::Module
   public:
     DfaModule();
     const std::string name() override;
+    const std::string version() override;
 
     // configured only
     void setup() override;

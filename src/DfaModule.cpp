@@ -16,6 +16,11 @@ const std::string DfaModule::name()
     return "DFA";
 }
 
+const std::string DfaModule::version()
+{
+    return MODULE_DFA_Version;
+}
+
 void DfaModule::setup()
 {
     logDebugP("setup");
