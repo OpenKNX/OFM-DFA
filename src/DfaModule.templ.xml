@@ -47,32 +47,32 @@
               </Union>
 
               <!-- TODO CHECK reorder -->
-              <Parameter Id="%AID%_P-%T%%CCC%710" Name="f%C%InputSymbol1Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Eingabe 1" Value="x_1" />
-              <Parameter Id="%AID%_P-%T%%CCC%720" Name="f%C%InputSymbol2Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Eingabe 2" Value="x_2" />
-              <Parameter Id="%AID%_P-%T%%CCC%730" Name="f%C%InputSymbol3Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Eingabe 3" Value="x_3" />
-              <Parameter Id="%AID%_P-%T%%CCC%740" Name="f%C%InputSymbol4Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Eingabe 4" Value="x_4" />
-              <Parameter Id="%AID%_P-%T%%CCC%750" Name="f%C%InputSymbol5Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Eingabe 5" Value="x_5" />
-              <Parameter Id="%AID%_P-%T%%CCC%760" Name="f%C%InputSymbol6Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Eingabe 6" Value="x_6" />
-              <Parameter Id="%AID%_P-%T%%CCC%770" Name="f%C%InputSymbol7Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Eingabe 7" Value="x_7" />
-              <Parameter Id="%AID%_P-%T%%CCC%780" Name="f%C%InputSymbol8Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Eingabe 8" Value="x_8" />
+              <Parameter Id="%AID%_P-%T%%CCC%710" Name="f%C%InputSymbol1Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Eingabe 1" Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%720" Name="f%C%InputSymbol2Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Eingabe 2" Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%730" Name="f%C%InputSymbol3Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Eingabe 3" Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%740" Name="f%C%InputSymbol4Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Eingabe 4" Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%750" Name="f%C%InputSymbol5Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Eingabe 5" Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%760" Name="f%C%InputSymbol6Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Eingabe 6" Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%770" Name="f%C%InputSymbol7Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Eingabe 7" Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%780" Name="f%C%InputSymbol8Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Eingabe 8" Value="" />
 
               <!-- TODO CHECK reorder -->
-              <Parameter Id="%AID%_P-%T%%CCC%010" Name="f%C%State01Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 1" Value="z_1" />
-              <Parameter Id="%AID%_P-%T%%CCC%020" Name="f%C%State02Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 2" Value="z_2" />
-              <Parameter Id="%AID%_P-%T%%CCC%030" Name="f%C%State03Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 3" Value="z_3" />
-              <Parameter Id="%AID%_P-%T%%CCC%040" Name="f%C%State04Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 4" Value="z_4" />
-              <Parameter Id="%AID%_P-%T%%CCC%050" Name="f%C%State05Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 5" Value="z_5" />
-              <Parameter Id="%AID%_P-%T%%CCC%060" Name="f%C%State06Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 6" Value="z_6" />
-              <Parameter Id="%AID%_P-%T%%CCC%070" Name="f%C%State07Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 7" Value="z_7" />
-              <Parameter Id="%AID%_P-%T%%CCC%080" Name="f%C%State08Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 8" Value="z_8" />
-              <Parameter Id="%AID%_P-%T%%CCC%090" Name="f%C%State09Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 9" Value="z_9" />
-              <Parameter Id="%AID%_P-%T%%CCC%100" Name="f%C%State10Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 10" Value="z_10" />
-              <Parameter Id="%AID%_P-%T%%CCC%110" Name="f%C%State11Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 11" Value="z_11" />
-              <Parameter Id="%AID%_P-%T%%CCC%120" Name="f%C%State12Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 12" Value="z_12" />
-              <Parameter Id="%AID%_P-%T%%CCC%130" Name="f%C%State13Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 13" Value="z_13" />
-              <Parameter Id="%AID%_P-%T%%CCC%140" Name="f%C%State14Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 14" Value="z_14" />
-              <Parameter Id="%AID%_P-%T%%CCC%150" Name="f%C%State15Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 15" Value="z_15" />
-              <Parameter Id="%AID%_P-%T%%CCC%160" Name="f%C%State16Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 16" Value="z_16" />
+              <Parameter Id="%AID%_P-%T%%CCC%010" Name="f%C%State01Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 1"  Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%020" Name="f%C%State02Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 2"  Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%030" Name="f%C%State03Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 3"  Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%040" Name="f%C%State04Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 4"  Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%050" Name="f%C%State05Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 5"  Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%060" Name="f%C%State06Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 6"  Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%070" Name="f%C%State07Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 7"  Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%080" Name="f%C%State08Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 8"  Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%090" Name="f%C%State09Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 9"  Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%100" Name="f%C%State10Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 10" Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%110" Name="f%C%State11Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 11" Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%120" Name="f%C%State12Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 12" Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%130" Name="f%C%State13Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 13" Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%140" Name="f%C%State14Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 14" Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%150" Name="f%C%State15Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 15" Value="" />
+              <Parameter Id="%AID%_P-%T%%CCC%160" Name="f%C%State16Name" ParameterType="%AID%_PT-Text40Byte" Text="Bezeichnung Zustand 16" Value="" />
 
               <Union SizeInBit="88"><Memory CodeSegment="%AID%_RS-04-00000" Offset="10" BitOffset="0" />
                 <!-- name defined above -->
@@ -692,14 +692,14 @@
                         <Column Id="%AID%_PB-02_C-11" Name="Timeout"      Width="9%"  Text="T" />
                       </Columns>
 
-                      <ParameterSeparator Id="%AID%_PS-nnn" Text="{{0:x_1}}" TextParameterRefId="%AID%_P-%T%%CCC%710_R-%T%%CCC%71001" Cell="1,2" />
-                      <ParameterSeparator Id="%AID%_PS-nnn" Text="{{0:x_2}}" TextParameterRefId="%AID%_P-%T%%CCC%720_R-%T%%CCC%72001" Cell="1,3" />
-                      <ParameterSeparator Id="%AID%_PS-nnn" Text="{{0:x_3}}" TextParameterRefId="%AID%_P-%T%%CCC%730_R-%T%%CCC%73001" Cell="1,4" />
-                      <ParameterSeparator Id="%AID%_PS-nnn" Text="{{0:x_4}}" TextParameterRefId="%AID%_P-%T%%CCC%740_R-%T%%CCC%74001" Cell="1,5" />
-                      <ParameterSeparator Id="%AID%_PS-nnn" Text="{{0:x_5}}" TextParameterRefId="%AID%_P-%T%%CCC%750_R-%T%%CCC%75001" Cell="1,6" />
-                      <ParameterSeparator Id="%AID%_PS-nnn" Text="{{0:x_6}}" TextParameterRefId="%AID%_P-%T%%CCC%760_R-%T%%CCC%76001" Cell="1,7" />
-                      <ParameterSeparator Id="%AID%_PS-nnn" Text="{{0:x_7}}" TextParameterRefId="%AID%_P-%T%%CCC%770_R-%T%%CCC%77001" Cell="1,8" />
-                      <ParameterSeparator Id="%AID%_PS-nnn" Text="{{0:x_8}}" TextParameterRefId="%AID%_P-%T%%CCC%780_R-%T%%CCC%78001" Cell="1,9" />
+                      <ParameterSeparator Id="%AID%_PS-nnn" Text="{{0: }}" TextParameterRefId="%AID%_P-%T%%CCC%710_R-%T%%CCC%71001" Cell="1,2" />
+                      <ParameterSeparator Id="%AID%_PS-nnn" Text="{{0: }}" TextParameterRefId="%AID%_P-%T%%CCC%720_R-%T%%CCC%72001" Cell="1,3" />
+                      <ParameterSeparator Id="%AID%_PS-nnn" Text="{{0: }}" TextParameterRefId="%AID%_P-%T%%CCC%730_R-%T%%CCC%73001" Cell="1,4" />
+                      <ParameterSeparator Id="%AID%_PS-nnn" Text="{{0: }}" TextParameterRefId="%AID%_P-%T%%CCC%740_R-%T%%CCC%74001" Cell="1,5" />
+                      <ParameterSeparator Id="%AID%_PS-nnn" Text="{{0: }}" TextParameterRefId="%AID%_P-%T%%CCC%750_R-%T%%CCC%75001" Cell="1,6" />
+                      <ParameterSeparator Id="%AID%_PS-nnn" Text="{{0: }}" TextParameterRefId="%AID%_P-%T%%CCC%760_R-%T%%CCC%76001" Cell="1,7" />
+                      <ParameterSeparator Id="%AID%_PS-nnn" Text="{{0: }}" TextParameterRefId="%AID%_P-%T%%CCC%770_R-%T%%CCC%77001" Cell="1,8" />
+                      <ParameterSeparator Id="%AID%_PS-nnn" Text="{{0: }}" TextParameterRefId="%AID%_P-%T%%CCC%780_R-%T%%CCC%78001" Cell="1,9" />
 
                       <ParameterRefRef RefId="%AID%_P-%T%%CCC%010_R-%T%%CCC%01001" Cell="2,1" />
                       <ParameterRefRef RefId="%AID%_UP-%T%%CCC%011_R-%T%%CCC%01101" Cell="2,2" />
