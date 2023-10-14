@@ -75,6 +75,8 @@ void DfaChannel::loop()
     if (_running && _stateTimeoutDelay_ms > 0 && delayCheckMillis(_stateTimeoutBegin_ms, _stateTimeoutDelay_ms))
     {
         // logDebugP("timeout reached (@%d+%dms >=%d)", _stateTimeoutBegin_ms, _stateTimeoutDelay_ms, millis());
+
+        // TODO check creation of method transferTimeout()
         setState(getTimeoutState(_state));
     }
 }
