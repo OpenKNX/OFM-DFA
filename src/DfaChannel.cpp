@@ -4,6 +4,29 @@
 #include "DfaChannel.h"
 
 // TODO calculate index; expected distance should be protected by compile error
+// TODO special handling of indices for >32 DFA required
+// Define (relative) parameter address-index for next state by current state and input
+const uint8_t DfaChannel::_valuePRI[DFA_DEF_STATES_COUNT] = {
+    DFA_fState01Output,
+    DFA_fState02Output,
+    DFA_fState03Output,
+    DFA_fState04Output,
+    DFA_fState05Output,
+    DFA_fState06Output,
+    DFA_fState07Output,
+    DFA_fState08Output,
+    DFA_fState09Output,
+    DFA_fState10Output,
+    DFA_fState11Output,
+    DFA_fState12Output,
+    DFA_fState13Output,
+    DFA_fState14Output,
+    DFA_fState15Output,
+    DFA_fState16Output,
+    // parameter index index will not fit in one memory block for 64 DFAs
+};
+
+// TODO calculate index; expected distance should be protected by compile error
 // Define (relative) parameter address-index for next state by current state and input
 const uint8_t DfaChannel::_transPRI[DFA_DEF_STATES_COUNT][DFA_DEF_INPUTS_COUNT] = {
     {DFA_fTransState01Input1, DFA_fTransState01Input2, DFA_fTransState01Input3, DFA_fTransState01Input4, DFA_fTransState01Input5, DFA_fTransState01Input6, DFA_fTransState01Input7, DFA_fTransState01Input8},

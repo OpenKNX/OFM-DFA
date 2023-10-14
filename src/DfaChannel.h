@@ -22,6 +22,7 @@ class DfaChannel : public OpenKNX::Channel
 {
   private:
     // note: relative param index <= uint8_t is ensured at compile-time
+    static const uint8_t _valuePRI[DFA_DEF_STATES_COUNT];
     static const uint8_t _transPRI[DFA_DEF_STATES_COUNT][DFA_DEF_INPUTS_COUNT];
     static const DfaStateTimeoutParamRelIdx _timeoutPRI[DFA_DEF_STATES_COUNT];
 
