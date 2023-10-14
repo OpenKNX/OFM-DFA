@@ -621,14 +621,19 @@
 
             </ParameterRefs>
             <ComObjectTable>
-              <ComObject Id="%AID%_O-%T%%CCC%000" Name="KOf%C%State"   Text="Zustand"          Number="%K0%" FunctionText="DEA %C%, Ausgabe Zustand"       ObjectSize="1 Byte"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CCC%001" Name="KOf%C%Input1"  Text="Eingang 1"        Number="%K1%" FunctionText="DEA %C%, Eingang 1"             ObjectSize="1 Bit"   ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CCC%002" Name="KOf%C%Input2"  Text="Eingang 2"        Number="%K2%" FunctionText="DEA %C%, Eingang 2"             ObjectSize="1 Bit"   ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CCC%003" Name="KOf%C%Input3"  Text="Eingang 3"        Number="%K3%" FunctionText="DEA %C%, Eingang 3"             ObjectSize="1 Bit"   ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CCC%004" Name="KOf%C%Input4"  Text="Eingang 4"        Number="%K4%" FunctionText="DEA %C%, Eingang 4"             ObjectSize="1 Bit"   ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CCC%100" Name="KOf%C%StateI"  Text="Zustand setzen"   Number="%K5%" FunctionText="DEA %C%, Zustand überschreiben" ObjectSize="1 Byte"  ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CCC%101" Name="KOf%C%RunSet"  Text="Ausführen setzen" Number="%K6%" FunctionText="DEA %C%, Ausführen"             ObjectSize="1 Bit"   ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CCC%102" Name="KOf%C%Running" Text="Ausführen status" Number="%K7%" FunctionText="DEA %C%, Status Ausführend"     ObjectSize="1 Bit"   ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CCC%000" Name="KOf%C%State"   Text="Zustand"          Number="%K0%"  FunctionText="DEA %C%, Ausgabe Zustand"       ObjectSize="1 Byte"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CCC%103" Name="KOf%C%Output"  Text="Wertausgang"      Number="%K1%"  FunctionText="DEA %C%, Ausgabe Wert"          ObjectSize="1 Byte"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CCC%100" Name="KOf%C%StateI"  Text="Zustand setzen"   Number="%K2%"  FunctionText="DEA %C%, Eingabe Zustand"       ObjectSize="1 Byte"  ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CCC%001" Name="KOf%C%Input1"  Text="Eingang 1"        Number="%K3%"  FunctionText="DEA %C%, Eingang 1"             ObjectSize="1 Bit"   ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CCC%002" Name="KOf%C%Input2"  Text="Eingang 2"        Number="%K4%"  FunctionText="DEA %C%, Eingang 2"             ObjectSize="1 Bit"   ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CCC%003" Name="KOf%C%Input3"  Text="Eingang 3"        Number="%K5%"  FunctionText="DEA %C%, Eingang 3"             ObjectSize="1 Bit"   ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CCC%004" Name="KOf%C%Input4"  Text="Eingang 4"        Number="%K6%"  FunctionText="DEA %C%, Eingang 4"             ObjectSize="1 Bit"   ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CCC%005" Name="KOf%C%Input5"  Text="Eingang 5"        Number="%K7%"  FunctionText="DEA %C%, Eingang 5"             ObjectSize="1 Bit"   ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CCC%006" Name="KOf%C%Input6"  Text="Eingang 6"        Number="%K8%"  FunctionText="DEA %C%, Eingang 6"             ObjectSize="1 Bit"   ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CCC%007" Name="KOf%C%Input7"  Text="Eingang 7"        Number="%K9%"  FunctionText="DEA %C%, Eingang 7"             ObjectSize="1 Bit"   ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CCC%008" Name="KOf%C%Input8"  Text="Eingang 8"        Number="%K10%" FunctionText="DEA %C%, Eingang 8"             ObjectSize="1 Bit"   ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CCC%101" Name="KOf%C%RunSet"  Text="Ausführen setzen" Number="%K11%" FunctionText="DEA %C%, Ausführen"             ObjectSize="1 Bit"   ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CCC%102" Name="KOf%C%Running" Text="Ausführen status" Number="%K12%" FunctionText="DEA %C%, Status Ausführend"     ObjectSize="1 Bit"   ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
             </ComObjectTable>
             <ComObjectRefs>
               <ComObjectRef Id="%AID%_O-%T%%CCC%000_R-%T%%CCC%00001" RefId="%AID%_O-%T%%CCC%000" Text="{{0:Aktueller Zustand}}" ObjectSize="1 Byte"   DatapointType="DPST-17-1"    TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101" />
@@ -641,9 +646,15 @@
               <ComObjectRef Id="%AID%_O-%T%%CCC%002_R-%T%%CCC%00201" RefId="%AID%_O-%T%%CCC%002" Text="{{0:Eingang 2}}"         ObjectSize="1 Bit"    DatapointType="DPST-1-1"     TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%003_R-%T%%CCC%00301" RefId="%AID%_O-%T%%CCC%003" Text="{{0:Eingang 3}}"         ObjectSize="1 Bit"    DatapointType="DPST-1-1"     TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%004_R-%T%%CCC%00401" RefId="%AID%_O-%T%%CCC%004" Text="{{0:Eingang 4}}"         ObjectSize="1 Bit"    DatapointType="DPST-1-1"     TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%005_R-%T%%CCC%00501" RefId="%AID%_O-%T%%CCC%005" Text="{{0:Eingang 5}}"         ObjectSize="1 Bit"    DatapointType="DPST-1-1"     TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%006_R-%T%%CCC%00601" RefId="%AID%_O-%T%%CCC%006" Text="{{0:Eingang 6}}"         ObjectSize="1 Bit"    DatapointType="DPST-1-1"     TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%007_R-%T%%CCC%00701" RefId="%AID%_O-%T%%CCC%007" Text="{{0:Eingang 7}}"         ObjectSize="1 Bit"    DatapointType="DPST-1-1"     TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%008_R-%T%%CCC%00801" RefId="%AID%_O-%T%%CCC%008" Text="{{0:Eingang 8}}"         ObjectSize="1 Bit"    DatapointType="DPST-1-1"     TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101" />
+
               <ComObjectRef Id="%AID%_O-%T%%CCC%100_R-%T%%CCC%10001" RefId="%AID%_O-%T%%CCC%100" Text="{{0:Zustand setzen}}"    ObjectSize="1 Byte"   DatapointType="DPST-17-1"    TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%101_R-%T%%CCC%10101" RefId="%AID%_O-%T%%CCC%101" Text="{{0:starten/pausieren}}" ObjectSize="1 Bit"    DatapointType="DPST-1-10"    TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%102_R-%T%%CCC%10201" RefId="%AID%_O-%T%%CCC%102" Text="{{0:läuft?}}"            ObjectSize="1 Bit"    DatapointType="DPST-1-11"    TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%103_R-%T%%CCC%10301" RefId="%AID%_O-%T%%CCC%103" Text="{{0:Zustandswert}}"      ObjectSize="1 Byte"   DatapointType="DPST-17-1"    TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101" />
             </ComObjectRefs>
           </Static>
           <Dynamic>
@@ -1052,16 +1063,13 @@
                       <Channel Id="%AID%_CH-DFA%CC%" Name="f%CC%Dfa" Number="DFA%CC%" Text="DEA %CC%: {{0: ...}}" TextParameterRefId="%AID%_P-%T%%CCC%001_R-%T%%CCC%00101">
                         <!-- KO depending on state settting -->
                         <choose ParamRefId="%AID%_UP-%T%%CCC%005_R-%T%%CCC%00501">
-                          <when test="0 1">
-                            <!-- state KO for output only -->
+                          <when test="0 1"><!-- state KO for output only -->
                             <ComObjectRefRef RefId="%AID%_O-%T%%CCC%000_R-%T%%CCC%00001" />
                           </when>
-                          <when test="1">
-                            <!-- separate KO for directly setting the state -->
+                          <when test="1"><!-- separate KO for directly setting the state -->
                             <ComObjectRefRef RefId="%AID%_O-%T%%CCC%100_R-%T%%CCC%10001" />
                           </when>
-                          <when test="2">
-                            <!-- combined KO for output/input state -->
+                          <when test="2"><!-- combined KO for output/input state -->
                             <ComObjectRefRef RefId="%AID%_O-%T%%CCC%000_R-%T%%CCC%00002" />
                           </when>
                         </choose>
@@ -1076,6 +1084,8 @@
                             <ComObjectRefRef RefId="%AID%_O-%T%%CCC%102_R-%T%%CCC%10201" />
                           </when>
                         </choose>
+                        <!-- KO for state value output -->
+                        <ComObjectRefRef RefId="%AID%_O-%T%%CCC%103_R-%T%%CCC%10301" />
                       </Channel>
                     </ParameterBlock>
 
