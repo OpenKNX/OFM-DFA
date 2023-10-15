@@ -81,26 +81,36 @@ const std::string DfaChannel::name()
 void DfaChannel::setup()
 {
     _channelActive = (ParamDFA_fSwitchMaster == 0b01);
-    logDebugP("setup (act=%d run=%d)", _channelActive, ParamDFA_fSwitchByKo != 0b00);
-    if (!_channelActive)
-        return; // ignore inactive channel
+    logDebugP("setup (act=%d dly=%ds run=%d)", _channelActive, ParamDFA_fChannelDelayTimeMS / 1000, ParamDFA_fSwitchByKo != 0b00);
 
-    // TODO define expected timing behaviour for first state with timeout
-    // TODO add state restore
+    if (_channelActive)
+    {
+        // TODO add state restore
 
-    // set to running. This includes setting the start state
-    setRunning(ParamDFA_fSwitchByKo != 0b00, true);
+        _processStartupDelay = true;
+        _startupDelayBegin_ms = millis();
+    }
 }
 
 void DfaChannel::loop()
 {
     // !_channelActive will result in _running=false, so no need for checking
-    if (_running && _stateTimeoutDelay_ms > 0 && delayCheckMillis(_stateTimeoutBegin_ms, _stateTimeoutDelay_ms))
+    if (_running)
     {
-        // logDebugP("timeout reached (@%d+%dms >=%d)", _stateTimeoutBegin_ms, _stateTimeoutDelay_ms, millis());
+        if (_stateTimeoutDelay_ms > 0 && delayCheckMillis(_stateTimeoutBegin_ms, _stateTimeoutDelay_ms))
+        {
+            // logDebugP("timeout reached (@%d+%dms >=%d)", _stateTimeoutBegin_ms, _stateTimeoutDelay_ms, millis());
 
-        // TODO check creation of method transferTimeout()
-        setState(getTimeoutState(_state));
+            // TODO check creation of method transferTimeout()
+            setState(getTimeoutState(_state));
+        }
+    }
+    else if (_processStartupDelay && delayCheckMillis(_startupDelayBegin_ms, ParamDFA_fChannelDelayTimeMS))
+    {
+        _processStartupDelay = false;
+
+        // set to running. This includes setting the start state
+        setRunning(ParamDFA_fSwitchByKo != 0b00, true);
     }
 }
 

@@ -30,6 +30,10 @@ class DfaChannel : public OpenKNX::Channel
     // is enabled in ETS?
     bool _channelActive = true;
 
+    // wait while startup is delayed
+    bool _processStartupDelay = false;
+    uint32_t _startupDelayBegin_ms = 0;
+
     // is not paused (startup is ETS, later updated by KO)
     bool _running = false;
     uint32_t _pauseBegin = 0;
