@@ -221,6 +221,21 @@ void DfaChannel::setState(const uint8_t nextState)
 
         // if (_stateTimeoutDelay_ms > 0)
         //     logDebugP("  with timeout state %d after %dms", getTimeoutState(nextState), _stateTimeoutDelay_ms);
+
+        // send state value
+        const uint8_t stateValueConf = knx.paramByte(DFA_ParamCalcIndex(_valuePRI[_state]));
+        if (stateValueConf != DFA_STATE_VALUE_UNDEFINED)
+        {
+            const uint8_t stateValue = stateValueConf & 0x3f;
+            const bool sendUnchanged = (stateValueConf & 0x80) == 0;
+
+            if (stateValue != _stateValue || sendUnchanged)
+            {
+                KoDFA_KOfOutput.value(stateValue, DPT_SceneNumber);
+            }
+
+            _stateValue = stateValue;
+        }
     }
 }
 

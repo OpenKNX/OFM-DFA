@@ -8,6 +8,7 @@
 #define DFA_DEF_INPUTS_COUNT 8
 
 #define DFA_STATE_UNDEFINED 0xff
+#define DFA_STATE_VALUE_UNDEFINED 0x40
 
 #if (DFA_ParamBlockSize > 0xff)
   #error Relativ channel parameter index > uint8_t => need uint16_t for DfaStateTimeoutParamRelIdx.state and _transitionParamsRelIdx
@@ -36,6 +37,7 @@ class DfaChannel : public OpenKNX::Channel
     uint8_t _state = DFA_STATE_UNDEFINED;
     uint32_t _stateTimeoutDelay_ms = 0;
     uint32_t _stateTimeoutBegin_ms = 0;
+    uint8_t _stateValue = DFA_STATE_VALUE_UNDEFINED;
 
     uint32_t getStateTimeoutDelay_ms(const uint8_t state);
     uint8_t getTimeoutState(const uint8_t state);
