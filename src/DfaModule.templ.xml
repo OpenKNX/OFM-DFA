@@ -45,7 +45,7 @@
                 <Parameter Id="%AID%_UP-%T%%CCC%006" Name="f%C%SwitchMaster" ParameterType="%AID%_PT-ChannelSwitchMaster" Offset="0" BitOffset="0" Text="Kanal verwenden?"                      Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%007" Name="f%C%SwitchByKo"   ParameterType="%AID%_PT-ChannelSwitchByKo"   Offset="0" BitOffset="2" Text="Starten und Pausieren"                 Value="3" />
                 <Parameter Id="%AID%_UP-%T%%CCC%005" Name="f%C%StateSetting" ParameterType="%AID%_PT-StateDirectSetting"  Offset="0" BitOffset="4" Text="Direktes Setzen von Zustand erlauben?" Value="0" />
-                <!-- 2 bit unused -->
+                <Parameter Id="%AID%_UP-%T%%CCC%008" Name="f%C%StateRestore" ParameterType="%AID%_PT-StatePersistance"    Offset="0" BitOffset="6" Text="Zustand bei Neustart rekonstruieren?"  Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%002" Name="f%C%StateStart"   ParameterType="%AID%_PT-DfaScene"            Offset="1" BitOffset="0" Text="Startzustand"                          Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%003" Name="f%C%ChannelDelayBase" ParameterType="%AID%_PT-DelayBase"       Offset="2" BitOffset="0" Text="Einschaltverzögerung Zeitbasis"        Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%004" Name="f%C%ChannelDelayTime" ParameterType="%AID%_PT-DelayTime"       Offset="2" BitOffset="2" Text="Einschaltverzögerung Zeit"             Value="1" />
@@ -362,6 +362,7 @@
               <ParameterRef Id="%AID%_UP-%T%%CCC%005_R-%T%%CCC%00501" RefId="%AID%_UP-%T%%CCC%005" />
               <ParameterRef Id="%AID%_UP-%T%%CCC%006_R-%T%%CCC%00601" RefId="%AID%_UP-%T%%CCC%006" />
               <ParameterRef Id="%AID%_UP-%T%%CCC%007_R-%T%%CCC%00701" RefId="%AID%_UP-%T%%CCC%007" />
+              <ParameterRef Id="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00801" RefId="%AID%_UP-%T%%CCC%008" />
 
               <!-- TODO sort in regular order! -->
               <ParameterRef Id="%AID%_P-%T%%CCC%010_R-%T%%CCC%01001" RefId="%AID%_P-%T%%CCC%010" />
@@ -737,6 +738,7 @@
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Zustände und Übergangsfunktion einschließlich zeitbasierter Folgezustände" UIHint="Headline" />
                     <!-- Startzustand -->
                     <ParameterRefRef RefId="%AID%_UP-%T%%CCC%002_R-%T%%CCC%00201" />
+                    <ParameterRefRef RefId="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00801" IndentLevel="1" />
                     <ParameterRefRef RefId="%AID%_UP-%T%%CCC%005_R-%T%%CCC%00501" />
                     <!-- Tabelle Zustände und Übergänge  -->
                     <ParameterBlock Id="%AID%_PB-%C%02" Name="Transfer%C%" Text="z" Inline="true" Layout="Table">
