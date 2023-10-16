@@ -89,6 +89,9 @@ void DfaChannel::setup()
 
         _processStartupDelay = true;
         _startupDelayBegin_ms = millis();
+
+        _firstState = ParamDFA_fStateStart;
+        // _firstStateTimeoutDelay_ms = getStateTimeoutDelay_ms(_firstState);
     }
 }
 
@@ -184,7 +187,21 @@ void DfaChannel::setRunning(const bool requestRun, const bool first /*= false*/)
         {
             // first activation
             logDebugP("first activation");
-            setState(ParamDFA_fStateStart);
+            setState(_firstState);
+            if (ParamDFA_fStateRestore & 0b10 && _firstStateTimeoutDelay_ms > 0)
+            {
+                // TODO check refactoring!
+                if (_firstStateTimeoutDelay_ms > ParamDFA_fChannelDelayTimeMS)
+                {
+                    logDebugP("restore with shortened delay");
+                    _stateTimeoutDelay_ms = _firstStateTimeoutDelay_ms - ParamDFA_fChannelDelayTimeMS;
+                }
+                else
+                {
+                    logDebugP("restore with ended delay");
+                    _stateTimeoutDelay_ms = 1;
+                }
+            }
         }
         else
         {
@@ -271,6 +288,36 @@ void DfaChannel::endTimeout()
 
         // set to shortest possible valid timeout of 1ms; might result in up to 1ms delay until end, when executed directly after state change
         _stateTimeoutDelay_ms = 1;
+    }
+}
+
+void DfaChannel::save()
+{
+    const uint8_t conf = _channelActive << 7 | _running << 6 | ParamDFA_fStateRestore;
+    openknx.flash.writeByte(conf);
+    openknx.flash.writeByte(_state);
+
+    // futureDelay = _stateTimeoutBegin_ms + _stateTimeoutDelay_ms - millis();
+    // futureDelay = (_stateTimeoutBegin_ms - millis()) + _stateTimeoutDelay_ms;
+    // futureDelay = _stateTimeoutDelay_ms - (millis() - _stateTimeoutBegin_ms)
+    // TODO check for correct handling of overflow
+    const uint32_t futureDelay = _stateTimeoutDelay_ms - (millis() - _stateTimeoutBegin_ms);
+    openknx.flash.writeInt(futureDelay);
+
+    logDebugP("saved c=%2x s=%2x t=%u b=%u f=%u", conf, _state, _stateTimeoutDelay_ms, _stateTimeoutBegin_ms, futureDelay);
+}
+
+void DfaChannel::restore()
+{
+    const uint8_t conf = openknx.flash.readByte();
+    const uint8_t state = openknx.flash.readByte();
+    const uint8_t timeout = openknx.flash.readInt();
+    logDebugP("restored conf=%d state=%d timeout=%d", conf, state, timeout);
+
+    if (ParamDFA_fStateRestore && (conf & 0b11))
+    {
+        _firstState = state;
+        _firstStateTimeoutDelay_ms = timeout;
     }
 }
 

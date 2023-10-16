@@ -22,6 +22,8 @@ struct DfaStateTimeoutParamRelIdx {
 class DfaChannel : public OpenKNX::Channel
 {
   private:
+    static const uint8_t _magicWord[4];
+
     // note: relative param index <= uint8_t is ensured at compile-time
     static const uint8_t _valuePRI[DFA_DEF_STATES_COUNT];
     static const uint8_t _transPRI[DFA_DEF_STATES_COUNT][DFA_DEF_INPUTS_COUNT];
@@ -37,6 +39,9 @@ class DfaChannel : public OpenKNX::Channel
     // is not paused (startup is ETS, later updated by KO)
     bool _running = false;
     uint32_t _pauseBegin = 0;
+
+    uint8_t _firstState = DFA_STATE_UNDEFINED;
+    uint32_t _firstStateTimeoutDelay_ms = 0;
 
     uint8_t _state = DFA_STATE_UNDEFINED;
     uint32_t _stateTimeoutDelay_ms = 0;
@@ -59,6 +64,9 @@ class DfaChannel : public OpenKNX::Channel
     void setup() override;
     void loop() override;
     void processInputKo(GroupObject &ko) override;
+
+    void save();
+    void restore();
 
     bool processCommand(const std::string cmd, bool diagnoseKo);
 };
