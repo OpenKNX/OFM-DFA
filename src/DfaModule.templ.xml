@@ -739,6 +739,11 @@
                     <!-- Startzustand -->
                     <ParameterRefRef RefId="%AID%_UP-%T%%CCC%002_R-%T%%CCC%00201" />
                     <ParameterRefRef RefId="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00801" IndentLevel="1" />
+                    <choose ParamRefId="%AID%_UP-%T%%CCC%008_R-%T%%CCC%00801">
+                      <when test="!=0">
+                        <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG: Wiederherstellen von Zuständen beim Start ist ein experimentelles Feature. LIMITATION: Es kann auf diesem Wege nicht sichergestellt werden, dass ein Verhalten wie ohne Unterbrechung erreicht wird." UIHint="Information" />
+                      </when>
+                    </choose>
                     <ParameterRefRef RefId="%AID%_UP-%T%%CCC%005_R-%T%%CCC%00501" />
                     <!-- Tabelle Zustände und Übergänge  -->
                     <ParameterBlock Id="%AID%_PB-%C%02" Name="Transfer%C%" Text="z" Inline="true" Layout="Table">
