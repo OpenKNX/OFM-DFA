@@ -1,0 +1,37 @@
+@startuml
+'https://plantuml.com/state-diagram
+
+state 0 <<choice>>
+state "inactive\n(disabled)" as inactive #ccc: _state= 0b1111|1110
+' b: _state=0b1111|1100
+state paused #ccc: _state= 0b10ss|ssss
+
+state loop {
+    state "active\n(unstarted)" as b #cfc: _state= 0b0100|0000
+    state running #cfc: _state= 0b00ss|ssss
+    state c <<choice>>
+}
+
+[*] --> 0: restart
+0 --> b: [=active]
+' 0 -> [*]: [!=active]
+0 -l> inactive: [!=active]
+'inactive -> [*]
+b --> c: .. startup delay
+c --> running: [startup=running]
+c -> paused: [startup!=running]
+running -> paused: stop
+paused -> running: start
+
+running -> running: input
+running -[dotted]-> running: timeout
+
+
+note left of loop
+    // loop:
+    if (_state<=(1<<6)) {
+      ...
+    }
+end note
+
+@enduml
