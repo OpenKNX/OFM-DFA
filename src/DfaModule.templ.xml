@@ -769,17 +769,17 @@
                       <Columns>
                         <Column Id="%AID%_PB-02_C-13" Name="Output"       Width="11%" Text="Wert" />
                         <Column Id="%AID%_PB-02_C-12" Name="Label"        Width="40%" Text="Bezeichnung" />
-                        <Column Id="%AID%_PB-02_C-1"  Name="Input1"       Width="9%"  Text="A" />
-                        <Column Id="%AID%_PB-02_C-2"  Name="Input2"       Width="9%"  Text="B" />
-                        <Column Id="%AID%_PB-02_C-3"  Name="Input3"       Width="9%"  Text="C" />
-                        <Column Id="%AID%_PB-02_C-4"  Name="Input4"       Width="9%"  Text="D" />
-                        <Column Id="%AID%_PB-02_C-5"  Name="Input5"       Width="9%"  Text="E" />
-                        <Column Id="%AID%_PB-02_C-6"  Name="Input6"       Width="9%"  Text="F" />
-                        <Column Id="%AID%_PB-02_C-7"  Name="Input7"       Width="9%"  Text="G" />
-                        <Column Id="%AID%_PB-02_C-8"  Name="Input8"       Width="9%"  Text="H" />
+                        <Column Id="%AID%_PB-02_C-1"  Name="Input1"       Width="10%" Text="A" />
+                        <Column Id="%AID%_PB-02_C-2"  Name="Input2"       Width="10%" Text="B" />
+                        <Column Id="%AID%_PB-02_C-3"  Name="Input3"       Width="10%" Text="C" />
+                        <Column Id="%AID%_PB-02_C-4"  Name="Input4"       Width="10%" Text="D" />
+                        <Column Id="%AID%_PB-02_C-5"  Name="Input5"       Width="10%" Text="E" />
+                        <Column Id="%AID%_PB-02_C-6"  Name="Input6"       Width="10%" Text="F" />
+                        <Column Id="%AID%_PB-02_C-7"  Name="Input7"       Width="10%" Text="G" />
+                        <Column Id="%AID%_PB-02_C-8"  Name="Input8"       Width="10%" Text="H" />
                         <Column Id="%AID%_PB-02_C-9"  Name="TimeoutTime"  Width="13%" Text="Timeout" />
                         <Column Id="%AID%_PB-02_C-10" Name="TimeoutUnit"  Width="11%" Text="Einheit" />
-                        <Column Id="%AID%_PB-02_C-11" Name="Timeout"      Width="9%"  Text="T" />
+                        <Column Id="%AID%_PB-02_C-11" Name="Timeout"      Width="10%" Text="T" />
                       </Columns>
 
                       <ParameterSeparator Id="%AID%_PS-nnn" Text="Ausgabe"                                                          Cell="1,1" />
