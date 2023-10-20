@@ -8,6 +8,10 @@
           <Static>
             <ParameterTypes>
 
+              <ParameterType Id="%AID%_PT-DocText255" Name="DocumentationText255Char">
+                <TypeText SizeInBit="2040" />
+              </ParameterType>              
+
               <!-- channel master switch -->
               <ParameterType Id="%AID%_PT-ChannelSwitchMaster" Name="ChannelSwitchMaster">
                 <TypeRestriction Base="Value" SizeInBit="2">
@@ -61,9 +65,36 @@
               </ParameterType>
               <!-- end of delay pattern (SHORT Labels) -->
 
-              <ParameterType Id="%AID%_PT-DfaSceneNext" Name="DfaSceneNext">
+              <ParameterType Id="%AID%_PT-DfaInputKo" Name="DfaInputKo">
+                <TypeRestriction Base="Value" SizeInBit="2">
+                  <Enumeration Text="inaktiv"          Value="0"    Id="%ENID%" /><!-- 00 -->
+                  <Enumeration Text="Eigenes KO"       Value="1"    Id="%ENID%" /><!-- 01 -->
+                  <Enumeration Text="Logik-Ausgang"    Value="3"    Id="%ENID%" /><!-- 11 -->
+                  <Enumeration Text="Bestehendes KO"   Value="2"    Id="%ENID%" /><!-- 10 -->
+                </TypeRestriction>
+              </ParameterType>
+
+              <ParameterType Id="%AID%_PT-DfaInputKoNumber" Name="DfaInputKoNumber">
+                <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="1" maxInclusive="4000" />
+              </ParameterType>
+
+              <ParameterType Id="%AID%_PT-DfaInputTrigger" Name="DfaInputTrigger">
+                <TypeRestriction Base="Value" SizeInBit="2">
+                  <Enumeration Text="nur 0"            Value="1"    Id="%ENID%" /><!-- 01 -->
+                  <Enumeration Text="nur 1"            Value="2"    Id="%ENID%" /><!-- 10 -->
+                  <Enumeration Text="jeder (0 oder 1)" Value="3"    Id="%ENID%" /><!-- 11 -->
+                </TypeRestriction>
+              </ParameterType>
+
+              <ParameterType Id="%AID%_PT-DfaStateNextReset" Name="DfaStateNextReset">
                 <TypeRestriction Base="Value" SizeInBit="8">
+
+                  <!-- no following state -->
                   <Enumeration Text=" "  Value="64" Id="%ENID%" />
+
+                  <!-- reset timeout, without setting state again -->
+                  <Enumeration Text="&lt;&lt;"  Value="65" Id="%ENID%" />
+
                   <Enumeration Text="1"  Value="0"  Id="%ENID%" />
                   <Enumeration Text="2"  Value="1"  Id="%ENID%" />
                   <Enumeration Text="3"  Value="2"  Id="%ENID%" />
@@ -81,6 +112,7 @@
                   <Enumeration Text="15" Value="14" Id="%ENID%" />
                   <Enumeration Text="16" Value="15" Id="%ENID%" />
                   <!--
+                  -->
                   <Enumeration Text="17" Value="16" Id="%ENID%" />
                   <Enumeration Text="18" Value="17" Id="%ENID%" />
                   <Enumeration Text="19" Value="18" Id="%ENID%" />
@@ -97,6 +129,7 @@
                   <Enumeration Text="30" Value="29" Id="%ENID%" />
                   <Enumeration Text="31" Value="30" Id="%ENID%" />
                   <Enumeration Text="32" Value="31" Id="%ENID%" />
+                  <!--
                   <Enumeration Text="33" Value="32" Id="%ENID%" />
                   <Enumeration Text="34" Value="33" Id="%ENID%" />
                   <Enumeration Text="35" Value="34" Id="%ENID%" />
@@ -133,11 +166,14 @@
                 </TypeRestriction>
               </ParameterType>
 
-              <ParameterType Id="%AID%_PT-DfaScene" Name="DfaScene">
+              <ParameterType Id="%AID%_PT-DfaStateNext" Name="DfaStateNext">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <!--
+
+                  <!-- no following state -->
                   <Enumeration Text=" "  Value="64" Id="%ENID%" />
-                  -->
+
+                  <!-- NOT reset timeout, without setting state again -->
+
                   <Enumeration Text="1"  Value="0"  Id="%ENID%" />
                   <Enumeration Text="2"  Value="1"  Id="%ENID%" />
                   <Enumeration Text="3"  Value="2"  Id="%ENID%" />
@@ -155,6 +191,7 @@
                   <Enumeration Text="15" Value="14" Id="%ENID%" />
                   <Enumeration Text="16" Value="15" Id="%ENID%" />
                   <!--
+                  -->
                   <Enumeration Text="17" Value="16" Id="%ENID%" />
                   <Enumeration Text="18" Value="17" Id="%ENID%" />
                   <Enumeration Text="19" Value="18" Id="%ENID%" />
@@ -171,6 +208,7 @@
                   <Enumeration Text="30" Value="29" Id="%ENID%" />
                   <Enumeration Text="31" Value="30" Id="%ENID%" />
                   <Enumeration Text="32" Value="31" Id="%ENID%" />
+                  <!--
                   <Enumeration Text="33" Value="32" Id="%ENID%" />
                   <Enumeration Text="34" Value="33" Id="%ENID%" />
                   <Enumeration Text="35" Value="34" Id="%ENID%" />
@@ -204,6 +242,214 @@
                   <Enumeration Text="63" Value="62" Id="%ENID%" />
                   <Enumeration Text="64" Value="63" Id="%ENID%" />
                   -->
+                </TypeRestriction>
+              </ParameterType>
+
+              <ParameterType Id="%AID%_PT-DfaState" Name="DfaState">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <!--
+                  <Enumeration Text=" "  Value="64" Id="%ENID%" />
+                  -->
+                  <Enumeration Text="1"  Value="0"  Id="%ENID%" />
+                  <Enumeration Text="2"  Value="1"  Id="%ENID%" />
+                  <Enumeration Text="3"  Value="2"  Id="%ENID%" />
+                  <Enumeration Text="4"  Value="3"  Id="%ENID%" />
+                  <Enumeration Text="5"  Value="4"  Id="%ENID%" />
+                  <Enumeration Text="6"  Value="5"  Id="%ENID%" />
+                  <Enumeration Text="7"  Value="6"  Id="%ENID%" />
+                  <Enumeration Text="8"  Value="7"  Id="%ENID%" />
+                  <Enumeration Text="9"  Value="8"  Id="%ENID%" />
+                  <Enumeration Text="10" Value="9"  Id="%ENID%" />
+                  <Enumeration Text="11" Value="10" Id="%ENID%" />
+                  <Enumeration Text="12" Value="11" Id="%ENID%" />
+                  <Enumeration Text="13" Value="12" Id="%ENID%" />
+                  <Enumeration Text="14" Value="13" Id="%ENID%" />
+                  <Enumeration Text="15" Value="14" Id="%ENID%" />
+                  <Enumeration Text="16" Value="15" Id="%ENID%" />
+                  <!--
+                  -->
+                  <Enumeration Text="17" Value="16" Id="%ENID%" />
+                  <Enumeration Text="18" Value="17" Id="%ENID%" />
+                  <Enumeration Text="19" Value="18" Id="%ENID%" />
+                  <Enumeration Text="20" Value="19" Id="%ENID%" />
+                  <Enumeration Text="21" Value="20" Id="%ENID%" />
+                  <Enumeration Text="22" Value="21" Id="%ENID%" />
+                  <Enumeration Text="23" Value="22" Id="%ENID%" />
+                  <Enumeration Text="24" Value="23" Id="%ENID%" />
+                  <Enumeration Text="25" Value="24" Id="%ENID%" />
+                  <Enumeration Text="26" Value="25" Id="%ENID%" />
+                  <Enumeration Text="27" Value="26" Id="%ENID%" />
+                  <Enumeration Text="28" Value="27" Id="%ENID%" />
+                  <Enumeration Text="29" Value="28" Id="%ENID%" />
+                  <Enumeration Text="30" Value="29" Id="%ENID%" />
+                  <Enumeration Text="31" Value="30" Id="%ENID%" />
+                  <Enumeration Text="32" Value="31" Id="%ENID%" />
+                  <!--
+                  <Enumeration Text="33" Value="32" Id="%ENID%" />
+                  <Enumeration Text="34" Value="33" Id="%ENID%" />
+                  <Enumeration Text="35" Value="34" Id="%ENID%" />
+                  <Enumeration Text="36" Value="35" Id="%ENID%" />
+                  <Enumeration Text="37" Value="36" Id="%ENID%" />
+                  <Enumeration Text="38" Value="37" Id="%ENID%" />
+                  <Enumeration Text="39" Value="38" Id="%ENID%" />
+                  <Enumeration Text="40" Value="39" Id="%ENID%" />
+                  <Enumeration Text="41" Value="40" Id="%ENID%" />
+                  <Enumeration Text="42" Value="41" Id="%ENID%" />
+                  <Enumeration Text="43" Value="42" Id="%ENID%" />
+                  <Enumeration Text="44" Value="43" Id="%ENID%" />
+                  <Enumeration Text="45" Value="44" Id="%ENID%" />
+                  <Enumeration Text="46" Value="45" Id="%ENID%" />
+                  <Enumeration Text="47" Value="46" Id="%ENID%" />
+                  <Enumeration Text="48" Value="47" Id="%ENID%" />
+                  <Enumeration Text="49" Value="48" Id="%ENID%" />
+                  <Enumeration Text="50" Value="49" Id="%ENID%" />
+                  <Enumeration Text="51" Value="50" Id="%ENID%" />
+                  <Enumeration Text="52" Value="51" Id="%ENID%" />
+                  <Enumeration Text="53" Value="52" Id="%ENID%" />
+                  <Enumeration Text="54" Value="53" Id="%ENID%" />
+                  <Enumeration Text="55" Value="54" Id="%ENID%" />
+                  <Enumeration Text="56" Value="55" Id="%ENID%" />
+                  <Enumeration Text="57" Value="56" Id="%ENID%" />
+                  <Enumeration Text="58" Value="57" Id="%ENID%" />
+                  <Enumeration Text="59" Value="58" Id="%ENID%" />
+                  <Enumeration Text="60" Value="59" Id="%ENID%" />
+                  <Enumeration Text="61" Value="60" Id="%ENID%" />
+                  <Enumeration Text="62" Value="61" Id="%ENID%" />
+                  <Enumeration Text="63" Value="62" Id="%ENID%" />
+                  <Enumeration Text="64" Value="63" Id="%ENID%" />
+                  -->
+                </TypeRestriction>
+              </ParameterType>
+
+              <ParameterType Id="%AID%_PT-DfaOutputDpt" Name="DfaOutputDpt">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <!-- align for visibility in ETS -->
+                  <Enumeration Text="inaktiv"                                            Value="0"   Id="%ENID%" />
+                  <Enumeration Text="DPT     1.*      1-Bit (0/1)"                      Value="10"   Id="%ENID%" />
+                  <Enumeration Text="DPT     2.*      1-Bit gesteuert (Zwangsführung)"  Value="20"   Id="%ENID%" />
+                  <Enumeration Text="DPT     5.*      8-Bit vorzeichenlos"              Value="50"   Id="%ENID%" />
+                  <Enumeration Text="DPT     5.001  Prozent (0..100%)"                  Value="51"   Id="%ENID%" />
+                  <Enumeration Text="DPT     6.*      8-Bit vorzeichenbehaftet"         Value="61"   Id="%ENID%" />
+                  <Enumeration Text="DPT     7.*      2-Byte vorzeichenlos"             Value="70"   Id="%ENID%" />
+                  <Enumeration Text="DPT     8.*      2-Byte vorzeichenbehaftet"        Value="80"   Id="%ENID%" />
+                  <Enumeration Text="DPT     9.*      2-Byte Gleitkommawert"            Value="90"   Id="%ENID%" />
+                  <Enumeration Text="DPT   12.*      4-Byte vorzeichenlos"             Value="120"   Id="%ENID%" />
+                  <Enumeration Text="DPT   13.*      4-Byte vorzeichenbehaftet"        Value="130"   Id="%ENID%" />
+                  <Enumeration Text="DPT   14.*      4-Byte Gleitkommawert"            Value="140"   Id="%ENID%" />
+                  <!--
+                  <Enumeration Text="DPT   16.001  Zeichen (ISO 8859-1)"               Value="161"   Id="%ENID%" />
+                  -->
+                  <Enumeration Text="DPT   17.001  Szenen Nummer"                      Value="171"   Id="%ENID%" />
+                  <Enumeration Text="DPT 232.600  RGB Wert 3x(0..255)"                 Value="232"   Id="%ENID%" />
+                </TypeRestriction>
+              </ParameterType>
+
+              <ParameterType Id="%AID%_PT-DfaOutputDptWithText" Name="DfaOutputDptWithText">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <!-- align for visibility in ETS -->
+                  <Enumeration Text="inaktiv"                                            Value="0"   Id="%ENID%" />
+                  <Enumeration Text="DPT     1.*      1-Bit (0/1)"                      Value="10"   Id="%ENID%" />
+                  <Enumeration Text="DPT     2.*      1-Bit gesteuert (Zwangsführung)"  Value="20"   Id="%ENID%" />
+                  <Enumeration Text="DPT     5.*      8-Bit vorzeichenlos"              Value="50"   Id="%ENID%" />
+                  <Enumeration Text="DPT     5.001  Prozent (0..100%)"                  Value="51"   Id="%ENID%" />
+                  <Enumeration Text="DPT     6.*      8-Bit vorzeichenbehaftet"         Value="61"   Id="%ENID%" />
+                  <Enumeration Text="DPT     7.*      2-Byte vorzeichenlos"             Value="70"   Id="%ENID%" />
+                  <Enumeration Text="DPT     8.*      2-Byte vorzeichenbehaftet"        Value="80"   Id="%ENID%" />
+                  <Enumeration Text="DPT     9.*      2-Byte Gleitkommawert"            Value="90"   Id="%ENID%" />
+                  <Enumeration Text="DPT   12.*      4-Byte vorzeichenlos"             Value="120"   Id="%ENID%" />
+                  <Enumeration Text="DPT   13.*      4-Byte vorzeichenbehaftet"        Value="130"   Id="%ENID%" />
+                  <Enumeration Text="DPT   14.*      4-Byte Gleitkommawert"            Value="140"   Id="%ENID%" />
+                  <Enumeration Text="DPT   16.001  Zeichen (ISO 8859-1)"               Value="161"   Id="%ENID%" />
+                  <Enumeration Text="DPT   17.001  Szenen Nummer"                      Value="171"   Id="%ENID%" />
+                  <Enumeration Text="DPT 232.600  RGB Wert 3x(0..255)"                 Value="232"   Id="%ENID%" />
+                </TypeRestriction>
+              </ParameterType>
+
+              <ParameterType Id="%AID%_PT-DfaOutputConf" Name="DfaOutputValueConf">
+                <TypeRestriction Base="Value" SizeInBit="2">
+                  <Enumeration Text="-"                  Value="0" Id="%ENID%" />
+                  <!--
+                  <Enumeration Text="einmal"    Value="1" Id="%ENID%" />
+                  <Enumeration Text="immer"     Value="2" Id="%ENID%" />
+                  -->
+                  <Enumeration Text="bei Änderung"       Value="1" Id="%ENID%" />
+                  <Enumeration Text="immer"              Value="2" Id="%ENID%" />
+                </TypeRestriction>
+              </ParameterType>
+
+              <ParameterType Id="%AID%_PT-DfaOutputValueScene" Name="DfaOutputValueScene">
+                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="0" maxInclusive="63" />
+              </ParameterType>
+
+              <ParameterType Id="%AID%_PT-DfaScene" Name="DfaScene">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <!--
+                  <Enumeration Text=" "  Value="64" Id="%ENID%" />
+                  -->
+                  <Enumeration Text="Szene 1"  Value="0"  Id="%ENID%" />
+                  <Enumeration Text="Szene 2"  Value="1"  Id="%ENID%" />
+                  <Enumeration Text="Szene 3"  Value="2"  Id="%ENID%" />
+                  <Enumeration Text="Szene 4"  Value="3"  Id="%ENID%" />
+                  <Enumeration Text="Szene 5"  Value="4"  Id="%ENID%" />
+                  <Enumeration Text="Szene 6"  Value="5"  Id="%ENID%" />
+                  <Enumeration Text="Szene 7"  Value="6"  Id="%ENID%" />
+                  <Enumeration Text="Szene 8"  Value="7"  Id="%ENID%" />
+                  <Enumeration Text="Szene 9"  Value="8"  Id="%ENID%" />
+                  <Enumeration Text="Szene 10" Value="9"  Id="%ENID%" />
+                  <Enumeration Text="Szene 11" Value="10" Id="%ENID%" />
+                  <Enumeration Text="Szene 12" Value="11" Id="%ENID%" />
+                  <Enumeration Text="Szene 13" Value="12" Id="%ENID%" />
+                  <Enumeration Text="Szene 14" Value="13" Id="%ENID%" />
+                  <Enumeration Text="Szene 15" Value="14" Id="%ENID%" />
+                  <Enumeration Text="Szene 16" Value="15" Id="%ENID%" />
+                  <Enumeration Text="Szene 17" Value="16" Id="%ENID%" />
+                  <Enumeration Text="Szene 18" Value="17" Id="%ENID%" />
+                  <Enumeration Text="Szene 19" Value="18" Id="%ENID%" />
+                  <Enumeration Text="Szene 20" Value="19" Id="%ENID%" />
+                  <Enumeration Text="Szene 21" Value="20" Id="%ENID%" />
+                  <Enumeration Text="Szene 22" Value="21" Id="%ENID%" />
+                  <Enumeration Text="Szene 23" Value="22" Id="%ENID%" />
+                  <Enumeration Text="Szene 24" Value="23" Id="%ENID%" />
+                  <Enumeration Text="Szene 25" Value="24" Id="%ENID%" />
+                  <Enumeration Text="Szene 26" Value="25" Id="%ENID%" />
+                  <Enumeration Text="Szene 27" Value="26" Id="%ENID%" />
+                  <Enumeration Text="Szene 28" Value="27" Id="%ENID%" />
+                  <Enumeration Text="Szene 29" Value="28" Id="%ENID%" />
+                  <Enumeration Text="Szene 30" Value="29" Id="%ENID%" />
+                  <Enumeration Text="Szene 31" Value="30" Id="%ENID%" />
+                  <Enumeration Text="Szene 32" Value="31" Id="%ENID%" />
+                  <Enumeration Text="Szene 33" Value="32" Id="%ENID%" />
+                  <Enumeration Text="Szene 34" Value="33" Id="%ENID%" />
+                  <Enumeration Text="Szene 35" Value="34" Id="%ENID%" />
+                  <Enumeration Text="Szene 36" Value="35" Id="%ENID%" />
+                  <Enumeration Text="Szene 37" Value="36" Id="%ENID%" />
+                  <Enumeration Text="Szene 38" Value="37" Id="%ENID%" />
+                  <Enumeration Text="Szene 39" Value="38" Id="%ENID%" />
+                  <Enumeration Text="Szene 40" Value="39" Id="%ENID%" />
+                  <Enumeration Text="Szene 41" Value="40" Id="%ENID%" />
+                  <Enumeration Text="Szene 42" Value="41" Id="%ENID%" />
+                  <Enumeration Text="Szene 43" Value="42" Id="%ENID%" />
+                  <Enumeration Text="Szene 44" Value="43" Id="%ENID%" />
+                  <Enumeration Text="Szene 45" Value="44" Id="%ENID%" />
+                  <Enumeration Text="Szene 46" Value="45" Id="%ENID%" />
+                  <Enumeration Text="Szene 47" Value="46" Id="%ENID%" />
+                  <Enumeration Text="Szene 48" Value="47" Id="%ENID%" />
+                  <Enumeration Text="Szene 49" Value="48" Id="%ENID%" />
+                  <Enumeration Text="Szene 50" Value="49" Id="%ENID%" />
+                  <Enumeration Text="Szene 51" Value="50" Id="%ENID%" />
+                  <Enumeration Text="Szene 52" Value="51" Id="%ENID%" />
+                  <Enumeration Text="Szene 53" Value="52" Id="%ENID%" />
+                  <Enumeration Text="Szene 54" Value="53" Id="%ENID%" />
+                  <Enumeration Text="Szene 55" Value="54" Id="%ENID%" />
+                  <Enumeration Text="Szene 56" Value="55" Id="%ENID%" />
+                  <Enumeration Text="Szene 57" Value="56" Id="%ENID%" />
+                  <Enumeration Text="Szene 58" Value="57" Id="%ENID%" />
+                  <Enumeration Text="Szene 59" Value="58" Id="%ENID%" />
+                  <Enumeration Text="Szene 60" Value="59" Id="%ENID%" />
+                  <Enumeration Text="Szene 61" Value="60" Id="%ENID%" />
+                  <Enumeration Text="Szene 62" Value="61" Id="%ENID%" />
+                  <Enumeration Text="Szene 63" Value="62" Id="%ENID%" />
+                  <Enumeration Text="Szene 64" Value="63" Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
 
@@ -353,7 +599,21 @@
                   <Enumeration Text="63"  Value="190" Id="%ENID%" />
                   <Enumeration Text="64!" Value="63"  Id="%ENID%" />
                   <Enumeration Text="64"  Value="191" Id="%ENID%" />
-                  
+                </TypeRestriction>
+              </ParameterType>
+
+              <ParameterType Id="%AID%_PT-ValueDpt2Short" Name="ValueDpt2Short">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <!--
+                  <Enumeration Text="normal AUS (00)" Value="0"    Id="%AID%_PT-ValueDpt2Out_EN-0" />
+                  <Enumeration Text="normal EIN (01)" Value="1"    Id="%AID%_PT-ValueDpt2Out_EN-1" />
+                  <Enumeration Text="priorität AUS (10)" Value="2" Id="%AID%_PT-ValueDpt2Out_EN-2" />
+                  <Enumeration Text="priorität EIN (11)" Value="3" Id="%AID%_PT-ValueDpt2Out_EN-3" />
+                  -->
+                  <Enumeration Text="0 normal" Value="0"    Id="%ENID%" />
+                  <Enumeration Text="1 normal" Value="1"    Id="%ENID%" />
+                  <Enumeration Text="0 prio"   Value="2"    Id="%ENID%" />
+                  <Enumeration Text="1 prio"   Value="3"    Id="%ENID%" />
                 </TypeRestriction>
               </ParameterType>
 
