@@ -90,7 +90,7 @@ void DfaChannel::setup()
         _processStartupDelay = true;
         _startupDelayBegin_ms = millis();
 
-        _firstState = ParamDFA_fStateStart;
+        _firstState = DFA_STATE_PARAM_XOR ^ ParamDFA_fStateStart;
         // _firstStateTimeoutDelay_ms = getStateTimeoutDelay_ms(_firstState);
     }
 }
@@ -225,7 +225,7 @@ uint32_t DfaChannel::getStateTimeoutDelay_ms(const uint8_t state)
 
 uint8_t DfaChannel::getTimeoutState(const uint8_t state)
 {
-    return knx.paramByte(DFA_ParamCalcIndex(_timeoutPRI[state].state));
+    return DFA_STATE_PARAM_XOR ^ knx.paramByte(DFA_ParamCalcIndex(_timeoutPRI[state].state));
 }
 
 bool DfaChannel::isValidState(const uint8_t state)
@@ -271,7 +271,7 @@ void DfaChannel::transfer(const uint8_t input)
     if (_state < DFA_DEF_STATES_COUNT && input < DFA_DEF_INPUTS_COUNT)
     {
         const uint16_t nextStateParamIdx = DFA_ParamCalcIndex(_transPRI[_state][input]);
-        const uint8_t nextState = knx.paramByte(nextStateParamIdx);
+        const uint8_t nextState = DFA_STATE_PARAM_XOR ^ knx.paramByte(nextStateParamIdx);
 
         logDebugP("transfer(%d,%d)->%d", _state, input, nextState);
         if (isValidState(nextState))
