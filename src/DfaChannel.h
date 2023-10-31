@@ -6,18 +6,38 @@
 
 #define DFA_DEF_STATES_COUNT 16
 #define DFA_DEF_INPUTS_COUNT 8
+#define DFA_DEF_OUTPUTS_COUNT 4
 
 #define DFA_STATE_PARAM_XOR 0x40
 #define DFA_STATE_UNDEFINED 0xff
 #define DFA_STATE_VALUE_UNDEFINED 0x40
 
-#if (DFA_ParamBlockSize > 0xff)
-  #error Relativ channel parameter index > uint8_t => need uint16_t for DfaStateTimeoutParamRelIdx.state and _transitionParamsRelIdx
-#endif
+
+#define OUTPUT_TYPE_DPT1    10
+#define OUTPUT_TYPE_DPT2    20
+#define OUTPUT_TYPE_DPT5    50
+#define OUTPUT_TYPE_DPT5001 51
+#define OUTPUT_TYPE_DPT6    61
+#define OUTPUT_TYPE_DPT7    70
+#define OUTPUT_TYPE_DPT8    80
+#define OUTPUT_TYPE_DPT9    90
+#define OUTPUT_TYPE_DPT12   120
+#define OUTPUT_TYPE_DPT13   130
+#define OUTPUT_TYPE_DPT14   140
+#define OUTPUT_TYPE_DPT16   161
+#define OUTPUT_TYPE_DPT17   171
+#define OUTPUT_TYPE_DPT232  232
+
+#define OUTPUT_SEND_CHANGE  1
+#define OUTPUT_SEND_ALWAYS  2
+
+// #if (DFA_ParamBlockSize > 0xff)
+//  #error Relativ channel parameter index > uint8_t => need uint16_t for DfaStateTimeoutParamRelIdx.state and _transitionParamsRelIdx
+// #endif
 
 struct DfaStateTimeoutParamRelIdx {
-    uint8_t delay;
-    uint8_t state; // note: relative param index <= uint8_t is ensured at compile-time
+    uint16_t delay;
+    uint16_t state; // note: uint8_t is to small
 };
 
 class DfaChannel : public OpenKNX::Channel
@@ -25,9 +45,12 @@ class DfaChannel : public OpenKNX::Channel
   private:
     static const uint8_t _magicWord[4];
 
-    // note: relative param index <= uint8_t is ensured at compile-time
-    static const uint8_t _valuePRI[DFA_DEF_STATES_COUNT];
-    static const uint8_t _transPRI[DFA_DEF_STATES_COUNT][DFA_DEF_INPUTS_COUNT];
+    // note: uint8_t is to small
+    static const uint16_t _outputKoPRI[DFA_DEF_OUTPUTS_COUNT];
+    static const uint16_t _outputDptPRI[DFA_DEF_OUTPUTS_COUNT];
+    static const uint16_t _outputSendPRI[DFA_DEF_STATES_COUNT][DFA_DEF_OUTPUTS_COUNT];
+    static const uint16_t _outputValuePRI[DFA_DEF_STATES_COUNT][DFA_DEF_OUTPUTS_COUNT];
+    static const uint16_t _transPRI[DFA_DEF_STATES_COUNT][DFA_DEF_INPUTS_COUNT];
     static const DfaStateTimeoutParamRelIdx _timeoutPRI[DFA_DEF_STATES_COUNT];
 
     // is enabled in ETS?
@@ -47,12 +70,13 @@ class DfaChannel : public OpenKNX::Channel
     uint8_t _state = DFA_STATE_UNDEFINED;
     uint32_t _stateTimeoutDelay_ms = 0;
     uint32_t _stateTimeoutBegin_ms = 0;
-    uint8_t _stateValue = DFA_STATE_VALUE_UNDEFINED;
 
     uint32_t getStateTimeoutDelay_ms(const uint8_t state);
     uint8_t getTimeoutState(const uint8_t state);
     inline bool isValidState(const uint8_t state);
     void setState(const uint8_t nextState);
+    void sendOutput(const uint8_t outputIndex, const KNXValue &value, const Dpt &type, const uint8_t outputStateSend);
+    void sendValues();
     void transfer(const uint8_t input);
 
     void endTimeout();

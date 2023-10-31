@@ -6,29 +6,62 @@
 // TODO calculate index; expected distance should be protected by compile error
 // TODO special handling of indices for >32 DFA required
 // Define (relative) parameter address-index for next state by current state and input
-const uint8_t DfaChannel::_valuePRI[DFA_DEF_STATES_COUNT] = {
-    DFA_fState01Output,
-    DFA_fState02Output,
-    DFA_fState03Output,
-    DFA_fState04Output,
-    DFA_fState05Output,
-    DFA_fState06Output,
-    DFA_fState07Output,
-    DFA_fState08Output,
-    DFA_fState09Output,
-    DFA_fState10Output,
-    DFA_fState11Output,
-    DFA_fState12Output,
-    DFA_fState13Output,
-    DFA_fState14Output,
-    DFA_fState15Output,
-    DFA_fState16Output,
+const uint16_t DfaChannel::_outputKoPRI[DFA_DEF_OUTPUTS_COUNT] = {
+    DFA_KoKOfOutput1,
+    DFA_KoKOfOutput2,
+    DFA_KoKOfOutput3,
+    DFA_KoKOfOutput4,
+};
+const uint16_t DfaChannel::_outputDptPRI[DFA_DEF_OUTPUTS_COUNT] = {
+    DFA_fOutput1Dpt,
+    DFA_fOutput2Dpt,
+    DFA_fOutput3Dpt,
+    DFA_fOutput4Dpt,
+};
+const uint16_t DfaChannel::_outputSendPRI[DFA_DEF_STATES_COUNT][DFA_DEF_OUTPUTS_COUNT] = {
+    // TODO ensure same position of all Outputs
+    { DFA_fState01Output1Conf, DFA_fState01Output2Conf, DFA_fState01Output3Conf, DFA_fState01Output4Conf, },
+    { DFA_fState02Output1Conf, DFA_fState02Output2Conf, DFA_fState02Output3Conf, DFA_fState02Output4Conf, },
+    { DFA_fState03Output1Conf, DFA_fState03Output2Conf, DFA_fState03Output3Conf, DFA_fState03Output4Conf, },
+    { DFA_fState04Output1Conf, DFA_fState04Output2Conf, DFA_fState04Output3Conf, DFA_fState04Output4Conf, },
+    { DFA_fState05Output1Conf, DFA_fState05Output2Conf, DFA_fState05Output3Conf, DFA_fState05Output4Conf, },
+    { DFA_fState06Output1Conf, DFA_fState06Output2Conf, DFA_fState06Output3Conf, DFA_fState06Output4Conf, },
+    { DFA_fState07Output1Conf, DFA_fState07Output2Conf, DFA_fState07Output3Conf, DFA_fState07Output4Conf, },
+    { DFA_fState08Output1Conf, DFA_fState08Output2Conf, DFA_fState08Output3Conf, DFA_fState08Output4Conf, },
+    { DFA_fState09Output1Conf, DFA_fState09Output2Conf, DFA_fState09Output3Conf, DFA_fState09Output4Conf, },
+    { DFA_fState10Output1Conf, DFA_fState10Output2Conf, DFA_fState10Output3Conf, DFA_fState10Output4Conf, },
+    { DFA_fState11Output1Conf, DFA_fState11Output2Conf, DFA_fState11Output3Conf, DFA_fState11Output4Conf, },
+    { DFA_fState12Output1Conf, DFA_fState12Output2Conf, DFA_fState12Output3Conf, DFA_fState12Output4Conf, },
+    { DFA_fState13Output1Conf, DFA_fState13Output2Conf, DFA_fState13Output3Conf, DFA_fState13Output4Conf, },
+    { DFA_fState14Output1Conf, DFA_fState14Output2Conf, DFA_fState14Output3Conf, DFA_fState14Output4Conf, },
+    { DFA_fState15Output1Conf, DFA_fState15Output2Conf, DFA_fState15Output3Conf, DFA_fState15Output4Conf, },
+    { DFA_fState16Output1Conf, DFA_fState16Output2Conf, DFA_fState16Output3Conf, DFA_fState16Output4Conf, },
+    // parameter index index will not fit in one memory block for 64 DFAs
+};
+const uint16_t DfaChannel::_outputValuePRI[DFA_DEF_STATES_COUNT][DFA_DEF_OUTPUTS_COUNT] = {
+    // TODO ensure same position of all Outputs
+    { DFA_fState01Output1TypeDpt1, DFA_fState01Output2TypeDpt1, DFA_fState01Output3TypeDpt1, DFA_fState01Output4TypeDpt1, },
+    { DFA_fState02Output1TypeDpt1, DFA_fState02Output2TypeDpt1, DFA_fState02Output3TypeDpt1, DFA_fState02Output4TypeDpt1, },
+    { DFA_fState03Output1TypeDpt1, DFA_fState03Output2TypeDpt1, DFA_fState03Output3TypeDpt1, DFA_fState03Output4TypeDpt1, },
+    { DFA_fState04Output1TypeDpt1, DFA_fState04Output2TypeDpt1, DFA_fState04Output3TypeDpt1, DFA_fState04Output4TypeDpt1, },
+    { DFA_fState05Output1TypeDpt1, DFA_fState05Output2TypeDpt1, DFA_fState05Output3TypeDpt1, DFA_fState05Output4TypeDpt1, },
+    { DFA_fState06Output1TypeDpt1, DFA_fState06Output2TypeDpt1, DFA_fState06Output3TypeDpt1, DFA_fState06Output4TypeDpt1, },
+    { DFA_fState07Output1TypeDpt1, DFA_fState07Output2TypeDpt1, DFA_fState07Output3TypeDpt1, DFA_fState07Output4TypeDpt1, },
+    { DFA_fState08Output1TypeDpt1, DFA_fState08Output2TypeDpt1, DFA_fState08Output3TypeDpt1, DFA_fState08Output4TypeDpt1, },
+    { DFA_fState09Output1TypeDpt1, DFA_fState09Output2TypeDpt1, DFA_fState09Output3TypeDpt1, DFA_fState09Output4TypeDpt1, },
+    { DFA_fState10Output1TypeDpt1, DFA_fState10Output2TypeDpt1, DFA_fState10Output3TypeDpt1, DFA_fState10Output4TypeDpt1, },
+    { DFA_fState11Output1TypeDpt1, DFA_fState11Output2TypeDpt1, DFA_fState11Output3TypeDpt1, DFA_fState11Output4TypeDpt1, },
+    { DFA_fState12Output1TypeDpt1, DFA_fState12Output2TypeDpt1, DFA_fState12Output3TypeDpt1, DFA_fState12Output4TypeDpt1, },
+    { DFA_fState13Output1TypeDpt1, DFA_fState13Output2TypeDpt1, DFA_fState13Output3TypeDpt1, DFA_fState13Output4TypeDpt1, },
+    { DFA_fState14Output1TypeDpt1, DFA_fState14Output2TypeDpt1, DFA_fState14Output3TypeDpt1, DFA_fState14Output4TypeDpt1, },
+    { DFA_fState15Output1TypeDpt1, DFA_fState15Output2TypeDpt1, DFA_fState15Output3TypeDpt1, DFA_fState15Output4TypeDpt1, },
+    { DFA_fState16Output1TypeDpt1, DFA_fState16Output2TypeDpt1, DFA_fState16Output3TypeDpt1, DFA_fState16Output4TypeDpt1, },
     // parameter index index will not fit in one memory block for 64 DFAs
 };
 
 // TODO calculate index; expected distance should be protected by compile error
 // Define (relative) parameter address-index for next state by current state and input
-const uint8_t DfaChannel::_transPRI[DFA_DEF_STATES_COUNT][DFA_DEF_INPUTS_COUNT] = {
+const uint16_t DfaChannel::_transPRI[DFA_DEF_STATES_COUNT][DFA_DEF_INPUTS_COUNT] = {
     {DFA_fTransState01Input1, DFA_fTransState01Input2, DFA_fTransState01Input3, DFA_fTransState01Input4, DFA_fTransState01Input5, DFA_fTransState01Input6, DFA_fTransState01Input7, DFA_fTransState01Input8},
     {DFA_fTransState02Input1, DFA_fTransState02Input2, DFA_fTransState02Input3, DFA_fTransState02Input4, DFA_fTransState02Input5, DFA_fTransState02Input6, DFA_fTransState02Input7, DFA_fTransState02Input8},
     {DFA_fTransState03Input1, DFA_fTransState03Input2, DFA_fTransState03Input3, DFA_fTransState03Input4, DFA_fTransState03Input5, DFA_fTransState03Input6, DFA_fTransState03Input7, DFA_fTransState03Input8},
@@ -249,19 +282,97 @@ void DfaChannel::setState(const uint8_t nextState)
         // if (_stateTimeoutDelay_ms > 0)
         //     logDebugP("  with timeout state %d after %dms", getTimeoutState(nextState), _stateTimeoutDelay_ms);
 
-        // send state value
-        const uint8_t stateValueConf = knx.paramByte(DFA_ParamCalcIndex(_valuePRI[_state]));
-        if (stateValueConf != DFA_STATE_VALUE_UNDEFINED)
+        // send output values
+        sendValues();
+    }
+}
+
+void DfaChannel::sendOutput(const uint8_t outputIndex, const KNXValue &value, const Dpt &type, const uint8_t outputStateSend)
+{
+    GroupObject ko = knx.getGroupObject(DFA_KoCalcNumber(_outputKoPRI[outputIndex]));
+    if (outputStateSend == OUTPUT_SEND_ALWAYS)
+    {
+        ko.value(value, type);
+    }
+    else if (ko.valueNoSendCompare(value, type))
+    {
+        // write changed value only; given: /* outputStateSend == OUTPUT_SEND_CHANGE && */ 
+        ko.objectWritten();
+    }
+}
+
+void DfaChannel::sendValues()
+{
+    for (uint8_t i = 0; i < DFA_DEF_OUTPUTS_COUNT; i++)
+    {
+        const uint8_t outputType = knx.paramByte(DFA_ParamCalcIndex(_outputDptPRI[i]));
+        // output is active?
+        if (outputType != 0)
         {
-            const uint8_t stateValue = stateValueConf & 0x3f;
-            const bool sendUnchanged = (stateValueConf & 0x80) == 0;
-
-            if (stateValue != _stateValue || sendUnchanged)
+            const uint8_t outputStateSend = knx.paramByte(DFA_ParamCalcIndex(_outputSendPRI[_state][i])) >> 6;
+            // output has value for state?
+            if (outputStateSend)
             {
-                KoDFA_KOfOutput.value(stateValue, DPT_SceneNumber);
-            }
+                const uint32_t pIdxValue = DFA_ParamCalcIndex(_outputValuePRI[_state][i]);
 
-            _stateValue = stateValue;
+                // set value based on dpt
+                switch (outputType)
+                {
+                    case OUTPUT_TYPE_DPT1:
+                        {
+                            // TODO FIXME Mask
+                            // const KNXValue value = ((bool)(knx.paramByte(pIdxValue) & LOG_DFA_f1State01Output1TypeDpt1Mask));
+
+                            // works, as long as using same location as other dpt values
+                            sendOutput(i, (knx.paramByte(pIdxValue) != 0), DPT_Switch, outputStateSend);
+                        }
+                        break;
+                    case OUTPUT_TYPE_DPT2:
+                        // TODO check using mask!
+                        sendOutput(i, knx.paramByte(pIdxValue), DPT_Switch_Control, outputStateSend);
+                        break;
+                    case OUTPUT_TYPE_DPT5:
+                        sendOutput(i, knx.paramByte(pIdxValue), DPT_DecimalFactor, outputStateSend);
+                        break;
+                    case OUTPUT_TYPE_DPT5001:
+                        sendOutput(i, knx.paramByte(pIdxValue), DPT_Scaling, outputStateSend);
+                        break;                                                
+                    case OUTPUT_TYPE_DPT6:
+                        sendOutput(i, knx.paramSignedByte(pIdxValue), DPT_Value_1_Count, outputStateSend);
+                        break;
+                    case OUTPUT_TYPE_DPT7:
+                        sendOutput(i, knx.paramWord(pIdxValue), DPT_Value_2_Ucount, outputStateSend);
+                        break;
+                    case OUTPUT_TYPE_DPT8:
+                        sendOutput(i, knx.paramWord(pIdxValue), DPT_Value_2_Count, outputStateSend);
+                        break;
+                    case OUTPUT_TYPE_DPT9:
+                        sendOutput(i, knx.paramFloat(pIdxValue, Float_Enc_DPT9), DPT_Value_Temp, outputStateSend);
+                        break;
+                    case OUTPUT_TYPE_DPT12:
+                        sendOutput(i, knx.paramInt(pIdxValue), DPT_Value_4_Ucount, outputStateSend);
+                        break;
+                    case OUTPUT_TYPE_DPT13:
+                        sendOutput(i, knx.paramInt(pIdxValue), DPT_Value_4_Count, outputStateSend);
+                        break;
+                    case OUTPUT_TYPE_DPT14:
+                        sendOutput(i, knx.paramFloat(pIdxValue, Float_Enc_IEEE754Double), DPT_Value_Absolute_Temperature, outputStateSend);
+                        break;
+                    case OUTPUT_TYPE_DPT16:
+                        sendOutput(i, (char *)knx.paramData(pIdxValue), DPT_String_8859_1, outputStateSend);
+                        break;
+                    case OUTPUT_TYPE_DPT17:
+                        sendOutput(i, knx.paramByte(pIdxValue), DPT_SceneNumber, outputStateSend);
+                        break;
+                    case OUTPUT_TYPE_DPT232:
+                        // TODO FIXME Mask
+                        sendOutput(i, knx.paramInt(pIdxValue) >> 8, DPT_Colour_RGB, outputStateSend);
+                        break;
+                    default:
+                        // TODO check handling undefined cases
+                        break;
+                }
+            }
         }
     }
 }
