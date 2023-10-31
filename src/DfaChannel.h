@@ -12,6 +12,10 @@
 #define DFA_STATE_UNDEFINED 0xff
 #define DFA_STATE_VALUE_UNDEFINED 0x40
 
+#define INPUT_TRIGGER_DISABLED 0b00
+#define INPUT_TRIGGER_0ONLY    0b01
+#define INPUT_TRIGGER_1ONLY    0b10
+#define INPUT_TRIGGER_BOTH     0b11
 
 #define OUTPUT_TYPE_DPT1    10
 #define OUTPUT_TYPE_DPT2    20
@@ -35,6 +39,11 @@
 //  #error Relativ channel parameter index > uint8_t => need uint16_t for DfaStateTimeoutParamRelIdx.state and _transitionParamsRelIdx
 // #endif
 
+struct DfaInputs {
+    uint8_t trigger;
+    uint16_t koNumber;
+};
+
 struct DfaStateTimeoutParamRelIdx {
     uint16_t delay;
     uint16_t state; // note: uint8_t is to small
@@ -44,6 +53,11 @@ class DfaChannel : public OpenKNX::Channel
 {
   private:
     static const uint8_t _magicWord[4];
+
+    static const uint8_t _inputKo[DFA_DEF_INPUTS_COUNT];
+    static const uint16_t _inputConfPRI[DFA_DEF_INPUTS_COUNT];
+    static const uint16_t _inputConfNumberPRI[DFA_DEF_INPUTS_COUNT];
+    static const uint16_t _inputTriggerPRI[DFA_DEF_INPUTS_COUNT];
 
     // note: uint8_t is to small
     static const uint16_t _outputKoPRI[DFA_DEF_OUTPUTS_COUNT];
@@ -55,6 +69,8 @@ class DfaChannel : public OpenKNX::Channel
 
     // is enabled in ETS?
     bool _channelActive = true;
+
+    DfaInputs _inputs[DFA_DEF_INPUTS_COUNT] = {};
 
     // wait while startup is delayed
     bool _processStartupDelay = false;
@@ -89,6 +105,8 @@ class DfaChannel : public OpenKNX::Channel
     void setup() override;
     void loop() override;
     void processInputKo(GroupObject &ko) override;
+
+    void initInputConfig();
 
     void save();
     void restore();

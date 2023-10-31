@@ -3,6 +3,49 @@
 
 #include "DfaChannel.h"
 
+const uint8_t DfaChannel::_inputKo[DFA_DEF_INPUTS_COUNT] = {
+    DFA_KoKOfInput1,
+    DFA_KoKOfInput2,
+    DFA_KoKOfInput3,
+    DFA_KoKOfInput4,
+    DFA_KoKOfInput5,
+    DFA_KoKOfInput6,
+    DFA_KoKOfInput7,
+    DFA_KoKOfInput8,
+};
+
+// TODO calculate index; expected distance should be protected by compile error
+const uint16_t DfaChannel::_inputConfPRI[DFA_DEF_INPUTS_COUNT] = {
+    DFA_fInputSymbol1Ko,
+    DFA_fInputSymbol2Ko,
+    DFA_fInputSymbol3Ko,
+    DFA_fInputSymbol4Ko,
+    DFA_fInputSymbol5Ko,
+    DFA_fInputSymbol6Ko,
+    DFA_fInputSymbol7Ko,
+    DFA_fInputSymbol8Ko,
+};
+const uint16_t DfaChannel::_inputConfNumberPRI[DFA_DEF_INPUTS_COUNT] = {
+    DFA_fInputSymbol1KoNumber,
+    DFA_fInputSymbol2KoNumber,
+    DFA_fInputSymbol3KoNumber,
+    DFA_fInputSymbol4KoNumber,
+    DFA_fInputSymbol5KoNumber,
+    DFA_fInputSymbol6KoNumber,
+    DFA_fInputSymbol7KoNumber,
+    DFA_fInputSymbol8KoNumber,
+};
+const uint16_t DfaChannel::_inputTriggerPRI[DFA_DEF_INPUTS_COUNT] = {
+    DFA_fInputSymbol1Value,
+    DFA_fInputSymbol2Value,
+    DFA_fInputSymbol3Value,
+    DFA_fInputSymbol4Value,
+    DFA_fInputSymbol5Value,
+    DFA_fInputSymbol6Value,
+    DFA_fInputSymbol7Value,
+    DFA_fInputSymbol8Value,
+};
+
 // TODO calculate index; expected distance should be protected by compile error
 // TODO special handling of indices for >32 DFA required
 // Define (relative) parameter address-index for next state by current state and input
@@ -118,6 +161,8 @@ void DfaChannel::setup()
 
     if (_channelActive)
     {
+        initInputConfig();
+
         // TODO add state restore
 
         _processStartupDelay = true;
@@ -125,6 +170,47 @@ void DfaChannel::setup()
 
         _firstState = DFA_STATE_PARAM_XOR ^ ParamDFA_fStateStart;
         // _firstStateTimeoutDelay_ms = getStateTimeoutDelay_ms(_firstState);
+    }
+}
+
+void DfaChannel::initInputConfig()
+{
+    // TODO check moving
+    for (size_t i = 0; i < DFA_DEF_INPUTS_COUNT; i++)
+    {
+        // TODO check shift and mark for all
+        const uint8_t inputConf = ((knx.paramByte(DFA_ParamCalcIndex(_inputConfPRI[i])) & DFA_fInputSymbol1KoMask) >> DFA_fInputSymbol1KoShift);
+        if (inputConf == 0)
+        {
+            _inputs[i].trigger = 0b00;
+            _inputs[i].koNumber = 0;
+        }
+        else
+        {
+            _inputs[i].trigger = ((knx.paramByte(DFA_ParamCalcIndex(_inputTriggerPRI[i])) & DFA_fInputSymbol1Value) >> DFA_fInputSymbol1ValueShift);
+            switch (inputConf)
+            {
+                case 1: // Eigenes KO
+                    _inputs[i].koNumber = DFA_KoCalcNumber(_inputKo[i]);
+                    break;
+                case 3: // Logik-Ausgang
+                    {
+                        // const u_int16_t logicOutputNumber = knx.paramWord(DFA_ParamCalcIndex(_inputConfNumberPRI[i]));
+
+                        // overlay for _channelIndex!
+                        const u_int16_t _channelIndex = knx.paramWord(DFA_ParamCalcIndex(_inputConfNumberPRI[i]));
+                        _inputs[i].koNumber = LOG_ParamCalcIndex(LOG_KoKOfO);
+                    }
+                    break;
+                case 2: // Bestehendes KO
+                    _inputs[i].koNumber = knx.paramWord(DFA_ParamCalcIndex(_inputConfNumberPRI[i]));
+                    break;
+                default:
+                    // TODO check
+                    break;
+            }
+        }
+        /* code */
     }
 }
 
@@ -182,25 +268,27 @@ void DfaChannel::processInputKo(GroupObject &ko)
             logDebugP("processInputKo set state (combined)");
             setState(ko.value(DPT_SceneNumber));
         }
-        else if (koNumber == DFA_KoCalcNumber(DFA_KoKOfInput1))
+        else if (ko.valueSize() == 1) // TODO check if adequate
         {
-            logDebugP("processInputKo input1");
-            transfer(ko.value(DPT_Bool) ? 0 : 1);
-        }
-        else if (koNumber == DFA_KoCalcNumber(DFA_KoKOfInput2))
-        {
-            logDebugP("processInputKo input2");
-            transfer(ko.value(DPT_Bool) ? 2 : 3);
-        }
-        else if (koNumber == DFA_KoCalcNumber(DFA_KoKOfInput3))
-        {
-            logDebugP("processInputKo input3");
-            transfer(ko.value(DPT_Bool) ? 4 : 5);
-        }
-        else if (koNumber == DFA_KoCalcNumber(DFA_KoKOfInput4))
-        {
-            logDebugP("processInputKo input4");
-            transfer(ko.value(DPT_Bool) ? 6 : 7);
+            // const KNXValue value = ko.value(DPT_Switch);
+            const bool value = ko.value(DPT_Switch);
+
+            // check regular inputs
+            for (size_t i = 0; i < DFA_DEF_INPUTS_COUNT; i++)
+            {
+                if (koNumber == _inputs[i].koNumber)
+                {
+                    const bool triggered = _inputs[i].trigger & (1 << value);
+                    if (triggered)
+                    {
+                        logDebugP("triggered input%d", i);
+                        transfer(i);
+
+                        // only one!
+                        break;
+                    }
+                }
+            }
         }
     }
 }
