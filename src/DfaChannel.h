@@ -4,7 +4,7 @@
 #pragma once
 #include "OpenKNX.h"
 
-#define DFA_DEF_STATES_COUNT 16
+#define DFA_DEF_STATES_COUNT 32
 #define DFA_DEF_INPUTS_COUNT 8
 #define DFA_DEF_OUTPUTS_COUNT 4
 
