@@ -479,7 +479,12 @@ void DfaChannel::processInputKo(GroupObject &ko)
             {
                 if (koNumber == _inputs[i].koNumber)
                 {
-                    const bool triggered = _inputs[i].trigger & (1 << value);
+                    logDebugP("processInputKo input%d (ko=%d)", i, koNumber);
+                    // const bool triggered = _inputs[i].trigger & (1 << value);
+                    //
+                    // TODO FIXME
+                    //
+                    const bool triggered = 0b11 & (1 << value);
                     if (triggered)
                     {
                         logDebugP("triggered input%d", i);
