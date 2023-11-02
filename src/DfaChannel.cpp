@@ -408,7 +408,10 @@ void DfaChannel::initInputConfig()
                     break;
             }
         }
-        /* code */
+    }
+    for (size_t i = 0; i < DFA_DEF_INPUTS_COUNT; i++)
+    {
+        logDebugP("input[%d]: ko=%d trigger=%d", i, _inputs[i].koNumber, _inputs[i].trigger);
     }
 }
 
@@ -575,15 +578,19 @@ void DfaChannel::setState(const uint8_t nextState)
 
 void DfaChannel::sendOutput(const uint8_t outputIndex, const KNXValue &value, const Dpt &type, const uint8_t outputStateSend)
 {
-    GroupObject ko = knx.getGroupObject(DFA_KoCalcNumber(_outputKoPRI[outputIndex]));
+    const uint16_t goNr = DFA_KoCalcNumber(_outputKoPRI[outputIndex]);
+    logDebugP("=> sendOutput: index=%i, konr=%i, value=%i, dpt=%i.%03i, send=%i", outputIndex, goNr, (long)value, type.mainGroup, type.subGroup, outputStateSend);
+    GroupObject ko = knx.getGroupObject(goNr);
     if (outputStateSend == OUTPUT_SEND_ALWAYS)
     {
         ko.value(value, type);
+        logDebugP("=> always sent");
     }
     else if (ko.valueNoSendCompare(value, type))
     {
         // write changed value only; given: /* outputStateSend == OUTPUT_SEND_CHANGE && */ 
         ko.objectWritten();
+        logDebugP("=> change sent");
     }
 }
 
@@ -592,14 +599,17 @@ void DfaChannel::sendValues()
     for (uint8_t i = 0; i < DFA_DEF_OUTPUTS_COUNT; i++)
     {
         const uint8_t outputType = knx.paramByte(DFA_ParamCalcIndex(_outputDptPRI[i]));
+        logDebugP("check sending value for output %d; type=%i", i+1, outputType);
         // output is active?
         if (outputType != 0)
         {
             const uint8_t outputStateSend = knx.paramByte(DFA_ParamCalcIndex(_outputSendPRI[_state][i])) >> 6;
+            logDebugP(" -> outputStateSend=%d", outputStateSend);
             // output has value for state?
             if (outputStateSend)
             {
                 const uint32_t pIdxValue = DFA_ParamCalcIndex(_outputValuePRI[_state][i]);
+                logDebugP(" -> paramIndex=%i", pIdxValue);
 
                 // set value based on dpt
                 switch (outputType)
