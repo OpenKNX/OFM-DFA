@@ -583,19 +583,16 @@ void DfaChannel::setState(const uint8_t nextState)
 
 void DfaChannel::sendOutput(const uint8_t outputIndex, const KNXValue &value, const Dpt &type, const uint8_t outputStateSend)
 {
-    const uint16_t goNr = DFA_KoCalcNumber(_outputKoPRI[outputIndex]);
-    logDebugP("=> sendOutput: index=%i, konr=%i, value=%i, dpt=%i.%03i, send=%i", outputIndex, goNr, (long)value, type.mainGroup, type.subGroup, outputStateSend);
-    GroupObject ko = knx.getGroupObject(goNr);
+    const uint16_t goNumber = DFA_KoCalcNumber(_outputKoPRI[outputIndex]);
+    // logDebugP(" => sendOutput: index=%i, konr=%i, value=%i, dpt=%i.%03i, send=%i", outputIndex, goNumber, (long)value, type.mainGroup, type.subGroup, outputStateSend);
+    GroupObject* ko = &knx.getGroupObject(goNumber);
     if (outputStateSend == OUTPUT_SEND_ALWAYS)
     {
-        ko.value(value, type);
-        logDebugP("=> always sent");
+        ko->value(value, type);
     }
-    else if (ko.valueNoSendCompare(value, type))
+    else if (ko->valueNoSendCompare(value, type))
     {
-        // write changed value only; given: /* outputStateSend == OUTPUT_SEND_CHANGE && */ 
-        ko.objectWritten();
-        logDebugP("=> change sent");
+        ko->objectWritten();
     }
 }
 
@@ -604,7 +601,7 @@ void DfaChannel::sendValues()
     for (uint8_t i = 0; i < DFA_DEF_OUTPUTS_COUNT; i++)
     {
         const uint8_t outputType = knx.paramByte(DFA_ParamCalcIndex(_outputDptPRI[i]));
-        logDebugP("check sending value for output %d; type=%i", i+1, outputType);
+        logDebugP("Output<%d>: check sending value (type=%i)", i+1, outputType);
         // output is active?
         if (outputType != 0)
         {
