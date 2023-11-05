@@ -371,41 +371,66 @@ void DfaChannel::setup()
     }
 }
 
+uint16_t DfaChannel::getInputKo(const uint8_t input)
+{
+    // TODO check shift and mark for all
+    const uint8_t inputConf = ((knx.paramByte(DFA_ParamCalcIndex(_inputConfPRI[input])) & DFA_fInputSymbol1KoMask) >> DFA_fInputSymbol1KoShift);
+    // logDebugP("  get ko for input=%i -> conf=%i", input, inputConf);
+    switch (inputConf)
+    {
+        case 1: // Eigenes KO
+            return DFA_KoCalcNumber(_inputKo[input]);
+        case 3: // Logik-Ausgang
+            {
+                // TODO optimize/use API for this
+                // overlay for _channelIndex!
+                const u_int16_t logicNumber = knx.paramWord(DFA_ParamCalcIndex(_inputConfNumberPRI[input]));
+                const u_int16_t _channelIndex = logicNumber - 1;
+                return LOG_KoCalcNumber(LOG_KoKOfO);
+            }
+        case 2: // Bestehendes KO
+            return knx.paramWord(DFA_ParamCalcIndex(_inputConfNumberPRI[input]));
+    }
+    // default, including case 0 (disabled)
+    return 0;
+}
+
 void DfaChannel::initInputConfig()
 {
-    // TODO check moving
-    for (size_t i = 0; i < DFA_DEF_INPUTS_COUNT; i++)
+    const bool combined[DFA_DEF_INPUTS_COUNT / 2] = {ParamDFA_fInputCombinedAB, ParamDFA_fInputCombinedCD, ParamDFA_fInputCombinedEF, ParamDFA_fInputCombinedGH};
+    for (uint8_t iPair = 0; iPair < DFA_DEF_INPUTS_COUNT / 2; iPair++)
     {
-        // TODO check shift and mark for all
-        const uint8_t inputConf = ((knx.paramByte(DFA_ParamCalcIndex(_inputConfPRI[i])) & DFA_fInputSymbol1KoMask) >> DFA_fInputSymbol1KoShift);
-        if (inputConf == 0)
+        // logDebugP("input-pair %d", iPair);
+        // logDebugP("input[%d]: ko=%d trigger=%d", i, _inputs[i].koNumber, _inputs[i].trigger);
+        const uint8_t iFirst = iPair * 2;
+        const uint8_t iSecond = iFirst + 1;
+        logDebugP("input-pair %d, first=%d, second=%d; ispair=%d", iPair, iFirst, iSecond, combined[iPair]);
+        if (combined[iPair])
         {
-            _inputs[i].trigger = 0b00;
-            _inputs[i].koNumber = 0;
+            // single input for 2 symbols
+            const uint16_t koNumber = getInputKo(iFirst);
+
+            _inputs[iFirst].koNumber = koNumber;
+            _inputs[iFirst].trigger = (koNumber > 0) ? INPUT_TRIGGER_1 : INPUT_TRIGGER_DISABLED;
+            _inputs[iSecond].koNumber = koNumber;
+            _inputs[iSecond].trigger = (koNumber > 0) ? INPUT_TRIGGER_0 : INPUT_TRIGGER_DISABLED;
         }
         else
         {
-            _inputs[i].trigger = ((knx.paramByte(DFA_ParamCalcIndex(_inputTriggerPRI[i])) & DFA_fInputSymbol1Value) >> DFA_fInputSymbol1ValueShift);
-            switch (inputConf)
+            // separate input for 2 symbols
+            for (uint8_t i = iFirst; i <= iSecond; i++)
             {
-                case 1: // Eigenes KO
-                    _inputs[i].koNumber = DFA_KoCalcNumber(_inputKo[i]);
-                    break;
-                case 3: // Logik-Ausgang
-                    {
-                        // const u_int16_t logicOutputNumber = knx.paramWord(DFA_ParamCalcIndex(_inputConfNumberPRI[i]));
-
-                        // overlay for _channelIndex!
-                        const u_int16_t _channelIndex = knx.paramWord(DFA_ParamCalcIndex(_inputConfNumberPRI[i]));
-                        _inputs[i].koNumber = LOG_ParamCalcIndex(LOG_KoKOfO);
-                    }
-                    break;
-                case 2: // Bestehendes KO
-                    _inputs[i].koNumber = knx.paramWord(DFA_ParamCalcIndex(_inputConfNumberPRI[i]));
-                    break;
-                default:
-                    // TODO check
-                    break;
+                const uint16_t koNumber = getInputKo(i);
+                _inputs[i].koNumber = koNumber;
+                if (koNumber > 0)
+                {
+                    _inputs[i].trigger = ((knx.paramByte(DFA_ParamCalcIndex(_inputTriggerPRI[i])) & DFA_fInputSymbol1ValueMask) >> DFA_fInputSymbol1ValueShift);
+                }
+                else
+                {
+                    _inputs[i].trigger = INPUT_TRIGGER_DISABLED;
+                }
+                logDebugP("  separate: %d ko=%i trigger=%i", i, koNumber, _inputs[i].trigger);
             }
         }
     }
@@ -443,7 +468,6 @@ void DfaChannel::processInputKo(GroupObject &ko)
         return; // ignore inactive channel
 
     // TODO optimize check of ko-Number
-    // TODO add inputs of other ko-Number
 
     const uint16_t koNumber = ko.asap();
 
@@ -452,7 +476,6 @@ void DfaChannel::processInputKo(GroupObject &ko)
         logDebugP("processInputKo set running");
         setRunning(ko.value(DPT_Start));
     }
-
     // TODO define expected behaviour when changed before; will be relevant for inputs by KO-Index
     if (_running)
     {
@@ -469,29 +492,21 @@ void DfaChannel::processInputKo(GroupObject &ko)
             logDebugP("processInputKo set state (combined)");
             setState(ko.value(DPT_SceneNumber));
         }
-        else if (ko.valueSize() == 1) // TODO check if adequate
+        else if (ko.valueSize() == 1) // TODO check if adequate, or add support for other input types
         {
-            // const KNXValue value = ko.value(DPT_Switch);
             const bool value = ko.value(DPT_Switch);
 
-            // check regular inputs
+            // check (new or existing) inputs based on ko-numbers
             for (size_t i = 0; i < DFA_DEF_INPUTS_COUNT; i++)
             {
                 if (koNumber == _inputs[i].koNumber)
                 {
-                    logDebugP("processInputKo input%d (ko=%d)", i, koNumber);
-                    // const bool triggered = _inputs[i].trigger & (1 << value);
-                    //
-                    // TODO FIXME
-                    //
-                    const bool triggered = 0b11 & (1 << value);
+                    const bool triggered = _inputs[i].trigger & (1 << value);
+                    logDebugP("processInputKo input=%d (ko=%d; triggered=%d)", i+1, koNumber, triggered);
                     if (triggered)
                     {
-                        logDebugP("triggered input%d", i);
                         transfer(i);
-
-                        // only one!
-                        break;
+                        break; // only one! // TODO check
                     }
                 }
             }

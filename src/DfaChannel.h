@@ -13,8 +13,8 @@
 #define DFA_STATE_VALUE_UNDEFINED 0x40
 
 #define INPUT_TRIGGER_DISABLED 0b00
-#define INPUT_TRIGGER_0ONLY    0b01
-#define INPUT_TRIGGER_1ONLY    0b10
+#define INPUT_TRIGGER_0        0b01
+#define INPUT_TRIGGER_1        0b10
 #define INPUT_TRIGGER_BOTH     0b11
 
 #define OUTPUT_TYPE_DPT1    10
@@ -87,6 +87,9 @@ class DfaChannel : public OpenKNX::Channel
     uint32_t _stateTimeoutDelay_ms = 0;
     uint32_t _stateTimeoutBegin_ms = 0;
 
+    uint16_t getInputKo(const uint8_t input);
+    void initInputConfig();
+
     uint32_t getStateTimeoutDelay_ms(const uint8_t state);
     uint8_t getTimeoutState(const uint8_t state);
     inline bool isValidState(const uint8_t state);
@@ -105,8 +108,6 @@ class DfaChannel : public OpenKNX::Channel
     void setup() override;
     void loop() override;
     void processInputKo(GroupObject &ko) override;
-
-    void initInputConfig();
 
     void save();
     void restore();
