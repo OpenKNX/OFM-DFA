@@ -378,9 +378,9 @@ uint16_t DfaChannel::getInputKo(const uint8_t input)
     // logDebugP("  get ko for input=%i -> conf=%i", input, inputConf);
     switch (inputConf)
     {
-        case 1: // Eigenes KO
+        case 1: // Own KO
             return DFA_KoCalcNumber(_inputKo[input]);
-        case 3: // Logik-Ausgang
+        case 3: // Logic-Output (KO)
             {
                 // TODO optimize/use API for this
                 // overlay for _channelIndex!
