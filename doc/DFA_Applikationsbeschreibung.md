@@ -9,8 +9,12 @@
   * [**DEAs**](#deas)
     * [**DEA n: ...**](#dea-n--)
       * [DEA-Definition](#dea-definition) 
+      * [(Start)Verhalten und Steuerungsmöglichkeiten]()
       * [Eingabesymbole](#eingabesymbole)
-      * [Zustände und Übergangsfunktion einschließlich zeitbasierter Folgezustände](#zustände-und-übergangsfunktion-einschließlich-zeitbasierter-folgezustände)
+      * [Ausgabe]()
+      * [**Zustände & Übergänge**]()
+        * [Zustände und Übergangsfunktion einschließlich zeitbasierter Folgezustände](#zustände-und-übergangsfunktion-einschließlich-zeitbasierter-folgezustände)
+      * [**Ausgang n: ...**](...)
 * [Kommunikationsobjekte](#kommunikationsobjekte) 
 
 # Konzepte
