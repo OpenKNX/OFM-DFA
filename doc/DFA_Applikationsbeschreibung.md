@@ -120,24 +120,27 @@ Bei Konfiguration als Eingabesymbol-Paar wird in der dortigen Spaltenüberschrif
 Bei unabhängigen Symbolen sollten ggf. eigene Ergänzungen zur Nachvollziehbarkeit ergänzt werden. 
 ***Zu beachten:*** Angesichts der geringen dort verfügbaren Spaltenbreite sollten eher kurze Wörter verwendet werden, nur so ist ein gut lesbarer Zeilenumbruch möglich.  
 
-##### Eingabekanal (je Eingabesymbol oder Eingabesymbol-Paar)
+##### Eingabekanal & Kanalauswahl (je Eingabesymbol oder Eingabesymbol-Paar)
 
 
-| Einstellungswert | Erklärung                                                                                                                                                                                                                                                                                                                                                                                                         | Eingangs-KO | Weitere Konfiguration   |
-|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|-------------------------|
-| inaktiv          | Das Eingabesymbol wird niemals erzeugt.                                                                                                                                                                                                                                                                                                                                                                           | -           | -                       |
-| Eigenes KO       | Zur direkten Reaktion auf Werte die auf dem Bus bereit stehen. Eingabesymbole werden durch eingehende Telegramme erzeugt. Ein KO mit DPT1 wird eingeblendet.                                                                                                                                                                                                                                                      | sichtbar    | -                       |
-| Logik-Ausgang    | Nutzung von Werten die durch einen Logikkanal erzeugt und als Ergebnis ausgegeben werden. *Empfohlenen*, wenn Eingangswerte zunächst in 0/1 konvertiert oder vorgefiltert werden müssen, zur Nutzung von Zeitschaltuhrfunktionen, oder ggf. weiterer Funktionen des [Logikmoduls](/OpenKNX/OAM-LogicModule/blob/main/doc/Applikationsbeschreibung-Logik.md).                                                      | -           | Nummer des Logik-Kanals |
-| Bestehendes KO   | Verwendung von Werten, die bereits in anderen KOs abgebildet sind, unabhängig von einer Übertragung auf den Bus. ***Achtung:*** Fehlfunktionen möglich, bei Auswahl eines KO mit nicht kompatiblem DPT. Bei späteren Updates mit Veränderung der KO-Nummerierung muss eine manuelle Anpassung der Nummerierung vorgenommen werden. Ausgänge von Logik-Kanälten sollten nicht über die KO-Nummer verknüpft werden. | -           | KO-Numme                |
-
-
-##### Kanalauswahl (je Eingabesymbol oder Eingabesymbol-Paar)
+| Eingabekanal   | Erklärung                                                                                                                                                                                                                                                                                                                                                                                                         | Eingangs-KO | Kanalauswahl                                                                         |
+|----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|--------------------------------------------------------------------------------------|
+| inaktiv        | Das Eingabesymbol wird niemals erzeugt.                                                                                                                                                                                                                                                                                                                                                                           | -           | -                                                                                    |
+| Eigenes KO     | Zur direkten Reaktion auf Werte die auf dem Bus bereit stehen. Eingabesymbole werden durch eingehende Telegramme erzeugt. Ein KO mit DPT1 wird eingeblendet.                                                                                                                                                                                                                                                      | sichtbar    | Keine Konfiguration.<br />Nur Anzeige von genutztem Eingang 1 bis 8.                 |
+| Logik-Ausgang  | Nutzung von Werten die durch einen Logikkanal erzeugt und als Ergebnis ausgegeben werden. *Empfohlenen*, wenn Eingangswerte zunächst in 0/1 konvertiert oder vorgefiltert werden müssen, zur Nutzung von Zeitschaltuhrfunktionen, oder ggf. weiterer Funktionen des [Logikmoduls](/OpenKNX/OAM-LogicModule/blob/main/doc/Applikationsbeschreibung-Logik.md).                                                      | -           | Der Logik-Ausgang wird durch die Kanal-Nummer (1 bis 96) des Logikmoduls festgelegt. |
+| Bestehendes KO | Verwendung von Werten, die bereits in anderen KOs abgebildet sind, unabhängig von einer Übertragung auf den Bus. ***Achtung:*** Fehlfunktionen möglich, bei Auswahl eines KO mit nicht kompatiblem DPT. Bei späteren Updates mit Veränderung der KO-Nummerierung muss eine manuelle Anpassung der Nummerierung vorgenommen werden. Ausgänge von Logik-Kanälten sollten nicht über die KO-Nummer verknüpft werden. | -           | Auswahl über die KO-Nummer (1 bis >1000)                                             |
 
 ##### Auslösewert (je Eingabesymbol oder Eingabesymbol-Paar)
 
 
+| Auslösewert | Erklärung | Eingangs-KO | Kanalauswahl                                                                         |
+|-------------|-----------|-------------|--------------------------------------------------------------------------------------|
+| bei 0       |           | -           | -                                                                                    |
+| bei 1       |           | sichtbar    | Keine Konfiguration.<br />Nur Anzeige von genutztem Eingang 1 bis 8.                 |
+| jeder (0/1) | Jeder     | -           | Der Logik-Ausgang wird durch die Kanal-Nummer (1 bis 96) des Logikmoduls festgelegt. |
+
+
 <div style="background-color:red;">TODO</div>
-Die Tabelle gibt Aufschluss darüber, welcher Eingabewert auf welchem Kommunikationsobjekt dem jeweiligen Eingabesymbol zugrunde liegt.  
 
 #### Bezeichnung
 Hier sollte zur Dokumentation eine individuelle kurze Beschreibung des jeweiligen Eingabesymbols hinterlegt werden.
