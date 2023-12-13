@@ -60,10 +60,70 @@ Der Wert wird ausschließlich in der ETS verwendet (als Teil der Kanalbezeichnun
 | ... warten auf Start-Telegramm | Nach dem Einschalten ist der Automat zunächst inaktiv. D.h. es werden keine Ereignisse verarbeitet.<br />Durch erstmaligen Eingang eines `Start`-Telegramms wird der Automat in den Startzustand versetzt. Der Timeout beginnt ab diesem Zeitpunkt.                                                                                                                                                                                             | sichtbar       | nein                         |
 
 ### Eingabesymbole
-> In der aktuellen Version kann die Eingangskonfiguration (noch) nicht verändert werden, bzw. nur die Bezeichnung innerhalb der ETS. 
 
-Das Eingabealphabet des Automaten umfasst 8 Symbole, die in der Oberfläche kurz mit den Großbuchstaben A bis H bezeichnet werden. 
-Die Eingabesymbole werden durch externe Ereignisse erzeugt.
+Das Eingabealphabet des Automaten umfasst 8 Symbole, die in der Oberfläche kurz mit den Großbuchstaben A bis H bezeichnet sind. 
+Die Eingabesymbole werden durch externe Ereignisse erzeugt, 
+die jeweils durch die Kombination von einem binären Eingabekanal und einem oder mehrerer Auslösewerte definiert werden.
+
+***Achtung:***
+Bei der Konfiguration sollte sichergestellt werden, dass die erzeugenden Ereignisse der einzelnen Eingabesymbole disjunkt sind.
+Sollte dasselbe externe Ereignis mehrere Eingabesymbole "gleichzeitig" auslösen, so ist das resultierende Verhalten nicht spezifiziert.
+Auch ein deterministisches Erzeugen von Eingabesymbolen kann in diesem Fall nicht garantiert werden, 
+d.h. selbst ohne Neustart, ohne Neuprgrammierung oder einer Änderung der Firmware, 
+könnte dasselbe externe Ereignis unterschiedliche Eingabesysmbole und damit auch Folgezustände erzeugen.
+Wer trotz dieser Warnung vor den schlimmen Dingen die passieren können eine entsprechende Konfiguration durchführt ist selbst schuld.
+
+***Achtung:***
+Die Erzeugung der Eingabesymbole sollte unabhängig von den Ausgabekanälen, oder Status-Ausgängen erfolgen.
+Das resultierende Verhalten ist ansonsten nur schwer vorhersehbar und beherrschbar.
+
+
+> Sollen Eingabesymbole auf Basis von Werten erzeugt werden, die nicht dem DPT1 entsprechen, so kann über Logikkanäle eine Konvertierung erfolgen. 
+
+#### Gemeinsamer Eingang (Symbole 1/0)
+
+In vielen Fällen soll sowohl auf ein Ereignis, als auch ein zugehöriges negiertes Ereignis reagiert werden.
+Zwei benachbarte Eingabesymbole können in diesem Fall als Paar zur vereinheitlichten gemeinsamen Konfiguration zusammengefasst werden.
+Dadurch teilen sich beide Eingabesymbole denselben Eingang, 
+wobei beim Eingang des Wertes `1` im Eingabekanal das erste Symbol und beim Werte `0` immer das zweite Symbol erzeugt wird.
+Dadurch wird sichergestellt, dass derselbe Eingabekanal verwendet 
+
+
+| Einstellungswert | Erklärung                                                                                                                                                                                                                                                       | bei 1 | bei 0 |
+|------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------|---------------------|
+| A/B              | Wenn Option aktiviert, dann werden die Eingabesymbole A und B bei eintreffenden Ereignissen, in Abhängigkeit vom Wert, im selben Eingabekanel erzeugt. <br />Ohne Auswahl der Option werden die Eingabesysmbole vollkommen unabhängig voneinander konfiguriert. | A                   | B                   |
+| C/D              | Analog A/B.                                                                                                                                                                                                                                                     | C                   | D                   |
+| E/F              | Analog A/B.                                                                                                                                                                                                                                                     | E                   | F                   |
+| G/H              | Analog A/B.                                                                                                                                                                                                                                                     | G                   | H                   |
+
+> Beispiele für Ereignispaare:
+> * Last (1 bei Überschreitung / 0 bei Unterschreitung)
+> * Präsenz (1 bei Beginn und bestehender Präsenz / 0 bei Ende und Abwesenheit)
+> * Nachtmodus (1 bei Nacht bzw. deren Beginn / 0 bei Tag bzw. dessen Beginn)
+
+
+
+
+#### Konfigurationstabelle der Eingabesymbole
+Abhängig von der Konfiguration wird je Zeile ein Eingabesymbol, oder ein Paar von Eingabesymbolen konfiguriert, bzw. Informationen zur Konfiguration dargestellt. 
+
+##### Bezeichnung (je Eingabesymbol oder Eingabesymbol-Paar)
+Hier sollte zur Dokumentation eine individuelle kurze Beschreibung des jeweiligen Eingabesymbol(-paares) hinterlegt werden. 
+Der Wert wird ausschließlich in der ETS verwendet und hat keinen Einfluss auf das Geräteverhalten.
+
+Der eingegebene Wert wird als KO-Bezeichnung und Spaltenüberschrift in Zustandsübergangstabelle dargestellt.
+Bei Konfiguration als Eingabesymbol-Paar wird in der dortigen Spaltenüberschrift der Auslösewert `(=1)` bzw.  `(=0)` angehängt.
+Bei unabhängigen Symbolen sollten ggf. eigene Ergänzungen zur Nachvollziehbarkeit ergänzt werden. 
+***Zu beachten:*** Angesichts der geringen dort verfügbaren Spaltenbreite sollten eher kurze Wörter verwendet werden, nur so ist ein gut lesbarer Zeilenumbruch möglich.  
+
+##### Eingabekanal (je Eingabesymbol oder Eingabesymbol-Paar)
+
+##### KO (je Eingabesymbol oder Eingabesymbol-Paar)
+
+##### Auslösewert (je Eingabesymbol oder Eingabesymbol-Paar)
+
+
+<div style="background-color:red;">TODO</div>
 Die Tabelle gibt Aufschluss darüber, welcher Eingabewert auf welchem Kommunikationsobjekt dem jeweiligen Eingabesymbol zugrunde liegt.  
 
 #### Bezeichnung
