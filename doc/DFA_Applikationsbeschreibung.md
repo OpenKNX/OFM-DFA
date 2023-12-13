@@ -45,6 +45,12 @@ Der Wert wird ausschließlich in der ETS verwendet (als Teil der Kanalbezeichnun
 
 > Bei Einstellung *temporär inaktiv* sind alle nachfolgenden Konfigurationen unwirksam.
 
+### (Start)Verhalten und Steuerungsmöglichkeiten
+<div style="background-color:red;">TODO</div>
+
+#### Verzögerung nach Neustart
+<div style="background-color:red;">TODO</div>
+
 #### Starten und Pausieren
 | Einstellungswert               | Erklärung                                                                                                                                                                                                                                                                                                                                                                                                                                       | Start/Stop-KOs | starten nach dem Einschalten? |
 |--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|------------------------------|
