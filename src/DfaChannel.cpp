@@ -471,6 +471,7 @@ void DfaChannel::processInputKo(GroupObject &ko)
 
     const uint16_t koNumber = ko.asap();
 
+    // TODO define behaviour within startup delay!
     if (koNumber == DFA_KoCalcNumber(DFA_KoKOfRunSet))
     {
         logDebugP("processInputKo set running");
