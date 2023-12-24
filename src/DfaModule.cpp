@@ -166,3 +166,5 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
     }
     return false;
 }
+
+DfaModule openknxDfaModule;

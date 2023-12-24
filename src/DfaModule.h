@@ -39,3 +39,5 @@ class DfaModule : public OpenKNX::Module
     void showHelp() override;
     bool processCommand(const std::string cmd, bool diagnoseKo);
 };
+
+extern DfaModule openknxDfaModule;
