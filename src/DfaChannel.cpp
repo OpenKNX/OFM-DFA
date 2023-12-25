@@ -25,6 +25,9 @@ const uint16_t DfaChannel::_inputConfPRI[DFA_DEF_INPUTS_COUNT] = {
     DFA_fInputSymbol7Ko,
     DFA_fInputSymbol8Ko,
 };
+#if DFA_fInputSymbol1LogicNumber != DFA_fInputSymbol1KoNumber
+    #error "DFA_fInputSymbol1LogicNumber != DFA_fInputSymbol1KoNumber"
+#endif
 const uint16_t DfaChannel::_inputConfNumberPRI[DFA_DEF_INPUTS_COUNT] = {
     DFA_fInputSymbol1KoNumber,
     DFA_fInputSymbol2KoNumber,
