@@ -632,6 +632,12 @@
           </Static>
           <Dynamic>
             <Channel Name="DfaChannel" Text="Zustandsmodelle (DEAs)" Number="%TT%" Id="%AID%_CH-%TT%" Icon="state-machine" >
+              <ParameterBlock Name="DfaInfo" Text="Info &amp; Dokumentation" Id="%AID%_PB-nnn" Icon="information-outline"><!-- HelpContext="DFA-Dokumentation" -->
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Modul-Version: %ModuleVersion%" UIHint="Headline" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG:&#xD;&#xA;Alpha-Version für erste Tester.&#xD;&#xA;Fehler und spätere ggf. inkompatible Änderungen möglich!" UIHint="Information" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="In diesem Modul ist keine kontextsensitive Hilfe integriert." />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Ein u.U. nicht aktueller Stand der Dokumentation ist online verfügbar." />
+              </ParameterBlock>              
               <!-- all DFA channels: -->
               <op:include href="DfaModule.templ.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="template" prefix="DFA" IsInner="true" />
             </Channel>
