@@ -75,7 +75,7 @@
               </ParameterType>
 
               <ParameterType Id="%AID%_PT-DfaInputKoNumber" Name="DfaInputKoNumber">
-                <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="1" maxInclusive="4000" />
+                <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="1" maxInclusive="%DFA_LOG_NumChannels%" />
               </ParameterType>
 
               <ParameterType Id="%AID%_PT-DfaInputTrigger" Name="DfaInputTrigger">
