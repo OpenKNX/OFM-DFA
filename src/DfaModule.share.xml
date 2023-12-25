@@ -628,6 +628,10 @@
             </ComObjectRefs>
           </Static>
           <Dynamic>
+            <Channel Name="DfaChannel" Text="Zustandsmodelle (DEAs)" Number="%TT%" Id="%AID%_CH-%TT%" Icon="state-machine" >
+              <!-- all DFA channels: -->
+              <op:include href="DfaModule.templ.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="template" prefix="DFA" IsInner="true" />
+            </Channel>
           </Dynamic>
         </ApplicationProgram>
       </ApplicationPrograms>
