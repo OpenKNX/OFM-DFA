@@ -32,56 +32,56 @@
 
 
               <Parameter Id="%AID%_P-%T%%CC%7100" Name="f%C%InputSymbol1Name"     ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Eingabe 1"  Value="" />
-              <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="10" BitOffset="0" />
+              <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="18" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7101" Name="f%C%InputSymbol1Ko"       ParameterType="%AID%_PT-DfaInputKo"           Offset="0" BitOffset="0"      Text="KO Eingabe 1"           Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7102" Name="f%C%InputSymbol1KoNumber" ParameterType="%AID%_PT-DfaInputKoNumber"     Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 1"    Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7104" Name="f%C%InputSymbol1LogicNumber" ParameterType="%AID%_PT-DfaInputLogicNumber"  Offset="1" BitOffset="0"      Text="Logik-Kanal-Ausgangs-Nummer Eingabe 1" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7103" Name="f%C%InputSymbol1Value"    ParameterType="%AID%_PT-DfaInputTrigger"      Offset="3" BitOffset="0"      Text="Eingabewert 1"          Value="2" />
               </Union>
               <Parameter Id="%AID%_P-%T%%CC%7200" Name="f%C%InputSymbol2Name"     ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Eingabe 2"  Value="" />
-              <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="14" BitOffset="0" />
+              <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="22" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7201" Name="f%C%InputSymbol2Ko"       ParameterType="%AID%_PT-DfaInputKo"           Offset="0" BitOffset="0"      Text="KO Eingabe 2"           Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7202" Name="f%C%InputSymbol2KoNumber" ParameterType="%AID%_PT-DfaInputKoNumber"     Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 2"    Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7204" Name="f%C%InputSymbol2LogicNumber" ParameterType="%AID%_PT-DfaInputLogicNumber"  Offset="1" BitOffset="0"      Text="Logik-Kanal-Ausgangs-Nummer Eingabe 2" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7203" Name="f%C%InputSymbol2Value"    ParameterType="%AID%_PT-DfaInputTrigger"      Offset="3" BitOffset="0"      Text="Eingabewert 2"          Value="2" />
               </Union>
               <Parameter Id="%AID%_P-%T%%CC%7300" Name="f%C%InputSymbol3Name"     ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Eingabe 3"  Value="" />
-              <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="18" BitOffset="0" />
+              <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="26" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7301" Name="f%C%InputSymbol3Ko"       ParameterType="%AID%_PT-DfaInputKo"           Offset="0" BitOffset="0"      Text="KO Eingabe 3"           Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7302" Name="f%C%InputSymbol3KoNumber" ParameterType="%AID%_PT-DfaInputKoNumber"     Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 3"    Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7304" Name="f%C%InputSymbol3LogicNumber" ParameterType="%AID%_PT-DfaInputLogicNumber"  Offset="1" BitOffset="0"      Text="Logik-Kanal-Ausgangs-Nummer Eingabe 3" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7303" Name="f%C%InputSymbol3Value"    ParameterType="%AID%_PT-DfaInputTrigger"      Offset="3" BitOffset="0"      Text="Eingabewert 3"          Value="2" />
               </Union>
               <Parameter Id="%AID%_P-%T%%CC%7400" Name="f%C%InputSymbol4Name"     ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Eingabe 4"  Value="" />
-              <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="22" BitOffset="0" />
+              <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="30" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7401" Name="f%C%InputSymbol4Ko"       ParameterType="%AID%_PT-DfaInputKo"           Offset="0" BitOffset="0"      Text="KO Eingabe 4"           Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7402" Name="f%C%InputSymbol4KoNumber" ParameterType="%AID%_PT-DfaInputKoNumber"     Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 4"    Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7404" Name="f%C%InputSymbol4LogicNumber" ParameterType="%AID%_PT-DfaInputLogicNumber"  Offset="1" BitOffset="0"      Text="Logik-Kanal-Ausgangs-Nummer Eingabe 4" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7403" Name="f%C%InputSymbol4Value"    ParameterType="%AID%_PT-DfaInputTrigger"      Offset="3" BitOffset="0"      Text="Eingabewert 4"          Value="2" />
               </Union>
               <Parameter Id="%AID%_P-%T%%CC%7500" Name="f%C%InputSymbol5Name"     ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Eingabe 5"  Value="" />
-              <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="26" BitOffset="0" />
+              <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="34" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7501" Name="f%C%InputSymbol5Ko"       ParameterType="%AID%_PT-DfaInputKo"           Offset="0" BitOffset="0"      Text="KO Eingabe 5"           Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7502" Name="f%C%InputSymbol5KoNumber" ParameterType="%AID%_PT-DfaInputKoNumber"     Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 5"    Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7504" Name="f%C%InputSymbol5LogicNumber" ParameterType="%AID%_PT-DfaInputLogicNumber"  Offset="1" BitOffset="0"      Text="Logik-Kanal-Ausgangs-Nummer Eingabe 5" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7503" Name="f%C%InputSymbol5Value"    ParameterType="%AID%_PT-DfaInputTrigger"      Offset="3" BitOffset="0"      Text="Eingabewert 5"          Value="2" />
               </Union>
               <Parameter Id="%AID%_P-%T%%CC%7600" Name="f%C%InputSymbol6Name"     ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Eingabe 6"  Value="" />
-              <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="30" BitOffset="0" />
+              <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="38" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7601" Name="f%C%InputSymbol6Ko"       ParameterType="%AID%_PT-DfaInputKo"           Offset="0" BitOffset="0"      Text="KO Eingabe 6"           Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7602" Name="f%C%InputSymbol6KoNumber" ParameterType="%AID%_PT-DfaInputKoNumber"     Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 6"    Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7604" Name="f%C%InputSymbol6LogicNumber" ParameterType="%AID%_PT-DfaInputLogicNumber"  Offset="1" BitOffset="0"      Text="Logik-Kanal-Ausgangs-Nummer Eingabe 6" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7603" Name="f%C%InputSymbol6Value"    ParameterType="%AID%_PT-DfaInputTrigger"      Offset="3" BitOffset="0"      Text="Eingabewert 6"          Value="2" />
               </Union>
               <Parameter Id="%AID%_P-%T%%CC%7700" Name="f%C%InputSymbol7Name"     ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Eingabe 7"  Value="" />
-              <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="34" BitOffset="0" />
+              <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="42" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7701" Name="f%C%InputSymbol7Ko"       ParameterType="%AID%_PT-DfaInputKo"           Offset="0" BitOffset="0"      Text="KO Eingabe 7"           Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7702" Name="f%C%InputSymbol7KoNumber" ParameterType="%AID%_PT-DfaInputKoNumber"     Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 7"    Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7704" Name="f%C%InputSymbol7LogicNumber" ParameterType="%AID%_PT-DfaInputLogicNumber"  Offset="1" BitOffset="0"      Text="Logik-Kanal-Ausgangs-Nummer Eingabe 7" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7703" Name="f%C%InputSymbol7Value"    ParameterType="%AID%_PT-DfaInputTrigger"      Offset="3" BitOffset="0"      Text="Eingabewert 7"          Value="2" />
               </Union>
               <Parameter Id="%AID%_P-%T%%CC%7800" Name="f%C%InputSymbol8Name"     ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Eingabe 8"  Value="" />
-              <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="38" BitOffset="0" />
+              <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="46" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7801" Name="f%C%InputSymbol8Ko"       ParameterType="%AID%_PT-DfaInputKo"           Offset="0" BitOffset="0"      Text="KO Eingabe 8"           Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7802" Name="f%C%InputSymbol8KoNumber" ParameterType="%AID%_PT-DfaInputKoNumber"     Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 8"    Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7804" Name="f%C%InputSymbol8LogicNumber" ParameterType="%AID%_PT-DfaInputLogicNumber"  Offset="1" BitOffset="0"      Text="Logik-Kanal-Ausgangs-Nummer Eingabe 8" Value="1" />
@@ -93,11 +93,25 @@
               <Parameter Id="%AID%_P-%T%%CC%8300" Name="f%C%Output3Name"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Ausgabe 3"  Value="" />
               <Parameter Id="%AID%_P-%T%%CC%8400" Name="f%C%Output4Name"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Ausgabe 4"  Value="" />
 <!-- EMPTY --> 
-              <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="6" BitOffset="0" />
+              <Union SizeInBit="24"><Memory CodeSegment="%MID%" Offset="6" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%8101" Name="f%C%Output1Dpt"           ParameterType="%AID%_PT-DfaOutputDpt"         Offset="0" BitOffset="0"      Text="Datentyp Ausgabe 1"     Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%8201" Name="f%C%Output2Dpt"           ParameterType="%AID%_PT-DfaOutputDpt"         Offset="1" BitOffset="0"      Text="Datentyp Ausgabe 2"     Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%8301" Name="f%C%Output3Dpt"           ParameterType="%AID%_PT-DfaOutputDpt"         Offset="2" BitOffset="0"      Text="Datentyp Ausgabe 3"     Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%8401" Name="f%C%Output4Dpt"           ParameterType="%AID%_PT-DfaOutputDptWithText"  Offset="3" BitOffset="0"      Text="Datentyp Ausgabe 4"     Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%8102" Name="f%C%Output1DelayBase"     ParameterType="%AID%_PT-DelayBase"            Offset="1" BitOffset="0"      Text="Sendeintervall Zeitbasis" Value="1" />
+                <Parameter Id="%AID%_UP-%T%%CC%8103" Name="f%C%Output1DelayTime"     ParameterType="%AID%_PT-DelayTimeMin1"        Offset="1" BitOffset="2"      Text="Sendeintervall Zeit"    Value="20" />
+              </Union>
+              <Union SizeInBit="24"><Memory CodeSegment="%MID%" Offset="9" BitOffset="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%8201" Name="f%C%Output2Dpt"           ParameterType="%AID%_PT-DfaOutputDpt"         Offset="0" BitOffset="0"      Text="Datentyp Ausgabe 2"     Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%8202" Name="f%C%Output2DelayBase"     ParameterType="%AID%_PT-DelayBase"            Offset="1" BitOffset="0"      Text="Sendeintervall Zeitbasis" Value="1" />
+                <Parameter Id="%AID%_UP-%T%%CC%8203" Name="f%C%Output2DelayTime"     ParameterType="%AID%_PT-DelayTimeMin1"        Offset="1" BitOffset="2"      Text="Sendeintervall Zeit"    Value="20" />
+              </Union>
+              <Union SizeInBit="24"><Memory CodeSegment="%MID%" Offset="12" BitOffset="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%8301" Name="f%C%Output3Dpt"           ParameterType="%AID%_PT-DfaOutputDpt"         Offset="0" BitOffset="0"      Text="Datentyp Ausgabe 3"     Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%8302" Name="f%C%Output3DelayBase"     ParameterType="%AID%_PT-DelayBase"            Offset="1" BitOffset="0"      Text="Sendeintervall Zeitbasis" Value="1" />
+                <Parameter Id="%AID%_UP-%T%%CC%8303" Name="f%C%Output3DelayTime"     ParameterType="%AID%_PT-DelayTimeMin1"        Offset="1" BitOffset="2"      Text="Sendeintervall Zeit"    Value="20" />
+              </Union>
+              <Union SizeInBit="24"><Memory CodeSegment="%MID%" Offset="15" BitOffset="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%8401" Name="f%C%Output4Dpt"           ParameterType="%AID%_PT-DfaOutputDptWithText"  Offset="0" BitOffset="0"      Text="Datentyp Ausgabe 4"     Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%8402" Name="f%C%Output4DelayBase"     ParameterType="%AID%_PT-DelayBase"            Offset="1" BitOffset="0"      Text="Sendeintervall Zeitbasis" Value="1" />
+                <Parameter Id="%AID%_UP-%T%%CC%8403" Name="f%C%Output4DelayTime"     ParameterType="%AID%_PT-DelayTimeMin1"        Offset="1" BitOffset="2"      Text="Sendeintervall Zeit"    Value="20" />
               </Union>
 <!-- EMPTY --> 
               <Parameter Id="%AID%_P-%T%%CC%0100" Name="f%C%State01Name"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Zustand 1"  Value="" />
@@ -133,7 +147,7 @@
               <Parameter Id="%AID%_P-%T%%CC%3100" Name="f%C%State31Name"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Zustand 31" Value="" />
               <Parameter Id="%AID%_P-%T%%CC%3200" Name="f%C%State32Name"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Zustand 32" Value="" />
 <!-- EMPTY --> 
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="42" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="50" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0101" Name="f%C%TransState01Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(01,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0102" Name="f%C%TransState01Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(01,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0103" Name="f%C%TransState01Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(01,3)"            Value="0" />
@@ -203,7 +217,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%0181" Name="f%C%State01Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 1 (DPT 17)" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0194" Name="f%C%State01Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 1 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="84" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="92" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0201" Name="f%C%TransState02Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(02,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0202" Name="f%C%TransState02Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(02,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0203" Name="f%C%TransState02Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(02,3)"            Value="0" />
@@ -273,7 +287,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%0281" Name="f%C%State02Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 2 (DPT 17)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%0294" Name="f%C%State02Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 2 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="126" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="134" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0301" Name="f%C%TransState03Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(03,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0302" Name="f%C%TransState03Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(03,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0303" Name="f%C%TransState03Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(03,3)"            Value="0" />
@@ -343,7 +357,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%0381" Name="f%C%State03Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 3 (DPT 17)" Value="2" />
                 <Parameter Id="%AID%_UP-%T%%CC%0394" Name="f%C%State03Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 3 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="168" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="176" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0401" Name="f%C%TransState04Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(04,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0402" Name="f%C%TransState04Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(04,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0403" Name="f%C%TransState04Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(04,3)"            Value="0" />
@@ -413,7 +427,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%0481" Name="f%C%State04Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 4 (DPT 17)" Value="3" />
                 <Parameter Id="%AID%_UP-%T%%CC%0494" Name="f%C%State04Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 4 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="210" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="218" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0501" Name="f%C%TransState05Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(05,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0502" Name="f%C%TransState05Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(05,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0503" Name="f%C%TransState05Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(05,3)"            Value="0" />
@@ -483,7 +497,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%0581" Name="f%C%State05Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 5 (DPT 17)" Value="4" />
                 <Parameter Id="%AID%_UP-%T%%CC%0594" Name="f%C%State05Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 5 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="252" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="260" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0601" Name="f%C%TransState06Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(06,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0602" Name="f%C%TransState06Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(06,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0603" Name="f%C%TransState06Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(06,3)"            Value="0" />
@@ -553,7 +567,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%0681" Name="f%C%State06Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 6 (DPT 17)" Value="5" />
                 <Parameter Id="%AID%_UP-%T%%CC%0694" Name="f%C%State06Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 6 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="294" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="302" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0701" Name="f%C%TransState07Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(07,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0702" Name="f%C%TransState07Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(07,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0703" Name="f%C%TransState07Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(07,3)"            Value="0" />
@@ -623,7 +637,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%0781" Name="f%C%State07Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 7 (DPT 17)" Value="6" />
                 <Parameter Id="%AID%_UP-%T%%CC%0794" Name="f%C%State07Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 7 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="336" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="344" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0801" Name="f%C%TransState08Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(08,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0802" Name="f%C%TransState08Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(08,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0803" Name="f%C%TransState08Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(08,3)"            Value="0" />
@@ -693,7 +707,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%0881" Name="f%C%State08Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 8 (DPT 17)" Value="7" />
                 <Parameter Id="%AID%_UP-%T%%CC%0894" Name="f%C%State08Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 8 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="378" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="386" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0901" Name="f%C%TransState09Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(09,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0902" Name="f%C%TransState09Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(09,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0903" Name="f%C%TransState09Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(09,3)"            Value="0" />
@@ -763,7 +777,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%0981" Name="f%C%State09Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 9 (DPT 17)" Value="8" />
                 <Parameter Id="%AID%_UP-%T%%CC%0994" Name="f%C%State09Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 9 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="420" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="428" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1001" Name="f%C%TransState10Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(10,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1002" Name="f%C%TransState10Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(10,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1003" Name="f%C%TransState10Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(10,3)"            Value="0" />
@@ -833,7 +847,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%1081" Name="f%C%State10Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 10 (DPT 17)" Value="9" />
                 <Parameter Id="%AID%_UP-%T%%CC%1094" Name="f%C%State10Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 10 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="462" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="470" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1101" Name="f%C%TransState11Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(11,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1102" Name="f%C%TransState11Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(11,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1103" Name="f%C%TransState11Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(11,3)"            Value="0" />
@@ -903,7 +917,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%1181" Name="f%C%State11Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 11 (DPT 17)" Value="10" />
                 <Parameter Id="%AID%_UP-%T%%CC%1194" Name="f%C%State11Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 11 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="504" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="512" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1201" Name="f%C%TransState12Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(12,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1202" Name="f%C%TransState12Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(12,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1203" Name="f%C%TransState12Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(12,3)"            Value="0" />
@@ -973,7 +987,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%1281" Name="f%C%State12Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 12 (DPT 17)" Value="11" />
                 <Parameter Id="%AID%_UP-%T%%CC%1294" Name="f%C%State12Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 12 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="546" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="554" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1301" Name="f%C%TransState13Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(13,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1302" Name="f%C%TransState13Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(13,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1303" Name="f%C%TransState13Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(13,3)"            Value="0" />
@@ -1043,7 +1057,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%1381" Name="f%C%State13Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 13 (DPT 17)" Value="12" />
                 <Parameter Id="%AID%_UP-%T%%CC%1394" Name="f%C%State13Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 13 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="588" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="596" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1401" Name="f%C%TransState14Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(14,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1402" Name="f%C%TransState14Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(14,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1403" Name="f%C%TransState14Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(14,3)"            Value="0" />
@@ -1113,7 +1127,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%1481" Name="f%C%State14Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 14 (DPT 17)" Value="13" />
                 <Parameter Id="%AID%_UP-%T%%CC%1494" Name="f%C%State14Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 14 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="630" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="638" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1501" Name="f%C%TransState15Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(15,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1502" Name="f%C%TransState15Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(15,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1503" Name="f%C%TransState15Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(15,3)"            Value="0" />
@@ -1183,7 +1197,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%1581" Name="f%C%State15Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 15 (DPT 17)" Value="14" />
                 <Parameter Id="%AID%_UP-%T%%CC%1594" Name="f%C%State15Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 15 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="672" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="680" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1601" Name="f%C%TransState16Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(16,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1602" Name="f%C%TransState16Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(16,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1603" Name="f%C%TransState16Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(16,3)"            Value="0" />
@@ -1253,7 +1267,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%1681" Name="f%C%State16Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 16 (DPT 17)" Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%1694" Name="f%C%State16Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 16 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="714" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="722" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1701" Name="f%C%TransState17Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(17,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1702" Name="f%C%TransState17Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(17,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1703" Name="f%C%TransState17Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(17,3)"            Value="0" />
@@ -1323,7 +1337,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%1781" Name="f%C%State17Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 17 (DPT 17)" Value="16" />
                 <Parameter Id="%AID%_UP-%T%%CC%1794" Name="f%C%State17Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 17 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="756" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="764" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1801" Name="f%C%TransState18Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(18,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1802" Name="f%C%TransState18Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(18,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1803" Name="f%C%TransState18Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(18,3)"            Value="0" />
@@ -1393,7 +1407,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%1881" Name="f%C%State18Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 18 (DPT 17)" Value="17" />
                 <Parameter Id="%AID%_UP-%T%%CC%1894" Name="f%C%State18Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 18 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="798" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="806" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1901" Name="f%C%TransState19Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(19,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1902" Name="f%C%TransState19Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(19,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1903" Name="f%C%TransState19Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(19,3)"            Value="0" />
@@ -1463,7 +1477,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%1981" Name="f%C%State19Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 19 (DPT 17)" Value="18" />
                 <Parameter Id="%AID%_UP-%T%%CC%1994" Name="f%C%State19Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 19 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="840" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="848" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2001" Name="f%C%TransState20Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(20,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2002" Name="f%C%TransState20Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(20,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2003" Name="f%C%TransState20Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(20,3)"            Value="0" />
@@ -1533,7 +1547,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%2081" Name="f%C%State20Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 20 (DPT 17)" Value="19" />
                 <Parameter Id="%AID%_UP-%T%%CC%2094" Name="f%C%State20Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 20 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="882" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="890" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2101" Name="f%C%TransState21Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(21,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2102" Name="f%C%TransState21Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(21,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2103" Name="f%C%TransState21Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(21,3)"            Value="0" />
@@ -1603,7 +1617,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%2181" Name="f%C%State21Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 21 (DPT 17)" Value="20" />
                 <Parameter Id="%AID%_UP-%T%%CC%2194" Name="f%C%State21Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 21 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="924" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="932" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2201" Name="f%C%TransState22Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(22,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2202" Name="f%C%TransState22Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(22,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2203" Name="f%C%TransState22Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(22,3)"            Value="0" />
@@ -1673,7 +1687,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%2281" Name="f%C%State22Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 22 (DPT 17)" Value="21" />
                 <Parameter Id="%AID%_UP-%T%%CC%2294" Name="f%C%State22Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 22 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="966" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="974" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2301" Name="f%C%TransState23Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(23,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2302" Name="f%C%TransState23Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(23,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2303" Name="f%C%TransState23Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(23,3)"            Value="0" />
@@ -1743,7 +1757,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%2381" Name="f%C%State23Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 23 (DPT 17)" Value="22" />
                 <Parameter Id="%AID%_UP-%T%%CC%2394" Name="f%C%State23Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 23 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="1008" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="1016" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2401" Name="f%C%TransState24Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(24,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2402" Name="f%C%TransState24Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(24,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2403" Name="f%C%TransState24Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(24,3)"            Value="0" />
@@ -1813,7 +1827,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%2481" Name="f%C%State24Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 24 (DPT 17)" Value="23" />
                 <Parameter Id="%AID%_UP-%T%%CC%2494" Name="f%C%State24Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 24 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="1050" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="1058" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2501" Name="f%C%TransState25Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(25,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2502" Name="f%C%TransState25Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(25,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2503" Name="f%C%TransState25Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(25,3)"            Value="0" />
@@ -1883,7 +1897,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%2581" Name="f%C%State25Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 25 (DPT 17)" Value="24" />
                 <Parameter Id="%AID%_UP-%T%%CC%2594" Name="f%C%State25Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 25 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="1092" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="1100" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2601" Name="f%C%TransState26Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(26,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2602" Name="f%C%TransState26Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(26,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2603" Name="f%C%TransState26Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(26,3)"            Value="0" />
@@ -1953,7 +1967,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%2681" Name="f%C%State26Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 26 (DPT 17)" Value="25" />
                 <Parameter Id="%AID%_UP-%T%%CC%2694" Name="f%C%State26Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 26 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="1134" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="1142" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2701" Name="f%C%TransState27Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(27,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2702" Name="f%C%TransState27Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(27,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2703" Name="f%C%TransState27Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(27,3)"            Value="0" />
@@ -2023,7 +2037,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%2781" Name="f%C%State27Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 27 (DPT 17)" Value="26" />
                 <Parameter Id="%AID%_UP-%T%%CC%2794" Name="f%C%State27Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 27 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="1176" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="1184" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2801" Name="f%C%TransState28Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(28,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2802" Name="f%C%TransState28Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(28,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2803" Name="f%C%TransState28Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(28,3)"            Value="0" />
@@ -2093,7 +2107,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%2881" Name="f%C%State28Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 28 (DPT 17)" Value="27" />
                 <Parameter Id="%AID%_UP-%T%%CC%2894" Name="f%C%State28Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 28 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="1218" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="1226" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2901" Name="f%C%TransState29Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(29,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2902" Name="f%C%TransState29Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(29,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2903" Name="f%C%TransState29Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(29,3)"            Value="0" />
@@ -2163,7 +2177,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%2981" Name="f%C%State29Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 29 (DPT 17)" Value="28" />
                 <Parameter Id="%AID%_UP-%T%%CC%2994" Name="f%C%State29Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 29 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="1260" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="1268" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%3001" Name="f%C%TransState30Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(30,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%3002" Name="f%C%TransState30Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(30,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%3003" Name="f%C%TransState30Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(30,3)"            Value="0" />
@@ -2233,7 +2247,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%3081" Name="f%C%State30Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 30 (DPT 17)" Value="29" />
                 <Parameter Id="%AID%_UP-%T%%CC%3094" Name="f%C%State30Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 30 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="1302" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="1310" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%3101" Name="f%C%TransState31Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(31,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%3102" Name="f%C%TransState31Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(31,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%3103" Name="f%C%TransState31Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(31,3)"            Value="0" />
@@ -2303,7 +2317,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%3181" Name="f%C%State31Output4TypeDpt17" ParameterType="%AID%_PT-DfaScene"             Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 31 (DPT 17)" Value="30" />
                 <Parameter Id="%AID%_UP-%T%%CC%3194" Name="f%C%State31Output4TypeDpt232" ParameterType="%AID%_PT-ValueColor"           Offset="28" BitOffset="0"     Text="Ausgabewert Zustand 31 (DPT 232)" Value="000000" />
               </Union>
-              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="1344" BitOffset="0" />
+              <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="1352" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%3201" Name="f%C%TransState32Input1"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(32,1)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%3202" Name="f%C%TransState32Input2"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="2" BitOffset="0"      Text="trans(32,2)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%3203" Name="f%C%TransState32Input3"   ParameterType="%AID%_PT-DfaStateNextReset"    Offset="3" BitOffset="0"      Text="trans(32,3)"            Value="0" />
@@ -4645,12 +4659,20 @@
               <ParameterRef Id="%AID%_UP-%T%%CC%7804_R-%T%%CC%780401" RefId="%AID%_UP-%T%%CC%7804" />
               <ParameterRef Id="%AID%_P-%T%%CC%8100_R-%T%%CC%810001" RefId="%AID%_P-%T%%CC%8100" />
               <ParameterRef Id="%AID%_UP-%T%%CC%8101_R-%T%%CC%810101" RefId="%AID%_UP-%T%%CC%8101" />
+              <ParameterRef Id="%AID%_UP-%T%%CC%8102_R-%T%%CC%810201" RefId="%AID%_UP-%T%%CC%8102" />
+              <ParameterRef Id="%AID%_UP-%T%%CC%8103_R-%T%%CC%810301" RefId="%AID%_UP-%T%%CC%8103" />
               <ParameterRef Id="%AID%_P-%T%%CC%8200_R-%T%%CC%820001" RefId="%AID%_P-%T%%CC%8200" />
               <ParameterRef Id="%AID%_UP-%T%%CC%8201_R-%T%%CC%820101" RefId="%AID%_UP-%T%%CC%8201" />
+              <ParameterRef Id="%AID%_UP-%T%%CC%8202_R-%T%%CC%820201" RefId="%AID%_UP-%T%%CC%8202" />
+              <ParameterRef Id="%AID%_UP-%T%%CC%8203_R-%T%%CC%820301" RefId="%AID%_UP-%T%%CC%8203" />
               <ParameterRef Id="%AID%_P-%T%%CC%8300_R-%T%%CC%830001" RefId="%AID%_P-%T%%CC%8300" />
               <ParameterRef Id="%AID%_UP-%T%%CC%8301_R-%T%%CC%830101" RefId="%AID%_UP-%T%%CC%8301" />
+              <ParameterRef Id="%AID%_UP-%T%%CC%8302_R-%T%%CC%830201" RefId="%AID%_UP-%T%%CC%8302" />
+              <ParameterRef Id="%AID%_UP-%T%%CC%8303_R-%T%%CC%830301" RefId="%AID%_UP-%T%%CC%8303" />
               <ParameterRef Id="%AID%_P-%T%%CC%8400_R-%T%%CC%840001" RefId="%AID%_P-%T%%CC%8400" />
               <ParameterRef Id="%AID%_UP-%T%%CC%8401_R-%T%%CC%840101" RefId="%AID%_UP-%T%%CC%8401" />
+              <ParameterRef Id="%AID%_UP-%T%%CC%8402_R-%T%%CC%840201" RefId="%AID%_UP-%T%%CC%8402" />
+              <ParameterRef Id="%AID%_UP-%T%%CC%8403_R-%T%%CC%840301" RefId="%AID%_UP-%T%%CC%8403" />
 
 
               <ParameterRef Id="%AID%_P-%T%%CC%7100_R-%T%%CC%710002" RefId="%AID%_P-%T%%CC%7100" Text="Bezeichnung Eingabe A/B" />
@@ -6141,6 +6163,20 @@
                           <choose ParamRefId="%AID%_UP-%T%%CC%8101_R-%T%%CC%810101">
                             <when test="!=0">
                               <ParameterBlock Id="%AID%_PB-%C%1020" Name="f%C%Output1" Text="Ausgang 1: {{0:...}}"  TextParameterRefId="%AID%_P-%T%%CC%8100_R-%T%%CC%810001">
+                                <!-- ChannelDelay Delay pattern, as used in LOG or VPM -->
+                                <ParameterBlock Id="%AID%_PB-nnn" Name="f%C%ChannelOutput1Interval" Inline="true" Layout="Grid">
+                                  <Rows>
+                                    <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
+                                  </Rows>
+                                  <Columns>
+                                    <Column Id="%AID%_PB-nnn_C-1" Name="Col1" Width="45%" />
+                                    <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="15%" />
+                                    <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="20%" />
+                                  </Columns>
+                                  <ParameterSeparator Id="%AID%_PS-nnn" Text="Sendeintervall bei zyklischer Wiederholung" Cell="1,1" />
+                                  <ParameterRefRef RefId="%AID%_UP-%T%%CC%8103_R-%T%%CC%810301" Cell="1,2" />
+                                  <ParameterRefRef RefId="%AID%_UP-%T%%CC%8102_R-%T%%CC%810201" Cell="1,3" />
+                                </ParameterBlock>
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Definition Ausgangswert" UIHint="Headline" />
                                 <ParameterBlock Id="%AID%_PB-nnn" Name="Value%C%" Text="z" Inline="true" Layout="Table">
                                   <Rows>
@@ -8810,6 +8846,20 @@
                           <choose ParamRefId="%AID%_UP-%T%%CC%8201_R-%T%%CC%820101">
                             <when test="!=0">
                               <ParameterBlock Id="%AID%_PB-%C%2020" Name="f%C%Output2" Text="Ausgang 2: {{0:...}}"  TextParameterRefId="%AID%_P-%T%%CC%8200_R-%T%%CC%820001">
+                                <!-- ChannelDelay Delay pattern, as used in LOG or VPM -->
+                                <ParameterBlock Id="%AID%_PB-nnn" Name="f%C%ChannelOutput2Interval" Inline="true" Layout="Grid">
+                                  <Rows>
+                                    <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
+                                  </Rows>
+                                  <Columns>
+                                    <Column Id="%AID%_PB-nnn_C-1" Name="Col1" Width="45%" />
+                                    <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="15%" />
+                                    <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="20%" />
+                                  </Columns>
+                                  <ParameterSeparator Id="%AID%_PS-nnn" Text="Sendeintervall bei zyklischer Wiederholung" Cell="1,1" />
+                                  <ParameterRefRef RefId="%AID%_UP-%T%%CC%8203_R-%T%%CC%820301" Cell="1,2" />
+                                  <ParameterRefRef RefId="%AID%_UP-%T%%CC%8202_R-%T%%CC%820201" Cell="1,3" />
+                                </ParameterBlock>
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Definition Ausgangswert" UIHint="Headline" />
                                 <ParameterBlock Id="%AID%_PB-nnn" Name="Value%C%" Text="z" Inline="true" Layout="Table">
                                   <Rows>
@@ -11479,6 +11529,20 @@
                           <choose ParamRefId="%AID%_UP-%T%%CC%8301_R-%T%%CC%830101">
                             <when test="!=0">
                               <ParameterBlock Id="%AID%_PB-%C%3020" Name="f%C%Output3" Text="Ausgang 3: {{0:...}}"  TextParameterRefId="%AID%_P-%T%%CC%8300_R-%T%%CC%830001">
+                                <!-- ChannelDelay Delay pattern, as used in LOG or VPM -->
+                                <ParameterBlock Id="%AID%_PB-nnn" Name="f%C%ChannelOutput3Interval" Inline="true" Layout="Grid">
+                                  <Rows>
+                                    <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
+                                  </Rows>
+                                  <Columns>
+                                    <Column Id="%AID%_PB-nnn_C-1" Name="Col1" Width="45%" />
+                                    <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="15%" />
+                                    <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="20%" />
+                                  </Columns>
+                                  <ParameterSeparator Id="%AID%_PS-nnn" Text="Sendeintervall bei zyklischer Wiederholung" Cell="1,1" />
+                                  <ParameterRefRef RefId="%AID%_UP-%T%%CC%8303_R-%T%%CC%830301" Cell="1,2" />
+                                  <ParameterRefRef RefId="%AID%_UP-%T%%CC%8302_R-%T%%CC%830201" Cell="1,3" />
+                                </ParameterBlock>
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Definition Ausgangswert" UIHint="Headline" />
                                 <ParameterBlock Id="%AID%_PB-nnn" Name="Value%C%" Text="z" Inline="true" Layout="Table">
                                   <Rows>
@@ -14148,6 +14212,20 @@
                           <choose ParamRefId="%AID%_UP-%T%%CC%8401_R-%T%%CC%840101">
                             <when test="!=0">
                               <ParameterBlock Id="%AID%_PB-%C%4020" Name="f%C%Output4" Text="Ausgang 4: {{0:...}}"  TextParameterRefId="%AID%_P-%T%%CC%8400_R-%T%%CC%840001">
+                                <!-- ChannelDelay Delay pattern, as used in LOG or VPM -->
+                                <ParameterBlock Id="%AID%_PB-nnn" Name="f%C%ChannelOutput4Interval" Inline="true" Layout="Grid">
+                                  <Rows>
+                                    <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
+                                  </Rows>
+                                  <Columns>
+                                    <Column Id="%AID%_PB-nnn_C-1" Name="Col1" Width="45%" />
+                                    <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="15%" />
+                                    <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="20%" />
+                                  </Columns>
+                                  <ParameterSeparator Id="%AID%_PS-nnn" Text="Sendeintervall bei zyklischer Wiederholung" Cell="1,1" />
+                                  <ParameterRefRef RefId="%AID%_UP-%T%%CC%8403_R-%T%%CC%840301" Cell="1,2" />
+                                  <ParameterRefRef RefId="%AID%_UP-%T%%CC%8402_R-%T%%CC%840201" Cell="1,3" />
+                                </ParameterBlock>
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Definition Ausgangswert" UIHint="Headline" />
                                 <ParameterBlock Id="%AID%_PB-nnn" Name="Value%C%" Text="z" Inline="true" Layout="Table">
                                   <Rows>
