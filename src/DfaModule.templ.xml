@@ -5083,7 +5083,9 @@
                         <ParameterRefRef RefId="%AID%_UP-%T%%CC%0008_R-%T%%CC%000801" IndentLevel="1" />
                         <choose ParamRefId="%AID%_UP-%T%%CC%0008_R-%T%%CC%000801">
                           <when test="!=0">
-                            <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG: Wiederherstellen von Zuständen beim Start ist ein experimentelles Feature. LIMITATION: Es kann auf diesem Wege nicht sichergestellt werden, dass ein Verhalten wie ohne Unterbrechung erreicht wird." UIHint="Information" />
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG: Wiederherstellen von Zuständen beim Start ist ein experimentelles Feature." UIHint="Information" />
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="LIMITATION: Es kann NICHT sichergestellt werden, dass in allen Fällen der letzte Zustand gespeichert wird (z.B. bei Nutzung der Reset-Taste)." UIHint="Information" />
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="LIMITATION: Es kann auf diesem Wege NICHT sichergestellt werden, dass ein Verhalten wie ohne Unterbrechung erreicht wird." UIHint="Information" />
                           </when>
                         </choose>
                         <ParameterRefRef RefId="%AID%_UP-%T%%CC%0005_R-%T%%CC%000501" />
