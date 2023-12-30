@@ -4928,8 +4928,10 @@
                                 <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K2%: Eingang 1"       Cell="3,3" /></when><!-- new -->
                                 <when test="2"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7102_R-%T%%CC%710202"         Cell="3,3" /></when><!-- KO  -->
                                 <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7104_R-%T%%CC%710402"         Cell="3,3" /></when><!-- LOG -->
+                                <when test="!=0">
+                                  <ParameterSeparator Id="%AID%_PS-nnn" Text="1 -&gt; A   /   0 -&gt; B"                    Cell="3,4" />
+                                </when>                                
                               </choose>
-                              <ParameterSeparator Id="%AID%_PS-nnn" Text="1 -&gt; A   /   0 -&gt; B"                        Cell="3,4" />
                             </when>
                           </choose>
 
@@ -4964,8 +4966,10 @@
                                 <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K4%: Eingang 3"       Cell="6,3" /></when><!-- new -->
                                 <when test="2"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7302_R-%T%%CC%730202"         Cell="6,3" /></when><!-- KO  -->
                                 <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7304_R-%T%%CC%730402"         Cell="6,3" /></when><!-- LOG -->
+                                <when test="!=0">
+                                  <ParameterSeparator Id="%AID%_PS-nnn" Text="1 -&gt; C   /   0 -&gt; D"                    Cell="6,4" />
+                                </when>                                
                               </choose>
-                              <ParameterSeparator Id="%AID%_PS-nnn" Text="1 -&gt; C   /   0 -&gt; D"                        Cell="6,4" />
                             </when>
                           </choose>
 
@@ -5000,8 +5004,10 @@
                                 <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K6%: Eingang 5"       Cell="9,3" /></when><!-- new -->
                                 <when test="2"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7502_R-%T%%CC%750202"         Cell="9,3" /></when><!-- KO  -->
                                 <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7504_R-%T%%CC%750402"         Cell="9,3" /></when><!-- LOG -->
+                                <when test="!=0">
+                                  <ParameterSeparator Id="%AID%_PS-nnn" Text="1 -&gt; E   /   0 -&gt; F"                    Cell="9,4" />
+                                </when>                                
                               </choose>
-                              <ParameterSeparator Id="%AID%_PS-nnn" Text="1 -&gt; E   /   0 -&gt; F"                        Cell="9,4" />
                             </when>
                           </choose>
 
@@ -5036,8 +5042,10 @@
                                 <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K8%: Eingang 7"       Cell="12,3" /></when><!-- new -->
                                 <when test="2"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7702_R-%T%%CC%770202"         Cell="12,3" /></when><!-- KO  -->
                                 <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7704_R-%T%%CC%770402"         Cell="12,3" /></when><!-- LOG -->
+                                <when test="!=0">
+                                  <ParameterSeparator Id="%AID%_PS-nnn" Text="1 -&gt; G   /   0 -&gt; H"                    Cell="12,4" />
+                                </when>                                
                               </choose>
-                              <ParameterSeparator Id="%AID%_PS-nnn" Text="1 -&gt; G   /   0 -&gt; H"                        Cell="12,4" />
                             </when>
                           </choose>
 
