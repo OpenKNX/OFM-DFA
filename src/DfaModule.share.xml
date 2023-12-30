@@ -7,6 +7,11 @@
         <ApplicationProgram>
           <Static>
             <ParameterTypes>
+              <!-- Number of channels (module specific) -->
+              <ParameterType Id="%AID%_PT-DFANumChannels" Name="DFANumChannels">
+                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="1" maxInclusive="%N%" />
+              </ParameterType>
+
 
               <ParameterType Id="%AID%_PT-DocText255" Name="DocumentationText255Char">
                 <TypeText SizeInBit="2040" />
@@ -622,8 +627,11 @@
 
             </ParameterTypes>
             <Parameters>
+              <!-- TODO store in memory? -->
+              <Parameter Id="%AID%_P-%T%000001" Name="VisibleChannels" ParameterType="%AID%_PT-DFANumChannels" Text="Verfügbare Kanäle"          Value="%N%" SuffixText=" von %N%" />
             </Parameters>
             <ParameterRefs>
+              <ParameterRef Id="%AID%_P-%T%000001_R-%T%00000101" RefId="%AID%_P-%T%000001" />
             </ParameterRefs>
             <ComObjectTable>
             </ComObjectTable>
@@ -637,7 +645,11 @@
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG:&#xD;&#xA;Alpha-Version für erste Tester.&#xD;&#xA;Fehler und spätere ggf. inkompatible Änderungen möglich!" UIHint="Information" />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="In diesem Modul ist keine kontextsensitive Hilfe integriert." />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Ein u.U. nicht aktueller Stand der Dokumentation ist online verfügbar." />
-              </ParameterBlock>              
+              </ParameterBlock>
+              <ParameterBlock Name="DfaBasic" Text="Basiseinstellungen" Id="%AID%_PB-nnn" Icon="information-outline"><!-- HelpContext="DFA-Dokumentation" -->
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Kanalauswahl" UIHint="Headline" />
+                <ParameterRefRef RefId="%AID%_P-%T%000001_R-%T%00000101" />
+              </ParameterBlock>                            
               <!-- all DFA channels: -->
               <op:include href="DfaModule.templ.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="template" prefix="DFA" IsInner="true" />
             </Channel>
