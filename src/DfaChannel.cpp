@@ -455,6 +455,10 @@ void DfaChannel::loop()
             // TODO check creation of method transferTimeout()
             setState(getTimeoutState(_state));
         }
+        else
+        {
+            // TODO cyclic sending
+        }
     }
     else if (_processStartupDelay && delayCheckMillis(_startupDelayBegin_ms, ParamDFA_fChannelDelayTimeMS))
     {
