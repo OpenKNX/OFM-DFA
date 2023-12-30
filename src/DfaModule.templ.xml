@@ -9,19 +9,9 @@
             <Parameters>
               <Parameter Id="%AID%_P-%T%%CC%0001" Name="f%C%Name" ParameterType="%AID%_PT-Text40Byte" Text="Beschreibung des DEA" Value="" />
 
-              <!--
-              <Parameter Id="%AID%_P-%T%%CC%0090" Name="f%C%DocShow"         ParameterType="%AID%_PT-CheckBox"     Text="Dokumentationsfelder anzeigen" Value="0" />
-              <Parameter Id="%AID%_P-%T%%CC%0091" Name="f%C%Doc1"            ParameterType="%AID%_PT-DocText255"   Text="Dokumentation 1"               Value=""  />
-              <Parameter Id="%AID%_P-%T%%CC%0092" Name="f%C%Doc2"            ParameterType="%AID%_PT-DocText255"   Text="Dokumentation 2"               Value=""  />
-              <Parameter Id="%AID%_P-%T%%CC%0093" Name="f%C%Doc3"            ParameterType="%AID%_PT-DocText255"   Text="Dokumentation 3"               Value=""  />
-              <Parameter Id="%AID%_P-%T%%CC%0094" Name="f%C%Doc4"            ParameterType="%AID%_PT-DocText255"   Text="Dokumentation 4"               Value=""  />
-              <Parameter Id="%AID%_P-%T%%CC%0095" Name="f%C%Doc5"            ParameterType="%AID%_PT-DocText255"   Text="Dokumentation 5"               Value=""  />
-              <Parameter Id="%AID%_P-%T%%CC%0096" Name="f%C%Doc6"            ParameterType="%AID%_PT-DocText255"   Text="Dokumentation 6"               Value=""  />
-              <Parameter Id="%AID%_P-%T%%CC%0097" Name="f%C%Doc7"            ParameterType="%AID%_PT-DocText255"   Text="Dokumentation 7"               Value=""  />
-              <Parameter Id="%AID%_P-%T%%CC%0098" Name="f%C%Doc8"            ParameterType="%AID%_PT-DocText255"   Text="Dokumentation 8"               Value=""  />
-              -->
+                <Parameter Id="%AID%_P-%T%%CC%0090" Name="f%C%Comment"         ParameterType="%AID%_PT-Text512Byte"  Text="Kommentar"                     Value="" />
 
-              <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="0" BitOffset="0" />
+                <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="0" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0006" Name="f%C%SwitchMaster" ParameterType="%AID%_PT-ChannelSwitchMaster" Offset="0" BitOffset="0" Text="Kanal verwenden?"                      Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0007" Name="f%C%SwitchByKo"   ParameterType="%AID%_PT-ChannelSwitchByKo"   Offset="0" BitOffset="2" Text="Starten und Pausieren"                 Value="3" />
                 <Parameter Id="%AID%_UP-%T%%CC%0005" Name="f%C%StateSetting" ParameterType="%AID%_PT-StateDirectSetting"  Offset="0" BitOffset="4" Text="Direktes Setzen von Zustand erlauben?" Value="0" />
@@ -2396,17 +2386,7 @@
               <ParameterRef Id="%AID%_UP-%T%%CC%0007_R-%T%%CC%000701" RefId="%AID%_UP-%T%%CC%0007" />
               <ParameterRef Id="%AID%_UP-%T%%CC%0008_R-%T%%CC%000801" RefId="%AID%_UP-%T%%CC%0008" />
 
-              <!--
               <ParameterRef Id="%AID%_P-%T%%CC%0090_R-%T%%CC%009001" RefId="%AID%_P-%T%%CC%0090" />
-              <ParameterRef Id="%AID%_P-%T%%CC%0091_R-%T%%CC%009101" RefId="%AID%_P-%T%%CC%0091" />
-              <ParameterRef Id="%AID%_P-%T%%CC%0092_R-%T%%CC%009201" RefId="%AID%_P-%T%%CC%0092" />
-              <ParameterRef Id="%AID%_P-%T%%CC%0093_R-%T%%CC%009301" RefId="%AID%_P-%T%%CC%0093" />
-              <ParameterRef Id="%AID%_P-%T%%CC%0094_R-%T%%CC%009401" RefId="%AID%_P-%T%%CC%0094" />
-              <ParameterRef Id="%AID%_P-%T%%CC%0095_R-%T%%CC%009501" RefId="%AID%_P-%T%%CC%0095" />
-              <ParameterRef Id="%AID%_P-%T%%CC%0096_R-%T%%CC%009601" RefId="%AID%_P-%T%%CC%0096" />
-              <ParameterRef Id="%AID%_P-%T%%CC%0097_R-%T%%CC%009701" RefId="%AID%_P-%T%%CC%0097" />
-              <ParameterRef Id="%AID%_P-%T%%CC%0098_R-%T%%CC%009801" RefId="%AID%_P-%T%%CC%0098" />
-              -->
 
               <!-- combined inputs -->
               <ParameterRef Id="%AID%_UP-%T%%CC%7001_R-%T%%CC%700101" RefId="%AID%_UP-%T%%CC%7001" />
@@ -4846,51 +4826,9 @@
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="DEA-Definition" UIHint="Headline" />
                     <ParameterRefRef RefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" />
 
-                    <!-- Documentation -->
-                    <!--
+                    <!-- Documentation --><!-- Multi-Line Comment (not the Module from Common) -->
                     <ParameterRefRef RefId="%AID%_P-%T%%CC%0090_R-%T%%CC%009001" />
-                    <choose ParamRefId="%AID%_P-%T%%CC%0090_R-%T%%CC%009001">
-                      <when test="!=0">
-                        <ParameterBlock Id="%AID%_PB-nnn" Name="f%C%ChannelDoc" Inline="true" Layout="Grid">
-                          <Rows>
-                            <Row Id="%AID%_PB-nnn_R-1" Name="Doc1" />
-                            <Row Id="%AID%_PB-nnn_R-2" Name="Doc2" />
-                            <Row Id="%AID%_PB-nnn_R-3" Name="Doc3" />
-                            <Row Id="%AID%_PB-nnn_R-4" Name="Doc4" />
-                            <Row Id="%AID%_PB-nnn_R-5" Name="Doc5" />
-                            <Row Id="%AID%_PB-nnn_R-6" Name="Doc6" />
-                            <Row Id="%AID%_PB-nnn_R-7" Name="Doc7" />
-                            <Row Id="%AID%_PB-nnn_R-8" Name="Doc8" />
-                          </Rows>
-                          <Columns>
-                            <Column Id="%AID%_PB-nnn_C-1" Name="Col1" Width="10%" />
-                            <Column Id="%AID%_PB-nnn_C-2" Name="Col2" Width="100%" />
-                          </Columns>
-                          <ParameterSeparator Id="%AID%_PS-nnn" Text="  Dok1:" Cell="1,1" />
-                          <ParameterSeparator Id="%AID%_PS-nnn" Text="  Dok2:" Cell="2,1" />
-                          <ParameterSeparator Id="%AID%_PS-nnn" Text="  Dok3:" Cell="3,1" />
-                          <ParameterSeparator Id="%AID%_PS-nnn" Text="  Dok4:" Cell="4,1" />
-                          <ParameterSeparator Id="%AID%_PS-nnn" Text="  Dok5:" Cell="5,1" />
-                          <ParameterSeparator Id="%AID%_PS-nnn" Text="  Dok6:" Cell="6,1" />
-                          <ParameterSeparator Id="%AID%_PS-nnn" Text="  Dok7:" Cell="7,1" />
-                          <ParameterSeparator Id="%AID%_PS-nnn" Text="  Dok8:" Cell="8,1" />
-
-                          <ParameterRefRef RefId="%AID%_P-%T%%CC%0091_R-%T%%CC%009101" Cell="1,2" />
-                          <ParameterRefRef RefId="%AID%_P-%T%%CC%0092_R-%T%%CC%009201" Cell="2,2" />
-                          <ParameterRefRef RefId="%AID%_P-%T%%CC%0093_R-%T%%CC%009301" Cell="3,2" />
-                          <ParameterRefRef RefId="%AID%_P-%T%%CC%0094_R-%T%%CC%009401" Cell="4,2" />
-                          <ParameterRefRef RefId="%AID%_P-%T%%CC%0095_R-%T%%CC%009501" Cell="5,2" />
-                          <ParameterRefRef RefId="%AID%_P-%T%%CC%0096_R-%T%%CC%009601" Cell="6,2" />
-                          <ParameterRefRef RefId="%AID%_P-%T%%CC%0097_R-%T%%CC%009701" Cell="7,2" />
-                          <ParameterRefRef RefId="%AID%_P-%T%%CC%0098_R-%T%%CC%009801" Cell="8,2" />
-                        </ParameterBlock>
-                      </when>
-                      <when test="0">
-                        <ParameterSeparator Id="%AID%_PS-nnn" Text="{{0:}}" TextParameterRefId="%AID%_P-%T%%CC%0091_R-%T%%CC%009101" />
-                      </when>
-                    </choose>
-                    -->
-
+                    <Button Id="%AID%_B-%T%%CC%0090" Text="Alle '\n' im Text durch neue Zeile(n) ersetzen" EventHandler="newline" EventHandlerParameters="{ &quot;textbox&quot;:&quot;DFA_f%C%Comment&quot; }" />
 
                     <ParameterRefRef RefId="%AID%_UP-%T%%CC%0006_R-%T%%CC%000601" />
                     <choose ParamRefId="%AID%_UP-%T%%CC%0006_R-%T%%CC%000601">
@@ -5096,8 +5034,8 @@
                               <ParameterRefRef RefId="%AID%_UP-%T%%CC%7701_R-%T%%CC%770102"                                 Cell="12,2" />
                               <choose ParamRefId="%AID%_UP-%T%%CC%7701_R-%T%%CC%770102">
                                 <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K8%: Eingang 7"       Cell="12,3" /></when><!-- new -->
-                                <when test="2"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7702_R-%T%%CC%770202"         Cell="11,3" /></when><!-- KO  -->
-                                <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7704_R-%T%%CC%770402"         Cell="11,3" /></when><!-- LOG -->
+                                <when test="2"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7702_R-%T%%CC%770202"         Cell="12,3" /></when><!-- KO  -->
+                                <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7704_R-%T%%CC%770402"         Cell="12,3" /></when><!-- LOG -->
                               </choose>
                               <ParameterSeparator Id="%AID%_PS-nnn" Text="1 -&gt; G   /   0 -&gt; H"                        Cell="12,4" />
                             </when>
