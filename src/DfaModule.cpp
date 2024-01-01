@@ -137,6 +137,7 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
         // TODO Check and refine command definitions after first tests and extension!
         if (cmd.length() == 14 && cmd.substr(5, 9) == " timeout!")
         {
+            // TODO check handling of unexpected inputs!
             uint16_t channelIdx = std::stoi(cmd.substr(3, 2)) - 1;
 
             if (channelIdx < DFA_ChannelCount)
