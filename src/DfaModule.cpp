@@ -127,6 +127,7 @@ void DfaModule::readFlash(const uint8_t *buf, const uint16_t size)
 void DfaModule::showHelp()
 {
     // TODO Check and refine command definitions after first tests and extension!
+    openknx.console.printHelpLine("dfaNN",          "(WIP/may change) Show current scene and timeout remain!");
     openknx.console.printHelpLine("dfaNN timeout!", "(WIP/may change) Let timeout of channel NN end now!");
 }
 
@@ -143,6 +144,16 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
             if (channelIdx < DFA_ChannelCount)
             {
                 logDebugP("=> DFA-Channel<%d> timeout end now!", (channelIdx + 1));
+                return _channels[channelIdx]->processCommand(cmd, diagnoseKo);
+            }
+        }
+        else if (cmd.length() == 5) {
+            // TODO check handling of unexpected inputs!
+            uint16_t channelIdx = std::stoi(cmd.substr(3, 2)) - 1;
+
+            if (channelIdx < DFA_ChannelCount)
+            {
+                logDebugP("=> DFA-Channel<%d> overview!", (channelIdx + 1));
                 return _channels[channelIdx]->processCommand(cmd, diagnoseKo);
             }
         }

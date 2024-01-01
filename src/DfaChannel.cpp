@@ -775,6 +775,46 @@ bool DfaChannel::processCommand(const std::string cmd, bool diagnoseKo)
                 return true;
             }
         }
+        else if (cmd.length() == 5)
+        {
+            // TODO check handling of unexpected inputs!
+            uint16_t channelIdx = std::stoi(cmd.substr(3, 2)) - 1;
+            if (channelIdx == _channelIndex)
+            {
+                logDebugP("status and remaining delay");
+                const uint8_t state = _state + 1;
+                if (_stateTimeoutDelay_ms > 0)
+                {
+                    uint32_t remaining = timeoutRemaining_ms();
+                    logDebugP("T@%d", remaining);
+                    const uint16_t timeoutMillis = remaining % 1000;
+                    remaining = remaining / 1000;
+                    const uint16_t timeoutSeconds = remaining % 60;
+                    remaining = remaining / 60;
+                    const uint16_t timeoutMinutes = remaining % 60;
+                    remaining = remaining / 60;
+                    const uint16_t timeoutHours = remaining;
+
+                    // TODO FIXME ensure state<100
+                    if (timeoutHours < 10)
+                    {
+                        logDebugP("%02d<%d:%02d:%02d.%03d", state, timeoutHours, timeoutMinutes, timeoutSeconds, timeoutMillis);
+                        openknx.console.writeDiagenoseKo("%02d<%d:%02d:%02d.%03d", state, timeoutHours, timeoutMinutes, timeoutSeconds, timeoutMillis);
+                    }
+                    else
+                    {
+                        logDebugP("%02d<%5d:%02d:%02d", state, timeoutHours, timeoutMinutes, timeoutSeconds);
+                        openknx.console.writeDiagenoseKo("%02d<%5d:%02d:%02d", state, timeoutHours, timeoutMinutes, timeoutSeconds);
+                    }
+                }
+                else
+                {
+                    logDebugP("%02d<NO_TIMEOUT", state);
+                    openknx.console.writeDiagenoseKo("%02d<NO_TIMEOUT", state);
+                }
+                return true;
+            }
+        }
     }
     return false;
 }
