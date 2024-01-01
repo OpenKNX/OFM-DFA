@@ -591,7 +591,7 @@ void DfaChannel::setState(const uint8_t nextState)
         _state = nextState;
         // reset timeout
         _stateTimeoutDelay_ms = getStateTimeoutDelay_ms(nextState);
-        _stateTimeoutBegin_ms = millis();
+        resetTimeout();
 
         // send state
         KoDFA_KOfState.value(_state, DPT_SceneNumber);
@@ -721,6 +721,12 @@ void DfaChannel::endTimeout()
         // set to shortest possible valid timeout of 1ms; might result in up to 1ms delay until end, when executed directly after state change
         _stateTimeoutDelay_ms = 1;
     }
+}
+
+void DfaChannel::resetTimeout()
+{
+    // do NOT check: if (_stateTimeoutDelay_ms > 0)
+    _stateTimeoutBegin_ms = millis();
 }
 
 // TODO check definition of behaviour for non-timeout
