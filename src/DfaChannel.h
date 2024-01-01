@@ -99,6 +99,7 @@ class DfaChannel : public OpenKNX::Channel
     void transfer(const uint8_t input);
 
     void endTimeout();
+    uint32_t timeoutRemaining_ms();
 
     void setRunning(const bool requestRun, const bool first = false);
 

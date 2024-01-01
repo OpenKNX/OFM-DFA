@@ -723,17 +723,23 @@ void DfaChannel::endTimeout()
     }
 }
 
+// TODO check definition of behaviour for non-timeout
+uint32_t DfaChannel::timeoutRemaining_ms()
+{
+    // futureDelay = _stateTimeoutBegin_ms + _stateTimeoutDelay_ms - millis();
+    // futureDelay = (_stateTimeoutBegin_ms - millis()) + _stateTimeoutDelay_ms;
+    // futureDelay = _stateTimeoutDelay_ms - (millis() - _stateTimeoutBegin_ms)
+    // TODO check for correct handling of overflow
+    return _stateTimeoutDelay_ms - (millis() - _stateTimeoutBegin_ms);
+}
+
 void DfaChannel::save()
 {
     const uint8_t conf = _channelActive << 7 | _running << 6 | ParamDFA_fStateRestore;
     openknx.flash.writeByte(conf);
     openknx.flash.writeByte(_state);
 
-    // futureDelay = _stateTimeoutBegin_ms + _stateTimeoutDelay_ms - millis();
-    // futureDelay = (_stateTimeoutBegin_ms - millis()) + _stateTimeoutDelay_ms;
-    // futureDelay = _stateTimeoutDelay_ms - (millis() - _stateTimeoutBegin_ms)
-    // TODO check for correct handling of overflow
-    const uint32_t futureDelay = _stateTimeoutDelay_ms - (millis() - _stateTimeoutBegin_ms);
+    const uint32_t futureDelay = timeoutRemaining_ms();
     openknx.flash.writeInt(futureDelay);
 
     logDebugP("saved c=%2x s=%2x t=%u b=%u f=%u", conf, _state, _stateTimeoutDelay_ms, _stateTimeoutBegin_ms, futureDelay);
