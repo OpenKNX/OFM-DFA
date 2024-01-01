@@ -604,12 +604,11 @@ void DfaChannel::setState(const uint8_t nextState)
     }
 }
 
-void DfaChannel::sendOutput(const uint8_t outputIndex, const KNXValue &value, const Dpt &type, const uint8_t outputStateSend)
+void DfaChannel::sendOutput(const uint8_t outputIndex, const KNXValue &value, const Dpt &type, const bool sendAlways)
 {
     const uint16_t goNumber = DFA_KoCalcNumber(_outputKoPRI[outputIndex]);
-    // logDebugP(" => sendOutput: index=%i, konr=%i, value=%i, dpt=%i.%03i, send=%i", outputIndex, goNumber, (long)value, type.mainGroup, type.subGroup, outputStateSend);
     GroupObject* ko = &knx.getGroupObject(goNumber);
-    if (outputStateSend == OUTPUT_SEND_ALWAYS)
+    if (sendAlways)
     {
         ko->value(value, type);
     }
@@ -633,6 +632,8 @@ void DfaChannel::sendValues()
             // output has value for state?
             if (outputStateSend)
             {
+                const bool sendAlways = (outputStateSend == OUTPUT_SEND_ALWAYS);
+
                 const uint32_t pIdxValue = DFA_ParamCalcIndex(_outputValuePRI[_state][i]);
                 logDebugP(" -> paramIndex=%i", pIdxValue);
 
@@ -645,49 +646,49 @@ void DfaChannel::sendValues()
                             // const KNXValue value = ((bool)(knx.paramByte(pIdxValue) & LOG_DFA_f1State01Output1TypeDpt1Mask));
 
                             // works, as long as using same location as other dpt values
-                            sendOutput(i, (knx.paramByte(pIdxValue) != 0), DPT_Switch, outputStateSend);
+                            sendOutput(i, (knx.paramByte(pIdxValue) != 0), DPT_Switch, sendAlways);
                         }
                         break;
                     case OUTPUT_TYPE_DPT2:
                         // TODO check using mask!
-                        sendOutput(i, knx.paramByte(pIdxValue), DPT_Switch_Control, outputStateSend);
+                        sendOutput(i, knx.paramByte(pIdxValue), DPT_Switch_Control, sendAlways);
                         break;
                     case OUTPUT_TYPE_DPT5:
-                        sendOutput(i, knx.paramByte(pIdxValue), DPT_DecimalFactor, outputStateSend);
+                        sendOutput(i, knx.paramByte(pIdxValue), DPT_DecimalFactor, sendAlways);
                         break;
                     case OUTPUT_TYPE_DPT5001:
-                        sendOutput(i, knx.paramByte(pIdxValue), DPT_Scaling, outputStateSend);
+                        sendOutput(i, knx.paramByte(pIdxValue), DPT_Scaling, sendAlways);
                         break;                                                
                     case OUTPUT_TYPE_DPT6:
-                        sendOutput(i, knx.paramSignedByte(pIdxValue), DPT_Value_1_Count, outputStateSend);
+                        sendOutput(i, knx.paramSignedByte(pIdxValue), DPT_Value_1_Count, sendAlways);
                         break;
                     case OUTPUT_TYPE_DPT7:
-                        sendOutput(i, knx.paramWord(pIdxValue), DPT_Value_2_Ucount, outputStateSend);
+                        sendOutput(i, knx.paramWord(pIdxValue), DPT_Value_2_Ucount, sendAlways);
                         break;
                     case OUTPUT_TYPE_DPT8:
-                        sendOutput(i, knx.paramWord(pIdxValue), DPT_Value_2_Count, outputStateSend);
+                        sendOutput(i, knx.paramWord(pIdxValue), DPT_Value_2_Count, sendAlways);
                         break;
                     case OUTPUT_TYPE_DPT9:
-                        sendOutput(i, knx.paramFloat(pIdxValue, Float_Enc_DPT9), DPT_Value_Temp, outputStateSend);
+                        sendOutput(i, knx.paramFloat(pIdxValue, Float_Enc_DPT9), DPT_Value_Temp, sendAlways);
                         break;
                     case OUTPUT_TYPE_DPT12:
-                        sendOutput(i, knx.paramInt(pIdxValue), DPT_Value_4_Ucount, outputStateSend);
+                        sendOutput(i, knx.paramInt(pIdxValue), DPT_Value_4_Ucount, sendAlways);
                         break;
                     case OUTPUT_TYPE_DPT13:
-                        sendOutput(i, knx.paramInt(pIdxValue), DPT_Value_4_Count, outputStateSend);
+                        sendOutput(i, knx.paramInt(pIdxValue), DPT_Value_4_Count, sendAlways);
                         break;
                     case OUTPUT_TYPE_DPT14:
-                        sendOutput(i, knx.paramFloat(pIdxValue, Float_Enc_IEEE754Double), DPT_Value_Absolute_Temperature, outputStateSend);
+                        sendOutput(i, knx.paramFloat(pIdxValue, Float_Enc_IEEE754Double), DPT_Value_Absolute_Temperature, sendAlways);
                         break;
                     case OUTPUT_TYPE_DPT16:
-                        sendOutput(i, (char *)knx.paramData(pIdxValue), DPT_String_8859_1, outputStateSend);
+                        sendOutput(i, (char *)knx.paramData(pIdxValue), DPT_String_8859_1, sendAlways);
                         break;
                     case OUTPUT_TYPE_DPT17:
-                        sendOutput(i, knx.paramByte(pIdxValue), DPT_SceneNumber, outputStateSend);
+                        sendOutput(i, knx.paramByte(pIdxValue), DPT_SceneNumber, sendAlways);
                         break;
                     case OUTPUT_TYPE_DPT232:
                         // TODO FIXME Mask
-                        sendOutput(i, knx.paramInt(pIdxValue) >> 8, DPT_Colour_RGB, outputStateSend);
+                        sendOutput(i, knx.paramInt(pIdxValue) >> 8, DPT_Colour_RGB, sendAlways);
                         break;
                     default:
                         // TODO check handling undefined cases
