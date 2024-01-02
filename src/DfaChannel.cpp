@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-only
-// Copyright (C) 2023 Cornelius Koepp
+// Copyright (C) 2023-2024 Cornelius Koepp
 
 #include "DfaChannel.h"
 
