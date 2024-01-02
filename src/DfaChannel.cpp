@@ -602,6 +602,10 @@ void DfaChannel::setState(const uint8_t nextState)
         // send output values
         sendValues();
     }
+    else if (nextState == DFA_STATE_TIMEOUT_RESET) {
+        // handling of timeout reset as defined by "<<", do not trigger any other reaction
+        resetTimeout();
+    }
 }
 
 void DfaChannel::sendOutput(const uint8_t outputIndex, const KNXValue &value, const Dpt &type, const bool sendAlways)
