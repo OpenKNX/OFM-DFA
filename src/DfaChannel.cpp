@@ -760,7 +760,7 @@ void DfaChannel::restore()
 {
     const uint8_t conf = openknx.flash.readByte();
     const uint8_t state = openknx.flash.readByte();
-    const uint8_t timeout = openknx.flash.readInt();
+    const uint32_t timeout = openknx.flash.readInt();
     logDebugP("restored conf=%d state=%d timeout=%d", conf, state, timeout);
 
     if (ParamDFA_fStateRestore && (conf & 0b11))
