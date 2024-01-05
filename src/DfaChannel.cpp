@@ -538,12 +538,14 @@ void DfaChannel::setRunning(const bool requestRun, const bool first /*= false*/)
             // first activation
             logDebugP("first activation");
             setState(_firstState);
+            logDebugP("restore: ParamDFA_fStateRestore=%d _firstStateTimeoutDelay_ms=%d ParamDFA_fChannelDelayTimeMS=%d", ParamDFA_fStateRestore, _firstStateTimeoutDelay_ms, ParamDFA_fChannelDelayTimeMS);
             if (ParamDFA_fStateRestore & 0b10 && _firstStateTimeoutDelay_ms > 0)
             {
                 // TODO check refactoring!
                 if (_firstStateTimeoutDelay_ms > ParamDFA_fChannelDelayTimeMS)
                 {
                     logDebugP("restore with shortened delay");
+                    // TODO check/define behaviour when timeout configuration was changed, and is shorter than saved remaining time
                     _stateTimeoutDelay_ms = _firstStateTimeoutDelay_ms - ParamDFA_fChannelDelayTimeMS;
                 }
                 else
