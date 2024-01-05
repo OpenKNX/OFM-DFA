@@ -50,6 +50,11 @@ struct DfaStateTimeoutParamRelIdx {
     uint16_t state; // note: uint8_t is to small
 };
 
+struct DfaTimeout {
+    uint32_t delay_ms;
+    uint32_t begin_ms;
+};
+
 class DfaChannel : public OpenKNX::Channel
 {
   private:
@@ -72,6 +77,7 @@ class DfaChannel : public OpenKNX::Channel
     bool _channelActive = true;
 
     DfaInputs _inputs[DFA_DEF_INPUTS_COUNT] = {};
+    DfaTimeout _outputsTimeout[DFA_DEF_OUTPUTS_COUNT] = {};
 
     // wait while startup is delayed
     bool _processStartupDelay = false;

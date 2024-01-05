@@ -612,15 +612,23 @@ void DfaChannel::setState(const uint8_t nextState)
 
 void DfaChannel::sendOutput(const uint8_t outputIndex, const KNXValue &value, const Dpt &type, const bool sendAlways)
 {
+    bool hasSend = false;
     const uint16_t goNumber = DFA_KoCalcNumber(_outputKoPRI[outputIndex]);
     GroupObject* ko = &knx.getGroupObject(goNumber);
     if (sendAlways)
     {
         ko->value(value, type);
+        hasSend = true;
     }
     else if (ko->valueNoSendCompare(value, type))
     {
         ko->objectWritten();
+        hasSend = true;
+    }
+
+    if (hasSend)
+    {
+        _outputsTimeout[outputIndex].begin_ms = millis();
     }
 }
 
