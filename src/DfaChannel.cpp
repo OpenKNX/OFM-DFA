@@ -457,7 +457,16 @@ void DfaChannel::loop()
         }
         else
         {
-            // TODO cyclic sending
+            // cyclic sending
+            for (uint8_t i = 0; i < DFA_DEF_OUTPUTS_COUNT; i++)
+            {
+                if (_outputsTimeout[i].delay_ms > 0 && delayCheckMillis(_outputsTimeout[i].begin_ms, _outputsTimeout[i].delay_ms))
+                {
+                    sendOutputValue(i);
+                    // TODO check using break, to limit sending to 1 per loop
+                    _outputsTimeout[i].begin_ms = millis();
+                }
+            }
         }
     }
     else if (_processStartupDelay && delayCheckMillis(_startupDelayBegin_ms, ParamDFA_fChannelDelayTimeMS))
@@ -510,7 +519,7 @@ void DfaChannel::processInputKo(GroupObject &ko)
                 if (koNumber == _inputs[i].koNumber)
                 {
                     const bool triggered = _inputs[i].trigger & (1 << value);
-                    logDebugP("processInputKo input=%d (ko=%d; triggered=%d)", i+1, koNumber, triggered);
+                    logDebugP("processInputKo input=%d (ko=%d; triggered=%d)", i + 1, koNumber, triggered);
                     if (triggered)
                     {
                         transfer(i);
@@ -602,9 +611,17 @@ void DfaChannel::setState(const uint8_t nextState)
         //     logDebugP("  with timeout state %d after %dms", getTimeoutState(nextState), _stateTimeoutDelay_ms);
 
         // send output values
+        for (uint8_t i = 0; i < DFA_DEF_OUTPUTS_COUNT; i++)
+        {
+            // _outputsTimeout[i].delay_ms = 0; // param == cyclic ? output_delay : 0
+
+            const uint32_t outputDelays[DFA_DEF_OUTPUTS_COUNT] = {ParamDFA_fOutput1DelayTimeMS, ParamDFA_fOutput2DelayTimeMS, ParamDFA_fOutput3DelayTimeMS, ParamDFA_fOutput4DelayTimeMS};
+            _outputsTimeout[i].delay_ms = outputDelays[i];
+        }
         sendValues();
     }
-    else if (nextState == DFA_STATE_TIMEOUT_RESET) {
+    else if (nextState == DFA_STATE_TIMEOUT_RESET)
+    {
         // handling of timeout reset as defined by "<<", do not trigger any other reaction
         resetTimeout();
     }
@@ -614,7 +631,7 @@ void DfaChannel::sendOutput(const uint8_t outputIndex, const KNXValue &value, co
 {
     bool hasSend = false;
     const uint16_t goNumber = DFA_KoCalcNumber(_outputKoPRI[outputIndex]);
-    GroupObject* ko = &knx.getGroupObject(goNumber);
+    GroupObject *ko = &knx.getGroupObject(goNumber);
     if (sendAlways)
     {
         ko->value(value, type);
@@ -643,7 +660,11 @@ void DfaChannel::sendValues()
 void DfaChannel::sendOutputValue(const uint8_t i)
 {
     const uint8_t outputType = knx.paramByte(DFA_ParamCalcIndex(_outputDptPRI[i]));
-    logDebugP("Output<%d>: check sending value (type=%i)", i+1, outputType);
+    logDebugP("Output<%d>: check sending value (type=%i); begin=%ims, dur=%ims", i + 1, outputType, _outputsTimeout[i].begin_ms, _outputsTimeout[i].delay_ms);
+    // _outputsTimeout[i].begin_ms = millis();
+    if (outputType ==0)
+        _outputsTimeout[i].delay_ms = 0; // disable for disabled output
+
     // output is active?
     if (outputType != 0)
     {
