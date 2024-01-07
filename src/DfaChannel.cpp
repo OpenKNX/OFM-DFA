@@ -657,13 +657,13 @@ void DfaChannel::sendValues()
     }
 }
 
-void DfaChannel::sendOutputValue(const uint8_t i)
+void DfaChannel::sendOutputValue(const uint8_t i, const bool forceSend /* = false */)
 {
     const uint8_t outputType = knx.paramByte(DFA_ParamCalcIndex(_outputDptPRI[i]));
     logDebugP("Output<%d>: check sending value (type=%i); begin=%ims, dur=%ims", i + 1, outputType, _outputsTimeout[i].begin_ms, _outputsTimeout[i].delay_ms);
     // _outputsTimeout[i].begin_ms = millis();
     if (outputType ==0)
-        _outputsTimeout[i].delay_ms = 0; // disable for disabled output
+        _outputsTimeout[i].delay_ms = 0; // disable for disabled output // TODO replace this implementation!
 
     // output is active?
     if (outputType != 0)
@@ -671,9 +671,9 @@ void DfaChannel::sendOutputValue(const uint8_t i)
         const uint8_t outputStateSend = knx.paramByte(DFA_ParamCalcIndex(_outputSendPRI[_state][i])) >> 6;
         logDebugP(" -> outputStateSend=%d", outputStateSend);
         // output has value for state?
-        if (outputStateSend)
+        if (outputStateSend || forceSend)
         {
-            const bool sendAlways = (outputStateSend == OUTPUT_SEND_ALWAYS);
+            const bool sendAlways = forceSend | (outputStateSend == OUTPUT_SEND_ALWAYS);
 
             const uint32_t pIdxValue = DFA_ParamCalcIndex(_outputValuePRI[_state][i]);
             logDebugP(" -> paramIndex=%i", pIdxValue);
