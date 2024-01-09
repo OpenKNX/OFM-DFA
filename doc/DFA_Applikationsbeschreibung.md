@@ -9,7 +9,7 @@
   * [**DEAs**](#deas)
     * [**DEA n: ...**](#dea-n--)
       * [DEA-Definition](#dea-definition) 
-      * [(Start)Verhalten und Steuerungsmöglichkeiten]()
+      * [Ausführung](#ausführung)
       * [Eingabesymbole](#eingabesymbole)
       * [Ausgabe]()
       * [**Zustände & Übergänge**]()
@@ -35,8 +35,29 @@ Die Zeitmessung wird zurückgesetzt, falls derselbe Zustand erneut aufgerufen wi
 ### DEA-Definition 
 
 #### Beschreibung des DEA
-Hier sollte zur Dokumentation eine individuelle kurze Beschreibung des Automaten hinterlegt werden.
+Hier sollte zur Dokumentation eine individuelle und eindeutige kurze Beschreibung des Automaten hinterlegt werden.
 Der Wert wird ausschließlich in der ETS verwendet (als Teil der Kanalbezeichnung) und hat keinen Einfluss auf das Geräteverhalten.
+
+#### Kommentar
+Hier kann eine ausführlichere - auch mehrzeilige - Dokumention des Automaten erfolgen.
+Es wird empfohlen zentrale Annahmen die dem Entwurf des Automaten zu Grunde liegen hier festzuhalten.
+Die Dokumentation hat keinen Einfluss auf das Geräteverhalten.
+
+> Eine mehrzeilige Eingabe ist auf Grund von Beschränkungen der ETS nicht direkt möglich, kann jedoch durch Eingabe mit `\n` und Drücken des Buttons erzeugt werden. 
+> Anschließend kann der Text mehrzeilig bearbeitet werden.
+> 
+> Beispiel:
+> 
+> Der Text
+> ```
+> Ein Text\nmit mehreren\nZeilen!
+> ```
+> wird umgewandelt in
+> ```
+> Ein Text
+> mit mehreren
+> Zeilen!
+> ```
 
 #### Kanal verwenden?
 | Einstellungswert | Erklärung                                                                                                                                                                                                                                                                                  | ausführen | KOs/Konfiguration |
@@ -49,11 +70,17 @@ Der Wert wird ausschließlich in der ETS verwendet (als Teil der Kanalbezeichnun
 
 > Bei Einstellung *temporär inaktiv* sind alle nachfolgenden Konfigurationen unwirksam.
 
-### (Start)Verhalten und Steuerungsmöglichkeiten
-<div style="background-color:red;">TODO</div>
+### Ausführung
 
 #### Verzögerung nach Neustart
-<div style="background-color:red;">TODO</div>
+<div style="background-color:red;">TODO: u.A. Prüfen Startverzögerung Gerät</div>
+Nach dem Neustart ist der der Automat zunächst inaktiv und wird erst nach Ablauf der Verzögerungszeit (zusätzlich zur Startverzögerung im Gerät) auf Ereignisse (wie z.B. Eingaben, Setzen des Zustand) reagieren und einen ggf. definierten Timeout starten.
+
+> Mit dieser Einstellung kann z.B. verhindert werden, dass beim Neustart des Bus durch initial versendete Telegramme zustandswechsel verursacht werden.
+
+> Durch Definition eines eigenen Startzustandes mit Timeout kann ein ähnliches, aber nicht identisches, Verhalten erzielt werden:
+> Ein Setzen des Zustandes wäre dann jedoch sofort möglich, sowie auch eine individuelle Definition auf welche Eingabesymbole reagiert werden und welche nicht.
+> In Kombination mit einer Rekonstruktion des letzten Zustands ist dann jedoch keine besondere Behandlung des Startverhaltens möglich. 
 
 #### Starten und Pausieren
 | Einstellungswert               | Erklärung                                                                                                                                                                                                                                                                                                                                                                                                                                       | Start/Stop-KOs | starten nach dem Einschalten? |
@@ -82,7 +109,12 @@ Die Erzeugung der Eingabesymbole sollte unabhängig von den Ausgabekanälen, ode
 Das resultierende Verhalten ist ansonsten nur schwer vorhersehbar und beherrschbar.
 
 
-> Sollen Eingabesymbole auf Basis von Werten erzeugt werden, die nicht dem DPT1 entsprechen, so kann über Logikkanäle eine Konvertierung erfolgen. 
+> Sollen Eingabesymbole auf Basis von Werten erzeugt werden, die nicht direkt einem Eingangstelegramm vom Typ DPT1 entsprechen, so kann über Logikkanäle eine Konvertierung und/oder Vorverarbeitung erfolgen.
+> 
+> Beispiele zum Einsatz von Logikkanälen:
+> * Prüfung ob nicht-binären Eingangswerte in einem bestimmten Wertebereich liegen
+> * Reaktion auf Über-/Unterschreitung von Schwellwerten, ggf. mit Hysterese und Mindesthaltedauer
+> * <div style="background-color:red;">TODO</div> Unterdrückung von Wiederholungen, um nur auf Wertänderungen zu reagieren 
 
 #### Gemeinsamer Eingang (Symbole 1/0)
 
@@ -118,46 +150,30 @@ Der Wert wird ausschließlich in der ETS verwendet und hat keinen Einfluss auf d
 Der eingegebene Wert wird als KO-Bezeichnung und Spaltenüberschrift in Zustandsübergangstabelle dargestellt.
 Bei Konfiguration als Eingabesymbol-Paar wird in der dortigen Spaltenüberschrift der Auslösewert `(=1)` bzw.  `(=0)` angehängt.
 Bei unabhängigen Symbolen sollten ggf. eigene Ergänzungen zur Nachvollziehbarkeit ergänzt werden. 
-***Zu beachten:*** Angesichts der geringen dort verfügbaren Spaltenbreite sollten eher kurze Wörter verwendet werden, nur so ist ein gut lesbarer Zeilenumbruch möglich.  
+> ***Zu beachten:*** Angesichts der geringen dort verfügbaren Spaltenbreite sollten eher kurze Wörter verwendet werden, nur so ist ein gut lesbarer Zeilenumbruch möglich.  
 
 ##### Eingabekanal & Kanalauswahl (je Eingabesymbol oder Eingabesymbol-Paar)
 
 
-| Eingabekanal   | Erklärung                                                                                                                                                                                                                                                                                                                                                                                                         | Eingangs-KO | Kanalauswahl                                                                         |
-|----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|--------------------------------------------------------------------------------------|
-| inaktiv        | Das Eingabesymbol wird niemals erzeugt.                                                                                                                                                                                                                                                                                                                                                                           | -           | -                                                                                    |
-| Eigenes KO     | Zur direkten Reaktion auf Werte die auf dem Bus bereit stehen. Eingabesymbole werden durch eingehende Telegramme erzeugt. Ein KO mit DPT1 wird eingeblendet.                                                                                                                                                                                                                                                      | sichtbar    | Keine Konfiguration.<br />Nur Anzeige von genutztem Eingang 1 bis 8.                 |
-| Logik-Ausgang  | Nutzung von Werten die durch einen Logikkanal erzeugt und als Ergebnis ausgegeben werden. *Empfohlenen*, wenn Eingangswerte zunächst in 0/1 konvertiert oder vorgefiltert werden müssen, zur Nutzung von Zeitschaltuhrfunktionen, oder ggf. weiterer Funktionen des [Logikmoduls](/OpenKNX/OAM-LogicModule/blob/main/doc/Applikationsbeschreibung-Logik.md).                                                      | -           | Der Logik-Ausgang wird durch die Kanal-Nummer (1 bis 96) des Logikmoduls festgelegt. |
-| Bestehendes KO | Verwendung von Werten, die bereits in anderen KOs abgebildet sind, unabhängig von einer Übertragung auf den Bus. ***Achtung:*** Fehlfunktionen möglich, bei Auswahl eines KO mit nicht kompatiblem DPT. Bei späteren Updates mit Veränderung der KO-Nummerierung muss eine manuelle Anpassung der Nummerierung vorgenommen werden. Ausgänge von Logik-Kanälten sollten nicht über die KO-Nummer verknüpft werden. | -           | Auswahl über die KO-Nummer (1 bis >1000)                                             |
+| Eingabekanal   | Erklärung                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Eingangs-KO | Kanalauswahl                                                                         |
+|----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|--------------------------------------------------------------------------------------|
+| inaktiv        | Das Eingabesymbol wird niemals erzeugt.                                                                                                                                                                                                                                                                                                                                                                                                                      | -           | -                                                                                    |
+| Eigenes KO     | Zur direkten Reaktion auf Werte die auf dem Bus bereit stehen. Eingabesymbole werden durch eingehende Telegramme erzeugt. Ein KO mit DPT1 wird eingeblendet.                                                                                                                                                                                                                                                                                                 | sichtbar    | Keine Konfiguration.<br />Nur Anzeige von genutztem Eingang 1 bis 8.                 |
+| Logik-Ausgang  | Nutzung von Werten die durch einen Logikkanal erzeugt und als Ergebnis ausgegeben werden. *Empfohlenen*, wenn Eingangswerte zunächst in 0/1 konvertiert oder vorgefiltert werden müssen, zur Nutzung von Zeitschaltuhrfunktionen, oder ggf. weiterer Funktionen des [Logikmoduls](/OpenKNX/OAM-LogicModule/blob/main/doc/Applikationsbeschreibung-Logik.md). ***Achtung:*** Fehlfunktionen möglich, bei Auswahl eines Ausgangs mit nicht kompatiblem DPT. | -           | Der Logik-Ausgang wird durch die Kanal-Nummer (1 bis 96) des Logikmoduls festgelegt. |
+| Bestehendes KO | Verwendung von Werten, die bereits in anderen KOs abgebildet sind, unabhängig von einer Übertragung auf den Bus. Ausgänge von Logik-Kanälten sollten *nicht* über die KO-Nummer verknüpft werden. ***Achtung:*** Fehlfunktionen möglich, bei Auswahl eines KO mit nicht kompatiblem DPT. Bei späteren Updates mit Veränderung der KO-Nummerierung muss eine manuelle Anpassung der Nummerierung vorgenommen werden.                                          | -           | Auswahl über die KO-Nummer (1 bis 2047)                                              |
 
-##### Auslösewert (je Eingabesymbol oder Eingabesymbol-Paar)
-
-
-| Auslösewert | Erklärung | Eingangs-KO | Kanalauswahl                                                                         |
-|-------------|-----------|-------------|--------------------------------------------------------------------------------------|
-| bei 0       |           | -           | -                                                                                    |
-| bei 1       |           | sichtbar    | Keine Konfiguration.<br />Nur Anzeige von genutztem Eingang 1 bis 8.                 |
-| jeder (0/1) | Jeder     | -           | Der Logik-Ausgang wird durch die Kanal-Nummer (1 bis 96) des Logikmoduls festgelegt. |
+##### Auslösewert (je Eingabesymbol)
 
 
-<div style="background-color:red;">TODO</div>
+| Auslösewert      | Eintreffen des Wertes 1 | Eintreffen des Wertes 0 | Kommentar                                           |
+|------------------|-------------------------|-------------------------|-----------------------------------------------------|
+| bei 0            | ignorieren              | Eingabesymbol erzeugen  |                                                     |
+| bei 1            | Eingabesymbol erzeugen  | ignorieren              |                                                     |
+| jeder (0 oder 1) | Eingabesymbol erzeugen  | Eingabesymbol erzeugen  | Es erfolgt keine Unterscheidung zwischen den Werten |
 
-#### Bezeichnung
-Hier sollte zur Dokumentation eine individuelle kurze Beschreibung des jeweiligen Eingabesymbols hinterlegt werden.
-Der Wert wird ausschließlich in der ETS verwendet und hat keinen Einfluss auf das Geräteverhalten.
+##### Auslösewert (je Eingabesymbol-Paar)
+Anzeige der erzeugten Eingabesymbole für Auslösewerte 1 und 0.
 
-*Zu Beachten:*
-Der eingegebene Wert wird in der [Tabelle zur Definition der Übergangsfunktion](#zustände-und-übergangsfunktion-einschließlich-zeitbasierter-folgezustände) wiederholt. 
-Dort steht nur wenig Platz zur Verfügung, wodurch die Darstellung eingeschränkt wird.   
-
-Standardwert: "x_1", ..., "x_8"
-
-#### Eingabekanal
-Zeigt das genutzte Kommunikationsobjekt (KO) *Eingabe 1* bis *Eingabe 4*.
-Das Eingabesymbol kann nur ausgelöst werden, wenn Telegramme auf diesem KO eingehen.  
-
-#### Wert
-Das Eingabesymbol wird erzeugt, wenn auf dem Eingabekanal ein Telegramme mit dem angegebenen Eingabewert *ein* oder *aus* eingeht. 
 
 
 ### Zustände und Übergangsfunktion einschließlich zeitbasierter Folgezustände
