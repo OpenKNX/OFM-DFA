@@ -175,6 +175,30 @@ Bei unabhängigen Symbolen sollten ggf. eigene Ergänzungen zur Nachvollziehbark
 Anzeige der erzeugten Eingabesymbole für Auslösewerte 1 und 0.
 
 
+### Ausgabe
+Es können bis zu 4 Ausgabekanäle (O1, O2, O3, O4) konfiguriert werden, für die bei Aktivierung jeweils ein KO mit gewähltem Datentyp bereitgestellt wird.
+Es stehen gängige DPTs (DPT1,2,5,5.001,6,7,8,9,12,13,14,16,232.600) zur Auswahl, sowie (ausschließlich) für O4 auch Text (DPT17.001).
+Für jede Kombination aus Zustand und Ausgang kann ein Wert und ein Sendeverhalten definiert werden.
+
+#### Bezeichnung/Kommentar (je Ausgabekanal)
+Hier sollte zur Dokumentation eine individuelle kurze Beschreibung des jeweiligen Ausgabekanal hinterlegt werden.
+Der Wert wird ausschließlich in der ETS verwendet (Als Beschriftung von Konfigurationsseiten und KOs) und hat keinen Einfluss auf das Geräteverhalten.
+
+#### Datentyp (je Ausgabekanal)
+| Wert                | O1,O2,O3          | O4 | Bemerkung                                                                                                                      |
+|---------------------|-------------------|----|--------------------------------------------------------------------------------------------------------------------------------|
+| inaktiv             | 1                 | 1  | Der Ausgabekanal wird ausgeblendet.                                                                                            |
+| DPT1.x              | 1                 | 1  |                                                                                                                                |
+| DPT2.x              | 1                 | 1  |                                                                                                                                |
+| DPT5.x              | 1                 | 1  |                                                                                                                                |
+| DPT5.001            | 1                 | 1  |                                                                                                                                |
+| DPT6.x              | 1                 | 1  |                                                                                                                                |
+| DPT7.x, 8.x, 9.x    | 1                 | 1  | 2Byte (vorzeichenlos, vorzeichenbehaftet, Fließkomma mit geringer Genauigkeit)                                                 |
+| DPT12.x, 13.x, 14.x | 1                 | 1  | 4Byte (vorzeichenlos, vorzeichenbehaftet, Fließkomma)                                                                          |
+| DPT16.x             | 1                 | 1  | Szenen; Bei Aktivierung des Senden wird als Standardwerde der gewählte Zustand eingestellt.                                    |
+| DPT17.001           | nicht unterstützt | 1  | Die Ausgabe von 14-Byte-Texten ist angesichts des deutlich höheren Speicherbedarfs nur auf den letzten Ausgabekanal verfügbar. |
+| DPT232.600          | 1                 | 1  |                                                                                                                                |
+
 
 ### Zustände und Übergangsfunktion einschließlich zeitbasierter Folgezustände
 
