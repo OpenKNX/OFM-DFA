@@ -368,8 +368,6 @@ void DfaChannel::setup()
     {
         initInputConfig();
 
-        // TODO add state restore
-
         _processStartupDelay = true;
         _startupDelayBegin_ms = millis();
 
@@ -397,7 +395,7 @@ uint16_t DfaChannel::getInputKo(const uint8_t input)
                 const u_int16_t _channelIndex = logicNumber - 1;
                 return LOG_KoCalcNumber(LOG_KoKOfO);
             }
-        case 2: // Bestehendes KO
+        case 2: // Existing KO
             return knx.paramWord(DFA_ParamCalcIndex(_inputConfNumberPRI[input]));
     }
     // default, including case 0 (disabled)
@@ -433,6 +431,7 @@ void DfaChannel::initInputConfig()
                 _inputs[i].koNumber = koNumber;
                 if (koNumber > 0)
                 {
+                    // TODO define ParamDFA_fInputSymbolNUMBERValue
                     _inputs[i].trigger = ((knx.paramByte(DFA_ParamCalcIndex(_inputTriggerPRI[i])) & DFA_fInputSymbol1ValueMask) >> DFA_fInputSymbol1ValueShift);
                 }
                 else
@@ -458,8 +457,9 @@ void DfaChannel::loop()
     {
         if (_stateTimeoutDelay_ms > 0 && delayCheckMillis(_stateTimeoutBegin_ms, _stateTimeoutDelay_ms))
         {
-            // logDebugP("timeout reached (@%d+%dms >=%d)", _stateTimeoutBegin_ms, _stateTimeoutDelay_ms, millis());
+            // timeout of state
 
+            // logDebugP("timeout reached (@%d+%dms >=%d)", _stateTimeoutBegin_ms, _stateTimeoutDelay_ms, millis());
             // TODO check creation of method transferTimeout()
             setState(getTimeoutState(_state));
         }
