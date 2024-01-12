@@ -27,6 +27,7 @@ class DfaModule : public OpenKNX::Module
 
     // configured only
     void setup() override;
+    void processAfterStartupDelay() override;
     void loop() override;
 
     void processInputKo(GroupObject &ko) override;

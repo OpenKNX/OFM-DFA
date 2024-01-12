@@ -368,11 +368,11 @@ void DfaChannel::setup()
     {
         initInputConfig();
 
-        _processStartupDelay = true;
-        _startupDelayBegin_ms = millis();
-
         _firstState = DFA_STATE_PARAM_XOR ^ ParamDFA_fStateStart;
         // _firstStateTimeoutDelay_ms = getStateTimeoutDelay_ms(_firstState);
+
+        // starting in processAfterStartupDelay() ...
+        // TODO check/fix calculation of remaining delay 
     }
 }
 
@@ -449,6 +449,17 @@ void DfaChannel::initInputConfig()
 }
 
 #pragma endregion "DFA_CHANNEL_INPUT_INIT"
+
+void DfaChannel::processAfterStartupDelay()
+{
+    // start after device global delay
+    if (_channelActive)
+    {
+        logDebugP("processAfterStartupDelay");
+        _processStartupDelay = true;
+        _startupDelayBegin_ms = millis();
+    }
+}
 
 void DfaChannel::loop()
 {

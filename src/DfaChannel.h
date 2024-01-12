@@ -117,6 +117,7 @@ class DfaChannel : public OpenKNX::Channel
     const std::string name() override;
     void setup() override;
     void loop() override;
+    void processAfterStartupDelay();
     void processInputKo(GroupObject &ko) override;
 
     void save();

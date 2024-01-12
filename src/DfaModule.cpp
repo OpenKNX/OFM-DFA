@@ -40,6 +40,17 @@ void DfaModule::setup()
     logIndentDown();
 }
 
+void DfaModule::processAfterStartupDelay()
+{
+    logDebugP("processAfterStartupDelay");
+    logIndentUp();
+    for (uint8_t i = 0; i < DFA_ChannelCount; i++)
+    {
+        _channels[i]->processAfterStartupDelay();
+    }
+    logIndentDown();    
+}
+
 void DfaModule::loop()
 {
     // loop all channels, as handling is fast
