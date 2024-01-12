@@ -3,6 +3,8 @@
 
 #include "DfaChannel.h"
 
+#pragma region "DFA_CHANNEL_ADDR"
+
 const uint8_t DfaChannel::_inputKo[DFA_DEF_INPUTS_COUNT] = {
     DFA_KoKOfInput1,
     DFA_KoKOfInput2,
@@ -345,6 +347,8 @@ const DfaStateTimeoutParamRelIdx DfaChannel::_timeoutPRI[DFA_DEF_STATES_COUNT] =
     */
 };
 
+#pragma endregion "DFA_CHANNEL_ADDR"
+
 DfaChannel::DfaChannel(uint8_t index)
 {
     _channelIndex = index;
@@ -373,6 +377,8 @@ void DfaChannel::setup()
         // _firstStateTimeoutDelay_ms = getStateTimeoutDelay_ms(_firstState);
     }
 }
+
+#pragma region "DFA_CHANNEL_INPUT_INIT"
 
 uint16_t DfaChannel::getInputKo(const uint8_t input)
 {
@@ -442,6 +448,8 @@ void DfaChannel::initInputConfig()
         logDebugP("input[%d]: ko=%d trigger=%d", i, _inputs[i].koNumber, _inputs[i].trigger);
     }
 }
+
+#pragma endregion "DFA_CHANNEL_INPUT_INIT"
 
 void DfaChannel::loop()
 {
