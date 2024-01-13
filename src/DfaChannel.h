@@ -110,6 +110,8 @@ class DfaChannel : public OpenKNX::Channel
 
     void setRunning(const bool requestRun, const bool first = false);
 
+    uint8_t outputGetDpt(const uint8_t i);
+    uint8_t outputGetCurrentStateSendConfig(const uint8_t i);
     void outputLoop(const uint8_t i);
     void outputUpdate(const uint8_t i, const bool forceSend = false);
     /*bool*/ void outputUpdateKO(const uint8_t i, const KNXValue &value, const Dpt &type, const bool forceSend = false);

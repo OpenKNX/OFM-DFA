@@ -664,14 +664,25 @@ void DfaChannel::setState(const uint8_t nextState)
         const uint32_t outputDelays[DFA_DEF_OUTPUTS_COUNT] = {ParamDFA_fOutput1DelayTimeMS, ParamDFA_fOutput2DelayTimeMS, ParamDFA_fOutput3DelayTimeMS, ParamDFA_fOutput4DelayTimeMS};
         for (uint8_t i = 0; i < DFA_DEF_OUTPUTS_COUNT; i++)
         {
-            // _outputsTimeout[i].delay_ms = 0; // param == cyclic ? output_delay : 0
-            _outputsTimeout[i].delay_ms = outputDelays[i];
+            // TODO set delay based on state value!
+            _outputsTimeout[i].delay_ms = outputGetDpt(i) != 0 ? outputDelays[i] : 0; // TODO: include cyclic-sending config when in App: _outputsTimeout[i].delay_ms = param == cyclic ? output_delay : 0
+
             outputUpdate(i);
         }
     }
 }
 
 #pragma region "DFA_CHANNEL_OUTPUT_SEND"
+
+uint8_t DfaChannel::outputGetDpt(const uint8_t i)
+{
+    return knx.paramByte(DFA_ParamCalcIndex(_outputDptPRI[i]));
+}
+
+uint8_t DfaChannel::outputGetCurrentStateSendConfig(const uint8_t i)
+{
+    return ((knx.paramByte(DFA_ParamCalcIndex(_outputSendPRI[_state][i])) & DFA_fState01Output1ConfMask) >> DFA_fState01Output1ConfShift);
+}
 
 /*bool*/ void DfaChannel::outputUpdateKO(const uint8_t i, const KNXValue &value, const Dpt &type, const bool forceSend /* = false */)
 {
@@ -699,17 +710,13 @@ void DfaChannel::setState(const uint8_t nextState)
 
 void DfaChannel::outputUpdate(const uint8_t i, const bool forceSend /* = false */)
 {
-    const uint8_t outputType = knx.paramByte(DFA_ParamCalcIndex(_outputDptPRI[i]));
-    // _outputsTimeout[i].begin_ms = millis();
-    if (outputType ==0)
-        _outputsTimeout[i].delay_ms = 0; // disable for disabled output // TODO replace this implementation!
-
+    const uint8_t outputType = outputGetDpt(i);
     // output is active?
     if (outputType != 0)
     {
         logDebugP("Output<%d>: check sending value (type=%i); begin=%ims, dur=%ims", i + 1, outputType, _outputsTimeout[i].begin_ms, _outputsTimeout[i].delay_ms);
         
-        const uint8_t outputStateSend = ((knx.paramByte(DFA_ParamCalcIndex(_outputSendPRI[_state][i])) & DFA_fState01Output1ConfMask) >> DFA_fState01Output1ConfShift);
+        const uint8_t outputStateSend = outputGetCurrentStateSendConfig(i);
         logDebugP(" -> outputStateSend=%d", outputStateSend);
         // output has value for state?
         if (outputStateSend || forceSend)
