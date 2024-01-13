@@ -708,7 +708,7 @@ void DfaChannel::sendOutputValue(const uint8_t i, const bool forceSend /* = fals
     // output is active?
     if (outputType != 0)
     {
-        const uint8_t outputStateSend = knx.paramByte(DFA_ParamCalcIndex(_outputSendPRI[_state][i])) >> 6;
+        const uint8_t outputStateSend = ((knx.paramByte(DFA_ParamCalcIndex(_outputSendPRI[_state][i])) & DFA_fState01Output1ConfMask) >> DFA_fState01Output1ConfShift);
         logDebugP(" -> outputStateSend=%d", outputStateSend);
         // output has value for state?
         if (outputStateSend || forceSend)
