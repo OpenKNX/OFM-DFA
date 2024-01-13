@@ -15,6 +15,10 @@ const uint8_t DfaChannel::_inputKo[DFA_DEF_INPUTS_COUNT] = {
     DFA_KoKOfInput7,
     DFA_KoKOfInput8,
 };
+// Value of DFA_KoKOfInput[1-8] by 0-based index
+#define DFA_KoKOfInput__N__(IDX) DFA_KoKOfInput1 + IDX * (DFA_KoKOfInput2 - DFA_KoKOfInput1)
+// Value of DFA_KoCalcNumber(DFA_KoKOfInput[1-8]) by 0-based index
+#define DFA_Channel_Input_KO(IDX) DFA_KoCalcNumber(DFA_KoKOfInput__N__(IDX))
 
 // TODO calculate index; expected distance should be protected by compile error
 const uint16_t DfaChannel::_inputConfPRI[DFA_DEF_INPUTS_COUNT] = {
@@ -27,6 +31,12 @@ const uint16_t DfaChannel::_inputConfPRI[DFA_DEF_INPUTS_COUNT] = {
     DFA_fInputSymbol7Ko,
     DFA_fInputSymbol8Ko,
 };
+// Value of DFA_fInputSymbol[1-8]Ko by 0-based index
+#define DFA_fInputSymbol__N__Ko(IDX) DFA_fInputSymbol1Ko + IDX * (DFA_fInputSymbol2Ko - DFA_fInputSymbol1Ko)
+//     const uint8_t inputConf = ((knx.paramByte(DFA_ParamCalcIndex(_inputConfPRI[input])) & DFA_fInputSymbol1KoMask) >> DFA_fInputSymbol1KoShift);
+#define DFA_Channel_Input_Config(IDX) ((knx.paramByte(DFA_fInputSymbol__N__Ko(input)) & DFA_fInputSymbol1KoMask) >> DFA_fInputSymbol1KoShift)
+
+
 #if DFA_fInputSymbol1LogicNumber != DFA_fInputSymbol1KoNumber
     #error "DFA_fInputSymbol1LogicNumber != DFA_fInputSymbol1KoNumber"
 #endif
@@ -207,6 +217,13 @@ const uint16_t DfaChannel::_outputValuePRI[DFA_DEF_STATES_COUNT][DFA_DEF_OUTPUTS
 
 // TODO calculate index; expected distance should be protected by compile error
 // Define (relative) parameter address-index for next state by current state and input
+
+// Value of DFA_KoKOfInput[1-8] by 0-based index
+#define DFA_fTransState__N__Input__M__(N, M) DFA_fTransState01Input1 + N * (DFA_fTransState02Input1 - DFA_fTransState01Input1) + M * (DFA_fTransState01Input2 - DFA_fTransState01Input1)
+// Value of DFA_KoCalcNumber(DFA_KoKOfInput[1-8]) by 0-based index
+#define DFA_Channel_TransferByStateInput(STATE_IDX,IN_IDX) DFA_KoCalcNumber(DFA_fTransState__N__Input__M__(STATE_IDX, IN_IDX))
+
+
 const uint16_t DfaChannel::_transPRI[DFA_DEF_STATES_COUNT][DFA_DEF_INPUTS_COUNT] = {
     {DFA_fTransState01Input1, DFA_fTransState01Input2, DFA_fTransState01Input3, DFA_fTransState01Input4, DFA_fTransState01Input5, DFA_fTransState01Input6, DFA_fTransState01Input7, DFA_fTransState01Input8},
     {DFA_fTransState02Input1, DFA_fTransState02Input2, DFA_fTransState02Input3, DFA_fTransState02Input4, DFA_fTransState02Input5, DFA_fTransState02Input6, DFA_fTransState02Input7, DFA_fTransState02Input8},
