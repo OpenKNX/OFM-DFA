@@ -499,14 +499,7 @@ void DfaChannel::loop()
         {
             // cyclic sending
             for (uint8_t i = 0; i < DFA_DEF_OUTPUTS_COUNT; i++)
-            {
-                if (_outputsTimeout[i].delay_ms > 0 && delayCheckMillis(_outputsTimeout[i].begin_ms, _outputsTimeout[i].delay_ms))
-                {
-                    sendOutputValue(i);
-                    // TODO check using break, to limit sending to 1 per loop
-                    _outputsTimeout[i].begin_ms = millis();
-                }
-            }
+                outputLoop(i); // TODO check using break on actual sending, to limit sending to 1 per loop
         }
     }
     else if (_processStartupDelay && delayCheckMillis(_startupDelayBegin_ms, ParamDFA_fChannelDelayTimeMS))
@@ -515,6 +508,15 @@ void DfaChannel::loop()
 
         // set to running. This includes setting the start state
         setRunning(ParamDFA_fSwitchByKo != 0b00, true);
+    }
+}
+
+void DfaChannel::outputLoop(const uint8_t i)
+{
+    if (_outputsTimeout[i].delay_ms > 0 && delayCheckMillis(_outputsTimeout[i].begin_ms, _outputsTimeout[i].delay_ms))
+    {
+        outputUpdate(i, true); // TODO check removal of second parameter
+        _outputsTimeout[i].begin_ms = millis(); // TODO check remove, as this should be updated on actual sending only
     }
 }
 
@@ -664,19 +666,19 @@ void DfaChannel::setState(const uint8_t nextState)
         {
             // _outputsTimeout[i].delay_ms = 0; // param == cyclic ? output_delay : 0
             _outputsTimeout[i].delay_ms = outputDelays[i];
-            sendOutputValue(i);
+            outputUpdate(i);
         }
     }
 }
 
 #pragma region "DFA_CHANNEL_OUTPUT_SEND"
 
-void DfaChannel::sendOutput(const uint8_t outputIndex, const KNXValue &value, const Dpt &type, const bool sendAlways)
+/*bool*/ void DfaChannel::outputUpdateKO(const uint8_t i, const KNXValue &value, const Dpt &type, const bool forceSend /* = false */)
 {
     bool hasSend = false;
-    const uint16_t goNumber = DFA_KoCalcNumber(_outputKoPRI[outputIndex]);
+    const uint16_t goNumber = DFA_KoCalcNumber(_outputKoPRI[i]);
     GroupObject *ko = &knx.getGroupObject(goNumber);
-    if (sendAlways)
+    if (forceSend)
     {
         ko->value(value, type);
         hasSend = true;
@@ -689,11 +691,13 @@ void DfaChannel::sendOutput(const uint8_t outputIndex, const KNXValue &value, co
 
     if (hasSend)
     {
-        _outputsTimeout[outputIndex].begin_ms = millis();
+        // keep time of writing value to bus
+        _outputsTimeout[i].begin_ms = millis();
     }
+    // return hasSend;
 }
 
-void DfaChannel::sendOutputValue(const uint8_t i, const bool forceSend /* = false */)
+void DfaChannel::outputUpdate(const uint8_t i, const bool forceSend /* = false */)
 {
     const uint8_t outputType = knx.paramByte(DFA_ParamCalcIndex(_outputDptPRI[i]));
     // _outputsTimeout[i].begin_ms = millis();
@@ -724,49 +728,49 @@ void DfaChannel::sendOutputValue(const uint8_t i, const bool forceSend /* = fals
                         // const KNXValue value = ((bool)(knx.paramByte(pIdxValue) & LOG_DFA_f1State01Output1TypeDpt1Mask));
 
                         // works, as long as using same location as other dpt values
-                        sendOutput(i, (knx.paramByte(pIdxValue) != 0), DPT_Switch, sendAlways);
+                        outputUpdateKO(i, (knx.paramByte(pIdxValue) != 0), DPT_Switch, sendAlways);
                     }
                     break;
                 case OUTPUT_TYPE_DPT2:
                     // TODO check using mask!
-                    sendOutput(i, knx.paramByte(pIdxValue), DPT_Switch_Control, sendAlways);
+                    outputUpdateKO(i, knx.paramByte(pIdxValue), DPT_Switch_Control, sendAlways);
                     break;
                 case OUTPUT_TYPE_DPT5:
-                    sendOutput(i, knx.paramByte(pIdxValue), DPT_DecimalFactor, sendAlways);
+                    outputUpdateKO(i, knx.paramByte(pIdxValue), DPT_DecimalFactor, sendAlways);
                     break;
                 case OUTPUT_TYPE_DPT5001:
-                    sendOutput(i, knx.paramByte(pIdxValue), DPT_Scaling, sendAlways);
+                    outputUpdateKO(i, knx.paramByte(pIdxValue), DPT_Scaling, sendAlways);
                     break;                                                
                 case OUTPUT_TYPE_DPT6:
-                    sendOutput(i, knx.paramSignedByte(pIdxValue), DPT_Value_1_Count, sendAlways);
+                    outputUpdateKO(i, knx.paramSignedByte(pIdxValue), DPT_Value_1_Count, sendAlways);
                     break;
                 case OUTPUT_TYPE_DPT7:
-                    sendOutput(i, knx.paramWord(pIdxValue), DPT_Value_2_Ucount, sendAlways);
+                    outputUpdateKO(i, knx.paramWord(pIdxValue), DPT_Value_2_Ucount, sendAlways);
                     break;
                 case OUTPUT_TYPE_DPT8:
-                    sendOutput(i, knx.paramWord(pIdxValue), DPT_Value_2_Count, sendAlways);
+                    outputUpdateKO(i, knx.paramWord(pIdxValue), DPT_Value_2_Count, sendAlways);
                     break;
                 case OUTPUT_TYPE_DPT9:
-                    sendOutput(i, knx.paramFloat(pIdxValue, Float_Enc_DPT9), DPT_Value_Temp, sendAlways);
+                    outputUpdateKO(i, knx.paramFloat(pIdxValue, Float_Enc_DPT9), DPT_Value_Temp, sendAlways);
                     break;
                 case OUTPUT_TYPE_DPT12:
-                    sendOutput(i, knx.paramInt(pIdxValue), DPT_Value_4_Ucount, sendAlways);
+                    outputUpdateKO(i, knx.paramInt(pIdxValue), DPT_Value_4_Ucount, sendAlways);
                     break;
                 case OUTPUT_TYPE_DPT13:
-                    sendOutput(i, knx.paramInt(pIdxValue), DPT_Value_4_Count, sendAlways);
+                    outputUpdateKO(i, knx.paramInt(pIdxValue), DPT_Value_4_Count, sendAlways);
                     break;
                 case OUTPUT_TYPE_DPT14:
-                    sendOutput(i, knx.paramFloat(pIdxValue, Float_Enc_IEEE754Double), DPT_Value_Absolute_Temperature, sendAlways);
+                    outputUpdateKO(i, knx.paramFloat(pIdxValue, Float_Enc_IEEE754Double), DPT_Value_Absolute_Temperature, sendAlways);
                     break;
                 case OUTPUT_TYPE_DPT16:
-                    sendOutput(i, (char *)knx.paramData(pIdxValue), DPT_String_8859_1, sendAlways);
+                    outputUpdateKO(i, (char *)knx.paramData(pIdxValue), DPT_String_8859_1, sendAlways);
                     break;
                 case OUTPUT_TYPE_DPT17:
-                    sendOutput(i, knx.paramByte(pIdxValue), DPT_SceneNumber, sendAlways);
+                    outputUpdateKO(i, knx.paramByte(pIdxValue), DPT_SceneNumber, sendAlways);
                     break;
                 case OUTPUT_TYPE_DPT232:
                     // TODO FIXME Mask
-                    sendOutput(i, knx.paramInt(pIdxValue) >> 8, DPT_Colour_RGB, sendAlways);
+                    outputUpdateKO(i, knx.paramInt(pIdxValue) >> 8, DPT_Colour_RGB, sendAlways);
                     break;
                 default:
                     // TODO check handling undefined cases

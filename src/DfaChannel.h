@@ -102,8 +102,6 @@ class DfaChannel : public OpenKNX::Channel
     uint8_t getTimeoutState(const uint8_t state);
     inline bool isValidState(const uint8_t state);
     void setState(const uint8_t nextState);
-    void sendOutput(const uint8_t outputIndex, const KNXValue &value, const Dpt &type, const bool sendAlways);
-    void sendOutputValue(const uint8_t outputIndex, const bool forceSend = false);
     void transfer(const uint8_t input);
 
     void endTimeout();
@@ -111,6 +109,10 @@ class DfaChannel : public OpenKNX::Channel
     uint32_t timeoutRemaining_ms();
 
     void setRunning(const bool requestRun, const bool first = false);
+
+    void outputLoop(const uint8_t i);
+    void outputUpdate(const uint8_t i, const bool forceSend = false);
+    /*bool*/ void outputUpdateKO(const uint8_t i, const KNXValue &value, const Dpt &type, const bool forceSend = false);
 
   public:
     explicit DfaChannel(uint8_t index);
