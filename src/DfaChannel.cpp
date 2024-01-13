@@ -713,17 +713,16 @@ void DfaChannel::outputUpdate(const uint8_t i, const bool forceSend /* = false *
     // output is active?
     if (outputType != 0)
     {
-        logDebugP("Output<%d>: check sending value (type=%i); begin=%ims, dur=%ims", i + 1, outputType, _outputsTimeout[i].begin_ms, _outputsTimeout[i].delay_ms);
-        
         const uint8_t outputStateSend = outputGetCurrentStateSendConfig(i);
-        logDebugP(" -> outputStateSend=%d", outputStateSend);
+        logDebugP("Output<%d>: update (type=%3i); begin=%6ims, dur=%6ims, outputStateSend=%d", i + 1, outputType, _outputsTimeout[i].begin_ms, _outputsTimeout[i].delay_ms, outputStateSend);
+        
         // output has value for state?
         if (outputStateSend || forceSend)
         {
             const bool sendAlways = forceSend | (outputStateSend == OUTPUT_SEND_ALWAYS);
 
             const uint32_t pIdxValue = DFA_ParamCalcIndex(_outputValuePRI[_state][i]);
-            logDebugP(" -> paramIndex=%i", pIdxValue);
+            // logDebugP("         -> paramIndex=%i", pIdxValue);
 
             // set value based on dpt
             switch (outputType)
