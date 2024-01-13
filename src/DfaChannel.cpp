@@ -646,11 +646,6 @@ void DfaChannel::setState(const uint8_t nextState)
         }
         sendValues();
     }
-    else if (nextState == DFA_STATE_TIMEOUT_RESET)
-    {
-        // handling of timeout reset as defined by "<<", do not trigger any other reaction
-        resetTimeout();
-    }
 }
 
 #pragma region "DFA_CHANNEL_OUTPUT_SEND"
@@ -778,7 +773,15 @@ void DfaChannel::transfer(const uint8_t input)
 
         logDebugP("transfer(%d,%d)->%d", _state, input, nextState);
         if (isValidState(nextState))
+        {
             setState(nextState);
+        }
+        else if (nextState == DFA_STATE_TIMEOUT_RESET)
+        {
+            // handling of timeout reset as defined by "<<", do not trigger any other reaction
+            resetTimeout();
+        }
+
         // ignore undefined transition
     }
 }
