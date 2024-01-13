@@ -656,7 +656,6 @@ void DfaChannel::setState(const uint8_t nextState)
         if (ko->valueNoSendCompare(_state, DPT_SceneNumber))
             ko->objectWritten();
 
-
         // if (_stateTimeoutDelay_ms > 0)
         //     logDebugP("  with timeout state %d after %dms", getTimeoutState(nextState), _stateTimeoutDelay_ms);
 
