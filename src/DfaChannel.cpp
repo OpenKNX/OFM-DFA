@@ -663,8 +663,8 @@ void DfaChannel::setState(const uint8_t nextState)
         const uint32_t outputDelays[DFA_DEF_OUTPUTS_COUNT] = {ParamDFA_fOutput1DelayTimeMS, ParamDFA_fOutput2DelayTimeMS, ParamDFA_fOutput3DelayTimeMS, ParamDFA_fOutput4DelayTimeMS};
         for (uint8_t i = 0; i < DFA_DEF_OUTPUTS_COUNT; i++)
         {
-            // TODO set delay based on state value!
-            _outputsTimeout[i].delay_ms = outputGetDpt(i) != 0 ? outputDelays[i] : 0; // TODO: include cyclic-sending config when in App: _outputsTimeout[i].delay_ms = param == cyclic ? output_delay : 0
+            const bool cyclicSending = (outputGetDpt(i) != 0) && (outputGetCurrentStateSendConfig(i) == OUTPUT_SEND_ALWAYS /* TODO FIXME after inclusion in ETS-app */);
+            _outputsTimeout[i].delay_ms = cyclicSending ? outputDelays[i] : 0;
 
             outputUpdate(i);
         }
