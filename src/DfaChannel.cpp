@@ -349,6 +349,8 @@ const DfaStateTimeoutParamRelIdx DfaChannel::_timeoutPRI[DFA_DEF_STATES_COUNT] =
 
 #pragma endregion "DFA_CHANNEL_ADDR"
 
+#pragma region "DFA_CHANNEL_BASE"
+
 DfaChannel::DfaChannel(uint8_t index)
 {
     _channelIndex = index;
@@ -358,6 +360,8 @@ const std::string DfaChannel::name()
 {
     return "DFA-Channel";
 }
+
+#pragma endregion "DFA_CHANNEL_BASE"
 
 void DfaChannel::setup()
 {
@@ -646,6 +650,8 @@ void DfaChannel::setState(const uint8_t nextState)
     }
 }
 
+#pragma region "DFA_CHANNEL_OUTPUT_SEND"
+
 void DfaChannel::sendOutput(const uint8_t outputIndex, const KNXValue &value, const Dpt &type, const bool sendAlways)
 {
     bool hasSend = false;
@@ -758,6 +764,8 @@ void DfaChannel::sendOutputValue(const uint8_t i, const bool forceSend /* = fals
     }    
 }
 
+#pragma endregion "DFA_CHANNEL_OUTPUT_SEND"
+
 void DfaChannel::transfer(const uint8_t input)
 {
     if (_state < DFA_DEF_STATES_COUNT && input < DFA_DEF_INPUTS_COUNT)
@@ -771,6 +779,8 @@ void DfaChannel::transfer(const uint8_t input)
         // ignore undefined transition
     }
 }
+
+#pragma region "DFA_CHANNEL_STATE_TIMEOUT"
 
 void DfaChannel::endTimeout()
 {
@@ -799,6 +809,10 @@ uint32_t DfaChannel::timeoutRemaining_ms()
     return _stateTimeoutDelay_ms - (millis() - _stateTimeoutBegin_ms);
 }
 
+#pragma endregion "DFA_CHANNEL_STATE_TIMEOUT"
+
+#pragma region "DFA_CHANNEL_PERSISTANCE"
+
 void DfaChannel::save()
 {
     const uint8_t conf = _channelActive << 7 | _running << 6 | ParamDFA_fStateRestore;
@@ -824,6 +838,8 @@ void DfaChannel::restore()
         _firstStateTimeoutDelay_ms = timeout;
     }
 }
+
+#pragma endregion "DFA_CHANNEL_PERSISTANCE"
 
 bool DfaChannel::processCommand(const std::string cmd, bool diagnoseKo)
 {
