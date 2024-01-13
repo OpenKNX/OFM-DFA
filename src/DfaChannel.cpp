@@ -640,7 +640,7 @@ bool DfaChannel::isValidState(const uint8_t state)
 void DfaChannel::setState(const uint8_t nextState)
 {
     // logDebugP("setState %d->%d", _state, nextState);
-    if (nextState < DFA_DEF_STATES_COUNT)
+    if (isValidState(nextState))
     {
         _state = nextState;
         // reset timeout
