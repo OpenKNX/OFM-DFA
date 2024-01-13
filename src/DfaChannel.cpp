@@ -573,15 +573,18 @@ void DfaChannel::setRunning(const bool requestRun, const bool first /*= false*/)
             logDebugP("restore: ParamDFA_fStateRestore=%d _firstStateTimeoutDelay_ms=%d ParamDFA_fChannelDelayTimeMS=%d", ParamDFA_fStateRestore, _firstStateTimeoutDelay_ms, ParamDFA_fChannelDelayTimeMS);
             if (ParamDFA_fStateRestore & 0b10 && _firstStateTimeoutDelay_ms > 0)
             {
-                // TODO check refactoring!
-                if (_firstStateTimeoutDelay_ms > ParamDFA_fChannelDelayTimeMS)
+                // remaining timeout starts with device;
+                // this will already add an unknown delay caused by downtime of unknown length,
+                // which should be solved by (re)store the absolute timeout end
+                if (_firstStateTimeoutDelay_ms > _stateTimeoutBegin_ms)
                 {
                     logDebugP("restore with shortened delay");
                     // TODO check/define behaviour when timeout configuration was changed, and is shorter than saved remaining time
-                    _stateTimeoutDelay_ms = _firstStateTimeoutDelay_ms - ParamDFA_fChannelDelayTimeMS;
+                    _stateTimeoutDelay_ms = _firstStateTimeoutDelay_ms - _stateTimeoutBegin_ms;
                 }
                 else
                 {
+                    // TODO check direct restore of timeout-state, to reduce sending
                     logDebugP("restore with ended delay");
                     _stateTimeoutDelay_ms = 1;
                 }
