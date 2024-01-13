@@ -87,6 +87,7 @@ class DfaChannel : public OpenKNX::Channel
     bool _running = false;
     uint32_t _pauseBegin = 0;
 
+    // will be set to defined start-state or restored state
     uint8_t _firstState = DFA_STATE_UNDEFINED;
     uint32_t _firstStateTimeoutDelay_ms = 0;
 
