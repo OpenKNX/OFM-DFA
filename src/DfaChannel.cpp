@@ -654,14 +654,13 @@ void DfaChannel::setState(const uint8_t nextState)
         //     logDebugP("  with timeout state %d after %dms", getTimeoutState(nextState), _stateTimeoutDelay_ms);
 
         // send output values
+        const uint32_t outputDelays[DFA_DEF_OUTPUTS_COUNT] = {ParamDFA_fOutput1DelayTimeMS, ParamDFA_fOutput2DelayTimeMS, ParamDFA_fOutput3DelayTimeMS, ParamDFA_fOutput4DelayTimeMS};
         for (uint8_t i = 0; i < DFA_DEF_OUTPUTS_COUNT; i++)
         {
             // _outputsTimeout[i].delay_ms = 0; // param == cyclic ? output_delay : 0
-
-            const uint32_t outputDelays[DFA_DEF_OUTPUTS_COUNT] = {ParamDFA_fOutput1DelayTimeMS, ParamDFA_fOutput2DelayTimeMS, ParamDFA_fOutput3DelayTimeMS, ParamDFA_fOutput4DelayTimeMS};
             _outputsTimeout[i].delay_ms = outputDelays[i];
+            sendOutputValue(i);
         }
-        sendValues();
     }
 }
 
@@ -689,18 +688,9 @@ void DfaChannel::sendOutput(const uint8_t outputIndex, const KNXValue &value, co
     }
 }
 
-void DfaChannel::sendValues()
-{
-    for (uint8_t i = 0; i < DFA_DEF_OUTPUTS_COUNT; i++)
-    {
-        sendOutputValue(i);
-    }
-}
-
 void DfaChannel::sendOutputValue(const uint8_t i, const bool forceSend /* = false */)
 {
     const uint8_t outputType = knx.paramByte(DFA_ParamCalcIndex(_outputDptPRI[i]));
-    logDebugP("Output<%d>: check sending value (type=%i); begin=%ims, dur=%ims", i + 1, outputType, _outputsTimeout[i].begin_ms, _outputsTimeout[i].delay_ms);
     // _outputsTimeout[i].begin_ms = millis();
     if (outputType ==0)
         _outputsTimeout[i].delay_ms = 0; // disable for disabled output // TODO replace this implementation!
@@ -708,6 +698,8 @@ void DfaChannel::sendOutputValue(const uint8_t i, const bool forceSend /* = fals
     // output is active?
     if (outputType != 0)
     {
+        logDebugP("Output<%d>: check sending value (type=%i); begin=%ims, dur=%ims", i + 1, outputType, _outputsTimeout[i].begin_ms, _outputsTimeout[i].delay_ms);
+        
         const uint8_t outputStateSend = ((knx.paramByte(DFA_ParamCalcIndex(_outputSendPRI[_state][i])) & DFA_fState01Output1ConfMask) >> DFA_fState01Output1ConfShift);
         logDebugP(" -> outputStateSend=%d", outputStateSend);
         // output has value for state?
