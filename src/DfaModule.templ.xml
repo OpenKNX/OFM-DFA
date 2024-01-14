@@ -6178,7 +6178,6 @@
                                   <ParameterRefRef RefId="%AID%_UP-%T%%CC%8102_R-%T%%CC%810201" Cell="1,3" />
                                 </ParameterBlock>
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Definition Ausgangswert" UIHint="Headline" />
-                                <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG: Zyklisches Senden wird derzeit noch nicht unterstützt!" UIHint="Information" />
                                 <ParameterBlock Id="%AID%_PB-nnn" Name="Value%C%" Text="z" Inline="true" Layout="Table">
                                   <Rows>
                                     <Row Id="%AID%_PB-nnn_R-1"  Name="State1"  Text="1" />
@@ -6216,7 +6215,7 @@
                                   </Rows>
                                   <Columns>
                                     <Column Id="%AID%_PB-nnn_C-1" Name="Label"        Width="35%" Text="Zustands-Bezeichnung" />
-                                    <Column Id="%AID%_PB-nnn_C-2" Name="Output1Send"  Width="25%" Text="Sendeverhalten" />
+                                    <Column Id="%AID%_PB-nnn_C-2" Name="Output1Send"  Width="55%" Text="Sendeverhalten" />
                                     <Column Id="%AID%_PB-nnn_C-3" Name="Output1Value" Width="35%" Text="Ausgabewert" />
                                   </Columns>
                                   <!-- * Ouput 1 / State 1 -->
@@ -8862,7 +8861,6 @@
                                   <ParameterRefRef RefId="%AID%_UP-%T%%CC%8202_R-%T%%CC%820201" Cell="1,3" />
                                 </ParameterBlock>
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Definition Ausgangswert" UIHint="Headline" />
-                                <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG: Zyklisches Senden wird derzeit noch nicht unterstützt!" UIHint="Information" />
                                 <ParameterBlock Id="%AID%_PB-nnn" Name="Value%C%" Text="z" Inline="true" Layout="Table">
                                   <Rows>
                                     <Row Id="%AID%_PB-nnn_R-1"  Name="State1"  Text="1" />
@@ -8900,7 +8898,7 @@
                                   </Rows>
                                   <Columns>
                                     <Column Id="%AID%_PB-nnn_C-1" Name="Label"        Width="35%" Text="Zustands-Bezeichnung" />
-                                    <Column Id="%AID%_PB-nnn_C-2" Name="Output2Send"  Width="25%" Text="Sendeverhalten" />
+                                    <Column Id="%AID%_PB-nnn_C-2" Name="Output2Send"  Width="55%" Text="Sendeverhalten" />
                                     <Column Id="%AID%_PB-nnn_C-3" Name="Output2Value" Width="35%" Text="Ausgabewert" />
                                   </Columns>
                                   <!-- * Ouput 2 / State 1 -->
@@ -11546,7 +11544,6 @@
                                   <ParameterRefRef RefId="%AID%_UP-%T%%CC%8302_R-%T%%CC%830201" Cell="1,3" />
                                 </ParameterBlock>
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Definition Ausgangswert" UIHint="Headline" />
-                                <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG: Zyklisches Senden wird derzeit noch nicht unterstützt!" UIHint="Information" />
                                 <ParameterBlock Id="%AID%_PB-nnn" Name="Value%C%" Text="z" Inline="true" Layout="Table">
                                   <Rows>
                                     <Row Id="%AID%_PB-nnn_R-1"  Name="State1"  Text="1" />
@@ -11584,7 +11581,7 @@
                                   </Rows>
                                   <Columns>
                                     <Column Id="%AID%_PB-nnn_C-1" Name="Label"        Width="35%" Text="Zustands-Bezeichnung" />
-                                    <Column Id="%AID%_PB-nnn_C-2" Name="Output3Send"  Width="25%" Text="Sendeverhalten" />
+                                    <Column Id="%AID%_PB-nnn_C-2" Name="Output3Send"  Width="55%" Text="Sendeverhalten" />
                                     <Column Id="%AID%_PB-nnn_C-3" Name="Output3Value" Width="35%" Text="Ausgabewert" />
                                   </Columns>
                                   <!-- * Ouput 3 / State 1 -->
@@ -14230,7 +14227,6 @@
                                   <ParameterRefRef RefId="%AID%_UP-%T%%CC%8402_R-%T%%CC%840201" Cell="1,3" />
                                 </ParameterBlock>
                                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Definition Ausgangswert" UIHint="Headline" />
-                                <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG: Zyklisches Senden wird derzeit noch nicht unterstützt!" UIHint="Information" />
                                 <ParameterBlock Id="%AID%_PB-nnn" Name="Value%C%" Text="z" Inline="true" Layout="Table">
                                   <Rows>
                                     <Row Id="%AID%_PB-nnn_R-1"  Name="State1"  Text="1" />
@@ -14268,7 +14264,7 @@
                                   </Rows>
                                   <Columns>
                                     <Column Id="%AID%_PB-nnn_C-1" Name="Label"        Width="35%" Text="Zustands-Bezeichnung" />
-                                    <Column Id="%AID%_PB-nnn_C-2" Name="Output4Send"  Width="25%" Text="Sendeverhalten" />
+                                    <Column Id="%AID%_PB-nnn_C-2" Name="Output4Send"  Width="55%" Text="Sendeverhalten" />
                                     <Column Id="%AID%_PB-nnn_C-3" Name="Output4Value" Width="35%" Text="Ausgabewert" />
                                   </Columns>
                                   <!-- * Ouput 4 / State 1 -->
