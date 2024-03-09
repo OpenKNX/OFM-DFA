@@ -25,7 +25,7 @@ Von Cornelius Köpp 2023-09
 
 # Beschreibung (DE)
 Das Modul bildet Zustandsmodelle basierend auf _deterministischen endlichen Automaten_ _(DEA; englisch DFA)_ ab.
-Jeder Kanal repräsentiert einen solchen Automaten mit 16 verschiedenen Zuständen, und Zustandswechseln basierend auf 8 verschiedenen Eingabesymbolen/-ereignissen oder Ablauf eines Timeouts.
+Jeder Kanal repräsentiert einen solchen Automaten mit 32 verschiedenen Zuständen, und Zustandswechseln basierend auf 8 verschiedenen Eingabesymbolen/-ereignissen oder Ablauf eines Timeouts.
 Die Definition in der ETS erfolgt über eine (zwei-dimensionale) Zustandsübergangstabelle. 
 
 **Konfiguration in ETS** siehe [Applikationsbeschreibung](doc/DFA_Applikationsbeschreibung.md)
@@ -35,7 +35,7 @@ Die Definition in der ETS erfolgt über eine (zwei-dimensionale) Zustandsüberga
 > bei genauerem Hinsehen werden allerdings gewisse Abweichungen deutlich um das Konzept an den Praxisbedarf anzupassen.
 
 **Z := Menge der Zustände** wird als Teilmenge DPT17.001 (Szenen: {0=Szene1,..,63=Szene64}) dargestellt.
-In der aktuellen Implementierung  eingeschränkt auf die Szenen 1 bis 16.
+In der aktuellen Implementierung  eingeschränkt auf die Szenen 1 bis 32.
 Durch die Nutzung von Szenen können bei Erreichen eines Zustandes unmittelbar mehrere unabhängige Aktionen gleichzeitig ausgelöst werden.   
 
 **z<sub>0</sub> &isin; Z := Startzustand** wird beim Einschalten (bzw. erstmaliger Aktivierung) als erster Zustand angenommen.
