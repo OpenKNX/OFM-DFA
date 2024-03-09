@@ -15,6 +15,12 @@ Implementation of state machines for KNX configurable via ETS.
 
 By Cornelius Köpp 2023-09
 
+# OpenKNX-Modul für Deterministische Endliche Automaten (DEA)
+
+Implementierung von Zustandsmodellen für KNX, konfigurierbar über die ETS.
+
+Von Cornelius Köpp 2023-09
+
 
 
 # Beschreibung (DE)
