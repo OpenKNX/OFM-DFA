@@ -26,9 +26,10 @@ Von Cornelius Köpp 2023-09
 # Beschreibung (DE)
 Das Modul bildet Zustandsmodelle basierend auf _deterministischen endlichen Automaten_ _(DEA; englisch DFA)_ ab.
 Jeder Kanal repräsentiert einen solchen Automaten mit 32 verschiedenen Zuständen, und Zustandswechseln basierend auf 8 verschiedenen Eingabesymbolen/-ereignissen oder Ablauf eines Timeouts.
+Über 4 Ausgangskanäle können individuelle Zustands-spezifische Werte ausgegeben werden. 
 Die Definition in der ETS erfolgt über eine (zwei-dimensionale) Zustandsübergangstabelle. 
 
-**Konfiguration in ETS** siehe [Applikationsbeschreibung](doc/DFA_Applikationsbeschreibung.md)
+Zur **Konfiguration in der ETS** siehe [Applikationsbeschreibung](doc/DFA_Applikationsbeschreibung.md)
 
 ## Grundidee in Anlehnung an gängige formale Definitionen:
 > Informatikern wird das Modell bekannt und vertraut vorkommen; 
@@ -41,8 +42,8 @@ Durch die Nutzung von Szenen können bei Erreichen eines Zustandes unmittelbar m
 **z<sub>0</sub> &isin; Z := Startzustand** wird beim Einschalten (bzw. erstmaliger Aktivierung) als erster Zustand angenommen.
 
 **X := Eingabealphabet** umfasst "Symbole" deren Eingabe (bzw. das damit verbundene Ereignis) eine Zustandsänderung bewirken kann.
-In der aktuellen Implementierung eingeschränkt auf 8 Elemente, die durch Eingang von 1 und 0 auf eines von 4 KOs mit DPT1 ausgelöst werden.
-Dadurch kann z.B. ohne weiter Vorverarbeitung auf Auftreten oder den Wegfall von erkannter Präsens reagiert werden.
+In der aktuellen Implementierung eingeschränkt auf 8 Elemente, die durch Eingang von 1 oder 0 auf einem von bis zu 8 unabhängigen Eingabekanälen mit DPT1 ausgelöst werden.
+Durch optionale Konfiguration als Eingabesymbolpaar kann z.B. ohne weiter Vorverarbeitung auf das Auftreten oder den Wegfall von erkannter Präsenz reagiert werden.
 
 **d:Z&times;X&rarr;Z&cup;{undef} := Überführungsfunktion mit partieller Definition** beschreibt für jede Kombination aus Ausgangszustand und Eingabesymbol ob, und wenn ja in welchen Folgezustand bei Eingabe gewechselt wird.
 Nicht angegebene Zustandsübergabe werden ignoriert und führen nicht in einen Fehlerzustand.
