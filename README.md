@@ -58,3 +58,10 @@ Es können Zustände definiert werden, die nicht mehr durch Eingabe eines Symbol
 beschreibt für jeden Zustand, ob in einen Folgezustand gewechselt werden soll, wenn innerhalb eines definierten Zeitintervalls keine Eingabe erfolgt (bzw. kein anderes Ereignis eingetreten) ist.  
 
 **t:Z&rarr;T&cup;{undef} := Timeout-Dauer** (mit *t(z)=undef &hArr; d<sub>t</sub>=undef*) gibt die Wartedauer bis zum automatischen Zustandswechsel an. 
+
+
+### Erweiterung: Zustandsspezifische Ausgabewerte
+
+**o<sub>type</sub>:{1,2,3,4}&rarr;O&cup;{undef} := Ausgangsfunktion mit partieller Definition**
+
+**o:Z&cup;{1,2,3,4}&rarr;O&cup;{undef} := Ausgangsfunktion mit partieller Definition**
