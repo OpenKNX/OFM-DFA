@@ -1,3 +1,8 @@
+# 2024-3 First Beta-Version (internal only)
+* (TODO) Improved Sending of Outputs
+* Fix: Timeout-Restore
+* Erweiterung Sendeverhalten
+
 # 2023-12-30 Second Alpha-Version (PROD-Test)
 * Erweiterung: Ausgaben und Setzen von Status kann alternativ auch in gemeinsamen KO erfolgen
 * Verbesserung ETS-App: Leere Standardwerte für Bezeichnungen von Eingabesymbolen und Zuständen
