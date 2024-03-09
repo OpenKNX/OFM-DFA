@@ -680,7 +680,7 @@ uint8_t DfaChannel::outputGetDpt(const uint8_t i)
 
 uint8_t DfaChannel::outputGetCurrentStateSendConfig(const uint8_t i)
 {
-    return ((knx.paramByte(DFA_ParamCalcIndex(_outputSendPRI[_state][i])) & DFA_fState01Output1ConfMask) >> DFA_fState01Output1ConfShift);
+    return knx.paramByte(DFA_ParamCalcIndex(_outputSendPRI[_state][i]));
 }
 
 /*bool*/ void DfaChannel::outputUpdateKO(const uint8_t i, const KNXValue &value, const Dpt &type, const bool forceSend /* = false */)
