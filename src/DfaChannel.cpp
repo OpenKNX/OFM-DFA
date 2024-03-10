@@ -658,7 +658,13 @@ void DfaChannel::setState(const uint8_t nextState)
         //     logDebugP("  with timeout state %d after %dms", getTimeoutState(nextState), _stateTimeoutDelay_ms);
 
         // send output values
-        const uint32_t outputDelays[DFA_DEF_OUTPUTS_COUNT] = {ParamDFA_fOutput1DelayTimeMS, ParamDFA_fOutput2DelayTimeMS, ParamDFA_fOutput3DelayTimeMS, ParamDFA_fOutput4DelayTimeMS};
+        // TODO extract
+        const uint32_t outputDelays[DFA_DEF_OUTPUTS_COUNT] = {
+            ParamDFA_fOutput1DelayTimeMS,
+            ParamDFA_fOutput2DelayTimeMS,
+            ParamDFA_fOutput3DelayTimeMS,
+            ParamDFA_fOutput4DelayTimeMS,
+        };
         for (uint8_t i = 0; i < DFA_DEF_OUTPUTS_COUNT; i++)
         {
             const bool cyclicSending = (outputGetDpt(i) != 0) && (outputGetCurrentStateSendConfig(i) & OUTPUT_SEND_CYCLIC);
