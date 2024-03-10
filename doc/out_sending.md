@@ -33,3 +33,27 @@
 * OUT_MASK_ON_CHANGE_STATE   = 0x04: force sending, when _state!=newstate in setState
 * OUT_MASK_ON_SET_STATE      = 0x08: force sending, after setState
 * OUT_MASK_SEND_CYCLIC       = 0x80: cyclic
+
+if (conf == 0)
+{
+}
+else if (conf & OUT_MASK_ON_SET_STATE && onStateSet)
+{
+}
+else if (conf & OUT_MASK_ON_CHANGE_STATE && onStateChange)
+{
+}
+else if (conf & OUT_MASK_ON_CHANGE_VALUE)
+{
+    if (outKo[0].valueNoSendCompare(...))
+    {
+        outKo[0].objectWritten();
+    }
+}
+else if (conf & OUT_MASK_UPDATE_ONLY)
+{
+    outKo[0].valueNoSend(...)
+}
+
+// cyclic sending
+_sendCyclic[i] = (conf & OUT_MASK_SEND_CYCLIC);
