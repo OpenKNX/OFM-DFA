@@ -740,7 +740,7 @@ void DfaChannel::outputUpdate(const uint8_t i, const bool send, const bool force
         logDebugP("Output<%d>: update (type=%3i); begin=%6ims, dur=%6ims, outputStateSend=%d", i + 1, outputType, _outputsTimeout[i].begin_ms, _outputsTimeout[i].delay_ms, outputStateSend);
         
         // output has value for state?
-        if (outputStateSend || forceSend)
+        if (outputStateSend != 0)
         {
             const uint32_t pIdxValue = DFA_ParamCalcIndex(_outputValuePRI[_state][i]);
             // logDebugP("         -> paramIndex=%i", pIdxValue);
