@@ -33,9 +33,11 @@
 #define OUTPUT_TYPE_DPT17   171
 #define OUTPUT_TYPE_DPT232  232
 
-#define OUTPUT_SEND_CHANGE  0b0001
-#define OUTPUT_SEND_ALWAYS  0b0010
-// #define OUTPUT_SEND_CYLIC   0b0100
+#define OUTPUT_NOSEND_KOUPDATE_ONLY  0x01
+#define OUTPUT_SEND_ON_VALUE_CHANGE  0x02
+#define OUTPUT_SEND_ON_STATE_CHANGE  0x04
+#define OUTPUT_SEND_ALWAYS           0x08
+#define OUTPUT_SEND_CYCLIC           0x80
 
 // #if (DFA_ParamBlockSize > 0xff)
 //  #error Relativ channel parameter index > uint8_t => need uint16_t for DfaStateTimeoutParamRelIdx.state and _transitionParamsRelIdx
