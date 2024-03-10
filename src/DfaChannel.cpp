@@ -749,13 +749,8 @@ void DfaChannel::outputUpdate(const uint8_t i, const bool send, const bool force
             switch (outputType)
             {
                 case OUTPUT_TYPE_DPT1:
-                    {
-                        // TODO FIXME Mask
-                        // const KNXValue value = ((bool)(knx.paramByte(pIdxValue) & LOG_DFA_f1State01Output1TypeDpt1Mask));
-
-                        // works, as long as using same location as other dpt values
-                        outputUpdateKO(i, (knx.paramByte(pIdxValue) != 0), DPT_Switch, send, forceSend);
-                    }
+                    // works, as long as using same location as other dpt values
+                    outputUpdateKO(i, (knx.paramByte(pIdxValue) != 0), DPT_Switch, send, forceSend);
                     break;
                 case OUTPUT_TYPE_DPT2:
                     // TODO check using mask!
