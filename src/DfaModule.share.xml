@@ -647,7 +647,7 @@
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="In diesem Modul ist keine kontextsensitive Hilfe integriert." />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Ein u.U. nicht aktueller Stand der Dokumentation ist online verfügbar." />
               </ParameterBlock>
-              <ParameterBlock Name="DfaBasic" Text="Basiseinstellungen" Id="%AID%_PB-nnn" Icon="information-outline"><!-- HelpContext="DFA-Dokumentation" -->
+              <ParameterBlock Name="DfaBasic" Text="Basiseinstellungen" Id="%AID%_PB-nnn" Icon="cog-outline"><!-- HelpContext="DFA-Dokumentation" -->
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Kanalauswahl" UIHint="Headline" />
                 <ParameterRefRef RefId="%AID%_P-%T%000001_R-%T%00000101" />
               </ParameterBlock>                            
