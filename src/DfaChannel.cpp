@@ -650,8 +650,6 @@ void DfaChannel::setState(const uint8_t nextState)
         resetTimeout();
 
         // send state
-        // KoDFA_KOfState.value(_state, DPT_SceneNumber);
-        // if (KoDFA_KOfState.valueNoSendCompare(_state, DPT_SceneNumber));
         GroupObject *ko = &KoDFA_KOfState;
         if (ko->valueNoSendCompare(_state, DPT_SceneNumber))
             ko->objectWritten();
