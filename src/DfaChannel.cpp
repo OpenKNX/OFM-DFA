@@ -670,22 +670,22 @@ void DfaChannel::setState(const uint8_t nextState)
         };
         for (uint8_t i = 0; i < DFA_DEF_OUTPUTS_COUNT; i++)
         {
-            const bool cyclicSending = (outputGetDpt(i) != 0) && (outputGetCurrentStateSendConfig(i) & OUTPUT_SEND_CYCLIC);
-            _outputsTimeout[i].delay_ms = cyclicSending ? outputDelays[i] : 0;
-
             const uint8_t outputStateSend = outputGetCurrentStateSendConfig(i);
 
-            logDebugP("Output<%d>: ko=%i on~Val=%i on~State=%i all=%i ; cyclic=%i", i + 1
-                , (outputStateSend & OUTPUT_NOSEND_KOUPDATE_ONLY) != 0
-                , (outputStateSend & OUTPUT_SEND_ON_VALUE_CHANGE) != 0
-                , (outputStateSend & OUTPUT_SEND_ON_STATE_CHANGE) != 0
-                , (outputStateSend & OUTPUT_SEND_ALWAYS) != 0
-                , (outputStateSend & OUTPUT_SEND_CYCLIC) != 0
-            );
+            const bool updateKo = (outputStateSend & OUTPUT_UPDATE_KO);
+            const bool sendOnChangedValue = (outputStateSend & OUTPUT_SEND_ON_VALUE_CHANGE);
+            const bool sendOnChangedState = (outputStateSend & OUTPUT_SEND_ON_STATE_CHANGE);
+            const bool sendAlways = (outputStateSend & OUTPUT_SEND_ALWAYS);
+            const bool repeatedSending = (outputStateSend & OUTPUT_REPEATED_SEND);
 
-            const bool send = (outputStateSend & OUTPUT_SEND_ON_VALUE_CHANGE);
-            const bool forceSend = (outputStateSend & OUTPUT_SEND_ALWAYS) || ((outputStateSend & OUTPUT_SEND_ON_STATE_CHANGE) && stateChanged);
-            outputUpdate(i, send, forceSend);
+            const bool cyclicSending = (outputGetDpt(i) != 0) && repeatedSending;
+            _outputsTimeout[i].delay_ms = cyclicSending ? outputDelays[i] : 0;
+
+            logDebugP("Output<%d>: ko=%i on~Val=%i on~State=%i all=%i ; cyclic=%i",
+                      i + 1, updateKo, sendOnChangedValue, sendOnChangedState, sendAlways, repeatedSending);
+
+            const bool forceSend = sendAlways || (sendOnChangedState && stateChanged);
+            outputUpdate(i, sendOnChangedValue, forceSend);
         }
     }
 }
