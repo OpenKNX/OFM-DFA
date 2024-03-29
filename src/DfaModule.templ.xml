@@ -17087,9 +17087,7 @@
                           </choose>
 
 
-                        <ParameterBlock Id="%AID%_PB-%C%04" Name="a%C%Dummy" Text="KO-Dummy" Inline="true">
-                          <!-- TODO find better place... -->
-                          <Channel Id="%AID%_CH-DFA%CC%" Name="f%CC%Dfa" Number="DFA%CC%" Text="DEA %CC%: {{0: ...}}" TextParameterRefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101">
+                          <ParameterBlock Id="%AID%_PB-nnn" Name="a%CC%Dfa" Text="DEA %C%: {{0: ...}}" TextParameterRefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" ShowInComObjectTree="true" Inline="true" >
                             <!-- KO depending on state settting -->
                             <choose ParamRefId="%AID%_UP-%T%%CC%0005_R-%T%%CC%000501">
                               <when test="0 1"><!-- state KO for output only -->
@@ -17297,8 +17295,7 @@
                               <when test="171" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0204_R-%T%%CC%020417" /></when>
                               <when test="232" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0204_R-%T%%CC%020432" /></when>
                             </choose>
-                          </Channel>
-                        </ParameterBlock>
+                          </ParameterBlock>
 
                       </when>
                     </choose>
