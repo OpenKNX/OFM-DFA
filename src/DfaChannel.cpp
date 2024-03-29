@@ -382,7 +382,7 @@ const std::string DfaChannel::name()
 
 void DfaChannel::setup()
 {
-    _channelActive = (ParamDFA_fSwitchMaster == 0b01);
+    _channelActive = (ParamDFA_fActive == 0b01);
     logDebugP("setup (act=%d dly=%ds run=%d)", _channelActive, ParamDFA_fStartupDelayTimeMS / 1000, ParamDFA_fSwitchByKo != 0b00);
 
     if (_channelActive)
