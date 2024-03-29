@@ -383,7 +383,7 @@ const std::string DfaChannel::name()
 void DfaChannel::setup()
 {
     _channelActive = (ParamDFA_fSwitchMaster == 0b01);
-    logDebugP("setup (act=%d dly=%ds run=%d)", _channelActive, ParamDFA_fChannelDelayTimeMS / 1000, ParamDFA_fSwitchByKo != 0b00);
+    logDebugP("setup (act=%d dly=%ds run=%d)", _channelActive, ParamDFA_fStartupDelayTimeMS / 1000, ParamDFA_fSwitchByKo != 0b00);
 
     if (_channelActive)
     {
@@ -502,7 +502,7 @@ void DfaChannel::loop()
                 outputLoop(i); // TODO check using break on actual sending, to limit sending to 1 per loop
         }
     }
-    else if (_processStartupDelay && delayCheckMillis(_startupDelayBegin_ms, ParamDFA_fChannelDelayTimeMS))
+    else if (_processStartupDelay && delayCheckMillis(_startupDelayBegin_ms, ParamDFA_fStartupDelayTimeMS))
     {
         _processStartupDelay = false;
 
@@ -590,7 +590,7 @@ void DfaChannel::setRunning(const bool requestRun, const bool first /*= false*/)
             // first activation
             logDebugP("first activation");
             setState(_firstState);
-            logDebugP("restore: ParamDFA_fStateRestore=%d _firstStateTimeoutDelay_ms=%d ParamDFA_fChannelDelayTimeMS=%d", ParamDFA_fStateRestore, _firstStateTimeoutDelay_ms, ParamDFA_fChannelDelayTimeMS);
+            logDebugP("restore: ParamDFA_fStateRestore=%d _firstStateTimeoutDelay_ms=%d ParamDFA_fChannelDelayTimeMS=%d", ParamDFA_fStateRestore, _firstStateTimeoutDelay_ms, ParamDFA_fStartupDelayTimeMS);
             if (ParamDFA_fStateRestore & 0b10 && _firstStateTimeoutDelay_ms > 0)
             {
                 // remaining timeout starts with device;
