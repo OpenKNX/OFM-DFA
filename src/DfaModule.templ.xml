@@ -4720,61 +4720,24 @@
 
               <!-- input A + B -->
               <ComObjectRef Id="%AID%_O-%T%%CC%0001_R-%T%%CC%000101" RefId="%AID%_O-%T%%CC%0001" Text="Symbol A {{0: }}"                                                           TextParameterRefId="%AID%_P-%T%%CC%7100_R-%T%%CC%710001" />
-              <!--
-              <ComObjectRef Id="%AID%_O-%T%%CC%0001_R-%T%%CC%000110" RefId="%AID%_O-%T%%CC%0001" Text="Symbol A (=0) {{0: }}"                                                      TextParameterRefId="%AID%_P-%T%%CC%7100_R-%T%%CC%710001" />
-              <ComObjectRef Id="%AID%_O-%T%%CC%0001_R-%T%%CC%000111" RefId="%AID%_O-%T%%CC%0001" Text="Symbol A (=1) {{0: }}"                                                      TextParameterRefId="%AID%_P-%T%%CC%7100_R-%T%%CC%710001" />
-              -->
               <ComObjectRef Id="%AID%_O-%T%%CC%0001_R-%T%%CC%000102" RefId="%AID%_O-%T%%CC%0001" Text="Symbol A/B (1=A/0=B) {{0: }}"                                               TextParameterRefId="%AID%_P-%T%%CC%7100_R-%T%%CC%710002" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0002_R-%T%%CC%000201" RefId="%AID%_O-%T%%CC%0002" Text="Symbol B {{0: }}"                                                           TextParameterRefId="%AID%_P-%T%%CC%7200_R-%T%%CC%720001" />
-              <!--
-              <ComObjectRef Id="%AID%_O-%T%%CC%0002_R-%T%%CC%000210" RefId="%AID%_O-%T%%CC%0002" Text="Symbol B (=0) {{0: }}"                                                      TextParameterRefId="%AID%_P-%T%%CC%7200_R-%T%%CC%720001" />
-              <ComObjectRef Id="%AID%_O-%T%%CC%0002_R-%T%%CC%000211" RefId="%AID%_O-%T%%CC%0002" Text="Symbol B (=1) {{0: }}"                                                      TextParameterRefId="%AID%_P-%T%%CC%7200_R-%T%%CC%720001" />
-              -->
               <!-- input C + D -->
               <ComObjectRef Id="%AID%_O-%T%%CC%0003_R-%T%%CC%000301" RefId="%AID%_O-%T%%CC%0003" Text="Symbol C {{0: }}"                                                           TextParameterRefId="%AID%_P-%T%%CC%7300_R-%T%%CC%730001" />
-              <!--
-              <ComObjectRef Id="%AID%_O-%T%%CC%0003_R-%T%%CC%000310" RefId="%AID%_O-%T%%CC%0003" Text="Symbol C (=0) {{0: }}"                                                      TextParameterRefId="%AID%_P-%T%%CC%7300_R-%T%%CC%730001" />
-              <ComObjectRef Id="%AID%_O-%T%%CC%0003_R-%T%%CC%000311" RefId="%AID%_O-%T%%CC%0003" Text="Symbol C (=1) {{0: }}"                                                      TextParameterRefId="%AID%_P-%T%%CC%7300_R-%T%%CC%730001" />
-              -->
               <ComObjectRef Id="%AID%_O-%T%%CC%0003_R-%T%%CC%000302" RefId="%AID%_O-%T%%CC%0003" Text="Symbol C/D (1=C/0=D) {{0: }}"                                               TextParameterRefId="%AID%_P-%T%%CC%7300_R-%T%%CC%730002" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0004_R-%T%%CC%000401" RefId="%AID%_O-%T%%CC%0004" Text="Symbol D {{0: }}"                                                           TextParameterRefId="%AID%_P-%T%%CC%7400_R-%T%%CC%740001" />
-              <!--
-              <ComObjectRef Id="%AID%_O-%T%%CC%0004_R-%T%%CC%000410" RefId="%AID%_O-%T%%CC%0004" Text="Symbol D (=0) {{0: }}"                                                      TextParameterRefId="%AID%_P-%T%%CC%7400_R-%T%%CC%740001" />
-              <ComObjectRef Id="%AID%_O-%T%%CC%0004_R-%T%%CC%000411" RefId="%AID%_O-%T%%CC%0004" Text="Symbol D (=1) {{0: }}"                                                      TextParameterRefId="%AID%_P-%T%%CC%7400_R-%T%%CC%740001" />
-              -->
               <!-- input E + F -->
               <ComObjectRef Id="%AID%_O-%T%%CC%0005_R-%T%%CC%000501" RefId="%AID%_O-%T%%CC%0005" Text="Symbol E {{0: }}"                                                           TextParameterRefId="%AID%_P-%T%%CC%7500_R-%T%%CC%750001" />
-              <!--
-              <ComObjectRef Id="%AID%_O-%T%%CC%0005_R-%T%%CC%000510" RefId="%AID%_O-%T%%CC%0005" Text="Symbol E (=0) {{0: }}"                                                      TextParameterRefId="%AID%_P-%T%%CC%7500_R-%T%%CC%750001" />
-              <ComObjectRef Id="%AID%_O-%T%%CC%0005_R-%T%%CC%000511" RefId="%AID%_O-%T%%CC%0005" Text="Symbol E (=1) {{0: }}"                                                      TextParameterRefId="%AID%_P-%T%%CC%7500_R-%T%%CC%750001" />
-              -->
               <ComObjectRef Id="%AID%_O-%T%%CC%0005_R-%T%%CC%000502" RefId="%AID%_O-%T%%CC%0005" Text="Symbol E/F (1=E/0=F) {{0: }}"                                               TextParameterRefId="%AID%_P-%T%%CC%7500_R-%T%%CC%750002" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0006_R-%T%%CC%000601" RefId="%AID%_O-%T%%CC%0006" Text="Symbol F {{0: }}"                                                           TextParameterRefId="%AID%_P-%T%%CC%7600_R-%T%%CC%760001" />
-              <!--
-              <ComObjectRef Id="%AID%_O-%T%%CC%0006_R-%T%%CC%000610" RefId="%AID%_O-%T%%CC%0006" Text="Symbol F (=0) {{0: }}"                                                      TextParameterRefId="%AID%_P-%T%%CC%7600_R-%T%%CC%760001" />
-              <ComObjectRef Id="%AID%_O-%T%%CC%0006_R-%T%%CC%000611" RefId="%AID%_O-%T%%CC%0006" Text="Symbol F (=1) {{0: }}"                                                      TextParameterRefId="%AID%_P-%T%%CC%7600_R-%T%%CC%760001" />
-              -->
               <!-- input G + H -->
               <ComObjectRef Id="%AID%_O-%T%%CC%0007_R-%T%%CC%000701" RefId="%AID%_O-%T%%CC%0007" Text="Symbol G {{0: }}"                                                           TextParameterRefId="%AID%_P-%T%%CC%7700_R-%T%%CC%770001" />
-              <!--
-              <ComObjectRef Id="%AID%_O-%T%%CC%0007_R-%T%%CC%000710" RefId="%AID%_O-%T%%CC%0007" Text="Symbol G (=0) {{0: }}"                                                      TextParameterRefId="%AID%_P-%T%%CC%7700_R-%T%%CC%770001" />
-              <ComObjectRef Id="%AID%_O-%T%%CC%0007_R-%T%%CC%000711" RefId="%AID%_O-%T%%CC%0007" Text="Symbol G (=1) {{0: }}"                                                      TextParameterRefId="%AID%_P-%T%%CC%7700_R-%T%%CC%770001" />
-              -->
               <ComObjectRef Id="%AID%_O-%T%%CC%0007_R-%T%%CC%000702" RefId="%AID%_O-%T%%CC%0007" Text="Symbol G/H (1=G/H=D) {{0: }}"                                               TextParameterRefId="%AID%_P-%T%%CC%7700_R-%T%%CC%770002" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0008_R-%T%%CC%000801" RefId="%AID%_O-%T%%CC%0008" Text="Symbol H {{0: }}"                                                           TextParameterRefId="%AID%_P-%T%%CC%7800_R-%T%%CC%780001" />
-              <!--
-              <ComObjectRef Id="%AID%_O-%T%%CC%0008_R-%T%%CC%000810" RefId="%AID%_O-%T%%CC%0008" Text="Symbol H (=0) {{0: }}"                                                      TextParameterRefId="%AID%_P-%T%%CC%7800_R-%T%%CC%780001" />
-              <ComObjectRef Id="%AID%_O-%T%%CC%0008_R-%T%%CC%000811" RefId="%AID%_O-%T%%CC%0008" Text="Symbol H (=1) {{0: }}"                                                      TextParameterRefId="%AID%_P-%T%%CC%7800_R-%T%%CC%780001" />
-              -->
                                          
               <ComObjectRef Id="%AID%_O-%T%%CC%0100_R-%T%%CC%010001" RefId="%AID%_O-%T%%CC%0100" Text="Zustand setzen"    />
               <ComObjectRef Id="%AID%_O-%T%%CC%0101_R-%T%%CC%010101" RefId="%AID%_O-%T%%CC%0101" Text="starten/pausieren" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0102_R-%T%%CC%010201" RefId="%AID%_O-%T%%CC%0102" Text="läuft?"            />
-              <!--
-              <ComObjectRef Id="%AID%_O-%T%%CC%0100_R-%T%%CC%010001" RefId="%AID%_O-%T%%CC%0100" Text="{{0:Zustand setzen}}"                                                       TextParameterRefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" />
-              <ComObjectRef Id="%AID%_O-%T%%CC%0101_R-%T%%CC%010101" RefId="%AID%_O-%T%%CC%0101" Text="{{0:starten/pausieren}}"                                                    TextParameterRefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" />
-              <ComObjectRef Id="%AID%_O-%T%%CC%0102_R-%T%%CC%010201" RefId="%AID%_O-%T%%CC%0102" Text="{{0:läuft?}}"                                                               TextParameterRefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" />
-              -->
 
               <!-- output 1 -->
               <ComObjectRef Id="%AID%_O-%T%%CC%0201_R-%T%%CC%020101" RefId="%AID%_O-%T%%CC%0201" Text="{{0:Zustandswert 1}}"    ObjectSize="1 Bit"    DatapointType="DPST-1-1"     TextParameterRefId="%AID%_P-%T%%CC%8100_R-%T%%CC%810001" />
