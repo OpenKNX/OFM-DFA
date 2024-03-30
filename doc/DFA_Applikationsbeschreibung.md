@@ -28,6 +28,17 @@
 
 # Konzepte
 
+
+## Deterministische Endliche Automaten
+DFA steht für englisch Deterministic Finite Automaton, 
+auf Deutsch entsprechend DEA (Deterministischer Endlicher Automat); 
+dies bildet die Basis für die Zustandsmodelle.
+
+Siehe
+[Grundidee in Anlehnung an gängige formale Definitionen](../README.md#grundidee-in-anlehnung-an-gängige-formale-definitionen)
+in der einführenden README.md.
+
+
 ## Zeitbasierter Folgezustand (Timeout):
 Für jeden Zustand kann optional ein Folgezustand definiert werden, zu dem gewechselt wird, 
 falls innerhalb einer definierten Zeitspanne kein Wechsel in einen anderen Zustand erfolgt;
