@@ -128,7 +128,6 @@ Die Dokumentation hat keinen Einfluss auf das Geräteverhalten.
 ### Ausführung
 
 #### Verzögerung nach Neustart
-<div style="background-color:red;">TODO: u.A. Prüfen Startverzögerung Gerät</div>
 Nach dem Neustart ist der der Automat zunächst inaktiv und wird erst nach Ablauf der Verzögerungszeit (zusätzlich zur Startverzögerung im Gerät) auf Ereignisse (wie z.B. Eingaben, Setzen des Zustand) reagieren und einen ggf. definierten Timeout starten.
 
 > Mit dieser Einstellung kann z.B. verhindert werden, dass beim Neustart des Bus durch initial versendete Telegramme zustandswechsel verursacht werden.
@@ -169,7 +168,7 @@ Das resultierende Verhalten ist ansonsten nur schwer vorhersehbar und beherrschb
 > Beispiele zum Einsatz von Logikkanälen:
 > * Prüfung ob nicht-binären Eingangswerte in einem bestimmten Wertebereich liegen
 > * Reaktion auf Über-/Unterschreitung von Schwellwerten, ggf. mit Hysterese und Mindesthaltedauer
-> * <div style="background-color:red;">TODO</div> Unterdrückung von Wiederholungen, um nur auf Wertänderungen zu reagieren 
+> * Unterdrückung von Wiederholungen, um nur auf Wertänderungen zu reagieren 
 
 #### Gemeinsamer Eingang (Symbole 1/0)
 
