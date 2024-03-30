@@ -232,7 +232,7 @@ Anzeige der erzeugten Eingabesymbole für Auslösewerte 1 und 0.
 
 ### Ausgabe
 Es können bis zu 4 Ausgabekanäle (O1, O2, O3, O4) konfiguriert werden, für die bei Aktivierung jeweils ein KO mit gewähltem Datentyp bereitgestellt wird.
-Es stehen gängige DPTs (DPT1,2,5,5.001,6,7,8,9,12,13,14,16,232.600) zur Auswahl, sowie (ausschließlich) für O4 auch Text (DPT17.001).
+Es stehen gängige DPTs (1,2,5,5.001,6,7,8,9,12,13,14,17,232.600) zur Auswahl, sowie *ausschließlich* für O4 auch Text (DPT16.001).
 Für jede Kombination aus Zustand und Ausgang kann ein Wert und ein Sendeverhalten definiert werden.
 
 #### Bezeichnung/Kommentar (je Ausgabekanal)
