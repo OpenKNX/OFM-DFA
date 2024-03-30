@@ -6,7 +6,10 @@
 * Konzepte
   * [Zeitbasierter Folgezustand (Timeout)](#zeitbasierter-folgezustand--timeout--)
 * ETS-Konfiguration:
-  * [**DEAs**](#deas)
+  * [**Zustandsmodelle (DEAs)**](#ets-applikationsteilbr-zustandsmodelle-deas)
+    * [**Info &amp; Dokumentation**](#info--dokumentation)
+    * [**Basiseinstellungen**](#basiseinstellungen)
+      * [Kanalauswahl / Verfügbare Kanäle](#basiseinstellungen)
     * [**DEA n: ...**](#dea-n--)
       * [DEA-Definition](#dea-definition) 
       * [Ausführung](#ausführung)
@@ -30,7 +33,24 @@ Die Zeitmessung wird zurückgesetzt, falls derselbe Zustand erneut aufgerufen wi
 * für jedes Eingabesymbol kann durch Auswahl desselben Folgezustands ein Reset umgesetzt werden
 
 
-# DEAs (ETS-Applikationsteil)
+# ETS-Applikationsteil:<br />Zustandsmodelle (DEAs)
+
+
+## Info &amp; Dokumentation
+### Modul-Version
+Zeigt die Version (Major.Minor) des Moduls OFM-DFA an.
+
+## Basiseinstellungen
+### Kanalauswahl
+#### Verfügbare Kanäle
+Je nach Applikation kann eine große Anzahl von DFA-Kanälen vorhanden sein, 
+wobei oft nur einige wenige benötigt werden. 
+Mit diesem Parameter können nicht benötigt Kanäle in der ETS ausgeblendet werden, bzw. nur die notwendigen angezeigt.
+
+***Bemerkung***:
+Ausgeblendete Kanäle sind nicht inaktiv und zugehörige KOs sind ausgeblendet. 
+
+
 ## DEA n: ...
 ### DEA-Definition 
 
