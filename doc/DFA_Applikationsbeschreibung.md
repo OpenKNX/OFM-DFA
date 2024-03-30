@@ -19,7 +19,7 @@
       * [Ausgabe]()
       * [**Zustände & Übergänge**]()
         * [Startzustand](#startzustand)
-        * Rekonstruktion
+        * [Rekonstruktion](#zustand-bei-neustart-rekonstruieren)
         * [Direktes Setzen von Zustand](#direktes-setzen-von-zustand-erlauben)
         * [Übergangsfunktion einschließlich zeitbasierter Folgezustände](#zustände-und-übergangsfunktion-einschließlich-zeitbasierter-folgezustände)
       * [**Ausgang n: ...**](...)
@@ -257,7 +257,18 @@ Der Wert wird ausschließlich in der ETS verwendet (Als Beschriftung von Konfigu
 ### Zustände und Übergangsfunktion einschließlich zeitbasierter Folgezustände
 
 #### Startzustand
-Definiert den Zustand den der Automat beim Einschalten (genauer: bei erstmaliger) einnimmt.
+Definiert den Zustand den der Automat beim (erstmaligen) Einschalten einnimmt.
+
+#### Zustand bei Neustart rekonstruieren?
+Mit den angebotenen Funktionen kann versucht werden den Einfluss einer unterbrochenen Ausführung des Automaten zu reduzieren 
+
+| Einstellungswert                            | Erster Zustand                                    | Erster Timeout        | Erklärung                                                                                                                                                                                                                                                                                                                              |
+|---------------------------------------------|---------------------------------------------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| nicht speichern (immer Startzustand nutzen) | Startzustand                                      | vollständig           | Der Zustand vor einem Neustart hat keinen Einfluss. Nach einem Neustart wird immer mit dem konfigurierte Startzustand begonnen.                                                                                                                                                                                                        |
+| letzten Zustand neu starten                 | zuletzt gespeicherter Zustand, sonst Startzustand | vollständig           | Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird dieser neu gestartet.                                                                                                                                                |
+| letzten Zustand fortsetzen                  | zuletzt gespeicherter Zustand, sonst Startzustand | nur Restzeit          | Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird dieser um die bereits bis zur Speicherung des Zustands abgelaufene Zeit vermindert.                                                                                  |
+| letzten Zustand mit absolutem Timeout-Ende  | zuletzt gespeicherter Zustand, sonst Startzustand | berechnet aus Uhrzeit | **(Geplant)** Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird die Restzeit neu berechnet, so dass der selbe (absolute) Endzeitpunkt erreicht wird wie ohne Unterbrechung.<br> Diese Option benötigt eine Zeitangabe. |
+
 
 #### Direktes Setzen von Zustand erlauben?
 | Einstellungswert | Erklärung                                                                                                                                                                                |
