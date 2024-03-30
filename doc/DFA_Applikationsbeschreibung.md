@@ -3,22 +3,28 @@
 # Applikationsbeschreibung OFM-DFA
 
 
-* Konzepte
+# Inhaltsverzeichnis
+* [Konzepte](#konzepte)
   * [Zeitbasierter Folgezustand (Timeout)](#zeitbasierter-folgezustand--timeout--)
 * ETS-Konfiguration:
-  * [**Zustandsmodelle (DEAs)**](#ets-applikationsteilbr-zustandsmodelle-deas)
+  [**Zustandsmodelle (DEAs)**](#ets-applikationsteilbr-zustandsmodelle-deas)
     * [**Info &amp; Dokumentation**](#info--dokumentation)
     * [**Basiseinstellungen**](#basiseinstellungen)
       * [Kanalauswahl / Verfügbare Kanäle](#basiseinstellungen)
     * [**DEA n: ...**](#dea-n--)
       * [DEA-Definition](#dea-definition) 
       * [Ausführung](#ausführung)
+        * [Starten und Pausieren](#starten-und-pausieren)
       * [Eingabesymbole](#eingabesymbole)
       * [Ausgabe]()
       * [**Zustände & Übergänge**]()
-        * [Zustände und Übergangsfunktion einschließlich zeitbasierter Folgezustände](#zustände-und-übergangsfunktion-einschließlich-zeitbasierter-folgezustände)
+        * [Startzustand](#startzustand)
+        * Rekonstruktion
+        * [Direktes Setzen von Zustand](#direktes-setzen-von-zustand-erlauben)
+        * [Übergangsfunktion einschließlich zeitbasierter Folgezustände](#zustände-und-übergangsfunktion-einschließlich-zeitbasierter-folgezustände)
       * [**Ausgang n: ...**](...)
 * [Kommunikationsobjekte](#kommunikationsobjekte) 
+  * Je DEA
 
 # Konzepte
 
