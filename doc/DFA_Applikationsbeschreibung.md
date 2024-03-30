@@ -50,6 +50,24 @@ Die Zeitmessung wird zurückgesetzt, falls derselbe Zustand erneut aufgerufen wi
 * für jedes Eingabesymbol kann durch Auswahl desselben Folgezustands ein Reset umgesetzt werden
 
 
+## Zustandsrekonstruktion nach Neustart
+
+Bei Unterbrechung des Gerätebetriebs (Programmieren, Reset, Trennen/Verbinden vom Bus) endet auch die Verarbeitung der definierten Automaten.
+Mit der optionalen Zustandsrekonstruktion kann versucht werden die Verarbeitung nach dem Neustart fortzusetzen, 
+basierend auf dem letzten bekannten Zustand und dessen Aufrufzeitpunkt. D.h.:
+* beim Starten kann alternativ zum regulären Startzustand der zuletzt gespeicherte Zustand aufgerufen werden
+* ein ggf. vorhandener Timeout kann um die bereits abgelaufene Zeit verkürzt werden
+* (geplant) alternativ soll der Rest-Timeout basierend auf dem zuvor berechneten absoluten Endzeitpunkt neuberechnet werden
+
+Die Rekonstruktion erfordert das erfolgreiche Speichern des momentanen Zustand und des Rest-Timeouts unmittelbar bei Beendigung der Verarbeitung. 
+Dies kann allerdings nicht immer gewährleistet werden. 
+Während ein Neustart durch Programmiervorgang gut erkannt werden kann, 
+erfordert die Erkennung einer unterbrochenen Stromversorgung eine entsprechende Hardwareausstattung.
+Ein Neustart per Reset-Taste kann nicht erkannt werden. 
+
+
+
+
 # ETS-Applikationsteil:<br />Zustandsmodelle (DEAs)
 
 
