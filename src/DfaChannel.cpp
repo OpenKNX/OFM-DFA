@@ -399,7 +399,7 @@ void DfaChannel::setup()
 
 #pragma region "DFA_CHANNEL_INPUT_INIT"
 
-uint16_t DfaChannel::getInputKo(const uint8_t input)
+uint16_t DfaChannel::getInputKoNumber(const uint8_t input)
 {
     // TODO check shift and mark for all
     const uint8_t inputConf = ((knx.paramByte(DFA_ParamCalcIndex(_inputConfPRI[input])) & DFA_aInputSymbol1KoMask) >> DFA_aInputSymbol1KoShift);
@@ -436,7 +436,7 @@ void DfaChannel::initInputConfig()
         if (combined[iPair])
         {
             // single input for 2 symbols
-            const uint16_t koNumber = getInputKo(iFirst);
+            const uint16_t koNumber = getInputKoNumber(iFirst);
 
             _inputs[iFirst].koNumber = koNumber;
             _inputs[iFirst].trigger = (koNumber > 0) ? INPUT_TRIGGER_1 : INPUT_TRIGGER_DISABLED;
@@ -448,7 +448,7 @@ void DfaChannel::initInputConfig()
             // separate input for 2 symbols
             for (uint8_t i = iFirst; i <= iSecond; i++)
             {
-                const uint16_t koNumber = getInputKo(i);
+                const uint16_t koNumber = getInputKoNumber(i);
                 _inputs[i].koNumber = koNumber;
                 if (koNumber > 0)
                 {

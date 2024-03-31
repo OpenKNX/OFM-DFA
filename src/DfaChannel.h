@@ -98,7 +98,7 @@ class DfaChannel : public OpenKNX::Channel
     uint32_t _stateTimeoutDelay_ms = 0;
     uint32_t _stateTimeoutBegin_ms = 0;
 
-    uint16_t getInputKo(const uint8_t input);
+    uint16_t getInputKoNumber(const uint8_t input);
     void initInputConfig();
 
     uint32_t getStateTimeoutDelay_ms(const uint8_t state);
