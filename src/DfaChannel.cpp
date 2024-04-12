@@ -634,7 +634,7 @@ uint32_t DfaChannel::getStateTimeoutDelay_ms(const uint8_t state)
 
 uint8_t DfaChannel::getTimeoutState(const uint8_t state)
 {
-    return DFA_STATE_PARAM_XOR ^ knx.paramByte(DFA_ParamCalcIndex(_timeoutPRI[state].state));
+    return knx.paramByte(DFA_ParamCalcIndex(_timeoutPRI[state].state)) - 1;
 }
 
 bool DfaChannel::isValidState(const uint8_t state)
@@ -810,14 +810,14 @@ void DfaChannel::transfer(const uint8_t input)
     if (_state < DFA_DEF_STATES_COUNT && input < DFA_DEF_INPUTS_COUNT)
     {
         const uint16_t nextStateParamIdx = DFA_ParamCalcIndex(_transPRI[_state][input]);
-        const uint8_t nextState = DFA_STATE_PARAM_XOR ^ knx.paramByte(nextStateParamIdx);
+        const uint8_t nextState = knx.paramByte(nextStateParamIdx) - 1;
 
-        logDebugP("transfer(%d,%d)->%d", _state, input, nextState);
+        logDebugP("transfer(%u,%u)->%u", _state, input, nextState);
         if (isValidState(nextState))
         {
             setState(nextState);
         }
-        else if (nextState == DFA_STATE_TIMEOUT_RESET)
+        else if (nextState == DFA_STATE_TIMEOUT_RESET - 1)
         {
             // handling of timeout reset as defined by "<<", do not trigger any other reaction
             resetTimeout();

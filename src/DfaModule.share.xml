@@ -100,78 +100,78 @@
                 <TypeRestriction Base="Value" SizeInBit="8">
 
                   <!-- no following state -->
-                  <Enumeration  Text=" "  Value="0" Id="%ENID%" />
+                  <Enumeration  Text=" "  Value="0"         Id="%ENID%" />
 
                   <!-- reset timeout, without setting state again -->
-                  <Enumeration Text="&lt;&lt;"  Value="1" Id="%ENID%" />
+                  <Enumeration Value="127" Text="&lt;&lt;"  Id="%ENID%" />
 
-                  <Enumeration  Text="1"  Value="64" Id="%ENID%" />
-                  <Enumeration  Text="2"  Value="65" Id="%ENID%" />
-                  <Enumeration  Text="3"  Value="66" Id="%ENID%" />
-                  <Enumeration  Text="4"  Value="67" Id="%ENID%" />
-                  <Enumeration  Text="5"  Value="68" Id="%ENID%" />
-                  <Enumeration  Text="6"  Value="69" Id="%ENID%" />
-                  <Enumeration  Text="7"  Value="70" Id="%ENID%" />
-                  <Enumeration  Text="8"  Value="71" Id="%ENID%" />
-                  <Enumeration  Text="9"  Value="72" Id="%ENID%" />
-                  <Enumeration Text="10"  Value="73" Id="%ENID%" />
-                  <Enumeration Text="11"  Value="74" Id="%ENID%" />
-                  <Enumeration Text="12"  Value="75" Id="%ENID%" />
-                  <Enumeration Text="13"  Value="76" Id="%ENID%" />
-                  <Enumeration Text="14"  Value="77" Id="%ENID%" />
-                  <Enumeration Text="15"  Value="78" Id="%ENID%" />
-                  <Enumeration Text="16"  Value="79" Id="%ENID%" />
+                  <Enumeration   Value="1" Text="1"         Id="%ENID%" />
+                  <Enumeration   Value="2" Text="2"         Id="%ENID%" />
+                  <Enumeration   Value="3" Text="3"         Id="%ENID%" />
+                  <Enumeration   Value="4" Text="4"         Id="%ENID%" />
+                  <Enumeration   Value="5" Text="5"         Id="%ENID%" />
+                  <Enumeration   Value="6" Text="6"         Id="%ENID%" />
+                  <Enumeration   Value="7" Text="7"         Id="%ENID%" />
+                  <Enumeration   Value="8" Text="8"         Id="%ENID%" />
+                  <Enumeration   Value="9" Text="9"         Id="%ENID%" />
+                  <Enumeration  Value="10" Text="10"        Id="%ENID%" />
+                  <Enumeration  Value="11" Text="11"        Id="%ENID%" />
+                  <Enumeration  Value="12" Text="12"        Id="%ENID%" />
+                  <Enumeration  Value="13" Text="13"        Id="%ENID%" />
+                  <Enumeration  Value="14" Text="14"        Id="%ENID%" />
+                  <Enumeration  Value="15" Text="15"        Id="%ENID%" />
+                  <Enumeration  Value="16" Text="16"        Id="%ENID%" />
                   <!--
                   -->
-                  <Enumeration Text="17"  Value="80" Id="%ENID%" />
-                  <Enumeration Text="18"  Value="81" Id="%ENID%" />
-                  <Enumeration Text="19"  Value="82" Id="%ENID%" />
-                  <Enumeration Text="20"  Value="83" Id="%ENID%" />
-                  <Enumeration Text="21"  Value="84" Id="%ENID%" />
-                  <Enumeration Text="22"  Value="85" Id="%ENID%" />
-                  <Enumeration Text="23"  Value="86" Id="%ENID%" />
-                  <Enumeration Text="24"  Value="87" Id="%ENID%" />
-                  <Enumeration Text="25"  Value="88" Id="%ENID%" />
-                  <Enumeration Text="26"  Value="89" Id="%ENID%" />
-                  <Enumeration Text="27"  Value="90" Id="%ENID%" />
-                  <Enumeration Text="28"  Value="91" Id="%ENID%" />
-                  <Enumeration Text="29"  Value="92" Id="%ENID%" />
-                  <Enumeration Text="30"  Value="93" Id="%ENID%" />
-                  <Enumeration Text="31"  Value="94" Id="%ENID%" />
-                  <Enumeration Text="32"  Value="95" Id="%ENID%" />
+                  <Enumeration  Value="17" Text="17"        Id="%ENID%" />
+                  <Enumeration  Value="18" Text="18"        Id="%ENID%" />
+                  <Enumeration  Value="19" Text="19"        Id="%ENID%" />
+                  <Enumeration  Value="20" Text="20"        Id="%ENID%" />
+                  <Enumeration  Value="21" Text="21"        Id="%ENID%" />
+                  <Enumeration  Value="22" Text="22"        Id="%ENID%" />
+                  <Enumeration  Value="23" Text="23"        Id="%ENID%" />
+                  <Enumeration  Value="24" Text="24"        Id="%ENID%" />
+                  <Enumeration  Value="25" Text="25"        Id="%ENID%" />
+                  <Enumeration  Value="26" Text="26"        Id="%ENID%" />
+                  <Enumeration  Value="27" Text="27"        Id="%ENID%" />
+                  <Enumeration  Value="28" Text="28"        Id="%ENID%" />
+                  <Enumeration  Value="29" Text="29"        Id="%ENID%" />
+                  <Enumeration  Value="30" Text="30"        Id="%ENID%" />
+                  <Enumeration  Value="31" Text="31"        Id="%ENID%" />
+                  <Enumeration  Value="32" Text="32"        Id="%ENID%" />
                   <!--
-                  <Enumeration Text="33"  Value="96" Id="%ENID%" />
-                  <Enumeration Text="34"  Value="97" Id="%ENID%" />
-                  <Enumeration Text="35"  Value="98" Id="%ENID%" />
-                  <Enumeration Text="36"  Value="99" Id="%ENID%" />
-                  <Enumeration Text="37" Value="100" Id="%ENID%" />
-                  <Enumeration Text="38" Value="101" Id="%ENID%" />
-                  <Enumeration Text="39" Value="102" Id="%ENID%" />
-                  <Enumeration Text="40" Value="103" Id="%ENID%" />
-                  <Enumeration Text="41" Value="104" Id="%ENID%" />
-                  <Enumeration Text="42" Value="105" Id="%ENID%" />
-                  <Enumeration Text="43" Value="106" Id="%ENID%" />
-                  <Enumeration Text="44" Value="107" Id="%ENID%" />
-                  <Enumeration Text="45" Value="108" Id="%ENID%" />
-                  <Enumeration Text="46" Value="109" Id="%ENID%" />
-                  <Enumeration Text="47" Value="110" Id="%ENID%" />
-                  <Enumeration Text="48" Value="111" Id="%ENID%" />
-                  <Enumeration Text="49" Value="112" Id="%ENID%" />
-                  <Enumeration Text="50" Value="113" Id="%ENID%" />
-                  <Enumeration Text="51" Value="114" Id="%ENID%" />
-                  <Enumeration Text="52" Value="115" Id="%ENID%" />
-                  <Enumeration Text="53" Value="116" Id="%ENID%" />
-                  <Enumeration Text="54" Value="117" Id="%ENID%" />
-                  <Enumeration Text="55" Value="118" Id="%ENID%" />
-                  <Enumeration Text="56" Value="119" Id="%ENID%" />
-                  <Enumeration Text="57" Value="120" Id="%ENID%" />
-                  <Enumeration Text="58" Value="121" Id="%ENID%" />
-                  <Enumeration Text="59" Value="122" Id="%ENID%" />
-                  <Enumeration Text="60" Value="123" Id="%ENID%" />
-                  <Enumeration Text="61" Value="124" Id="%ENID%" />
-                  <Enumeration Text="62" Value="125" Id="%ENID%" />
-                  <Enumeration Text="63" Value="126" Id="%ENID%" />
-                  <Enumeration Text="64" Value="127" Id="%ENID%" />
+                  <Enumeration  Value="33" Text="33"        Id="%ENID%" />
+                  <Enumeration  Value="34" Text="34"        Id="%ENID%" />
+                  <Enumeration  Value="35" Text="35"        Id="%ENID%" />
+                  <Enumeration  Value="36" Text="36"        Id="%ENID%" />
+                  <Enumeration  Value="37" Text="37"        Id="%ENID%" />
+                  <Enumeration  Value="38" Text="38"        Id="%ENID%" />
+                  <Enumeration  Value="39" Text="39"        Id="%ENID%" />
+                  <Enumeration  Value="40" Text="40"        Id="%ENID%" />
+                  <Enumeration  Value="41" Text="41"        Id="%ENID%" />
+                  <Enumeration  Value="42" Text="42"        Id="%ENID%" />
+                  <Enumeration  Value="43" Text="43"        Id="%ENID%" />
+                  <Enumeration  Value="44" Text="44"        Id="%ENID%" />
+                  <Enumeration  Value="45" Text="45"        Id="%ENID%" />
+                  <Enumeration  Value="46" Text="46"        Id="%ENID%" />
+                  <Enumeration  Value="47" Text="47"        Id="%ENID%" />
+                  <Enumeration  Value="48" Text="48"        Id="%ENID%" />
+                  <Enumeration  Value="49" Text="49"        Id="%ENID%" />
+                  <Enumeration  Value="50" Text="50"        Id="%ENID%" />
+                  <Enumeration  Value="51" Text="51"        Id="%ENID%" />
+                  <Enumeration  Value="52" Text="52"        Id="%ENID%" />
+                  <Enumeration  Value="53" Text="53"        Id="%ENID%" />
+                  <Enumeration  Value="54" Text="54"        Id="%ENID%" />
+                  <Enumeration  Value="55" Text="55"        Id="%ENID%" />
+                  <Enumeration  Value="56" Text="56"        Id="%ENID%" />
+                  <Enumeration  Value="57" Text="57"        Id="%ENID%" />
+                  <Enumeration  Value="58" Text="58"        Id="%ENID%" />
+                  <Enumeration  Value="59" Text="59"        Id="%ENID%" />
+                  <Enumeration  Value="60" Text="60"        Id="%ENID%" />
+                  <Enumeration  Value="61" Text="61"        Id="%ENID%" />
+                  <Enumeration  Value="62" Text="62"        Id="%ENID%" />
+                  <Enumeration  Value="63" Text="63"        Id="%ENID%" />
+                  <Enumeration  Value="64" Text="64"        Id="%ENID%" />
                   -->
                 </TypeRestriction>
               </ParameterType>
@@ -180,77 +180,77 @@
                 <TypeRestriction Base="Value" SizeInBit="8">
 
                   <!-- no following state -->
-                  <Enumeration  Text=" "   Value="0" Id="%ENID%" />
+                  <Enumeration   Value="0" Text=" "         Id="%ENID%" />
 
                   <!-- NOT reset timeout, without setting state again -->
 
-                  <Enumeration  Text="1"  Value="64" Id="%ENID%" />
-                  <Enumeration  Text="2"  Value="65" Id="%ENID%" />
-                  <Enumeration  Text="3"  Value="66" Id="%ENID%" />
-                  <Enumeration  Text="4"  Value="67" Id="%ENID%" />
-                  <Enumeration  Text="5"  Value="68" Id="%ENID%" />
-                  <Enumeration  Text="6"  Value="69" Id="%ENID%" />
-                  <Enumeration  Text="7"  Value="70" Id="%ENID%" />
-                  <Enumeration  Text="8"  Value="71" Id="%ENID%" />
-                  <Enumeration  Text="9"  Value="72" Id="%ENID%" />
-                  <Enumeration Text="10"  Value="73" Id="%ENID%" />
-                  <Enumeration Text="11"  Value="74" Id="%ENID%" />
-                  <Enumeration Text="12"  Value="75" Id="%ENID%" />
-                  <Enumeration Text="13"  Value="76" Id="%ENID%" />
-                  <Enumeration Text="14"  Value="77" Id="%ENID%" />
-                  <Enumeration Text="15"  Value="78" Id="%ENID%" />
-                  <Enumeration Text="16"  Value="79" Id="%ENID%" />
+                  <Enumeration   Value="1" Text="1"         Id="%ENID%" />
+                  <Enumeration   Value="2" Text="2"         Id="%ENID%" />
+                  <Enumeration   Value="3" Text="3"         Id="%ENID%" />
+                  <Enumeration   Value="4" Text="4"         Id="%ENID%" />
+                  <Enumeration   Value="5" Text="5"         Id="%ENID%" />
+                  <Enumeration   Value="6" Text="6"         Id="%ENID%" />
+                  <Enumeration   Value="7" Text="7"         Id="%ENID%" />
+                  <Enumeration   Value="8" Text="8"         Id="%ENID%" />
+                  <Enumeration   Value="9" Text="9"         Id="%ENID%" />
+                  <Enumeration  Value="10" Text="10"        Id="%ENID%" />
+                  <Enumeration  Value="11" Text="11"        Id="%ENID%" />
+                  <Enumeration  Value="12" Text="12"        Id="%ENID%" />
+                  <Enumeration  Value="13" Text="13"        Id="%ENID%" />
+                  <Enumeration  Value="14" Text="14"        Id="%ENID%" />
+                  <Enumeration  Value="15" Text="15"        Id="%ENID%" />
+                  <Enumeration  Value="16" Text="16"        Id="%ENID%" />
                   <!--
                   -->
-                  <Enumeration Text="17"  Value="80" Id="%ENID%" />
-                  <Enumeration Text="18"  Value="81" Id="%ENID%" />
-                  <Enumeration Text="19"  Value="82" Id="%ENID%" />
-                  <Enumeration Text="20"  Value="83" Id="%ENID%" />
-                  <Enumeration Text="21"  Value="84" Id="%ENID%" />
-                  <Enumeration Text="22"  Value="85" Id="%ENID%" />
-                  <Enumeration Text="23"  Value="86" Id="%ENID%" />
-                  <Enumeration Text="24"  Value="87" Id="%ENID%" />
-                  <Enumeration Text="25"  Value="88" Id="%ENID%" />
-                  <Enumeration Text="26"  Value="89" Id="%ENID%" />
-                  <Enumeration Text="27"  Value="90" Id="%ENID%" />
-                  <Enumeration Text="28"  Value="91" Id="%ENID%" />
-                  <Enumeration Text="29"  Value="92" Id="%ENID%" />
-                  <Enumeration Text="30"  Value="93" Id="%ENID%" />
-                  <Enumeration Text="31"  Value="94" Id="%ENID%" />
-                  <Enumeration Text="32"  Value="95" Id="%ENID%" />
+                  <Enumeration  Value="17" Text="17"        Id="%ENID%" />
+                  <Enumeration  Value="18" Text="18"        Id="%ENID%" />
+                  <Enumeration  Value="19" Text="19"        Id="%ENID%" />
+                  <Enumeration  Value="20" Text="20"        Id="%ENID%" />
+                  <Enumeration  Value="21" Text="21"        Id="%ENID%" />
+                  <Enumeration  Value="22" Text="22"        Id="%ENID%" />
+                  <Enumeration  Value="23" Text="23"        Id="%ENID%" />
+                  <Enumeration  Value="24" Text="24"        Id="%ENID%" />
+                  <Enumeration  Value="25" Text="25"        Id="%ENID%" />
+                  <Enumeration  Value="26" Text="26"        Id="%ENID%" />
+                  <Enumeration  Value="27" Text="27"        Id="%ENID%" />
+                  <Enumeration  Value="28" Text="28"        Id="%ENID%" />
+                  <Enumeration  Value="29" Text="29"        Id="%ENID%" />
+                  <Enumeration  Value="30" Text="30"        Id="%ENID%" />
+                  <Enumeration  Value="31" Text="31"        Id="%ENID%" />
+                  <Enumeration  Value="32" Text="32"        Id="%ENID%" />
                   <!--
-                  <Enumeration Text="33"  Value="96" Id="%ENID%" />
-                  <Enumeration Text="34"  Value="97" Id="%ENID%" />
-                  <Enumeration Text="35"  Value="98" Id="%ENID%" />
-                  <Enumeration Text="36"  Value="99" Id="%ENID%" />
-                  <Enumeration Text="37" Value="100" Id="%ENID%" />
-                  <Enumeration Text="38" Value="101" Id="%ENID%" />
-                  <Enumeration Text="39" Value="102" Id="%ENID%" />
-                  <Enumeration Text="40" Value="103" Id="%ENID%" />
-                  <Enumeration Text="41" Value="104" Id="%ENID%" />
-                  <Enumeration Text="42" Value="105" Id="%ENID%" />
-                  <Enumeration Text="43" Value="106" Id="%ENID%" />
-                  <Enumeration Text="44" Value="107" Id="%ENID%" />
-                  <Enumeration Text="45" Value="108" Id="%ENID%" />
-                  <Enumeration Text="46" Value="109" Id="%ENID%" />
-                  <Enumeration Text="47" Value="110" Id="%ENID%" />
-                  <Enumeration Text="48" Value="111" Id="%ENID%" />
-                  <Enumeration Text="49" Value="112" Id="%ENID%" />
-                  <Enumeration Text="50" Value="113" Id="%ENID%" />
-                  <Enumeration Text="51" Value="114" Id="%ENID%" />
-                  <Enumeration Text="52" Value="115" Id="%ENID%" />
-                  <Enumeration Text="53" Value="116" Id="%ENID%" />
-                  <Enumeration Text="54" Value="117" Id="%ENID%" />
-                  <Enumeration Text="55" Value="118" Id="%ENID%" />
-                  <Enumeration Text="56" Value="119" Id="%ENID%" />
-                  <Enumeration Text="57" Value="120" Id="%ENID%" />
-                  <Enumeration Text="58" Value="121" Id="%ENID%" />
-                  <Enumeration Text="59" Value="122" Id="%ENID%" />
-                  <Enumeration Text="60" Value="123" Id="%ENID%" />
-                  <Enumeration Text="61" Value="124" Id="%ENID%" />
-                  <Enumeration Text="62" Value="125" Id="%ENID%" />
-                  <Enumeration Text="63" Value="126" Id="%ENID%" />
-                  <Enumeration Text="64" Value="127" Id="%ENID%" />
+                  <Enumeration  Value="33" Text="33"        Id="%ENID%" />
+                  <Enumeration  Value="34" Text="34"        Id="%ENID%" />
+                  <Enumeration  Value="35" Text="35"        Id="%ENID%" />
+                  <Enumeration  Value="36" Text="36"        Id="%ENID%" />
+                  <Enumeration  Value="37" Text="37"        Id="%ENID%" />
+                  <Enumeration  Value="38" Text="38"        Id="%ENID%" />
+                  <Enumeration  Value="39" Text="39"        Id="%ENID%" />
+                  <Enumeration  Value="40" Text="40"        Id="%ENID%" />
+                  <Enumeration  Value="41" Text="41"        Id="%ENID%" />
+                  <Enumeration  Value="42" Text="42"        Id="%ENID%" />
+                  <Enumeration  Value="43" Text="43"        Id="%ENID%" />
+                  <Enumeration  Value="44" Text="44"        Id="%ENID%" />
+                  <Enumeration  Value="45" Text="45"        Id="%ENID%" />
+                  <Enumeration  Value="46" Text="46"        Id="%ENID%" />
+                  <Enumeration  Value="47" Text="47"        Id="%ENID%" />
+                  <Enumeration  Value="48" Text="48"        Id="%ENID%" />
+                  <Enumeration  Value="49" Text="49"        Id="%ENID%" />
+                  <Enumeration  Value="50" Text="50"        Id="%ENID%" />
+                  <Enumeration  Value="51" Text="51"        Id="%ENID%" />
+                  <Enumeration  Value="52" Text="52"        Id="%ENID%" />
+                  <Enumeration  Value="53" Text="53"        Id="%ENID%" />
+                  <Enumeration  Value="54" Text="54"        Id="%ENID%" />
+                  <Enumeration  Value="55" Text="55"        Id="%ENID%" />
+                  <Enumeration  Value="56" Text="56"        Id="%ENID%" />
+                  <Enumeration  Value="57" Text="57"        Id="%ENID%" />
+                  <Enumeration  Value="58" Text="58"        Id="%ENID%" />
+                  <Enumeration  Value="59" Text="59"        Id="%ENID%" />
+                  <Enumeration  Value="60" Text="60"        Id="%ENID%" />
+                  <Enumeration  Value="61" Text="61"        Id="%ENID%" />
+                  <Enumeration  Value="62" Text="62"        Id="%ENID%" />
+                  <Enumeration  Value="63" Text="63"        Id="%ENID%" />
+                  <Enumeration  Value="64" Text="64"        Id="%ENID%" />
                   -->
                 </TypeRestriction>
               </ParameterType>
