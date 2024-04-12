@@ -463,10 +463,12 @@ void DfaChannel::initInputConfig()
             }
         }
     }
-    for (size_t i = 0; i < DFA_DEF_INPUTS_COUNT; i++)
-    {
-        logDebugP("input[%d]: ko=%d trigger=%d", i, _inputs[i].koNumber, _inputs[i].trigger);
-    }
+    #ifdef OPENKNX_DEBUG    
+        for (size_t i = 0; i < DFA_DEF_INPUTS_COUNT; i++)
+        {
+            logDebugP("input[%d]: ko=%d trigger=%d", i, _inputs[i].koNumber, _inputs[i].trigger);
+        }
+    #endif
 }
 
 #pragma endregion "DFA_CHANNEL_INPUT_INIT"
