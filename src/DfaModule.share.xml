@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-model href="../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <KNX xmlns:op="http://github.com/OpenKNX/OpenKNXproducer" xmlns="http://knx.org/xml/project/20" CreatedBy="KNX MT" ToolVersion="5.1.255.16695">
+  <op:config name="%DFA_NumChannelsDefault%" value="2" />
+
   <ManufacturerData>
     <Manufacturer>
       <ApplicationPrograms>
@@ -480,7 +482,7 @@
             </ParameterTypes>
             <Parameters>
               <!-- TODO store in memory? -->
-              <Parameter Id="%AID%_P-%T%000001" Name="VisibleChannels" ParameterType="%AID%_PT-DFANumChannels" Text="Verfügbare Kanäle"          Value="%N%" SuffixText=" von %N%" />
+              <Parameter Id="%AID%_P-%T%000001" Name="VisibleChannels" ParameterType="%AID%_PT-DFANumChannels" Text="Verfügbare Kanäle"          Value="%DFA_NumChannelsDefault%" SuffixText=" von %N%" />
             </Parameters>
             <ParameterRefs>
               <ParameterRef Id="%AID%_P-%T%000001_R-%T%00000101" RefId="%AID%_P-%T%000001" />
