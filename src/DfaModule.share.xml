@@ -50,7 +50,7 @@
                   <Enumeration Text="nicht speichern (immer Startzustand nutzen)"  Value="0" Id="%ENID%" /><!-- 0b00 -->
                   <Enumeration Text="letzten Zustand neu starten"                  Value="1" Id="%ENID%" /><!-- 0b01 -->
                   <Enumeration Text="letzten Zustand fortsetzen"                   Value="2" Id="%ENID%" /><!-- 0b10 -->
-                  <Enumeration Text="letzten Zustand mit absolutem Timeout-Ende"   Value="3" Id="%ENID%" /><!-- 0b11 -->
+                  <!-- <Enumeration Text="letzten Zustand mit absolutem Timeout-Ende"   Value="3" Id="%ENID%" /> --><!-- 0b11 -->
                 </TypeRestriction>
               </ParameterType>
 
