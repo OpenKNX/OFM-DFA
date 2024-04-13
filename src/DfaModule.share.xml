@@ -464,21 +464,6 @@
                 </TypeRestriction>
               </ParameterType>
 
-              <ParameterType Id="%AID%_PT-ValueDpt2Short" Name="ValueDpt2Short">
-                <TypeRestriction Base="Value" SizeInBit="8">
-                  <!--
-                  <Enumeration Text="normal AUS (00)" Value="0"    Id="%AID%_PT-ValueDpt2Out_EN-0" />
-                  <Enumeration Text="normal EIN (01)" Value="1"    Id="%AID%_PT-ValueDpt2Out_EN-1" />
-                  <Enumeration Text="priorität AUS (10)" Value="2" Id="%AID%_PT-ValueDpt2Out_EN-2" />
-                  <Enumeration Text="priorität EIN (11)" Value="3" Id="%AID%_PT-ValueDpt2Out_EN-3" />
-                  -->
-                  <Enumeration Text="0 normal" Value="0"    Id="%ENID%" />
-                  <Enumeration Text="1 normal" Value="1"    Id="%ENID%" />
-                  <Enumeration Text="0 prio"   Value="2"    Id="%ENID%" />
-                  <Enumeration Text="1 prio"   Value="3"    Id="%ENID%" />
-                </TypeRestriction>
-              </ParameterType>
-
             </ParameterTypes>
             <Parameters>
               <!-- TODO store in memory? -->
