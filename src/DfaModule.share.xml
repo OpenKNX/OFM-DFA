@@ -375,7 +375,7 @@
                 </TypeRestriction>
               </ParameterType>
 
-              <ParameterType Id="%AID%_PT-DfaOutputConf" Name="DfaOutputValueConf">
+              <ParameterType Id="%AID%_PT-DfaOutputConf" Name="DfaOutputConf">
                 <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="-"                                              Value="0" Id="%ENID%" />
                   <Enumeration Text="kein Senden, nur KO setzen"                     Value="1" Id="%ENID%" />
