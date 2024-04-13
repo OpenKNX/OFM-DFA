@@ -389,7 +389,7 @@ void DfaChannel::setup()
     {
         initInputConfig();
 
-        _firstState = DFA_STATE_PARAM_XOR ^ ParamDFA_aStateStart;
+        _firstState = ParamDFA_aStateStart - 1;
         // _firstStateTimeoutDelay_ms = getStateTimeoutDelay_ms(_firstState);
 
         // starting in processAfterStartupDelay() ...

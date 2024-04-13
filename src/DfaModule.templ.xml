@@ -16,7 +16,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%0007" Name="a%C%StartPause"   ParameterType="%AID%_PT-ChannelSwitchByKo"   Offset="0" BitOffset="2" Text="Starten und Pausieren"                 Value="3" />
                 <Parameter Id="%AID%_UP-%T%%CC%0005" Name="a%C%StateSetting" ParameterType="%AID%_PT-StateDirectSetting"  Offset="0" BitOffset="4" Text="Direktes Setzen von Zustand erlauben?" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0008" Name="a%C%StateRestore" ParameterType="%AID%_PT-StatePersistance"    Offset="0" BitOffset="6" Text="Zustand bei Neustart rekonstruieren?"  Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0002" Name="a%C%StateStart"   ParameterType="%AID%_PT-DfaState"            Offset="1" BitOffset="0" Text="Startzustand"                          Value="64" />
+                <Parameter Id="%AID%_UP-%T%%CC%0002" Name="a%C%StateStart"           ParameterType="%AID%_PT-DfaState"            Offset="1" BitOffset="0" Text="Startzustand"                          Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%0003" Name="a%C%StartupDelayBase" ParameterType="%AID%_PT-DelayBase"       Offset="2" BitOffset="0" Text="Einschaltverzögerung Zeitbasis"        Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0004" Name="a%C%StartupDelayTime" ParameterType="%AID%_PT-DelayTime"       Offset="2" BitOffset="2" Text="Einschaltverzögerung Zeit"             Value="1" />
               </Union>
