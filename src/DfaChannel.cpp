@@ -665,10 +665,10 @@ void DfaChannel::setState(const uint8_t nextState)
         // send output values
         // TODO extract
         const uint32_t outputDelays[DFA_DEF_OUTPUTS_COUNT] = {
-            ParamDFA_aOutput1DelayTimeMS,
-            ParamDFA_aOutput2DelayTimeMS,
-            ParamDFA_aOutput3DelayTimeMS,
-            ParamDFA_aOutput4DelayTimeMS,
+            ParamDFA_aOutput1IntervalTimeMS,
+            ParamDFA_aOutput2IntervalTimeMS,
+            ParamDFA_aOutput3IntervalTimeMS,
+            ParamDFA_aOutput4IntervalTimeMS,
         };
         for (uint8_t i = 0; i < DFA_DEF_OUTPUTS_COUNT; i++)
         {
