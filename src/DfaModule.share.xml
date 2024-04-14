@@ -85,7 +85,7 @@
                 <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="1" maxInclusive="2047" />
               </ParameterType>
               <ParameterType Id="%AID%_PT-DfaInputLogicNumber" Name="DfaInputLogicNumber">
-                <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="1" maxInclusive="%DFA_LOG_NumChannels%" />
+                <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="1" maxInclusive="%LOG_NumChannels%" />
               </ParameterType>
 
               <ParameterType Id="%AID%_PT-DfaInputTrigger" Name="DfaInputTrigger">
