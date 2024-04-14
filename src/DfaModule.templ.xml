@@ -156,9 +156,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%0106" Name="a%C%d01F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(01,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0107" Name="a%C%d01G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(01,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0108" Name="a%C%d01H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(01,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0117" Name="a%C%TransState01Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(01,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0119" Name="a%C%State01TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0118" Name="a%C%State01TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%0117" Name="a%C%d01T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(01,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%0119" Name="a%C%d01TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%0118" Name="a%C%d01TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%0120" Name="a%C%State01Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 1" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0122" Name="a%C%State01Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 1 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%0123" Name="a%C%State01Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 1 (DPT 2)" Value="1" />
@@ -226,9 +226,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%0206" Name="a%C%d02F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(02,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0207" Name="a%C%d02G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(02,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0208" Name="a%C%d02H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(02,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0217" Name="a%C%TransState02Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(02,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0219" Name="a%C%State02TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0218" Name="a%C%State02TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%0217" Name="a%C%d02T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(02,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%0219" Name="a%C%d02TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%0218" Name="a%C%d02TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%0220" Name="a%C%State02Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 2" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0222" Name="a%C%State02Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 2 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%0223" Name="a%C%State02Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 2 (DPT 2)" Value="1" />
@@ -296,9 +296,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%0306" Name="a%C%d03F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(03,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0307" Name="a%C%d03G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(03,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0308" Name="a%C%d03H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(03,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0317" Name="a%C%TransState03Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(03,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0319" Name="a%C%State03TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0318" Name="a%C%State03TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%0317" Name="a%C%d03T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(03,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%0319" Name="a%C%d03TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%0318" Name="a%C%d03TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%0320" Name="a%C%State03Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 3" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0322" Name="a%C%State03Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 3 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%0323" Name="a%C%State03Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 3 (DPT 2)" Value="1" />
@@ -366,9 +366,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%0406" Name="a%C%d04F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(04,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0407" Name="a%C%d04G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(04,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0408" Name="a%C%d04H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(04,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0417" Name="a%C%TransState04Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(04,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0419" Name="a%C%State04TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0418" Name="a%C%State04TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%0417" Name="a%C%d04T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(04,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%0419" Name="a%C%d04TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%0418" Name="a%C%d04TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%0420" Name="a%C%State04Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 4" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0422" Name="a%C%State04Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 4 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%0423" Name="a%C%State04Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 4 (DPT 2)" Value="1" />
@@ -436,9 +436,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%0506" Name="a%C%d05F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(05,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0507" Name="a%C%d05G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(05,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0508" Name="a%C%d05H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(05,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0517" Name="a%C%TransState05Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(05,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0519" Name="a%C%State05TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0518" Name="a%C%State05TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%0517" Name="a%C%d05T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(05,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%0519" Name="a%C%d05TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%0518" Name="a%C%d05TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%0520" Name="a%C%State05Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 5" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0522" Name="a%C%State05Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 5 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%0523" Name="a%C%State05Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 5 (DPT 2)" Value="1" />
@@ -506,9 +506,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%0606" Name="a%C%d06F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(06,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0607" Name="a%C%d06G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(06,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0608" Name="a%C%d06H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(06,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0617" Name="a%C%TransState06Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(06,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0619" Name="a%C%State06TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0618" Name="a%C%State06TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%0617" Name="a%C%d06T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(06,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%0619" Name="a%C%d06TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%0618" Name="a%C%d06TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%0620" Name="a%C%State06Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 6" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0622" Name="a%C%State06Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 6 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%0623" Name="a%C%State06Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 6 (DPT 2)" Value="1" />
@@ -576,9 +576,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%0706" Name="a%C%d07F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(07,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0707" Name="a%C%d07G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(07,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0708" Name="a%C%d07H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(07,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0717" Name="a%C%TransState07Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(07,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0719" Name="a%C%State07TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0718" Name="a%C%State07TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%0717" Name="a%C%d07T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(07,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%0719" Name="a%C%d07TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%0718" Name="a%C%d07TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%0720" Name="a%C%State07Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 7" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0722" Name="a%C%State07Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 7 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%0723" Name="a%C%State07Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 7 (DPT 2)" Value="1" />
@@ -646,9 +646,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%0806" Name="a%C%d08F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(08,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0807" Name="a%C%d08G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(08,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0808" Name="a%C%d08H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(08,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0817" Name="a%C%TransState08Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(08,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0819" Name="a%C%State08TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0818" Name="a%C%State08TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%0817" Name="a%C%d08T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(08,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%0819" Name="a%C%d08TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%0818" Name="a%C%d08TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%0820" Name="a%C%State08Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 8" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0822" Name="a%C%State08Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 8 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%0823" Name="a%C%State08Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 8 (DPT 2)" Value="1" />
@@ -716,9 +716,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%0906" Name="a%C%d09F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(09,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0907" Name="a%C%d09G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(09,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0908" Name="a%C%d09H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(09,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0917" Name="a%C%TransState09Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(09,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0919" Name="a%C%State09TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0918" Name="a%C%State09TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%0917" Name="a%C%d09T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(09,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%0919" Name="a%C%d09TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%0918" Name="a%C%d09TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%0920" Name="a%C%State09Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 9" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0922" Name="a%C%State09Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 9 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%0923" Name="a%C%State09Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 9 (DPT 2)" Value="1" />
@@ -786,9 +786,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%1006" Name="a%C%d10F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(10,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1007" Name="a%C%d10G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(10,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1008" Name="a%C%d10H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(10,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1017" Name="a%C%TransState10Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(10,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1019" Name="a%C%State10TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1018" Name="a%C%State10TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%1017" Name="a%C%d10T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(10,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%1019" Name="a%C%d10TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%1018" Name="a%C%d10TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%1020" Name="a%C%State10Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 10" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1022" Name="a%C%State10Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 10 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%1023" Name="a%C%State10Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 10 (DPT 2)" Value="1" />
@@ -856,9 +856,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%1106" Name="a%C%d11F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(11,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1107" Name="a%C%d11G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(11,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1108" Name="a%C%d11H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(11,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1117" Name="a%C%TransState11Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(11,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1119" Name="a%C%State11TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1118" Name="a%C%State11TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%1117" Name="a%C%d11T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(11,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%1119" Name="a%C%d11TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%1118" Name="a%C%d11TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%1120" Name="a%C%State11Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 11" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1122" Name="a%C%State11Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 11 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%1123" Name="a%C%State11Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 11 (DPT 2)" Value="1" />
@@ -926,9 +926,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%1206" Name="a%C%d12F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(12,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1207" Name="a%C%d12G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(12,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1208" Name="a%C%d12H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(12,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1217" Name="a%C%TransState12Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(12,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1219" Name="a%C%State12TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1218" Name="a%C%State12TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%1217" Name="a%C%d12T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(12,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%1219" Name="a%C%d12TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%1218" Name="a%C%d12TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%1220" Name="a%C%State12Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 12" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1222" Name="a%C%State12Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 12 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%1223" Name="a%C%State12Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 12 (DPT 2)" Value="1" />
@@ -996,9 +996,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%1306" Name="a%C%d13F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(13,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1307" Name="a%C%d13G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(13,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1308" Name="a%C%d13H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(13,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1317" Name="a%C%TransState13Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(13,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1319" Name="a%C%State13TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1318" Name="a%C%State13TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%1317" Name="a%C%d13T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(13,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%1319" Name="a%C%d13TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%1318" Name="a%C%d13TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%1320" Name="a%C%State13Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 13" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1322" Name="a%C%State13Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 13 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%1323" Name="a%C%State13Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 13 (DPT 2)" Value="1" />
@@ -1066,9 +1066,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%1406" Name="a%C%d14F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(14,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1407" Name="a%C%d14G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(14,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1408" Name="a%C%d14H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(14,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1417" Name="a%C%TransState14Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(14,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1419" Name="a%C%State14TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1418" Name="a%C%State14TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%1417" Name="a%C%d14T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(14,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%1419" Name="a%C%d14TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%1418" Name="a%C%d14TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%1420" Name="a%C%State14Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 14" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1422" Name="a%C%State14Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 14 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%1423" Name="a%C%State14Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 14 (DPT 2)" Value="1" />
@@ -1136,9 +1136,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%1506" Name="a%C%d15F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(15,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1507" Name="a%C%d15G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(15,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1508" Name="a%C%d15H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(15,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1517" Name="a%C%TransState15Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(15,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1519" Name="a%C%State15TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1518" Name="a%C%State15TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%1517" Name="a%C%d15T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(15,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%1519" Name="a%C%d15TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%1518" Name="a%C%d15TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%1520" Name="a%C%State15Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 15" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1522" Name="a%C%State15Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 15 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%1523" Name="a%C%State15Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 15 (DPT 2)" Value="1" />
@@ -1206,9 +1206,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%1606" Name="a%C%d16F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(16,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1607" Name="a%C%d16G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(16,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1608" Name="a%C%d16H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(16,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1617" Name="a%C%TransState16Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(16,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1619" Name="a%C%State16TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1618" Name="a%C%State16TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%1617" Name="a%C%d16T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(16,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%1619" Name="a%C%d16TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%1618" Name="a%C%d16TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%1620" Name="a%C%State16Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 16" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1622" Name="a%C%State16Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 16 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%1623" Name="a%C%State16Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 16 (DPT 2)" Value="1" />
@@ -1276,9 +1276,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%1706" Name="a%C%d17F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(17,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1707" Name="a%C%d17G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(17,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1708" Name="a%C%d17H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(17,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1717" Name="a%C%TransState17Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(17,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1719" Name="a%C%State17TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1718" Name="a%C%State17TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%1717" Name="a%C%d17T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(17,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%1719" Name="a%C%d17TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%1718" Name="a%C%d17TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%1720" Name="a%C%State17Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 17" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1722" Name="a%C%State17Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 17 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%1723" Name="a%C%State17Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 17 (DPT 2)" Value="1" />
@@ -1346,9 +1346,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%1806" Name="a%C%d18F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(18,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1807" Name="a%C%d18G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(18,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1808" Name="a%C%d18H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(18,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1817" Name="a%C%TransState18Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(18,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1819" Name="a%C%State18TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1818" Name="a%C%State18TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%1817" Name="a%C%d18T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(18,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%1819" Name="a%C%d18TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%1818" Name="a%C%d18TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%1820" Name="a%C%State18Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 18" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1822" Name="a%C%State18Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 18 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%1823" Name="a%C%State18Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 18 (DPT 2)" Value="1" />
@@ -1416,9 +1416,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%1906" Name="a%C%d19F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(19,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1907" Name="a%C%d19G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(19,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1908" Name="a%C%d19H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(19,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1917" Name="a%C%TransState19Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(19,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1919" Name="a%C%State19TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%1918" Name="a%C%State19TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%1917" Name="a%C%d19T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(19,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%1919" Name="a%C%d19TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%1918" Name="a%C%d19TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%1920" Name="a%C%State19Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 19" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%1922" Name="a%C%State19Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 19 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%1923" Name="a%C%State19Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 19 (DPT 2)" Value="1" />
@@ -1486,9 +1486,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%2006" Name="a%C%d20F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(20,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2007" Name="a%C%d20G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(20,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2008" Name="a%C%d20H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(20,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2017" Name="a%C%TransState20Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(20,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2019" Name="a%C%State20TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2018" Name="a%C%State20TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%2017" Name="a%C%d20T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(20,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%2019" Name="a%C%d20TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%2018" Name="a%C%d20TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%2020" Name="a%C%State20Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 20" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2022" Name="a%C%State20Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 20 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%2023" Name="a%C%State20Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 20 (DPT 2)" Value="1" />
@@ -1556,9 +1556,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%2106" Name="a%C%d21F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(21,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2107" Name="a%C%d21G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(21,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2108" Name="a%C%d21H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(21,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2117" Name="a%C%TransState21Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(21,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2119" Name="a%C%State21TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2118" Name="a%C%State21TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%2117" Name="a%C%d21T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(21,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%2119" Name="a%C%d21TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%2118" Name="a%C%d21TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%2120" Name="a%C%State21Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 21" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2122" Name="a%C%State21Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 21 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%2123" Name="a%C%State21Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 21 (DPT 2)" Value="1" />
@@ -1626,9 +1626,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%2206" Name="a%C%d22F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(22,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2207" Name="a%C%d22G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(22,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2208" Name="a%C%d22H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(22,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2217" Name="a%C%TransState22Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(22,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2219" Name="a%C%State22TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2218" Name="a%C%State22TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%2217" Name="a%C%d22T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(22,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%2219" Name="a%C%d22TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%2218" Name="a%C%d22TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%2220" Name="a%C%State22Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 22" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2222" Name="a%C%State22Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 22 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%2223" Name="a%C%State22Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 22 (DPT 2)" Value="1" />
@@ -1696,9 +1696,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%2306" Name="a%C%d23F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(23,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2307" Name="a%C%d23G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(23,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2308" Name="a%C%d23H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(23,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2317" Name="a%C%TransState23Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(23,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2319" Name="a%C%State23TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2318" Name="a%C%State23TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%2317" Name="a%C%d23T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(23,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%2319" Name="a%C%d23TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%2318" Name="a%C%d23TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%2320" Name="a%C%State23Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 23" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2322" Name="a%C%State23Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 23 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%2323" Name="a%C%State23Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 23 (DPT 2)" Value="1" />
@@ -1766,9 +1766,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%2406" Name="a%C%d24F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(24,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2407" Name="a%C%d24G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(24,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2408" Name="a%C%d24H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(24,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2417" Name="a%C%TransState24Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(24,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2419" Name="a%C%State24TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2418" Name="a%C%State24TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%2417" Name="a%C%d24T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(24,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%2419" Name="a%C%d24TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%2418" Name="a%C%d24TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%2420" Name="a%C%State24Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 24" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2422" Name="a%C%State24Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 24 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%2423" Name="a%C%State24Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 24 (DPT 2)" Value="1" />
@@ -1836,9 +1836,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%2506" Name="a%C%d25F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(25,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2507" Name="a%C%d25G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(25,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2508" Name="a%C%d25H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(25,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2517" Name="a%C%TransState25Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(25,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2519" Name="a%C%State25TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2518" Name="a%C%State25TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%2517" Name="a%C%d25T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(25,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%2519" Name="a%C%d25TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%2518" Name="a%C%d25TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%2520" Name="a%C%State25Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 25" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2522" Name="a%C%State25Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 25 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%2523" Name="a%C%State25Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 25 (DPT 2)" Value="1" />
@@ -1906,9 +1906,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%2606" Name="a%C%d26F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(26,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2607" Name="a%C%d26G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(26,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2608" Name="a%C%d26H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(26,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2617" Name="a%C%TransState26Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(26,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2619" Name="a%C%State26TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2618" Name="a%C%State26TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%2617" Name="a%C%d26T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(26,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%2619" Name="a%C%d26TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%2618" Name="a%C%d26TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%2620" Name="a%C%State26Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 26" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2622" Name="a%C%State26Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 26 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%2623" Name="a%C%State26Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 26 (DPT 2)" Value="1" />
@@ -1976,9 +1976,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%2706" Name="a%C%d27F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(27,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2707" Name="a%C%d27G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(27,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2708" Name="a%C%d27H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(27,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2717" Name="a%C%TransState27Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(27,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2719" Name="a%C%State27TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2718" Name="a%C%State27TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%2717" Name="a%C%d27T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(27,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%2719" Name="a%C%d27TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%2718" Name="a%C%d27TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%2720" Name="a%C%State27Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 27" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2722" Name="a%C%State27Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 27 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%2723" Name="a%C%State27Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 27 (DPT 2)" Value="1" />
@@ -2046,9 +2046,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%2806" Name="a%C%d28F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(28,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2807" Name="a%C%d28G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(28,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2808" Name="a%C%d28H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(28,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2817" Name="a%C%TransState28Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(28,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2819" Name="a%C%State28TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2818" Name="a%C%State28TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%2817" Name="a%C%d28T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(28,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%2819" Name="a%C%d28TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%2818" Name="a%C%d28TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%2820" Name="a%C%State28Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 28" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2822" Name="a%C%State28Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 28 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%2823" Name="a%C%State28Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 28 (DPT 2)" Value="1" />
@@ -2116,9 +2116,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%2906" Name="a%C%d29F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(29,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2907" Name="a%C%d29G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(29,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2908" Name="a%C%d29H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(29,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2917" Name="a%C%TransState29Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(29,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2919" Name="a%C%State29TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%2918" Name="a%C%State29TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%2917" Name="a%C%d29T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(29,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%2919" Name="a%C%d29TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%2918" Name="a%C%d29TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%2920" Name="a%C%State29Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 29" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%2922" Name="a%C%State29Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 29 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%2923" Name="a%C%State29Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 29 (DPT 2)" Value="1" />
@@ -2186,9 +2186,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%3006" Name="a%C%d30F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(30,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%3007" Name="a%C%d30G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(30,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%3008" Name="a%C%d30H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(30,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%3017" Name="a%C%TransState30Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(30,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%3019" Name="a%C%State30TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%3018" Name="a%C%State30TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%3017" Name="a%C%d30T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(30,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%3019" Name="a%C%d30TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%3018" Name="a%C%d30TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%3020" Name="a%C%State30Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 30" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%3022" Name="a%C%State30Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 30 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%3023" Name="a%C%State30Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 30 (DPT 2)" Value="1" />
@@ -2256,9 +2256,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%3106" Name="a%C%d31F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(31,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%3107" Name="a%C%d31G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(31,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%3108" Name="a%C%d31H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(31,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%3117" Name="a%C%TransState31Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(31,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%3119" Name="a%C%State31TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%3118" Name="a%C%State31TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%3117" Name="a%C%d31T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(31,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%3119" Name="a%C%d31TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%3118" Name="a%C%d31TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%3120" Name="a%C%State31Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 31" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%3122" Name="a%C%State31Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 31 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%3123" Name="a%C%State31Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 31 (DPT 2)" Value="1" />
@@ -2326,9 +2326,9 @@
                 <Parameter Id="%AID%_UP-%T%%CC%3206" Name="a%C%d32F"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="6" BitOffset="0"      Text="trans(32,6)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%3207" Name="a%C%d32G"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="7" BitOffset="0"      Text="trans(32,7)"            Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%3208" Name="a%C%d32H"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="8" BitOffset="0"      Text="trans(32,8)"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%3217" Name="a%C%TransState32Timeout"  ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(32,timeout)"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%3219" Name="a%C%State32TimeoutBase"   ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%3218" Name="a%C%State32TimeoutTime"   ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
+                <Parameter Id="%AID%_UP-%T%%CC%3217" Name="a%C%d32T"                 ParameterType="%AID%_PT-DfaStateNext"         Offset="9" BitOffset="0"      Text="trans(32,timeout)"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%3219" Name="a%C%d32TBase"             ParameterType="%AID%_PT-DelayBase10Short"     Offset="10" BitOffset="0"     Text="Zeitbasis"              Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%3218" Name="a%C%d32TTime"             ParameterType="%AID%_PT-DelayTimeMin1"        Offset="10" BitOffset="2"     Text="Zeit"                   Value="15" />
                 <Parameter Id="%AID%_UP-%T%%CC%3220" Name="a%C%State32Output1Conf"   ParameterType="%AID%_PT-DfaOutputConf"        Offset="12" BitOffset="0"     Text="Sendeverhalten Zustand 32" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%3222" Name="a%C%State32Output1TypeDpt1" ParameterType="%AID%_PT-ValueDpt1"            Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 32 (DPT 1)" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%3223" Name="a%C%State32Output1TypeDpt2" ParameterType="%AID%_PT-ValueDpt2Out"         Offset="13" BitOffset="0"     Text="Ausgabewert Zustand 32 (DPT 2)" Value="1" />
