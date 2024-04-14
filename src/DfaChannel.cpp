@@ -383,7 +383,7 @@ const std::string DfaChannel::name()
 void DfaChannel::setup()
 {
     _channelActive = (ParamDFA_aActive == 0b01);
-    logDebugP("setup (act=%d dly=%ds run=%d)", _channelActive, ParamDFA_aStartupDelayTimeMS / 1000, ParamDFA_aStartPause != 0b00);
+    logDebugP("setup (act=%d dly=%ds run=%d)", _channelActive, ParamDFA_aStartupDelayTimeMS / 1000, ParamDFA_aStartPause != 2);
 
     if (_channelActive)
     {
@@ -509,7 +509,7 @@ void DfaChannel::loop()
         _processStartupDelay = false;
 
         // set to running. This includes setting the start state
-        setRunning(ParamDFA_aStartPause != 0b00, true);
+        setRunning(ParamDFA_aStartPause != 2, true);
     }
 }
 
@@ -622,7 +622,7 @@ void DfaChannel::setRunning(const bool requestRun, const bool first /*= false*/)
         send = true;
     }
 
-    if (send && (ParamDFA_aStartPause < 0b10))
+    if (send && (ParamDFA_aStartPause != 0))
         KoDFA_KOaRunning.value(_running, DPT_State);
 }
 
