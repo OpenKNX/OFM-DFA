@@ -17074,26 +17074,12 @@
                                   <when test="1">
                                     <!-- Input1 -->
                                     <ComObjectRefRef RefId="%AID%_O-%T%%CC%0001_R-%T%%CC%000101" />
-                                    <!--
-                                    <choose ParamRefId="%AID%_UP-%T%%CC%7103_R-%T%%CC%710301">
-                                      <when test="1"      ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0001_R-%T%%CC%000110" /></when>
-                                      <when test="2"      ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0001_R-%T%%CC%000111" /></when>
-                                      <when default="true"><ComObjectRefRef RefId="%AID%_O-%T%%CC%0001_R-%T%%CC%000101" /></when>
-                                    </choose>
-                                    -->
                                   </when>
                                 </choose>
                                 <choose ParamRefId="%AID%_UP-%T%%CC%7201_R-%T%%CC%720101">
                                   <when test="1">
                                     <!-- Input2 -->
                                     <ComObjectRefRef RefId="%AID%_O-%T%%CC%0002_R-%T%%CC%000201" />
-                                    <!--
-                                    <choose ParamRefId="%AID%_UP-%T%%CC%7203_R-%T%%CC%720301">
-                                      <when test="1"      ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0002_R-%T%%CC%000210" /></when>
-                                      <when test="2"      ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0002_R-%T%%CC%000211" /></when>
-                                      <when default="true"><ComObjectRefRef RefId="%AID%_O-%T%%CC%0002_R-%T%%CC%000201" /></when>
-                                    </choose>
-                                    -->
                                   </when>
                                 </choose>
                               </when>
