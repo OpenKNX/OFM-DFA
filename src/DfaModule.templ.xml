@@ -4813,7 +4813,7 @@
 
                     <!-- Documentation --><!-- Multi-Line Comment (not the Module from Common) -->
                     <ParameterRefRef RefId="%AID%_P-%T%%CC%0090_R-%T%%CC%009001" />
-                    <Button Id="%AID%_B-%T%%CC%0090" Text="Alle '\n' im Text durch neue Zeile(n) ersetzen" EventHandler="newline" EventHandlerParameters="{ &quot;textbox&quot;:&quot;%PREFIX%_a%C%Comment&quot; }" />
+                    <Button Id="%AID%_B-%T%%CC%0090" Text="Alle '\n' im Text durch Zeilenumbruch ersetzen" EventHandler="newline" EventHandlerParameters="{ &quot;textbox&quot;:&quot;%PREFIX%_a%C%Comment&quot; }" />
 
                     <ParameterRefRef RefId="%AID%_UP-%T%%CC%0006_R-%T%%CC%000601" />
                     <choose ParamRefId="%AID%_UP-%T%%CC%0006_R-%T%%CC%000601">
