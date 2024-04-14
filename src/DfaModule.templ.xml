@@ -4806,7 +4806,7 @@
               <choose ParamRefId="%AID%_P-%T%000001_R-%T%00000101">
                 <when test="&gt;=%C%">
                   <ParameterBlock Id="%AID%_PB-%C%01" Name="a%C%DFA" Text="DEA %C%: {{0: ...}}" TextParameterRefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" Icon="state-machine" >
-                    <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG:&#xD;&#xA;Alpha-Version für erste Tester.&#xD;&#xA;Fehler und spätere ggf. inkompatible Änderungen möglich!" UIHint="Information" />
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="BETA-Version - Dokumentation beachten!" UIHint="Information" />
 
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="DEA-Definition" UIHint="Headline" />
                     <ParameterRefRef RefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" />
