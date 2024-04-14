@@ -674,11 +674,12 @@ void DfaChannel::setState(const uint8_t nextState)
         {
             const uint8_t outputStateSend = outputGetCurrentStateSendConfig(i);
 
-            const bool updateKo = (outputStateSend & OUTPUT_UPDATE_KO);
-            const bool sendOnChangedValue = (outputStateSend & OUTPUT_SEND_ON_VALUE_CHANGE);
-            const bool sendOnChangedState = (outputStateSend & OUTPUT_SEND_ON_STATE_CHANGE);
-            const bool sendAlways = (outputStateSend & OUTPUT_SEND_ALWAYS);
-            const bool repeatedSending = (outputStateSend & OUTPUT_REPEATED_SEND);
+            // see %AID%_PT-DfaOutputConf"
+            const bool updateKo =           (outputStateSend > 0);
+            const bool sendOnChangedValue = (outputStateSend >= 2);
+            const bool sendOnChangedState = (outputStateSend >= 4);
+            const bool sendAlways =         (outputStateSend >= 6);
+            const bool repeatedSending =    (outputStateSend >= 2) && (outputStateSend & 0b001);
 
             const bool cyclicSending = (outputGetDpt(i) != 0) && repeatedSending;
             _outputsTimeout[i].delay_ms = cyclicSending ? outputDelays[i] : 0;
