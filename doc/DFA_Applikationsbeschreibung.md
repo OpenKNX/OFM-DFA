@@ -128,7 +128,7 @@ Die Dokumentation hat keinen Einfluss auf das Geräteverhalten.
 ### Ausführung
 
 #### Verzögerung nach Neustart
-Nach dem Neustart ist der der Automat zunächst inaktiv und wird erst nach Ablauf der Verzögerungszeit (zusätzlich zur Startverzögerung im Gerät) auf Ereignisse (wie z.B. Eingaben, Setzen des Zustand) reagieren und einen ggf. definierten Timeout starten.
+Nach dem Neustart ist der Automat zunächst inaktiv und wird erst nach Ablauf der Verzögerungszeit (zusätzlich zur Startverzögerung im Gerät) auf Ereignisse (wie z.B. Eingaben, Setzen des Zustand) reagieren und einen ggf. definierten Timeout starten.
 
 > Mit dieser Einstellung kann z.B. verhindert werden, dass beim Neustart des Bus durch initial versendete Telegramme zustandswechsel verursacht werden.
 
