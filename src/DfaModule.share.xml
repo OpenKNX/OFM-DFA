@@ -478,7 +478,7 @@
             </ComObjectRefs>
           </Static>
           <Dynamic>
-            <Channel Name="DfaChannel" Text="Zustandsmodelle (DEAs)" Number="%TT%" Id="%AID%_CH-%TT%" Icon="state-machine" >
+            <Channel Name="DfaChannel" Text="Zustandsmodelle (DEAs)" Number="%TT%" Id="%AID%_CH-%TT%" Icon="ofm-dfa" >
               <ParameterBlock Name="DfaInfo" Text="Info &amp; Dokumentation" Id="%AID%_PB-nnn" Icon="information-outline"><!-- HelpContext="DFA-Dokumentation" -->
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Modul-Version: %ModuleVersion%" UIHint="Headline" />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG:&#xD;&#xA;Alpha-Version für erste Tester.&#xD;&#xA;Fehler und spätere ggf. inkompatible Änderungen möglich!" UIHint="Information" />
@@ -504,6 +504,14 @@
           </Dynamic>
         </ApplicationProgram>
       </ApplicationPrograms>
+      <Baggages>
+        <Baggage TargetPath="" Name="Help_de.zip" Id="%FILE-HELP-de%">
+          <FileInfo TimeInfo="%DATETIME%" />
+        </Baggage>
+        <Baggage TargetPath="" Name="Icons.zip" Id="%FILE-ICONS%">
+          <FileInfo TimeInfo="%DATETIME%" />
+        </Baggage>
+      </Baggages>      
     </Manufacturer>
   </ManufacturerData>
 </KNX>

@@ -4805,7 +4805,7 @@
             <ChannelIndependentBlock> 
               <choose ParamRefId="%AID%_P-%T%000001_R-%T%00000101">
                 <when test="&gt;=%C%">
-                  <ParameterBlock Id="%AID%_PB-%C%01" Name="a%C%DFA" Text="DEA %C%: {{0: ...}}" TextParameterRefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101">
+                  <ParameterBlock Id="%AID%_PB-%C%01" Name="a%C%DFA" Text="DEA %C%: {{0: ...}}" TextParameterRefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" Icon="state-machine" >
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG:&#xD;&#xA;Alpha-Version für erste Tester.&#xD;&#xA;Fehler und spätere ggf. inkompatible Änderungen möglich!" UIHint="Information" />
 
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="DEA-Definition" UIHint="Headline" />
@@ -5061,7 +5061,7 @@
                           <ParameterRefRef RefId="%AID%_UP-%T%%CC%8401_R-%T%%CC%840101" Cell="4,2" />
                         </ParameterBlock>
 
-    <!-- TODO --><ParameterBlock Id="%AID%_PB-nnn" Name="a%C%DFAStates" Text="Zustände &amp; Übergänge">
+    <!-- TODO --><ParameterBlock Id="%AID%_PB-nnn" Name="a%C%DFAStates" Text="Zustände &amp; Übergänge" Icon="grid-custom" >
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Zustände und Übergangsfunktion einschließlich zeitbasierter Folgezustände" UIHint="Headline" />
                         <!-- Startzustand -->
                         <ParameterRefRef RefId="%AID%_UP-%T%%CC%0002_R-%T%%CC%000201" />
@@ -6128,7 +6128,7 @@
                           <!-- Ouput 1 -->
                           <choose ParamRefId="%AID%_UP-%T%%CC%8101_R-%T%%CC%810101">
                             <when test="!=0">
-                              <ParameterBlock Id="%AID%_PB-%C%1020" Name="a%C%Output1" Text="Ausgang 1: {{0:...}}"  TextParameterRefId="%AID%_P-%T%%CC%8100_R-%T%%CC%810001">
+                              <ParameterBlock Id="%AID%_PB-%C%1020" Name="a%C%Output1" Text="Ausgang 1: {{0:...}}"  TextParameterRefId="%AID%_P-%T%%CC%8100_R-%T%%CC%810001" Icon="chevron-left-circle-outline" >
                                 <!-- ChannelDelay Delay pattern, as used in LOG or VPM -->
                                 <ParameterBlock Id="%AID%_PB-nnn" Name="a%C%ChannelOutput1Interval" Inline="true" Layout="Grid">
                                   <Rows>
@@ -8811,7 +8811,7 @@
                           <!-- Ouput 2 -->
                           <choose ParamRefId="%AID%_UP-%T%%CC%8201_R-%T%%CC%820101">
                             <when test="!=0">
-                              <ParameterBlock Id="%AID%_PB-%C%2020" Name="a%C%Output2" Text="Ausgang 2: {{0:...}}"  TextParameterRefId="%AID%_P-%T%%CC%8200_R-%T%%CC%820001">
+                              <ParameterBlock Id="%AID%_PB-%C%2020" Name="a%C%Output2" Text="Ausgang 2: {{0:...}}"  TextParameterRefId="%AID%_P-%T%%CC%8200_R-%T%%CC%820001" Icon="chevron-left-circle-outline" >
                                 <!-- ChannelDelay Delay pattern, as used in LOG or VPM -->
                                 <ParameterBlock Id="%AID%_PB-nnn" Name="a%C%ChannelOutput2Interval" Inline="true" Layout="Grid">
                                   <Rows>
@@ -11494,7 +11494,7 @@
                           <!-- Ouput 3 -->
                           <choose ParamRefId="%AID%_UP-%T%%CC%8301_R-%T%%CC%830101">
                             <when test="!=0">
-                              <ParameterBlock Id="%AID%_PB-%C%3020" Name="a%C%Output3" Text="Ausgang 3: {{0:...}}"  TextParameterRefId="%AID%_P-%T%%CC%8300_R-%T%%CC%830001">
+                              <ParameterBlock Id="%AID%_PB-%C%3020" Name="a%C%Output3" Text="Ausgang 3: {{0:...}}"  TextParameterRefId="%AID%_P-%T%%CC%8300_R-%T%%CC%830001" Icon="chevron-left-circle-outline" >
                                 <!-- ChannelDelay Delay pattern, as used in LOG or VPM -->
                                 <ParameterBlock Id="%AID%_PB-nnn" Name="a%C%ChannelOutput3Interval" Inline="true" Layout="Grid">
                                   <Rows>
@@ -14177,7 +14177,7 @@
                           <!-- Ouput 4 -->
                           <choose ParamRefId="%AID%_UP-%T%%CC%8401_R-%T%%CC%840101">
                             <when test="!=0">
-                              <ParameterBlock Id="%AID%_PB-%C%4020" Name="a%C%Output4" Text="Ausgang 4: {{0:...}}"  TextParameterRefId="%AID%_P-%T%%CC%8400_R-%T%%CC%840001">
+                              <ParameterBlock Id="%AID%_PB-%C%4020" Name="a%C%Output4" Text="Ausgang 4: {{0:...}}"  TextParameterRefId="%AID%_P-%T%%CC%8400_R-%T%%CC%840001" Icon="chevron-left-circle-outline" >
                                 <!-- ChannelDelay Delay pattern, as used in LOG or VPM -->
                                 <ParameterBlock Id="%AID%_PB-nnn" Name="a%C%ChannelOutput4Interval" Inline="true" Layout="Grid">
                                   <Rows>
