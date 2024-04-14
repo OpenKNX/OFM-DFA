@@ -425,7 +425,7 @@ uint16_t DfaChannel::getInputKoNumber(const uint8_t input)
 
 void DfaChannel::initInputConfig()
 {
-    const bool combined[DFA_DEF_INPUTS_COUNT / 2] = {ParamDFA_aInputCombinedAB, ParamDFA_aInputCombinedCD, ParamDFA_aInputCombinedEF, ParamDFA_aInputCombinedGH};
+    const bool combined[DFA_DEF_INPUTS_COUNT / 2] = {ParamDFA_aSymbolPairAB, ParamDFA_aSymbolPairCD, ParamDFA_aSymbolPairEF, ParamDFA_aSymbolPairGH};
     for (uint8_t iPair = 0; iPair < DFA_DEF_INPUTS_COUNT / 2; iPair++)
     {
         // logDebugP("input-pair %d", iPair);

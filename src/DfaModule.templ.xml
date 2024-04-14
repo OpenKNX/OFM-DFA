@@ -21,10 +21,10 @@
                 <Parameter Id="%AID%_UP-%T%%CC%0004" Name="a%C%StartupDelayTime" ParameterType="%AID%_PT-DelayTime"       Offset="2" BitOffset="2" Text="Einschaltverzögerung Zeit"             Value="1" />
               </Union>
               <Union SizeInBit="16"><Memory CodeSegment="%MID%" Offset="4" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%7001" Name="a%C%InputCombinedAB" ParameterType="%AID%_PT-CheckBox"          Offset="0" BitOffset="0" Text="Kombination A/B" SuffixText="A/B"      Value="0" /><!-- use suffix for grid-display -->
-                <Parameter Id="%AID%_UP-%T%%CC%7002" Name="a%C%InputCombinedCD" ParameterType="%AID%_PT-CheckBox"          Offset="0" BitOffset="1" Text="Kombination C/D" SuffixText="C/D"      Value="0" /><!-- use suffix for grid-display -->
-                <Parameter Id="%AID%_UP-%T%%CC%7003" Name="a%C%InputCombinedEF" ParameterType="%AID%_PT-CheckBox"          Offset="0" BitOffset="2" Text="Kombination E/F" SuffixText="E/F"      Value="0" /><!-- use suffix for grid-display -->
-                <Parameter Id="%AID%_UP-%T%%CC%7004" Name="a%C%InputCombinedGH" ParameterType="%AID%_PT-CheckBox"          Offset="0" BitOffset="3" Text="Kombination G/H" SuffixText="G/H"      Value="0" /><!-- use suffix for grid-display -->
+                <Parameter Id="%AID%_UP-%T%%CC%7001" Name="a%C%SymbolPairAB"         ParameterType="%AID%_PT-CheckBox"          Offset="0" BitOffset="0" Text="Kombination A/B" SuffixText="A/B"      Value="0" /><!-- use suffix for grid-display -->
+                <Parameter Id="%AID%_UP-%T%%CC%7002" Name="a%C%SymbolPairCD"         ParameterType="%AID%_PT-CheckBox"          Offset="0" BitOffset="1" Text="Kombination C/D" SuffixText="C/D"      Value="0" /><!-- use suffix for grid-display -->
+                <Parameter Id="%AID%_UP-%T%%CC%7003" Name="a%C%SymbolPairEF"         ParameterType="%AID%_PT-CheckBox"          Offset="0" BitOffset="2" Text="Kombination E/F" SuffixText="E/F"      Value="0" /><!-- use suffix for grid-display -->
+                <Parameter Id="%AID%_UP-%T%%CC%7004" Name="a%C%SymbolPairGH"         ParameterType="%AID%_PT-CheckBox"          Offset="0" BitOffset="3" Text="Kombination G/H" SuffixText="G/H"      Value="0" /><!-- use suffix for grid-display -->
                 <!-- 4 bits unused; TODO reduce size! -->
                 <!-- 1 byte unused; TODO reduce size! -->
               </Union>
