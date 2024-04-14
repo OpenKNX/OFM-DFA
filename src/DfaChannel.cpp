@@ -22,43 +22,43 @@ const uint8_t DfaChannel::_inputKo[DFA_DEF_INPUTS_COUNT] = {
 
 // TODO calculate index; expected distance should be protected by compile error
 const uint16_t DfaChannel::_inputConfPRI[DFA_DEF_INPUTS_COUNT] = {
-    DFA_aInputSymbol1Ko,
-    DFA_aInputSymbol2Ko,
-    DFA_aInputSymbol3Ko,
-    DFA_aInputSymbol4Ko,
-    DFA_aInputSymbol5Ko,
-    DFA_aInputSymbol6Ko,
-    DFA_aInputSymbol7Ko,
-    DFA_aInputSymbol8Ko,
+    DFA_aSymbolAInput,
+    DFA_aSymbolBInput,
+    DFA_aSymbolCInput,
+    DFA_aSymbolDInput,
+    DFA_aSymbolEInput,
+    DFA_aSymbolFInput,
+    DFA_aSymbolGInput,
+    DFA_aSymbolHInput,
 };
 // Value of DFA_aInputSymbol[1-8]Ko by 0-based index
-#define DFA_aInputSymbol__N__Ko(IDX) DFA_aInputSymbol1Ko + IDX * (DFA_aInputSymbol2Ko - DFA_aInputSymbol1Ko)
-//     const uint8_t inputConf = ((knx.paramByte(DFA_ParamCalcIndex(_inputConfPRI[input])) & DFA_aInputSymbol1KoMask) >> DFA_aInputSymbol1KoShift);
-#define DFA_Channel_Input_Config(IDX) ((knx.paramByte(DFA_aInputSymbol__N__Ko(input)) & DFA_aInputSymbol1KoMask) >> DFA_aInputSymbol1KoShift)
+#define DFA_aSymbol__N__Ko(IDX) DFA_aSymbolAInput + IDX * (DFA_aSymbolBInput - DFA_aSymbolAInput)
+//     const uint8_t inputConf = ((knx.paramByte(DFA_ParamCalcIndex(_inputConfPRI[input])) & DFA_aSymbolAInputMask) >> DFA_aSymbolAInputShift);
+#define DFA_Channel_Input_Config(IDX) ((knx.paramByte(DFA_aSymbol__N__Ko(input)) & DFA_aSymbolAInputMask) >> DFA_aSymbolAInputShift)
 
 
-#if DFA_aInputSymbol1LogicNumber != DFA_aInputSymbol1KoNumber
-    #error "DFA_aInputSymbol1LogicNumber != DFA_aInputSymbol1KoNumber"
+#if DFA_aSymbolALogicNumber != DFA_aSymbolAKoNumber
+    #error "DFA_aSymbolALogicNumber != DFA_aSymbolAKoNumber"
 #endif
 const uint16_t DfaChannel::_inputConfNumberPRI[DFA_DEF_INPUTS_COUNT] = {
-    DFA_aInputSymbol1KoNumber,
-    DFA_aInputSymbol2KoNumber,
-    DFA_aInputSymbol3KoNumber,
-    DFA_aInputSymbol4KoNumber,
-    DFA_aInputSymbol5KoNumber,
-    DFA_aInputSymbol6KoNumber,
-    DFA_aInputSymbol7KoNumber,
-    DFA_aInputSymbol8KoNumber,
+    DFA_aSymbolAKoNumber,
+    DFA_aSymbolBKoNumber,
+    DFA_aSymbolCKoNumber,
+    DFA_aSymbolDKoNumber,
+    DFA_aSymbolEKoNumber,
+    DFA_aSymbolFKoNumber,
+    DFA_aSymbolGKoNumber,
+    DFA_aSymbolHKoNumber,
 };
 const uint16_t DfaChannel::_inputTriggerPRI[DFA_DEF_INPUTS_COUNT] = {
-    DFA_aInputSymbol1Value,
-    DFA_aInputSymbol2Value,
-    DFA_aInputSymbol3Value,
-    DFA_aInputSymbol4Value,
-    DFA_aInputSymbol5Value,
-    DFA_aInputSymbol6Value,
-    DFA_aInputSymbol7Value,
-    DFA_aInputSymbol8Value,
+    DFA_aSymbolATrigger,
+    DFA_aSymbolBTrigger,
+    DFA_aSymbolCTrigger,
+    DFA_aSymbolDTrigger,
+    DFA_aSymbolETrigger,
+    DFA_aSymbolFTrigger,
+    DFA_aSymbolGTrigger,
+    DFA_aSymbolHTrigger,
 };
 
 // TODO calculate index; expected distance should be protected by compile error
@@ -402,7 +402,7 @@ void DfaChannel::setup()
 uint16_t DfaChannel::getInputKoNumber(const uint8_t input)
 {
     // TODO check shift and mark for all
-    const uint8_t inputConf = ((knx.paramByte(DFA_ParamCalcIndex(_inputConfPRI[input])) & DFA_aInputSymbol1KoMask) >> DFA_aInputSymbol1KoShift);
+    const uint8_t inputConf = ((knx.paramByte(DFA_ParamCalcIndex(_inputConfPRI[input])) & DFA_aSymbolAInputMask) >> DFA_aSymbolAInputShift);
     // logDebugP("  get ko for input=%i -> conf=%i", input, inputConf);
     switch (inputConf)
     {
@@ -453,7 +453,7 @@ void DfaChannel::initInputConfig()
                 if (koNumber > 0)
                 {
                     // TODO define ParamDFA_aInputSymbolNUMBERValue
-                    _inputs[i].trigger = ((knx.paramByte(DFA_ParamCalcIndex(_inputTriggerPRI[i])) & DFA_aInputSymbol1ValueMask) >> DFA_aInputSymbol1ValueShift);
+                    _inputs[i].trigger = ((knx.paramByte(DFA_ParamCalcIndex(_inputTriggerPRI[i])) & DFA_aSymbolATriggerMask) >> DFA_aSymbolAInputShift);
                 }
                 else
                 {
