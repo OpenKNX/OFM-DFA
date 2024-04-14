@@ -810,8 +810,9 @@ void DfaChannel::outputUpdate(const uint8_t i, const bool send, const bool force
                     outputUpdateKO(i, knx.paramByte(pIdxValue), DPT_SceneNumber, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT232:
-                    // TODO FIXME Mask
-                    outputUpdateKO(i, knx.paramInt(pIdxValue) >> 8, DPT_Colour_RGB, send, forceSend);
+                    // get value as defined in ParamDFA_az01o1Dpt232
+                    // TODO Ensure same values for DFA_az{$state}o{$output}Dpt232Mask and DFA_az{$state}o{$output}Dpt232Shift
+                    outputUpdateKO(i, (knx.paramInt(pIdxValue) & DFA_az01o1Dpt232Mask) >> DFA_az01o1Dpt232Shift, DPT_Colour_RGB, send, forceSend);
                     break;
                 default:
                     // TODO check handling undefined cases
