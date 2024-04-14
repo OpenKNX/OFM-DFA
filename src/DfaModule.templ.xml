@@ -5047,7 +5047,7 @@
                           </Rows>
                           <Columns>
                             <Column Id="%AID%_PB-04_C-1" Name="Label"           Text="Bezeichnung/Kommentar"      Width="40%" />
-                            <Column Id="%AID%_PB-04_C-2" Name="Source"          Text="Datentyp"                   Width="60%" />
+                            <Column Id="%AID%_PB-04_C-2" Name="Source"          Text="Datentyp"                   Width="55%" />
                           </Columns>
 
                           <ParameterRefRef RefId="%AID%_P-%T%%CC%8100_R-%T%%CC%810001" Cell="1,1" />
@@ -6181,7 +6181,7 @@
                                   </Rows>
                                   <Columns>
                                     <Column Id="%AID%_PB-nnn_C-1" Name="Label"        Width="35%" Text="Zustands-Bezeichnung" />
-                                    <Column Id="%AID%_PB-nnn_C-2" Name="Output1Send"  Width="55%" Text="Sendeverhalten" />
+                                    <Column Id="%AID%_PB-nnn_C-2" Name="Output1Send"  Width="50%" Text="Sendeverhalten" />
                                     <Column Id="%AID%_PB-nnn_C-3" Name="Output1Value" Width="35%" Text="Ausgabewert" />
                                   </Columns>
                                   <!-- * Ouput 1 / State 1 -->
@@ -8864,7 +8864,7 @@
                                   </Rows>
                                   <Columns>
                                     <Column Id="%AID%_PB-nnn_C-1" Name="Label"        Width="35%" Text="Zustands-Bezeichnung" />
-                                    <Column Id="%AID%_PB-nnn_C-2" Name="Output2Send"  Width="55%" Text="Sendeverhalten" />
+                                    <Column Id="%AID%_PB-nnn_C-2" Name="Output2Send"  Width="50%" Text="Sendeverhalten" />
                                     <Column Id="%AID%_PB-nnn_C-3" Name="Output2Value" Width="35%" Text="Ausgabewert" />
                                   </Columns>
                                   <!-- * Ouput 2 / State 1 -->
@@ -11547,7 +11547,7 @@
                                   </Rows>
                                   <Columns>
                                     <Column Id="%AID%_PB-nnn_C-1" Name="Label"        Width="35%" Text="Zustands-Bezeichnung" />
-                                    <Column Id="%AID%_PB-nnn_C-2" Name="Output3Send"  Width="55%" Text="Sendeverhalten" />
+                                    <Column Id="%AID%_PB-nnn_C-2" Name="Output3Send"  Width="50%" Text="Sendeverhalten" />
                                     <Column Id="%AID%_PB-nnn_C-3" Name="Output3Value" Width="35%" Text="Ausgabewert" />
                                   </Columns>
                                   <!-- * Ouput 3 / State 1 -->
@@ -14230,7 +14230,7 @@
                                   </Rows>
                                   <Columns>
                                     <Column Id="%AID%_PB-nnn_C-1" Name="Label"        Width="35%" Text="Zustands-Bezeichnung" />
-                                    <Column Id="%AID%_PB-nnn_C-2" Name="Output4Send"  Width="55%" Text="Sendeverhalten" />
+                                    <Column Id="%AID%_PB-nnn_C-2" Name="Output4Send"  Width="50%" Text="Sendeverhalten" />
                                     <Column Id="%AID%_PB-nnn_C-3" Name="Output4Value" Width="35%" Text="Ausgabewert" />
                                   </Columns>
                                   <!-- * Ouput 4 / State 1 -->
