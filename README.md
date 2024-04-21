@@ -1,13 +1,12 @@
-# ALPHA-STATUS! (DE/German)
-> Die vorliegende Version ist der erste veröffentliche Stand, zur Bereitstellung an Testnutzer.
+# BETA-STATUS! (DE/German)
+> Die vorliegende Version dient der Bereitstellung an Testnutzer.
 >
-> Obgleich die Implementierung auf einem bekannten formellen Modell aufbau und sehr kompakt gehalten wurde,
-> besteht ein erhöhtes Risiko von Fehlern.
+> Obgleich die Implementierung auf einem bekannten formellen Modell aufbaut und möglichst kompakt gehalten wurde,
+> und ein erster eingeschränkter Produktiv-Test erfolgt ist, besteht weiterhin ein erhöhtes Risiko von Fehlern.
 > Vor allem in solchen Anwendungsszenarien die bei der Entwicklung nicht berücksichtigt wurden.
 >
-> Die Art der Konfiguration ist Teil der Evaluation durch Testnutzer.
-> Änderungen im Datenmodell sind möglich und könnten zu Inkompatiblität führen. 
-> In diesem Fall ist eine Übernahme der Konfiguration womöglich nicht, oder nicht vollständig möglich.
+> Durch inkompatible Änderungen an der Konfiguration ist eine Übernahme der Konfiguration aus der ALPHA-Version nicht möglich.
+> Die umgesetzten Änderungen zwischen den Versionen erfolgten jedoch auch mit dem Ziel zukünftigen kompatiblitätsbrechende Änderungen in der Produktiv-Nutzung möglichst überflüssig zu machen. 
 
 # Deterministic Finite Automaton (DFA) Module for OpenKNX
 
