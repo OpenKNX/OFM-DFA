@@ -5078,7 +5078,7 @@
                         </choose>
                         <ParameterRefRef RefId="%AID%_UP-%T%%CC%0005_R-%T%%CC%000501" HelpContext="DFA-Direktes-Setzen-von-Zustand-erlauben" />
                         <!-- Tabelle Zustände und Übergänge  -->
-                        <ParameterBlock Id="%AID%_PB-%C%02" Name="Transfer%C%" Text="z" Inline="true" Layout="Table">
+                        <ParameterBlock Id="%AID%_PB-%C%02" Name="Transfer%C%" Text="z" Inline="true" Layout="Table" HelpContext="DFA-Tabelle-Zustaende-und-Uebergaenge">
                           <Rows>
                             <Row Id="%AID%_PB-02_R-65" Name="Notes"   Text="?" />
                             <Row Id="%AID%_PB-02_R-1" Name="State1" Text="1" />
