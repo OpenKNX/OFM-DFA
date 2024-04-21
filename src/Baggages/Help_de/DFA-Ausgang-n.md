@@ -8,18 +8,20 @@ Definiert den Zeitraum bis der Wert erneut auf den Bus gesendet wird, falls ein 
 
 ##### Sendeverhalten (je Zustand)
 
-| Einstellungswert                          | bei Wertänderung (erfordert Zustand-Wechsel) | bei Zustands-Änderung (ohne Wertänderung) | bei Zustandsaufruf (selber Zustand) | zyklisch senden | Beschreibung                                                                                                                                                                   |
-|-------------------------------------------|:--------------------------------------------:|:-----------------------------------------:|:-----------------------------------:|:---------------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| - `                                       |                      -                       |                     -                     |                  -                  |        -        | kein Wert (letzter Wert bleibt unverändert)                                                                                                                                    |
-| kein Senden, nur KO setzen                |             nur KO aktualisieren             |                     -                     |                  -                  |        -        | nur Wert aktualisieren  (Abruf per Read-Request möglich)                                                                                                                       |
-| Wert-Änderung                             |                    senden                    |                     -                     |                  -                  |        -        | nur bei Wertänderung <br>(wird nur bei Änderung von Zustand auftreten)                                                                                                         |
-| Wert-Änderung                  + zyklisch |                    senden                    |                     -                     |                  -                  |       ja        | nur bei Wertänderung <br>(wird nur bei Änderung von Zustand auftreten)                                                                                                         |
-| Zustands-Änderung                         |                    senden                    |                  senden                   |                  -                  |        -        | bei Statusänderung (z.B. beim Starten, durch Symboleingabe, durch Statuseingabe, durch Timeout)                                                                                |
-| Zustands-Änderung           + zyklisch    |                    senden                    |                  senden                   |                  -                  |       ja        | bei Statusänderung (z.B. beim Starten, durch Symboleingabe, durch Statuseingabe, durch Timeout)                                                                                |
-| jeder Zustands-Aufruf                     |                    senden                    |                  senden                   |               senden                |        -        | bei Statusaufruf (bei Statusänderung, aber z.B. auch bei Symboleingabe mit identischem Folgezustand, Statuseingabe des aktuellen Zustands, (Timeout mit selbem Folgezustand)); |
-| jeder Zustands-Aufruf        + zyklisch   |                    senden                    |                  senden                   |               senden                |       ja        | bei Statusaufruf (bei Statusänderung, aber z.B. auch bei Symboleingabe mit identischem Folgezustand, Statuseingabe des aktuellen Zustands, (Timeout mit selbem Folgezustand)); |
+Definiert, ob in dem Zustand ein Wert für diesen Ausgang zugewiesen wird und wenn ja, ob und wann dieser auf den Bus gesendet wird.
 
-<div style="background-color:red;">TODO: Was soll beim Fortsetzen passieren?</div>
+Wenn auf den Bus gesendet wird, 
+kann optional eine regelmäßige Wiederholung des Sendevorgangs eingestellt werden ("+ zyklisch"). 
+Die Wiederholung erfolgt dann unabhängig vom Zustand im für diesen Ausgang eingestellten ***Sendeintervall bei zyklischer Wiederholung***.
+
+* **-**:                                         Dem Zustand wird kein Ausgangswert zugeordnet. Der Wert des KOs wird nicht verändert (d.h. der bereits gesetzte Wert bleibt erhalten) und es wird nicht auf den Bus gesendet.
+* **kein Senden, nur KO setzen**:                Das KO wird auf den angegebenen Wert gesetzt, ohne diesen auf den Bus zu senden. Anschließend ist ein Abruf per Read-Request möglich.
+* **Wert-Änderung (+ zyklisch)**:                Sendet dann auf den Bus, wenn der zugeordnete Wert vom vorherigen Wert im KO abweicht. Eine Wert-Änderung kann *nur* bei Änderung des Zustandes auftreten, dem vorherigen Zustand ein anderer Wert zugeordnet war.
+* **Zustands-Änderung** (+ zyklisch):            Senden immer dann auf den Bus, wenn ein Wechsel des Zustands erfolgt, unabhängig von den Werten die den Zuständen zugeordnet sind. Eine Zustandsänderung erfolgt beim Starten und beim Wechsel in einen abweichenden Folgezustand durch Symboleingabe, Timeout, oder direktes Setzen des Zustands.
+* **jeder Zustands-Aufruf** (+ zyklisch):        Senden erfolgt bei jedem Aufruf des Zustands, unabhängig von einer Veränderung des Zustands oder des Augsgansgwertes. Ein Zustandsaufruf erfolgt beim Starten, durch direktes Setzen des Zustands, oder bei definierten (nicht zwingend abweichenden) Folgezuständen durch Symboleingabe bzw. Timeout. 
+
+> Die Sendehäufigkeit, bzw. die Auslöser für ein Senden, nehmen entsprechend der Reihenfolge der Optionen zu.
+
 
 ##### Ausgabewert (je Zustand)
 
