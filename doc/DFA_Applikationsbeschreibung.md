@@ -355,6 +355,10 @@ Der Wert wird ausschließlich in der ETS verwendet (Als Beschriftung von Konfigu
 
 #### Datentyp (je Ausgabekanal)
 
+<!-- DOCCONTENT
+***DPT17.001 Textausgabe:*** Die Ausgabe von 14-Byte-Texten ist angesichts des deutlich höheren Speicherbedarfs nur auf den letzten Ausgabekanal verfügbar.
+DOCCONTENT -->
+<!-- DOCEND -->
 | Wert             | O1,O2,O3          | O4 | Bemerkung                                                                                                                      |
 |------------------|-------------------|----|--------------------------------------------------------------------------------------------------------------------------------|
 | inaktiv          | 1                 | 1  | Der Ausgabekanal wird ausgeblendet.                                                                                            |
@@ -365,7 +369,7 @@ Der Wert wird ausschließlich in der ETS verwendet (Als Beschriftung von Konfigu
 | 6.x              | 1                 | 1  | 1byte vorzeichenbehaftet                                                                                                       |
 | 7.x, 8.x, 9.x    | 1                 | 1  | 2Byte (vorzeichenlos, vorzeichenbehaftet, Fließkomma mit geringer Genauigkeit)                                                 |
 | 12.x, 13.x, 14.x | 1                 | 1  | 4Byte (vorzeichenlos, vorzeichenbehaftet, Fließkomma)                                                                          |
-| 16.x             | 1                 | 1  | Szenen; Bei Aktivierung des Senden wird als Standardwerde der gewählte Zustand eingestellt.                                    |
+| 16.x             | 1                 | 1  | Szenen; Bei Aktivierung des Senden wird als Standardwerte der gewählte Zustand eingestellt.                                    |
 | 17.001           | nicht unterstützt | 1  | Die Ausgabe von 14-Byte-Texten ist angesichts des deutlich höheren Speicherbedarfs nur auf den letzten Ausgabekanal verfügbar. |
 | 232.600          | 1                 | 1  |                                                                                                                                |
 
