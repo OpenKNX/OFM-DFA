@@ -135,7 +135,10 @@ Die Dokumentation hat keinen Einfluss auf das Geräteverhalten.
 > ```
 
 
+<!-- DOC -->
 #### Kanal verwenden?
+
+Legt fest, ob dieser Automat konfiguriert und ausgeführt wird. 
 
 <!-- DOCCONTENT
 ##### inaktiv
