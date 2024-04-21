@@ -1,9 +1,18 @@
-# 2024-3 First Beta-Version (internal only)
-* (TODO) Improved Sending of Outputs
+# 2024-04 First Beta-Version (internal only)
+* Verbesserung/Erweiterung: Neue Implementierung für flexibles Sendeverhalten der Ausgänge
 * Fix: Timeout-Restore
-* Erweiterung Sendeverhalten
+* Verbesserung ETS-App: Darstellung der DPT-Auswahl mit DPT-Nummer am Anfang
+* Diverse Bereinigungen im Code (Firmware und ETS-App)
+* Änderung: Umbenennung von Parametern
+* OpenKNX Update ETS-App: Neue XML-Struktur
+* Erweiterung: Applikationsbeschreibung
+* Fix ETS-App: Wertangabe von ColorType-Values
+* Verbesserung ETS-App: Nur 2 DFA-Kanäle anzeigen in der Standardeinstellung
+* Verbesserung ETS-App/OpenKNX: '... (mehr)'-Block zur einfachen Anpassung/Erweiterung der sichtbaren DFA-Kanäle
+* Verbesserung ETS-App/OpenKNX: Integration von Icons für ETS-Channels und Blocks
+* Verbesserung ETS-App: Integration Kontexthilfe
 
-# 2023-12-30 Second Alpha-Version (PROD-Test)
+# 2023-12-30 Second Alpha-Version (PROD-Test, internal only)
 * Erweiterung: Ausgaben und Setzen von Status kann alternativ auch in gemeinsamen KO erfolgen
 * Verbesserung ETS-App: Leere Standardwerte für Bezeichnungen von Eingabesymbolen und Zuständen
 * Verbesserung ETS-App: Vergrößerung Spaltenbreite in Tabellen (zur Vermeidung Probleme bei HiDPI-Ausgabe)
