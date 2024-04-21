@@ -250,6 +250,7 @@ Das resultierende Verhalten ist ansonsten nur schwer vorhersehbar und beherrschb
 
 
 > Sollen Eingabesymbole auf Basis von Werten erzeugt werden, die nicht direkt einem Eingangstelegramm vom Typ DPT1 entsprechen, so kann über Logikkanäle eine Konvertierung und/oder Vorverarbeitung erfolgen.
+<!-- DOC Skip="5" -->
 > 
 > Beispiele zum Einsatz von Logikkanälen:
 > * Prüfung ob nicht-binären Eingangswerte in einem bestimmten Wertebereich liegen
@@ -264,7 +265,14 @@ Dadurch teilen sich beide Eingabesymbole denselben Eingang,
 wobei beim Eingang des Wertes `1` im Eingabekanal das erste Symbol und beim Werte `0` immer das zweite Symbol erzeugt wird.
 Dadurch wird sichergestellt, dass derselbe Eingabekanal verwendet 
 
+<!-- DOCCONTENT
+Wird eine Paar-Option aktiviert, dann werden die beiden Eingabesymbole bei eintreffenden Ereignissen, 
+in Abhängigkeit vom Wert, im selben Eingabekanel erzeugt. 
 
+Ohne Auswahl der Option werden die Eingabesysmbole vollkommen unabhängig voneinander konfiguriert.
+DOCCONTENT -->
+
+<!-- DOC Skip="6" -->
 | Einstellungswert | Erklärung                                                                                                                                                                                                                                                       | bei 1 | bei 0 |
 |------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------|---------------------|
 | A/B              | Wenn Option aktiviert, dann werden die Eingabesymbole A und B bei eintreffenden Ereignissen, in Abhängigkeit vom Wert, im selben Eingabekanel erzeugt. <br />Ohne Auswahl der Option werden die Eingabesysmbole vollkommen unabhängig voneinander konfiguriert. | A                   | B                   |
@@ -272,6 +280,7 @@ Dadurch wird sichergestellt, dass derselbe Eingabekanal verwendet
 | E/F              | Analog A/B.                                                                                                                                                                                                                                                     | E                   | F                   |
 | G/H              | Analog A/B.                                                                                                                                                                                                                                                     | G                   | H                   |
 
+<!-- DOC Skip="4" -->
 > Beispiele für Ereignispaare:
 > * Last (1 bei Überschreitung / 0 bei Unterschreitung)
 > * Präsenz (1 bei Beginn und bestehender Präsenz / 0 bei Ende und Abwesenheit)
@@ -299,17 +308,28 @@ Bei unabhängigen Symbolen sollten ggf. eigene Ergänzungen zur Nachvollziehbark
 
 ##### Eingabekanal & Kanalauswahl (je Eingabesymbol oder Eingabesymbol-Paar)
 
-
+<!-- DOCCONTENT
+* **inaktiv**:        Das Eingabesymbol wird niemals erzeugt und in der Automatendefinition nicht berücksichtigt.
+* **Eigenes KO**:     Zur direkten Reaktion auf Werte die auf dem Bus bereit stehen. Eingabesymbole werden durch eingehende Telegramme erzeugt. Ein KO mit DPT1 wird eingeblendet.
+* **Logik-Ausgang**:  Nutzung von Werten die durch einen Logikkanal erzeugt und als Ergebnis ausgegeben werden. *Empfohlenen*, wenn Eingangswerte zunächst in 0/1 konvertiert oder vorgefiltert werden müssen, zur Nutzung von Zeitschaltuhrfunktionen, oder ggf. weiterer Funktionen des ***Logikmoduls***. Der Logik-Ausgang muss durch die Kanal-Nummer (1 bis Anzahl der Logikkanäle) des Logikmoduls festgelegt werden. ***Achtung:*** Fehlfunktionen möglich, bei Auswahl eines Ausgangs mit nicht kompatiblem DPT.
+* **Bestehendes KO**: Verwendung von Werten, die bereits in anderen KOs abgebildet sind, unabhängig von einer Übertragung auf den Bus. Ausgänge von Logik-Kanälen sollten *nicht* über die KO-Nummer verknüpft werden. ***Achtung:*** Fehlfunktionen möglich, bei Auswahl eines KO mit nicht kompatiblem DPT. Bei späteren Updates mit Veränderung der KO-Nummerierung muss eine manuelle Anpassung der Nummerierung vorgenommen werden. Auswahl über die KO-Nummer.
+DOCCONTENT -->
+<!-- DOC Skip="6" -->
 | Eingabekanal   | Erklärung                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Eingangs-KO | Kanalauswahl                                                                                             |
 |----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|----------------------------------------------------------------------------------------------------------|
-| inaktiv        | Das Eingabesymbol wird niemals erzeugt.                                                                                                                                                                                                                                                                                                                                                                                                                   | -           | -                                                                                                        |
+| inaktiv        | Das Eingabesymbol wird niemals erzeugt und in der Automatendefinition nicht berücksichtigt.                                                                                                                                                                                                                                                                                                                                                               | -           | -                                                                                                        |
 | Eigenes KO     | Zur direkten Reaktion auf Werte die auf dem Bus bereit stehen. Eingabesymbole werden durch eingehende Telegramme erzeugt. Ein KO mit DPT1 wird eingeblendet.                                                                                                                                                                                                                                                                                              | sichtbar    | Keine Konfiguration.<br />Nur Anzeige von genutztem Eingang 1 bis 8.                                     |
 | Logik-Ausgang  | Nutzung von Werten die durch einen Logikkanal erzeugt und als Ergebnis ausgegeben werden. *Empfohlenen*, wenn Eingangswerte zunächst in 0/1 konvertiert oder vorgefiltert werden müssen, zur Nutzung von Zeitschaltuhrfunktionen, oder ggf. weiterer Funktionen des [Logikmoduls](/OpenKNX/OAM-LogicModule/blob/main/doc/Applikationsbeschreibung-Logik.md). ***Achtung:*** Fehlfunktionen möglich, bei Auswahl eines Ausgangs mit nicht kompatiblem DPT. | -           | Der Logik-Ausgang wird durch die Kanal-Nummer (1 bis Anzahl der Logikkanäle) des Logikmoduls festgelegt. |
-| Bestehendes KO | Verwendung von Werten, die bereits in anderen KOs abgebildet sind, unabhängig von einer Übertragung auf den Bus. Ausgänge von Logik-Kanälten sollten *nicht* über die KO-Nummer verknüpft werden. ***Achtung:*** Fehlfunktionen möglich, bei Auswahl eines KO mit nicht kompatiblem DPT. Bei späteren Updates mit Veränderung der KO-Nummerierung muss eine manuelle Anpassung der Nummerierung vorgenommen werden.                                       | -           | Auswahl über die KO-Nummer (1 bis 2047)                                                                  |
+| Bestehendes KO | Verwendung von Werten, die bereits in anderen KOs abgebildet sind, unabhängig von einer Übertragung auf den Bus. Ausgänge von Logik-Kanälen sollten *nicht* über die KO-Nummer verknüpft werden. ***Achtung:*** Fehlfunktionen möglich, bei Auswahl eines KO mit nicht kompatiblem DPT. Bei späteren Updates mit Veränderung der KO-Nummerierung muss eine manuelle Anpassung der Nummerierung vorgenommen werden.                                       | -           | Auswahl über die KO-Nummer (1 bis 2047)                                                                  |
 
 ##### Auslösewert (je Eingabesymbol)
 
-
+<!-- DOCCONTENT
+* **bei 0**:             Nur bei Eintreffen eines Wertes 0 wird das Eingabesymbol erzeugt. 1 wird ignoriert.
+* **bei 1**:             Nur bei Eintreffen eines Wertes 1 wird das Eingabesymbol erzeugt. 0 wird ignoriert.
+* **jeder (0 oder 1)**:  Es erfolgt keine Unterscheidung zwischen den Werten. Bei jedem Eintreffen eines Wertes wird ein Eingabesymbol erzeugt.
+DOCCONTENT -->
+<!-- DOC Skip="5" -->
 | Auslösewert      | Eintreffen des Wertes 1 | Eintreffen des Wertes 0 | Kommentar                                           |
 |------------------|-------------------------|-------------------------|-----------------------------------------------------|
 | bei 0            | ignorieren              | Eingabesymbol erzeugen  |                                                     |
