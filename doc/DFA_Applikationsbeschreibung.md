@@ -30,6 +30,7 @@
 
 
 ## Deterministische Endliche Automaten
+
 DFA steht für englisch Deterministic Finite Automaton, 
 auf Deutsch entsprechend DEA (Deterministischer Endlicher Automat); 
 dies bildet die Basis für die Zustandsmodelle.
@@ -40,13 +41,16 @@ in der einführenden README.md.
 
 
 ## Zeitbasierter Folgezustand (Timeout):
+
 Für jeden Zustand kann optional ein Folgezustand definiert werden, zu dem gewechselt wird, 
 falls innerhalb einer definierten Zeitspanne kein Wechsel in einen anderen Zustand erfolgt;
 d.h.:
+
 * keine Eingabe erfolgt die zu einem Zustandswechsel fühlt
 * kein direkter Aufruf eines Zustandes erfolgt
 
 Die Zeitmessung wird zurückgesetzt, falls derselbe Zustand erneut aufgerufen wird; d.h.:
+
 * für jedes Eingabesymbol kann durch Auswahl desselben Folgezustands ein Reset umgesetzt werden
 
 
@@ -55,6 +59,7 @@ Die Zeitmessung wird zurückgesetzt, falls derselbe Zustand erneut aufgerufen wi
 Bei Unterbrechung des Gerätebetriebs (Programmieren, Reset, Trennen/Verbinden vom Bus) endet auch die Verarbeitung der definierten Automaten.
 Mit der optionalen Zustandsrekonstruktion kann versucht werden die Verarbeitung nach dem Neustart fortzusetzen, 
 basierend auf dem letzten bekannten Zustand und dessen Aufrufzeitpunkt. D.h.:
+
 * beim Starten kann alternativ zum regulären Startzustand der zuletzt gespeicherte Zustand aufgerufen werden
 * ein ggf. vorhandener Timeout kann um die bereits abgelaufene Zeit verkürzt werden
 * (geplant) alternativ soll der Rest-Timeout basierend auf dem zuvor berechneten absoluten Endzeitpunkt neuberechnet werden
@@ -72,12 +77,19 @@ Ein Neustart per Reset-Taste kann nicht erkannt werden.
 
 
 ## Info &amp; Dokumentation
+
 ### Modul-Version
+
 Zeigt die Version (Major.Minor) des Moduls OFM-DFA an.
 
+
 ## Basiseinstellungen
+
+<!-- DOC -->
 ### Kanalauswahl
+
 #### Verfügbare Kanäle
+
 Je nach Applikation kann eine große Anzahl von DFA-Kanälen vorhanden sein, 
 wobei oft nur einige wenige benötigt werden. 
 Mit diesem Parameter können nicht benötigt Kanäle in der ETS ausgeblendet werden, bzw. nur die notwendigen angezeigt.
@@ -87,17 +99,25 @@ Ausgeblendete Kanäle sind nicht inaktiv und zugehörige KOs sind ausgeblendet.
 
 
 ## DEA n: ...
+
 ### DEA-Definition 
 
+
+<!-- DOC -->
 #### Beschreibung des DEA
+
 Hier sollte zur Dokumentation eine individuelle und eindeutige kurze Beschreibung des Automaten hinterlegt werden.
 Der Wert wird ausschließlich in der ETS verwendet (als Teil der Kanalbezeichnung) und hat keinen Einfluss auf das Geräteverhalten.
 
+
+<!-- DOC -->
 #### Kommentar
+
 Hier kann eine ausführlichere - auch mehrzeilige - Dokumention des Automaten erfolgen.
 Es wird empfohlen zentrale Annahmen die dem Entwurf des Automaten zu Grunde liegen hier festzuhalten.
 Die Dokumentation hat keinen Einfluss auf das Geräteverhalten.
 
+<!-- DOCEND -->
 > Eine mehrzeilige Eingabe ist auf Grund von Beschränkungen der ETS nicht direkt möglich, kann jedoch durch Eingabe mit `\n` und Drücken des Buttons erzeugt werden. 
 > Anschließend kann der Text mehrzeilig bearbeitet werden.
 > 
@@ -114,20 +134,46 @@ Die Dokumentation hat keinen Einfluss auf das Geräteverhalten.
 > Zeilen!
 > ```
 
+
 #### Kanal verwenden?
+
+<!-- DOCCONTENT
+##### inaktiv
+
+*(Standardwert)* Dieser Kanal wird *nicht* genutzt.
+
+##### aktiv
+
+Zur Verwendung *muss* diese Einstellung gewählt werden.
+
+##### temporär inaktiv
+
+Die Konfiguration dieses Kanals wird *ignoriert*, aber die Kommunikationsobjekte und alle Einstellungen bleiben sichtbar. 
+Dadurch müssen GA-Verknüpfungen des zuvor 'aktiv' konfigurierten Kanals *nicht* entfernt werden und ein erneutes Hinzufügen beim späteren reaktivieren entfällt.
+
+Bei Einstellung *temporär inaktiv* sind alle nachfolgenden Konfigurationen unwirksam.
+DOCCONTENT -->
+
+
+<!-- DOCEND -->
 | Einstellungswert | Erklärung                                                                                                                                                                                                                                                                                  | ausführen | KOs/Konfiguration |
 |------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|-------------------|
 | inaktiv          | *(Standardwert)* Dieser Kanal wird *nicht* genutzt.                                                                                                                                                                                                                                        | -         | -                 |
-| aktiv            | Zur Verwendung muss diese Einstellung gewählt werden                                                                                                                                                                                                                                       | ja        | sichtbar          |
-| temporär inaktiv | Die Konfiguration dieses Kanals wird *ignoriert*, aber die Kommunikationsobjekte und alle Einstellungen bleiben sichtbar. Dadurch müssen GA-Verknüpfungen des zuvor 'aktiv' konfigurierten Kanals *nicht* entfernt werden und ein erneutes hinzufügen beim späteren reaktivieren entfällt. | -         | sichtbar          |
+| aktiv            | Zur Verwendung muss diese Einstellung gewählt werden.                                                                                                                                                                                                                                      | ja        | sichtbar          |
+| temporär inaktiv | Die Konfiguration dieses Kanals wird *ignoriert*, aber die Kommunikationsobjekte und alle Einstellungen bleiben sichtbar. Dadurch müssen GA-Verknüpfungen des zuvor 'aktiv' konfigurierten Kanals *nicht* entfernt werden und ein erneutes Hinzufügen beim späteren reaktivieren entfällt. | -         | sichtbar          |
 
 > Bei Einstellung *inaktiv* sind alle nachfolgenden Konfigurationen ausgeblendet.
 
 > Bei Einstellung *temporär inaktiv* sind alle nachfolgenden Konfigurationen unwirksam.
 
+
+
 ### Ausführung
 
+
+<!-- DOC -->
 #### Verzögerung nach Neustart
+
 Nach dem Neustart ist der Automat zunächst inaktiv und wird erst nach Ablauf der Verzögerungszeit (zusätzlich zur Startverzögerung im Gerät) auf Ereignisse (wie z.B. Eingaben, Setzen des Zustand) reagieren und einen ggf. definierten Timeout starten.
 
 > Mit dieser Einstellung kann z.B. verhindert werden, dass beim Neustart des Bus durch initial versendete Telegramme zustandswechsel verursacht werden.
@@ -136,14 +182,51 @@ Nach dem Neustart ist der Automat zunächst inaktiv und wird erst nach Ablauf de
 > Ein Setzen des Zustandes wäre dann jedoch sofort möglich, sowie auch eine individuelle Definition auf welche Eingabesymbole reagiert werden und welche nicht.
 > In Kombination mit einer Rekonstruktion des letzten Zustands ist dann jedoch keine besondere Behandlung des Startverhaltens möglich. 
 
-#### Starten und Pausieren
-| Einstellungswert               | Erklärung                                                                                                                                                                                                                                                                                                                                                                                                                                       | Start/Stop-KOs | starten nach dem Einschalten? |
-|--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|------------------------------|
-| immer aktiv                    | Der Automat wird kontinuierlich ausgeführt. Eine Unterbrechnung ist nicht möglich.                                                                                                                                                                                                                                                                                                                                                              | -              | ja                           |
-| per KO, ...                    | Die Ausführung des Automaten kann unterbrochen werden. Dazu werden zwei KOs eingeblendet. Über das erste KO können Start/Stop-Befehle empfangen werden. Ein zweites KO liefert den aktuellen Ausführungsstatus zurück. <br> Durch `Stop` wird eine laufende Ausführung unterbrochen, anschließend werden alle Ereignisse bis auf ein `Start` ignoriert. Ein Timeout des aktiven Zustands wird unterbrochen und beim erneuten Start fortgesetzt. | sichtbar       |                              |
-| ... nach Einschalten starten   | Nach dem Einschalten verhält sich der Automat wie mit *immer aktiv*.                                                                                                                                                                                                                                                                                                                                                                            | sichtbar       | ja                           |
-| ... warten auf Start-Telegramm | Nach dem Einschalten ist der Automat zunächst inaktiv. D.h. es werden keine Ereignisse verarbeitet.<br />Durch erstmaligen Eingang eines `Start`-Telegramms wird der Automat in den Startzustand versetzt. Der Timeout beginnt ab diesem Zeitpunkt.                                                                                                                                                                                             | sichtbar       | nein                         |
 
+<!-- DOC -->
+#### Starten und Pausieren
+
+Steuert, ob die Ausführung des Automaten unterbrochen werden kann.
+
+Wird das Starten und Pausieren aktiviert, dann werden zwei KOs eingeblendet:
+
+* Über das erste KO können Start/Stop-Befehle empfangen werden:
+  Durch `Stop` wird eine laufende Ausführung unterbrochen, anschließend werden alle Ereignisse bis auf ein `Start` ignoriert.
+  Ein Timeout des aktiven Zustands wird unterbrochen und beim erneuten Start fortgesetzt.
+* Ein zweites KO liefert den aktuellen Ausführungsstatus zurück.
+
+<!-- DOCCONTENT
+##### immer aktiv                    
+
+Der Automat wird kontinuierlich ausgeführt. Eine Unterbrechung ist nicht möglich.
+Nach dem Einschalten wird der Automat gestartet.
+
+##### per KO, nach Einschalten starten                       
+
+Nach dem Einschalten verhält sich der Automat wie mit *immer aktiv*.
+Über das eingeblendete Start/Stop-KO kann die Ausführung unterbrochen und fortgesetzt werden.
+
+##### per KO, warten auf Start-Telegramm 
+
+Nach dem Einschalten ist der Automat zunächst inaktiv.
+D.h. es werden keine Ereignisse verarbeitet.
+
+Durch erstmaligen Eingang eines `Start`-Telegramms auf dem eingeblendeten Start/Stop-KO wird der Automat in den Startzustand versetzt.
+Der Timeout beginnt ab diesem Zeitpunkt.
+Anschließend kann die Ausführung erneut unterbrochen und fortgesetzt werden.
+
+DOCCONTENT -->
+<!-- DOCEND -->
+| Einstellungswert               | Erklärung                                                                                                                                                                                                                                           | Start/Stop-KOs | starten nach dem Einschalten? |
+|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|------------------------------|
+| immer aktiv                    | Der Automat wird kontinuierlich ausgeführt. Eine Unterbrechnng ist nicht möglich.                                                                                                                                                                   | -              | ja                           |
+| per KO, ...                    | Die Ausführung des Automaten kann unterbrochen werden. Dazu werden zwei KOs eingeblendet.                                                                                                                                                           | sichtbar       |                              |
+| ... nach Einschalten starten   | Nach dem Einschalten verhält sich der Automat wie mit *immer aktiv*.                                                                                                                                                                                | sichtbar       | ja                           |
+| ... warten auf Start-Telegramm | Nach dem Einschalten ist der Automat zunächst inaktiv. D.h. es werden keine Ereignisse verarbeitet.<br />Durch erstmaligen Eingang eines `Start`-Telegramms wird der Automat in den Startzustand versetzt. Der Timeout beginnt ab diesem Zeitpunkt. | sichtbar       | nein                         |
+
+
+
+<!-- DOC -->
 ### Eingabesymbole
 
 Das Eingabealphabet des Automaten umfasst 8 Symbole, die in der Oberfläche kurz mit den Großbuchstaben A bis H bezeichnet sind. 
@@ -195,16 +278,21 @@ Dadurch wird sichergestellt, dass derselbe Eingabekanal verwendet
 
 
 #### Konfigurationstabelle der Eingabesymbole
+
 Abhängig von der Konfiguration wird je Zeile ein Eingabesymbol, oder ein Paar von Eingabesymbolen konfiguriert, bzw. Informationen zur Konfiguration dargestellt. 
 
+
 ##### Bezeichnung (je Eingabesymbol oder Eingabesymbol-Paar)
+
 Hier sollte zur Dokumentation eine individuelle kurze Beschreibung des jeweiligen Eingabesymbol(-paares) hinterlegt werden. 
 Der Wert wird ausschließlich in der ETS verwendet und hat keinen Einfluss auf das Geräteverhalten.
 
 Der eingegebene Wert wird als KO-Bezeichnung und Spaltenüberschrift in Zustandsübergangstabelle dargestellt.
 Bei Konfiguration als Eingabesymbol-Paar wird in der dortigen Spaltenüberschrift der Auslösewert `(=1)` bzw.  `(=0)` angehängt.
 Bei unabhängigen Symbolen sollten ggf. eigene Ergänzungen zur Nachvollziehbarkeit ergänzt werden. 
+
 > ***Zu beachten:*** Angesichts der geringen dort verfügbaren Spaltenbreite sollten eher kurze Wörter verwendet werden, nur so ist ein gut lesbarer Zeilenumbruch möglich.  
+
 
 ##### Eingabekanal & Kanalauswahl (je Eingabesymbol oder Eingabesymbol-Paar)
 
@@ -229,16 +317,21 @@ Bei unabhängigen Symbolen sollten ggf. eigene Ergänzungen zur Nachvollziehbark
 Anzeige der erzeugten Eingabesymbole für Auslösewerte 1 und 0.
 
 
+
+<!-- DOC -->
 ### Ausgabe
+
 Es können bis zu 4 Ausgabekanäle (O1, O2, O3, O4) konfiguriert werden, für die bei Aktivierung jeweils ein KO mit gewähltem Datentyp bereitgestellt wird.
 Es stehen gängige DPTs (1,2,5,5.001,6,7,8,9,12,13,14,17,232.600) zur Auswahl, sowie *ausschließlich* für O4 auch Text (DPT16.001).
 Für jede Kombination aus Zustand und Ausgang kann ein Wert und ein Sendeverhalten definiert werden.
 
 #### Bezeichnung/Kommentar (je Ausgabekanal)
+
 Hier sollte zur Dokumentation eine individuelle kurze Beschreibung des jeweiligen Ausgabekanal hinterlegt werden.
 Der Wert wird ausschließlich in der ETS verwendet (Als Beschriftung von Konfigurationsseiten und KOs) und hat keinen Einfluss auf das Geräteverhalten.
 
 #### Datentyp (je Ausgabekanal)
+
 | Wert             | O1,O2,O3          | O4 | Bemerkung                                                                                                                      |
 |------------------|-------------------|----|--------------------------------------------------------------------------------------------------------------------------------|
 | inaktiv          | 1                 | 1  | Der Ausgabekanal wird ausgeblendet.                                                                                            |
@@ -256,10 +349,16 @@ Der Wert wird ausschließlich in der ETS verwendet (Als Beschriftung von Konfigu
 
 ### Zustände und Übergangsfunktion einschließlich zeitbasierter Folgezustände
 
+
+<!-- DOC -->
 #### Startzustand
+
 Definiert den Zustand den der Automat beim (erstmaligen) Einschalten einnimmt.
 
+
+<!-- DOC -->
 #### Zustand bei Neustart rekonstruieren?
+
 Mit den angebotenen Funktionen kann versucht werden den Einfluss einer unterbrochenen Ausführung des Automaten zu reduzieren 
 
 | Einstellungswert                            | Erster Zustand                                    | Erster Timeout        | Erklärung                                                                                                                                                                                                                                                                                                                              |
@@ -270,7 +369,10 @@ Mit den angebotenen Funktionen kann versucht werden den Einfluss einer unterbroc
 | letzten Zustand mit absolutem Timeout-Ende  | zuletzt gespeicherter Zustand, sonst Startzustand | berechnet aus Uhrzeit | **(Geplant)** Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird die Restzeit neu berechnet, so dass der selbe (absolute) Endzeitpunkt erreicht wird wie ohne Unterbrechung.<br> Diese Option benötigt eine Zeitangabe. |
 
 
+
+<!-- DOC -->
 #### Direktes Setzen von Zustand erlauben?
+
 | Einstellungswert                        | Erklärung                                                                                                                                                                                                                                                                             |
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | nein                                    | Der Zustand wechselt ausschließlich durch Eingabe eines Symbols, oder Timeout.                                                                                                                                                                                                        |
@@ -279,10 +381,12 @@ Mit den angebotenen Funktionen kann versucht werden den Einfluss einer unterbroc
 
 
 #### Bezeichnung (je Zustand)
+
 Hier sollte zur Dokumentation eine individuelle kurze Beschreibung des jeweiligen Zustands hinterlegt werden.
 Der Wert wird ausschließlich in der ETS verwendet und hat keinen Einfluss auf das Geräteverhalten.
 
 #### Übergangsfunktion (Spalte "A" bis "H")
+
 Für jede Kombination aus (Ausgangs)Zustand (Zeile 1 bis 32) und Eingabesymbol (Spalte A bis H) 
 kann ein möglicher Folgezustand (`1` bis `32`), oder ein Zurücksetzen des Timeouts (`<<`) festgelegt werden.
 Falls kein Folgezustand festgelegt wird (`-`), so wird die Eingabe ignoriert.
@@ -290,6 +394,7 @@ Falls kein Folgezustand festgelegt wird (`-`), so wird die Eingabe ignoriert.
 *Folgezustand identisch zum Ausgangszustand:* Mit dieser Definition kann erreicht werden, dass ein definierter Timeout zurückgesetzt wird, oder Zustand erneut auf den Bus gesendet wird.
 
 #### Timeout / Einheit / Spalte "T"
+
 Durch die Timeout-Funktion kann ein Zustandswechsel erfolgen, wenn innerhalb eines definierten Zeitraums *keine* Zustandsveränderung erfolgt ist.
 D.h.: Es wurde *nicht*
 * basierend auf der Übergangsfunktion in einen anderen Zustand gewechselt
@@ -302,19 +407,24 @@ D.h.: Es wurde *nicht*
 * Sicherstellen, dass innerhalb eines Zeitraums nicht eintritt 
 
 ##### Spalte T: zeitbasierter Folgezustand
+
 Mit Auswahl eines Zustandes wird die Timeout-Definition aktiviert und die Konfiguration für die Timeout-Dauer eingeblendet.
 Ohne Auswahl erfolgt keine zeitabhängige Reaktion.
 
 ##### Timeout / Einheit
+
 Definiert die Dauer des Timeouts.
 Die Zeitmessung beginnt mit Eintritt in den Zustand. 
 
 *Zurücksetzen des Timeouts:* Bei erneutem Aufruf desselben Zustands beginnt die Zeitmessung erneut.
 
 
+
+<!-- DOC -->
 ### Ausgang n: ...
 
 #### Sendeintervall bei zyklischer Wiederholung 
+
 Definiert den Zeitraum bis der Wert erneut auf den Bus gesendet wird, falls ein zyklisches Sendeverhalten eingestellt wird.
 
 #### Definition Ausgangswert
@@ -335,12 +445,15 @@ Definiert den Zeitraum bis der Wert erneut auf den Bus gesendet wird, falls ein 
 <div style="background-color:red;">TODO: Was soll beim Fortsetzen passieren?</div>
 
 ##### Ausgabewert (je Zustand)
+
 Falls ein Sendeverhalten für diesen Zustand definiert wurde, kann hier der Wert entsprechend des ausgangsspezifischen Types festgelegt werden.
 
 
 
 # Kommunikationsobjekte
+
 ## Je DEA
+
 |  KO   |    DPT | Bezeichnung                | Erklärung                                                                                                                                                                                                           |
 |:-----:|-------:|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |  +0   | 17.001 | Aktueller Zustand          | Gibt den momentanen Zustand aus, als `0=Szene 1` bis `31=Szene 32`.<br />Wert wird bei jedem Setzen des Zustandes geschrieben, auch wenn der Zustand sich nicht ändern sollte.                                      |

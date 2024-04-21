@@ -4809,18 +4809,18 @@
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="BETA-Version - Dokumentation beachten!" UIHint="Information" />
 
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="DEA-Definition" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" />
+                    <ParameterRefRef RefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" HelpContext="DFA-Beschreibung-des-DEA" />
 
                     <!-- Documentation --><!-- Multi-Line Comment (not the Module from Common) -->
-                    <ParameterRefRef RefId="%AID%_P-%T%%CC%0090_R-%T%%CC%009001" />
+                    <ParameterRefRef RefId="%AID%_P-%T%%CC%0090_R-%T%%CC%009001" HelpContext="DFA-Kommentar" />
                     <Button Id="%AID%_B-%T%%CC%0090" Text="Alle '\n' im Text durch Zeilenumbruch ersetzen" EventHandler="newline" EventHandlerParameters="{ &quot;textbox&quot;:&quot;%PREFIX%_a%C%Comment&quot; }" />
 
-                    <ParameterRefRef RefId="%AID%_UP-%T%%CC%0006_R-%T%%CC%000601" />
+                    <ParameterRefRef RefId="%AID%_UP-%T%%CC%0006_R-%T%%CC%000601" HelpContext="DFA-Kanal-verwenden" />
                     <choose ParamRefId="%AID%_UP-%T%%CC%0006_R-%T%%CC%000601">
                       <when test="!=0">
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Ausführung" UIHint="Headline" />
                         <!-- ChannelDelay Delay pattern, as used in LOG or VPM -->
-                        <ParameterBlock Id="%AID%_PB-nnn" Name="a%C%ChannelDelayCycle" Inline="true" Layout="Grid">
+                        <ParameterBlock Id="%AID%_PB-nnn" Name="a%C%ChannelDelayCycle" Inline="true" Layout="Grid" HelpContext="DFA-Verzoegerung-nach-Neustart">
                           <Rows>
                             <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
                           </Rows>
@@ -4834,10 +4834,10 @@
                           <ParameterRefRef RefId="%AID%_UP-%T%%CC%0003_R-%T%%CC%000301" Cell="1,3" />
                         </ParameterBlock>
 
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CC%0007_R-%T%%CC%000701" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CC%0007_R-%T%%CC%000701" HelpContext="DFA-Starten-und-Pausieren" />
 
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Eingabesymbole" UIHint="Headline" />
-                        <ParameterBlock Id="%AID%_PB-nnn" Name="InputSymbols%C%Combined" Inline="true" Layout="Grid">
+                        <ParameterBlock Id="%AID%_PB-nnn" Name="InputSymbols%C%Combined" Inline="true" Layout="Grid" HelpContext="DFA-Eingabesymbole">
                           <Rows>
                             <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
                           </Rows>
@@ -4857,7 +4857,7 @@
                           <ParameterRefRef RefId="%AID%_UP-%T%%CC%7003_R-%T%%CC%700301"    Cell="2,6" />
                           <ParameterRefRef RefId="%AID%_UP-%T%%CC%7004_R-%T%%CC%700401"    Cell="2,8" />
                         </ParameterBlock>
-                        <ParameterBlock Id="%AID%_PB-%C%03" Name="InputSymbols%C%" Text="x" Inline="true" Layout="Table">
+                        <ParameterBlock Id="%AID%_PB-%C%03" Name="InputSymbols%C%" Text="x" Inline="true" Layout="Table" HelpContext="DFA-Eingabesymbole">
                           <Rows>
                             <Row Id="%AID%_PB-03_R-1"  Name="Input1"  Text="A"   CollapseIfEmpty="true" />
                             <Row Id="%AID%_PB-03_R-2"  Name="Input2"  Text="B"   CollapseIfEmpty="true" />
@@ -5038,7 +5038,7 @@
 
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Ausgabe" UIHint="Headline" />
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Eine Ausgabe von Text (DPT16.001) ist ausschließlich mit O4 möglich." UIHint="Information" />
-                        <ParameterBlock Id="%AID%_PB-%C%04" Name="Outputs%C%" Text="O" Inline="true" Layout="Table">
+                        <ParameterBlock Id="%AID%_PB-%C%04" Name="Outputs%C%" Text="O" Inline="true" Layout="Table" HelpContext="DFA-Ausgabe">
                           <Rows>
                             <Row Id="%AID%_PB-04_R-1" Name="Output1" Text="O1" />
                             <Row Id="%AID%_PB-04_R-2" Name="Output2" Text="O2" />
@@ -5064,8 +5064,8 @@
     <!-- TODO --><ParameterBlock Id="%AID%_PB-nnn" Name="a%C%DFAStates" Text="Zustände &amp; Übergänge" Icon="grid-custom" >
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Zustände und Übergangsfunktion einschließlich zeitbasierter Folgezustände" UIHint="Headline" />
                         <!-- Startzustand -->
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CC%0002_R-%T%%CC%000201" />
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CC%0008_R-%T%%CC%000801" IndentLevel="1" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CC%0002_R-%T%%CC%000201" HelpContext="DFA-Startzustand" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CC%0008_R-%T%%CC%000801" IndentLevel="1" HelpContext="DFA-Zustand-bei-Neustart-rekonstruieren" />
                         <choose ParamRefId="%AID%_UP-%T%%CC%0008_R-%T%%CC%000801">
                           <when test="!=0">
                             <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG: Wiederherstellen von Zuständen beim Start ist ein experimentelles Feature." UIHint="Information" />
@@ -5076,7 +5076,7 @@
                             -->
                           </when>
                         </choose>
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CC%0005_R-%T%%CC%000501" />
+                        <ParameterRefRef RefId="%AID%_UP-%T%%CC%0005_R-%T%%CC%000501" HelpContext="DFA-Direktes-Setzen-von-Zustand-erlauben" />
                         <!-- Tabelle Zustände und Übergänge  -->
                         <ParameterBlock Id="%AID%_PB-%C%02" Name="Transfer%C%" Text="z" Inline="true" Layout="Table">
                           <Rows>
