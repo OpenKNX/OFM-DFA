@@ -386,14 +386,23 @@ Definiert den Zustand den der Automat beim (erstmaligen) Einschalten einnimmt.
 <!-- DOC -->
 #### Zustand bei Neustart rekonstruieren?
 
-Mit den angebotenen Funktionen kann versucht werden den Einfluss einer unterbrochenen Ausführung des Automaten zu reduzieren 
+Mit den angebotenen Funktionen kann *versucht werden* den Einfluss einer unterbrochenen Ausführung des Automaten zu reduzieren. 
 
+<!-- DOCCONTENT
+* **nicht speichern (immer Startzustand nutzen):** Der Zustand vor einem Neustart hat keinen Einfluss. Nach einem Neustart wird immer mit dem konfigurierte Startzustand begonnen.
+* **letzten Zustand neu starten:**                 Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird dieser neu gestartet.
+* **letzten Zustand fortsetzen:**                  Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird dieser um die bereits bis zur Speicherung des Zustands abgelaufene Zeit vermindert.
+DOCCONTENT -->
+<!-- * letzten Zustand mit absolutem Timeout-Ende  | zuletzt gespeicherter Zustand, sonst Startzustand | berechnet aus Uhrzeit | **(Geplant)** Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird die Restzeit neu berechnet, so dass der selbe (absolute) Endzeitpunkt erreicht wird wie ohne Unterbrechung.<br> Diese Option benötigt eine Zeitangabe. | -->
+<!-- DOCEND -->
 | Einstellungswert                            | Erster Zustand                                    | Erster Timeout        | Erklärung                                                                                                                                                                                                                                                                                                                              |
 |---------------------------------------------|---------------------------------------------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | nicht speichern (immer Startzustand nutzen) | Startzustand                                      | vollständig           | Der Zustand vor einem Neustart hat keinen Einfluss. Nach einem Neustart wird immer mit dem konfigurierte Startzustand begonnen.                                                                                                                                                                                                        |
 | letzten Zustand neu starten                 | zuletzt gespeicherter Zustand, sonst Startzustand | vollständig           | Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird dieser neu gestartet.                                                                                                                                                |
 | letzten Zustand fortsetzen                  | zuletzt gespeicherter Zustand, sonst Startzustand | nur Restzeit          | Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird dieser um die bereits bis zur Speicherung des Zustands abgelaufene Zeit vermindert.                                                                                  |
+<!--
 | letzten Zustand mit absolutem Timeout-Ende  | zuletzt gespeicherter Zustand, sonst Startzustand | berechnet aus Uhrzeit | **(Geplant)** Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird die Restzeit neu berechnet, so dass der selbe (absolute) Endzeitpunkt erreicht wird wie ohne Unterbrechung.<br> Diese Option benötigt eine Zeitangabe. |
+-->
 
 
 
