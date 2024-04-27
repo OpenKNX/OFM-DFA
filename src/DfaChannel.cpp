@@ -439,9 +439,9 @@ void DfaChannel::initInputConfig()
             const uint16_t koNumber = getInputKoNumber(iFirst);
 
             _inputs[iFirst].koNumber = koNumber;
-            _inputs[iFirst].trigger = (koNumber > 0) ? INPUT_TRIGGER_1 : INPUT_TRIGGER_DISABLED;
+            _inputs[iFirst].trigger = (koNumber > 0) ? DFA_INPUT_TRIGGER_1 : DFA_INPUT_TRIGGER_DISABLED;
             _inputs[iSecond].koNumber = koNumber;
-            _inputs[iSecond].trigger = (koNumber > 0) ? INPUT_TRIGGER_0 : INPUT_TRIGGER_DISABLED;
+            _inputs[iSecond].trigger = (koNumber > 0) ? DFA_INPUT_TRIGGER_0 : DFA_INPUT_TRIGGER_DISABLED;
         }
         else
         {
@@ -457,7 +457,7 @@ void DfaChannel::initInputConfig()
                 }
                 else
                 {
-                    _inputs[i].trigger = INPUT_TRIGGER_DISABLED;
+                    _inputs[i].trigger = DFA_INPUT_TRIGGER_DISABLED;
                 }
                 logDebugP("  separate: %d ko=%i trigger=%i", i, koNumber, _inputs[i].trigger);
             }
