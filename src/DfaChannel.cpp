@@ -399,10 +399,35 @@ void DfaChannel::setup()
 
 #pragma region "DFA_CHANNEL_INPUT_INIT"
 
+#if (DFA_aSymbolBInputMask != DFA_aSymbolAInputMask) || (DFA_aSymbolBInputShift != DFA_aSymbolAInputShift) || (DFA_aSymbolBTriggerMask != DFA_aSymbolAInputMask) || (DFA_aSymbolBInputShift != DFA_aSymbolATriggerShift)
+    #error "Symbol{Input,Trigger}{Mask,Shift} mismatch for Symbol B and A"
+#endif
+#if (DFA_aSymbolCInputMask != DFA_aSymbolAInputMask) || (DFA_aSymbolCInputShift != DFA_aSymbolAInputShift) || (DFA_aSymbolCTriggerMask != DFA_aSymbolAInputMask) || (DFA_aSymbolCInputShift != DFA_aSymbolATriggerShift)
+    #error "Symbol{Input,Trigger}{Mask,Shift} mismatch for Symbol C and A"
+#endif
+#if (DFA_aSymbolDInputMask != DFA_aSymbolAInputMask) || (DFA_aSymbolDInputShift != DFA_aSymbolAInputShift) || (DFA_aSymbolDTriggerMask != DFA_aSymbolAInputMask) || (DFA_aSymbolDInputShift != DFA_aSymbolATriggerShift)
+    #error "Symbol{Input,Trigger}{Mask,Shift} mismatch for Symbol D and A"
+#endif
+#if (DFA_aSymbolEInputMask != DFA_aSymbolAInputMask) || (DFA_aSymbolEInputShift != DFA_aSymbolAInputShift) || (DFA_aSymbolETriggerMask != DFA_aSymbolAInputMask) || (DFA_aSymbolEInputShift != DFA_aSymbolATriggerShift)
+    #error "Symbol{Input,Trigger}{Mask,Shift} mismatch for Symbol E and A"
+#endif
+#if (DFA_aSymbolFInputMask != DFA_aSymbolAInputMask) || (DFA_aSymbolFInputShift != DFA_aSymbolAInputShift) || (DFA_aSymbolFTriggerMask != DFA_aSymbolAInputMask) || (DFA_aSymbolFInputShift != DFA_aSymbolATriggerShift)
+    #error "Symbol{Input,Trigger}{Mask,Shift} mismatch for Symbol F and A"
+#endif
+#if (DFA_aSymbolGInputMask != DFA_aSymbolAInputMask) || (DFA_aSymbolGInputShift != DFA_aSymbolAInputShift) || (DFA_aSymbolGTriggerMask != DFA_aSymbolAInputMask) || (DFA_aSymbolGInputShift != DFA_aSymbolATriggerShift)
+    #error "Symbol{Input,Trigger}{Mask,Shift} mismatch for Symbol G and A"
+#endif
+#if (DFA_aSymbolHInputMask != DFA_aSymbolAInputMask) || (DFA_aSymbolHInputShift != DFA_aSymbolAInputShift) || (DFA_aSymbolHTriggerMask != DFA_aSymbolAInputMask) || (DFA_aSymbolHInputShift != DFA_aSymbolATriggerShift)
+    #error "Symbol{Input,Trigger}{Mask,Shift} mismatch for Symbol H and A"
+#endif
+#define DFA_aSymbol___InputMask DFA_aSymbolAInputMask
+#define DFA_aSymbol___InputShift DFA_aSymbolAInputShift
+#define DFA_aSymbol___TriggerMask DFA_aSymbolATriggerMask
+#define DFA_aSymbol___TriggerShift DFA_aSymbolATriggerShift
+
 uint16_t DfaChannel::getInputKoNumber(const uint8_t input)
 {
-    // TODO check shift and mark for all
-    const uint8_t inputConf = ((knx.paramByte(DFA_ParamCalcIndex(_inputConfPRI[input])) & DFA_aSymbolAInputMask) >> DFA_aSymbolAInputShift);
+    const uint8_t inputConf = ((knx.paramByte(DFA_ParamCalcIndex(_inputConfPRI[input])) & DFA_aSymbol___InputMask) >> DFA_aSymbol___InputShift);
     // logDebugP("  get ko for input=%i -> conf=%i", input, inputConf);
     switch (inputConf)
     {
@@ -450,15 +475,7 @@ void DfaChannel::initInputConfig()
             {
                 const uint16_t koNumber = getInputKoNumber(i);
                 _inputs[i].koNumber = koNumber;
-                if (koNumber > 0)
-                {
-                    // TODO define ParamDFA_aInputSymbolNUMBERValue
-                    _inputs[i].trigger = ((knx.paramByte(DFA_ParamCalcIndex(_inputTriggerPRI[i])) & DFA_aSymbolATriggerMask) >> DFA_aSymbolATriggerShift);
-                }
-                else
-                {
-                    _inputs[i].trigger = DFA_INPUT_TRIGGER_DISABLED;
-                }
+                _inputs[i].trigger = (koNumber > 0) ? ((knx.paramByte(DFA_ParamCalcIndex(_inputTriggerPRI[i])) & DFA_aSymbol___TriggerMask) >> DFA_aSymbol___TriggerShift) : DFA_INPUT_TRIGGER_DISABLED;
                 logDebugP("  separate: %d ko=%i trigger=%i", i, koNumber, _inputs[i].trigger);
             }
         }
