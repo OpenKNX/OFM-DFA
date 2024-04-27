@@ -751,48 +751,48 @@ void DfaChannel::outputUpdate(const uint8_t i, const bool send, const bool force
             // set value based on dpt
             switch (outputType)
             {
-                case OUTPUT_TYPE_DPT1:
+                case DFA_OUTPUT_TYPE_DPT1:
                     // works, as long as using same location as other dpt values
                     outputUpdateKO(i, (knx.paramByte(pIdxValue) != 0), DPT_Switch, send, forceSend);
                     break;
-                case OUTPUT_TYPE_DPT2:
+                case DFA_OUTPUT_TYPE_DPT2:
                     // TODO check using mask!
                     outputUpdateKO(i, knx.paramByte(pIdxValue), DPT_Switch_Control, send, forceSend);
                     break;
-                case OUTPUT_TYPE_DPT5:
+                case DFA_OUTPUT_TYPE_DPT5:
                     outputUpdateKO(i, knx.paramByte(pIdxValue), DPT_DecimalFactor, send, forceSend);
                     break;
-                case OUTPUT_TYPE_DPT5001:
+                case DFA_OUTPUT_TYPE_DPT5001:
                     outputUpdateKO(i, knx.paramByte(pIdxValue), DPT_Scaling, send, forceSend);
                     break;                                                
-                case OUTPUT_TYPE_DPT6:
+                case DFA_OUTPUT_TYPE_DPT6:
                     outputUpdateKO(i, knx.paramSignedByte(pIdxValue), DPT_Value_1_Count, send, forceSend);
                     break;
-                case OUTPUT_TYPE_DPT7:
+                case DFA_OUTPUT_TYPE_DPT7:
                     outputUpdateKO(i, knx.paramWord(pIdxValue), DPT_Value_2_Ucount, send, forceSend);
                     break;
-                case OUTPUT_TYPE_DPT8:
+                case DFA_OUTPUT_TYPE_DPT8:
                     outputUpdateKO(i, knx.paramWord(pIdxValue), DPT_Value_2_Count, send, forceSend);
                     break;
-                case OUTPUT_TYPE_DPT9:
+                case DFA_OUTPUT_TYPE_DPT9:
                     outputUpdateKO(i, knx.paramFloat(pIdxValue, Float_Enc_DPT9), DPT_Value_Temp, send, forceSend);
                     break;
-                case OUTPUT_TYPE_DPT12:
+                case DFA_OUTPUT_TYPE_DPT12:
                     outputUpdateKO(i, knx.paramInt(pIdxValue), DPT_Value_4_Ucount, send, forceSend);
                     break;
-                case OUTPUT_TYPE_DPT13:
+                case DFA_OUTPUT_TYPE_DPT13:
                     outputUpdateKO(i, knx.paramInt(pIdxValue), DPT_Value_4_Count, send, forceSend);
                     break;
-                case OUTPUT_TYPE_DPT14:
+                case DFA_OUTPUT_TYPE_DPT14:
                     outputUpdateKO(i, knx.paramFloat(pIdxValue, Float_Enc_IEEE754Double), DPT_Value_Absolute_Temperature, send, forceSend);
                     break;
-                case OUTPUT_TYPE_DPT16:
+                case DFA_OUTPUT_TYPE_DPT16:
                     outputUpdateKO(i, (char *)knx.paramData(pIdxValue), DPT_String_8859_1, send, forceSend);
                     break;
-                case OUTPUT_TYPE_DPT17:
+                case DFA_OUTPUT_TYPE_DPT17:
                     outputUpdateKO(i, knx.paramByte(pIdxValue), DPT_SceneNumber, send, forceSend);
                     break;
-                case OUTPUT_TYPE_DPT232:
+                case DFA_OUTPUT_TYPE_DPT232:
                     // TODO FIXME Mask
                     outputUpdateKO(i, knx.paramInt(pIdxValue) >> 8, DPT_Colour_RGB, send, forceSend);
                     break;

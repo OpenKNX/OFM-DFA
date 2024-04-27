@@ -17,20 +17,20 @@
 #define DFA_INPUT_TRIGGER_1        0b10
 #define DFA_INPUT_TRIGGER_BOTH     0b11
 
-#define OUTPUT_TYPE_DPT1    10
-#define OUTPUT_TYPE_DPT2    20
-#define OUTPUT_TYPE_DPT5    50
-#define OUTPUT_TYPE_DPT5001 51
-#define OUTPUT_TYPE_DPT6    61
-#define OUTPUT_TYPE_DPT7    70
-#define OUTPUT_TYPE_DPT8    80
-#define OUTPUT_TYPE_DPT9    90
-#define OUTPUT_TYPE_DPT12   120
-#define OUTPUT_TYPE_DPT13   130
-#define OUTPUT_TYPE_DPT14   140
-#define OUTPUT_TYPE_DPT16   161
-#define OUTPUT_TYPE_DPT17   171
-#define OUTPUT_TYPE_DPT232  232
+#define DFA_OUTPUT_TYPE_DPT1    10
+#define DFA_OUTPUT_TYPE_DPT2    20
+#define DFA_OUTPUT_TYPE_DPT5    50
+#define DFA_OUTPUT_TYPE_DPT5001 51
+#define DFA_OUTPUT_TYPE_DPT6    61
+#define DFA_OUTPUT_TYPE_DPT7    70
+#define DFA_OUTPUT_TYPE_DPT8    80
+#define DFA_OUTPUT_TYPE_DPT9    90
+#define DFA_OUTPUT_TYPE_DPT12   120
+#define DFA_OUTPUT_TYPE_DPT13   130
+#define DFA_OUTPUT_TYPE_DPT14   140
+#define DFA_OUTPUT_TYPE_DPT16   161
+#define DFA_OUTPUT_TYPE_DPT17   171
+#define DFA_OUTPUT_TYPE_DPT232  232
 
 // #if (DFA_ParamBlockSize > 0xff)
 //  #error Relativ channel parameter index > uint8_t => need uint16_t for DfaStateTimeoutParamRelIdx.state and _transitionParamsRelIdx
