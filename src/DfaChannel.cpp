@@ -435,7 +435,7 @@ void DfaChannel::initInputConfig()
         logDebugP("input-pair %d, first=%d, second=%d; ispair=%d", iPair, iFirst, iSecond, combined[iPair]);
         if (combined[iPair])
         {
-            // single input for 2 symbols
+            // one shared input for 2 symbols
             const uint16_t koNumber = getInputKoNumber(iFirst);
 
             _inputs[iFirst].koNumber = koNumber;
