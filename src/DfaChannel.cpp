@@ -221,7 +221,7 @@ const uint16_t DfaChannel::_outputValuePRI[DFA_DEF_STATES_COUNT][DFA_DEF_OUTPUTS
 // Value of DFA_KoKOaInput[1-8] by 0-based index
 #define DFA_aTransfer_State__N__Input__M__(N, M) DFA_ad01A + N * (DFA_ad02A - DFA_ad01A) + M * (DFA_ad01B - DFA_ad01A)
 // Value of DFA_KoCalcNumber(DFA_KoKOaInput[1-8]) by 0-based index
-#define DFA_Channel_TransferByStateInput(STATE_IDX,IN_IDX) DFA_KoCalcNumber(DFA_aTransfer_State__N__Input__M__(STATE_IDX, IN_IDX))
+#define DFA_Channel_TransferByStateInput(STATE_IDX, IN_IDX) DFA_KoCalcNumber(DFA_aTransfer_State__N__Input__M__(STATE_IDX, IN_IDX))
 
 
 const uint16_t DfaChannel::_transPRI[DFA_DEF_STATES_COUNT][DFA_DEF_INPUTS_COUNT] = {
@@ -463,7 +463,7 @@ void DfaChannel::initInputConfig()
             }
         }
     }
-    #ifdef OPENKNX_DEBUG    
+    #ifdef OPENKNX_DEBUG
         for (size_t i = 0; i < DFA_DEF_INPUTS_COUNT; i++)
         {
             logDebugP("input[%d]: ko=%d trigger=%d", i, _inputs[i].koNumber, _inputs[i].trigger);
@@ -741,7 +741,7 @@ void DfaChannel::outputUpdate(const uint8_t i, const bool send, const bool force
     {
         const uint8_t outputStateSend = outputGetCurrentStateSendConfig(i);
         logDebugP("Output<%d>: update (type=%3i); begin=%6ims, dur=%6ims, outputStateSend=%d", i + 1, outputType, _outputsTimeout[i].begin_ms, _outputsTimeout[i].delay_ms, outputStateSend);
-        
+
         // output has value for state?
         if (outputStateSend != 0)
         {
@@ -764,7 +764,7 @@ void DfaChannel::outputUpdate(const uint8_t i, const bool send, const bool force
                     break;
                 case DFA_OUTPUT_TYPE_DPT5001:
                     outputUpdateKO(i, knx.paramByte(pIdxValue), DPT_Scaling, send, forceSend);
-                    break;                                                
+                    break;
                 case DFA_OUTPUT_TYPE_DPT6:
                     outputUpdateKO(i, knx.paramSignedByte(pIdxValue), DPT_Value_1_Count, send, forceSend);
                     break;
@@ -801,7 +801,7 @@ void DfaChannel::outputUpdate(const uint8_t i, const bool send, const bool force
                     break;
             }
         }
-    }    
+    }
 }
 
 #pragma endregion "DFA_CHANNEL_OUTPUT_SEND"
