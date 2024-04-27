@@ -464,9 +464,9 @@ void DfaChannel::initInputConfig()
             const uint16_t koNumber = getInputKoNumber(iFirst);
 
             _inputs[iFirst].koNumber = koNumber;
-            _inputs[iFirst].trigger = (koNumber > 0) ? DFA_INPUT_TRIGGER_1 : DFA_INPUT_TRIGGER_DISABLED;
+            _inputs[iFirst].trigger = (koNumber > 0) ? DfaInputTrigger::only1 : DfaInputTrigger::disabled;
             _inputs[iSecond].koNumber = koNumber;
-            _inputs[iSecond].trigger = (koNumber > 0) ? DFA_INPUT_TRIGGER_0 : DFA_INPUT_TRIGGER_DISABLED;
+            _inputs[iSecond].trigger = (koNumber > 0) ? DfaInputTrigger::only0 : DfaInputTrigger::disabled;
         }
         else
         {
@@ -475,7 +475,7 @@ void DfaChannel::initInputConfig()
             {
                 const uint16_t koNumber = getInputKoNumber(i);
                 _inputs[i].koNumber = koNumber;
-                _inputs[i].trigger = (koNumber > 0) ? ((knx.paramByte(DFA_ParamCalcIndex(_inputTriggerPRI[i])) & DFA_aSymbol___TriggerMask) >> DFA_aSymbol___TriggerShift) : DFA_INPUT_TRIGGER_DISABLED;
+                _inputs[i].trigger = (koNumber > 0) ? static_cast<DfaInputTrigger>((knx.paramByte(DFA_ParamCalcIndex(_inputTriggerPRI[i])) & DFA_aSymbol___TriggerMask) >> DFA_aSymbol___TriggerShift) : DfaInputTrigger::disabled;
                 logDebugP("  separate: %d ko=%i trigger=%i", i, koNumber, _inputs[i].trigger);
             }
         }
@@ -580,7 +580,7 @@ void DfaChannel::processInputKo(GroupObject &ko)
             {
                 if (koNumber == _inputs[i].koNumber)
                 {
-                    const bool triggered = _inputs[i].trigger & (1 << value);
+                    const bool triggered = static_cast<uint8_t>(_inputs[i].trigger) & (1 << value);
                     logDebugP("processInputKo input=%d (ko=%d; triggered=%d)", i + 1, koNumber, triggered);
                     if (triggered)
                     {

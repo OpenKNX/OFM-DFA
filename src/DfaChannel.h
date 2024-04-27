@@ -12,10 +12,16 @@
 // #define DFA_STATE_VALUE_UNDEFINED 0x00
 #define DFA_STATE_TIMEOUT_RESET 0x7f
 
-#define DFA_INPUT_TRIGGER_DISABLED 0b00
-#define DFA_INPUT_TRIGGER_0        0b01
-#define DFA_INPUT_TRIGGER_1        0b10
-#define DFA_INPUT_TRIGGER_BOTH     0b11
+// #define DFA_INPUT_TRIGGER_DISABLED 0b00
+// #define DFA_INPUT_TRIGGER_0        0b01
+// #define DFA_INPUT_TRIGGER_1        0b10
+// #define DFA_INPUT_TRIGGER_BOTH     0b11
+enum class DfaInputTrigger {
+  disabled = 0b00,
+  only0    = 0b01,
+  only1    = 0b10,
+  both     = 0b11,
+};
 
 #define DFA_OUTPUT_TYPE_DPT1    10
 #define DFA_OUTPUT_TYPE_DPT2    20
@@ -37,7 +43,7 @@
 // #endif
 
 struct DfaInputs {
-    uint8_t trigger;
+    DfaInputTrigger trigger;
     uint16_t koNumber;
 };
 
