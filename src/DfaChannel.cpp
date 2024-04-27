@@ -948,4 +948,14 @@ bool DfaChannel::processCommandDfaTimeout()
     return true;
 }
 
+bool DfaChannel::processCommandDfaStateSet(const uint8_t state) {
+    setState(state);
+    return true;
+}
+
+bool DfaChannel::processCommandDfaSymbolInsert(const uint8_t inputSymbolNumber) {
+    transfer(inputSymbolNumber);
+    return true;
+}
+
 #pragma endregion "DFA_CHANNEL_COMMANDS"
