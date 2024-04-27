@@ -912,6 +912,7 @@ bool DfaChannel::processCommandDfa()
 {
     logDebugP("status and remaining delay");
     const uint8_t state = _state + 1;
+    const char mode = '<';
     if (state > 99)
     {
         // exclude states with > 2 characters; should never happen
@@ -928,13 +929,13 @@ bool DfaChannel::processCommandDfa()
         remaining = remaining / 60;
         const uint16_t timeoutHours = remaining;
 
-        logInfoP((timeoutHours < 10) ? "%02d<%d:%02d:%02d.%03d" : "%02d<%5d:%02d:%02d", state, timeoutHours, timeoutMinutes, timeoutSeconds, timeoutMillis);
-        openknx.console.writeDiagenoseKo((timeoutHours < 10) ? "%02d<%d:%02d:%02d.%03d" : "%02d<%5d:%02d:%02d", state, timeoutHours, timeoutMinutes, timeoutSeconds, timeoutMillis);
+        logInfoP((timeoutHours < 10) ? "%02d%c%d:%02d:%02d.%03d" : "%02d%c%5d:%02d:%02d", state, mode, timeoutHours, timeoutMinutes, timeoutSeconds, timeoutMillis);
+        openknx.console.writeDiagenoseKo((timeoutHours < 10) ? "%02d%c%d:%02d:%02d.%03d" : "%02d%c%5d:%02d:%02d", state, mode, timeoutHours, timeoutMinutes, timeoutSeconds, timeoutMillis);
     }
     else
     {
-        logInfoP("%02d<NO_TIMEOUT", state);
-        openknx.console.writeDiagenoseKo("%02d<NO_TIMEOUT", state);
+        logInfoP("%02d%cNO_TIMEOUT", state, mode);
+        openknx.console.writeDiagenoseKo("%02d%c NO_TIMEOUT", state, mode);
     }
     return true;
 }
