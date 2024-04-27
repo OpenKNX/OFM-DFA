@@ -129,5 +129,6 @@ class DfaChannel : public OpenKNX::Channel
     void save();
     void restore();
 
-    bool processCommand(const std::string cmd, bool diagnoseKo);
+    bool processCommandDfa();
+    bool processCommandDfaTimeout();
 };
