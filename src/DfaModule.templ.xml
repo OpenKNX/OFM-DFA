@@ -4803,7 +4803,7 @@
           </Static>
           <Dynamic>
             <ChannelIndependentBlock> 
-              <choose ParamRefId="%AID%_P-%T%000001_R-%T%00000101">
+              <choose ParamRefId="%AID%_UP-%T%000001_R-%T%00000101">
                 <when test="&gt;=%C%">
                   <ParameterBlock Id="%AID%_PB-%C%01" Name="a%C%DFA" Text="DEA %C%: {{0: ...}}" TextParameterRefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" Icon="state-machine" >
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="BETA-Version - Dokumentation beachten!" UIHint="Information" />
