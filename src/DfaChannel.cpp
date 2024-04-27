@@ -453,7 +453,7 @@ void DfaChannel::initInputConfig()
                 if (koNumber > 0)
                 {
                     // TODO define ParamDFA_aInputSymbolNUMBERValue
-                    _inputs[i].trigger = ((knx.paramByte(DFA_ParamCalcIndex(_inputTriggerPRI[i])) & DFA_aSymbolATriggerMask) >> DFA_aSymbolAInputShift);
+                    _inputs[i].trigger = ((knx.paramByte(DFA_ParamCalcIndex(_inputTriggerPRI[i])) & DFA_aSymbolATriggerMask) >> DFA_aSymbolATriggerShift);
                 }
                 else
                 {
