@@ -70,7 +70,7 @@ class DfaChannel : public OpenKNX::Channel
     static const DfaStateTimeoutParamRelIdx _timeoutPRI[DFA_DEF_STATES_COUNT];
 
     // is enabled in ETS?
-    bool _channelActive = true;
+    bool _channelActive = false;
 
     DfaInputs _inputs[DFA_DEF_INPUTS_COUNT] = {};
     DfaTimeout _outputsTimeout[DFA_DEF_OUTPUTS_COUNT] = {};

@@ -389,11 +389,11 @@ void DfaChannel::setup()
     {
         initInputConfig();
 
+        // TODO QS: check first state handling, especially sending
         _firstState = ParamDFA_az0 - 1;
         // _firstStateTimeoutDelay_ms = getStateTimeoutDelay_ms(_firstState);
 
-        // starting in processAfterStartupDelay() ...
-        // TODO check/fix calculation of remaining delay 
+        // actual starting in processAfterStartupDelay() ...
     }
 }
 
