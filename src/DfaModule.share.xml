@@ -14,6 +14,12 @@
                 <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="1" maxInclusive="%N%" />
               </ParameterType>
 
+              <ParameterType Id="%AID%_PT-DiagnoseAccess" Name="DiagnoseAccess">
+                <TypeRestriction Base="Value" SizeInBit="1">
+                  <Enumeration Id="%ENID%" Value="0" Text="nur Status-Ausgabe"        />
+                  <Enumeration Id="%ENID%" Value="1" Text="Steuerung erlauben"        />
+                </TypeRestriction>
+              </ParameterType>
 
               <ParameterType Id="%AID%_PT-DocText255" Name="DocumentationText255Char">
                 <TypeText SizeInBit="2040" />
@@ -396,9 +402,15 @@
             <Parameters>
               <!-- TODO store in memory? -->
               <Parameter Id="%AID%_P-%T%000001" Name="VisibleChannels" ParameterType="%AID%_PT-DFANumChannels" Text="Verfügbare Kanäle"          Value="%DFA_NumChannelsDefault%" SuffixText=" von %N%" />
+
+              <Union SizeInBit="8"><Memory CodeSegment="%MID%" Offset="0" BitOffset="0" />
+                <Parameter Id="%AID%_UP-%T%000002" Name="DiagnoseAccess"       ParameterType="%AID%_PT-DiagnoseAccess" Offset="0" BitOffset="0" Text="Zugriff über Diagnose-Objekt"                      Value="0" />
+              </Union>
+              
             </Parameters>
             <ParameterRefs>
-              <ParameterRef Id="%AID%_P-%T%000001_R-%T%00000101" RefId="%AID%_P-%T%000001" />
+              <ParameterRef  Id="%AID%_P-%T%000001_R-%T%00000101"  RefId="%AID%_P-%T%000001" />
+              <ParameterRef Id="%AID%_UP-%T%000002_R-%T%00000201" RefId="%AID%_UP-%T%000002" />
             </ParameterRefs>
             <ComObjectTable>
             </ComObjectTable>
@@ -419,6 +431,22 @@
               <ParameterBlock Name="DfaBasic" Text="Basiseinstellungen" Id="%AID%_PB-nnn" Icon="cog-outline">
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Kanalauswahl" UIHint="Headline" />
                 <ParameterRefRef RefId="%AID%_P-%T%000001_R-%T%00000101" HelpContext="DFA-Kanalauswahl" />
+
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Diagnose" UIHint="Headline" />
+                <choose ParamRefId="%AID%_UP-1000146_R-100014601"><!-- BASE "Diagnoseobjekt anzeigen": -->
+                  <when test="1">
+                    <ParameterRefRef RefId="%AID%_UP-%T%000002_R-%T%00000201" />
+                    <choose ParamRefId="%AID%_UP-%T%000002_R-%T%00000201">
+                      <when test="1">
+                        <ParameterSeparator Id="%AID%_PS-nnn" Text="Abgesehen vom Auslösen des sofortigen Timeout-Endes, stehen Funktionen auch über reguläre KOs zur Verfügung. Der Befehlssatz kann sich in zukünftigen Modul-Versionen verändern." UIHint="Information" />
+                      </when>
+                    </choose>
+                  </when>
+                  <when default="true">
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="Nicht verfügbar, so lange das globale Diagnose-Objekt nicht aktiviert wurde." />
+                  </when>
+                </choose>
+
               </ParameterBlock>                            
               <!-- all DFA channels: -->
               <op:include href="DfaModule.templ.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="template" prefix="DFA" IsInner="true" />
