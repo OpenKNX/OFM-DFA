@@ -1,7 +1,7 @@
 # 2024-05 First Beta-Version (internal only)
 
 * Fix: Parameter-Wert-Ermittlung für Eingangs-Trigger (Bislang kein Problem aufgetreten)
-* Kompatiblität: Erweiterung von Defines um das Präfix DFA_ 
+* Kompatibilität: Erweiterung von Defines um das Präfix DFA_ 
 * Diverse Bereinigungen im Code (Firmware und ETS-App)
 * Eingangs-Trigger: Bereinigung Implementierung und Vorbeugen zukünftiger Fehler
 * Kommandos über Diagnose-Objekt und Konsole
@@ -44,7 +44,7 @@
 * Erweiterung: Konfigurierbare Startverzögerung je Kanal (DFA-Automatendefinition)
 * Experimentelle Erweiterung: Optionale Rekonstruktion des Zustands nach Neustart 
   * Speichern des Zustands vor erkennbarem Neustart
-* (BREAKING) Kompatiblitätsbrechende Änderung der ETS-App: 
+* (BREAKING) Kompatibilitätsbrechende Änderung der ETS-App: 
   * Umstellung Parameter-IDs auf größeren Adressraum als Basis für Erweiterungen
   * Anpassung Codierung für schnellere (partielle) Geräte-Programmierung
 * Erweiterung: Bis zu 4 Ausgänge (O1,..,O4) mit individuellen Werten und Sendeverhalten je Zustand
