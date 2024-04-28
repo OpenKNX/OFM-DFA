@@ -1,9 +1,10 @@
 # 2024-05 First Beta-Version (internal only)
 
-* Fix: Parameter-Wert-Ermittlung für Eingangs-Trigger (Bislang kein Problem aufgetreten)
+* Eingangs-Trigger
+  * Fix: Parameter-Wert-Ermittlung (Bislang kein Problem aufgetreten)
+  * Bereinigung Implementierung und Vorbeugen zukünftiger Fehler
 * Kompatibilität: Erweiterung von Defines um das Präfix DFA_ 
 * Diverse Bereinigungen im Code (Firmware und ETS-App)
-* Eingangs-Trigger: Bereinigung Implementierung und Vorbeugen zukünftiger Fehler
 * Kommandos über Diagnose-Objekt und Konsole
   * Bereinigung der Implementierung
   * Neue Kommandos zum Setzen von Zustand und Eingabe von Symbolen
