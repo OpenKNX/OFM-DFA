@@ -34,8 +34,8 @@ Zur **Konfiguration in der ETS** siehe [Applikationsbeschreibung](doc/DFA_Applik
 > Informatikern wird das Modell bekannt und vertraut vorkommen; 
 > bei genauerem Hinsehen werden allerdings gewisse Abweichungen deutlich um das Konzept an den Praxisbedarf anzupassen.
 
-**Z := Menge der Zustände** wird als Teilmenge DPT17.001 (Szenen: {0=Szene1,..,63=Szene64}) dargestellt.
-In der aktuellen Implementierung  eingeschränkt auf die Szenen 1 bis 32.
+**Z := Menge der Zustände** wird als Teilmenge von DPT17.001 (Szenen: {0=Szene1,..,63=Szene64}) dargestellt.
+In der aktuellen Implementierung eingeschränkt auf die Szenen 1 bis 32.
 Durch die Nutzung von Szenen können bei Erreichen eines Zustandes unmittelbar mehrere unabhängige Aktionen gleichzeitig ausgelöst werden.   
 
 **z<sub>0</sub> &isin; Z := Startzustand** wird beim Einschalten (bzw. erstmaliger Aktivierung) als erster Zustand angenommen.
