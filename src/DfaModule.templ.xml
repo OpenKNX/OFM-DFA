@@ -5061,7 +5061,7 @@
                           <ParameterRefRef RefId="%AID%_UP-%T%%CC%8401_R-%T%%CC%840101" Cell="4,2" />
                         </ParameterBlock>
 
-    <!-- TODO --><ParameterBlock Id="%AID%_PB-nnn" Name="a%C%DFAStates" Text="Zustände &amp; Übergänge" Icon="grid-custom" >
+    <!-- TODO --><ParameterBlock Id="%AID%_PB-nnn" Name="a%C%DFAStates" Text="Zustände &amp; Übergänge" Icon="grid" >
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Zustände und Übergangsfunktion einschließlich zeitbasierter Folgezustände" UIHint="Headline" />
                         <!-- Startzustand -->
                         <ParameterRefRef RefId="%AID%_UP-%T%%CC%0002_R-%T%%CC%000201" HelpContext="DFA-Startzustand" />
