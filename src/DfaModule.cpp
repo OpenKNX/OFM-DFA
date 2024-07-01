@@ -150,6 +150,30 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
     {
         if (cmd.length() >= 5) 
         {
+            // command `dfa h` 
+            if (diagnoseKo && cmd.length() == 5 && cmd.substr(3, 2) == " h") 
+            {
+                openknx.console.writeDiagenoseKo("-> dfaNN");
+                // TODO: empty lines as workaround to prevent missing outputs
+                if (ParamDFA_DiagnoseAccess == 1) // writing to DFAs is allowed
+                {
+                    openknx.console.writeDiagenoseKo("");
+                    openknx.console.writeDiagenoseKo("-> .. timeout!");
+                    openknx.console.writeDiagenoseKo("");
+                    openknx.console.writeDiagenoseKo("-> .. state=SS");
+                    openknx.console.writeDiagenoseKo("");
+                    openknx.console.writeDiagenoseKo("-> .. symbol=X");
+                    openknx.console.writeDiagenoseKo("");
+                    openknx.console.writeDiagenoseKo("(diagCtrl=ON)");
+                }
+                else
+                {
+                    openknx.console.writeDiagenoseKo("");
+                    openknx.console.writeDiagenoseKo("(diagCtrl=OFF)");
+                }
+                return true;
+            }
+
             if (!std::isdigit(cmd[3]) || !std::isdigit(cmd[4]))
             {
                 logErrorP("=> invalid channel-number '%s'!", cmd.substr(3, 2).c_str());
