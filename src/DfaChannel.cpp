@@ -950,8 +950,9 @@ bool DfaChannel::processCommandDfaTimeout()
 }
 
 bool DfaChannel::processCommandDfaStateSet(const uint8_t state) {
-    setState(state);
-    return true;
+    // TODO check setState returning valid state
+    setState(state - 1);
+    return isValidState(state - 1);
 }
 
 bool DfaChannel::processCommandDfaSymbolInsert(const uint8_t inputSymbolNumber) {
