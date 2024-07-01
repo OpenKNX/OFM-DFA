@@ -167,7 +167,7 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
                     logDebugP("=> DFA-Channel<%u> overview!", (channelIdx + 1));
                     return _channels[channelIdx]->processCommandDfa();
                 }
-                else if (DFA_DiagnoseAccess == 1) // writing to DFAs is allowed
+                else if (ParamDFA_DiagnoseAccess == 1) // writing to DFAs is allowed
                 {
                     if (cmd.length() == 14) // all current commands have the same length
                     {
