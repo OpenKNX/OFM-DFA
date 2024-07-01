@@ -139,12 +139,9 @@ void DfaModule::showHelp()
 {
     // TODO Check and refine command definitions after first tests and extension!
     openknx.console.printHelpLine("dfaNN",          "Show current state and timeout remain");
-    if (DFA_DiagnoseAccess == 1) // writing to DFAs is allowed
-    {
-        openknx.console.printHelpLine("dfaNN timeout!", "Let timeout of channel NN end now!");
-        openknx.console.printHelpLine("dfaNN state=SS", "Change state to SS");
-        openknx.console.printHelpLine("dfaNN symbol=X", "Input the symbol X");
-    }
+    openknx.console.printHelpLine("dfaNN timeout!", "Let timeout of channel NN end now!");
+    openknx.console.printHelpLine("dfaNN state=SS", "Change state to SS");
+    openknx.console.printHelpLine("dfaNN symbol=X", "Input the symbol X");
 }
 
 bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
@@ -167,7 +164,7 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
                     logDebugP("=> DFA-Channel<%u> overview!", (channelIdx + 1));
                     return _channels[channelIdx]->processCommandDfa();
                 }
-                else if (ParamDFA_DiagnoseAccess == 1) // writing to DFAs is allowed
+                else if (!diagnoseKo || ParamDFA_DiagnoseAccess == 1) // writing to DFAs is allowed
                 {
                     if (cmd.length() == 14) // all current commands have the same length
                     {
