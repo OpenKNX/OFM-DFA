@@ -34,56 +34,56 @@
               <Parameter Id="%AID%_P-%T%%CC%7100" Name="a%C%SymbolAName"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Eingabe 1"  Value="" />
               <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="18" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7101" Name="a%C%SymbolAInput"         ParameterType="%AID%_PT-DfaInputKo"           Offset="0" BitOffset="0"      Text="KO Eingabe 1"           Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%7102" Name="a%C%SymbolAKoNumber"      ParameterType="%AID%_PT-DfaInputKoNumber"     Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 1"    Value="1" />
+                <Parameter Id="%AID%_UP-%T%%CC%7102" Name="a%C%SymbolAKoNumber"      ParameterType="%AID%_PT-KONumber"             Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 1"    Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7104" Name="a%C%SymbolALogicNumber"   ParameterType="%AID%_PT-DfaInputLogicNumber"  Offset="1" BitOffset="0"      Text="Logik-Kanal-Ausgangs-Nummer Eingabe 1" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7103" Name="a%C%SymbolATrigger"       ParameterType="%AID%_PT-DfaInputTrigger"      Offset="3" BitOffset="0"      Text="Eingabewert 1"          Value="2" />
               </Union>
               <Parameter Id="%AID%_P-%T%%CC%7200" Name="a%C%SymbolBName"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Eingabe 2"  Value="" />
               <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="22" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7201" Name="a%C%SymbolBInput"         ParameterType="%AID%_PT-DfaInputKo"           Offset="0" BitOffset="0"      Text="KO Eingabe 2"           Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%7202" Name="a%C%SymbolBKoNumber"      ParameterType="%AID%_PT-DfaInputKoNumber"     Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 2"    Value="1" />
+                <Parameter Id="%AID%_UP-%T%%CC%7202" Name="a%C%SymbolBKoNumber"      ParameterType="%AID%_PT-KONumber"             Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 2"    Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7204" Name="a%C%SymbolBLogicNumber"   ParameterType="%AID%_PT-DfaInputLogicNumber"  Offset="1" BitOffset="0"      Text="Logik-Kanal-Ausgangs-Nummer Eingabe 2" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7203" Name="a%C%SymbolBTrigger"       ParameterType="%AID%_PT-DfaInputTrigger"      Offset="3" BitOffset="0"      Text="Eingabewert 2"          Value="2" />
               </Union>
               <Parameter Id="%AID%_P-%T%%CC%7300" Name="a%C%SymbolCName"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Eingabe 3"  Value="" />
               <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="26" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7301" Name="a%C%SymbolCInput"         ParameterType="%AID%_PT-DfaInputKo"           Offset="0" BitOffset="0"      Text="KO Eingabe 3"           Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%7302" Name="a%C%SymbolCKoNumber"      ParameterType="%AID%_PT-DfaInputKoNumber"     Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 3"    Value="1" />
+                <Parameter Id="%AID%_UP-%T%%CC%7302" Name="a%C%SymbolCKoNumber"      ParameterType="%AID%_PT-KONumber"             Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 3"    Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7304" Name="a%C%SymbolCLogicNumber"   ParameterType="%AID%_PT-DfaInputLogicNumber"  Offset="1" BitOffset="0"      Text="Logik-Kanal-Ausgangs-Nummer Eingabe 3" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7303" Name="a%C%SymbolCTrigger"       ParameterType="%AID%_PT-DfaInputTrigger"      Offset="3" BitOffset="0"      Text="Eingabewert 3"          Value="2" />
               </Union>
               <Parameter Id="%AID%_P-%T%%CC%7400" Name="a%C%SymbolDName"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Eingabe 4"  Value="" />
               <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="30" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7401" Name="a%C%SymbolDInput"         ParameterType="%AID%_PT-DfaInputKo"           Offset="0" BitOffset="0"      Text="KO Eingabe 4"           Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%7402" Name="a%C%SymbolDKoNumber"      ParameterType="%AID%_PT-DfaInputKoNumber"     Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 4"    Value="1" />
+                <Parameter Id="%AID%_UP-%T%%CC%7402" Name="a%C%SymbolDKoNumber"      ParameterType="%AID%_PT-KONumber"             Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 4"    Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7404" Name="a%C%SymbolDLogicNumber"   ParameterType="%AID%_PT-DfaInputLogicNumber"  Offset="1" BitOffset="0"      Text="Logik-Kanal-Ausgangs-Nummer Eingabe 4" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7403" Name="a%C%SymbolDTrigger"       ParameterType="%AID%_PT-DfaInputTrigger"      Offset="3" BitOffset="0"      Text="Eingabewert 4"          Value="2" />
               </Union>
               <Parameter Id="%AID%_P-%T%%CC%7500" Name="a%C%SymbolEName"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Eingabe 5"  Value="" />
               <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="34" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7501" Name="a%C%SymbolEInput"         ParameterType="%AID%_PT-DfaInputKo"           Offset="0" BitOffset="0"      Text="KO Eingabe 5"           Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%7502" Name="a%C%SymbolEKoNumber"      ParameterType="%AID%_PT-DfaInputKoNumber"     Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 5"    Value="1" />
+                <Parameter Id="%AID%_UP-%T%%CC%7502" Name="a%C%SymbolEKoNumber"      ParameterType="%AID%_PT-KONumber"             Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 5"    Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7504" Name="a%C%SymbolELogicNumber"   ParameterType="%AID%_PT-DfaInputLogicNumber"  Offset="1" BitOffset="0"      Text="Logik-Kanal-Ausgangs-Nummer Eingabe 5" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7503" Name="a%C%SymbolETrigger"       ParameterType="%AID%_PT-DfaInputTrigger"      Offset="3" BitOffset="0"      Text="Eingabewert 5"          Value="2" />
               </Union>
               <Parameter Id="%AID%_P-%T%%CC%7600" Name="a%C%SymbolFName"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Eingabe 6"  Value="" />
               <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="38" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7601" Name="a%C%SymbolFInput"         ParameterType="%AID%_PT-DfaInputKo"           Offset="0" BitOffset="0"      Text="KO Eingabe 6"           Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%7602" Name="a%C%SymbolFKoNumber"      ParameterType="%AID%_PT-DfaInputKoNumber"     Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 6"    Value="1" />
+                <Parameter Id="%AID%_UP-%T%%CC%7602" Name="a%C%SymbolFKoNumber"      ParameterType="%AID%_PT-KONumber"             Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 6"    Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7604" Name="a%C%SymbolFLogicNumber"   ParameterType="%AID%_PT-DfaInputLogicNumber"  Offset="1" BitOffset="0"      Text="Logik-Kanal-Ausgangs-Nummer Eingabe 6" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7603" Name="a%C%SymbolFTrigger"       ParameterType="%AID%_PT-DfaInputTrigger"      Offset="3" BitOffset="0"      Text="Eingabewert 6"          Value="2" />
               </Union>
               <Parameter Id="%AID%_P-%T%%CC%7700" Name="a%C%SymbolGName"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Eingabe 7"  Value="" />
               <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="42" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7701" Name="a%C%SymbolGInput"         ParameterType="%AID%_PT-DfaInputKo"           Offset="0" BitOffset="0"      Text="KO Eingabe 7"           Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%7702" Name="a%C%SymbolGKoNumber"      ParameterType="%AID%_PT-DfaInputKoNumber"     Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 7"    Value="1" />
+                <Parameter Id="%AID%_UP-%T%%CC%7702" Name="a%C%SymbolGKoNumber"      ParameterType="%AID%_PT-KONumber"             Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 7"    Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7704" Name="a%C%SymbolGLogicNumber"   ParameterType="%AID%_PT-DfaInputLogicNumber"  Offset="1" BitOffset="0"      Text="Logik-Kanal-Ausgangs-Nummer Eingabe 7" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7703" Name="a%C%SymbolGTrigger"       ParameterType="%AID%_PT-DfaInputTrigger"      Offset="3" BitOffset="0"      Text="Eingabewert 7"          Value="2" />
               </Union>
               <Parameter Id="%AID%_P-%T%%CC%7800" Name="a%C%SymbolHName"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Eingabe 8"  Value="" />
               <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="46" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7801" Name="a%C%SymbolHInput"         ParameterType="%AID%_PT-DfaInputKo"           Offset="0" BitOffset="0"      Text="KO Eingabe 8"           Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%7802" Name="a%C%SymbolHKoNumber"      ParameterType="%AID%_PT-DfaInputKoNumber"     Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 8"    Value="1" />
+                <Parameter Id="%AID%_UP-%T%%CC%7802" Name="a%C%SymbolHKoNumber"      ParameterType="%AID%_PT-KONumber"             Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 8"    Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7804" Name="a%C%SymbolHLogicNumber"   ParameterType="%AID%_PT-DfaInputLogicNumber"  Offset="1" BitOffset="0"      Text="Logik-Kanal-Ausgangs-Nummer Eingabe 8" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7803" Name="a%C%SymbolHTrigger"       ParameterType="%AID%_PT-DfaInputTrigger"      Offset="3" BitOffset="0"      Text="Eingabewert 8"          Value="2" />
               </Union>

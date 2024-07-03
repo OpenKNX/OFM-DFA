@@ -87,9 +87,6 @@
                 </TypeRestriction>
               </ParameterType>
 
-              <ParameterType Id="%AID%_PT-DfaInputKoNumber" Name="DfaInputKoNumber">
-                <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="1" maxInclusive="2047" />
-              </ParameterType>
               <ParameterType Id="%AID%_PT-DfaInputLogicNumber" Name="DfaInputLogicNumber">
                 <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="1" maxInclusive="%LOG_NumChannels%" />
               </ParameterType>
