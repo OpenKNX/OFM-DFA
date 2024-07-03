@@ -1,3 +1,9 @@
+# vorbereitet für v0.3.0
+
+* Beschränkung der KO-Auswahl für Symboleingänge auf Intervall mit tatsächlich vorhandenen KO-Nummern 
+* ETS-Applikation: Umsortierung der Blöcke (Basiseinstellungen als erste Seite)
+
+
 # 2024-07-01 v0.2.0-Beta (internal only)
 
 * Fix: Zustände ohne Timeout wurden mit sehr langem Timeout rekonstruiert 
