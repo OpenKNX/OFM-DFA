@@ -609,7 +609,7 @@ void DfaChannel::setRunning(const bool requestRun, const bool first /*= false*/)
             // first activation
             logDebugP("first activation");
             setState(_firstState);
-            logDebugP("restore: _firstStateTimeoutDelay_ms=%d ParamDFA_aStateRestore=%d _firstStateTimeoutDelay_ms=%d ParamDFA_aChannelDelayTimeMS=%d", _firstStateTimeoutDelay_ms, ParamDFA_aStateRestore, _firstStateTimeoutDelay_ms, ParamDFA_aStartupDelayTimeMS);
+            logDebugP("restore: _stateTimeoutDelay_ms=%d ParamDFA_aStateRestore=%d _firstStateTimeoutDelay_ms=%d ParamDFA_aChannelDelayTimeMS=%d", _stateTimeoutDelay_ms, ParamDFA_aStateRestore, _firstStateTimeoutDelay_ms, ParamDFA_aStartupDelayTimeMS);
             // TODO check usage of _firstStateTimeoutDelay_ms, this is the remaining delay and should be renamed
             // _stateTimeoutDelay_ms is set to current's state timeout in setState(..)
             if (_stateTimeoutDelay_ms > 0 && (ParamDFA_aStateRestore & 0b10) && _firstStateTimeoutDelay_ms > 0)
