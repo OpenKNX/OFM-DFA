@@ -1,5 +1,7 @@
-# 2024-05 First Beta-Version (internal only)
+# 2024-07-01 v0.2.0-Beta (internal only)
 
+* Fix: Zustände ohne Timeout wurden mit sehr langem Timeout rekonstruiert 
+* Abbildung der sichtbaren DFA-Kanäle im Gerätespeicher
 * Eingangs-Trigger
   * Fix: Parameter-Wert-Ermittlung (Bislang kein Problem aufgetreten)
   * Bereinigung Implementierung und Vorbeugen zukünftiger Fehler
@@ -7,8 +9,8 @@
 * Diverse Bereinigungen im Code (Firmware und ETS-App)
 * Kommandos über Diagnose-Objekt und Konsole
   * Bereinigung der Implementierung
-  * Neue Kommandos zum Setzen von Zustand und Eingabe von Symbolen
-  * Ändernde Kommandos nur erlauben, wenn in ETS konfiguriert
+  * Neue Kommandos zum Setzen von Zustand <!-- (`dfaNN state=SS`) --> und Eingabe von Symbolen <!-- (`dfaNN symbol=X`) -->
+  * Ändernde Kommandos nur Dianose-KO nur erlauben, wenn in ETS konfiguriert
 
 
 # 2024-04-25 DEV Beta-Version (PROD-Test, internal only)
