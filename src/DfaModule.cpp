@@ -48,7 +48,7 @@ void DfaModule::processAfterStartupDelay()
     {
         _channels[i]->processAfterStartupDelay();
     }
-    logIndentDown();    
+    logIndentDown();
 }
 
 void DfaModule::loop()
@@ -148,10 +148,10 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
 {
     if (cmd.substr(0, 3) == "dfa")
     {
-        if (cmd.length() >= 5) 
+        if (cmd.length() >= 5)
         {
-            // command `dfa h` 
-            if (diagnoseKo && cmd.length() == 5 && cmd.substr(3, 2) == " h") 
+            // command `dfa h`
+            if (diagnoseKo && cmd.length() == 5 && cmd.substr(3, 2) == " h")
             {
                 openknx.console.writeDiagenoseKo("-> dfaNN");
                 // TODO: empty lines as workaround to prevent missing outputs
