@@ -64,7 +64,7 @@ basierend auf dem letzten bekannten Zustand und dessen Aufrufzeitpunkt. D.h.:
 * ein ggf. vorhandener Timeout kann um die bereits abgelaufene Zeit verkürzt werden
 * (geplant) alternativ soll der Rest-Timeout basierend auf dem zuvor berechneten absoluten Endzeitpunkt neuberechnet werden
 
-Die Rekonstruktion erfordert das erfolgreiche Speichern des momentanen Zustand und des Rest-Timeouts unmittelbar bei Beendigung der Verarbeitung. 
+Die Rekonstruktion erfordert das erfolgreiche Speichern des momentanen Zustands und des Rest-Timeouts unmittelbar bei Beendigung der Verarbeitung. 
 Dies kann allerdings nicht immer gewährleistet werden. 
 Während ein Neustart durch Programmiervorgang gut erkannt werden kann, 
 erfordert die Erkennung einer unterbrochenen Stromversorgung eine entsprechende Hardwareausstattung.
