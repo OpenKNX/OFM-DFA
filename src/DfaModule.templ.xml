@@ -4859,20 +4859,20 @@
                           <ParameterRefRef RefId="%AID%_UP-%T%%CC%7003_R-%T%%CC%700301"    Cell="2,6" />
                           <ParameterRefRef RefId="%AID%_UP-%T%%CC%7004_R-%T%%CC%700401"    Cell="2,8" />
                         </ParameterBlock>
-                        <ParameterBlock Id="%AID%_PB-%C%03" Name="InputSymbols%C%" Text="x" Inline="true" Layout="Table" HelpContext="DFA-Eingabesymbole">
+                        <ParameterBlock Id="%AID%_PB-%C%03" Name="InputSymbols%C%" Text="  x  " Inline="true" Layout="Table" HelpContext="DFA-Eingabesymbole">
                           <Rows>
-                            <Row Id="%AID%_PB-03_R-1"  Name="Input1"  Text="A"   CollapseIfEmpty="true" />
-                            <Row Id="%AID%_PB-03_R-2"  Name="Input2"  Text="B"   CollapseIfEmpty="true" />
-                            <Row Id="%AID%_PB-03_R-12" Name="Input12" Text="A/B" CollapseIfEmpty="true" />
-                            <Row Id="%AID%_PB-03_R-3"  Name="Input3"  Text="C"   CollapseIfEmpty="true" />
-                            <Row Id="%AID%_PB-03_R-4"  Name="Input4"  Text="D"   CollapseIfEmpty="true" />
-                            <Row Id="%AID%_PB-03_R-34" Name="Input34" Text="C/D" CollapseIfEmpty="true" />
-                            <Row Id="%AID%_PB-03_R-5"  Name="Input5"  Text="E"   CollapseIfEmpty="true" />
-                            <Row Id="%AID%_PB-03_R-6"  Name="Input6"  Text="F"   CollapseIfEmpty="true" />
-                            <Row Id="%AID%_PB-03_R-56" Name="Input56" Text="E/F" CollapseIfEmpty="true" />
-                            <Row Id="%AID%_PB-03_R-7"  Name="Input7"  Text="G"   CollapseIfEmpty="true" />
-                            <Row Id="%AID%_PB-03_R-8"  Name="Input8"  Text="H"   CollapseIfEmpty="true" />
-                            <Row Id="%AID%_PB-03_R-78" Name="Input78" Text="G/H" CollapseIfEmpty="true" />
+                            <Row Id="%AID%_PB-03_R-1"  Name="Input1"  Text="  A  "     CollapseIfEmpty="true" />
+                            <Row Id="%AID%_PB-03_R-2"  Name="Input2"  Text="  B  "     CollapseIfEmpty="true" />
+                            <Row Id="%AID%_PB-03_R-12" Name="Input12" Text="A/B"       CollapseIfEmpty="true" />
+                            <Row Id="%AID%_PB-03_R-3"  Name="Input3"  Text="  C  "     CollapseIfEmpty="true" />
+                            <Row Id="%AID%_PB-03_R-4"  Name="Input4"  Text="  D  "     CollapseIfEmpty="true" />
+                            <Row Id="%AID%_PB-03_R-34" Name="Input34" Text="C/D"       CollapseIfEmpty="true" />
+                            <Row Id="%AID%_PB-03_R-5"  Name="Input5"  Text="  E  "     CollapseIfEmpty="true" />
+                            <Row Id="%AID%_PB-03_R-6"  Name="Input6"  Text="  F  "     CollapseIfEmpty="true" />
+                            <Row Id="%AID%_PB-03_R-56" Name="Input56" Text="E/F"       CollapseIfEmpty="true" />
+                            <Row Id="%AID%_PB-03_R-7"  Name="Input7"  Text="  G  "     CollapseIfEmpty="true" />
+                            <Row Id="%AID%_PB-03_R-8"  Name="Input8"  Text="  H  "     CollapseIfEmpty="true" />
+                            <Row Id="%AID%_PB-03_R-78" Name="Input78" Text="G/H"       CollapseIfEmpty="true" />
                           </Rows>
                           <Columns>
                             <Column Id="%AID%_PB-03_C-1" Name="Label"           Text="Bezeichnung/Kommentar"      Width="40%" />
