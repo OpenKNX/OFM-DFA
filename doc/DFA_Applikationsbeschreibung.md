@@ -7,7 +7,7 @@
 * [Konzepte](#konzepte)
   * [Zeitbasierter Folgezustand (Timeout)](#zeitbasierter-folgezustand--timeout--)
 * ETS-Konfiguration:
-  [**Zustandsmodelle (DEAs)**](#ets-applikationsteilbr-zustandsmodelle-deas)
+  [**Zustandsautomaten**](#ets-applikationsteilbr-zustandsautomaten)
     * [**Info &amp; Dokumentation**](#info--dokumentation)
     * [**Basiseinstellungen**](#basiseinstellungen)
       * [Kanalauswahl / Verfügbare Kanäle](#basiseinstellungen)
@@ -73,7 +73,7 @@ Ein Neustart per Reset-Taste kann nicht erkannt werden.
 
 
 
-# ETS-Applikationsteil:<br />Zustandsmodelle (DEAs)
+# ETS-Applikationsteil:<br />Zustandsautomaten
 
 
 ## Info &amp; Dokumentation

@@ -412,10 +412,10 @@
             </ComObjectRefs>
           </Static>
           <Dynamic>
-            <Channel Name="DfaChannel" Text="Zustandsmodelle (DEAs)" Number="%TT%" Id="%AID%_CH-%TT%" Icon="ofm-dfa" >
+            <Channel Name="DfaChannel" Text="Zustandsautomaten" Number="%TT%" Id="%AID%_CH-%TT%" Icon="ofm-dfa" >
               <ParameterBlock Name="DfaInfo" Text="Allgemein" Id="%AID%_PB-nnn" Icon="cog-outline"><!-- HelpContext="DFA-Dokumentation" -->
 
-                <ParameterSeparator Id="%AID%_PS-nnn" Text="Deterministische Endliche Automaten" UIHint="Headline" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Deterministische Endliche Automaten (DEAs)" UIHint="Headline" />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Version: %ModuleVersion%"  />
 
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Public BETA" UIHint="Information" />
@@ -423,7 +423,7 @@
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
 
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Kanalauswahl" UIHint="Headline" />
-                <ParameterRefRef RefId="%AID%_UP-%T%000001_R-%T%00000101" HelpContext="DFA-Kanalauswahl" />
+                <ParameterRefRef RefId="%AID%_UP-%T%000001_R-%T%00000101" HelpContext="DFA-Kanalauswahl" IndentLevel="1" />
 
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Diagnose" UIHint="Headline" />
                 <choose ParamRefId="%AID%_UP-1000146_R-100014601"><!-- BASE "Diagnoseobjekt anzeigen": -->
