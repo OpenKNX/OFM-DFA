@@ -570,6 +570,10 @@ void DfaChannel::processInputKo(GroupObject &ko)
             // TODO ensure not processing when result of own sending!
             logDebugP("processInputKo set state (combined)");
             setState(ko.value(DPT_SceneNumber));
+
+            // ensure KO has the value of current state!
+            // TODO restore KO value for invalid state only
+            ko.valueNoSend(_state, DPT_SceneNumber);
         }
         else if (ko.valueSize() == 1) // TODO check if adequate, or add support for other input types
         {
