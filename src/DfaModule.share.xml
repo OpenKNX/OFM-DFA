@@ -53,10 +53,11 @@
 
               <ParameterType Id="%AID%_PT-StatePersistance" Name="StatePersistance">
                 <TypeRestriction Base="Value" SizeInBit="2">
-                  <Enumeration Text="nicht speichern (immer Startzustand nutzen)"  Value="0" Id="%ENID%" /><!-- 0b00 -->
-                  <Enumeration Text="letzten Zustand neu starten"                  Value="1" Id="%ENID%" /><!-- 0b01 -->
-                  <Enumeration Text="letzten Zustand fortsetzen"                   Value="2" Id="%ENID%" /><!-- 0b10 -->
-                  <!-- <Enumeration Text="letzten Zustand mit absolutem Timeout-Ende"   Value="3" Id="%ENID%" /> --><!-- 0b11 -->
+                  <Enumeration Id="%ENID%" Value="0" Text="nicht speichern (immer Startzustand nutzen)"  /><!-- 0b00 -->
+                  <Enumeration Id="%ENID%" Value="1" Text="gespeicherten Zustand neu starten"            /><!-- 0b01 -->
+                  <Enumeration Id="%ENID%" Value="2" Text="gespeicherten Zustand fortsetzen"             /><!-- 0b10 -->
+                  <!-- 
+                  <Enumeration Id="%ENID%" Value="3" Text="letzten Zustand mit absolutem Timeout-Ende"   /> --><!-- 0b11 -->
                 </TypeRestriction>
               </ParameterType>
 
