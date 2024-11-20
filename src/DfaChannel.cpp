@@ -693,7 +693,18 @@ void DfaChannel::setState(const uint8_t nextState)
         {
             const uint8_t outputStateSend = outputGetCurrentStateSendConfig(i);
 
-            // see %AID%_PT-DfaOutputConf"
+            //  <ParameterType Id="%AID%_PT-DfaOutputConf" Name="DfaOutputConf">
+            //    <TypeRestriction Base="Value" SizeInBit="8">
+            //      <Enumeration Text="-"                                              Value="0" Id="%ENID%" />
+            //      <Enumeration Text="kein Senden, nur KO setzen"                     Value="1" Id="%ENID%" />
+            //      <Enumeration Text="Wert-Änderung"                                  Value="2" Id="%ENID%" />
+            //      <Enumeration Text="Wert-Änderung                  + zyklisch"      Value="3" Id="%ENID%" />
+            //      <Enumeration Text="Zustands-Änderung"                              Value="4" Id="%ENID%" />
+            //      <Enumeration Text="Zustands-Änderung           + zyklisch"         Value="5" Id="%ENID%" />
+            //      <Enumeration Text="jeder Zustands-Aufruf"                          Value="6" Id="%ENID%" />
+            //      <Enumeration Text="jeder Zustands-Aufruf        + zyklisch"        Value="7" Id="%ENID%" />
+            //    </TypeRestriction>
+            //  </ParameterType>
             const bool updateKo =           (outputStateSend > 0);
             const bool sendOnChangedValue = (outputStateSend >= 2);
             const bool sendOnChangedState = (outputStateSend >= 4);
