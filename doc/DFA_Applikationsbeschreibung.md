@@ -8,9 +8,8 @@
   * [Zeitbasierter Folgezustand (Timeout)](#zeitbasierter-folgezustand--timeout--)
 * ETS-Konfiguration:
   [**Zustandsautomaten**](#ets-applikationsteilbr-zustandsautomaten)
-    * [**Info &amp; Dokumentation**](#info--dokumentation)
-    * [**Basiseinstellungen**](#basiseinstellungen)
-      * [Kanalauswahl / Verfügbare Kanäle](#basiseinstellungen)
+    * [**Allgemein**](#allgemein)
+      * [Diagnose](#diagnose)
     * [**DEA n: ...**](#dea-n--)
       * [DEA-Definition](#dea-definition) 
       * [Ausführung](#ausführung)
@@ -76,21 +75,19 @@ Ein Neustart per Reset-Taste kann nicht erkannt werden.
 # ETS-Applikationsteil:<br />Zustandsautomaten
 
 
-## Info &amp; Dokumentation
+## Allgemein
 
 ### Modul-Version
 
 Zeigt die Version (Major.Minor) des Moduls OFM-DFA an.
 
 
-## Basiseinstellungen
-
 <!-- DOC -->
 ### Kanalauswahl
 
 #### Verfügbare Kanäle
 
-Je nach Applikation kann eine große Anzahl von DFA-Kanälen vorhanden sein, 
+Je nach Applikation kann eine größere Anzahl von Kanälen vorhanden sein, 
 wobei oft nur einige wenige benötigt werden. 
 Mit diesem Parameter können nicht benötigt Kanäle in der ETS ausgeblendet werden, bzw. nur die notwendigen angezeigt.
 
