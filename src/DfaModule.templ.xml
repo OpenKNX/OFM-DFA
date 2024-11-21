@@ -4716,7 +4716,7 @@
             </ComObjectTable>
             <ComObjectRefs>
               <ComObjectRef Id="%AID%_O-%T%%CC%0000_R-%T%%CC%000001" RefId="%AID%_O-%T%%CC%0000" Text="Aktueller Zustand"                                                                                                   />
-              <ComObjectRef Id="%AID%_O-%T%%CC%0000_R-%T%%CC%000002" RefId="%AID%_O-%T%%CC%0000" Text="Zustand"                    FunctionText="DEA %C%, Ausgabe/Eingabe Zustand" WriteFlag="Enabled" UpdateFlag="Enabled" />
+              <ComObjectRef Id="%AID%_O-%T%%CC%0000_R-%T%%CC%000002" RefId="%AID%_O-%T%%CC%0000" Text="Zustand"                    FunctionText="DEA %C%, Ausgabe/Eingabe Zustand" WriteFlag="Enabled" /><!-- prevent timeout reset on read-response: do NOT set UpdateFlag="Enabled" -->
 
               <!-- input A + B -->
               <ComObjectRef Id="%AID%_O-%T%%CC%0001_R-%T%%CC%000101" RefId="%AID%_O-%T%%CC%0001" Text="Symbol A {{0: }}"                                                           TextParameterRefId="%AID%_P-%T%%CC%7100_R-%T%%CC%710001" />
