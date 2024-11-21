@@ -1,7 +1,14 @@
 # vorbereitet für v0.3.0
 
-* Beschränkung der KO-Auswahl für Symboleingänge auf Intervall mit tatsächlich vorhandenen KO-Nummern 
-* ETS-Applikation: Umsortierung der Blöcke (Basiseinstellungen als erste Seite)
+* Fix: Kombiniertes Zustands-KO
+  * Rücksetzen des KO-Wertes auf tatsächlichen Zustand, nach Telegramm-Eingang zur Vermeidung von Ausgabe ungültiger Zustände
+  * Update-Flag entfernt zur Vermeidung von Zustandsänderung durch Read-Response-Telegramme
+* Anpassungen ETS-Applikation:
+  * Fix: Beschränkung der KO-Auswahl für Symboleingänge auf Intervall mit tatsächlich vorhandenen KO-Nummern
+  * OpenKNX-Grundstruktur  (Basiseinstellungen als erste Seite)
+  * Optimierung Beschriftungstexte basierend auf User-Test
+  * Optische Verbesserung: Erzwinge feste Breite für erste Spalte von Eingangskonfiguration   
+* Update Applikationsbeschreibung und Kontext-Hilfe
 
 
 # 2024-07-01 v0.2.0-Beta (internal only)
