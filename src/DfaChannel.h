@@ -23,6 +23,13 @@ enum class DfaInputTrigger {
   both     = 0b11,
 };
 
+enum class DfaDirectSetSame {
+  ignore              = 0b00,
+  timeout_restart     = 0b01,
+  // timeout_continue = 0b10,
+  // timeout_add      = 0b11,
+};
+
 #define DFA_OUTPUT_TYPE_DPT1    10
 #define DFA_OUTPUT_TYPE_DPT2    20
 #define DFA_OUTPUT_TYPE_DPT5    50
@@ -103,7 +110,7 @@ class DfaChannel : public OpenKNX::Channel
     uint32_t getStateTimeoutDelay_ms(const uint8_t state);
     uint8_t getTimeoutState(const uint8_t state);
     inline bool isValidState(const uint8_t state);
-    void setState(const uint8_t nextState);
+    void setState(const uint8_t nextState, const DfaDirectSetSame sameStateBehaviour = DfaDirectSetSame::timeout_restart);
     void transfer(const uint8_t input);
 
     void endTimeout();

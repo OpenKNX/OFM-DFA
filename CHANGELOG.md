@@ -1,8 +1,12 @@
 # vorbereitet für v0.3.0
 
-* Fix: Kombiniertes Zustands-KO
-  * Rücksetzen des KO-Wertes auf tatsächlichen Zustand, nach Telegramm-Eingang zur Vermeidung von Ausgabe ungültiger Zustände
-  * Update-Flag entfernt zur Vermeidung von Zustandsänderung durch Read-Response-Telegramme
+* Fix/Verbesserung direkte Zustands-Steuerung über KOs:
+  * Fix: Kombiniertes Zustands-KO
+    * Erneutes Setzen von aktuellem Zustand ignorieren
+    * Rücksetzen des KO-Wertes auf tatsächlichen Zustand, nach Telegramm-Eingang zur Vermeidung von Ausgabe ungültiger Zustände
+    * Update-Flag entfernt zur Vermeidung von Zustandsänderung durch Read-Response-Telegramme
+  * Erweiterung für getrennte KOs zur Ausgabe und Setzen von Zustand
+    * Konfigurierbares Verhalten für erneutes Setzen von aktuellem Zustand ignorieren (bislang immer Neustart des Zustands)
 * Anpassungen ETS-Applikation:
   * Fix: Beschränkung der KO-Auswahl für Symboleingänge auf Intervall mit tatsächlich vorhandenen KO-Nummern
   * OpenKNX-Grundstruktur  (Basiseinstellungen als erste Seite)

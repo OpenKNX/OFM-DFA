@@ -51,6 +51,20 @@
                 </TypeRestriction>
               </ParameterType>
 
+              <ParameterType Id="%AID%_PT-StateDirectSettingSame" Name="StateDirectSettingSame">
+                <TypeRestriction Base="Value" SizeInBit="2">
+                  <Enumeration Id="%ENID%" Value="0" Text="ignorieren"                                      />
+                  <Enumeration Id="%ENID%" Value="1" Text="Zustand neu starten"                             />
+                  <!--
+                  <Enumeration Id="%ENID%" Value="2" Text="Zustand aufrufen und Timeout fortsetzen"         />
+                  <Enumeration Id="%ENID%" Value="3" Text="Zustand aufrufen und Timeout verlängern"         />
+
+                  <Enumeration Id="%ENID%" Value="1" Text="Zustands-Aufruf und Timeout erneut beginnen"     />
+                  <Enumeration Id="%ENID%" Value="2" Text="Zustands-Aufruf und Timeout fortsetzen"          />
+                  -->
+                </TypeRestriction>
+              </ParameterType>
+
               <ParameterType Id="%AID%_PT-StatePersistance" Name="StatePersistance">
                 <TypeRestriction Base="Value" SizeInBit="2">
                   <Enumeration Id="%ENID%" Value="0" Text="nicht speichern (immer Startzustand nutzen)"  /><!-- 0b00 -->

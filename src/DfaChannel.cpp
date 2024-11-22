@@ -563,13 +563,13 @@ void DfaChannel::processInputKo(GroupObject &ko)
             // input only for visible KO, so no need to check:
             // .. && ParamDFA_aStateSetting==0b01
             logDebugP("processInputKo set state (separate)");
-            setState(ko.value(DPT_SceneNumber));
+            setState(ko.value(DPT_SceneNumber), static_cast<DfaDirectSetSame>(ParamDFA_aStateSettingSame));
         }
         else if (koNumber == DFA_KoCalcNumber(DFA_KoKOaState) && ParamDFA_aStateSetting == 0b10)
         {
             // TODO ensure not processing when result of own sending!
             logDebugP("processInputKo set state (combined)");
-            setState(ko.value(DPT_SceneNumber));
+            setState(ko.value(DPT_SceneNumber), DfaDirectSetSame::ignore);
 
             // ensure KO has the value of current state!
             // TODO restore KO value for invalid state only
@@ -665,17 +665,22 @@ bool DfaChannel::isValidState(const uint8_t state)
     return state < DFA_DEF_STATES_COUNT;
 }
 
-void DfaChannel::setState(const uint8_t nextState)
+void DfaChannel::setState(const uint8_t nextState, const DfaDirectSetSame sameStateBehaviour /*= DfaDirectSetSame::timeout_restart*/)
 {
     // logDebugP("setState %d->%d", _state, nextState);
     if (isValidState(nextState))
     {
         const bool stateChanged = (_state != nextState);
+        if (!stateChanged && sameStateBehaviour == DfaDirectSetSame::ignore)
+            return;
 
         _state = nextState;
-        // reset timeout
-        _stateTimeoutDelay_ms = getStateTimeoutDelay_ms(nextState);
-        resetTimeout();
+        if (stateChanged || sameStateBehaviour == DfaDirectSetSame::timeout_restart)
+        {
+            // reset timeout
+            _stateTimeoutDelay_ms = getStateTimeoutDelay_ms(nextState);
+            resetTimeout();
+        }
 
         // send state
         GroupObject *ko = &KoDFA_KOaState;
