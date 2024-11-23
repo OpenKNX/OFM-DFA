@@ -55,6 +55,8 @@ Die Zeitmessung wird zurückgesetzt, falls derselbe Zustand erneut aufgerufen wi
 
 ## Zustandsrekonstruktion nach Neustart
 
+<!-- 2d272170-a9e3-11ef-bd59-e7574d3ece74 BEGIN duplicate content -->
+
 Bei Unterbrechung des Gerätebetriebs (Programmieren, Reset, Trennen/Verbinden vom Bus) endet auch die Verarbeitung der definierten Automaten.
 Mit der optionalen Zustandsrekonstruktion kann versucht werden die Verarbeitung nach dem Neustart fortzusetzen, 
 basierend auf dem letzten bekannten Zustand und dessen Aufrufzeitpunkt. D.h.:
@@ -69,6 +71,7 @@ Während ein Neustart durch Programmiervorgang gut erkannt werden kann,
 erfordert die Erkennung einer unterbrochenen Stromversorgung eine entsprechende Hardwareausstattung.
 Ein Neustart per Reset-Taste kann nicht erkannt werden. 
 
+<!-- 2d272170-a9e3-11ef-bd59-e7574d3ece74 END duplicate content -->
 
 
 
@@ -398,14 +401,26 @@ Definiert den Zustand den der Automat beim (erstmaligen) Einschalten einnimmt.
 <!-- DOC -->
 #### Zustand bei Neustart rekonstruieren?
 
-Mit den angebotenen Funktionen kann *versucht werden* den Einfluss einer unterbrochenen Ausführung des Automaten zu reduzieren.
+<!-- 2d272170-a9e3-11ef-bd59-e7574d3ece74 BEGIN duplicate content -->
+
+Bei Unterbrechung des Gerätebetriebs endet auch die Verarbeitung der definierten Automaten.
+Mit der Zustandsrekonstruktion kann *versucht werden* die Verarbeitung nach dem Neustart fortzusetzen, 
+basierend auf dem letzten bekannten Zustand und dessen Aufrufzeitpunkt. 
 
 ***Technische Limitation:*** 
-Eine korrekte Rekonstruktion kann nur erfolgen, 
-wenn der Zustand unmittelbar vor dem Neustart gespeichert wurde.
-Details siehe **[Zustandsrekonstruktion nach Neustart](#zustandsrekonstruktion-nach-neustart)**. 
+Die Rekonstruktion erfordert das erfolgreiche Speichern des momentanen Zustands und des Rest-Timeouts unmittelbar bei Beendigung der Verarbeitung. 
+Dies kann allerdings *nicht* immer gewährleistet werden:
+
+* Ein Neustart durch Programmiervorgang kann zuverlässig erkannt werden
+* Die Erkennung einer unterbrochenen Stromversorgung setzt eine eine entsprechende Hardwareausstattung voraus
+* Ein Neustart per Reset-Taste kann *nicht* erkannt werden. 
+
+<!-- 2d272170-a9e3-11ef-bd59-e7574d3ece74 END duplicate content -->
+
 
 <!-- DOCCONTENT
+Einstellungswerte:
+
 * **nicht speichern (immer Startzustand nutzen):** Der Zustand vor einem Neustart hat keinen Einfluss. Nach einem Neustart wird immer mit dem konfigurierte Startzustand begonnen.
 * **gespeicherten Zustand neu starten:**           Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird dieser neu gestartet.
 * **gespeicherten Zustand fortsetzen:**            Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird dieser um die bereits bis zur Speicherung des Zustands abgelaufene Zeit vermindert.
