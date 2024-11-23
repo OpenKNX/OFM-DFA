@@ -562,13 +562,13 @@ void DfaChannel::processInputKo(GroupObject &ko)
         {
             // input only for visible KO, so no need to check:
             // .. && ParamDFA_aStateSetting==0b01
-            logDebugP("processInputKo set state (separate)");
+            logDebugP("processInputKo set state (separate); StateSetting=%d, ..Same=%d", ParamDFA_aStateSetting, ParamDFA_aStateSettingSame);
             setState(ko.value(DPT_SceneNumber), static_cast<DfaDirectSetSame>(ParamDFA_aStateSettingSame));
         }
         else if (koNumber == DFA_KoCalcNumber(DFA_KoKOaState) && ParamDFA_aStateSetting == 0b10)
         {
             // TODO ensure not processing when result of own sending!
-            logDebugP("processInputKo set state (combined)");
+            logDebugP("processInputKo set state (combined); StateSetting=%d, ..Same=%d", ParamDFA_aStateSetting, ParamDFA_aStateSettingSame);
             setState(ko.value(DPT_SceneNumber), DfaDirectSetSame::ignore);
 
             // ensure KO has the value of current state!
