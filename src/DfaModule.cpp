@@ -142,12 +142,34 @@ void DfaModule::showHelp()
     openknx.console.printHelpLine("dfaNN timeout!", "Let timeout of channel NN end now!");
     openknx.console.printHelpLine("dfaNN state=SS", "Change state to SS");
     openknx.console.printHelpLine("dfaNN symbol=X", "Input the symbol X");
+#ifdef OPENKNX_RUNTIME_STAT
+    openknx.console.printHelpLine("dfa runtime",    "Show detailed runtime statistic");
+#endif
 }
 
 bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
 {
     if (cmd.substr(0, 3) == "dfa")
     {
+#ifdef OPENKNX_RUNTIME_STAT
+        if (cmd == "dfa runtime")
+        {
+            logInfoP("DFA Runtime Statistics: (Uptime=%dms)", millis());
+            logIndentUp();
+            OpenKNX::Stat::RuntimeStat::showStatHeader();
+            char labelLoop[8 + 1] = "Ch00Loop";
+            char labelInput[8 + 1] = "Ch00Inpt";
+            for (uint8_t i = 0; i < DFA_ChannelCount; i++)
+            {
+                labelLoop[2] = labelInput[2] = '0' + i / 10;
+                labelLoop[3] = labelInput[3] = '0' + i % 10;
+                _channelLoopRuntimes[i].showStat(labelLoop, 0, true, true);
+                _channelInputRuntimes[i].showStat(labelInput, 0, true, true);
+            }
+            logIndentDown();
+            return true;
+        }
+#endif        
         if (cmd.length() >= 5)
         {
             // command `dfa h`
@@ -217,26 +239,9 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
             else
             {
                 logInfoP("=> unused channel-number %u!", channelIdx + 1);
+                return false;
             }
         }
-#ifdef OPENKNX_RUNTIME_STAT
-        else if (cmd == "dfa runtime")
-        {
-            logInfoP("DFA Runtime Statistics: (Uptime=%dms)", millis());
-            logIndentUp();
-            OpenKNX::Stat::RuntimeStat::showStatHeader();
-            char labelLoop[8 + 1] = "Ch00Loop";
-            char labelInput[8 + 1] = "Ch00Inpt";
-            for (uint8_t i = 0; i < DFA_ChannelCount; i++)
-            {
-                labelLoop[2] = labelInput[2] = '0' + i / 10;
-                labelLoop[3] = labelInput[3] = '0' + i % 10;
-                _channelLoopRuntimes[i].showStat(labelLoop, 0, true, true);
-                _channelInputRuntimes[i].showStat(labelInput, 0, true, true);
-            }
-            logIndentDown();
-        }
-#endif
     }
     return false;
 }
