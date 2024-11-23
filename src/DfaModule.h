@@ -15,6 +15,8 @@ class DfaModule : public OpenKNX::Module
     static const uint8_t _magicWord[DFA_FLASH_MAGIC_WORD_LEN];
 
     DfaChannel *_channels[DFA_ChannelCount];
+    /** the index of next processed channel in loop */
+    uint8_t _loopChannel = 0;
 #ifdef OPENKNX_RUNTIME_STAT
     OpenKNX::Stat::RuntimeStat _channelLoopRuntimes[DFA_ChannelCount];
     OpenKNX::Stat::RuntimeStat _channelInputRuntimes[DFA_ChannelCount];

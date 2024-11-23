@@ -53,12 +53,14 @@ void DfaModule::processAfterStartupDelay()
 
 void DfaModule::loop()
 {
-    // loop all channels, as handling is fast
-    for (uint8_t i = 0; i < DFA_ChannelCount; i++)
+    // loop channels, as long in allowed module loop-time
+    for (uint8_t i = 0; (i < DFA_ChannelCount) && openknx.freeLoopTime(); i++)
     {
-        RUNTIME_MEASURE_BEGIN(_channelLoopRuntimes[i]);
-        _channels[i]->loop();
-        RUNTIME_MEASURE_END(_channelLoopRuntimes[i]);
+        RUNTIME_MEASURE_BEGIN(_channelLoopRuntimes[_loopChannel]);
+        _channels[_loopChannel]->loop();
+        RUNTIME_MEASURE_END(_channelLoopRuntimes[_loopChannel]);
+
+        _loopChannel = (_loopChannel + 1) % DFA_ChannelCount;
     }
 }
 
