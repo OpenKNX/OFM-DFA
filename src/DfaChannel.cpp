@@ -723,7 +723,7 @@ void DfaChannel::setState(const uint8_t nextState, const DfaDirectSetSame sameSt
             const bool cyclicSending = (outputGetDpt(i) != 0) && repeatedSending;
             _outputsTimeout[i].delay_ms = cyclicSending ? outputDelays[i] : 0;
 
-            logDebugP("Output<%d>: ko=%i on~Val=%i on~State=%i all=%i ; cyclic=%i",
+            logTraceP("Output<%d>: ko=%i on~Val=%i on~State=%i all=%i ; cyclic=%i",
                       i + 1, updateKo, sendOnChangedValue, sendOnChangedState, sendAlways, repeatedSending);
 
             const bool forceSend = sendAlways || (sendOnChangedState && stateChanged);
@@ -779,7 +779,7 @@ void DfaChannel::outputUpdate(const uint8_t i, const bool send, const bool force
     if (outputType != 0)
     {
         const uint8_t outputStateSend = outputGetCurrentStateSendConfig(i);
-        logDebugP("Output<%d>: update (type=%3i); begin=%6ims, dur=%6ims, outputStateSend=%d", i + 1, outputType, _outputsTimeout[i].begin_ms, _outputsTimeout[i].delay_ms, outputStateSend);
+        logTraceP("Output<%d>: update (type=%3i); begin=%6ims, dur=%6ims, outputStateSend=%d", i + 1, outputType, _outputsTimeout[i].begin_ms, _outputsTimeout[i].delay_ms, outputStateSend);
 
         // output has value for state?
         if (outputStateSend != 0)
