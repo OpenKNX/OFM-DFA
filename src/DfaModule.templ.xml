@@ -7,7 +7,7 @@
         <ApplicationProgram>
           <Static>
             <Parameters>
-              <Parameter Id="%AID%_P-%T%%CC%0001" Name="a%C%Name" ParameterType="%AID%_PT-Text40Byte" Text="Beschreibung des DEA" Value="" />
+              <Parameter Id="%AID%_P-%T%%CC%0001"    Name="a%C%Name"                 ParameterType="%AID%_PT-Text40Byte"                Text="Beschreibung" Value="" />
 
               <Parameter Id="%AID%_P-%T%%CC%0090" Name="a%C%Comment"         ParameterType="%AID%_PT-Text512Byte"  Text="Kommentar"                     Value="" />
 
@@ -4812,14 +4812,20 @@
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="BETA-Version - Dokumentation beachten!" UIHint="Information" />
                     -->
 
-                    <ParameterSeparator Id="%AID%_PS-nnn" Text="DEA-Definition" UIHint="Headline" />
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="Automatendefinition (Typ: Deterministischer Endlicher Automat)" UIHint="Headline" />
+                    <!--
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="Automatendefinition (Typ: Deterministischer Endlicher Automat)" UIHint="Headline" />
+                    -->
                     <ParameterRefRef RefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" HelpContext="DFA-Beschreibung-des-DEA" />
 
-                    <!-- Documentation --><!-- Multi-Line Comment (not the Module from Common) -->
+                    <ParameterRefRef RefId="%AID%_UP-%T%%CC%0006_R-%T%%CC%000601" HelpContext="DFA-Kanal-verwenden" />
+
+                    <!-- Documentation / Multi-Line Comment (not the Module from Common) -->
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
                     <ParameterRefRef RefId="%AID%_P-%T%%CC%0090_R-%T%%CC%009001" HelpContext="DFA-Kommentar" />
                     <Button Id="%AID%_B-%T%%CC%0090" Text="Alle '\n' im Text durch Zeilenumbruch ersetzen" EventHandler="newline" EventHandlerParameters="{ &quot;textbox&quot;:&quot;%PREFIX%_a%C%Comment&quot; }" />
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
 
-                    <ParameterRefRef RefId="%AID%_UP-%T%%CC%0006_R-%T%%CC%000601" HelpContext="DFA-Kanal-verwenden" />
                     <choose ParamRefId="%AID%_UP-%T%%CC%0006_R-%T%%CC%000601">
                       <when test="!=0">
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Ausführung" UIHint="Headline" />
