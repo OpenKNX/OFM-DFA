@@ -11,8 +11,12 @@
   * Fix: Beschränkung der KO-Auswahl für Symboleingänge auf Intervall mit tatsächlich vorhandenen KO-Nummern
   * OpenKNX-Grundstruktur  (Basiseinstellungen als erste Seite)
   * Optimierung Beschriftungstexte basierend auf User-Test
-  * Optische Verbesserung: Erzwinge feste Breite für erste Spalte von Eingangskonfiguration   
+  * Optische Verbesserung: Erzwinge feste Breite für erste Spalte von Eingangskonfiguration
 * Update Applikationsbeschreibung und Kontext-Hilfe
+* Fix/Optimierung: Berücksichtigung von `openknx.freeLoopTime()` zur Begrenzung der Modullaufzeit
+* Nur Debug:
+  * Fix: Ausgabe detailierte Laufzeitstatistik des Moduls auf Kanal-Ebene
+  * Optimierung: Anpassung Log-Level für Debug-Ausgaben
 
 
 # 2024-07-01 v0.2.0-Beta (internal only)
