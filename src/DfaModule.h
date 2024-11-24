@@ -35,7 +35,7 @@ class DfaModule : public OpenKNX::Module
     void processInputKo(GroupObject &ko) override;
 
     // persistance handling
-    uint16_t flashSize() override;    
+    uint16_t flashSize() override;
     void writeFlash() override;
     void readFlash(const uint8_t *iBuffer, const uint16_t iSize) override;
 

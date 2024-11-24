@@ -18,17 +18,18 @@
 // #define DFA_INPUT_TRIGGER_BOTH     0b11
 enum class DfaInputTrigger
 {
-  disabled = 0b00,
-  only0    = 0b01,
-  only1    = 0b10,
-  both     = 0b11,
+    disabled = 0b00,
+    only0    = 0b01,
+    only1    = 0b10,
+    both     = 0b11,
 };
 
-enum class DfaDirectSetSame {
-  ignore              = 0b00,
-  timeout_restart     = 0b01,
-  // timeout_continue = 0b10,
-  // timeout_add      = 0b11,
+enum class DfaDirectSetSame
+{
+    ignore              = 0b00,
+    timeout_restart     = 0b01,
+    // timeout_continue = 0b10,
+    // timeout_add      = 0b11,
 };
 
 #define DFA_OUTPUT_TYPE_DPT1    10
@@ -52,20 +53,20 @@ enum class DfaDirectSetSame {
 
 struct DfaInputs
 {
-  DfaInputTrigger trigger;
-  uint16_t koNumber;
+    DfaInputTrigger trigger;
+    uint16_t koNumber;
 };
 
 struct DfaStateTimeoutParamRelIdx
 {
-  uint16_t delay;
-  uint16_t state; // note: uint8_t is to small
+    uint16_t delay;
+    uint16_t state; // note: uint8_t is to small
 };
 
 struct DfaTimeout
 {
-  uint32_t delay_ms;
-  uint32_t begin_ms;
+    uint32_t delay_ms;
+    uint32_t begin_ms;
 };
 
 class DfaChannel : public OpenKNX::Channel

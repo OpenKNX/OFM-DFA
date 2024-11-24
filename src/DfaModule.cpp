@@ -171,7 +171,7 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
             logIndentDown();
             return true;
         }
-#endif        
+#endif
         if (cmd.length() >= 5)
         {
             // command `dfa h`
