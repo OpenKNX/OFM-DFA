@@ -16,7 +16,8 @@
 // #define DFA_INPUT_TRIGGER_0        0b01
 // #define DFA_INPUT_TRIGGER_1        0b10
 // #define DFA_INPUT_TRIGGER_BOTH     0b11
-enum class DfaInputTrigger {
+enum class DfaInputTrigger
+{
   disabled = 0b00,
   only0    = 0b01,
   only1    = 0b10,
@@ -49,19 +50,22 @@ enum class DfaDirectSetSame {
 //  #error Relativ channel parameter index > uint8_t => need uint16_t for DfaStateTimeoutParamRelIdx.state and _transitionParamsRelIdx
 // #endif
 
-struct DfaInputs {
-    DfaInputTrigger trigger;
-    uint16_t koNumber;
+struct DfaInputs
+{
+  DfaInputTrigger trigger;
+  uint16_t koNumber;
 };
 
-struct DfaStateTimeoutParamRelIdx {
-    uint16_t delay;
-    uint16_t state; // note: uint8_t is to small
+struct DfaStateTimeoutParamRelIdx
+{
+  uint16_t delay;
+  uint16_t state; // note: uint8_t is to small
 };
 
-struct DfaTimeout {
-    uint32_t delay_ms;
-    uint32_t begin_ms;
+struct DfaTimeout
+{
+  uint32_t delay_ms;
+  uint32_t begin_ms;
 };
 
 class DfaChannel : public OpenKNX::Channel

@@ -971,14 +971,16 @@ bool DfaChannel::processCommandDfaTimeout()
     return true;
 }
 
-bool DfaChannel::processCommandDfaStateSet(const uint8_t stateStarting1) {
+bool DfaChannel::processCommandDfaStateSet(const uint8_t stateStarting1)
+{
     const uint8_t state = stateStarting1 - 1;
     // TODO check setState returning valid state
     setState(state);
     return isValidState(state);
 }
 
-bool DfaChannel::processCommandDfaSymbolInsert(const uint8_t inputSymbolNumber) {
+bool DfaChannel::processCommandDfaSymbolInsert(const uint8_t inputSymbolNumber)
+{
     transfer(inputSymbolNumber);
     return true;
 }
