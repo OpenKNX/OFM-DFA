@@ -15,7 +15,7 @@
 * Update Applikationsbeschreibung und Kontext-Hilfe
 * Fix/Optimierung: Berücksichtigung von `openknx.freeLoopTime()` zur Begrenzung der Modullaufzeit
 * Nur Debug:
-  * Fix: Ausgabe detailierte Laufzeitstatistik des Moduls auf Kanal-Ebene
+  * Fix: Ausgabe detaillierte Laufzeitstatistik des Moduls auf Kanal-Ebene
   * Optimierung: Anpassung Log-Level für Debug-Ausgaben
 
 
