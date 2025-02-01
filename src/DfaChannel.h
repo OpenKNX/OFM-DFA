@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-only
-// Copyright (C) 2023-2024 Cornelius Koepp
+// Copyright (C) 2023-2025 Cornelius Koepp
 
 #pragma once
 #include "OpenKNX.h"
@@ -127,7 +127,15 @@ class DfaChannel : public OpenKNX::Channel
     uint8_t outputGetDpt(const uint8_t i);
     uint8_t outputGetCurrentStateSendConfig(const uint8_t i);
     void outputLoop(const uint8_t i);
+
+    /**
+     * Update the output based on current state
+     * @param i - the 0-based index of output [<DFA_DEF_OUTPUTS_COUNT]
+     * @param send - false will suppress sending
+     * @param forceSend - true will always send; independent of value
+     */
     void outputUpdate(const uint8_t i, const bool send, const bool forceSend /*= false*/);
+
     /*bool*/ void outputUpdateKO(const uint8_t i, const KNXValue &value, const Dpt &type, const bool send, const bool forceSend /*= false*/);
 
   public:

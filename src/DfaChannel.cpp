@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-only
-// Copyright (C) 2023-2024 Cornelius Koepp
+// Copyright (C) 2023-2025 Cornelius Koepp
 
 #include "DfaChannel.h"
 
@@ -508,7 +508,7 @@ void DfaChannel::loop()
     {
         if (_stateTimeoutDelay_ms > 0 && delayCheckMillis(_stateTimeoutBegin_ms, _stateTimeoutDelay_ms))
         {
-            // timeout of state
+            // prio 1: timeout of state => transfer to following state
 
             // logDebugP("timeout reached (@%d+%dms >=%d)", _stateTimeoutBegin_ms, _stateTimeoutDelay_ms, millis());
             // TODO check creation of method transferTimeout()
@@ -516,9 +516,12 @@ void DfaChannel::loop()
         }
         else
         {
-            // cyclic sending
+            // prio 2: cyclic sending of outputs
             for (uint8_t i = 0; i < DFA_DEF_OUTPUTS_COUNT; i++)
-                outputLoop(i); // TODO check using break on actual sending, to limit sending to 1 per loop
+            {
+                outputLoop(i); 
+                // TODO check using break on actual sending, to limit sending to 1 per loop
+            }
         }
     }
     else if (_processStartupDelay && delayCheckMillis(_startupDelayBegin_ms, ParamDFA_aStartupDelayTimeMS))
