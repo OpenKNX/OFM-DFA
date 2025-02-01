@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-only
-// Copyright (C) 2023-2024 Cornelius Koepp
+// Copyright (C) 2023-2025 Cornelius Koepp
 
 #include "DfaModule.h"
 
-// TODO replace x!
 const uint8_t DfaModule::_magicWord[DFA_FLASH_MAGIC_WORD_LEN] = {
     'x',
     'D',
@@ -76,7 +75,7 @@ void DfaModule::processInputKo(GroupObject &ko)
 
 uint16_t DfaModule::flashSize()
 {
-    // [4] MAGIG_WORD ('CDfa')
+    // [4] MAGIC_WORD ('xDfa')
     // [1] VERSION
     // per Channel:
     //   [1] CH_CONF
