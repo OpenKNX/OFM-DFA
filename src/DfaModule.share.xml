@@ -325,8 +325,10 @@
                 <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="-"                                              Value="0" Id="%ENID%" />
                   <Enumeration Text="kein Senden, nur KO setzen"                     Value="1" Id="%ENID%" />
+                  <Enumeration Text="Wert-Änderung, nicht nach Rekonstruktion"      Value="10" Id="%ENID%" />
                   <Enumeration Text="Wert-Änderung"                                  Value="2" Id="%ENID%" />
                   <Enumeration Text="Wert-Änderung                  + zyklisch"      Value="3" Id="%ENID%" />
+                  <Enumeration Text="Zustands-Änderung, nicht nach Rekonstruktion"  Value="12" Id="%ENID%" />
                   <Enumeration Text="Zustands-Änderung"                              Value="4" Id="%ENID%" />
                   <Enumeration Text="Zustands-Änderung           + zyklisch"         Value="5" Id="%ENID%" />
                   <Enumeration Text="jeder Zustands-Aufruf"                          Value="6" Id="%ENID%" />

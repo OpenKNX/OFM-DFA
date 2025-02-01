@@ -637,6 +637,8 @@ void DfaChannel::setRunning(const bool requestRun, const bool first /*= false*/)
                     _stateTimeoutDelay_ms = 1;
                 }
             }
+            // all following state-updates are not part of restore => no special handling
+            _restoreOutputs = false;
         }
         else
         {
@@ -709,20 +711,25 @@ void DfaChannel::setState(const uint8_t nextState, const DfaDirectSetSame sameSt
             //    <TypeRestriction Base="Value" SizeInBit="8">
             //      <Enumeration Text="-"                                              Value="0" Id="%ENID%" />
             //      <Enumeration Text="kein Senden, nur KO setzen"                     Value="1" Id="%ENID%" />
+            //      <Enumeration Text="Wert-Änderung, nicht nach Rekonstruktion"      Value="10" Id="%ENID%" />
             //      <Enumeration Text="Wert-Änderung"                                  Value="2" Id="%ENID%" />
             //      <Enumeration Text="Wert-Änderung                  + zyklisch"      Value="3" Id="%ENID%" />
+            //      <Enumeration Text="Zustands-Änderung, nicht nach Rekonstruktion"  Value="12" Id="%ENID%" />
             //      <Enumeration Text="Zustands-Änderung"                              Value="4" Id="%ENID%" />
             //      <Enumeration Text="Zustands-Änderung           + zyklisch"         Value="5" Id="%ENID%" />
             //      <Enumeration Text="jeder Zustands-Aufruf"                          Value="6" Id="%ENID%" />
             //      <Enumeration Text="jeder Zustands-Aufruf        + zyklisch"        Value="7" Id="%ENID%" />
             //    </TypeRestriction>
             //  </ParameterType>
-            const bool updateKo =           (outputStateSend > 0);
-            const bool sendOnChangedValue = (outputStateSend >= 2);
-            const bool sendOnChangedState = (outputStateSend >= 4);
-            const bool sendAlways =         (outputStateSend >= 6);
-            const bool repeatedSending =    (outputStateSend >= 2) && (outputStateSend & 0b001);
+            const bool updateKo =            (outputStateSend > 0);
+            const bool sendOnRestore =       (outputStateSend & 0b1000) == 0;
+            const uint8_t outputStateSend3 = (outputStateSend & 0b0111);
+            const bool sendOnChangedValue =  (outputStateSend3 >= 2);
+            const bool sendOnChangedState =  (outputStateSend3 >= 4);
+            const bool sendAlways =          (outputStateSend3 >= 6);
+            const bool repeatedSending =     (outputStateSend3 >= 2) && (outputStateSend3 & 0b001);
 
+            // TODO check removal of `(outputGetDpt(i) != 0)`
             const bool cyclicSending = (outputGetDpt(i) != 0) && repeatedSending;
             _outputsTimeout[i].delay_ms = cyclicSending ? outputDelays[i] : 0;
 
@@ -730,7 +737,8 @@ void DfaChannel::setState(const uint8_t nextState, const DfaDirectSetSame sameSt
                       i + 1, updateKo, sendOnChangedValue, sendOnChangedState, sendAlways, repeatedSending);
 
             const bool forceSend = sendAlways || (sendOnChangedState && stateChanged);
-            outputUpdate(i, sendOnChangedValue, forceSend);
+            const bool allowSend = !_restoreOutputs || sendOnRestore;
+            outputUpdate(i, allowSend && sendOnChangedValue, allowSend && forceSend);
         }
     }
 }
@@ -914,6 +922,8 @@ void DfaChannel::save()
     const uint32_t futureDelay = timeoutRemaining_ms();
     openknx.flash.writeInt(futureDelay);
 
+    // TODO write absolute time
+
     logDebugP("saved c=%2x s=%2x t=%u b=%u f=%u", conf, _state, _stateTimeoutDelay_ms, _stateTimeoutBegin_ms, futureDelay);
 }
 
@@ -929,10 +939,22 @@ void DfaChannel::restore()
     if (conf & (1 << 7) == 0)
         return;
 
+    //  <ParameterType Id="%AID%_PT-StatePersistance" Name="StatePersistance">
+    //  <TypeRestriction Base="Value" SizeInBit="2">
+    //      <Enumeration Id="%ENID%" Value="0" Text="nicht speichern (immer Startzustand nutzen)"  /><!-- 0b00 -->
+    //      <Enumeration Id="%ENID%" Value="1" Text="gespeicherten Zustand neu starten"            /><!-- 0b01 -->
+    //      <Enumeration Id="%ENID%" Value="2" Text="gespeicherten Zustand fortsetzen"             /><!-- 0b10 -->
+    //      <!--
+    //      <Enumeration Id="%ENID%" Value="3" Text="letzten Zustand mit absolutem Timeout-Ende"   /> --><!-- 0b11 -->
+    //  </TypeRestriction>
+    //  </ParameterType>
+
     if (ParamDFA_aStateRestore && (conf & 0b11))
     {
         _firstState = state;
         _firstStateTimeoutDelay_ms = timeout;
+
+        _restoreOutputs = true;
     }
 }
 

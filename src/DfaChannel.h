@@ -104,6 +104,8 @@ class DfaChannel : public OpenKNX::Channel
     // will be set to defined start-state or restored state
     uint8_t _firstState = DFA_STATE_UNDEFINED;
     uint32_t _firstStateTimeoutDelay_ms = 0;
+    // indicate last state was restored, which should result in special handling of sending
+    uint8_t _restoreOutputs = false;
 
     uint8_t _state = DFA_STATE_UNDEFINED;
     uint32_t _stateTimeoutDelay_ms = 0;
