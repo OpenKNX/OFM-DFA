@@ -393,6 +393,9 @@ void DfaChannel::setup()
         _firstState = ParamDFA_az0 - 1;
         // _firstStateTimeoutDelay_ms = getStateTimeoutDelay_ms(_firstState);
 
+        // could be overwritten in restore
+        _firstRunning = (ParamDFA_aStartPause != 2);
+
         // actual starting in processAfterStartupDelay() ...
     }
 }
@@ -529,7 +532,7 @@ void DfaChannel::loop()
         _processStartupDelay = false;
 
         // set to running. This includes setting the start state
-        setRunning(ParamDFA_aStartPause != 2, true);
+        setRunning(_firstRunning, true);
     }
 }
 
@@ -951,6 +954,13 @@ void DfaChannel::restore()
 
     if (ParamDFA_aStateRestore && (conf & 0b11))
     {
+        // restore last running state
+        if (ParamDFA_aStartPause > 0)
+        {
+            bool savedRunning = conf & (1 << 6);
+            _firstRunning = savedRunning;
+        }
+
         _firstState = state;
         _firstStateTimeoutDelay_ms = timeout;
 

@@ -97,6 +97,9 @@ class DfaChannel : public OpenKNX::Channel
     bool _processStartupDelay = false;
     uint32_t _startupDelayBegin_ms = 0;
 
+    // will be set to defined or restored running state
+    bool _firstRunning = true;
+
     // is not paused (startup is ETS, later updated by KO)
     bool _running = false;
     uint32_t _pauseBegin = 0;
