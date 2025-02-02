@@ -923,6 +923,10 @@ void DfaChannel::restore()
     const uint32_t timeout = openknx.flash.readInt();
     logDebugP("restored conf=%d state=%d timeout=%d", conf, state, timeout);
 
+    // do not restore inactive channels, but must always read all bytes!
+    if (conf & (1 << 7) == 0)
+        return;
+
     if (ParamDFA_aStateRestore && (conf & 0b11))
     {
         _firstState = state;
