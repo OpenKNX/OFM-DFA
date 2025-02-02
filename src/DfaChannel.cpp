@@ -906,6 +906,7 @@ uint32_t DfaChannel::timeoutRemaining_ms()
 
 void DfaChannel::save()
 {
+    // 0x AR00_00PP
     const uint8_t conf = _channelActive << 7 | _running << 6 | ParamDFA_aStateRestore;
     openknx.flash.writeByte(conf);
     openknx.flash.writeByte(_state);
@@ -918,6 +919,7 @@ void DfaChannel::save()
 
 void DfaChannel::restore()
 {
+    // 0x AR00_00PP
     const uint8_t conf = openknx.flash.readByte();
     const uint8_t state = openknx.flash.readByte();
     const uint32_t timeout = openknx.flash.readInt();
