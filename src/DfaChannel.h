@@ -131,7 +131,7 @@ class DfaChannel : public OpenKNX::Channel
     /**
      * Update the output based on current state
      * @param i - the 0-based index of output [<DFA_DEF_OUTPUTS_COUNT]
-     * @param send - false will suppress sending
+     * @param send - true will send changed value, false will update GO only
      * @param forceSend - true will always send; independent of value
      */
     void outputUpdate(const uint8_t i, const bool send, const bool forceSend /*= false*/);
