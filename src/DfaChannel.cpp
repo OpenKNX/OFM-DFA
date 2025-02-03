@@ -499,7 +499,7 @@ void DfaChannel::processAfterStartupDelay()
     if (_channelActive)
     {
         logDebugP("processAfterStartupDelay");
-        _processStartupDelay = true;
+        _processStartup = true;
         _startupDelayBegin_ms = millis();
     }
 }
@@ -527,9 +527,9 @@ void DfaChannel::loop()
             }
         }
     }
-    else if (_processStartupDelay && delayCheckMillis(_startupDelayBegin_ms, ParamDFA_aStartupDelayTimeMS))
+    else if (_processStartup && delayCheckMillis(_startupDelayBegin_ms, ParamDFA_aStartupDelayTimeMS))
     {
-        _processStartupDelay = false;
+        _processStartup = false;
 
         // set to running. This includes setting the start state
         setRunning(_firstRunning, true);

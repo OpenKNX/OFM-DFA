@@ -94,7 +94,7 @@ class DfaChannel : public OpenKNX::Channel
     DfaTimeout _outputsTimeout[DFA_DEF_OUTPUTS_COUNT] = {};
 
     // wait while startup is delayed
-    bool _processStartupDelay = false;
+    bool _processStartup = false;
     uint32_t _startupDelayBegin_ms = 0;
 
     // will be set to defined or restored running state
