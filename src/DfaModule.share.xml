@@ -444,13 +444,6 @@
                 <choose ParamRefId="%AID%_UP-1000146_R-100014601"><!-- BASE "Diagnoseobjekt anzeigen": -->
                   <when test="1">
                     <ParameterRefRef RefId="%AID%_UP-%T%000002_R-%T%00000201" IndentLevel="1" HelpContext="DFA-Diagnose" />
-                    <!--
-                    <choose ParamRefId="%AID%_UP-%T%000002_R-%T%00000201">
-                      <when test="1">
-                        <ParameterSeparator Id="%AID%_PS-nnn" Text="Abgesehen vom Auslösen des sofortigen Timeout-Endes, stehen Funktionen auch über reguläre KOs zur Verfügung. Der Befehlssatz kann sich in zukünftigen Modul-Versionen verändern." UIHint="Information" />
-                      </when>
-                    </choose>
-                    -->
                   </when>
                   <when default="true">
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="  Nicht verfügbar, so lange das globale Diagnose-Objekt nicht aktiviert wurde." />
