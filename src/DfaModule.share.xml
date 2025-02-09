@@ -453,7 +453,7 @@
                     -->
                   </when>
                   <when default="true">
-                    <ParameterSeparator Id="%AID%_PS-nnn" Text="Nicht verfügbar, so lange das globale Diagnose-Objekt nicht aktiviert wurde." />
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="  Nicht verfügbar, so lange das globale Diagnose-Objekt nicht aktiviert wurde." />
                   </when>
                 </choose>
 
