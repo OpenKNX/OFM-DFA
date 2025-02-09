@@ -4852,13 +4852,13 @@
                             <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
                           </Rows>
                           <Columns>
-                            <Column Id="%AID%_PB-nnn_C-1" Name="Col1"  Width="49%" />
+                            <Column Id="%AID%_PB-nnn_C-1" Name="Col1"  Width="46%" />
                             <Column Id="%AID%_PB-nnn_C-2" Name="ColAB" Width="11%" />
-                            <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="5%" />
+                            <Column Id="%AID%_PB-nnn_C-3" Name="Col3" Width="4%" />
                             <Column Id="%AID%_PB-nnn_C-4" Name="ColCD" Width="11%" />
-                            <Column Id="%AID%_PB-nnn_C-5" Name="Col5" Width="5%" />
+                            <Column Id="%AID%_PB-nnn_C-5" Name="Col5" Width="4%" />
                             <Column Id="%AID%_PB-nnn_C-6" Name="ColEF" Width="11%" />
-                            <Column Id="%AID%_PB-nnn_C-7" Name="Col7" Width="5%" />
+                            <Column Id="%AID%_PB-nnn_C-7" Name="Col7" Width="4%" />
                             <Column Id="%AID%_PB-nnn_C-8" Name="ColGH" Width="11%" />
                           </Columns>
                           <ParameterSeparator Id="%AID%_PS-nnn" Text="Gemeinsamer Eingang (Symbole für 1/0)"  Cell="2,1" />
