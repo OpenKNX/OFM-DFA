@@ -6,19 +6,20 @@
 # Inhaltsverzeichnis
 * [Konzepte](#konzepte)
   * [Zeitbasierter Folgezustand (Timeout)](#zeitbasierter-folgezustand--timeout--)
+  * [Rekonstruktion nach Neustart](#rekonstruktion-nach-neustart)
 * ETS-Konfiguration:
   [**Zustandsautomaten**](#ets-applikationsteilbr-zustandsautomaten)
     * [**Allgemein**](#allgemein)
       * [Diagnose](#diagnose)
     * [**DEA n: ...**](#dea-n--)
       * [DEA-Definition](#dea-definition) 
-      * [Ausführung](#ausführung)
-        * [Starten und Pausieren](#starten-und-pausieren)
+      * [Start und Ausführung](#ausführung)
+        * [Pausieren erlauben](#pausieren-erlauben)
+        * [Rekonstruktion bei erneutem Start](#rekonstruktion-bei-erneutem-start)
       * [Eingabesymbole](#eingabesymbole)
       * [Ausgabe]()
       * [**Zustände & Übergänge**]()
         * [Startzustand](#startzustand)
-        * [Rekonstruktion](#zustand-bei-neustart-rekonstruieren)
         * [Direktes Setzen von Zustand](#direktes-setzen-von-zustand-erlauben)
         * [Übergangsfunktion einschließlich zeitbasierter Folgezustände](#zustände-und-übergangsfunktion-einschließlich-zeitbasierter-folgezustände)
       * [**Ausgang n: ...**](#ausgang-n-)
@@ -53,17 +54,18 @@ Die Zeitmessung wird zurückgesetzt, falls derselbe Zustand erneut aufgerufen wi
 * für jedes Eingabesymbol kann durch Auswahl desselben Folgezustands ein Reset umgesetzt werden
 
 
-## Zustandsrekonstruktion nach Neustart
+## Rekonstruktion nach Neustart
 
 <!-- 2d272170-a9e3-11ef-bd59-e7574d3ece74 BEGIN duplicate content -->
 
-Bei Unterbrechung des Gerätebetriebs (Programmieren, Reset, Trennen/Verbinden vom Bus) endet auch die Verarbeitung der definierten Automaten.
-Mit der optionalen Zustandsrekonstruktion kann versucht werden die Verarbeitung nach dem Neustart fortzusetzen, 
-basierend auf dem letzten bekannten Zustand und dessen Aufrufzeitpunkt. D.h.:
+Bei Unterbrechung des Gerätebetriebs (Programmieren, Reset, Trennen/Verbinden vom Bus, Ausfall der Bus-Stromversorgung) endet auch die Verarbeitung der definierten Automaten.
+Mit der optionalen Rekonstruktionsfunktion wird *versucht* die Verarbeitung nach dem Neustart fortzusetzen,
+mit dem Ziel ein Verhalten zu erreichen als hätte keine Unterbrechung stattgefunden.  
+D.h.:
 
 * beim Starten kann alternativ zum regulären Startzustand der zuletzt gespeicherte Zustand aufgerufen werden
-* ein ggf. vorhandener Timeout kann um die bereits abgelaufene Zeit verkürzt werden
-* (geplant) alternativ soll der Rest-Timeout basierend auf dem zuvor berechneten absoluten Endzeitpunkt neu berechnet werden
+* ein ggf. vorhandener Timeout kann um die bereits abgelaufene Zeit verkürzt werden <!-- (geplant) alternativ soll der Rest-Timeout basierend auf dem zuvor berechneten absoluten Endzeitpunkt neu berechnet werden -->
+* falls pausieren erlaubt ist, wird der gespeicherte Unterbrechnungs-Status genutzt 
 
 Die Rekonstruktion erfordert das erfolgreiche Speichern des momentanen Zustands und des Rest-Timeouts unmittelbar bei Beendigung der Verarbeitung. 
 Dies kann allerdings nicht immer gewährleistet werden. 
@@ -190,7 +192,7 @@ DOCCONTENT -->
 
 
 <!-- DOC -->
-#### Verzögerung nach Neustart
+#### Verzögerung nach Gerätestart
 
 Nach dem Neustart ist der Automat zunächst inaktiv und wird erst nach Ablauf der Verzögerungszeit (zusätzlich zur Startverzögerung im Gerät) auf Ereignisse (wie z.B. Eingaben, Setzen des Zustand) reagieren und einen ggf. definierten Timeout starten.
 
@@ -202,7 +204,7 @@ Nach dem Neustart ist der Automat zunächst inaktiv und wird erst nach Ablauf de
 
 
 <!-- DOC -->
-#### Starten und Pausieren
+#### Pausieren erlauben
 
 Steuert, ob die Ausführung des Automaten unterbrochen werden kann.
 
@@ -214,17 +216,17 @@ Wird das Starten und Pausieren aktiviert, dann werden zwei KOs eingeblendet:
 * Ein zweites KO liefert den aktuellen Ausführungsstatus zurück.
 
 <!-- DOCCONTENT
-##### immer aktiv                    
+##### nein (Ausführung niemals unterbrechen)
 
 Der Automat wird kontinuierlich ausgeführt. Eine Unterbrechung ist nicht möglich.
 Nach dem Einschalten wird der Automat gestartet.
 
-##### per KO, nach Einschalten starten                       
+##### per KO, nach Einschalten starten
 
-Nach dem Einschalten verhält sich der Automat wie mit *immer aktiv*.
+Nach dem Einschalten verhält sich der Automat wie mit *nein (Ausführung niemals unterbrechen)*.
 Über das eingeblendete Start/Stop-KO kann die Ausführung unterbrochen und fortgesetzt werden.
 
-##### per KO, warten auf Start-Telegramm 
+##### per KO, warten auf Start-Telegramm
 
 Nach dem Einschalten ist der Automat zunächst inaktiv.
 D.h. es werden keine Ereignisse verarbeitet.
@@ -237,10 +239,50 @@ DOCCONTENT -->
 <!-- DOCEND -->
 | Einstellungswert               | Erklärung                                                                                                                                                                                                                                           | Start/Stop-KOs | starten nach dem Einschalten? |
 |--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|------------------------------|
-| immer aktiv                    | Der Automat wird kontinuierlich ausgeführt. Eine Unterbrechnng ist nicht möglich.                                                                                                                                                                   | -              | ja                           |
+| nein (Ausführung niemals unterbrechen)                    | Der Automat wird kontinuierlich ausgeführt. Eine Unterbrechnng ist nicht möglich.                                                                                                                                                                   | -              | ja                           |
 | per KO, ...                    | Die Ausführung des Automaten kann unterbrochen werden. Dazu werden zwei KOs eingeblendet.                                                                                                                                                           | sichtbar       |                              |
-| ... nach Einschalten starten   | Nach dem Einschalten verhält sich der Automat wie mit *immer aktiv*.                                                                                                                                                                                | sichtbar       | ja                           |
+| ... nach Einschalten starten   | Nach dem Einschalten verhält sich der Automat wie mit *nein (Ausführung niemals unterbrechen)*.                                                                                                                                                                                | sichtbar       | ja                           |
 | ... warten auf Start-Telegramm | Nach dem Einschalten ist der Automat zunächst inaktiv. D.h. es werden keine Ereignisse verarbeitet.<br />Durch erstmaligen Eingang eines `Start`-Telegramms wird der Automat in den Startzustand versetzt. Der Timeout beginnt ab diesem Zeitpunkt. | sichtbar       | nein                         |
+
+
+
+<!-- DOC -->
+#### Rekonstruktion bei erneutem Start
+
+<!-- 2d272170-a9e3-11ef-bd59-e7574d3ece74 BEGIN duplicate content -->
+
+Bei Unterbrechung des Gerätebetriebs endet auch die Verarbeitung der definierten Automaten.
+Mit der Rekonstruktion wird *versucht* die Verarbeitung nach dem Neustart fortzusetzen,
+basierend auf dem letzten bekannten Zustand, dessen Aufrufzeitpunkt und ggf. letztem Ausführungsstatus.
+
+***Technische Limitation:***
+Die Rekonstruktion erfordert das erfolgreiche Speichern des momentanen Zustands und des Rest-Timeouts unmittelbar bei Beendigung der Verarbeitung.
+Dies kann allerdings *nicht* immer gewährleistet werden:
+
+* Ein Neustart durch Programmiervorgang kann zuverlässig erkannt werden
+* Die Erkennung einer unterbrochenen Stromversorgung setzt eine entsprechende Hardwareausstattung voraus
+* Ein Neustart per Reset-Taste kann *nicht* erkannt werden.
+
+<!-- 2d272170-a9e3-11ef-bd59-e7574d3ece74 END duplicate content -->
+
+
+<!-- DOCCONTENT
+Einstellungswerte:
+
+* **nein (immer Starten wie konfiguriert):**      Der Zustand vor einem Neustart hat keinen Einfluss. Nach einem Neustart wird immer mit dem konfigurierte Startzustand begonnen.
+* **Fortsetzen, aber Timeout neu beginnen:**      Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird dieser neu gestartet.
+* **Fortsetzen mit gespeichertem Rest-Timeout:**  Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird dieser um die bereits bis zur Speicherung des Zustands abgelaufene Zeit vermindert.
+DOCCONTENT -->
+<!-- * letzten Zustand mit absolutem Timeout-Ende  | zuletzt gespeicherter Zustand, sonst Startzustand | berechnet aus Uhrzeit | **(Geplant)** Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird die Restzeit neu berechnet, so dass der selbe (absolute) Endzeitpunkt erreicht wird wie ohne Unterbrechung.<br> Diese Option benötigt eine Zeitangabe. | -->
+<!-- DOCEND -->
+| Einstellungswert                          | Erster Zustand                                    | Erster Timeout        | Erklärung                                                                                                                                                                                                                                                                                                                              |
+|-------------------------------------------|---------------------------------------------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| nein (immer Starten wie konfiguriert)     | Startzustand                                      | vollständig           | Der Zustand vor einem Neustart hat keinen Einfluss. Nach einem Neustart wird immer mit dem konfigurierte Startzustand begonnen.                                                                                                                                                                                                        |
+| Fortsetzen, aber Timeout neu beginnen     | zuletzt gespeicherter Zustand, sonst Startzustand | vollständig           | Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird dieser neu gestartet.                                                                                                                                                |
+| Fortsetzen mit gespeichertem Rest-Timeout | zuletzt gespeicherter Zustand, sonst Startzustand | nur Restzeit          | Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird dieser um die bereits bis zur Speicherung des Zustands abgelaufene Zeit vermindert.                                                                                  |
+<!--
+| letzten Zustand mit absolutem Timeout-Ende  | zuletzt gespeicherter Zustand, sonst Startzustand | berechnet aus Uhrzeit | **(Geplant)** Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird die Restzeit neu berechnet, sodass derselbe (absolute) Endzeitpunkt erreicht wird wie ohne Unterbrechung.<br> Diese Option benötigt eine Zeitangabe. |
+-->
 
 
 
@@ -396,46 +438,6 @@ DOCCONTENT -->
 #### Startzustand
 
 Definiert den Zustand den der Automat beim (erstmaligen) Einschalten einnimmt.
-
-
-<!-- DOC -->
-#### Zustand bei Neustart rekonstruieren?
-
-<!-- 2d272170-a9e3-11ef-bd59-e7574d3ece74 BEGIN duplicate content -->
-
-Bei Unterbrechung des Gerätebetriebs endet auch die Verarbeitung der definierten Automaten.
-Mit der Zustandsrekonstruktion kann *versucht werden* die Verarbeitung nach dem Neustart fortzusetzen, 
-basierend auf dem letzten bekannten Zustand und dessen Aufrufzeitpunkt. 
-
-***Technische Limitation:*** 
-Die Rekonstruktion erfordert das erfolgreiche Speichern des momentanen Zustands und des Rest-Timeouts unmittelbar bei Beendigung der Verarbeitung. 
-Dies kann allerdings *nicht* immer gewährleistet werden:
-
-* Ein Neustart durch Programmiervorgang kann zuverlässig erkannt werden
-* Die Erkennung einer unterbrochenen Stromversorgung setzt eine eine entsprechende Hardwareausstattung voraus
-* Ein Neustart per Reset-Taste kann *nicht* erkannt werden. 
-
-<!-- 2d272170-a9e3-11ef-bd59-e7574d3ece74 END duplicate content -->
-
-
-<!-- DOCCONTENT
-Einstellungswerte:
-
-* **nicht speichern (immer Startzustand nutzen):** Der Zustand vor einem Neustart hat keinen Einfluss. Nach einem Neustart wird immer mit dem konfigurierte Startzustand begonnen.
-* **gespeicherten Zustand neu starten:**           Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird dieser neu gestartet.
-* **gespeicherten Zustand fortsetzen:**            Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird dieser um die bereits bis zur Speicherung des Zustands abgelaufene Zeit vermindert.
-DOCCONTENT -->
-<!-- * letzten Zustand mit absolutem Timeout-Ende  | zuletzt gespeicherter Zustand, sonst Startzustand | berechnet aus Uhrzeit | **(Geplant)** Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird die Restzeit neu berechnet, so dass der selbe (absolute) Endzeitpunkt erreicht wird wie ohne Unterbrechung.<br> Diese Option benötigt eine Zeitangabe. | -->
-<!-- DOCEND -->
-| Einstellungswert                            | Erster Zustand                                    | Erster Timeout        | Erklärung                                                                                                                                                                                                                                                                                                                              |
-|---------------------------------------------|---------------------------------------------------|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| nicht speichern (immer Startzustand nutzen) | Startzustand                                      | vollständig           | Der Zustand vor einem Neustart hat keinen Einfluss. Nach einem Neustart wird immer mit dem konfigurierte Startzustand begonnen.                                                                                                                                                                                                        |
-| gespeicherten Zustand neu starten           | zuletzt gespeicherter Zustand, sonst Startzustand | vollständig           | Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird dieser neu gestartet.                                                                                                                                                |
-| gespeicherten Zustand fortsetzen            | zuletzt gespeicherter Zustand, sonst Startzustand | nur Restzeit          | Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird dieser um die bereits bis zur Speicherung des Zustands abgelaufene Zeit vermindert.                                                                                  |
-<!--
-| letzten Zustand mit absolutem Timeout-Ende  | zuletzt gespeicherter Zustand, sonst Startzustand | berechnet aus Uhrzeit | **(Geplant)** Der zuletzt gespeicherte Zustand (sofern vorhanden) wird anstelle des regulären Startzustandes genutzt. Falls für diesen einen ein Timeout definiert ist, so wird die Restzeit neu berechnet, so dass der selbe (absolute) Endzeitpunkt erreicht wird wie ohne Unterbrechung.<br> Diese Option benötigt eine Zeitangabe. |
--->
-
 
 
 <!-- DOC -->

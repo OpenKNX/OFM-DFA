@@ -1,4 +1,4 @@
-﻿### Starten und Pausieren
+﻿### Pausieren erlauben
 
 Steuert, ob die Ausführung des Automaten unterbrochen werden kann.
 
@@ -9,17 +9,17 @@ Wird das Starten und Pausieren aktiviert, dann werden zwei KOs eingeblendet:
   Ein Timeout des aktiven Zustands wird unterbrochen und beim erneuten Start fortgesetzt.
 * Ein zweites KO liefert den aktuellen Ausführungsstatus zurück.
 
-##### immer aktiv                    
+##### nein (Ausführung niemals unterbrechen)
 
 Der Automat wird kontinuierlich ausgeführt. Eine Unterbrechung ist nicht möglich.
 Nach dem Einschalten wird der Automat gestartet.
 
-##### per KO, nach Einschalten starten                       
+##### per KO, nach Einschalten starten
 
-Nach dem Einschalten verhält sich der Automat wie mit *immer aktiv*.
+Nach dem Einschalten verhält sich der Automat wie mit *nein (Ausführung niemals unterbrechen)*.
 Über das eingeblendete Start/Stop-KO kann die Ausführung unterbrochen und fortgesetzt werden.
 
-##### per KO, warten auf Start-Telegramm 
+##### per KO, warten auf Start-Telegramm
 
 Nach dem Einschalten ist der Automat zunächst inaktiv.
 D.h. es werden keine Ereignisse verarbeitet.
