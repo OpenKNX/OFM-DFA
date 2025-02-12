@@ -961,10 +961,14 @@ void DfaChannel::restore()
             _firstRunning = savedRunning;
         }
 
-        _firstState = state;
-        _firstStateTimeoutDelay_ms = timeout;
+        // restore only, if a state was reached; otherwise use z0
+        if (isValidState(state))
+        {
+            _firstState = state;
+            _firstStateTimeoutDelay_ms = timeout;
 
-        _restoreOutputs = true;
+            _restoreOutputs = true;
+        }
     }
 }
 
