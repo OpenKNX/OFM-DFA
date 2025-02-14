@@ -1,33 +1,39 @@
-# BETA-STATUS! (DE/German)
-> Die vorliegende Version dient der Bereitstellung an Testnutzer.
+> # BETA-STATUS! <!-- (DE/German) -->
 >
-> Obgleich die Implementierung auf einem bekannten formellen Modell aufbaut und möglichst kompakt gehalten wurde,
-> und ein erster eingeschränkter Produktiv-Test erfolgt ist, besteht weiterhin ein erhöhtes Risiko von Fehlern.
-> Vor allem in solchen Anwendungsszenarien die bei der Entwicklung nicht berücksichtigt wurden.
+> Obgleich vorab ein länger andauernder interner Produktiv-Test erfolgt ist, 
+> in dessen Rahmen nur noch Anpassungs- und Optimierungsbedarf bei der Behandlung von Spezialfällen indentifiziert wurde,
+> besteht weiterhin ein erhöhtes Risiko von Fehlern.
+> Vor allem bei der Nutzung von erweiterten Funktionen und solchen Anwendungsszenarien, die bei der Entwicklung nicht berücksichtigt wurden.
 >
-> Durch inkompatible Änderungen an der Konfiguration ist eine Übernahme der Konfiguration aus der ALPHA-Version nicht möglich.
-> Die umgesetzten Änderungen zwischen den Versionen erfolgten jedoch auch mit dem Ziel zukünftigen kompatiblitätsbrechende Änderungen in der Produktiv-Nutzung möglichst überflüssig zu machen. 
+> In nachfolgenden Versionen sind Änderungen an der KO-Nummerierung möglich, 
+> daher wird dringend von Verweisen auf KO-Nummern dieses Moduls abgeraten.
+> Weitere kompatiblitätsbrechende Änderungen sind nicht auszuschließen, zum aktuellen Zeitpunkt jedoch nicht geplant. 
 
+<!--
 # Deterministic Finite Automaton (DFA) Module for OpenKNX
 
 Implementation of state machines for KNX configurable via ETS.
 
-By Cornelius Köpp 2023-09 -- 2024
+By Cornelius Köpp 2023-09 -- 2025
+-->
 
-# OpenKNX-Modul für Deterministische Endliche Automaten (DEA)
+# OpenKNX-Modul zur Definition zustandsbehaftetem Verhalten auf Basis von  Deterministischen Endlichen Automaten (DEA)
 
 Implementierung von Zustandsmodellen für KNX, konfigurierbar über die ETS.
 
-Von Cornelius Köpp 2023-09 -- 2024
+Von Cornelius Köpp 2023-09 -- 2025
+
+**Hinweis:** Dieses Modul kann (aktuell ausschließlich) mit der [OpenKNX StateEngine](https://github.com/OpenKNX/OAM-StateEngine/) genutzt werden.   
 
 
 
-# Beschreibung (DE)
-Das Modul bildet Zustandsmodelle basierend auf _deterministischen endlichen Automaten_ _(DEA; englisch DFA)_ ab.
-Jeder Kanal repräsentiert einen solchen Automaten mit 32 verschiedenen Zuständen, und Zustandswechseln basierend auf 8 verschiedenen Eingabesymbolen/-ereignissen oder Ablauf eines Timeouts.
-Über 4 Ausgangskanäle können individuelle Zustands-spezifische Werte ausgegeben werden. 
-Die Definition in der ETS erfolgt über eine (zwei-dimensionale) Zustandsübergangstabelle. 
+## Beschreibung <!-- (DE) -->
+Dieses Modul erlaubt eine universelle Modellierung von zustandsabhängigem Verhalten:<br />
+Jeder Kanal repräsentiert eine Automaten-Definition mit 32 verschiedenen Zuständen,
+zwischen denen durch 8 verschiedenen Eingabeereignisse oder Ablauf eines zustandsabhängigen Timeouts gewechselt werden kann.
+Über 4 Ausgangskanäle können zustandsspezifische Werte ausgegeben werden, mit verschiedenen zur Auswahl stehenden DPTs. Zus
 
+Die Definition in der ETS erfolgt über eine (zwei-dimensionale) Zustandsübergangstabelle.<br />
 Zur **Konfiguration in der ETS** siehe [Applikationsbeschreibung](doc/DFA_Applikationsbeschreibung.md)
 
 ## Grundidee in Anlehnung an gängige formale Definitionen:
