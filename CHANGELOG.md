@@ -1,5 +1,11 @@
 # vorbereitet für v0.3.0
 
+* Fix: Rekonstruktion nur von gültigem Zustand (Fall trat auf, falls der Automat vor dem Neustart noch nicht gestartet war)
+* Erweiterung/Fix: Pausieren-Status wird nun bei Rekonstruktion berücksichtigt 
+* Erweiterung Sendeverhalten bei Rekonstruktion:
+  * Zwei zusätzliche Optionen zur Steuerung des Ausgangs-Sendeverhalten.
+    Für Wert-Änderung und Zustands-Änderung kann ein Senden nach Rekonstruktion nun unterdrückt werden, 
+    da dies einem Verhalten ohne Neustart näher kommt.
 * Fix/Verbesserung direkte Zustands-Steuerung über KOs:
   * Fix: Kombiniertes Zustands-KO
     * Erneutes Setzen von aktuellem Zustand ignorieren
@@ -8,15 +14,21 @@
   * Erweiterung für getrennte KOs zur Ausgabe und Setzen von Zustand
     * Konfigurierbares Verhalten für erneutes Setzen von aktuellem Zustand ignorieren (bislang immer Neustart des Zustands)
 * Anpassungen ETS-Applikation:
+  * Überarbeitung der Konfiguration zur Rekonstruktion und Pausieren 
+  * Einrückung
+  * Optische Verbesserung: Breite und Position von Checkboxen für kombinierte Eingänge
   * Fix: Beschränkung der KO-Auswahl für Symboleingänge auf Intervall mit tatsächlich vorhandenen KO-Nummern
-  * OpenKNX-Grundstruktur  (Basiseinstellungen als erste Seite)
+  * OpenKNX-Grundstruktur (Basiseinstellungen als erste Seite)
   * Optimierung Beschriftungstexte basierend auf User-Test
   * Optische Verbesserung: Erzwinge feste Breite für erste Spalte von Eingangskonfiguration
-* Update Applikationsbeschreibung und Kontext-Hilfe
-* Fix/Optimierung: Berücksichtigung von `openknx.freeLoopTime()` zur Begrenzung der Modullaufzeit
+* Update Applikationsbeschreibung, Kontext-Hilfe und Readme
+* Fix/Optimierung:
+  * Restore von inaktiven Kanälen unterlassen
+  * Berücksichtigung von `openknx.freeLoopTime()` zur Begrenzung der Modullaufzeit
 * Nur Debug:
   * Fix: Ausgabe detaillierte Laufzeitstatistik des Moduls auf Kanal-Ebene
   * Optimierung: Anpassung Log-Level für Debug-Ausgaben
+* Refactoring, Dokumentation, Cleanup
 
 
 # 2024-07-01 v0.2.0-Beta (internal only)
