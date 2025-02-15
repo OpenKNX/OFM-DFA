@@ -216,17 +216,17 @@ Wird das Starten und Pausieren aktiviert, dann werden zwei KOs eingeblendet:
 * Ein zweites KO liefert den aktuellen Ausführungsstatus zurück.
 
 <!-- DOCCONTENT
-##### nein (Ausführung niemals unterbrechen)
+##### **nein (Ausführung niemals unterbrechen)**
 
 Der Automat wird kontinuierlich ausgeführt. Eine Unterbrechung ist nicht möglich.
 Nach dem Einschalten wird der Automat gestartet.
 
-##### per KO, nach Einschalten starten
+##### **per KO, nach Einschalten starten**
 
 Nach dem Einschalten verhält sich der Automat wie mit *nein (Ausführung niemals unterbrechen)*.
 Über das eingeblendete Start/Stop-KO kann die Ausführung unterbrochen und fortgesetzt werden.
 
-##### per KO, warten auf Start-Telegramm
+##### **per KO, warten auf Start-Telegramm**
 
 Nach dem Einschalten ist der Automat zunächst inaktiv.
 D.h. es werden keine Ereignisse verarbeitet.
@@ -447,15 +447,15 @@ Optional kann eine Änderung des Zustands, unabhängig vom aktuellen Zustand, de
 
 <!-- DOCCONTENT
 * **nein**:                                    Der Zustand wechselt ausschließlich durch Eingabe eines Symbols, oder Timeout.
-* **über separates KO**:                       Es wird ein weiteres KO eingeblendet, über das der aktuelle Zustand unmittelbar überschrieben werden kann. Zustände außerhalb des Definitionsbereichs (Szene 1 bos 32) werden ignoriert.
-* **über gemeinsames KO mit Zustandsausgabe**: Der aktuelle Zustand kann über das KO mit Ausgabe des Momentan-Zustandes überschrieben werden. Zustände außerhalb des Definitionsbereichs (Szene 1 bos 32) werden ignoriert.
+* **über separates KO**:                       Es wird ein weiteres KO eingeblendet, über das der aktuelle Zustand unmittelbar überschrieben werden kann. Zustände außerhalb des Definitionsbereichs (Szene 1 bis 32) werden ignoriert.
+* **über gemeinsames KO mit Zustandsausgabe**: Der aktuelle Zustand kann über das KO mit Ausgabe des Momentan-Zustandes überschrieben werden. Zustände außerhalb des Definitionsbereichs (Szene 1 bis 32) werden ignoriert.
 DOCCONTENT -->
 <!-- DOCEND -->
 | Einstellungswert                        | Erklärung                                                                                                                                                                                                                                                                             |
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | nein                                    | Der Zustand wechselt ausschließlich durch Eingabe eines Symbols, oder Timeout.                                                                                                                                                                                                        |
-| über separates KO                       | Es wird ein weiteres KO eingeblendet, über das der aktuelle Zustand unmittelbar überschrieben werden kann. Zustände außerhalb des Definitionsbereichs (Szene 1 bos 32) werden ignoriert.                                                                                              |
-| über gemeinsames KO mit Zustandsausgabe | Der aktuelle Zustand kann über das KO mit Ausgabe des Momentan-Zustandes überschrieben werden. Zustände außerhalb des Definitionsbereichs (Szene 1 bos 32) werden ignoriert. |
+| über separates KO                       | Es wird ein weiteres KO eingeblendet, über das der aktuelle Zustand unmittelbar überschrieben werden kann. Zustände außerhalb des Definitionsbereichs (Szene 1 bis 32) werden ignoriert.                                                                                              |
+| über gemeinsames KO mit Zustandsausgabe | Der aktuelle Zustand kann über das KO mit Ausgabe des Momentan-Zustandes überschrieben werden. Zustände außerhalb des Definitionsbereichs (Szene 1 bis 32) werden ignoriert. |
 
 
 <!-- DOC -->
