@@ -84,12 +84,4 @@ oder sogar für alle z<sub>i</sub>&in;X<sub>z</sub> (*Neustart von bereits geset
 ### *Endzustände* 
 ... werden nicht explizit abgebildet.
 Im Rahmen einer Nachverarbeitung kann jedoch leicht ermittelt werden, ob ein Zustand aus dieser Menge eingenommen wurde.
-Es können Zustände definiert werden, die nicht mehr durch Eingabe eines Symbols verlassen werden. 
-
-<!--
-### Erweiterung: Zustandsspezifische Ausgabewerte
-
-**o<sub>type</sub>:{1,2,3,4}&rarr;O&cup;{undef} := Ausgangsfunktion mit partieller Definition**
-
-**o:Z&cup;{1,2,3,4}&rarr;O&cup;{undef} := Ausgangsfunktion mit partieller Definition**
--->
+Es können Zustände definiert werden, die nicht mehr durch Eingabe eines Symbols verlassen werden.
