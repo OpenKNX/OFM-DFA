@@ -1,6 +1,6 @@
 {
     "name": "OFM-DFA",
-    "version": "0.3.0-dev",
+    "version": "0.3.0",
     "description": "Module for Multiple Deterministic Finite Automaton (DFA) extended with Timeout, to embed in firmware and ETS-applications based on OpenKNX",
     "keywords": [
         "knx",
