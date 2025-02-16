@@ -1,3 +1,8 @@
+# upcoming
+
+* Fix ETS-Applikation: Spaltenbreite für Sendestrategie war für eine Option zu schmal 
+
+
 # 2025-02-16 v0.3.0-Beta
 
 * Fix: Rekonstruktion nur von gültigem Zustand (Fall trat auf, falls der Automat vor dem Neustart noch nicht gestartet war)
