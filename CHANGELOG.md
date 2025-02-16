@@ -1,4 +1,4 @@
-# vorbereitet für v0.3.0
+# 2025-02-16 v0.3.0-Beta
 
 * Fix: Rekonstruktion nur von gültigem Zustand (Fall trat auf, falls der Automat vor dem Neustart noch nicht gestartet war)
 * Erweiterung/Fix: Pausieren-Status wird nun bei Rekonstruktion berücksichtigt 
