@@ -1,13 +1,14 @@
 > # BETA-STATUS! <!-- (DE/German) -->
 >
-> Obgleich vorab ein länger andauernder interner Produktiv-Test erfolgt ist, 
-> in dessen Rahmen nur noch Anpassungs- und Optimierungsbedarf bei der Behandlung von Spezialfällen indentifiziert wurde,
-> besteht weiterhin ein erhöhtes Risiko von Fehlern.
-> Vor allem bei der Nutzung von erweiterten Funktionen und solchen Anwendungsszenarien, die bei der Entwicklung nicht berücksichtigt wurden.
->
+> Die Implementation basiert auf einem einfachen und klaren formalen Modell 
+> und hat sich in länger andauernden internen Produktiv-Tests bislang als sehr zuverlässig erwiesen.
+> Trotzdem besteht noch eine erhöhte Wahrscheinlichkeit von unerwartetem, oder sogar fehlerhaftem, Verhalten,
+> vor allem bei erweiterten Funktionalitäten die über das einfache und robuste formelle Modelle hinausgehen.
+> 
 > In nachfolgenden Versionen sind Änderungen an der KO-Nummerierung möglich, 
-> daher wird dringend von Verweisen auf KO-Nummern dieses Moduls abgeraten.
-> Weitere kompatiblitätsbrechende Änderungen sind nicht auszuschließen, zum aktuellen Zeitpunkt jedoch nicht geplant. 
+> daher wird von Verweisen auf KO-Nummern dieses Moduls abgeraten.
+> Weitere kompatiblitätsbrechende Änderungen sind zum aktuellen Zeitpunkt nicht geplant und werden nach Möglichkeit vermieden, 
+> können jedoch nicht ausgeschlossen werden. 
 
 <!--
 # Deterministic Finite Automaton (DFA) Module for OpenKNX
@@ -27,7 +28,7 @@ Von Cornelius Köpp 2023-09 -- 2025
 
 
 
-## Beschreibung <!-- (DE) -->
+## Kurzbeschreibung
 Dieses Modul erlaubt eine universelle Modellierung von zustandsabhängigem Verhalten:<br />
 Jeder Kanal repräsentiert eine Automaten-Definition mit 32 verschiedenen Zuständen,
 zwischen denen durch 8 verschiedenen Eingabeereignisse oder Ablauf eines zustandsabhängigen Timeouts gewechselt werden kann.
@@ -35,6 +36,25 @@ zwischen denen durch 8 verschiedenen Eingabeereignisse oder Ablauf eines zustand
 
 Die Definition in der ETS erfolgt über eine (zwei-dimensionale) Zustandsübergangstabelle.<br />
 Zur **Konfiguration in der ETS** siehe [Applikationsbeschreibung](doc/DFA_Applikationsbeschreibung.md)
+
+
+### Einsatz
+
+Das Modul kann eingesetzt werden, um zustandsabhängiges Verhalten zu definieren,
+das abhängig ist von der Reihenfolge, oder sogar genauer definierten zeitlichen Abfolge, von Ereignissen.
+Die Verarbeitung erfolgt Ereignis-orientiert, bei Eingang von Telegrammen vom Bus, 
+Aktualisierung von Logik-Ausgängen in der Vorverarbeitung (oder anderer KOs), oder nach Ablauf eines zustandsabhängigen Timeouts.  
+
+Verhalten das nur von aktuellen Werten (z.B. logische Verknüpfung von mehreren Eingängen) oder der Uhrzeit abhängt, 
+oder Umwandlung und Berechnung von Werten, kann mit dem [OpenKNX Logikmodul](https://github.com/OpenKNX/OFM-LogicModule) beschrieben werden.
+Dies ist in vielen Fällen nützlich oder notwendig zur Vorbereitung von Eingangswerten dieses Moduls,
+daher können Ausgänge von Logikkanälen direkt als Eingänge gewählt werden.
+
+Für Standardprobleme sollten spezialisierte Module wie z.B.
+[OpenKNX PresenceModule](https://github.com/OpenKNX/OFM-PresenceModule) genutzt werden;
+dieses bieten eine auf den jeden Anwendungsfall optimierte Konfiguration.
+
+
 
 ## Grundidee in Anlehnung an gängige formale Definitionen:
 > Informatikern wird das Modell bekannt und vertraut vorkommen; 
@@ -78,7 +98,7 @@ Nicht angegebene Zustandsübergabe werden ignoriert und führen nicht in einen F
 Falls X<sub>z</sub>&subset;X (*Direktes Setzen von Zuständen ist erlaubt*), 
 so gilt d(z,z<sub>i</sub>)=z<sub>i</sub> 
 für alle z<sub>i</sub>&in;X<sub>z</sub>\\{z} (*ignorieren von erneutem Aufruf des bereits gesetzten Zustands*), 
-oder sogar für alle z<sub>i</sub>&in;X<sub>z</sub> (*Neustart von bereits gesetzte, Zustand*).
+oder sogar für alle z<sub>i</sub>&in;X<sub>z</sub> (*Neustart von bereits gesetztem Zustand*).
 
 
 ### *Endzustände* 
