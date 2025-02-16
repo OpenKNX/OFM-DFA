@@ -68,6 +68,19 @@ dieses bieten eine auf den jeden Anwendungsfall optimierte Konfiguration.
 * [Einführungsbeispiel für KNX-Nutzer:<br>**Virtueller Schaltaktor mit Sperre und Treppenhaus-Funktion**](doc/DFA_Beispiel1_VirtuellerAktor.md#einführungsbeispiel-für-knx-nutzer-virtueller-schaltaktor-mit-sperre-und-treppenhaus-funktion)
 * [Beispiel zur Vorverarbeitung durch Logik-Kanäle:<br>**Umwandlung von DPT2 (Zwangsführung) in Eingabesymbole**](doc/DFA_Beispiel2_DPT2.md#beispiel-zur-vorverarbeitung-durch-logik-kanäle-umwandlung-von-dpt2-zwangsführung-in-eingabesymbole)
 
+Weitere Anwendungen (ohne detaillierte Dokumentation):
+
+* Abbildung von Fertig-Meldung/Leerungs-Aufforderung für Waschmaschinen und Trockner und Erkennung von Leerung durch Präsenz
+* Briefkasten
+* Dunstabzugshaubensteuerung
+* Einfache Menü-Steuerungen unter Einsatz von Text-Ausgabe
+* Simulation von einfachen KNX-Geräten
+* Umschaltungen zwischen mehrfachen Manuell und Automatik-Steuerungen mit Rückfall
+* Spezialfälle von Präsenzsteuerung, die nicht durch das OpenKNX-VPM-Modul abgebildet werden können
+* Manuelles Quittieren von Sensor-verursachten Änderungen
+* Ausführung von Sequenzen mit Zeitablauf, z.B. Fahren von Rollläden nacheinander
+* Erkennung von/Reaktion auf bestimmten aufeinanderfolgenden Ereignissen, oder deren Ausbleiben
+
 
 ## Grundidee in Anlehnung an gängige formale Definitionen:
 > Informatikern wird das Modell bekannt und vertraut vorkommen; 
