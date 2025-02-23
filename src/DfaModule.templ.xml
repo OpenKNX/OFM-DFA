@@ -31,7 +31,7 @@
                 <!-- 4 bits unused; TODO reduce size! -->
               </Union>
 
-
+              <!-- INPUT Symbols -->
               <Parameter Id="%AID%_P-%T%%CC%7100" Name="a%C%SymbolAName"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Eingabe 1"  Value="" />
               <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="18" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7101" Name="a%C%SymbolAInput"         ParameterType="%AID%_PT-DfaInputKo"           Offset="0" BitOffset="0"      Text="KO Eingabe 1"           Value="0" />
@@ -88,12 +88,12 @@
                 <Parameter Id="%AID%_UP-%T%%CC%7804" Name="a%C%SymbolHLogicNumber"   ParameterType="%AID%_PT-DfaInputLogicNumber"  Offset="1" BitOffset="0"      Text="Logik-Kanal-Ausgangs-Nummer Eingabe 8" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7803" Name="a%C%SymbolHTrigger"       ParameterType="%AID%_PT-DfaInputTrigger"      Offset="3" BitOffset="0"      Text="Eingabewert 8"          Value="2" />
               </Union>
-              <!-- EMPTY -->
+
+              <!-- Output Definitions -->
               <Parameter Id="%AID%_P-%T%%CC%8100" Name="a%C%Output1Name"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Ausgabe 1"  Value="" />
               <Parameter Id="%AID%_P-%T%%CC%8200" Name="a%C%Output2Name"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Ausgabe 2"  Value="" />
               <Parameter Id="%AID%_P-%T%%CC%8300" Name="a%C%Output3Name"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Ausgabe 3"  Value="" />
               <Parameter Id="%AID%_P-%T%%CC%8400" Name="a%C%Output4Name"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Ausgabe 4"  Value="" />
-              <!-- EMPTY -->
               <Union SizeInBit="24"><Memory CodeSegment="%MID%" Offset="6" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%8101" Name="a%C%Output1Dpt"           ParameterType="%AID%_PT-DfaOutputDpt"         Offset="0" BitOffset="0"      Text="Datentyp Ausgabe 1"       Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%8102" Name="a%C%Output1IntervalBase"  ParameterType="%AID%_PT-DelayBase"            Offset="1" BitOffset="0"      Text="Sendeintervall Zeitbasis" Value="1" />
