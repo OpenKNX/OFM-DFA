@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<KNX xmlns:op="http://github.com/OpenKNX/OpenKNXproducer" xmlns="http://knx.org/xml/project/20" CreatedBy="KNX MT" ToolVersion="5.1.255.16695">
+  <ManufacturerData>
+    <Manufacturer>
+      <ApplicationPrograms>
+        <ApplicationProgram ApplicationNumber="" ApplicationVersion="" DefaultLanguage="" DynamicTableManagement="" Id="" Linkable="" LoadProcedureStyle="" MaskVersion="" Name="" PeiType="" ProgramType="">
+          <!-- this ist just for documentation reasons, as an example for the caller 
+          <op:partParams name="STATE_NUMBER">
+            <op:param name="%DfaStateNumber%"  value="1" digits="1" />
+          </op:partParams>        
+          -->
+          <Static>
+            <ParameterTypes>
+              <ParameterType Id="%AID%_PT-DfaStateENUM" Name="DfaStateENUM">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration   Value="%DfaStateNumber%" Text="%DfaStateNumber%"         Id="%ENID%" />
+                </TypeRestriction>
+              </ParameterType>            
+            </ParameterTypes>
+          </Static>
+          <Dynamic>
+            <ChannelIndependentBlock> 
+            </ChannelIndependentBlock>
+          </Dynamic>
+        </ApplicationProgram>
+      </ApplicationPrograms>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>

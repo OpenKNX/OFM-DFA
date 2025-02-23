@@ -3,6 +3,14 @@
 
 #include "DfaChannel.h"
 
+#if (DFA_DEF_STATES_COUNT == 16)
+    // ok
+#elif (DFA_DEF_STATES_COUNT == 32)
+    // ok
+#else
+    #error "illegal DFA_DEF_STATES_COUNT!"
+#endif
+
 #pragma region "DFA_CHANNEL_ADDR"
 
 const uint8_t DfaChannel::_inputKo[DFA_DEF_INPUTS_COUNT] = {
@@ -94,6 +102,7 @@ const uint16_t DfaChannel::_outputSendPRI[DFA_DEF_STATES_COUNT][DFA_DEF_OUTPUTS_
     { DFA_az14o1Send, DFA_az14o2Send, DFA_az14o3Send, DFA_az14o4Send, },
     { DFA_az15o1Send, DFA_az15o2Send, DFA_az15o3Send, DFA_az15o4Send, },
     { DFA_az16o1Send, DFA_az16o2Send, DFA_az16o3Send, DFA_az16o4Send, },
+#if DFA_DEF_STATES_COUNT > 16
     { DFA_az17o1Send, DFA_az17o2Send, DFA_az17o3Send, DFA_az17o4Send, },
     { DFA_az18o1Send, DFA_az18o2Send, DFA_az18o3Send, DFA_az18o4Send, },
     { DFA_az19o1Send, DFA_az19o2Send, DFA_az19o3Send, DFA_az19o4Send, },
@@ -110,7 +119,8 @@ const uint16_t DfaChannel::_outputSendPRI[DFA_DEF_STATES_COUNT][DFA_DEF_OUTPUTS_
     { DFA_az30o1Send, DFA_az30o2Send, DFA_az30o3Send, DFA_az30o4Send, },
     { DFA_az31o1Send, DFA_az31o2Send, DFA_az31o3Send, DFA_az31o4Send, },
     { DFA_az32o1Send, DFA_az32o2Send, DFA_az32o3Send, DFA_az32o4Send, },
-    /*
+#endif
+#if DFA_DEF_STATES_COUNT > 32
     { DFA_az33o1Send, DFA_az33o2Send, DFA_az33o3Send, DFA_az33o4Send, },
     { DFA_az34o1Send, DFA_az34o2Send, DFA_az34o3Send, DFA_az34o4Send, },
     { DFA_az35o1Send, DFA_az35o2Send, DFA_az35o3Send, DFA_az35o4Send, },
@@ -143,7 +153,7 @@ const uint16_t DfaChannel::_outputSendPRI[DFA_DEF_STATES_COUNT][DFA_DEF_OUTPUTS_
     { DFA_az62o1Send, DFA_az62o2Send, DFA_az62o3Send, DFA_az62o4Send, },
     { DFA_az63o1Send, DFA_az63o2Send, DFA_az63o3Send, DFA_az63o4Send, },
     { DFA_az64o1Send, DFA_az64o2Send, DFA_az64o3Send, DFA_az64o4Send, },
-    */
+#endif    
 };
 const uint16_t DfaChannel::_outputValuePRI[DFA_DEF_STATES_COUNT][DFA_DEF_OUTPUTS_COUNT] = {
     // TODO ensure same position of all Outputs
@@ -163,6 +173,7 @@ const uint16_t DfaChannel::_outputValuePRI[DFA_DEF_STATES_COUNT][DFA_DEF_OUTPUTS
     { DFA_az14o1Dpt1, DFA_az14o2Dpt1, DFA_az14o3Dpt1, DFA_az14o4Dpt1, },
     { DFA_az15o1Dpt1, DFA_az15o2Dpt1, DFA_az15o3Dpt1, DFA_az15o4Dpt1, },
     { DFA_az16o1Dpt1, DFA_az16o2Dpt1, DFA_az16o3Dpt1, DFA_az16o4Dpt1, },
+#if DFA_DEF_STATES_COUNT > 16
     { DFA_az17o1Dpt1, DFA_az17o2Dpt1, DFA_az17o3Dpt1, DFA_az17o4Dpt1, },
     { DFA_az18o1Dpt1, DFA_az18o2Dpt1, DFA_az18o3Dpt1, DFA_az18o4Dpt1, },
     { DFA_az19o1Dpt1, DFA_az19o2Dpt1, DFA_az19o3Dpt1, DFA_az19o4Dpt1, },
@@ -179,7 +190,8 @@ const uint16_t DfaChannel::_outputValuePRI[DFA_DEF_STATES_COUNT][DFA_DEF_OUTPUTS
     { DFA_az30o1Dpt1, DFA_az30o2Dpt1, DFA_az30o3Dpt1, DFA_az30o4Dpt1, },
     { DFA_az31o1Dpt1, DFA_az31o2Dpt1, DFA_az31o3Dpt1, DFA_az31o4Dpt1, },
     { DFA_az32o1Dpt1, DFA_az32o2Dpt1, DFA_az32o3Dpt1, DFA_az32o4Dpt1, },
-    /*
+#endif
+#if DFA_DEF_STATES_COUNT > 32
     { DFA_az33o1Dpt1, DFA_az33o2Dpt1, DFA_az33o3Dpt1, DFA_az33o4Dpt1, },
     { DFA_az34o1Dpt1, DFA_az34o2Dpt1, DFA_az34o3Dpt1, DFA_az34o4Dpt1, },
     { DFA_az35o1Dpt1, DFA_az35o2Dpt1, DFA_az35o3Dpt1, DFA_az35o4Dpt1, },
@@ -212,7 +224,7 @@ const uint16_t DfaChannel::_outputValuePRI[DFA_DEF_STATES_COUNT][DFA_DEF_OUTPUTS
     { DFA_az62o1Dpt1, DFA_az62o2Dpt1, DFA_az62o3Dpt1, DFA_az62o4Dpt1, },
     { DFA_az63o1Dpt1, DFA_az63o2Dpt1, DFA_az63o3Dpt1, DFA_az63o4Dpt1, },
     { DFA_az64o1Dpt1, DFA_az64o2Dpt1, DFA_az64o3Dpt1, DFA_az64o4Dpt1, },
-    */
+#endif
 };
 
 // TODO calculate index; expected distance should be protected by compile error
@@ -241,6 +253,7 @@ const uint16_t DfaChannel::_transPRI[DFA_DEF_STATES_COUNT][DFA_DEF_INPUTS_COUNT]
     {DFA_ad14A, DFA_ad14B, DFA_ad14C, DFA_ad14D, DFA_ad14E, DFA_ad14F, DFA_ad14G, DFA_ad14H},
     {DFA_ad15A, DFA_ad15B, DFA_ad15C, DFA_ad15D, DFA_ad15E, DFA_ad15F, DFA_ad15G, DFA_ad15H},
     {DFA_ad16A, DFA_ad16B, DFA_ad16C, DFA_ad16D, DFA_ad16E, DFA_ad16F, DFA_ad16G, DFA_ad16H},
+#if DFA_DEF_STATES_COUNT > 16
     {DFA_ad17A, DFA_ad17B, DFA_ad17C, DFA_ad17D, DFA_ad17E, DFA_ad17F, DFA_ad17G, DFA_ad17H},
     {DFA_ad18A, DFA_ad18B, DFA_ad18C, DFA_ad18D, DFA_ad18E, DFA_ad18F, DFA_ad18G, DFA_ad18H},
     {DFA_ad19A, DFA_ad19B, DFA_ad19C, DFA_ad19D, DFA_ad19E, DFA_ad19F, DFA_ad19G, DFA_ad19H},
@@ -257,7 +270,8 @@ const uint16_t DfaChannel::_transPRI[DFA_DEF_STATES_COUNT][DFA_DEF_INPUTS_COUNT]
     {DFA_ad30A, DFA_ad30B, DFA_ad30C, DFA_ad30D, DFA_ad30E, DFA_ad30F, DFA_ad30G, DFA_ad30H},
     {DFA_ad31A, DFA_ad31B, DFA_ad31C, DFA_ad31D, DFA_ad31E, DFA_ad31F, DFA_ad31G, DFA_ad31H},
     {DFA_ad32A, DFA_ad32B, DFA_ad32C, DFA_ad32D, DFA_ad32E, DFA_ad32F, DFA_ad32G, DFA_ad32H},
-    /*
+#endif
+#if DFA_DEF_STATES_COUNT > 32
     {DFA_ad33A, DFA_ad33B, DFA_ad33C, DFA_ad33D, DFA_ad33E, DFA_ad33F, DFA_ad33G, DFA_ad33H},
     {DFA_ad34A, DFA_ad34B, DFA_ad34C, DFA_ad34D, DFA_ad34E, DFA_ad34F, DFA_ad34G, DFA_ad34H},
     {DFA_ad35A, DFA_ad35B, DFA_ad35C, DFA_ad35D, DFA_ad35E, DFA_ad35F, DFA_ad35G, DFA_ad35H},
@@ -290,7 +304,7 @@ const uint16_t DfaChannel::_transPRI[DFA_DEF_STATES_COUNT][DFA_DEF_INPUTS_COUNT]
     {DFA_ad62A, DFA_ad62B, DFA_ad62C, DFA_ad62D, DFA_ad62E, DFA_ad62F, DFA_ad62G, DFA_ad62H},
     {DFA_ad63A, DFA_ad63B, DFA_ad63C, DFA_ad63D, DFA_ad63E, DFA_ad63F, DFA_ad63G, DFA_ad63H},
     {DFA_ad64A, DFA_ad64B, DFA_ad64C, DFA_ad64D, DFA_ad64E, DFA_ad64F, DFA_ad64G, DFA_ad64H},
-    */
+#endif
 };
 
 // TODO calculate index; expected distance should be protected by compile error
@@ -312,6 +326,7 @@ const DfaStateTimeoutParamRelIdx DfaChannel::_timeoutPRI[DFA_DEF_STATES_COUNT] =
     {DFA_ad14TTime, DFA_ad14T},
     {DFA_ad15TTime, DFA_ad15T},
     {DFA_ad16TTime, DFA_ad16T},
+#if DFA_DEF_STATES_COUNT > 16
     {DFA_ad17TTime, DFA_ad17T},
     {DFA_ad18TTime, DFA_ad18T},
     {DFA_ad19TTime, DFA_ad19T},
@@ -328,7 +343,8 @@ const DfaStateTimeoutParamRelIdx DfaChannel::_timeoutPRI[DFA_DEF_STATES_COUNT] =
     {DFA_ad30TTime, DFA_ad30T},
     {DFA_ad31TTime, DFA_ad31T},
     {DFA_ad32TTime, DFA_ad32T},
-    /*
+#endif
+#if DFA_DEF_STATES_COUNT > 32
     {DFA_ad33TTime, DFA_ad33T},
     {DFA_ad34TTime, DFA_ad34T},
     {DFA_ad35TTime, DFA_ad35T},
@@ -361,7 +377,7 @@ const DfaStateTimeoutParamRelIdx DfaChannel::_timeoutPRI[DFA_DEF_STATES_COUNT] =
     {DFA_ad62TTime, DFA_ad62T},
     {DFA_ad63TTime, DFA_ad63T},
     {DFA_ad64TTime, DFA_ad64T},
-    */
+#endif
 };
 
 #pragma endregion "DFA_CHANNEL_ADDR"
