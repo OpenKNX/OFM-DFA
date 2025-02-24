@@ -5108,9 +5108,9 @@
                           </choose>
 
                           <!-- Tabelle Zustände und Übergänge  -->
-                          <ParameterBlock Id="%AID%_PB-%C%02" Name="Transfer%C%" Text="z" Inline="true" Layout="Table" HelpContext="DFA-Tabelle-Zustaende-und-Uebergaenge">
+                          <ParameterBlock Id="%AID%_PB-%C%02" Name="Transfer%C%" Text="d" Inline="true" Layout="Table" HelpContext="DFA-Tabelle-Zustaende-und-Uebergaenge">
                             <Rows>
-                              <Row Id="%AID%_PB-02_R-65" Name="Notes"   Text="?" />
+                              <Row Id="%AID%_PB-02_R-65" Name="Notes"   Text="z" />
                               <Row Id="%AID%_PB-02_R-1" Name="State1" Text="1" />
                               <Row Id="%AID%_PB-02_R-2" Name="State2" Text="2" />
                               <Row Id="%AID%_PB-02_R-3" Name="State3" Text="3" />
@@ -5146,7 +5146,7 @@
 
                             </Rows>
                             <Columns>
-                              <Column Id="%AID%_PB-02_C-1"  Name="Label"        Width="35%" Text="Bezeichnung" />
+                              <Column Id="%AID%_PB-02_C-1"  Name="Label"        Width="35%" Text=" " />
                               <Column Id="%AID%_PB-02_C-2"  Name="Input1"       Width="10%" Text="A" />
                               <Column Id="%AID%_PB-02_C-3"  Name="Input2"       Width="10%" Text="B" />
                               <Column Id="%AID%_PB-02_C-4"  Name="Input3"       Width="10%" Text="C" />
@@ -5155,10 +5155,15 @@
                               <Column Id="%AID%_PB-02_C-7"  Name="Input6"       Width="10%" Text="F" />
                               <Column Id="%AID%_PB-02_C-8"  Name="Input7"       Width="10%" Text="G" />
                               <Column Id="%AID%_PB-02_C-9"  Name="Input8"       Width="10%" Text="H" />
-                              <Column Id="%AID%_PB-02_C-10" Name="TimeoutTime"  Width="13%" Text="Timeout" />
-                              <Column Id="%AID%_PB-02_C-11" Name="TimeoutUnit"  Width="11%" Text="Einheit" />
+                              <Column Id="%AID%_PB-02_C-10" Name="TimeoutTime"  Width="13%" Text=" " />
+                              <Column Id="%AID%_PB-02_C-11" Name="TimeoutUnit"  Width="11%" Text=" " />
                               <Column Id="%AID%_PB-02_C-12" Name="Timeout"      Width="10%" Text="T" />
                             </Columns>
+
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="Bezeichnung"  UIHint="Headline" Cell="1,1" />
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="Timeout"      UIHint="Headline" Cell="1,10" />
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="Einheit"      UIHint="Headline" Cell="1,11" />
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="bei Ablauf"                     Cell="1,12" />
 
                             <!-- Symbols A + B -->
                             <choose ParamRefId="%AID%_UP-%T%%CC%7001_R-%T%%CC%700101">

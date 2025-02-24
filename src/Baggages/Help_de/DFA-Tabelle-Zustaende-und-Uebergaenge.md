@@ -11,7 +11,8 @@ Für jede Kombination aus (Ausgangs)Zustand (Zeile 1 bis 32) und Eingabesymbol (
 kann ein möglicher Folgezustand (`1` bis `32`), oder ein Zurücksetzen des Timeouts (`<<`) festgelegt werden.
 Falls kein Folgezustand festgelegt wird (`-`), so wird die Eingabe ignoriert.
 
-*Folgezustand identisch zum Ausgangszustand:* Mit dieser Definition kann erreicht werden, dass ein definierter Timeout zurückgesetzt wird, oder Zustand erneut auf den Bus gesendet wird.
+*Folgezustand identisch zum Ausgangszustand:* Mit dieser Definition kann erreicht werden,
+dass ein definierter Timeout zurückgesetzt wird und der Zustand erneut auf den Bus gesendet wird.
 
 ##### Timeout / Einheit / Spalte "T"
 
@@ -26,7 +27,7 @@ D.h.: Es wurde *nicht*
 
 * Rückfall auf einen Standardzustand
 * zeitverzögerte Aktionen
-* Sicherstellen, dass innerhalb eines Zeitraums nicht eintritt 
+* Sicherstellen, dass innerhalb eines Zeitraums ein Ereignis nicht eintritt 
 
 ###### Spalte T: zeitbasierter Folgezustand
 
@@ -36,9 +37,11 @@ Ohne Auswahl erfolgt keine zeitabhängige Reaktion.
 ###### Timeout / Einheit
 
 Definiert die Dauer des Timeouts.
-Die Zeitmessung beginnt mit Eintritt in den Zustand. 
 
-*Zurücksetzen des Timeouts:* Bei erneutem Aufruf desselben Zustands beginnt die Zeitmessung erneut.
+Die Zeitmessung beginnt mit Eintritt in den Zustand.
+Bei erneutem Aufruf desselben Zustands oder Zurücksetzen des Timeouts beginn die Zeitmessung nochmal in voller definierten Länge.
+Ein Pausieren unterbricht die Zeitmessung, bis zum Beenden der Pause.
+Falls Rekonstruktion aktiviert ist, so wird nach Neustart des Gerätes mit der restlichen Zeit fortgesetzt oder die Zeitmessung erneut gestartet.
 
 
 

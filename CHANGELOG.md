@@ -1,6 +1,8 @@
 # upcoming
 
-* Fix/Verbesserung ETS-Applikation: Spaltenbreite und Options-Beschriftung für Ausgangs-Sendestrategie 
+* Fix/Verbesserung ETS-Applikation:
+  * Kopf der Tabelle Zustände und Übergangsfunktion überarbeitet (zur Vermeidung leerer Zellen) 
+  * Spaltenbreite und Options-Beschriftung für Ausgangs-Sendestrategie
 
 
 # 2025-02-16 v0.3.0-Beta
