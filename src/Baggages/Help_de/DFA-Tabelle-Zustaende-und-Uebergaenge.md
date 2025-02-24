@@ -7,8 +7,8 @@ Der Wert wird ausschließlich in der ETS verwendet und hat keinen Einfluss auf d
 
 ##### Übergangsfunktion (Spalte "A" bis "H")
 
-Für jede Kombination aus (Ausgangs)Zustand (Zeile 1 bis 32) und Eingabesymbol (Spalte A bis H) 
-kann ein möglicher Folgezustand (`1` bis `32`), oder ein Zurücksetzen des Timeouts (`<<`) festgelegt werden.
+Für jede Kombination aus (Ausgangs)Zustand (Zeile 1 bis 16) und Eingabesymbol (Spalte A bis H) 
+kann ein möglicher Folgezustand (`1` bis `16`), oder ein Zurücksetzen des Timeouts (`<<`) festgelegt werden.
 Falls kein Folgezustand festgelegt wird (`-`), so wird die Eingabe ignoriert.
 
 *Folgezustand identisch zum Ausgangszustand:* Mit dieser Definition kann erreicht werden,

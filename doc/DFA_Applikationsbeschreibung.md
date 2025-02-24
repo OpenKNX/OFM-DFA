@@ -447,15 +447,15 @@ Optional kann eine Änderung des Zustands, unabhängig vom aktuellen Zustand, de
 
 <!-- DOCCONTENT
 * **nein**:                                    Der Zustand wechselt ausschließlich durch Eingabe eines Symbols, oder Timeout.
-* **über separates KO**:                       Es wird ein weiteres KO eingeblendet, über das der aktuelle Zustand unmittelbar überschrieben werden kann. Zustände außerhalb des Definitionsbereichs (Szene 1 bis 32) werden ignoriert.
-* **über gemeinsames KO mit Zustandsausgabe**: Der aktuelle Zustand kann über das KO mit Ausgabe des Momentan-Zustandes überschrieben werden. Zustände außerhalb des Definitionsbereichs (Szene 1 bis 32) werden ignoriert.
+* **über separates KO**:                       Es wird ein weiteres KO eingeblendet, über das der aktuelle Zustand unmittelbar überschrieben werden kann. Zustände außerhalb des Definitionsbereichs (Szene 1 bis 16) werden ignoriert.
+* **über gemeinsames KO mit Zustandsausgabe**: Der aktuelle Zustand kann über das KO mit Ausgabe des Momentan-Zustandes überschrieben werden. Zustände außerhalb des Definitionsbereichs (Szene 1 bis 16) werden ignoriert.
 DOCCONTENT -->
 <!-- DOCEND -->
 | Einstellungswert                        | Erklärung                                                                                                                                                                                                                                                                             |
 |-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | nein                                    | Der Zustand wechselt ausschließlich durch Eingabe eines Symbols, oder Timeout.                                                                                                                                                                                                        |
-| über separates KO                       | Es wird ein weiteres KO eingeblendet, über das der aktuelle Zustand unmittelbar überschrieben werden kann. Zustände außerhalb des Definitionsbereichs (Szene 1 bis 32) werden ignoriert.                                                                                              |
-| über gemeinsames KO mit Zustandsausgabe | Der aktuelle Zustand kann über das KO mit Ausgabe des Momentan-Zustandes überschrieben werden. Zustände außerhalb des Definitionsbereichs (Szene 1 bis 32) werden ignoriert. |
+| über separates KO                       | Es wird ein weiteres KO eingeblendet, über das der aktuelle Zustand unmittelbar überschrieben werden kann. Zustände außerhalb des Definitionsbereichs (Szene 1 bis 16) werden ignoriert.                                                                                              |
+| über gemeinsames KO mit Zustandsausgabe | Der aktuelle Zustand kann über das KO mit Ausgabe des Momentan-Zustandes überschrieben werden. Zustände außerhalb des Definitionsbereichs (Szene 1 bis 16) werden ignoriert. |
 
 
 <!-- DOC -->
@@ -483,8 +483,8 @@ Der Wert wird ausschließlich in der ETS verwendet und hat keinen Einfluss auf d
 
 ##### **Übergangsfunktion (Spalte "A" bis "H")**
 
-Für jede Kombination aus (Ausgangs)Zustand (Zeile 1 bis 32) und Eingabesymbol (Spalte A bis H) 
-kann ein möglicher Folgezustand (`1` bis `32`), oder ein Zurücksetzen des Timeouts (`<<`) festgelegt werden.
+Für jede Kombination aus (Ausgangs)Zustand (Zeile 1 bis 16) und Eingabesymbol (Spalte A bis H) 
+kann ein möglicher Folgezustand (`1` bis `16`), oder ein Zurücksetzen des Timeouts (`<<`) festgelegt werden.
 Falls kein Folgezustand festgelegt wird (`-`), so wird die Eingabe ignoriert.
 
 *Folgezustand identisch zum Ausgangszustand:* Mit dieser Definition kann erreicht werden,
@@ -585,9 +585,9 @@ Falls ein Sendeverhalten für diesen Zustand definiert wurde, kann hier der Wert
 
 |  KO   |    DPT | Bezeichnung                | Erklärung                                                                                                                                                                                                           |
 |:-----:|-------:|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|  +0   | 17.001 | Aktueller Zustand          | Gibt den momentanen Zustand aus, als `0=Szene 1` bis `31=Szene 32`.<br />Wert wird bei jedem Setzen des Zustandes geschrieben, auch wenn der Zustand sich nicht ändern sollte.                                      |
+|  +0   | 17.001 | Aktueller Zustand          | Gibt den momentanen Zustand aus, als `0=Szene 1` bis `15=Szene 16`.<br />Wert wird bei jedem Setzen des Zustandes geschrieben, auch wenn der Zustand sich nicht ändern sollte.                                      |
 |   "   | 17.001 | Zustand (Ausgang/Eingang)  | [(Alternativ/Optional)](#direktes-setzen-von-zustand-erlauben) Kombinierte Funktion von *Aktueller Zustand* und *Zustand setzen*.                                                                                   |
-| (+1)  | 17.001 | Zustand setzen             | [(Optional)](#direktes-setzen-von-zustand-erlauben) Erlaubt ein direktes Festlegen/Überschreiben des Zustands von außen. Verarbeitet werden die Werte `0=Szene 1` bis `31=Szene 32`, alle anderen werden ignoriert. |
+| (+1)  | 17.001 | Zustand setzen             | [(Optional)](#direktes-setzen-von-zustand-erlauben) Erlaubt ein direktes Festlegen/Überschreiben des Zustands von außen. Verarbeitet werden die Werte `0=Szene 1` bis `15=Szene 16`, alle anderen werden ignoriert. |
 | (+2)  |  1.??? | Eingang 1 - Symbol A       | [(Optional)](#eingabekanal--kanalauswahl-je-eingabesymbol-oder-eingabesymbol-paar) Erzeugt das Eingabesymbol **A** (bei Eingang von konfiguriertem Trigger-Wert)                                                    |
 |   "   |  1.??? | Eingang 1 - Symbol A/B     | [(Optional)](#eingabekanal--kanalauswahl-je-eingabesymbol-oder-eingabesymbol-paar) Erzeugt die Eingabesymbole **A** (bei Wert `1`) und **B** (bei Wert `0`)                                                         |
 | (+3)  |  1.??? | Eingang 2 - Symbol B       | [(Optional)](#eingabekanal--kanalauswahl-je-eingabesymbol-oder-eingabesymbol-paar) Erzeugt das Eingabesymbol **B** (bei Eingang von konfiguriertem Trigger-Wert)                                                    |
