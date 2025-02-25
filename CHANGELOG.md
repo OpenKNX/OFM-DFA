@@ -1,6 +1,6 @@
 # upcoming
 
-* Fix ETS-Applikation: Spaltenbreite für Sendestrategie war für eine Option zu schmal 
+* Fix/Verbesserung ETS-Applikation: Spaltenbreite und Options-Beschriftung für Ausgangs-Sendestrategie 
 
 
 # 2025-02-16 v0.3.0-Beta
