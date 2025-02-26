@@ -8,16 +8,19 @@ Definiert den Zeitraum bis der Wert erneut auf den Bus gesendet wird, falls ein 
 
 ##### Sendeverhalten (je Zustand)
 
+> ***Tipp zur erleichterten ETS-Konfiguration:*** 
+> Über die Tasten `-`, `k`(kein Senden), `w`(Wert), `z`(Zustand), `j`(jedes) kann die jeweilige Sendestrategie schnell ausgewählt, 
+> bzw. zwischen den verschiedenen Ausprägungen gewechselt, werden. Mit `<Tab>` kann zum nächsten Zustand gewechselt werden. 
+
 Definiert, ob in dem Zustand ein Wert für diesen Ausgang zugewiesen wird und wenn ja, ob und wann dieser auf den Bus gesendet wird.
 
-Wenn auf den Bus gesendet wird, 
-kann optional eine regelmäßige Wiederholung des Sendevorgangs eingestellt werden ("+ zyklisch"). 
+Für den Fall der ***Rekonstruktion*** kann beim Neustart ein "zusätzliches" einmaliges Senden aktiviert werden 
+("...&nbsp;+&nbsp;Rekonstruktion") um die Ausgangswerte auch nach einem Geräte-Neustart oder kompletten Bus-Neustart bereitzustellen.
+Hinweis: In Szenarien, in denen der Empfang des Ausgangswertes als Trigger eine Aktion auslöst oder neu startet, sollte das Senden in diesem Fall unterbleiben.
+
+Optional kann eine regelmäßige Wiederholung des Sendevorgangs eingestellt werden ("...&nbsp;+&nbsp;zyklisch"). 
 Die Wiederholung erfolgt dann unabhängig vom Zustand im für diesen Ausgang eingestellten ***Sendeintervall bei zyklischer Wiederholung***.
 
-Bei ***Rekonstruktion*** erfolgt ggf. - einmalig nach dem Neustart  - ein "zusätzliches" Senden,
-um die Ausgangswerte auch nach einem kompletten Bus-Neustart bereitzustellen.
-Dieses kann durch Sendeverhalten mit ***nicht nach Rekonstruktion*** ausgeschlossen werden, 
-z.B. für Fälle, in denen der Empfang des Ausgangswertes als Trigger eine Aktion auslöst oder neu startet. 
 
 * **-**:                                            Dem Zustand wird kein Ausgangswert zugeordnet. Der Wert des KOs wird nicht verändert (d.h. der bereits gesetzte Wert bleibt erhalten) und es wird nicht auf den Bus gesendet.
 * **kein Senden, nur KO setzen**:                   Das KO wird auf den angegebenen Wert gesetzt, ohne diesen auf den Bus zu senden. Anschließend ist ein Abruf per Read-Request möglich.
