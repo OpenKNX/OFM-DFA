@@ -5146,7 +5146,7 @@
 
                             </Rows>
                             <Columns>
-                              <Column Id="%AID%_PB-02_C-1"  Name="Label"        Width="35%" Text=" " />
+                              <Column Id="%AID%_PB-02_C-1"  Name="Label"        Width="35%" Text="Zustand  \  Eingabesymbol" />
                               <Column Id="%AID%_PB-02_C-2"  Name="Input1"       Width="10%" Text="A" />
                               <Column Id="%AID%_PB-02_C-3"  Name="Input2"       Width="10%" Text="B" />
                               <Column Id="%AID%_PB-02_C-4"  Name="Input3"       Width="10%" Text="C" />
