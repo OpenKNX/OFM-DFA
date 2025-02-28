@@ -1,5 +1,6 @@
 # upcoming
 
+* (BREAKING KO-Numbers) Neuordnung KOs inkl. Vorbereitung für zukünftige Ergänzungen ohne erneute Verschiebung
 * Fix/Verbesserung ETS-Applikation:
   * Kopf der Tabelle Zustände und Übergangsfunktion überarbeitet (zur Vermeidung leerer Zellen) 
   * Spaltenbreite und Options-Beschriftung für Ausgangs-Sendestrategie

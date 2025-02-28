@@ -4699,22 +4699,42 @@
 
             </ParameterRefs>
             <ComObjectTable>
-              <ComObject Id="%AID%_O-%T%%CC%0000" Name="KOa%C%State"   Text="Zustand"          Number="%K0%"  FunctionText="DEA %C%, Ausgabe Zustand"    DatapointType="DPST-17-1"  ObjectSize="1 Byte"    ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CC%0100" Name="KOa%C%StateI"  Text="Zustand setzen"   Number="%K1%"  FunctionText="DEA %C%, Eingabe Zustand"    DatapointType="DPST-17-1"  ObjectSize="1 Byte"    ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CC%0001" Name="KOa%C%Input1"  Text="Eingang 1"        Number="%K2%"  FunctionText="DEA %C%, Eingang 1"          DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CC%0002" Name="KOa%C%Input2"  Text="Eingang 2"        Number="%K3%"  FunctionText="DEA %C%, Eingang 2"          DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CC%0003" Name="KOa%C%Input3"  Text="Eingang 3"        Number="%K4%"  FunctionText="DEA %C%, Eingang 3"          DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CC%0004" Name="KOa%C%Input4"  Text="Eingang 4"        Number="%K5%"  FunctionText="DEA %C%, Eingang 4"          DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CC%0005" Name="KOa%C%Input5"  Text="Eingang 5"        Number="%K6%"  FunctionText="DEA %C%, Eingang 5"          DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CC%0006" Name="KOa%C%Input6"  Text="Eingang 6"        Number="%K7%"  FunctionText="DEA %C%, Eingang 6"          DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CC%0007" Name="KOa%C%Input7"  Text="Eingang 7"        Number="%K8%"  FunctionText="DEA %C%, Eingang 7"          DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CC%0008" Name="KOa%C%Input8"  Text="Eingang 8"        Number="%K9%"  FunctionText="DEA %C%, Eingang 8"          DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CC%0101" Name="KOa%C%RunSet"  Text="Ausführen setzen" Number="%K10%" FunctionText="DEA %C%, Ausführen"          DatapointType="DPST-1-10"  ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CC%0102" Name="KOa%C%Running" Text="Ausführen status" Number="%K11%" FunctionText="DEA %C%, Status Ausführend"  DatapointType="DPST-1-11"  ObjectSize="1 Bit"     ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CC%0201" Name="KOa%C%Output1" Text="Wertausgang 1"    Number="%K12%" FunctionText="DEA %C%, Ausgang 1"                                     ObjectSize="14 Bytes"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CC%0202" Name="KOa%C%Output2" Text="Wertausgang 2"    Number="%K13%" FunctionText="DEA %C%, Ausgang 2"                                     ObjectSize="14 Bytes"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CC%0203" Name="KOa%C%Output3" Text="Wertausgang 3"    Number="%K14%" FunctionText="DEA %C%, Ausgang 3"                                     ObjectSize="14 Bytes"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CC%0204" Name="KOa%C%Output4" Text="Wertausgang 4"    Number="%K15%" FunctionText="DEA %C%, Ausgang 4"                                     ObjectSize="14 Bytes"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CC%0102" Name="KOa%C%Running" Text="Ausführen status" Number="%K0%"  FunctionText="DEA %C%, Status Ausführend"  DatapointType="DPST-1-11"  ObjectSize="1 Bit"     ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CC%0101" Name="KOa%C%RunSet"  Text="Ausführen setzen" Number="%K1%"  FunctionText="DEA %C%, Ausführen"          DatapointType="DPST-1-10"  ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CC%0000" Name="KOa%C%State"   Text="Zustand"          Number="%K2%"  FunctionText="DEA %C%, Ausgabe Zustand"    DatapointType="DPST-17-1"  ObjectSize="1 Byte"    ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CC%0100" Name="KOa%C%StateI"  Text="Zustand setzen"   Number="%K3%"  FunctionText="DEA %C%, Eingabe Zustand"    DatapointType="DPST-17-1"  ObjectSize="1 Byte"    ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+
+              <!-- KO4 reserved--><ComObject Id="%AID%_O-%T%%CC%0011" Name="KOa%C%Dummy01" Text="Dummy01"          Number="%K4%"  FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <!-- KO5 reserved--><ComObject Id="%AID%_O-%T%%CC%0012" Name="KOa%C%Dummy02" Text="Dummy02"          Number="%K5%"  FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <!-- KO6 reserved--><ComObject Id="%AID%_O-%T%%CC%0013" Name="KOa%C%Dummy03" Text="Dummy03"          Number="%K6%"  FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <!-- KO7 reserved--><ComObject Id="%AID%_O-%T%%CC%0014" Name="KOa%C%Dummy04" Text="Dummy04"          Number="%K7%"  FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <!-- KO8 reserved--><ComObject Id="%AID%_O-%T%%CC%0015" Name="KOa%C%Dummy05" Text="Dummy05"          Number="%K8%"  FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <!-- KO9 reserved--><ComObject Id="%AID%_O-%T%%CC%0016" Name="KOa%C%Dummy06" Text="Dummy06"          Number="%K9%"  FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <!-- K10 reserved--><ComObject Id="%AID%_O-%T%%CC%0017" Name="KOa%C%Dummy07" Text="Dummy07"          Number="%K10%" FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+
+              <ComObject Id="%AID%_O-%T%%CC%0001" Name="KOa%C%Input1"  Text="Eingang 1"        Number="%K11%" FunctionText="DEA %C%, Eingang 1"          DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CC%0002" Name="KOa%C%Input2"  Text="Eingang 2"        Number="%K12%" FunctionText="DEA %C%, Eingang 2"          DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CC%0003" Name="KOa%C%Input3"  Text="Eingang 3"        Number="%K13%" FunctionText="DEA %C%, Eingang 3"          DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CC%0004" Name="KOa%C%Input4"  Text="Eingang 4"        Number="%K14%" FunctionText="DEA %C%, Eingang 4"          DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CC%0005" Name="KOa%C%Input5"  Text="Eingang 5"        Number="%K15%" FunctionText="DEA %C%, Eingang 5"          DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CC%0006" Name="KOa%C%Input6"  Text="Eingang 6"        Number="%K16%" FunctionText="DEA %C%, Eingang 6"          DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CC%0007" Name="KOa%C%Input7"  Text="Eingang 7"        Number="%K17%" FunctionText="DEA %C%, Eingang 7"          DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CC%0008" Name="KOa%C%Input8"  Text="Eingang 8"        Number="%K18%" FunctionText="DEA %C%, Eingang 8"          DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+
+              <!-- K19 reserved--><ComObject Id="%AID%_O-%T%%CC%0018" Name="KOa%C%Dummy08" Text="Dummy08"          Number="%K19%" FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <!-- K20 reserved--><ComObject Id="%AID%_O-%T%%CC%0019" Name="KOa%C%Dummy09" Text="Dummy09"          Number="%K20%" FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+
+              <ComObject Id="%AID%_O-%T%%CC%0201" Name="KOa%C%Output1" Text="Wertausgang 1"    Number="%K21%" FunctionText="DEA %C%, Ausgang 1"                                     ObjectSize="14 Bytes"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CC%0202" Name="KOa%C%Output2" Text="Wertausgang 2"    Number="%K22%" FunctionText="DEA %C%, Ausgang 2"                                     ObjectSize="14 Bytes"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CC%0203" Name="KOa%C%Output3" Text="Wertausgang 3"    Number="%K23%" FunctionText="DEA %C%, Ausgang 3"                                     ObjectSize="14 Bytes"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CC%0204" Name="KOa%C%Output4" Text="Wertausgang 4"    Number="%K24%" FunctionText="DEA %C%, Ausgang 4"                                     ObjectSize="14 Bytes"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
+
+              <!-- K25 reserved--><ComObject Id="%AID%_O-%T%%CC%0020" Name="KOa%C%Dummy10" Text="Dummy10"          Number="%K25%" FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <!-- K26 reserved--><ComObject Id="%AID%_O-%T%%CC%0021" Name="KOa%C%Dummy11" Text="Dummy11"          Number="%K26%" FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <!-- K27 reserved--><ComObject Id="%AID%_O-%T%%CC%0022" Name="KOa%C%Dummy12" Text="Dummy12"          Number="%K27%" FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <!-- K28 reserved--><ComObject Id="%AID%_O-%T%%CC%0023" Name="KOa%C%Dummy13" Text="Dummy13"          Number="%K28%" FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <!-- K29 reserved--><ComObject Id="%AID%_O-%T%%CC%0024" Name="KOa%C%Dummy14" Text="Dummy14"          Number="%K29%" FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+
             </ComObjectTable>
             <ComObjectRefs>
               <ComObjectRef Id="%AID%_O-%T%%CC%0000_R-%T%%CC%000001" RefId="%AID%_O-%T%%CC%0000" Text="Aktueller Zustand"                                                                                                   />
@@ -4906,7 +4926,7 @@
                           <Columns>
                             <Column Id="%AID%_PB-03_C-1" Name="Label"           Text="Bezeichnung/Kommentar"      Width="40%" />
                             <Column Id="%AID%_PB-03_C-2" Name="Source"          Text="Eingabekanal"               Width="27%" />
-                            <Column Id="%AID%_PB-03_C-3" Name="SourceConfig"    Text="Kanalauswahl"               Width="23%" />
+                            <Column Id="%AID%_PB-03_C-3" Name="SourceConfig"    Text="Kanalauswahl"               Width="24%" />
                             <Column Id="%AID%_PB-03_C-4" Name="Value"           Text="Auslösewert"                Width="30%" />
                           </Columns>
 
@@ -4917,7 +4937,7 @@
                               <ParameterRefRef  RefId="%AID%_P-%T%%CC%7100_R-%T%%CC%710001" Cell="1,1" /><!-- Note -->
                               <ParameterRefRef RefId="%AID%_UP-%T%%CC%7101_R-%T%%CC%710101" Cell="1,2" />
                               <choose ParamRefId="%AID%_UP-%T%%CC%7101_R-%T%%CC%710101">
-                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K2%: Eingang 1"       Cell="1,3" /></when><!-- new -->
+                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K11%: Eingang 1"       Cell="1,3" /></when><!-- new -->
                                 <when test="2"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7102_R-%T%%CC%710201"         Cell="1,3" /></when><!-- KO  -->
                                 <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7104_R-%T%%CC%710401"         Cell="1,3" /></when><!-- LOG -->
                                 <when test="!=0">
@@ -4928,7 +4948,7 @@
                               <ParameterRefRef  RefId="%AID%_P-%T%%CC%7200_R-%T%%CC%720001" Cell="2,1" /><!-- Note -->
                               <ParameterRefRef RefId="%AID%_UP-%T%%CC%7201_R-%T%%CC%720101" Cell="2,2" />
                               <choose ParamRefId="%AID%_UP-%T%%CC%7201_R-%T%%CC%720101">
-                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K3%: Eingang 2"       Cell="2,3" /></when><!-- new -->
+                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K12%: Eingang 2"       Cell="2,3" /></when><!-- new -->
                                 <when test="2"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7202_R-%T%%CC%720201"         Cell="2,3" /></when><!-- KO  -->
                                 <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7204_R-%T%%CC%720401"         Cell="2,3" /></when><!-- LOG -->
                                 <when test="!=0">
@@ -4941,7 +4961,7 @@
                               <ParameterRefRef RefId="%AID%_P-%T%%CC%7100_R-%T%%CC%710002"                                  Cell="3,1" />
                               <ParameterRefRef RefId="%AID%_UP-%T%%CC%7101_R-%T%%CC%710102"                                 Cell="3,2" />
                               <choose ParamRefId="%AID%_UP-%T%%CC%7101_R-%T%%CC%710102">
-                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K2%: Eingang 1"       Cell="3,3" /></when><!-- new -->
+                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K11%: Eingang 1"       Cell="3,3" /></when><!-- new -->
                                 <when test="2"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7102_R-%T%%CC%710202"         Cell="3,3" /></when><!-- KO  -->
                                 <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7104_R-%T%%CC%710402"         Cell="3,3" /></when><!-- LOG -->
                                 <when test="!=0">
@@ -4957,7 +4977,7 @@
                               <ParameterRefRef  RefId="%AID%_P-%T%%CC%7300_R-%T%%CC%730001" Cell="4,1" /><!-- Note -->
                               <ParameterRefRef RefId="%AID%_UP-%T%%CC%7301_R-%T%%CC%730101" Cell="4,2" />
                               <choose ParamRefId="%AID%_UP-%T%%CC%7301_R-%T%%CC%730101">
-                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K4%: Eingang 3"       Cell="4,3" /></when><!-- new -->
+                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K13%: Eingang 3"       Cell="4,3" /></when><!-- new -->
                                 <when test="2"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7302_R-%T%%CC%730201"         Cell="4,3" /></when><!-- KO  -->
                                 <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7304_R-%T%%CC%730401"         Cell="4,3" /></when><!-- LOG -->
                                 <when test="!=0">
@@ -4967,7 +4987,7 @@
                               <ParameterRefRef  RefId="%AID%_P-%T%%CC%7400_R-%T%%CC%740001" Cell="5,1" /><!-- Note -->
                               <ParameterRefRef RefId="%AID%_UP-%T%%CC%7401_R-%T%%CC%740101" Cell="5,2" />
                               <choose ParamRefId="%AID%_UP-%T%%CC%7401_R-%T%%CC%740101">
-                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K5%: Eingang 4"       Cell="5,3" /></when><!-- new -->
+                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K14%: Eingang 4"       Cell="5,3" /></when><!-- new -->
                                 <when test="2"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7402_R-%T%%CC%740201"         Cell="5,3" /></when><!-- KO  -->
                                 <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7404_R-%T%%CC%740401"         Cell="5,3" /></when><!-- LOG -->
                                 <when test="!=0">
@@ -4979,7 +4999,7 @@
                               <ParameterRefRef RefId="%AID%_P-%T%%CC%7300_R-%T%%CC%730002"                                  Cell="6,1" />
                               <ParameterRefRef RefId="%AID%_UP-%T%%CC%7301_R-%T%%CC%730102"                                 Cell="6,2" />
                               <choose ParamRefId="%AID%_UP-%T%%CC%7301_R-%T%%CC%730102">
-                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K4%: Eingang 3"       Cell="6,3" /></when><!-- new -->
+                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K13%: Eingang 3"       Cell="6,3" /></when><!-- new -->
                                 <when test="2"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7302_R-%T%%CC%730202"         Cell="6,3" /></when><!-- KO  -->
                                 <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7304_R-%T%%CC%730402"         Cell="6,3" /></when><!-- LOG -->
                                 <when test="!=0">
@@ -4995,7 +5015,7 @@
                               <ParameterRefRef  RefId="%AID%_P-%T%%CC%7500_R-%T%%CC%750001" Cell="7,1" /><!-- Note -->
                               <ParameterRefRef RefId="%AID%_UP-%T%%CC%7501_R-%T%%CC%750101" Cell="7,2" />
                               <choose ParamRefId="%AID%_UP-%T%%CC%7501_R-%T%%CC%750101">
-                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K6%: Eingang 5"       Cell="7,3" /></when><!-- new -->
+                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K15%: Eingang 5"       Cell="7,3" /></when><!-- new -->
                                 <when test="2"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7502_R-%T%%CC%750201"         Cell="7,3" /></when><!-- KO  -->
                                 <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7504_R-%T%%CC%750401"         Cell="7,3" /></when><!-- LOG -->
                                 <when test="!=0">
@@ -5005,7 +5025,7 @@
                               <ParameterRefRef  RefId="%AID%_P-%T%%CC%7600_R-%T%%CC%760001" Cell="8,1" /><!-- Note -->
                               <ParameterRefRef RefId="%AID%_UP-%T%%CC%7601_R-%T%%CC%760101" Cell="8,2" />
                               <choose ParamRefId="%AID%_UP-%T%%CC%7601_R-%T%%CC%760101">
-                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K7%: Eingang 6"       Cell="8,3" /></when><!-- new -->
+                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K16%: Eingang 6"       Cell="8,3" /></when><!-- new -->
                                 <when test="2"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7602_R-%T%%CC%760201"         Cell="8,3" /></when><!-- KO  -->
                                 <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7604_R-%T%%CC%760401"         Cell="8,3" /></when><!-- LOG -->
                                 <when test="!=0">
@@ -5017,7 +5037,7 @@
                               <ParameterRefRef RefId="%AID%_P-%T%%CC%7500_R-%T%%CC%750002"                                  Cell="9,1" />
                               <ParameterRefRef RefId="%AID%_UP-%T%%CC%7501_R-%T%%CC%750102"                                 Cell="9,2" />
                               <choose ParamRefId="%AID%_UP-%T%%CC%7501_R-%T%%CC%750102">
-                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K6%: Eingang 5"       Cell="9,3" /></when><!-- new -->
+                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K15%: Eingang 5"       Cell="9,3" /></when><!-- new -->
                                 <when test="2"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7502_R-%T%%CC%750202"         Cell="9,3" /></when><!-- KO  -->
                                 <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7504_R-%T%%CC%750402"         Cell="9,3" /></when><!-- LOG -->
                                 <when test="!=0">
@@ -5033,7 +5053,7 @@
                               <ParameterRefRef  RefId="%AID%_P-%T%%CC%7700_R-%T%%CC%770001" Cell="10,1" /><!-- Note -->
                               <ParameterRefRef RefId="%AID%_UP-%T%%CC%7701_R-%T%%CC%770101" Cell="10,2" />
                               <choose ParamRefId="%AID%_UP-%T%%CC%7701_R-%T%%CC%770101">
-                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K8%: Eingang 7"       Cell="10,3" /></when><!-- new -->
+                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K17%: Eingang 7"       Cell="10,3" /></when><!-- new -->
                                 <when test="2"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7702_R-%T%%CC%770201"         Cell="10,3" /></when><!-- KO  -->
                                 <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7704_R-%T%%CC%770401"         Cell="10,3" /></when><!-- LOG -->
                                 <when test="!=0">
@@ -5043,7 +5063,7 @@
                               <ParameterRefRef  RefId="%AID%_P-%T%%CC%7800_R-%T%%CC%780001" Cell="11,1" /><!-- Note -->
                               <ParameterRefRef RefId="%AID%_UP-%T%%CC%7801_R-%T%%CC%780101" Cell="11,2" />
                               <choose ParamRefId="%AID%_UP-%T%%CC%7801_R-%T%%CC%780101">
-                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K9%: Eingang 8"       Cell="11,3" /></when><!-- new -->
+                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K18%: Eingang 8"       Cell="11,3" /></when><!-- new -->
                                 <when test="2"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7802_R-%T%%CC%780201"         Cell="11,3" /></when><!-- KO  -->
                                 <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7804_R-%T%%CC%780401"         Cell="11,3" /></when><!-- LOG -->
                                 <when test="!=0">
@@ -5055,7 +5075,7 @@
                               <ParameterRefRef RefId="%AID%_P-%T%%CC%7700_R-%T%%CC%770002"                                  Cell="12,1" />
                               <ParameterRefRef RefId="%AID%_UP-%T%%CC%7701_R-%T%%CC%770102"                                 Cell="12,2" />
                               <choose ParamRefId="%AID%_UP-%T%%CC%7701_R-%T%%CC%770102">
-                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K8%: Eingang 7"       Cell="12,3" /></when><!-- new -->
+                                <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K17%: Eingang 7"       Cell="12,3" /></when><!-- new -->
                                 <when test="2"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7702_R-%T%%CC%770202"         Cell="12,3" /></when><!-- KO  -->
                                 <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7704_R-%T%%CC%770402"         Cell="12,3" /></when><!-- LOG -->
                                 <when test="!=0">
