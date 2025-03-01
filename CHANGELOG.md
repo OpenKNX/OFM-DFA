@@ -1,4 +1,4 @@
-# upcoming
+U# upcoming v0.4
 
 * (BREAKING KO-Numbers) Neuordnung KOs inkl. Vorbereitung für zukünftige Ergänzungen ohne erneute Verschiebung
 * Fix/Verbesserung ETS-Applikation:
