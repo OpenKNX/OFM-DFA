@@ -28,7 +28,7 @@ Von Cornelius Köpp 2023-09 -- 2025
 
 ## Kurzbeschreibung
 Dieses Modul erlaubt eine universelle Modellierung von zustandsabhängigem Verhalten:<br />
-Jeder Kanal repräsentiert eine Automaten-Definition mit 32 verschiedenen Zuständen,
+Jeder Kanal repräsentiert eine Automaten-Definition mit 16 verschiedenen Zuständen,
 zwischen denen durch 8 verschiedenen Eingabeereignisse oder Ablauf eines zustandsabhängigen Timeouts gewechselt werden kann.
 Über 4 Ausgangskanäle können zustandsspezifische Werte ausgegeben werden, mit verschiedenen zur Auswahl stehenden DPTs. Zus
 
@@ -58,9 +58,9 @@ dieses bieten eine auf den jeden Anwendungsfall optimierte Konfiguration.
 > Informatikern wird das Modell bekannt und vertraut vorkommen; 
 > bei genauerem Hinsehen werden allerdings gewisse Abweichungen deutlich um das Konzept an den Praxisbedarf anzupassen.
 
-### Z&subset;{z<sub>1</sub>,..,z<sub>32</sub>} := Menge der Zustände
+### Z&subset;{z<sub>1</sub>,..,z<sub>16</sub>} := Menge der Zustände
 ... wird als Teilmenge von DPT17.001 (Szenen: {0=Szene1,..,63=Szene64}) dargestellt.
-In der aktuellen Implementierung eingeschränkt auf die Zustände 1 bis 32.
+In der aktuellen Implementierung eingeschränkt auf die Zustände 1 bis 16.
 Bei Erreichen eines Zustandes können, durch die Ausgabe der korrespondierenden Szene, unmittelbar mehrere unabhängige Aktionen gleichzeitig ausgelöst werden.
 Ergänzend können mehrere individuelle Ausgangswerte je Zustand definiert werden.
 
@@ -83,7 +83,7 @@ Abhängig von der Konfiguration setzt sich das Eingabealphabet aus den folgenden
   wenn innerhalb eines zustands-spezifisch konfigurierten Zeitintervalls keine Eingabe erfolgt
   (bzw. kein anderes Ereignis eingetreten) ist.
 
-* #### X<sub>z</sub>={z<sub>1</sub>,..,z<sub>32</sub>} := Zustandsdirektaufruf
+* #### X<sub>z</sub>={z<sub>1</sub>,..,z<sub>16</sub>} := Zustandsdirektaufruf
 
   Abhängig von der Konfiguration kann durch Eingabe in einen DPT17.001 Zustandseingang ein entsprechendes Symbol erzeugt werden. 
 
