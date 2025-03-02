@@ -28,9 +28,14 @@ Von Cornelius Köpp 2023-09 -- 2025
 
 ## Kurzbeschreibung
 Dieses Modul erlaubt eine universelle Modellierung von zustandsabhängigem Verhalten:<br />
-Jeder Kanal repräsentiert eine Automaten-Definition mit 16 verschiedenen Zuständen,
-zwischen denen durch 8 verschiedenen Eingabeereignisse oder Ablauf eines zustandsabhängigen Timeouts gewechselt werden kann.
-Über 4 Ausgangskanäle können zustandsspezifische Werte ausgegeben werden, mit verschiedenen zur Auswahl stehenden DPTs. Zus
+Jeder Kanal repräsentiert eine Automaten-Definition mit 16 verschiedenen Zuständen.
+Zwischen den Zuständen kann durch 8 verschiedenen Eingabeereignisse oder Ablauf eines zustandsabhängigen Timeouts gewechselt werden.
+Über 4 Ausgangskanäle können zustandsspezifische Werte mit zustandsspezifischem Sendeverhalten ausgegeben werden, 
+in verschiedenen gängigen DPTs.
+Zusätzlich erfolgt eine Ausgabe des aktuellen Zustands. 
+Optional kann auch ein Direktaufruf des Zustands erlaubt werden, 
+eine Unterbrechung der Ausführung, 
+sowie Rekonstruktion des letzten Zustands und Status nach einem Neustart.
 
 Die Definition in der ETS erfolgt über eine (zwei-dimensionale) Zustandsübergangstabelle.<br />
 Zur **Konfiguration in der ETS** siehe [Applikationsbeschreibung](doc/DFA_Applikationsbeschreibung.md)
