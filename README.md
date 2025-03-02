@@ -5,9 +5,7 @@
 > Trotzdem besteht noch eine erhöhte Wahrscheinlichkeit von unerwartetem, oder sogar fehlerhaftem, Verhalten,
 > vor allem bei erweiterten Funktionalitäten die über das einfache und robuste formelle Modelle hinausgehen.
 > 
-> In nachfolgenden Versionen sind Änderungen an der KO-Nummerierung möglich, 
-> daher wird von Verweisen auf KO-Nummern dieses Moduls abgeraten.
-> Weitere kompatiblitätsbrechende Änderungen sind zum aktuellen Zeitpunkt nicht geplant und werden nach Möglichkeit vermieden, 
+> Kompatiblitätsbrechende Änderungen sind zum aktuellen Zeitpunkt nicht geplant und werden nach Möglichkeit vermieden, 
 > können jedoch nicht ausgeschlossen werden. 
 
 <!--
