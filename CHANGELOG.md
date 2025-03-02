@@ -1,5 +1,8 @@
-U# upcoming v0.4
+# 2025-03-01 v0.4.0-dev-Beta
 
+* (BREAKING ConfigTransfer) Reduktion von 32 auf 16 Zuständen als Standard, 
+  zur Vermeidung sehr langen Programmierzeiten bei regelmäßig vollständiger Programmierung
+  und Verbesserung Geschwindigkeit in ETS
 * (BREAKING KO-Numbers) Neuordnung KOs inkl. Vorbereitung für zukünftige Ergänzungen ohne erneute Verschiebung
 * Fix/Verbesserung ETS-Applikation:
   * Kopf der Tabelle Zustände und Übergangsfunktion überarbeitet (zur Vermeidung leerer Zellen) 
