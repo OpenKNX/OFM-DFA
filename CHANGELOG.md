@@ -1,3 +1,7 @@
+# upcoming v0.5.0
+
+
+
 # 2025-03-01 v0.4.0-dev-Beta
 
 * (BREAKING ConfigTransfer) Reduktion von 32 auf 16 Zuständen als Standard, 
@@ -8,6 +12,7 @@
   * Kopf der Tabelle Zustände und Übergangsfunktion überarbeitet (zur Vermeidung leerer Zellen) 
   * Spaltenbreite und Options-Beschriftung für Ausgangs-Sendestrategie
   * Ausgänge: Nutzung generischer DPTs statt Subtypen (DPST) mit Einheit
+
 
 # 2025-02-16 v0.3.0-Beta
 
