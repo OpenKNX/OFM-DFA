@@ -1076,6 +1076,14 @@
 
 
                         <ParameterBlock Id="%AID%_PB-nnn" Name="a%CC%Dfa" Text="DEA %C%: {{0: ...}}" TextParameterRefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" ShowInComObjectTree="true" Inline="true" >
+                            <!-- KOs for start/pause -->
+                            <choose ParamRefId="%AID%_UP-%T%%CC%0007_R-%T%%CC%000701">
+                              <when test="!=0">
+                                <ComObjectRefRef RefId="%AID%_O-%T%%CC%0102_R-%T%%CC%010201" />
+                                <ComObjectRefRef RefId="%AID%_O-%T%%CC%0101_R-%T%%CC%010101" />
+                              </when>
+                            </choose>
+
                             <!-- KO depending on state settting -->
                             <choose ParamRefId="%AID%_UP-%T%%CC%0005_R-%T%%CC%000501">
                               <when test="0 1"><!-- state KO for output only -->
@@ -1193,13 +1201,6 @@
                               </when>
                             </choose>
 
-                            <!-- KOs for start/pause -->
-                            <choose ParamRefId="%AID%_UP-%T%%CC%0007_R-%T%%CC%000701">
-                              <when test="!=0">
-                                <ComObjectRefRef RefId="%AID%_O-%T%%CC%0101_R-%T%%CC%010101" />
-                                <ComObjectRefRef RefId="%AID%_O-%T%%CC%0102_R-%T%%CC%010201" />
-                              </when>
-                            </choose>
                             <!-- KOs for state value output -->
                             <choose ParamRefId="%AID%_UP-%T%%CC%8101_R-%T%%CC%810101">
                               <!-- when test="!=0"></when -->
