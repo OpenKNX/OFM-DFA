@@ -41,7 +41,15 @@ Die Definition in der ETS erfolgt über eine (zwei-dimensionale) Zustandsüberga
 Zur **Konfiguration in der ETS** siehe [Applikationsbeschreibung](doc/DFA_Applikationsbeschreibung.md)
 
 
-### Einsatz
+## Inhalte
+
+<!-- * [Kurzbeschreibung](#kurzbeschreibung) -->
+* [Einsatz](#einsatz)
+* [Beispiele](#beispiele)
+* [Grundidee in Anlehnung an gängige formale Definitionen](#grundidee-in-anlehnung-an-gängige-formale-definitionen)
+
+
+## Einsatz
 
 Das Modul kann eingesetzt werden, um zustandsabhängiges Verhalten zu definieren,
 das abhängig ist von der Reihenfolge, oder sogar genauer definierten zeitlichen Abfolge, von Ereignissen.
@@ -57,6 +65,12 @@ Für Standardprobleme sollten spezialisierte Module wie z.B.
 [OpenKNX PresenceModule](https://github.com/OpenKNX/OFM-PresenceModule) genutzt werden;
 dieses bieten eine auf den jeden Anwendungsfall optimierte Konfiguration.
 
+
+
+## Beispiele
+
+* [Einführungsbeispiel für KNX-Nutzer:<br>**Virtueller Schaltaktor mit Sperre und Treppenhaus-Funktion**](doc/DFA_Beispiel1_VirtuellerAktor.md)
+* [Beispiel zur Vorverarbeitung durch Logik-Kanäle:<br>**Umwandlung von DPT2 (Zwangsführung) in Eingabesymbole**](doc/DFA_Beispiel2_DPT2.md)
 
 
 ## Grundidee in Anlehnung an gängige formale Definitionen:
