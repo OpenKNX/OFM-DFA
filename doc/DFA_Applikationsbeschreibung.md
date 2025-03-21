@@ -84,7 +84,8 @@ Ein Neustart per Reset-Taste kann nicht erkannt werden.
 
 ### Modul-Version
 
-Zeigt die Version (Major.Minor) des Moduls OFM-DFA an.
+Zeigt die Version (X.Y) des Moduls OFM-DFA an.
+Diese Version folgt dem Versionierungsschema der ETS und nicht dem Prinzip der Semantischen Versionierung (SemVer).
 
 
 <!-- DOC -->
@@ -599,7 +600,7 @@ Falls ein Sendeverhalten für diesen Zustand definiert wurde, kann hier der Wert
 |    (+15) |    1.* | Eingang 5 - Symbol E       | Analog *Eingang 1 - Symbol A*                                                                                                                                                                                       |
 |  "&nbsp; |    1.* | Eingang 5 - Symbol E/F     | Analog *Eingang 1 - Symbol A/B*                                                                                                                                                                                     |
 |    (+16) |    1.* | Eingang 6 - Symbol F       | Analog *Eingang 2 - Symbol B*                                                                                                                                                                                       |
-|   (+17)  |    1.* | Eingang 7 - Symbol G       | Analog *Eingang 1 - Symbol A*                                                                                                                                                                                       |
+|    (+17) |    1.* | Eingang 7 - Symbol G       | Analog *Eingang 1 - Symbol A*                                                                                                                                                                                       |
 |  "&nbsp; |    1.* | Eingang 7 - Symbol G/H     | Analog *Eingang 1 - Symbol A/B*                                                                                                                                                                                     |
 |    (+18) |    1.* | Eingang 8 - Symbol H       | Analog *Eingang 2 - Symbol B*                                                                                                                                                                                       |
 |    (+21) |      * | Ausgang 1 - Zustandswert 1 | [(Optional)](#) Gibt einen für **O1** definierten zustandsabhängigen Wert aus. Sendeverhalten abhängig von Konfiguration.                                                                                           |
