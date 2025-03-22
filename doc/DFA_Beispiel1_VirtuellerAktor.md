@@ -19,8 +19,9 @@ das dann ggf. durch Anpassung der Automatendefinition nachgebildet werden kann.
 
 * [Eingabe](#eingabe)
 * [Ausgabe](#ausgabe)
+* [Grundkonfiguration Eingabesymbole und Ausgänge](#grundkonfiguration-eingabesymbole-und-ausgänge)
 * [Zustände und Übergänge](#zustände-und-übergänge)
-* [Ausgänge](#ausgabe)
+* [Ausgangswerte](#ausgangswerte)
 * [Export zur Nutzung mit Konfigurationstransfer](#konfigurationsexport)
 
 
@@ -117,7 +118,7 @@ oder kann den Versuch der Ansteuerung auch ignorieren:
 ![Konfiguration von Zuständen und Zustandsübergängen](Beispiel1_VirtuellerAktor/DFA_Beispiel1_VSA_table.png)
 
 
-## Ausgänge
+## Ausgangswerte
 
 Die Werte der verschiedenen Ausgänge sind direkt vom Zustand abhängig.
 Hier im Beispiel wird durch die [Einstellung des Sendeverhaltens](DFA_Applikationsbeschreibung.md#sendeverhalten-je-zustand) erreicht,
