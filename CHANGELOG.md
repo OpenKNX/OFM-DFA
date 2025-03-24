@@ -1,5 +1,8 @@
 # upcoming v0.5.0
 
+* Dokumentation
+  * Ergänzung von Kommandos zur Nutzung über das Diagnose-Objekt (und die serielle Konsole) 
+  * Kleinere Detailverbesserungen
 
 
 # 2025-03-01 v0.4.0-dev-Beta
