@@ -11,7 +11,13 @@
           <op:part name="STATE" href="DfaModule.states.part.xml" instances="16">
             <op:param name="%DfaStateNumberNN%" value="1" increment="1" digits="2" />
             <op:param name="%DfaStateNumberN%" value="1" increment="1" />
-            <op:param name="%DfaStateUnionOffset%"  value="50" increment="42" />
+            <op:param name="%DfaStateUnionOffset%"  value="98" increment="42" /><!-- after CHOICE_STATE -->
+          </op:part>
+          <op:part name="CHOICE_STATE" href="DfaModule.choice_states.part.xml" instances="16">
+            <op:param name="%DfaChoiceStateNumberNN%" value="1" increment="1" digits="2" />
+            <op:param name="%DfaChoiceStateNumberN%" value="1" increment="1" />
+            <op:param name="%DfaChoiceStateLetterA%" values="a b c d e f g h i j k l m n o p q r s t u v w x y z" />
+            <op:param name="%DfaChoiceStateUnionOffset%"  value="50" increment="3" /><!-- before STATE -->
           </op:part>
           <Static>
             <Parameters>
@@ -127,6 +133,8 @@
               <op:usePart name="STATE" xpath="//Parameters[@part='1']/*" />
               <op:usePart name="STATE" xpath="//Parameters[@part='2']/*" />
 
+              <op:usePart name="CHOICE_STATE" xpath="//Parameters[@part='1']/*" />
+              <op:usePart name="CHOICE_STATE" xpath="//Parameters[@part='2']/*" />
 
               <!-- TODO check usage of
               <op:usePart name="STATE" xpath="//Parameters/Parameter" />
@@ -154,6 +162,8 @@
 
 
               <op:usePart name="STATE" xpath="//ParameterRefs/*" />
+
+              <op:usePart name="CHOICE_STATE" xpath="//ParameterRefs/*" />
 
 
               <ParameterRef Id="%AID%_P-%T%%CC%7100_R-%T%%CC%710001" RefId="%AID%_P-%T%%CC%7100" />
@@ -832,7 +842,27 @@
 
                           </ParameterBlock>
                         </ParameterBlock>
-                        <!-- TODO -->
+
+                        <!-- Choice-States -->
+                        <ParameterBlock Id="%AID%_PB-nnn" Name="a%C%DFAChoiseStates" Text="Bedingte Übergänge" Icon="call-split--90deg" >
+                          <ParameterSeparator Id="%AID%_PS-nnn" Text="Bedingte Übergänge mit dynamischer Entscheidung durch Logik-Kanäle" UIHint="Headline" />
+                          
+                          <!-- Choice-States-Table -->
+                          <ParameterBlock Id="%AID%_PB-%C%02" Name="ChoiceStates%C%" Text="" Inline="true" Layout="Table"><!-- TODO HelpContext="DFA-Tabelle-Zustaende-und-Uebergaenge" -->
+                            <Rows>
+                              <op:usePart name="CHOICE_STATE" xpath="//ParameterBlock[@Name='DFA_CSTATE_ROW']/Rows/*" />
+                            </Rows>
+                            <Columns>
+                              <Column Id="%AID%_PB-nnn_C-1" Name="Label"           Text="Bezeichnung/Kommentar"      Width="40%" />
+                              <Column Id="%AID%_PB-nnn_C-3" Name="Logic-Channel"   Text="Logik-Kanal"                Width="30%" />
+                              <Column Id="%AID%_PB-nnn_C-4" Name="For1"            Text="EIN &gt;"                   Width="15%" />
+                              <Column Id="%AID%_PB-nnn_C-5" Name="For0"            Text="AUS &gt;"                   Width="15%" />
+                            </Columns>
+
+                            <op:usePart name="CHOICE_STATE" xpath="//ParameterBlock[@Name='DFA_CSTATE_ROW_CONTENT']/*" />
+
+                          </ParameterBlock>
+                        </ParameterBlock>
 
                         <!-- Ouput 1 -->
                         <choose ParamRefId="%AID%_UP-%T%%CC%8101_R-%T%%CC%810101">

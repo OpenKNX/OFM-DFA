@@ -4,6 +4,9 @@
 #pragma once
 #include "OpenKNX.h"
 
+// TODO check moving, as used here only:
+//   #define DFA_DEF_CHOICESTATES_COUNT 16
+//   #define DFA_STATE_CHOICE_VALUE 0x7e
 #include "DfaOutput.h"
 
 // #define DFA_INPUT_TRIGGER_DISABLED 0b00

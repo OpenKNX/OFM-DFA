@@ -32,7 +32,11 @@ With:
 |           | 4..5 | *      |      | **output2**                     |                               |
 |           | 6..7 | *      |      | **output3**                     |                               |
 |           | 8..9 | *      |      | **output4**                     |                               |
-|    65..69 | *    | *      |  600 | *(unused)*                      |                               |
+|        65 | *    | *      |  100 | **Choice-State** Label          |                               |
+|        66 | *    | *      |  100 | **Choice-State** *(unused)*     |                               |
+|        67 | *    | *      |  100 | **Choice-State** Choice         |                               |
+|        68 | *    | *      |  100 | **Choice-State** for 1          |                               |
+|        69 | *    | *      |  100 | **Choice-State** for 0          |                               |
 |        70 | *    | *      |  100 |                                 |                               |
 |           | 0    | *      |      | **Symbol pair configurations**  |                               |
 |           | 1..9 | *      |      | *(unused)*                      |                               |

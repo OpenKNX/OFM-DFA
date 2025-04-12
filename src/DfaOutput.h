@@ -8,6 +8,7 @@
 
 // TODO check best place to define constants
 #define DFA_DEF_STATES_COUNT 16
+#define DFA_DEF_CHOICESTATES_COUNT 16
 #define DFA_DEF_INPUTS_COUNT 8
 #define DFA_DEF_OUTPUTS_COUNT 4
 // extension for timeout input symbol T:
@@ -28,6 +29,7 @@
 #define DFA_STATE_UNDEFINED 0xff
 // #define DFA_STATE_VALUE_UNDEFINED 0x00
 #define DFA_STATE_TIMEOUT_RESET 0x7f
+#define DFA_STATE_CHOICE_VALUE 0x7e
 
 
 

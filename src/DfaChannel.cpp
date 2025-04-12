@@ -566,12 +566,56 @@ void DfaChannel::transfer(const uint8_t input)
     if (input < DFA_DEF_INPUTS_WITH_T_COUNT)
     {
         const uint16_t nextStateParamIdx = DFA_ParamCalcIndex(_transPRI[_state][input]);
+        // 0 - no following state    => 255
+        // 1-16/1-32/1-64 next state => 0-15/1-31/1-63
+        // 65-80 choce states a..p   => 64-79
+        // 127 timeout reset         => 126
         const uint8_t nextState = knx.paramByte(nextStateParamIdx) - 1;
 
         logDebugP("transfer(%u,%c)->%u", _state, input == DFA_INPUT_SYMBOL_T ? 'T' : ('A' + input), nextState);
         if (isValidState(nextState))
         {
             setState(nextState);
+        }
+        if (64 <= nextState && nextState < 64 + DFA_DEF_CHOICESTATES_COUNT)
+        {
+            // 0) => is choice-state
+            /*
+
+            // 1) get choice-state config
+            const uint8_t choiceStateLogChannel = ... (Parameter from array?)
+
+            // 2) check choice enabled
+            if (choiceStateLogChannel == 0)
+                return;
+
+            // 3) get assigned logic-channel
+            const bool isLogicChannelEnabled = ... (Parameter calculated?) 
+            if (!isLogicChannelEnabled)
+                return;
+
+            // 4) check logic-channel result present
+            const bool hasLogicChannelResult = ... TODO 
+            // TODO needs definition for undefined!
+
+            // 5) get logic-channel result
+            const bool choice = ... TODO 
+
+            // 6) get the following state
+            const uint8_t selectedNext = choice ? ... : ...; // TODO ... (Parameter from array?)
+
+            // 7) ignore empty following
+            if (selectedNext == 0)
+                return;
+
+            // 8) calculate the next state
+            const uint8_t choosenState = selectedNext==DFA_STATE_CHOICE_VALUE ? ... (Parameter from array?) ... : selectedNext;
+
+            if (isValidState(choosenState))
+                setState(choosenState);
+
+
+            */
         }
         else if (nextState == DFA_STATE_TIMEOUT_RESET - 1)
         {

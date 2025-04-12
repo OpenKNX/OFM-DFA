@@ -12,6 +12,10 @@
           <op:part name="STATE_NUMBER" href="DfaModule.state_numbers.part.xml" instances="16">
             <op:param name="%DfaStateNumber%"  value="1" digits="1" />
           </op:part>
+          <op:part name="CHOICE_STATE_NUMBER" href="DfaModule.choice_state_numbers.part.xml" instances="16">
+            <op:param name="%DfaChoiceStateNumber%"  value="1" digits="1" />
+            <op:param name="%DfaChoiceStateLetter%"  values="a b c d e f g h i j k l m n o p q r s t u v w x y z" />
+          </op:part>
           <Static>
             <ParameterTypes>
               <!-- Number of channels (module specific) -->
@@ -112,6 +116,10 @@
                 <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="1" maxInclusive="%LOG_NumChannels%" />
               </ParameterType>
 
+              <ParameterType Id="%AID%_PT-DfaInputLogicNumberOptional" Name="DfaInputLogicNumber">
+                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="0" maxInclusive="%LOG_NumChannels%" />
+              </ParameterType>
+
               <ParameterType Id="%AID%_PT-DfaInputTrigger" Name="DfaInputTrigger">
                 <TypeRestriction Base="Value" SizeInBit="2">
                   <Enumeration Text="nur 0"            Value="1"    Id="%ENID%" /><!-- 01 -->
@@ -132,6 +140,10 @@
                   <!-- options for state selection -->
                   <op:usePart name="STATE_NUMBER" xpath="//ParameterType[@Name='DfaStateENUM']/TypeRestriction/*" />
 
+                  <!-- options for choice state selection -->
+                  <op:usePart name="CHOICE_STATE_NUMBER" xpath="//ParameterType[@Name='DfaChoiceStateENUM']/TypeRestriction/*" />
+                  <!-- op:usePart name="CHOICE_STATE_NUMBER" xpath="//TypeRestriction/*" /-->
+
                 </TypeRestriction>
               </ParameterType>
 
@@ -144,8 +156,29 @@
                   <!-- NOT reset timeout, without setting state again -->
 
                   <!-- options for state selection -->
-
                   <op:usePart name="STATE_NUMBER" xpath="//ParameterType[@Name='DfaStateENUM']/TypeRestriction/*" />
+
+                  <!-- NO options for choice state selection -->
+
+                </TypeRestriction>
+              </ParameterType>
+
+              <ParameterType Id="%AID%_PT-DfaStateNextChoice" Name="DfaStateNextChoice">
+                <TypeRestriction Base="Value" SizeInBit="8">
+
+                  <!-- no following state -->
+                  <Enumeration   Value="0" Text=" "         Id="%ENID%" />
+
+                  <!-- NOT reset timeout, without setting state again -->
+
+                  <!-- options for state selection -->
+                  <op:usePart name="STATE_NUMBER" xpath="//ParameterType[@Name='DfaStateENUM']/TypeRestriction/*" />
+
+                  <!-- NO options for choice state selection -->
+                  <!--
+                  <Enumeration Value="126" Text="Wert"  Id="%ENID%" />
+                  -->
+
                 </TypeRestriction>
               </ParameterType>
 
