@@ -108,6 +108,7 @@
               </ParameterType>
 
               <ParameterType Id="%AID%_PT-DfaInputLogicNumber" Name="DfaInputLogicNumber">
+                <!-- TODO reduce to 8bit?! Not relevant for input-symbols! -->
                 <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="1" maxInclusive="%LOG_NumChannels%" />
               </ParameterType>
 
