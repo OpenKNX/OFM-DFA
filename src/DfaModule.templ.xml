@@ -2,13 +2,13 @@
 <?xml-model href="../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <KNX xmlns:op="http://github.com/OpenKNX/OpenKNXproducer" xmlns="http://knx.org/xml/project/20" CreatedBy="KNX MT" ToolVersion="5.1.255.16695">
   <ManufacturerData>
-    <Manufacturer>
+    <Manufacturer RefId="M-00FA">
       <ApplicationPrograms>
         <ApplicationProgram>
           <!--
-          <op:part name="STATE" href="DfaModule.state_name_input.part.xml" instances="%DFA_StateCount%">
+          <op:part name="STATE" href="DfaModule.states.part.xml" instances="%DFA_StateCount%">
           -->
-          <op:part name="STATE" href="DfaModule.state_name_input.part.xml" instances="16">
+          <op:part name="STATE" href="DfaModule.states.part.xml" instances="16">
             <op:param name="%DfaStateNumberNN%" value="1" increment="1" digits="2" />
             <op:param name="%DfaStateNumberN%" value="1" increment="1" />
             <op:param name="%DfaStateUnionOffset%"  value="50" increment="42" />
@@ -648,7 +648,7 @@
                           <ParameterRefRef RefId="%AID%_UP-%T%%CC%8401_R-%T%%CC%840101" Cell="4,2" />
                         </ParameterBlock>
 
-                        <!-- TODO -->
+                        <!-- States- and Transfer-Table -->
                         <ParameterBlock Id="%AID%_PB-nnn" Name="a%C%DFAStates" Text="Zustände &amp; Übergänge" Icon="grid" >
                           <ParameterSeparator Id="%AID%_PS-nnn" Text="Zustände und Übergangsfunktion einschließlich zeitbasierter Folgezustände" UIHint="Headline" />
                           <!-- Startzustand -->

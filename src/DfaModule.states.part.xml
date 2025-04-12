@@ -4,7 +4,7 @@
   <ManufacturerData>
     <Manufacturer>
       <ApplicationPrograms>
-        <ApplicationProgram ApplicationNumber="" ApplicationVersion="" DefaultLanguage="" DynamicTableManagement="" Id="" Linkable="" LoadProcedureStyle="" MaskVersion="" Name="" PeiType="" ProgramType="">
+        <ApplicationProgram ApplicationNumber="00000000" ApplicationVersion="00000000" DefaultLanguage="de" DynamicTableManagement="true" Id="0" Linkable="false" LoadProcedureStyle="" MaskVersion="" Name="" PeiType="" ProgramType="">
           <!-- this ist just for documentation reasons, as an example for the caller 
           <op:partParams name="STATE_NAME_INPUT">
             <op:param name="%DfaStateNumberNN%" value="1" digits="2" />
