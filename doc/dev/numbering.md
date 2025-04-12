@@ -25,17 +25,14 @@ With:
 |           | 0    | 0      |      | State Name                      |                               |
 |           | 0    | 1..8   |      | Following State by Input        |                               |
 |           | 0    | 9      |      | *(unused)*                      | reserved for input 9          |
-|           | 1    | 0..16  |      | *(unused)*                      | reserved for input 10..16     |
-|           | 1    | 17     |      | Following State by Timeout      |                               |
-|           | 1    | 18     |      | Timeout Time                    |                               |
-|           | 1    | 19     |      | Timeout Unit                    |                               |
-|           | 1    | 20..99 |      | *(unused)*                      |                               |
-|           | 9    | 1..4   |      | *(unused)*                      |                               |
-|           | 2..8 | *      |      | *(unused)*                      |                               |
-|           | 6    | *      |      | **output1**                     |                               |
-|           | 7    | *      |      | **output2**                     |                               |
-|           | 8    | *      |      | **output3**                     |                               |
-|           | 9    | *      |      | **output4**                     |                               |
+|           | 1    | 0..6   |      | *(unused)*                      | reserved for input 10..16     |
+|           | 1    | 7      |      | Following State by Timeout      |                               |
+|           | 1    | 8      |      | Timeout Time                    |                               |
+|           | 1    | 9      |      | Timeout Unit                    |                               |
+|           | 2..3 | *      |      | **output1**                     |                               |
+|           | 4..5 | *      |      | **output2**                     |                               |
+|           | 6..7 | *      |      | **output3**                     |                               |
+|           | 8..9 | *      |      | **output4**                     |                               |
 |    65..69 | *    | *      |  600 | *(unused)*                      |                               |
 |    70..99 | *    | *      | 3000 |                                 |                               |
 
