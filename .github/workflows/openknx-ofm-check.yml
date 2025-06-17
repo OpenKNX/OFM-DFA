@@ -49,18 +49,18 @@ jobs:
         with:
           path: OFM-DFA
 
-      - name: Download OpenKNXproducer 3.4.1 and Verify
+      - name: Download OpenKNXproducer 3.7.14.0 and Verify
         run: |
           mkdir OpenKNXproducer
           cd OpenKNXproducer
-          echo '7abaa744bf3d1e317e0c50025959f714277e729cac36ae52c849a14ded0a5a1b8869fcacde4511ad4be7738d42c3cc0f6538a357d46ce8f6d83a7bbbb5ca05d7 *OpenKNXproducer-3.4.1.zip' > OpenKNXproducer.checksum
-          wget -q https://github.com/OpenKNX/OpenKNXproducer/releases/download/v3.4.1/OpenKNXproducer-3.4.1.zip
-          sha512sum OpenKNXproducer-3.4.1.zip
+          echo '40e30f59deb949704c3ec21e26b3fceb18b418a46443d904383bf4fd99d56461d1d8c39fac756de09079004469d1e868ce33c50768dbe1e3314b304a6fc20c2f *OpenKNXproducer-3.7.14.0.zip' > OpenKNXproducer.checksum
+          wget -q https://github.com/OpenKNX/OpenKNXproducer/releases/download/v3.7.14/OpenKNXproducer-3.7.14.0.zip
+          sha512sum OpenKNXproducer-3.7.14.0.zip
           sha512sum -c OpenKNXproducer.checksum
       - name: Unzip OpenKNXproducer and Make Executable
         run: |
           cd OpenKNXproducer
-          unzip OpenKNXproducer-3.4.1.zip || test -f tools/Linux/OpenKNXproducer
+          unzip OpenKNXproducer-3.7.14.0.zip || test -f tools/Linux/OpenKNXproducer
           chmod u+x tools/Linux/OpenKNXproducer
       - name: Check OpenKNXproducer
         run: OpenKNXproducer/tools/Linux/OpenKNXproducer version || echo Ignore OpenKNXproducer always returning 1...
