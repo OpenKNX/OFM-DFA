@@ -24,12 +24,23 @@ jobs:
       #   with:
       #     path: OFM-DFA
 
-      - uses: actions/checkout@v4
+      - name: Check for Same Name Branch in Reference OAM
+        id: oam_branch
+        run: |
+          BRANCH="v1dev"
+          EXISTS=$(git ls-remote --heads https://github.com/openknx/${{ matrix.variant }}.git ${{ github.ref_name }} | wc -l)
+          if [ "$EXISTS" -gt 0 ]; then
+            BRANCH="${{ github.ref_name }}"
+          fi
+          echo "ref_name=$BRANCH" >> $GITHUB_OUTPUT
+          echo "Selected branch: $BRANCH"
+
+      - name: Checkout Reference OAM
+        uses: actions/checkout@v4
         with:
           repository: openknx/${{ matrix.variant }}
-          # ref: ${{ github.ref_name }}
+          ref: ${{ steps.oam_branch.outputs.ref_name }}
           path: ${{ matrix.variant }}
-      # TODO use v1 for v1, try using same name branch, else use v1dev
 
       # TODO remove
       - name: DEBUG paths
