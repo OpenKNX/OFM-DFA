@@ -42,22 +42,21 @@ jobs:
           ref: ${{ steps.oam_branch.outputs.ref_name }}
           path: ${{ matrix.variant }}
 
-      # TODO remove
-      - name: DEBUG paths
-        run: |
-          pwd
-          find
+      # - name: DEBUG paths
+      #   run: |
+      #     pwd
+      #     find
 
-      # TODO check using restore branch?
-      - name: Restore Project
+      - name: Restore OAM
         shell: pwsh
         run: |
           cd ${{ matrix.variant }}/restore 
           ./Restore-Dependencies.ps1
 
-      # TODO check individual name
-      - uses: actions/checkout@v4
+      - name: Restore Current OFM Commit
+        uses: actions/checkout@v4
         with:
+          # ref: ${{ github.ref_name }}
           path: OFM-DFA
 
       - name: Download OpenKNXproducer 3.7.14.0 and Verify
