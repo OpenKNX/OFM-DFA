@@ -1,0 +1,98 @@
+# Check build of OpenKNX OFM with Reference OAM (merging/building of OpenKNX knxprod + build of full releases)
+# SPDX-License-Identifier: AGPL-3.0-only
+# Copyright (C) 2024-2025 Cornelius Koepp
+
+name: openknx-ofm-check
+run-name: Check OpenKNX OFM Build
+on: [push]
+jobs:
+  app:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - variant: OAM-StateEngine
+            knxprod_xml: StateEngine-DFA16-Release
+            build_target: DFA16-Release
+          # - variant: DEV (DFA16)
+          #   knxprod_xml: StateEngine
+          #   build_target: ""
+    steps:
+      # DO this after restore the use current commit
+      # - uses: actions/checkout@v4
+      #   with:
+      #     path: OFM-DFA
+
+      - uses: actions/checkout@v4
+        with:
+          repository: openknx/${{ matrix.variant }}
+          # ref: ${{ github.ref_name }}
+          path: ${{ matrix.variant }}
+      # TODO use v1 for v1, try using same name branch, else use v1dev
+
+      # TODO remove
+      - name: DEBUG paths
+        run: |
+          pwd
+          find
+
+      # TODO check using restore branch?
+      - name: Restore Project
+        shell: pwsh
+        run: |
+          cd ${{ matrix.variant }}/restore 
+          ./Restore-Dependencies.ps1
+
+      # TODO check individual name
+      - uses: actions/checkout@v4
+        with:
+          path: OFM-DFA
+
+      - name: Download OpenKNXproducer 3.4.1 and Verify
+        run: |
+          mkdir OpenKNXproducer
+          cd OpenKNXproducer
+          echo '7abaa744bf3d1e317e0c50025959f714277e729cac36ae52c849a14ded0a5a1b8869fcacde4511ad4be7738d42c3cc0f6538a357d46ce8f6d83a7bbbb5ca05d7 *OpenKNXproducer-3.4.1.zip' > OpenKNXproducer.checksum
+          wget -q https://github.com/OpenKNX/OpenKNXproducer/releases/download/v3.4.1/OpenKNXproducer-3.4.1.zip
+          sha512sum OpenKNXproducer-3.4.1.zip
+          sha512sum -c OpenKNXproducer.checksum
+      - name: Unzip OpenKNXproducer and Make Executable
+        run: |
+          cd OpenKNXproducer
+          unzip OpenKNXproducer-3.4.1.zip || test -f tools/Linux/OpenKNXproducer
+          chmod u+x tools/Linux/OpenKNXproducer
+      - name: Check OpenKNXproducer
+        run: OpenKNXproducer/tools/Linux/OpenKNXproducer version || echo Ignore OpenKNXproducer always returning 1...
+
+      - name: Install OpenKNXproducer
+        run: cp -av OpenKNXproducer/tools/Linux/OpenKNXproducer /usr/local/bin/OpenKNXproducer
+
+      - name: Create knxprod
+        run: |
+          cd ${{ matrix.variant }}
+          OpenKNXproducer create --Debug -h include/knxprod.h src/${{ matrix.knxprod_xml }}
+
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.8'
+
+      - name: Install PlatformIO
+        run: |
+          python -m pip install --upgrade pip
+          pip install virtualenv
+          virtualenv ~/.platformio/penv
+          source ~/.platformio/penv/bin/activate
+          pip install platformio          
+
+      - name: OpenKNX Release Build
+        if: ${{ matrix.build_target != '#' }}
+        run: |
+          cd ${{ matrix.variant }}
+          pwsh ./scripts/Build-Release.ps1 ${{ matrix.build_target }}
+
+      - name: Show Changed Files
+        run: |
+          cd ${{ matrix.variant }}
+          git diff
