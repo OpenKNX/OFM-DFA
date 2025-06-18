@@ -3,21 +3,34 @@
 # Copyright (C) 2024-2025 Cornelius Koepp
 
 name: openknx-ofm-check
-run-name: Check OpenKNX OFM Build
-on: [push]
+run-name: Check OpenKNX OFM Build in Reference OAM
+
+on:
+  workflow_call:
+    inputs:
+      oam:
+        required: true
+        type: string
+      target:
+        required: true
+        type: string
+      # restore_branch:
+      #   required: true
+      #   type: boolean
+      KNXPROD_PREFIX:
+        required: true
+        type: string
+
 jobs:
-  app:
+  oam-build:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - variant: OAM-StateEngine
-            knxprod_xml: StateEngine-DFA16-Release
-            build_target: DFA16-Release
-          # - variant: DEV (DFA16)
-          #   knxprod_xml: StateEngine
-          #   build_target: ""
+    env:
+      PRODUCER_VERSION: 3.7.14.0
+      PRODUCER_URL: https://github.com/OpenKNX/OpenKNXproducer/releases/download/v3.7.14/OpenKNXproducer-3.7.14.0.zip
+      PRODUCER_CHECKSUM: 40e30f59deb949704c3ec21e26b3fceb18b418a46443d904383bf4fd99d56461d1d8c39fac756de09079004469d1e868ce33c50768dbe1e3314b304a6fc20c2f
+      PRODUCER_FILENAME: OpenKNXproducer-${PRODUCER_VERSION}.zip
+
+    name: Build '${{ inputs.target }}' ${{ inputs.restore_branch && 'branch' || 'commit' }}
     steps:
       # DO this after restore the use current commit
       # - uses: actions/checkout@v4
@@ -28,7 +41,7 @@ jobs:
         id: oam_branch
         run: |
           BRANCH="v1dev"
-          EXISTS=$(git ls-remote --heads https://github.com/openknx/${{ matrix.variant }}.git ${{ github.ref_name }} | wc -l)
+          EXISTS=$(git ls-remote --heads https://github.com/openknx/${{ inputs.oam }}.git ${{ github.ref_name }} | wc -l)
           if [ "$EXISTS" -gt 0 ]; then
             BRANCH="${{ github.ref_name }}"
           fi
@@ -38,9 +51,9 @@ jobs:
       - name: Checkout Reference OAM
         uses: actions/checkout@v4
         with:
-          repository: openknx/${{ matrix.variant }}
+          repository: openknx/${{ inputs.oam }}
           ref: ${{ steps.oam_branch.outputs.ref_name }}
-          path: ${{ matrix.variant }}
+          path: ${{ inputs.oam }}
 
       # - name: DEBUG paths
       #   run: |
@@ -50,7 +63,7 @@ jobs:
       - name: Restore OAM
         shell: pwsh
         run: |
-          cd ${{ matrix.variant }}/restore 
+          cd ${{ inputs.oam }}/restore 
           ./Restore-Dependencies.ps1
 
       - name: Restore Current OFM Commit
@@ -59,18 +72,18 @@ jobs:
           # ref: ${{ github.ref_name }}
           path: OFM-DFA
 
-      - name: Download OpenKNXproducer 3.7.14.0 and Verify
+      - name: Download OpenKNXproducer ${{ env.PRODUCER_VERSION }} and Verify
         run: |
           mkdir OpenKNXproducer
           cd OpenKNXproducer
-          echo '40e30f59deb949704c3ec21e26b3fceb18b418a46443d904383bf4fd99d56461d1d8c39fac756de09079004469d1e868ce33c50768dbe1e3314b304a6fc20c2f *OpenKNXproducer-3.7.14.0.zip' > OpenKNXproducer.checksum
-          wget -q https://github.com/OpenKNX/OpenKNXproducer/releases/download/v3.7.14/OpenKNXproducer-3.7.14.0.zip
-          sha512sum OpenKNXproducer-3.7.14.0.zip
+          echo "${PRODUCER_CHECKSUM} *${PRODUCER_FILENAME}" > OpenKNXproducer.checksum
+          wget -q "${PRODUCER_URL}" -O "${PRODUCER_FILENAME}"
+          sha512sum "${PRODUCER_FILENAME}"
           sha512sum -c OpenKNXproducer.checksum
       - name: Unzip OpenKNXproducer and Make Executable
         run: |
           cd OpenKNXproducer
-          unzip OpenKNXproducer-3.7.14.0.zip || test -f tools/Linux/OpenKNXproducer
+          unzip "${PRODUCER_FILENAME}" || test -f tools/Linux/OpenKNXproducer
           chmod u+x tools/Linux/OpenKNXproducer
       - name: Check OpenKNXproducer
         run: OpenKNXproducer/tools/Linux/OpenKNXproducer version || echo Ignore OpenKNXproducer always returning 1...
@@ -80,8 +93,8 @@ jobs:
 
       - name: Create knxprod
         run: |
-          cd ${{ matrix.variant }}
-          OpenKNXproducer create --Debug -h include/knxprod.h src/${{ matrix.knxprod_xml }}
+          cd ${{ inputs.oam }}
+          OpenKNXproducer create --Debug -h include/knxprod.h src/${{inputs.KNXPROD_PREFIX}}${{ inputs.target != '' && format('-{0}', inputs.target) || '' }}
 
       - name: Install Python
         uses: actions/setup-python@v5
@@ -94,15 +107,10 @@ jobs:
           pip install virtualenv
           virtualenv ~/.platformio/penv
           source ~/.platformio/penv/bin/activate
-          pip install platformio          
+          pip install platformio
 
       - name: OpenKNX Release Build
-        if: ${{ matrix.build_target != '#' }}
-        run: |
-          cd ${{ matrix.variant }}
-          pwsh ./scripts/Build-Release.ps1 ${{ matrix.build_target }}
+        run: pwsh ./scripts/Build-Release.ps1 ${{ inputs.target }}
 
       - name: Show Changed Files
-        run: |
-          cd ${{ matrix.variant }}
-          git diff
+        run: git diff
