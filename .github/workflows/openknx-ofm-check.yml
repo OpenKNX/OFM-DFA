@@ -110,7 +110,11 @@ jobs:
           pip install platformio
 
       - name: OpenKNX Release Build
-        run: pwsh ./scripts/Build-Release.ps1 ${{ inputs.target }}
+        run: |
+          cd ${{ inputs.oam }}
+          pwsh ./scripts/Build-Release.ps1 ${{ inputs.target }}
 
       - name: Show Changed Files
-        run: git diff
+        run: |
+          cd ${{ inputs.oam }}
+          git diff
