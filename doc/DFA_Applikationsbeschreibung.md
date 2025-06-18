@@ -84,7 +84,8 @@ Ein Neustart per Reset-Taste kann nicht erkannt werden.
 
 ### Modul-Version
 
-Zeigt die Version (Major.Minor) des Moduls OFM-DFA an.
+Zeigt die Version (X.Y) des Moduls OFM-DFA an.
+Diese Version folgt dem Versionierungsschema der ETS und nicht dem Prinzip der Semantischen Versionierung (SemVer).
 
 
 <!-- DOC -->
@@ -111,6 +112,21 @@ Ist die Option **Steuerung erlauben** gewählt, so kann auch eine direkte Manipu
 Insbesondere ist es auf diesem Wege möglich ein Erreichen des Timeout-Endes zu simulieren, 
 zum einfachen Testen von Automaten-Definitionen, ohne auf das Ende von längeren Timeouts warten zu müssen. 
 
+#### Diagnose-Kommandos
+
+Die Kommandos beginnen jeweils mit `dfaNN`, wobei `NN` die Kanalnummer des Automaten angibt.
+
+* `dfaNN` - Liefert den aktuellen Zustand und die verbleibende Timeout-Zeit von Automat `NN`.
+* (Steuerung) `dfaNN state=SS` - Setzt den Zustand von Automat `NN` auf `SS` (`00` bis `16`).
+* (Steuerung) `dfaNN symbol=X` - Gibt das Symbol `X` (`A` bis `H`) in Automat `NN` ein.
+* (Steuerung) `dfaNN timeout!` - Beendet die Timeout-Zeit von Automat `NN` sofort.
+
+<!-- DOC Skip="5" -->
+Befehle die nur auf der seriellen Konsole verfügbar sind:
+
+* `dfa h` - Auflistung verfügbarer Kommandos
+* `dfa runtime` (nur wenn `OPENKNX_RUNTIME_STAT` definiert ist) - Zeigt detaillierte Laufzeitstatistiken an.
+
 ***Bemerkung***:
 Der Befehlssatz kann sich in zukünftigen Modul-Versionen verändern.
 
@@ -131,20 +147,17 @@ Der Wert wird ausschließlich in der ETS verwendet (als Teil der Kanalbezeichnun
 #### Kommentar
 
 Hier kann eine ausführlichere - auch mehrzeilige - Dokumention des Automaten erfolgen.
-Es wird empfohlen zentrale Annahmen die dem Entwurf des Automaten zu Grunde liegen hier festzuhalten.
+Es wird empfohlen zentrale Annahmen die dem Entwurf des Automaten zugrunde liegen hier festzuhalten.
 Die Dokumentation hat keinen Einfluss auf das Geräteverhalten.
 
+Eine mehrzeilige Eingabe ist aufgrund von Beschränkungen der ETS nicht direkt möglich, 
+kann jedoch durch Eingabe mit `\n` und Drücken des Buttons erzeugt werden. 
+Anschließend kann der Text mehrzeilig bearbeitet werden.
+
 <!-- DOCEND -->
-> Eine mehrzeilige Eingabe ist auf Grund von Beschränkungen der ETS nicht direkt möglich, kann jedoch durch Eingabe mit `\n` und Drücken des Buttons erzeugt werden. 
-> Anschließend kann der Text mehrzeilig bearbeitet werden.
-> 
 > Beispiel:
 > 
-> Der Text
-> ```
-> Ein Text\nmit mehreren\nZeilen!
-> ```
-> wird umgewandelt in
+> Der Text `Ein Text\nmit mehreren\nZeilen!` wird umgewandelt in
 > ```
 > Ein Text
 > mit mehreren
@@ -599,7 +612,7 @@ Falls ein Sendeverhalten für diesen Zustand definiert wurde, kann hier der Wert
 |    (+15) |    1.* | Eingang 5 - Symbol E       | Analog *Eingang 1 - Symbol A*                                                                                                                                                                                       |
 |  "&nbsp; |    1.* | Eingang 5 - Symbol E/F     | Analog *Eingang 1 - Symbol A/B*                                                                                                                                                                                     |
 |    (+16) |    1.* | Eingang 6 - Symbol F       | Analog *Eingang 2 - Symbol B*                                                                                                                                                                                       |
-|   (+17)  |    1.* | Eingang 7 - Symbol G       | Analog *Eingang 1 - Symbol A*                                                                                                                                                                                       |
+|    (+17) |    1.* | Eingang 7 - Symbol G       | Analog *Eingang 1 - Symbol A*                                                                                                                                                                                       |
 |  "&nbsp; |    1.* | Eingang 7 - Symbol G/H     | Analog *Eingang 1 - Symbol A/B*                                                                                                                                                                                     |
 |    (+18) |    1.* | Eingang 8 - Symbol H       | Analog *Eingang 2 - Symbol B*                                                                                                                                                                                       |
 |    (+21) |      * | Ausgang 1 - Zustandswert 1 | [(Optional)](#) Gibt einen für **O1** definierten zustandsabhängigen Wert aus. Sendeverhalten abhängig von Konfiguration.                                                                                           |

@@ -11,7 +11,7 @@
         <ApplicationProgram>
           <op:part name="STATE_NUMBER" href="DfaModule.state_numbers.part.xml" instances="16">
             <op:param name="%DfaStateNumber%"  value="1" digits="1" />
-          </op:part>        
+          </op:part>
           <Static>
             <ParameterTypes>
               <!-- Number of channels (module specific) -->
@@ -75,7 +75,7 @@
                   <Enumeration Id="%ENID%" Value="0" Text="nein (immer Starten wie konfiguriert)"        /><!-- 0b00 -->
                   <Enumeration Id="%ENID%" Value="1" Text="Fortsetzen, aber Timeout neu beginnen"        /><!-- 0b01 -->
                   <Enumeration Id="%ENID%" Value="2" Text="Fortsetzen mit gespeichertem Rest-Timeout"    /><!-- 0b10 -->
-                  <!-- 
+                  <!--
                   <Enumeration Id="%ENID%" Value="3" Text="letzten Zustand mit absolutem Timeout-Ende"   /> --><!-- 0b11 -->
                 </TypeRestriction>
               </ParameterType>
@@ -350,7 +350,7 @@
         <Baggage TargetPath="" Name="Icons.zip" Id="%FILE-ICONS%">
           <FileInfo TimeInfo="%DATETIME%" />
         </Baggage>
-      </Baggages>      
+      </Baggages>
     </Manufacturer>
   </ManufacturerData>
 </KNX>
