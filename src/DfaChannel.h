@@ -4,13 +4,7 @@
 #pragma once
 #include "OpenKNX.h"
 
-#define DFA_DEF_STATES_COUNT 16
-#define DFA_DEF_INPUTS_COUNT 8
-#define DFA_DEF_OUTPUTS_COUNT 4
-
-#define DFA_STATE_UNDEFINED 0xff
-// #define DFA_STATE_VALUE_UNDEFINED 0x00
-#define DFA_STATE_TIMEOUT_RESET 0x7f
+#include "DfaOutput.h"
 
 // #define DFA_INPUT_TRIGGER_DISABLED 0b00
 // #define DFA_INPUT_TRIGGER_0        0b01
@@ -32,21 +26,6 @@ enum class DfaDirectSetSame
     // timeout_add      = 0b11,
 };
 
-#define DFA_OUTPUT_TYPE_DPT1    10
-#define DFA_OUTPUT_TYPE_DPT2    20
-#define DFA_OUTPUT_TYPE_DPT5    50
-#define DFA_OUTPUT_TYPE_DPT5001 51
-#define DFA_OUTPUT_TYPE_DPT6    61
-#define DFA_OUTPUT_TYPE_DPT7    70
-#define DFA_OUTPUT_TYPE_DPT8    80
-#define DFA_OUTPUT_TYPE_DPT9    90
-#define DFA_OUTPUT_TYPE_DPT12   120
-#define DFA_OUTPUT_TYPE_DPT13   130
-#define DFA_OUTPUT_TYPE_DPT14   140
-#define DFA_OUTPUT_TYPE_DPT16   161
-#define DFA_OUTPUT_TYPE_DPT17   171
-#define DFA_OUTPUT_TYPE_DPT232  232
-
 // #if (DFA_ParamBlockSize > 0xff)
 //  #error Relativ channel parameter index > uint8_t => need uint16_t for DfaStateTimeoutParamRelIdx.state and _transitionParamsRelIdx
 // #endif
@@ -63,11 +42,8 @@ struct DfaStateTimeoutParamRelIdx
     uint16_t state; // note: uint8_t is to small
 };
 
-struct DfaTimeout
-{
-    uint32_t delay_ms;
-    uint32_t begin_ms;
-};
+
+
 
 class DfaChannel : public OpenKNX::Channel
 {
@@ -79,11 +55,6 @@ class DfaChannel : public OpenKNX::Channel
     static const uint16_t _inputConfNumberPRI[DFA_DEF_INPUTS_COUNT];
     static const uint16_t _inputTriggerPRI[DFA_DEF_INPUTS_COUNT];
 
-    // note: uint8_t is to small
-    static const uint16_t _outputKoPRI[DFA_DEF_OUTPUTS_COUNT];
-    static const uint16_t _outputDptPRI[DFA_DEF_OUTPUTS_COUNT];
-    static const uint16_t _outputSendPRI[DFA_DEF_STATES_COUNT][DFA_DEF_OUTPUTS_COUNT];
-    static const uint16_t _outputValuePRI[DFA_DEF_STATES_COUNT][DFA_DEF_OUTPUTS_COUNT];
     static const uint16_t _transPRI[DFA_DEF_STATES_COUNT][DFA_DEF_INPUTS_COUNT];
     static const DfaStateTimeoutParamRelIdx _timeoutPRI[DFA_DEF_STATES_COUNT];
 
@@ -91,7 +62,8 @@ class DfaChannel : public OpenKNX::Channel
     bool _channelActive = false;
 
     DfaInputs _inputs[DFA_DEF_INPUTS_COUNT] = {};
-    DfaTimeout _outputsTimeout[DFA_DEF_OUTPUTS_COUNT] = {};
+
+    DfaOutput* _outputs[DFA_DEF_OUTPUTS_COUNT] = {};
 
     // wait while startup is delayed
     bool _processStartup = false;
@@ -128,20 +100,6 @@ class DfaChannel : public OpenKNX::Channel
     uint32_t timeoutRemaining_ms();
 
     void setRunning(const bool requestRun, const bool first = false);
-
-    uint8_t outputGetDpt(const uint8_t i);
-    uint8_t outputGetCurrentStateSendConfig(const uint8_t i);
-    void outputLoop(const uint8_t i);
-
-    /**
-     * Update the output based on current state
-     * @param i - the 0-based index of output [<DFA_DEF_OUTPUTS_COUNT]
-     * @param send - true will send changed value, false will update GO only
-     * @param forceSend - true will always send; independent of value
-     */
-    void outputUpdate(const uint8_t i, const bool send, const bool forceSend /*= false*/);
-
-    /*bool*/ void outputUpdateKO(const uint8_t i, const KNXValue &value, const Dpt &type, const bool send, const bool forceSend /*= false*/);
 
   public:
     explicit DfaChannel(uint8_t index);
