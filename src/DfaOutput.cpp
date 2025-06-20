@@ -19,6 +19,14 @@ const uint16_t DfaOutput::_outputDptPRI[DFA_DEF_OUTPUTS_COUNT] = {
     DFA_aOutput3Dpt,
     DFA_aOutput4Dpt,
 };
+const uint16_t DfaOutput::_outputIntervalPRI[DFA_DEF_OUTPUTS_COUNT] = {
+    DFA_aOutput1IntervalTime,
+    DFA_aOutput2IntervalTime,
+    DFA_aOutput3IntervalTime,
+    DFA_aOutput4IntervalTime,
+};
+
+
 const uint16_t DfaOutput::_outputSendPRI[DFA_DEF_STATES_COUNT][DFA_DEF_OUTPUTS_COUNT] = {
     // TODO ensure same position of all Outputs
     { DFA_az01o1Send, DFA_az01o2Send, DFA_az01o3Send, DFA_az01o4Send, },
@@ -189,16 +197,6 @@ void DfaOutput::stateUpdate(const uint8_t newState, const bool _restoreOutputs)
 
     // TODO extract to DfaOutput::setState
 
-    // send output values
-    // TODO extract
-    // TODO replace with `(paramDelay(knx.paramWord(DFA_ParamCalcIndex(DFA_aOutput1IntervalTime))))`
-    const uint32_t outputDelays[DFA_DEF_OUTPUTS_COUNT] = {
-        (paramDelay(knx.paramWord(DFA_ParamCalcIndex(DFA_aOutput1IntervalTime)))),
-        (paramDelay(knx.paramWord(DFA_ParamCalcIndex(DFA_aOutput2IntervalTime)))),
-        (paramDelay(knx.paramWord(DFA_ParamCalcIndex(DFA_aOutput3IntervalTime)))),
-        (paramDelay(knx.paramWord(DFA_ParamCalcIndex(DFA_aOutput4IntervalTime)))),
-    };
-
     const uint8_t outputStateSend = getCurrentStateSendConfig();
 
     //  <ParameterType Id="%AID%_PT-DfaOutputConf" Name="DfaOutputConf">
@@ -225,7 +223,7 @@ void DfaOutput::stateUpdate(const uint8_t newState, const bool _restoreOutputs)
 
     // TODO check removal of `(outputGetDpt(i) != 0)`
     const bool cyclicSending = (outputGetDpt() != 0) && repeatedSending;
-    _timeout.delay_ms = cyclicSending ? outputDelays[i] : 0;
+    _timeout.delay_ms = cyclicSending ? paramDelay(knx.paramWord(DFA_ParamCalcIndex(_outputIntervalPRI[i]))) : 0;
 
     logTraceP("Output<%d>: ko=%i on~Val=%i on~State=%i all=%i ; cyclic=%i",
                 i + 1, updateKo, sendOnChangedValue, sendOnChangedState, sendAlways, repeatedSending);
