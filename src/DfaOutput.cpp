@@ -7,18 +7,25 @@
 // TODO calculate index; expected distance should be protected by compile error
 // TODO special handling of indices for >32 DFA required
 // Define (relative) parameter address-index for next state by current state and input
-const uint16_t DfaOutput::_outputKoPRI[DFA_DEF_OUTPUTS_COUNT] = {
-    DFA_KoKOaOutput1,
-    DFA_KoKOaOutput2,
-    DFA_KoKOaOutput3,
-    DFA_KoKOaOutput4,
-};
-const uint16_t DfaOutput::_outputDptPRI[DFA_DEF_OUTPUTS_COUNT] = {
-    DFA_aOutput1Dpt,
-    DFA_aOutput2Dpt,
-    DFA_aOutput3Dpt,
-    DFA_aOutput4Dpt,
-};
+
+// calc local GO-Number for Wertausgang
+#define number_DFA_KoNumber_Output_I_(i)               (DFA_KoKOaOutput1 + i)
+    static_assert(DFA_KoKOaOutput1 == number_DFA_KoNumber_Output_I_(0), "Wrong number_DFA_KoNumber_Output_I_(0)");
+    static_assert(DFA_KoKOaOutput2 == number_DFA_KoNumber_Output_I_(1), "Wrong number_DFA_KoNumber_Output_I_(1)");
+    static_assert(DFA_KoKOaOutput3 == number_DFA_KoNumber_Output_I_(2), "Wrong number_DFA_KoNumber_Output_I_(2)");
+    static_assert(DFA_KoKOaOutput4 == number_DFA_KoNumber_Output_I_(3), "Wrong number_DFA_KoNumber_Output_I_(3)");
+// Wertausgang i (0-based)
+#define KoDFA_KOaOutput_N_(i)                        (knx.getGroupObject(DFA_KoCalcNumber(DFA_KoKOaOutput1 + i)))
+
+// calc local Param-Offset for Ausgangs-Datentyp
+#define index_ParamDFA_aOutput_I_Dpt(i)                (DFA_aOutput1Dpt + i * (DFA_aOutput2Dpt-DFA_aOutput1Dpt))
+    static_assert(DFA_aOutput1Dpt == index_ParamDFA_aOutput_I_Dpt(0), "Wrong index_ParamDFA_aOutput_I_Dpt(0)");
+    static_assert(DFA_aOutput2Dpt == index_ParamDFA_aOutput_I_Dpt(1), "Wrong index_ParamDFA_aOutput_I_Dpt(1)");
+    static_assert(DFA_aOutput3Dpt == index_ParamDFA_aOutput_I_Dpt(2), "Wrong index_ParamDFA_aOutput_I_Dpt(2)");
+    static_assert(DFA_aOutput4Dpt == index_ParamDFA_aOutput_I_Dpt(3), "Wrong index_ParamDFA_aOutput_I_Dpt(3)");
+// Datentyp Ausgabe i (0-based)
+#define ParamDFA_aOutput_I_Dpt(i)                      (knx.paramByte(DFA_ParamCalcIndex(index_ParamDFA_aOutput_I_Dpt(i))))
+
 const uint16_t DfaOutput::_outputIntervalPRI[DFA_DEF_OUTPUTS_COUNT] = {
     DFA_aOutput1IntervalTime,
     DFA_aOutput2IntervalTime,
@@ -235,7 +242,8 @@ void DfaOutput::stateUpdate(const uint8_t newState, const bool _restoreOutputs)
 
 uint8_t DfaOutput::outputGetDpt()
 {
-    return knx.paramByte(DFA_ParamCalcIndex(_outputDptPRI[i]));
+    // return knx.paramByte(DFA_ParamCalcIndex(_outputDptPRI[i]));
+    return ParamDFA_aOutput_I_Dpt(i);
 }
 
 uint8_t DfaOutput::getCurrentStateSendConfig()
@@ -246,8 +254,8 @@ uint8_t DfaOutput::getCurrentStateSendConfig()
 /*bool*/ void DfaOutput::outputUpdateKO(const KNXValue &value, const Dpt &type, const bool send /* = false */, const bool forceSend /* = false */)
 {
     bool hasSend = false;
-    const uint16_t goNumber = DFA_KoCalcNumber(_outputKoPRI[i]);
-    GroupObject *ko = &knx.getGroupObject(goNumber);
+
+    GroupObject *ko = &KoDFA_KOaOutput_N_(i);
     if (forceSend)
     {
         ko->value(value, type);

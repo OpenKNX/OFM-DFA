@@ -47,8 +47,6 @@ class DfaOutput {
     uint8_t _channelIndex = 0;
 
     // note: uint8_t is to small
-    static const uint16_t _outputKoPRI[DFA_DEF_OUTPUTS_COUNT];
-    static const uint16_t _outputDptPRI[DFA_DEF_OUTPUTS_COUNT];
     static const uint16_t _outputIntervalPRI[DFA_DEF_OUTPUTS_COUNT];
     static const uint16_t _outputSendPRI[DFA_DEF_STATES_COUNT][DFA_DEF_OUTPUTS_COUNT];
     static const uint16_t _outputValuePRI[DFA_DEF_STATES_COUNT][DFA_DEF_OUTPUTS_COUNT];
