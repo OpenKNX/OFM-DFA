@@ -193,10 +193,10 @@ void DfaOutput::stateUpdate(const uint8_t newState, const bool _restoreOutputs)
     // TODO extract
     // TODO replace with `(paramDelay(knx.paramWord(DFA_ParamCalcIndex(DFA_aOutput1IntervalTime))))`
     const uint32_t outputDelays[DFA_DEF_OUTPUTS_COUNT] = {
-        ParamDFA_aOutput1IntervalTimeMS,
-        ParamDFA_aOutput2IntervalTimeMS,
-        ParamDFA_aOutput3IntervalTimeMS,
-        ParamDFA_aOutput4IntervalTimeMS,
+        (paramDelay(knx.paramWord(DFA_ParamCalcIndex(DFA_aOutput1IntervalTime)))),
+        (paramDelay(knx.paramWord(DFA_ParamCalcIndex(DFA_aOutput2IntervalTime)))),
+        (paramDelay(knx.paramWord(DFA_ParamCalcIndex(DFA_aOutput3IntervalTime)))),
+        (paramDelay(knx.paramWord(DFA_ParamCalcIndex(DFA_aOutput4IntervalTime)))),
     };
 
     const uint8_t outputStateSend = getCurrentStateSendConfig();
