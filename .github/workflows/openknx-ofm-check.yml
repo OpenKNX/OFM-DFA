@@ -25,9 +25,9 @@ jobs:
   oam-build:
     runs-on: ubuntu-latest
     env:
-      PRODUCER_VERSION: 3.7.14.0
-      PRODUCER_URL: https://github.com/OpenKNX/OpenKNXproducer/releases/download/v3.7.14/OpenKNXproducer-3.7.14.0.zip
-      PRODUCER_CHECKSUM: 40e30f59deb949704c3ec21e26b3fceb18b418a46443d904383bf4fd99d56461d1d8c39fac756de09079004469d1e868ce33c50768dbe1e3314b304a6fc20c2f
+      PRODUCER_VERSION: 3.7.18.0
+      PRODUCER_URL: https://github.com/OpenKNX/OpenKNXproducer/releases/download/v3.7.18/OpenKNXproducer-3.7.18.0.zip
+      PRODUCER_CHECKSUM: b03b7fbae0a65e1058a937705bf7434e32081afb2068afbecd0426541a13ce3a5920e585c518fb161526b2db69cf0686a5822853f33f4fca24bc056c388a521d
       PRODUCER_FILENAME: OpenKNXproducer-${PRODUCER_VERSION}.zip
 
     name: Build '${{ inputs.target }}' ${{ inputs.restore_branch && 'branch' || 'commit' }}
