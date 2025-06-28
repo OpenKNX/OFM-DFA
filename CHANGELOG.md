@@ -1,5 +1,7 @@
 # upcoming v0.4.1 "Output Fixes"
 
+* Fix #39: Für DPT9-Ausgänge wurden (i.d.R. deutlich erkennbar) falsche Werte gesendet
+  * Workaround für ältere Versionen: Ausgabe als DPT14 und Nutzung eines Logik-Kanals zur Konvertierung in DPT9  
 
 
 # 2025-03-01 v0.4.0-dev-Beta
