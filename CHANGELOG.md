@@ -4,6 +4,7 @@
   * Möglicher Workaround für ältere Versionen: Ausgabe des identischen Bitmusters über gleichlangen Ganzzahltyps (DPT7/12)
 * **Fix #40: Für Ausgänge mit Typ DPT8 (uint16) und DPT13 (uint32)** wurden negative Werte fehlerhaft verarbeitet und als 0 auf den Bus gesendet 
   * Möglicher Workaround für ältere Versionen: Ausgabe des identischen Bitmusters über gleichlangen Ganzzahltyps (DPT7/12)
+* Fix: Anzeigereihenfolge von KOs in Baumansicht unter dem Gerät korrigiert/an KO-Nummern angepasst
 * Dokumentation
   * Ergänzung von Kommandos zur Nutzung über das Diagnose-Objekt (und die serielle Konsole) 
   * Kleinere Detailverbesserungen
