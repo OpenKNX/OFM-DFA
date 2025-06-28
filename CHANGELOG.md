@@ -1,7 +1,7 @@
 # upcoming v0.4.1 "Output Fixes"
 
-* Fix #39: Für DPT9-Ausgänge wurden (i.d.R. deutlich erkennbar) falsche Werte gesendet
-  * Workaround für ältere Versionen: Ausgabe als DPT14 und Nutzung eines Logik-Kanals zur Konvertierung in DPT9  
+* **Fix #39: Für Ausgänge mit Typ DPT9 und DPT14** wurden (i.d.R. deutlich erkennbar) falsche Werte gesendet
+  * Möglicher Workaround für ältere Versionen: Ausgabe des identischen Bitmusters über gleichlangen Ganzzahltyps (DPT7/12)
 
 
 # 2025-03-01 v0.4.0-dev-Beta

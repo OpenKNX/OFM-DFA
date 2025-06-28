@@ -855,7 +855,9 @@ void DfaChannel::outputUpdate(const uint8_t i, const bool send, const bool force
                     outputUpdateKO(i, knx.paramInt(pIdxValue), DPT_Value_4_Count, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT14:
-                    outputUpdateKO(i, knx.paramFloat(pIdxValue, Float_Enc_IEEE754Double), DPT_Value_Absolute_Temperature, send, forceSend);
+                    // producer:     (knx.paramFloat(DFA_ParamCalcIndex(DFA_az01o1Dpt14),
+                    //                                          Float_Enc_IEEE754Single))
+                    outputUpdateKO(i, knx.paramFloat(pIdxValue, Float_Enc_IEEE754Single), DPT_Value_Absolute_Temperature, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT16:
                     outputUpdateKO(i, (char *)knx.paramData(pIdxValue), DPT_String_8859_1, send, forceSend);
