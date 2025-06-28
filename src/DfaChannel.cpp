@@ -854,7 +854,8 @@ void DfaChannel::outputUpdate(const uint8_t i, const bool send, const bool force
                 case DFA_OUTPUT_TYPE_DPT9:
                     // producer:     (knx.paramFloat(DFA_ParamCalcIndex(DFA_az01o1Dpt9),
                     //                                          Float_Enc_IEEE754Single))
-                    outputUpdateKO(i, knx.paramFloat(pIdxValue, Float_Enc_IEEE754Single), DPT_Value_Temp, send, forceSend);
+                    // Important: Do NOT use a DPT which is cropped. Must be Supported by dptconvert
+                    outputUpdateKO(i, knx.paramFloat(pIdxValue, Float_Enc_IEEE754Single), DPT_Value_Tempd, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT12:
                     // producer:     (knx.paramInt(DFA_ParamCalcIndex(DFA_az01o1Dpt12)))
