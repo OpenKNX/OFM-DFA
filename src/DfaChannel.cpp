@@ -841,7 +841,8 @@ void DfaChannel::outputUpdate(const uint8_t i, const bool send, const bool force
                     outputUpdateKO(i, knx.paramWord(pIdxValue), DPT_Value_2_Ucount, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT8:
-                    outputUpdateKO(i, knx.paramWord(pIdxValue), DPT_Value_2_Count, send, forceSend);
+                    // producer:     ((int16_t)knx.paramWord(DFA_ParamCalcIndex(DFA_az01o1Dpt8)))
+                    outputUpdateKO(i, (int16_t)knx.paramWord(pIdxValue), DPT_Value_2_Count, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT9:
                     // producer:     (knx.paramFloat(DFA_ParamCalcIndex(DFA_az01o1Dpt9),
@@ -852,7 +853,8 @@ void DfaChannel::outputUpdate(const uint8_t i, const bool send, const bool force
                     outputUpdateKO(i, knx.paramInt(pIdxValue), DPT_Value_4_Ucount, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT13:
-                    outputUpdateKO(i, knx.paramInt(pIdxValue), DPT_Value_4_Count, send, forceSend);
+                    // producer:     (int32_t)knx.paramInt(DFA_ParamCalcIndex(DFA_az01o1Dpt13)))
+                    outputUpdateKO(i, (int32_t)knx.paramInt(pIdxValue), DPT_Value_4_Count, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT14:
                     // producer:     (knx.paramFloat(DFA_ParamCalcIndex(DFA_az01o1Dpt14),
