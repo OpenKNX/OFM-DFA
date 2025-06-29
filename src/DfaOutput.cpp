@@ -126,48 +126,67 @@ void DfaOutput::outputUpdate(const bool send, const bool forceSend /* = false */
             {
                 case DFA_OUTPUT_TYPE_DPT1:
                     // works, as long as using same location as other dpt values
+                    // TODO check Using paramBit
+                    // producer:   (knx.paramByte(DFA_ParamCalcIndex(DFA_az01o1Dpt1)))
                     outputUpdateKO((knx.paramByte(pIdxValue) != 0), DPT_Switch, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT2:
                     // TODO check using mask!
+                    // producer:  (knx.paramByte(DFA_ParamCalcIndex(DFA_az01o1Dpt2)))
                     outputUpdateKO(knx.paramByte(pIdxValue), DPT_Switch_Control, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT5:
+                    // producer:  (knx.paramByte(DFA_ParamCalcIndex(DFA_az01o1Dpt5)))
                     outputUpdateKO(knx.paramByte(pIdxValue), DPT_DecimalFactor, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT5001:
+                    // producer:  (knx.paramByte(DFA_ParamCalcIndex(DFA_az01o1Dpt5001)))
                     outputUpdateKO(knx.paramByte(pIdxValue), DPT_Scaling, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT6:
+                    // producer:
+                    //    ((int8_t)knx.paramByte(DFA_ParamCalcIndex(DFA_az01o1Dpt6)))
                     outputUpdateKO(knx.paramSignedByte(pIdxValue), DPT_Value_1_Count, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT7:
+                    // producer:  (knx.paramWord(DFA_ParamCalcIndex(DFA_az01o1Dpt7)))
                     outputUpdateKO(knx.paramWord(pIdxValue), DPT_Value_2_Ucount, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT8:
-                    outputUpdateKO(knx.paramWord(pIdxValue), DPT_Value_2_Count, send, forceSend);
+                    // producer:  ((int16_t)knx.paramWord(DFA_ParamCalcIndex(DFA_az01o1Dpt8)))
+                    outputUpdateKO((int16_t)knx.paramWord(pIdxValue), DPT_Value_2_Count, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT9:
-                    outputUpdateKO(knx.paramFloat(pIdxValue, Float_Enc_DPT9), DPT_Value_Temp, send, forceSend);
+                    // producer:  (knx.paramFloat(DFA_ParamCalcIndex(DFA_az01o1Dpt9),
+                    //                                          Float_Enc_IEEE754Single))
+                    // Important: Do NOT use a DPT which is cropped. Must be Supported by dptconvert
+                    outputUpdateKO(knx.paramFloat(pIdxValue, Float_Enc_IEEE754Single), DPT_Value_Tempd, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT12:
+                    // producer:  (knx.paramInt(DFA_ParamCalcIndex(DFA_az01o1Dpt12)))
                     outputUpdateKO(knx.paramInt(pIdxValue), DPT_Value_4_Ucount, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT13:
-                    outputUpdateKO(knx.paramInt(pIdxValue), DPT_Value_4_Count, send, forceSend);
+                    // producer:   (int32_t)knx.paramInt(DFA_ParamCalcIndex(DFA_az01o1Dpt13)))
+                    outputUpdateKO((int32_t)knx.paramInt(pIdxValue), DPT_Value_4_Count, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT14:
-                    outputUpdateKO(knx.paramFloat(pIdxValue, Float_Enc_IEEE754Double), DPT_Value_Absolute_Temperature, send, forceSend);
+                    // producer:  (knx.paramFloat(DFA_ParamCalcIndex(DFA_az01o1Dpt14),
+                    //                                          Float_Enc_IEEE754Single))
+                    outputUpdateKO(knx.paramFloat(pIdxValue, Float_Enc_IEEE754Single), DPT_Value_Absolute_Temperature, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT16:
                     outputUpdateKO((char *)knx.paramData(pIdxValue), DPT_String_8859_1, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT17:
+                    // producer:  (knx.paramByte(DFA_ParamCalcIndex(DFA_az01o1Dpt17)))
                     outputUpdateKO(knx.paramByte(pIdxValue), DPT_SceneNumber, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT232:
                     // get value as defined in ParamDFA_az01o1Dpt232
                     // TODO Ensure same values for DFA_az{$state}o{$output}Dpt232Mask and DFA_az{$state}o{$output}Dpt232Shift
+                    //  producer:  ((knx.paramInt(DFA_ParamCalcIndex(DFA_az01o1Dpt232))
+                    //                                         & DFA_az01o1Dpt232Mask) >> DFA_az01o1Dpt232Shift)
                     outputUpdateKO((knx.paramInt(pIdxValue) & DFA_az01o1Dpt232Mask) >> DFA_az01o1Dpt232Shift, DPT_Colour_RGB, send, forceSend);
                     break;
                 default:

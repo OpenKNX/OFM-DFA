@@ -1,5 +1,9 @@
-# upcoming v0.5.0
+# upcoming v0.5 (with "Output Fixes")
 
+* **Fix #39: Für Ausgänge mit Typ DPT9 und DPT14** wurden (i.d.R. deutlich erkennbar) falsche Werte gesendet
+  * Möglicher Workaround für ältere Versionen: Ausgabe des identischen Bitmusters über gleichlangen Ganzzahltyps (DPT7/12)
+* **Fix #40: Für Ausgänge mit Typ DPT8 (uint16) und DPT13 (uint32)** wurden negative Werte fehlerhaft verarbeitet und als 0 auf den Bus gesendet 
+  * Möglicher Workaround für ältere Versionen: Ausgabe des identischen Bitmusters über gleichlangen Ganzzahltyps (DPT7/12)
 * Dokumentation
   * Ergänzung von Kommandos zur Nutzung über das Diagnose-Objekt (und die serielle Konsole) 
   * Kleinere Detailverbesserungen

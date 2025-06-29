@@ -233,7 +233,7 @@ DfaChannel::DfaChannel(uint8_t index)
     for (uint8_t i = 0; i < DFA_DEF_OUTPUTS_COUNT; i++)
     {
         _outputs[i] = new DfaOutput(_channelIndex, i);
-    }    
+    }
 }
 
 const std::string DfaChannel::name()
