@@ -72,6 +72,21 @@ jobs:
           # ref: ${{ github.ref_name }}
           path: OFM-DFA
 
+      - name: Extract OFM-version (major.minor) from library.json
+        id: get_version
+        run: |
+          cd OFM-DFA
+          VERSION=$(jq -r '.version' library.json)
+          VERSION_MAJOR_MINOR=$(echo "$VERSION" | grep -oE '^[0-9]+\.[0-9]+')
+          echo "VERSION_MAJOR_MINOR=$VERSION_MAJOR_MINOR" >> $GITHUB_ENV
+          echo "OFM-Version: $VERSION_MAJOR_MINOR"
+
+      - name: Patch OAM to Current OFM-Version ${{ env.VERSION_MAJOR_MINOR }}
+        run: |
+          cd ${{ inputs.oam }}
+          sed -i 's/\(<op:config name="%DFA_VerifyVersion%"[ ]*value="\)[^"]*\(".*\/>\)/\1'"$VERSION_MAJOR_MINOR"'\2/' src/StateEngine.conf.xml
+          echo "Set %DFA_VerifyVersion% to $VERSION_MAJOR_MINOR"
+
       - name: Download OpenKNXproducer ${{ env.PRODUCER_VERSION }} and Verify
         run: |
           mkdir OpenKNXproducer
