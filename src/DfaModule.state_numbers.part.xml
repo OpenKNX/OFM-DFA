@@ -19,10 +19,6 @@
               </ParameterType>            
             </ParameterTypes>
           </Static>
-          <Dynamic>
-            <ChannelIndependentBlock> 
-            </ChannelIndependentBlock>
-          </Dynamic>
         </ApplicationProgram>
       </ApplicationPrograms>
     </Manufacturer>
