@@ -109,7 +109,7 @@ Abhängig von der Konfiguration setzt sich das Eingabealphabet aus den folgenden
 Das Eingabealphabet kann die Form X=X<sub>e</sub>&cup;X<sub>t</sub> oder X=X<sub>e</sub>&cup;X<sub>t</sub>&cup;X<sub>z</sub> aufweisen.
 
 ### d:Z&times;X&rarr;Z&cup;{undef} := Überführungsfunktion mit partieller Definition
-... beschreibt für jede Kombination aus Ausgangszustand und Eingabesymbol ob, und wenn ja in welchen Folgezustand bei Eingabe gewechselt wird.
+... beschreibt für jede Kombination aus Ausgangszustand und Eingabesymbol, ob und wenn ja in welchen Folgezustand bei Eingabe gewechselt wird.
 Nicht angegebene Zustandsübergabe werden ignoriert und führen nicht in einen Fehlerzustand.
 
 Falls X<sub>z</sub>&subset;X (*Direktes Setzen von Zuständen ist erlaubt*), 
