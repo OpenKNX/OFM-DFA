@@ -6,8 +6,10 @@
   * Möglicher Workaround für ältere Versionen: Ausgabe des identischen Bitmusters über gleichlangen Ganzzahltyps (DPT7/12)
 * Fix: Anzeigereihenfolge von KOs in Baumansicht unter dem Gerät korrigiert/an KO-Nummern angepasst
 * Dokumentation
+  * Ergänzung von Beispielen 
   * Ergänzung von Kommandos zur Nutzung über das Diagnose-Objekt (und die serielle Konsole) 
   * Kleinere Detailverbesserungen
+* Refactoring: Ausgangsverarbeitung  
 
 
 # 2025-03-01 v0.4.0-dev-Beta

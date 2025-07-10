@@ -1,21 +1,3 @@
-> # BETA-STATUS! <!-- (DE/German) -->
->
-> Die Implementation basiert auf einem einfachen und klaren formalen Modell 
-> und hat sich in länger andauernden internen Produktiv-Tests bislang als sehr zuverlässig erwiesen.
-> Trotzdem besteht noch eine erhöhte Wahrscheinlichkeit von unerwartetem, oder sogar fehlerhaftem, Verhalten,
-> vor allem bei erweiterten Funktionalitäten die über das einfache und robuste formelle Modelle hinausgehen.
-> 
-> Kompatiblitätsbrechende Änderungen sind zum aktuellen Zeitpunkt nicht geplant und werden nach Möglichkeit vermieden, 
-> können jedoch nicht ausgeschlossen werden. 
-
-<!--
-# Deterministic Finite Automaton (DFA) Module for OpenKNX
-
-Implementation of state machines for KNX configurable via ETS.
-
-By Cornelius Köpp 2023-09 -- 2025
--->
-
 # OpenKNX-Modul zur Definition zustandsbehaftetem Verhalten auf Basis von  Deterministischen Endlichen Automaten (DEA)
 
 Implementierung von Zustandsmodellen für KNX, konfigurierbar über die ETS.

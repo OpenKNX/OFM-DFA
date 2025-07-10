@@ -311,8 +311,6 @@
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Deterministische Endliche Automaten (DEAs)" UIHint="Headline" />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Version: %ModuleVersion%"  />
 
-                <ParameterSeparator Id="%AID%_PS-nnn" Text="Public BETA" UIHint="Information" />
-
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
 
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Kanalauswahl" UIHint="Headline" />
