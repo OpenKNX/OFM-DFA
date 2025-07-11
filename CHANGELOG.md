@@ -1,4 +1,4 @@
-# upcoming v0.5 (with "Output Fixes")
+# 2025-07-11 v0.5.0 (with "Output Fixes")
 
 * **Fix #39: Für Ausgänge mit Typ DPT9 und DPT14** wurden (i.d.R. deutlich erkennbar) falsche Werte gesendet
   * Möglicher Workaround für ältere Versionen: Ausgabe des identischen Bitmusters über gleichlangen Ganzzahltyps (DPT7/12)
