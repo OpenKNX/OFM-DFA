@@ -2,9 +2,9 @@
 <?xml-model href="../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <KNX xmlns:op="http://github.com/OpenKNX/OpenKNXproducer" xmlns="http://knx.org/xml/project/20" CreatedBy="KNX MT" ToolVersion="5.1.255.16695">
   <ManufacturerData>
-    <Manufacturer>
+    <Manufacturer RefId="M-00FA">
       <ApplicationPrograms>
-        <ApplicationProgram ApplicationNumber="" ApplicationVersion="" DefaultLanguage="" DynamicTableManagement="" Id="" Linkable="" LoadProcedureStyle="" MaskVersion="" Name="" PeiType="" ProgramType="">
+        <ApplicationProgram Id="M-00FA_CS-OpenKNX" ApplicationNumber="0" ApplicationVersion="0" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="de" DynamicTableManagement="false" Linkable="false">
           <!-- this ist just for documentation reasons, as an example for the caller 
           <op:partParams name="STATE_NUMBER">
             <op:param name="%DfaStateNumber%"  value="1" digits="1" />
