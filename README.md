@@ -4,7 +4,7 @@ Implementierung von Zustandsmodellen für KNX, konfigurierbar über die ETS.
 
 Von Cornelius Köpp 2023-09 -- 2025
 
-**Hinweis:** Dieses Modul kann (aktuell ausschließlich) mit der [OpenKNX StateEngine](https://github.com/OpenKNX/OAM-StateEngine/) genutzt werden.   
+**Hinweis:** Dieses Modul kann mit der [OpenKNX StateEngine](https://github.com/OpenKNX/OAM-StateEngine/) genutzt werden.   
 
 
 
