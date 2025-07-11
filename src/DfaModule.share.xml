@@ -288,6 +288,12 @@
                 </TypeRestriction>
               </ParameterType>
 
+              <ParameterType Id="%AID%_PT-DfaOutputValueDpt9" Name="DfaOutputValueDpt9">
+                <!-- ETS 5.7 allows range of -670760..670760 -->
+                <!-- max Value is below, as 7FFFh is reserved for "invalid data" in DPT 9-->
+                <TypeFloat Encoding="DPT 9" minInclusive="-671088" maxInclusive="670433" />
+              </ParameterType>
+              
             </ParameterTypes>
             <Parameters>
               <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="0" BitOffset="0" />

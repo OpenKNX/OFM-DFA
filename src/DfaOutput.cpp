@@ -160,7 +160,8 @@ void DfaOutput::outputUpdate(const bool send, const bool forceSend /* = false */
                     // producer:  (knx.paramFloat(DFA_ParamCalcIndex(DFA_az01o1Dpt9),
                     //                                          Float_Enc_IEEE754Single))
                     // Important: Do NOT use a DPT which is cropped. Must be Supported by dptconvert
-                    outputUpdateKO(knx.paramFloat(pIdxValue, Float_Enc_IEEE754Single), DPT_Value_Tempd, send, forceSend);
+                    outputUpdateKO(knx.paramFloat(pIdxValue, Float_Enc_DPT9), DPT_Value_Tempd, send, forceSend);
+                    // outputUpdateKO(knx.paramWord(pIdxValue), DPT_Value_2_Ucount, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT12:
                     // producer:  (knx.paramInt(DFA_ParamCalcIndex(DFA_az01o1Dpt12)))
