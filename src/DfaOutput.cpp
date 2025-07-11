@@ -160,8 +160,10 @@ void DfaOutput::outputUpdate(const bool send, const bool forceSend /* = false */
                     // producer:  (knx.paramFloat(DFA_ParamCalcIndex(DFA_az01o1Dpt9),
                     //                                          Float_Enc_IEEE754Single))
                     // Important: Do NOT use a DPT which is cropped. Must be Supported by dptconvert
-                    outputUpdateKO(knx.paramFloat(pIdxValue, Float_Enc_DPT9), DPT_Value_Tempd, send, forceSend);
-                    // outputUpdateKO(knx.paramWord(pIdxValue), DPT_Value_2_Ucount, send, forceSend);
+                    // outputUpdateKO(knx.paramFloat(pIdxValue, Float_Enc_DPT9), DPT_Value_Tempd, send, forceSend);
+
+                    // direct sending of the stored 16 bit value, without conversion
+                    outputUpdateKO(knx.paramWord(pIdxValue), DPT_Value_2_Ucount, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT12:
                     // producer:  (knx.paramInt(DFA_ParamCalcIndex(DFA_az01o1Dpt12)))
@@ -174,7 +176,10 @@ void DfaOutput::outputUpdate(const bool send, const bool forceSend /* = false */
                 case DFA_OUTPUT_TYPE_DPT14:
                     // producer:  (knx.paramFloat(DFA_ParamCalcIndex(DFA_az01o1Dpt14),
                     //                                          Float_Enc_IEEE754Single))
-                    outputUpdateKO(knx.paramFloat(pIdxValue, Float_Enc_IEEE754Single), DPT_Value_Absolute_Temperature, send, forceSend);
+                    // outputUpdateKO(knx.paramFloat(pIdxValue, Float_Enc_IEEE754Single), DPT_Value_Absolute_Temperature, send, forceSend);
+
+                    // direct sending of the stored 32 bit value, without conversion
+                    outputUpdateKO(knx.paramInt(pIdxValue), DPT_Value_4_Ucount, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT16:
                     outputUpdateKO((char *)knx.paramData(pIdxValue), DPT_String_8859_1, send, forceSend);
