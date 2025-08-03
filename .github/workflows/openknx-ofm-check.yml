@@ -25,13 +25,18 @@ jobs:
   oam-build:
     runs-on: ubuntu-latest
     env:
-      PRODUCER_VERSION: 3.8.0
-      PRODUCER_URL: https://github.com/OpenKNX/OpenKNXproducer/releases/download/v3.8.0/OpenKNXproducer-3.8.0.zip
-      PRODUCER_CHECKSUM: 34d708df99dafd2cbb8a1b5fc7e31d08a570395f52dcbb37551139d731bf3d3b2682f7d3ab6f57ffea82d45c24838d2a46b5a746e32e02db7284aa4e3e404802
+      PRODUCER_VERSION: 3.9.0
+      PRODUCER_CHECKSUM: 824704fcdf12c7dacf91596c58d8151cf5cddad6fa3e6fe98d6ba84853e53de2
+      PRODUCER_URL: https://github.com/OpenKNX/OpenKNXproducer/releases/download/v${PRODUCER_VERSION}/OpenKNXproducer-${PRODUCER_VERSION}.zip
       PRODUCER_FILENAME: OpenKNXproducer-${PRODUCER_VERSION}.zip
 
     name: Build '${{ inputs.target }}' ${{ inputs.restore_branch && 'branch' || 'commit' }}
     steps:
+      - name: Set Derived env-Variables
+        run: |
+          echo "PRODUCER_URL=${PRODUCER_URL}" >> $GITHUB_ENV
+          echo "PRODUCER_FILENAME=${PRODUCER_FILENAME}" >> $GITHUB_ENV
+
       # DO this after restore the use current commit
       # - uses: actions/checkout@v4
       #   with:
@@ -91,14 +96,14 @@ jobs:
         run: |
           mkdir OpenKNXproducer
           cd OpenKNXproducer
-          echo "${PRODUCER_CHECKSUM} *${PRODUCER_FILENAME}" > OpenKNXproducer.checksum
-          wget -q "${PRODUCER_URL}" -O "${PRODUCER_FILENAME}"
-          sha512sum "${PRODUCER_FILENAME}"
-          sha512sum -c OpenKNXproducer.checksum
+          echo "${PRODUCER_CHECKSUM} *${{env.PRODUCER_FILENAME}}" > OpenKNXproducer.checksum
+          wget -q "${{env.PRODUCER_URL}}" -O "${{env.PRODUCER_FILENAME}}"
+          sha256sum "${{env.PRODUCER_FILENAME}}"
+          sha256sum -c OpenKNXproducer.checksum
       - name: Unzip OpenKNXproducer and Make Executable
         run: |
           cd OpenKNXproducer
-          unzip "${PRODUCER_FILENAME}" || test -f tools/Linux/OpenKNXproducer
+          unzip "${{env.PRODUCER_FILENAME}}" || test -f tools/Linux/OpenKNXproducer
           chmod u+x tools/Linux/OpenKNXproducer
       - name: Check OpenKNXproducer
         run: OpenKNXproducer/tools/Linux/OpenKNXproducer version || echo Ignore OpenKNXproducer always returning 1...
