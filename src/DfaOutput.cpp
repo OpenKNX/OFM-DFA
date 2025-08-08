@@ -47,7 +47,10 @@ void DfaOutput::stateUpdate(const uint8_t newState, const bool _restoreOutputs)
     //      <Enumeration Text="jeder Zustands-Aufruf        + zyklisch"        Value="7" Id="%ENID%" />
     //    </TypeRestriction>
     //  </ParameterType>
+#if defined(OPENKNX_TRACE1) || defined(OPENKNX_TRACE2) || defined(OPENKNX_TRACE3) || defined(OPENKNX_TRACE4) || defined(OPENKNX_TRACE5)
+    // TODO check duplicate decision within called method
     const bool updateKo =            (outputStateSend > 0);
+#endif
     const bool sendOnRestore =       (outputStateSend & 0b1000) == 0;
     const uint8_t outputStateSend3 = (outputStateSend & 0b0111);
     const bool sendOnChangedValue =  (outputStateSend3 >= 2);
