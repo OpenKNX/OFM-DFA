@@ -438,11 +438,11 @@
                             <Column Id="%AID%_PB-nnn_C-7" Name="Col7" Width="4%" />
                             <Column Id="%AID%_PB-nnn_C-8" Name="ColGH" Width="11%" />
                           </Columns>
-                          <ParameterSeparator Id="%AID%_PS-nnn" Text="Gemeinsamer Eingang (Symbole für 1/0)"  Cell="2,1" />
-                          <ParameterRefRef RefId="%AID%_UP-%T%%CC%7001_R-%T%%CC%700101"    Cell="2,2" />
-                          <ParameterRefRef RefId="%AID%_UP-%T%%CC%7002_R-%T%%CC%700201"    Cell="2,4" />
-                          <ParameterRefRef RefId="%AID%_UP-%T%%CC%7003_R-%T%%CC%700301"    Cell="2,6" />
-                          <ParameterRefRef RefId="%AID%_UP-%T%%CC%7004_R-%T%%CC%700401"    Cell="2,8" />
+                          <ParameterSeparator Id="%AID%_PS-nnn" Text="Gemeinsamer Eingang (Symbole für 1/0)"  Cell="1,1" />
+                          <ParameterRefRef RefId="%AID%_UP-%T%%CC%7001_R-%T%%CC%700101"                       Cell="1,2" />
+                          <ParameterRefRef RefId="%AID%_UP-%T%%CC%7002_R-%T%%CC%700201"                       Cell="1,4" />
+                          <ParameterRefRef RefId="%AID%_UP-%T%%CC%7003_R-%T%%CC%700301"                       Cell="1,6" />
+                          <ParameterRefRef RefId="%AID%_UP-%T%%CC%7004_R-%T%%CC%700401"                       Cell="1,8" />
                         </ParameterBlock>
                         <ParameterBlock Id="%AID%_PB-%C%03" Name="InputSymbols%C%" Text="  x  " Inline="true" Layout="Table" HelpContext="DFA-Eingabesymbole">
                           <Rows>
