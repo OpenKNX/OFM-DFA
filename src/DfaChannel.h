@@ -36,12 +36,6 @@ struct DfaInputs
     uint16_t koNumber;
 };
 
-struct DfaStateTimeoutParamRelIdx
-{
-    uint16_t delay;
-    uint16_t state; // note: uint8_t is to small
-};
-
 
 
 
@@ -55,8 +49,8 @@ class DfaChannel : public OpenKNX::Channel
     static const uint16_t _inputConfNumberPRI[DFA_DEF_INPUTS_COUNT];
     static const uint16_t _inputTriggerPRI[DFA_DEF_INPUTS_COUNT];
 
-    static const uint16_t _transPRI[DFA_DEF_STATES_COUNT][DFA_DEF_INPUTS_COUNT];
-    static const DfaStateTimeoutParamRelIdx _timeoutPRI[DFA_DEF_STATES_COUNT];
+    static const uint16_t _transPRI[DFA_DEF_STATES_COUNT][DFA_DEF_INPUTS_WITH_T_COUNT];
+    static const uint16_t _timeoutPRI[DFA_DEF_STATES_COUNT];
 
     // is enabled in ETS?
     bool _channelActive = false;
@@ -90,7 +84,6 @@ class DfaChannel : public OpenKNX::Channel
     void initInputConfig();
 
     uint32_t getStateTimeoutDelay_ms(const uint8_t state);
-    uint8_t getTimeoutState(const uint8_t state);
     inline bool isValidState(const uint8_t state);
     void setState(const uint8_t nextState, const DfaDirectSetSame sameStateBehaviour = DfaDirectSetSame::timeout_restart);
     void transfer(const uint8_t input);

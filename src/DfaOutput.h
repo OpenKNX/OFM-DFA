@@ -10,6 +10,19 @@
 #define DFA_DEF_STATES_COUNT 16
 #define DFA_DEF_INPUTS_COUNT 8
 #define DFA_DEF_OUTPUTS_COUNT 4
+// extension for timeout input symbol T:
+#define DFA_DEF_INPUTS_WITH_T_COUNT (DFA_DEF_INPUTS_COUNT + 1)
+/*
+#define DFA_INPUT_SYMBOL_A 0
+#define DFA_INPUT_SYMBOL_B 1
+#define DFA_INPUT_SYMBOL_C 2
+#define DFA_INPUT_SYMBOL_D 3
+#define DFA_INPUT_SYMBOL_E 4
+#define DFA_INPUT_SYMBOL_F 5
+#define DFA_INPUT_SYMBOL_G 6
+#define DFA_INPUT_SYMBOL_H 7
+*/
+#define DFA_INPUT_SYMBOL_T (DFA_DEF_INPUTS_COUNT)
 
 // TODO check best place to define constants
 #define DFA_STATE_UNDEFINED 0xff
