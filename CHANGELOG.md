@@ -1,3 +1,9 @@
+# upcoming v0.6
+
+* Fix ETS-XML: Falsche Zell-Koordinates for Eingangs-Paar-Parameter. Dies hatte keine sichtbaren Auswirkungen in der ETS5.7/6.x. 
+* OpenKNX Update: Anpassungen für neue Producer-Versionen
+
+
 # 2025-07-11 v0.5.0 (with "Output Fixes")
 
 * **Fix #39: Für Ausgänge mit Typ DPT9 und DPT14** wurden (i.d.R. deutlich erkennbar) falsche Werte gesendet
