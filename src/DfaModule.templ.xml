@@ -235,10 +235,10 @@
 
             </ParameterRefs>
             <ComObjectTable>
-              <ComObject Id="%AID%_O-%T%%CC%0102" Name="KOa%C%Running" Text="Ausführen status" Number="%K0%"  FunctionText="DEA %C%, Status Ausführend"  DatapointType="DPST-1-11"  ObjectSize="1 Bit"     ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CC%0101" Name="KOa%C%RunSet"  Text="Ausführen setzen" Number="%K1%"  FunctionText="DEA %C%, Ausführen"          DatapointType="DPST-1-10"  ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CC%0000" Name="KOa%C%State"   Text="Zustand"          Number="%K2%"  FunctionText="DEA %C%, Ausgabe Zustand"    DatapointType="DPST-17-1"  ObjectSize="1 Byte"    ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CC%0100" Name="KOa%C%StateI"  Text="Zustand setzen"   Number="%K3%"  FunctionText="DEA %C%, Eingabe Zustand"    DatapointType="DPST-17-1"  ObjectSize="1 Byte"    ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CC%0102" Name="KOa%C%Running" Text="läuft?"            Number="%K0%"  FunctionText="DEA %C%, Ausführungsstatus"  DatapointType="DPST-1-11"  ObjectSize="1 Bit"     ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CC%0101" Name="KOa%C%RunSet"  Text="starten/pausieren" Number="%K1%"  FunctionText="DEA %C%, Ausführen"          DatapointType="DPST-1-10"  ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CC%0000" Name="KOa%C%State"   Text="Zustand"           Number="%K2%"  FunctionText="DEA %C%, Ausgabe Zustand"    DatapointType="DPST-17-1"  ObjectSize="1 Byte"    ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CC%0100" Name="KOa%C%StateI"  Text="Zustand setzen"    Number="%K3%"  FunctionText="DEA %C%, Eingabe Zustand"    DatapointType="DPST-17-1"  ObjectSize="1 Byte"    ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
 
               <!-- KO4 reserved--><ComObject Id="%AID%_O-%T%%CC%0011" Name="KOa%C%Dummy01" Text="Dummy01"          Number="%K4%"  FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
               <!-- KO5 reserved--><ComObject Id="%AID%_O-%T%%CC%0012" Name="KOa%C%Dummy02" Text="Dummy02"          Number="%K5%"  FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
@@ -293,9 +293,9 @@
               <ComObjectRef Id="%AID%_O-%T%%CC%0007_R-%T%%CC%000702" RefId="%AID%_O-%T%%CC%0007" Text="Symbol G/H (1=G/H=D) {{0: }}"                                               TextParameterRefId="%AID%_P-%T%%CC%7700_R-%T%%CC%770002" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0008_R-%T%%CC%000801" RefId="%AID%_O-%T%%CC%0008" Text="Symbol H {{0: }}"                                                           TextParameterRefId="%AID%_P-%T%%CC%7800_R-%T%%CC%780001" />
                                          
-              <ComObjectRef Id="%AID%_O-%T%%CC%0100_R-%T%%CC%010001" RefId="%AID%_O-%T%%CC%0100" Text="Zustand setzen"    />
-              <ComObjectRef Id="%AID%_O-%T%%CC%0101_R-%T%%CC%010101" RefId="%AID%_O-%T%%CC%0101" Text="starten/pausieren" />
-              <ComObjectRef Id="%AID%_O-%T%%CC%0102_R-%T%%CC%010201" RefId="%AID%_O-%T%%CC%0102" Text="läuft?"            />
+              <ComObjectRef Id="%AID%_O-%T%%CC%0100_R-%T%%CC%010001" RefId="%AID%_O-%T%%CC%0100" />
+              <ComObjectRef Id="%AID%_O-%T%%CC%0101_R-%T%%CC%010101" RefId="%AID%_O-%T%%CC%0101" />
+              <ComObjectRef Id="%AID%_O-%T%%CC%0102_R-%T%%CC%010201" RefId="%AID%_O-%T%%CC%0102" />
 
               <!-- output 1 -->
               <ComObjectRef Id="%AID%_O-%T%%CC%0201_R-%T%%CC%020101" RefId="%AID%_O-%T%%CC%0201" Text="{{0:Zustandswert 1}}"    ObjectSize="1 Bit"    DatapointType="DPST-1-1"     TextParameterRefId="%AID%_P-%T%%CC%8100_R-%T%%CC%810001" />
