@@ -138,11 +138,14 @@ void DfaModule::readFlash(const uint8_t *buf, const uint16_t size)
 
 void DfaModule::showHelp()
 {
-    // TODO Check and refine command definitions after first tests and extension!
-    openknx.console.printHelpLine("dfaNN",          "Show current state and timeout remain");
-    openknx.console.printHelpLine("dfaNN timeout!", "Let timeout of channel NN end now!");
-    openknx.console.printHelpLine("dfaNN state=SS", "Change state to SS");
-    openknx.console.printHelpLine("dfaNN symbol=X", "Input the symbol X");
+    if (knx.configured())
+    {
+        // TODO Check and refine command definitions after first tests and extension!
+        openknx.console.printHelpLine("dfaNN",          "Show current state and timeout remain");
+        openknx.console.printHelpLine("dfaNN timeout!", "Let timeout of channel NN end now!");
+        openknx.console.printHelpLine("dfaNN state=SS", "Change state to SS");
+        openknx.console.printHelpLine("dfaNN symbol=X", "Input the symbol X");
+    }
 #ifdef OPENKNX_RUNTIME_STAT
     openknx.console.printHelpLine("dfa runtime",    "Show detailed runtime statistic");
 #endif
@@ -150,98 +153,101 @@ void DfaModule::showHelp()
 
 bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
 {
-    if (cmd.substr(0, 3) == "dfa")
-    {
+    // configured is not required for runtime-command
 #ifdef OPENKNX_RUNTIME_STAT
-        if (cmd == "dfa runtime")
+    if (cmd == "dfa runtime")
+    {
+        logInfoP("DFA Runtime Statistics: (Uptime=%dms)", millis());
+        logIndentUp();
+        OpenKNX::Stat::RuntimeStat::showStatHeader();
+        char labelLoop[8 + 1] = "Ch00Loop";
+        char labelInput[8 + 1] = "Ch00Inpt";
+        for (uint8_t i = 0; i < DFA_ChannelCount; i++)
         {
-            logInfoP("DFA Runtime Statistics: (Uptime=%dms)", millis());
-            logIndentUp();
-            OpenKNX::Stat::RuntimeStat::showStatHeader();
-            char labelLoop[8 + 1] = "Ch00Loop";
-            char labelInput[8 + 1] = "Ch00Inpt";
-            for (uint8_t i = 0; i < DFA_ChannelCount; i++)
-            {
-                labelLoop[2] = labelInput[2] = '0' + i / 10;
-                labelLoop[3] = labelInput[3] = '0' + i % 10;
-                _channelLoopRuntimes[i].showStat(labelLoop, 0, true, true);
-                _channelInputRuntimes[i].showStat(labelInput, 0, true, true);
-            }
-            logIndentDown();
-            return true;
+            labelLoop[2] = labelInput[2] = '0' + i / 10;
+            labelLoop[3] = labelInput[3] = '0' + i % 10;
+            _channelLoopRuntimes[i].showStat(labelLoop, 0, true, true);
+            _channelInputRuntimes[i].showStat(labelInput, 0, true, true);
         }
+        logIndentDown();
+        return true;
+    }
 #endif
-        if (cmd.length() >= 5)
+
+    if (!knx.configured())
+        return false;
+
+    const size_t cmdLength = cmd.length();
+    if (cmdLength >= 5 && cmd.substr(0, 3) == "dfa")
+    {
+        // command `dfa h`
+        if (diagnoseKo && cmdLength == 5 && cmd.substr(3, 2) == " h")
         {
-            // command `dfa h`
-            if (diagnoseKo && cmd.length() == 5 && cmd.substr(3, 2) == " h")
+            openknx.console.writeDiagenoseKo("-> dfaNN");
+            // TODO: empty lines as workaround to prevent missing outputs
+            if (ParamDFA_DiagnoseAccess == 1) // writing to DFAs is allowed
             {
-                openknx.console.writeDiagenoseKo("-> dfaNN");
-                // TODO: empty lines as workaround to prevent missing outputs
-                if (ParamDFA_DiagnoseAccess == 1) // writing to DFAs is allowed
-                {
-                    openknx.console.writeDiagenoseKo("");
-                    openknx.console.writeDiagenoseKo("-> .. timeout!");
-                    openknx.console.writeDiagenoseKo("");
-                    openknx.console.writeDiagenoseKo("-> .. state=SS");
-                    openknx.console.writeDiagenoseKo("");
-                    openknx.console.writeDiagenoseKo("-> .. symbol=X");
-                    openknx.console.writeDiagenoseKo("");
-                    openknx.console.writeDiagenoseKo("(diagCtrl=ON)");
-                }
-                else
-                {
-                    openknx.console.writeDiagenoseKo("");
-                    openknx.console.writeDiagenoseKo("(diagCtrl=OFF)");
-                }
-                return true;
-            }
-
-            if (!std::isdigit(cmd[3]) || !std::isdigit(cmd[4]))
-            {
-                logErrorP("=> invalid channel-number '%s'!", cmd.substr(3, 2).c_str());
-                return false;
-            }
-
-            const uint16_t channelIdx = std::stoi(cmd.substr(3, 2)) - 1;
-            if (channelIdx < DFA_ChannelCount)
-            {
-                if (cmd.length() == 5)
-                {
-                    logDebugP("=> DFA-Channel<%u> overview!", (channelIdx + 1));
-                    return _channels[channelIdx]->processCommandDfa();
-                }
-                else if (!diagnoseKo || ParamDFA_DiagnoseAccess == 1) // writing to DFAs is allowed
-                {
-                    if (cmd.length() == 14) // all current commands have the same length
-                    {
-                        if (cmd.substr(5, 9) == " timeout!")
-                        {
-                            logDebugP("=> DFA-Channel<%u> timeout end now!", (channelIdx + 1));
-                            return _channels[channelIdx]->processCommandDfaTimeout();
-                        }
-                        else if (cmd.substr(5, 7) == " state=" && std::isdigit(cmd[12]) && std::isdigit(cmd[13]))
-                        {
-                            const uint8_t newState = std::stoi(cmd.substr(12, 2));
-
-                            logDebugP("=> DFA-Channel<%u> set state=%u!", (channelIdx + 1), newState);
-                            return _channels[channelIdx]->processCommandDfaStateSet(newState);
-                        }
-                        else if (cmd.substr(5, 8) == " symbol=" && ('A' <= cmd[13] && cmd[13] <= 'H'))
-                        {
-                            const uint8_t inputSymbolNumber = cmd[13] - 'A';
-
-                            logDebugP("=> DFA-Channel<%u> input Symbol=%c (%u)!", (channelIdx + 1), ('A' + inputSymbolNumber), inputSymbolNumber);
-                            return _channels[channelIdx]->processCommandDfaSymbolInsert(inputSymbolNumber);
-                        }
-                    }
-                }
+                openknx.console.writeDiagenoseKo("");
+                openknx.console.writeDiagenoseKo("-> .. timeout!");
+                openknx.console.writeDiagenoseKo("");
+                openknx.console.writeDiagenoseKo("-> .. state=SS");
+                openknx.console.writeDiagenoseKo("");
+                openknx.console.writeDiagenoseKo("-> .. symbol=X");
+                openknx.console.writeDiagenoseKo("");
+                openknx.console.writeDiagenoseKo("(diagCtrl=ON)");
             }
             else
             {
-                logInfoP("=> unused channel-number %u!", channelIdx + 1);
-                return false;
+                openknx.console.writeDiagenoseKo("");
+                openknx.console.writeDiagenoseKo("(diagCtrl=OFF)");
             }
+            return true;
+        }
+
+        if (!std::isdigit(cmd[3]) || !std::isdigit(cmd[4]))
+        {
+            logErrorP("=> invalid channel-number '%s'!", cmd.substr(3, 2).c_str());
+            return false;
+        }
+
+        const uint16_t channelIdx = std::stoi(cmd.substr(3, 2)) - 1;
+        if (channelIdx < DFA_ChannelCount)
+        {
+            if (cmdLength == 5)
+            {
+                logDebugP("=> DFA-Channel<%u> overview!", (channelIdx + 1));
+                return _channels[channelIdx]->processCommandDfa();
+            }
+            else if (!diagnoseKo || ParamDFA_DiagnoseAccess == 1) // writing to DFAs is allowed
+            {
+                if (cmdLength == 14) // all current commands have the same length
+                {
+                    if (cmd.substr(5, 9) == " timeout!")
+                    {
+                        logDebugP("=> DFA-Channel<%u> timeout end now!", (channelIdx + 1));
+                        return _channels[channelIdx]->processCommandDfaTimeout();
+                    }
+                    else if (cmd.substr(5, 7) == " state=" && std::isdigit(cmd[12]) && std::isdigit(cmd[13]))
+                    {
+                        const uint8_t newState = std::stoi(cmd.substr(12, 2));
+
+                        logDebugP("=> DFA-Channel<%u> set state=%u!", (channelIdx + 1), newState);
+                        return _channels[channelIdx]->processCommandDfaStateSet(newState);
+                    }
+                    else if (cmd.substr(5, 8) == " symbol=" && ('A' <= cmd[13] && cmd[13] <= 'H'))
+                    {
+                        const uint8_t inputSymbolNumber = cmd[13] - 'A';
+
+                        logDebugP("=> DFA-Channel<%u> input Symbol=%c (%u)!", (channelIdx + 1), ('A' + inputSymbolNumber), inputSymbolNumber);
+                        return _channels[channelIdx]->processCommandDfaSymbolInsert(inputSymbolNumber);
+                    }
+                }
+            }
+        }
+        else
+        {
+            logInfoP("=> unused channel-number %u!", channelIdx + 1);
+            return false;
         }
     }
     return false;

@@ -1,7 +1,8 @@
 # upcoming v0.6
 
-* Fix ETS-XML: Falsche Zell-Koordinates for Eingangs-Paar-Parameter. Dies hatte keine sichtbaren Auswirkungen in der ETS5.7/6.x. 
-* Verbesserung ETS-App: Detailanpassung FunctionText von KO 
+* Fix ETS-XML: Falsche Zell-Koordinates for Eingangs-Paar-Parameter. Dies hatte keine sichtbaren Auswirkungen in der ETS5.7/6.x.
+* Fix #48: Diagnose-Kommandos im Modul wurden auch angezeigt und verarbeitet, wenn das Gerät nicht konfiguriert ist
+* Verbesserung ETS-App: Detailanpassung FunctionText von KO
 * OpenKNX Update: Anpassungen für neue Producer-Versionen
 
 
