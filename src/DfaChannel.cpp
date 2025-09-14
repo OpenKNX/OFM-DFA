@@ -302,8 +302,8 @@ uint16_t DfaChannel::getInputKoNumber(const uint8_t input)
         case 3: // Logic-Output (KO)
             {
                 // TODO optimize/use API for this
-                // overlay for _channelIndex!
                 const u_int16_t logicNumber = knx.paramWord(DFA_ParamCalcIndex(_inputConfNumberPRI[input]));
+                // overlay for _channelIndex! Is used in LOG_KoCalcNumber
                 const u_int16_t _channelIndex = logicNumber - 1;
                 return LOG_KoCalcNumber(LOG_KoKOfO);
             }
@@ -426,8 +426,9 @@ void DfaChannel::processInputKo(GroupObject &ko)
         }
         else if (koNumber == DFA_KoCalcNumber(DFA_KoKOaState) && ParamDFA_aStateSetting == 0b10)
         {
-            // TODO ensure not processing when result of own sending!
             logDebugP("processInputKo set state (combined); StateSetting=%d, ..Same=%d", ParamDFA_aStateSetting, ParamDFA_aStateSettingSame);
+
+            // ignore same state to prevent processing the result of own sending to shared K
             setState(ko.value(DPT_SceneNumber), DfaDirectSetSame::ignore);
 
             // ensure KO has the value of current state!
