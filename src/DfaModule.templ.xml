@@ -38,6 +38,7 @@
                 <Parameter Id="%AID%_UP-%T%%CC%7004" Name="a%C%SymbolPairGH"         ParameterType="%AID%_PT-CheckBox"          Offset="0" BitOffset="3" Text="Kombination G/H" SuffixText="G/H"      Value="0" /><!-- use suffix for grid-display -->
                 <!-- 4 bits unused; TODO reduce size! -->
               </Union>
+              <!-- [6;18[ is used for outputs and defined at the end -->
 
               <!-- INPUT Symbols -->
               <Parameter Id="%AID%_P-%T%%CC%7100" Name="a%C%SymbolAName"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Eingabe 1"  Value="" />
@@ -99,24 +100,24 @@
 
               <!-- Output Definitions -->
               <Parameter Id="%AID%_P-%T%%CC%8100" Name="a%C%Output1Name"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Ausgabe 1"  Value="" />
-              <Parameter Id="%AID%_P-%T%%CC%8200" Name="a%C%Output2Name"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Ausgabe 2"  Value="" />
-              <Parameter Id="%AID%_P-%T%%CC%8300" Name="a%C%Output3Name"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Ausgabe 3"  Value="" />
-              <Parameter Id="%AID%_P-%T%%CC%8400" Name="a%C%Output4Name"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Ausgabe 4"  Value="" />
               <Union SizeInBit="24"><Memory CodeSegment="%MID%" Offset="6" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%8101" Name="a%C%Output1Dpt"           ParameterType="%AID%_PT-DfaOutputDpt"         Offset="0" BitOffset="0"      Text="Datentyp Ausgabe 1"       Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%8102" Name="a%C%Output1IntervalBase"  ParameterType="%AID%_PT-DelayBase"            Offset="1" BitOffset="0"      Text="Sendeintervall Zeitbasis" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%8103" Name="a%C%Output1IntervalTime"  ParameterType="%AID%_PT-DelayTimeMin1"        Offset="1" BitOffset="2"      Text="Sendeintervall Zeit"      Value="20" />
               </Union>
+              <Parameter Id="%AID%_P-%T%%CC%8200" Name="a%C%Output2Name"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Ausgabe 2"  Value="" />
               <Union SizeInBit="24"><Memory CodeSegment="%MID%" Offset="9" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%8201" Name="a%C%Output2Dpt"           ParameterType="%AID%_PT-DfaOutputDpt"         Offset="0" BitOffset="0"      Text="Datentyp Ausgabe 2"       Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%8202" Name="a%C%Output2IntervalBase"  ParameterType="%AID%_PT-DelayBase"            Offset="1" BitOffset="0"      Text="Sendeintervall Zeitbasis" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%8203" Name="a%C%Output2IntervalTime"  ParameterType="%AID%_PT-DelayTimeMin1"        Offset="1" BitOffset="2"      Text="Sendeintervall Zeit"      Value="20" />
               </Union>
+              <Parameter Id="%AID%_P-%T%%CC%8300" Name="a%C%Output3Name"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Ausgabe 3"  Value="" />
               <Union SizeInBit="24"><Memory CodeSegment="%MID%" Offset="12" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%8301" Name="a%C%Output3Dpt"           ParameterType="%AID%_PT-DfaOutputDpt"         Offset="0" BitOffset="0"      Text="Datentyp Ausgabe 3"       Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%8302" Name="a%C%Output3IntervalBase"  ParameterType="%AID%_PT-DelayBase"            Offset="1" BitOffset="0"      Text="Sendeintervall Zeitbasis" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%8303" Name="a%C%Output3IntervalTime"  ParameterType="%AID%_PT-DelayTimeMin1"        Offset="1" BitOffset="2"      Text="Sendeintervall Zeit"      Value="20" />
               </Union>
+              <Parameter Id="%AID%_P-%T%%CC%8400" Name="a%C%Output4Name"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Ausgabe 4"  Value="" />
               <Union SizeInBit="24"><Memory CodeSegment="%MID%" Offset="15" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%8401" Name="a%C%Output4Dpt"           ParameterType="%AID%_PT-DfaOutputDptWithText" Offset="0" BitOffset="0"      Text="Datentyp Ausgabe 4"       Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%8402" Name="a%C%Output4IntervalBase"  ParameterType="%AID%_PT-DelayBase"            Offset="1" BitOffset="0"      Text="Sendeintervall Zeitbasis" Value="1" />
