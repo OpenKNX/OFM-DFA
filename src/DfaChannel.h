@@ -57,7 +57,7 @@ class DfaChannel : public OpenKNX::Channel
     // is enabled in ETS?
     bool _channelActive = false;
 
-    DfaInputs _inputs[DFA_DEF_INPUTS_COUNT] = {};
+    DfaInputs _inputs[DFA_DEF_INPUTS_WITH_T_COUNT] = {};
 
     DfaOutput* _outputs[DFA_DEF_OUTPUTS_COUNT] = {};
 
@@ -88,6 +88,7 @@ class DfaChannel : public OpenKNX::Channel
 
     uint16_t getLogicOutputKoNumber(const uint8_t /* intended overlapping name for usage in macro! */ _channelIndex);
     uint16_t getInputKoNumber(const uint8_t input);
+    void initNonPairedInput(const uint8_t i);
     void initInputConfig();
 
     uint32_t getStateTimeoutDelay_ms(const uint8_t state);

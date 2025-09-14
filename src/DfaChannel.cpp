@@ -298,6 +298,7 @@ uint16_t DfaChannel::getLogicOutputKoNumber(const uint8_t /* intended overlappin
 
 uint16_t DfaChannel::getInputKoNumber(const uint8_t input)
 {
+    // TODO ensure position of T
     const uint8_t inputConf = ((knx.paramByte(DFA_ParamCalcIndex(_inputConfPRI[input])) & DFA_aSymbol___InputMask) >> DFA_aSymbol___InputShift);
     // logDebugP("  get ko for input=%i -> conf=%i", input, inputConf);
     switch (inputConf)
@@ -322,13 +323,20 @@ uint16_t DfaChannel::getInputKoNumber(const uint8_t input)
     return 0;
 }
 
+void DfaChannel::initNonPairedInput(const uint8_t i)
+{
+    const uint16_t koNumber = getInputKoNumber(i);
+    _inputs[i].koNumber = koNumber;
+    _inputs[i].trigger = (koNumber > 0) ? static_cast<DfaInputTrigger>((knx.paramByte(DFA_ParamCalcIndex(_inputTriggerPRI[i])) & DFA_aSymbol___TriggerMask) >> DFA_aSymbol___TriggerShift) : DfaInputTrigger::disabled;
+    logDebugP("  separate: %d ko=%i trigger=%i", i, koNumber, _inputs[i].trigger);
+}
+
 void DfaChannel::initInputConfig()
 {
+    // inputs for symbols A..H (can be defined in pairs A/B, C/D, E/F, G/H)
     const bool combined[DFA_DEF_INPUTS_COUNT / 2] = {ParamDFA_aSymbolPairAB, ParamDFA_aSymbolPairCD, ParamDFA_aSymbolPairEF, ParamDFA_aSymbolPairGH};
     for (uint8_t iPair = 0; iPair < DFA_DEF_INPUTS_COUNT / 2; iPair++)
     {
-        // logDebugP("input-pair %d", iPair);
-        // logDebugP("input[%d]: ko=%d trigger=%d", i, _inputs[i].koNumber, _inputs[i].trigger);
         const uint8_t iFirst = iPair * 2;
         const uint8_t iSecond = iFirst + 1;
         logDebugP("input-pair %d, first=%d, second=%d; ispair=%d", iPair, iFirst, iSecond, combined[iPair]);
@@ -345,21 +353,20 @@ void DfaChannel::initInputConfig()
         else
         {
             // separate input for 2 symbols
-            for (uint8_t i = iFirst; i <= iSecond; i++)
-            {
-                const uint16_t koNumber = getInputKoNumber(i);
-                _inputs[i].koNumber = koNumber;
-                _inputs[i].trigger = (koNumber > 0) ? static_cast<DfaInputTrigger>((knx.paramByte(DFA_ParamCalcIndex(_inputTriggerPRI[i])) & DFA_aSymbol___TriggerMask) >> DFA_aSymbol___TriggerShift) : DfaInputTrigger::disabled;
-                logDebugP("  separate: %d ko=%i trigger=%i", i, koNumber, _inputs[i].trigger);
-            }
+            initNonPairedInput(iFirst);
+            initNonPairedInput(iSecond);
         }
     }
-    #ifdef OPENKNX_DEBUG
-        for (size_t i = 0; i < DFA_DEF_INPUTS_COUNT; i++)
-        {
-            logDebugP("input[%d]: ko=%d trigger=%d", i, _inputs[i].koNumber, _inputs[i].trigger);
-        }
-    #endif
+
+    // input for symbol T (not part of a pair)
+    initNonPairedInput(DFA_INPUT_SYMBOL_T);
+
+#ifdef OPENKNX_DEBUG
+    for (size_t i = 0; i < DFA_DEF_INPUTS_WITH_T_COUNT; i++)
+    {
+        logDebugP("input[%d]: ko=%d trigger=%d", i, _inputs[i].koNumber, _inputs[i].trigger);
+    }
+#endif
 }
 
 #pragma endregion "DFA_CHANNEL_INPUT_INIT"
@@ -449,7 +456,7 @@ void DfaChannel::processInputKo(GroupObject &ko)
             const bool value = ko.value(DPT_Switch);
 
             // check (new or existing) inputs based on ko-numbers
-            for (size_t i = 0; i < DFA_DEF_INPUTS_COUNT; i++)
+            for (size_t i = 0; i < DFA_DEF_INPUTS_WITH_T_COUNT; i++)
             {
                 if (koNumber == _inputs[i].koNumber)
                 {

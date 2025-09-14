@@ -144,7 +144,7 @@ void DfaModule::showHelp()
         openknx.console.printHelpLine("dfaNN",          "Show current state and timeout remain");
         openknx.console.printHelpLine("dfaNN timeout!", "Let timeout of channel NN end now!");
         openknx.console.printHelpLine("dfaNN state=SS", "Change state to SS");
-        openknx.console.printHelpLine("dfaNN symbol=X", "Input the symbol X");
+        openknx.console.printHelpLine("dfaNN symbol=X", "Input the symbol X (A,..,H,T)");
     }
 #ifdef OPENKNX_RUNTIME_STAT
     openknx.console.printHelpLine("dfa runtime",    "Show detailed runtime statistic");
@@ -241,11 +241,12 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
                         logDebugP("=> DFA-Channel<%u> set state=%u!", (channelIdx + 1), newState);
                         return _channels[channelIdx]->processCommandDfaStateSet(newState, diagnoseKo);
                     }
-                    else if (cmd.substr(5, 8) == " symbol=" && ('A' <= cmd[13] && cmd[13] <= 'H'))
+                    else if (cmd.substr(5, 8) == " symbol=" && ('A' <= cmd[13] && cmd[13] <= 'H' || cmd[13] == 'T'))
                     {
-                        const uint8_t inputSymbolNumber = cmd[13] - 'A';
+                        // TODO check moving conversion into channel
+                        const uint8_t inputSymbolNumber = cmd[13] == 'T' ? DFA_INPUT_SYMBOL_T : cmd[13] - 'A';
 
-                        logDebugP("=> DFA-Channel<%u> input Symbol=%c (%u)!", (channelIdx + 1), ('A' + inputSymbolNumber), inputSymbolNumber);
+                        logDebugP("=> DFA-Channel<%u> input Symbol=%c (%u)!", (channelIdx + 1), cmd[13], inputSymbolNumber);
                         return _channels[channelIdx]->processCommandDfaSymbolInsert(inputSymbolNumber, diagnoseKo);
                     }
                 }

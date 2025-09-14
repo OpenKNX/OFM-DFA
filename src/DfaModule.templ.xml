@@ -11,13 +11,13 @@
           <op:part name="STATE" href="DfaModule.states.part.xml" instances="16">
             <op:param name="%DfaStateNumberNN%" value="1" increment="1" digits="2" />
             <op:param name="%DfaStateNumberN%" value="1" increment="1" />
-            <op:param name="%DfaStateUnionOffset%"  value="114" increment="42" /><!-- after CHOICE_STATE -->
+            <op:param name="%DfaStateUnionOffset%"  value="118" increment="42" /><!-- after CHOICE_STATE -->
           </op:part>
           <op:part name="CHOICE_STATE" href="DfaModule.choice_states.part.xml" instances="16">
             <op:param name="%DfaChoiceStateNumberNN%" value="1" increment="1" digits="2" />
             <op:param name="%DfaChoiceStateNumberN%" value="1" increment="1" />
             <op:param name="%DfaChoiceStateLetterA%" values="a b c d e f g h i j k l m n o p q r s t u v w x y z" />
-            <op:param name="%DfaChoiceStateUnionOffset%"  value="50" increment="4" /><!-- before STATE -->
+            <op:param name="%DfaChoiceStateUnionOffset%"  value="54" increment="4" /><!-- before STATE -->
           </op:part>
           <Static>
             <Parameters>
@@ -26,9 +26,10 @@
               [  0;  5[ Misc
               [  5;  6[ Input-Pair-Selection
               [  6; 18[ Output Definitions - without Values
-              [ 18; 50[ Intput Definitions
-              [ 50;114[ Choice-States
-              [114;786[ States 
+              [ 18; 50[ Input A-H Definitions
+              [ 50; 54[ Input T Definition
+              [ 54;118[ Choice-States
+              [118;790[ States 
               -->
               <Parameter Id="%AID%_P-%T%%CC%0001"    Name="a%C%Name"                 ParameterType="%AID%_PT-Text40Byte"                Text="Beschreibung" Value="" />
 
@@ -111,6 +112,13 @@
                 <Parameter Id="%AID%_UP-%T%%CC%7802" Name="a%C%SymbolHKoNumber"      ParameterType="%AID%_PT-KONumber"             Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 8"    Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7804" Name="a%C%SymbolHLogicNumber"   ParameterType="%AID%_PT-DfaInputLogicNumber"  Offset="1" BitOffset="0"      Text="Logik-Kanal-Ausgangs-Nummer Eingabe 8" Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7803" Name="a%C%SymbolHTrigger"       ParameterType="%AID%_PT-DfaInputTrigger"      Offset="3" BitOffset="0"      Text="Eingabewert 8"          Value="2" />
+              </Union>
+              <!--       Id="%AID%_P-%T%%CC%7900" Name="a%C%SymbolTName"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Eingabe T"  Value="" /> -->
+              <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="50" BitOffset="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%7901" Name="a%C%SymbolTInput"         ParameterType="%AID%_PT-DfaInputKo"           Offset="0" BitOffset="0"      Text="Direktes Auslösen von Timeout (Symbol T)"           Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%7902" Name="a%C%SymbolTKoNumber"      ParameterType="%AID%_PT-KONumber"             Offset="1" BitOffset="0"      Text="KO-Nummer für Symbol T"    Value="1" />
+                <Parameter Id="%AID%_UP-%T%%CC%7904" Name="a%C%SymbolTLogicNumber"   ParameterType="%AID%_PT-DfaInputLogicNumber"  Offset="1" BitOffset="0"      Text="Logik-Kanal-Ausgangs-Nummer für Symbol T" Value="1" />
+                <Parameter Id="%AID%_UP-%T%%CC%7903" Name="a%C%SymbolTTrigger"       ParameterType="%AID%_PT-DfaInputTrigger"      Offset="3" BitOffset="0"      Text="Eingabewert zum Auslösen von Timeout"          Value="2" />
               </Union>
 
               <!-- Output Definitions -->
@@ -215,6 +223,12 @@
               <ParameterRef Id="%AID%_UP-%T%%CC%7802_R-%T%%CC%780201" RefId="%AID%_UP-%T%%CC%7802" />
               <ParameterRef Id="%AID%_UP-%T%%CC%7803_R-%T%%CC%780301" RefId="%AID%_UP-%T%%CC%7803" />
               <ParameterRef Id="%AID%_UP-%T%%CC%7804_R-%T%%CC%780401" RefId="%AID%_UP-%T%%CC%7804" />
+
+              <ParameterRef Id="%AID%_UP-%T%%CC%7901_R-%T%%CC%790101" RefId="%AID%_UP-%T%%CC%7901" />
+              <ParameterRef Id="%AID%_UP-%T%%CC%7902_R-%T%%CC%790201" RefId="%AID%_UP-%T%%CC%7902" />
+              <ParameterRef Id="%AID%_UP-%T%%CC%7903_R-%T%%CC%790301" RefId="%AID%_UP-%T%%CC%7903" />
+              <ParameterRef Id="%AID%_UP-%T%%CC%7904_R-%T%%CC%790401" RefId="%AID%_UP-%T%%CC%7904" />
+
               <ParameterRef Id="%AID%_P-%T%%CC%8100_R-%T%%CC%810001" RefId="%AID%_P-%T%%CC%8100" />
               <ParameterRef Id="%AID%_UP-%T%%CC%8101_R-%T%%CC%810101" RefId="%AID%_UP-%T%%CC%8101" />
               <ParameterRef Id="%AID%_UP-%T%%CC%8102_R-%T%%CC%810201" RefId="%AID%_UP-%T%%CC%8102" />
@@ -276,8 +290,9 @@
               <ComObject Id="%AID%_O-%T%%CC%0006" Name="KOa%C%Input6"  Text="Eingang 6"        Number="%K16%" FunctionText="DEA %C%, Eingang 6"          DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
               <ComObject Id="%AID%_O-%T%%CC%0007" Name="KOa%C%Input7"  Text="Eingang 7"        Number="%K17%" FunctionText="DEA %C%, Eingang 7"          DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
               <ComObject Id="%AID%_O-%T%%CC%0008" Name="KOa%C%Input8"  Text="Eingang 8"        Number="%K18%" FunctionText="DEA %C%, Eingang 8"          DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <!-- TODO check position! -->
+              <ComObject Id="%AID%_O-%T%%CC%0009" Name="KOa%C%InputT"  Text="Eingang T"        Number="%K19%" FunctionText="DEA %C%, Timeout-Auslöser"   DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
 
-              <!-- K19 reserved--><ComObject Id="%AID%_O-%T%%CC%0018" Name="KOa%C%Dummy08" Text="Dummy08"          Number="%K19%" FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
               <!-- K20 reserved--><ComObject Id="%AID%_O-%T%%CC%0019" Name="KOa%C%Dummy09" Text="Dummy09"          Number="%K20%" FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
 
               <ComObject Id="%AID%_O-%T%%CC%0201" Name="KOa%C%Output1" Text="Wertausgang 1"    Number="%K21%" FunctionText="DEA %C%, Ausgang 1"                                     ObjectSize="14 Bytes"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
@@ -312,6 +327,9 @@
               <ComObjectRef Id="%AID%_O-%T%%CC%0007_R-%T%%CC%000701" RefId="%AID%_O-%T%%CC%0007" Text="Symbol G {{0: }}"                                                           TextParameterRefId="%AID%_P-%T%%CC%7700_R-%T%%CC%770001" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0007_R-%T%%CC%000702" RefId="%AID%_O-%T%%CC%0007" Text="Symbol G/H (1=G/H=D) {{0: }}"                                               TextParameterRefId="%AID%_P-%T%%CC%7700_R-%T%%CC%770002" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0008_R-%T%%CC%000801" RefId="%AID%_O-%T%%CC%0008" Text="Symbol H {{0: }}"                                                           TextParameterRefId="%AID%_P-%T%%CC%7800_R-%T%%CC%780001" />
+
+              <!-- input T -->
+              <ComObjectRef Id="%AID%_O-%T%%CC%0009_R-%T%%CC%000901" RefId="%AID%_O-%T%%CC%0009" Text="Symbol T" />
                                          
               <ComObjectRef Id="%AID%_O-%T%%CC%0100_R-%T%%CC%010001" RefId="%AID%_O-%T%%CC%0100" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0101_R-%T%%CC%010101" RefId="%AID%_O-%T%%CC%0101" />
@@ -457,6 +475,7 @@
                             <Row Id="%AID%_PB-03_R-7"  Name="Input7"  Text="  G  "     CollapseIfEmpty="true" />
                             <Row Id="%AID%_PB-03_R-8"  Name="Input8"  Text="  H  "     CollapseIfEmpty="true" />
                             <Row Id="%AID%_PB-03_R-78" Name="Input78" Text="G/H"       CollapseIfEmpty="true" />
+                            <Row Id="%AID%_PB-03_R-9"  Name="InputT"  Text="  T  "     CollapseIfEmpty="true" />
                           </Rows>
                           <Columns>
                             <Column Id="%AID%_PB-03_C-1" Name="Label"           Text="Bezeichnung/Kommentar"      Width="40%" />
@@ -620,7 +639,23 @@
                             </when>
                           </choose>
 
+                          <!-- Input T -->
+                          <!--
+                          <ParameterRefRef  RefId="%AID%_P-%T%%CC%7900_R-%T%%CC%790001" Cell="13,1" /><! - - Note - ->
+                          -->
+                          <ParameterSeparator Id="%AID%_PS-nnn" Text="Timeout direkt auslösen"                              Cell="13,1" />
+                          <ParameterRefRef RefId="%AID%_UP-%T%%CC%7901_R-%T%%CC%790101"                                     Cell="13,2" />
+                          <choose ParamRefId="%AID%_UP-%T%%CC%7901_R-%T%%CC%790101">
+                            <when test="1"><ParameterSeparator Id="%AID%_PS-nnn" Text="KO %K19%: Eingang T"       Cell="13,3" /></when><!-- new -->
+                            <when test="2"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7902_R-%T%%CC%790201"         Cell="13,3" /></when><!-- KO  -->
+                            <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7904_R-%T%%CC%790401"         Cell="13,3" /></when><!-- LOG -->
+                            <when test="!=0">
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CC%7903_R-%T%%CC%790301" Cell="13,4" />
+                            </when>
+                          </choose>                          
+
                         </ParameterBlock>
+
 
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Ausgabe" UIHint="Headline" />
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Eine Ausgabe von Text (DPT16.001) ist ausschließlich mit dem letzten Ausgang O4 möglich." UIHint="Information" />
@@ -1220,6 +1255,14 @@
                                     <ComObjectRefRef RefId="%AID%_O-%T%%CC%0007_R-%T%%CC%000702" />
                                   </when>
                                 </choose>
+                              </when>
+                            </choose>
+
+                            <!-- Inputs T -->
+                            <choose ParamRefId="%AID%_UP-%T%%CC%7901_R-%T%%CC%790101">
+                              <when test="1">
+                                <!-- InputT -->
+                                <ComObjectRefRef RefId="%AID%_O-%T%%CC%0009_R-%T%%CC%000901" />
                               </when>
                             </choose>
 
