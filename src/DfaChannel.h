@@ -6,7 +6,7 @@
 
 // TODO check moving, as used here only:
 //   #define DFA_DEF_CHOICESTATES_COUNT 16
-//   #define DFA_STATE_CHOICE_VALUE 0x7e
+//   ...
 #include "DfaOutput.h"
 
 // #define DFA_INPUT_TRIGGER_DISABLED 0b00
@@ -83,6 +83,7 @@ class DfaChannel : public OpenKNX::Channel
     uint32_t _stateTimeoutDelay_ms = 0;
     uint32_t _stateTimeoutBegin_ms = 0;
 
+    uint16_t getLogicOutputKoNumber(const uint8_t /* intended overlapping name for usage in macro! */ _channelIndex);
     uint16_t getInputKoNumber(const uint8_t input);
     void initInputConfig();
 

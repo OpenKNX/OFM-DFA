@@ -26,10 +26,12 @@
 #define DFA_INPUT_SYMBOL_T (DFA_DEF_INPUTS_COUNT)
 
 // TODO check best place to define constants
+// ETS-Param 0 =(-1)=> 255
 #define DFA_STATE_UNDEFINED 0xff
-// #define DFA_STATE_VALUE_UNDEFINED 0x00
-#define DFA_STATE_TIMEOUT_RESET 0x7f
-#define DFA_STATE_CHOICE_VALUE 0x7e
+// ETS-Param 127 =(-1)=> 126
+#define DFA_STATE_TIMEOUT_RESET 0x7e
+// ETS-Param 126 =(-1)=> 125
+#define DFA_STATE_CHOICE_ELSE 0x7d
 
 
 

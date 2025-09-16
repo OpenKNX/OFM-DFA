@@ -175,9 +175,7 @@
                   <op:usePart name="STATE_NUMBER" xpath="//ParameterType[@Name='DfaStateENUM']/TypeRestriction/*" />
 
                   <!-- NO options for choice state selection -->
-                  <!--
-                  <Enumeration Value="126" Text="Wert"  Id="%ENID%" />
-                  -->
+                  <Enumeration Value="126" Text="ELSE"  Id="%ENID%" />
 
                 </TypeRestriction>
               </ParameterType>
