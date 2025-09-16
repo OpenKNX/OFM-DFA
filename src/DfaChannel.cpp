@@ -553,6 +553,15 @@ void DfaChannel::setState(const uint8_t nextState, const DfaDirectSetSame sameSt
     }
 }
 
+/**
+ * @brief Transfer the DFA to the next state based on the current state and input symbol.
+ * @param input
+ *  'A'..'H'    => 0..7
+ *  'T'         => 8 (DFA_INPUT_SYMBOL_T)
+ *  '<'         => ? 9
+ *  1..16/32/64 => 0x80 | 0..15/31/63 => 128..143/159/191
+ *  'a'..'h'    => 0x80 | 64..        => 192..199
+ */
 void DfaChannel::transfer(const uint8_t input)
 {
     // ensure the current state is valid, otherwhise following state is not defined (at least for regular symbols)
@@ -563,68 +572,108 @@ void DfaChannel::transfer(const uint8_t input)
         return;
     }
 
+    // 1) get the next state
+    uint8_t nextState = DFA_STATE_UNDEFINED; // must be uint8_t to ensure conversion from ETS-param to required state
     if (input < DFA_DEF_INPUTS_WITH_T_COUNT)
     {
+        // 1a) regular symbols (X_z)
+        // 1b) timeout symbols (X_t) // TODO check inclusion of '<'
+
         const uint16_t nextStateParamIdx = DFA_ParamCalcIndex(_transPRI[_state][input]);
+
+        // Expected Values: ETS-Param => Converted by -1
         // 0 - no following state    => 255
         // 1-16/1-32/1-64 next state => 0-15/1-31/1-63
         // 65-80 choce states a..p   => 64-79
         // 127 timeout reset         => 126
-        const uint8_t nextState = knx.paramByte(nextStateParamIdx) - 1;
+
+        // must be uint8_t! 0x00 -> 0xff
+        nextState = knx.paramByte(nextStateParamIdx) - 1;
 
         logDebugP("transfer(%u,%c)->%u", _state, input == DFA_INPUT_SYMBOL_T ? 'T' : ('A' + input), nextState);
-        if (isValidState(nextState))
-        {
-            setState(nextState);
-        }
-        if (64 <= nextState && nextState < 64 + DFA_DEF_CHOICESTATES_COUNT)
-        {
-            // 0) => is choice-state
-            /*
-
-            // 1) get choice-state config
-            const uint8_t choiceStateLogChannel = ... (Parameter from array?)
-
-            // 2) check choice enabled
-            if (choiceStateLogChannel == 0)
-                return;
-
-            // 3) get assigned logic-channel
-            const bool isLogicChannelEnabled = ... (Parameter calculated?) 
-            if (!isLogicChannelEnabled)
-                return;
-
-            // 4) check logic-channel result present
-            const bool hasLogicChannelResult = ... TODO 
-            // TODO needs definition for undefined!
-
-            // 5) get logic-channel result
-            const bool choice = ... TODO 
-
-            // 6) get the following state
-            const uint8_t selectedNext = choice ? ... : ...; // TODO ... (Parameter from array?)
-
-            // 7) ignore empty following
-            if (selectedNext == 0)
-                return;
-
-            // 8) calculate the next state
-            const uint8_t choosenState = selectedNext==DFA_STATE_CHOICE_VALUE ? ... (Parameter from array?) ... : selectedNext;
-
-            if (isValidState(choosenState))
-                setState(choosenState);
-
-
-            */
-        }
-        else if (nextState == DFA_STATE_TIMEOUT_RESET - 1)
-        {
-            // handling of timeout reset as defined by "<<", do not trigger any other reaction
-            resetTimeout();
-        }
-
-        // ignore undefined transition
     }
+    else if (input & 0x80)
+    {
+        // 1c) special case: direct setting state (X_z)
+        const uint8_t directState = (input & 0x7F);
+        if (directState < 64)
+        {
+            logDebugP("transfer(%u,%u)->%u", _state, directState, directState);
+        }
+        else if (directState < 64 + DFA_DEF_CHOICESTATES_COUNT)
+        {
+            logDebugP("transfer(%u,%c)->CHOICE", _state, 'a' + directState - 64);
+        }
+        nextState = directState;
+    }
+
+    // 2) evaluate conditional states
+    if (64 <= nextState && nextState < 64 + DFA_DEF_CHOICESTATES_COUNT)
+    {
+        // 0) => is choice-state
+        /*
+
+        // 1) get choice-state config
+        const uint8_t choiceStateLogChannel = ... (Parameter from array?)
+
+        // 2) check choice enabled
+        if (choiceStateLogChannel == 0)
+            return;
+
+        // 3) get assigned logic-channel
+        const bool isLogicChannelEnabled = ... (Parameter calculated?) 
+        if (!isLogicChannelEnabled)
+            return;
+
+        // 4) check logic-channel result present
+        const bool hasLogicChannelResult = ... TODO 
+        // TODO needs definition for undefined!
+
+        // 5) get logic-channel result
+        const bool choice = ... TODO 
+
+        // 6) get the following state
+        const uint8_t selectedNext = choice ? ... : ...; // TODO ... (Parameter from array?)
+
+        // 7) ignore empty following
+        if (selectedNext == 0)
+            return;
+
+        // 8) calculate the next state
+        const uint8_t choosenState = selectedNext==DFA_STATE_CHOICE_VALUE ? ... (Parameter from array?) ... : selectedNext;
+
+        if (isValidState(choosenState))
+            setState(choosenState);
+
+
+        */
+    }
+
+    // 3) set the next state
+    if (isValidState(nextState))
+    {
+        // 3a) set state
+        logDebugP("Result for transfer(%u) in state %u: -> set state %u", input, _state, nextState);
+        setState(nextState);
+    }
+    else if (nextState == DFA_STATE_TIMEOUT_RESET - 1)
+    {
+        // 3b) special case: timeout reset (without setting the state)
+        logDebugP("Result for transfer(%u) in state %u: -> timeout restart", input, _state);
+
+        // handling of timeout reset as defined by "<<", do not trigger any other reaction
+        resetTimeout();
+    }
+    else if (nextState == DFA_STATE_UNDEFINED)
+    {
+        // ignore undefined transition
+        logDebugP("Result for transfer(%u) in state %u: -> ignore (and stay in state)", input, _state);
+    }
+    else
+    {
+        logErrorP("UNEXPECTED Result for transfer(%u) in state %u: %u", input, _state, nextState);
+    }
+
 }
 
 #pragma region "DFA_CHANNEL_STATE_TIMEOUT"
