@@ -846,6 +846,8 @@
                         <!-- Choice-States -->
                         <ParameterBlock Id="%AID%_PB-nnn" Name="a%C%DFAChoiseStates" Text="Bedingte Übergänge" Icon="call-split--90deg" >
                           <ParameterSeparator Id="%AID%_PS-nnn" Text="Bedingte Übergänge mit dynamischer Entscheidung durch Logik-Kanäle" UIHint="Headline" />
+
+                          <ParameterSeparator Id="%AID%_PS-nnn" Text="Referenzierte Logik-Kanäle MÜSSEN mit DPT1 Ausgangs-KO aktiv sein.&#10;ELSE setzt mit nächster Zeile fort.&#10;Leere Zeilen und undefinierte Folgezustände beenden ohne Zustandswechsel." UIHint="Information" />
                           
                           <!-- Choice-States-Table -->
                           <ParameterBlock Id="%AID%_PB-%C%02" Name="ChoiceStates%C%" Text="" Inline="true" Layout="Table"><!-- TODO HelpContext="DFA-Tabelle-Zustaende-und-Uebergaenge" -->
