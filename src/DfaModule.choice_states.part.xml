@@ -10,7 +10,7 @@
             <op:param name="%DfaChoiceStateNumberNN%" value="1" increment="1" digits="2" />
             <op:param name="%DfaChoiceStateNumberN%" value="1" increment="1" />
             <op:param name="%DfaChoiceStateLetterA%" values="a b c d e f g h i j k l m n o p q r s t u v w x y z" />
-            <op:param name="%DfaChoiceStateUnionOffset%"  value="50" increment="3" />
+            <op:param name="%DfaChoiceStateUnionOffset%"  value="50" increment="4" />
           </op:part>
           -->
           <Static>
@@ -23,12 +23,14 @@
               1Byte LOG-Number, optional 0
               1Byte 1-Next
               1Byte 0-Next
+              1Byte UNDEFINIERT-Next
               -->
-              <!-- Offset +=3 -->
+              <!-- Offset +=4 -->
               <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="%DfaChoiceStateUnionOffset%" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%67%DfaChoiceStateNumberNN%" Name="a%C%v%DfaChoiceStateNumberNN%LOG"       ParameterType="%AID%_PT-DfaInputLogicNumberOptional"  Offset="0" BitOffset="0"      Text="Bedingungsauswertung %DfaChoiceStateNumberN% - Logikkanal"              Value="0"   SuffixText="(0=inaktiv)" />
-                <Parameter Id="%AID%_UP-%T%%CC%68%DfaChoiceStateNumberNN%" Name="a%C%v%DfaChoiceStateNumberNN%t"         ParameterType="%AID%_PT-DfaStateNextChoice"           Offset="1" BitOffset="0"      Text="Bedingungsauswertung %DfaChoiceStateNumberN% - Folgezustand bei 1"      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%69%DfaChoiceStateNumberNN%" Name="a%C%v%DfaChoiceStateNumberNN%f"         ParameterType="%AID%_PT-DfaStateNextChoice"           Offset="2" BitOffset="0"      Text="Bedingungsauswertung %DfaChoiceStateNumberN% - Folgezustand bei 0"      Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%67%DfaChoiceStateNumberNN%" Name="a%C%v%DfaChoiceStateNumberNN%LOG"       ParameterType="%AID%_PT-DfaInputLogicNumberOptional"  Offset="0" BitOffset="0"      Text="Bedingungsauswertung %DfaChoiceStateNumberN% - Logikkanal"                    Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%68%DfaChoiceStateNumberNN%" Name="a%C%v%DfaChoiceStateNumberNN%t"         ParameterType="%AID%_PT-DfaStateNextChoice"           Offset="1" BitOffset="0"      Text="Bedingungsauswertung %DfaChoiceStateNumberN% - Folgezustand bei 1"            Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%69%DfaChoiceStateNumberNN%" Name="a%C%v%DfaChoiceStateNumberNN%f"         ParameterType="%AID%_PT-DfaStateNextChoice"           Offset="2" BitOffset="0"      Text="Bedingungsauswertung %DfaChoiceStateNumberN% - Folgezustand bei 0"            Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%66%DfaChoiceStateNumberNN%" Name="a%C%v%DfaChoiceStateNumberNN%u"         ParameterType="%AID%_PT-DfaStateNextChoice"           Offset="3" BitOffset="0"      Text="Bedingungsauswertung %DfaChoiceStateNumberN% - Folgezustand bei UNDEFINIERT"  Value="0" />
               </Union>              
             </Parameters>
             <ParameterRefs>
@@ -37,6 +39,7 @@
               <ParameterRef Id="%AID%_UP-%T%%CC%67%DfaChoiceStateNumberNN%_R-%T%%CC%67%DfaChoiceStateNumberNN%01" RefId="%AID%_UP-%T%%CC%67%DfaChoiceStateNumberNN%" />
               <ParameterRef Id="%AID%_UP-%T%%CC%68%DfaChoiceStateNumberNN%_R-%T%%CC%68%DfaChoiceStateNumberNN%01" RefId="%AID%_UP-%T%%CC%68%DfaChoiceStateNumberNN%" />
               <ParameterRef Id="%AID%_UP-%T%%CC%69%DfaChoiceStateNumberNN%_R-%T%%CC%69%DfaChoiceStateNumberNN%01" RefId="%AID%_UP-%T%%CC%69%DfaChoiceStateNumberNN%" />
+              <ParameterRef Id="%AID%_UP-%T%%CC%66%DfaChoiceStateNumberNN%_R-%T%%CC%66%DfaChoiceStateNumberNN%01" RefId="%AID%_UP-%T%%CC%66%DfaChoiceStateNumberNN%" />
             </ParameterRefs>
             <ComObjectTable>
             </ComObjectTable>
@@ -64,6 +67,7 @@
                   <when test="!=0">
                     <ParameterRefRef RefId="%AID%_UP-%T%%CC%68%DfaChoiceStateNumberNN%_R-%T%%CC%68%DfaChoiceStateNumberNN%01" Cell="%DfaChoiceStateNumberN%,3" />
                     <ParameterRefRef RefId="%AID%_UP-%T%%CC%69%DfaChoiceStateNumberNN%_R-%T%%CC%69%DfaChoiceStateNumberNN%01" Cell="%DfaChoiceStateNumberN%,4" />
+                    <ParameterRefRef RefId="%AID%_UP-%T%%CC%66%DfaChoiceStateNumberNN%_R-%T%%CC%66%DfaChoiceStateNumberNN%01" Cell="%DfaChoiceStateNumberN%,5" />
                   </when>
                 </choose>                
               </ParameterBlock>

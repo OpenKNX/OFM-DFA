@@ -676,21 +676,26 @@ uint8_t DfaChannel::transferEvaluateChoice(const uint8_t nextState)
         logInfoP("ChoiceState<%c>: Invalid LOG[%u](KO %u) size %u", 'a' + choiceState, choiceStateLogChannel, logOutputKoNumber, logOutputKo->valueSize());
         return DFA_STATE_UNDEFINED;
     }
+    uint8_t selectedNext;
     if (!logOutputKo->initialized())
     {
         logInfoP("ChoiceState<%c>: Uninitialized LOG[%u](KO %u)", 'a' + choiceState, choiceStateLogChannel, logOutputKoNumber);
-        return DFA_STATE_UNDEFINED;
+        // 2g) get the following state
+        // TODO ensure expected memory layout!
+        selectedNext = knx.paramByte(DFA_ParamCalcIndex(DFA_av01u + choiceState * (DFA_av02u - DFA_av01u)));
+    }
+    else
+    {
+        // 2f) get logic-channel result
+        const bool choice = logOutputKo->value(DPT_Switch);
+        logDebugP("ChoiceState<%c>: LOG[%u](KO %u)=%d", 'a' + choiceState, choiceStateLogChannel, logOutputKoNumber, choice);
+        // 2g) get the following state
+        // TODO ensure expected memory layout!
+        selectedNext = choice
+                           ? knx.paramByte(DFA_ParamCalcIndex(DFA_av01t + choiceState * (DFA_av02t - DFA_av01t)))
+                           : knx.paramByte(DFA_ParamCalcIndex(DFA_av01f + choiceState * (DFA_av02f - DFA_av01f)));
     }
 
-    // 2f) get logic-channel result
-    const bool choice = logOutputKo->value(DPT_Switch);
-    logDebugP("ChoiceState<%c>: LOG[%u](KO %u)=%d", 'a' + choiceState, choiceStateLogChannel, logOutputKoNumber, choice);
-
-    // 2g) get the following state
-    // TODO ensure expected memory layout!
-    const uint8_t selectedNext = choice
-        ? knx.paramByte(DFA_ParamCalcIndex(DFA_av01t + choiceState * (DFA_av02t - DFA_av01t)))
-        : knx.paramByte(DFA_ParamCalcIndex(DFA_av01f + choiceState * (DFA_av02f - DFA_av01f)));
     const uint8_t selectedNextState = selectedNext - 1;
     if (isValidState(selectedNextState))
     {
