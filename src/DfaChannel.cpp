@@ -581,6 +581,26 @@ void DfaChannel::transfer(const uint8_t input)
     }
 
     // 1) get the next state
+    uint8_t nextState = transferGetNextForInput(input);
+
+    logIndentUp();
+
+    // 2) evaluate conditional states
+    while (64 <= nextState && nextState < 64 + DFA_DEF_CHOICESTATES_COUNT)
+    {
+        nextState = transferEvaluateChoice(nextState);
+
+        // 2i) repeat until non-choice-state is reached
+    }
+
+    // 3) set the next state
+    transferProcessNext(nextState);
+
+    logIndentDown();
+}
+
+uint8_t DfaChannel::transferGetNextForInput(const uint8_t input)
+{
     uint8_t nextState = DFA_STATE_UNDEFINED; // must be uint8_t to ensure conversion from ETS-param to required state
     if (input < DFA_DEF_INPUTS_WITH_T_COUNT)
     {
@@ -614,99 +634,91 @@ void DfaChannel::transfer(const uint8_t input)
         }
         nextState = directState;
     }
+    return nextState;
+}
 
-    logIndentUp();
+uint8_t DfaChannel::transferEvaluateChoice(const uint8_t nextState)
+{
+    // 2a) => is choice-state
+    const uint8_t choiceState = nextState - 64;
 
-    // 2) evaluate conditional states
-    while (64 <= nextState && nextState < 64 + DFA_DEF_CHOICESTATES_COUNT)
+    // 2b) get choice-state config
+    // TODO ensure expected memory layout!
+    const uint8_t choiceStateLogChannel = knx.paramByte(DFA_ParamCalcIndex(DFA_av01LOG + choiceState * (DFA_av02LOG - DFA_av01LOG)));
+
+    // 2c) check choice enabled
+    if (choiceStateLogChannel == 0)
     {
-        // 2a) => is choice-state
-        const uint8_t choiceState = nextState - 64;
+        logInfoP("ChoiceState<%c>: Misconfiguration/Inactive!", 'a' + choiceState);
+        return DFA_STATE_UNDEFINED;
+    }
 
-        // 2b) get choice-state config
-        // TODO ensure expected memory layout!
-        const uint8_t choiceStateLogChannel = knx.paramByte(DFA_ParamCalcIndex(DFA_av01LOG + choiceState * (DFA_av02LOG - DFA_av01LOG)));
+    // 2d) get assigned logic-channel
+    const uint16_t logOutputKoNumber = getLogicOutputKoNumber(choiceStateLogChannel - 1);
+    GroupObject *logOutputKo = &knx.getGroupObject(logOutputKoNumber);
+    if (logOutputKo == nullptr)
+    {
+        logErrorP("ChoiceState<%c>: Undefined LOG[%u](KO %u)", 'a' + choiceState, choiceStateLogChannel, logOutputKoNumber);
+        return DFA_STATE_UNDEFINED;
+    }
+    // const bool isLogicChannelEnabled = ... (Parameter calculated?)
 
-        // 2c) check choice enabled
-        if (choiceStateLogChannel == 0)
-        {
-            nextState = DFA_STATE_UNDEFINED;
-            logInfoP("ChoiceState<%c>: Misconfiguration/Inactive!", 'a' + choiceState);
-            break;
-        }
+    // 2e) check logic-channel result present
+    if (logOutputKo->valueSize() != 1)
+    {
+        // TODO exclude all KOs of length 2 to 8 bits!
+        logInfoP("ChoiceState<%c>: Invalid LOG[%u](KO %u) size %u", 'a' + choiceState, choiceStateLogChannel, logOutputKoNumber, logOutputKo->valueSize());
+        return DFA_STATE_UNDEFINED;
+    }
+    if (!logOutputKo->initialized())
+    {
+        logInfoP("ChoiceState<%c>: Uninitialized LOG[%u](KO %u)", 'a' + choiceState, choiceStateLogChannel, logOutputKoNumber);
+        return DFA_STATE_UNDEFINED;
+    }
 
-        // 2d) get assigned logic-channel
-        const uint16_t logOutputKoNumber = getLogicOutputKoNumber(choiceStateLogChannel - 1);
-        GroupObject *logOutputKo = &knx.getGroupObject(logOutputKoNumber);
-        if (logOutputKo == nullptr)
-        {
-            nextState = DFA_STATE_UNDEFINED;
-            logErrorP("ChoiceState<%c>: Undefined LOG[%u](KO %u)", 'a' + choiceState, choiceStateLogChannel, logOutputKoNumber);
-            break;
-        }
-        // const bool isLogicChannelEnabled = ... (Parameter calculated?)
+    // 2f) get logic-channel result
+    const bool choice = logOutputKo->value(DPT_Switch);
+    logDebugP("ChoiceState<%c>: LOG[%u](KO %u)=%d", 'a' + choiceState, choiceStateLogChannel, logOutputKoNumber, choice);
 
-        // 2e) check logic-channel result present
-        if (logOutputKo->valueSize() != 1)
+    // 2g) get the following state
+    // TODO ensure expected memory layout!
+    const uint8_t selectedNext = choice
+        ? knx.paramByte(DFA_ParamCalcIndex(DFA_av01t + choiceState * (DFA_av02t - DFA_av01t)))
+        : knx.paramByte(DFA_ParamCalcIndex(DFA_av01f + choiceState * (DFA_av02f - DFA_av01f)));
+    const uint8_t selectedNextState = selectedNext - 1;
+    if (selectedNextState == DFA_STATE_CHOICE_ELSE)
+    {
+        if (nextState + 1 < 64 + DFA_DEF_CHOICESTATES_COUNT)
         {
-            // TODO exclude all KOs of length 2 to 8 bits!
-            nextState = DFA_STATE_UNDEFINED;
-            logInfoP("ChoiceState<%c>: Invalid LOG[%u](KO %u) size %u", 'a' + choiceState, choiceStateLogChannel, logOutputKoNumber, logOutputKo->valueSize());
-            break;
-        }
-        if (!logOutputKo->initialized())
-        {
-            nextState = DFA_STATE_UNDEFINED;
-            logInfoP("ChoiceState<%c>: Uninitialized LOG[%u](KO %u)", 'a' + choiceState, choiceStateLogChannel, logOutputKoNumber);
-            break;
-        }
-
-        // 2f) get logic-channel result
-        const bool choice = logOutputKo->value(DPT_Switch);
-        logDebugP("ChoiceState<%c>: LOG[%u](KO %u)=%d", 'a' + choiceState, choiceStateLogChannel, logOutputKoNumber, choice);
-
-        // 2g) get the following state
-        // TODO ensure expected memory layout!
-        const uint8_t selectedNext = choice
-            ? knx.paramByte(DFA_ParamCalcIndex(DFA_av01t + choiceState * (DFA_av02t - DFA_av01t)))
-            : knx.paramByte(DFA_ParamCalcIndex(DFA_av01f + choiceState * (DFA_av02f - DFA_av01f)));
-        const uint8_t selectedNextState = selectedNext - 1;
-        if (selectedNextState == DFA_STATE_CHOICE_ELSE)
-        {
-            if (nextState + 1 < 64 + DFA_DEF_CHOICESTATES_COUNT)
-            {
-                logDebugP("ChoiceState<%c>: -> ELSE", 'a' + choiceState);
-                nextState++;
-                // => start evaluating the chain until last choice-state
-            }
-            else
-            {
-                nextState = DFA_STATE_UNDEFINED;
-                logErrorP("ChoiceState<%c>: Invalid ELSE for last Choice-State", 'a' + choiceState);
-                break;
-            }
-        }
-        else if (isValidState(selectedNextState))
-        {
-            logDebugP("ChoiceState<%c>: -> selected next state %u", 'a' + choiceState, selectedNextState);
-            nextState = selectedNextState;
-            break;
+            logDebugP("ChoiceState<%c>: -> ELSE", 'a' + choiceState);
+            return nextState + 1;
+            // => start evaluating the chain until last choice-state
         }
         else
         {
-            // 2h) ignore empty following
-
-            // TODO check if we need a special-handling for arbitraty choice-states (could result in endless loop!) or reset-pseudo-state
-            logDebugP("ChoiceState<%c>: selected NO next state", 'a' + choiceState);
-            // all next definitions not a state, or not explicitly else
-            nextState = DFA_STATE_UNDEFINED;
-            break;
+            logErrorP("ChoiceState<%c>: Invalid ELSE for last Choice-State", 'a' + choiceState);
+            return DFA_STATE_UNDEFINED;
         }
+    }
+    else if (isValidState(selectedNextState))
+    {
+        logDebugP("ChoiceState<%c>: -> selected next state %u", 'a' + choiceState, selectedNextState);
+        return selectedNextState;
+    }
+    else
+    {
+        // 2h) ignore empty following
 
-        // 2i) repeat until non-choice-state is reached
+        // TODO check if we need a special-handling for arbitraty choice-states (could result in endless loop!) or reset-pseudo-state
+        logDebugP("ChoiceState<%c>: selected NO next state", 'a' + choiceState);
+        // all next definitions not a state, or not explicitly else
+        return DFA_STATE_UNDEFINED;
     }
 
-    // 3) set the next state
+}
+
+void DfaChannel::transferProcessNext(const uint8_t nextState)
+{
     if (isValidState(nextState))
     {
         // 3a) set state
@@ -729,8 +741,6 @@ void DfaChannel::transfer(const uint8_t input)
     {
         logErrorP("=> UNEXPECTED int:%u", nextState);
     }
-
-    logIndentDown();
 }
 
 #pragma region "DFA_CHANNEL_STATE_TIMEOUT"

@@ -90,7 +90,11 @@ class DfaChannel : public OpenKNX::Channel
     uint32_t getStateTimeoutDelay_ms(const uint8_t state);
     inline bool isValidState(const uint8_t state);
     void setState(const uint8_t nextState, const DfaDirectSetSame sameStateBehaviour = DfaDirectSetSame::timeout_restart);
+
     void transfer(const uint8_t input);
+    uint8_t transferGetNextForInput(const uint8_t input);
+    uint8_t transferEvaluateChoice(const uint8_t nextState);
+    void transferProcessNext(const uint8_t nextState);
 
     void endTimeout();
     void resetTimeout();
