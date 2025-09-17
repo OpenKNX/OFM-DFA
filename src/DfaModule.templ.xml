@@ -21,6 +21,15 @@
           </op:part>
           <Static>
             <Parameters>
+              <!--
+              Channel Memory Layout:
+              [  0;  5[ Misc
+              [  5;  6[ Input-Pair-Selection
+              [  6; 18[ Output Definitions - without Values
+              [ 18; 50[ Intput Definitions
+              [ 50;114[ Choice-States
+              [114;786[ States 
+              -->
               <Parameter Id="%AID%_P-%T%%CC%0001"    Name="a%C%Name"                 ParameterType="%AID%_PT-Text40Byte"                Text="Beschreibung" Value="" />
 
               <Parameter Id="%AID%_P-%T%%CC%0090" Name="a%C%Comment"         ParameterType="%AID%_PT-Text512Byte"  Text="Kommentar"                     Value="" />
