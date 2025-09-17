@@ -641,6 +641,12 @@ uint8_t DfaChannel::transferEvaluateChoice(const uint8_t nextState)
 {
     // 2a) => is choice-state
     const uint8_t choiceState = nextState - 64;
+    // TODO ensure allowed!
+    if (choiceState >= DFA_DEF_CHOICESTATES_COUNT)
+    {
+        logErrorP("ChoiceState<?>: Wrong int:%u!", nextState);
+        return DFA_STATE_UNDEFINED;
+    }
 
     // 2b) get choice-state config
     // TODO ensure expected memory layout!
