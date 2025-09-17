@@ -692,7 +692,12 @@ uint8_t DfaChannel::transferEvaluateChoice(const uint8_t nextState)
         ? knx.paramByte(DFA_ParamCalcIndex(DFA_av01t + choiceState * (DFA_av02t - DFA_av01t)))
         : knx.paramByte(DFA_ParamCalcIndex(DFA_av01f + choiceState * (DFA_av02f - DFA_av01f)));
     const uint8_t selectedNextState = selectedNext - 1;
-    if (selectedNextState == DFA_STATE_CHOICE_ELSE)
+    if (isValidState(selectedNextState))
+    {
+        logDebugP("ChoiceState<%c>: -> selected next state z%u", 'a' + choiceState, selectedNextState + 1);
+        return selectedNextState;
+    }
+    else if (selectedNextState == DFA_STATE_CHOICE_ELSE)
     {
         if (nextState + 1 < 64 + DFA_DEF_CHOICESTATES_COUNT)
         {
@@ -705,11 +710,6 @@ uint8_t DfaChannel::transferEvaluateChoice(const uint8_t nextState)
             logErrorP("ChoiceState<%c>: Invalid ELSE for last Choice-State", 'a' + choiceState);
             return DFA_STATE_UNDEFINED;
         }
-    }
-    else if (isValidState(selectedNextState))
-    {
-        logDebugP("ChoiceState<%c>: -> selected next state %u", 'a' + choiceState, selectedNextState);
-        return selectedNextState;
     }
     else
     {
