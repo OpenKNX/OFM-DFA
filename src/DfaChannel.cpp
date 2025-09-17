@@ -430,6 +430,7 @@ void DfaChannel::processInputKo(GroupObject &ko)
             // .. && ParamDFA_aStateSetting==0b01
             logDebugP("processInputKo set state (separate); StateSetting=%d, ..Same=%d", ParamDFA_aStateSetting, ParamDFA_aStateSettingSame);
             setState(ko.value(DPT_SceneNumber), static_cast<DfaDirectSetSame>(ParamDFA_aStateSettingSame));
+            // TODO check updating history
         }
         else if (koNumber == DFA_KoCalcNumber(DFA_KoKOaState) && ParamDFA_aStateSetting == 0b10)
         {
@@ -437,6 +438,7 @@ void DfaChannel::processInputKo(GroupObject &ko)
 
             // ignore same state to prevent processing the result of own sending to shared K
             setState(ko.value(DPT_SceneNumber), DfaDirectSetSame::ignore);
+            // TODO check updating history
 
             // ensure KO has the value of current state!
             // TODO restore KO value for invalid state only
@@ -479,7 +481,9 @@ void DfaChannel::setRunning(const bool requestRun, const bool first /*= false*/)
         {
             // first activation
             logDebugP("first activation");
-            setState(_firstState);
+            setState(_firstState);   // TODO check using transfer(..)
+            addHistory(249, _state); // TODO define constant
+
             logDebugP("restore: _stateTimeoutDelay_ms=%d ParamDFA_aStateRestore=%d _firstStateTimeoutDelay_ms=%d ParamDFA_aChannelDelayTimeMS=%d", _stateTimeoutDelay_ms, ParamDFA_aStateRestore, _firstStateTimeoutDelay_ms, ParamDFA_aStartupDelayTimeMS);
             // TODO check usage of _firstStateTimeoutDelay_ms, this is the remaining delay and should be renamed
             // _stateTimeoutDelay_ms is set to current's state timeout in setState(..)
@@ -577,6 +581,7 @@ void DfaChannel::transfer(const uint8_t input)
     if (!isValidState(_state))
     {
         logDebugP("State<int:%u>: transfer(int:%u)->IGNORE (current state not valid)", input, _state);
+        addHistory(input, _state);
         return;
     }
 
@@ -596,6 +601,7 @@ void DfaChannel::transfer(const uint8_t input)
     // 3) set the next state
     transferProcessNext(nextState);
 
+    addHistory(input, _state);
     logIndentDown();
 }
 
@@ -903,7 +909,7 @@ bool DfaChannel::processCommandDfaStateSet(const uint8_t stateStarting1, bool di
 {
     const uint8_t state = stateStarting1 - 1;
     // TODO check setState returning valid state
-    setState(state);
+    setState(state); // TODO check using transfer(..)
     return isValidState(state);
 }
 
@@ -913,4 +919,20 @@ bool DfaChannel::processCommandDfaSymbolInsert(const uint8_t inputSymbolNumber, 
     return true;
 }
 
+bool DfaChannel::processCommandDfaHistory(bool diagnoseKo)
+{
+    std::string historyStr = _history.getCompactHistoryString();
+    logInfoP("History: %s", historyStr.c_str());
+    if (diagnoseKo)
+        openknx.console.writeDiagenoseKo(historyStr.c_str());
+    return true;
+}
+
 #pragma endregion "DFA_CHANNEL_COMMANDS"
+
+void DfaChannel::addHistory(uint8_t input, uint8_t state)
+{
+    _history.addHistory(input, state);
+    logDebugP("addHistory(input=int:%u, state=int:%u) [DONE]", input, state);
+    logHexDebugP(_history.getHistoryBuffer(), _history.getHistoryBufferSize());
+}

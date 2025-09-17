@@ -194,6 +194,8 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
                 openknx.console.writeDiagenoseKo("");
                 openknx.console.writeDiagenoseKo("-> .. symbol=X");
                 openknx.console.writeDiagenoseKo("");
+                openknx.console.writeDiagenoseKo("-> .. history");
+                openknx.console.writeDiagenoseKo("");
                 openknx.console.writeDiagenoseKo("(diagCtrl=ON)");
             }
             else
@@ -220,7 +222,12 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
             }
             else if (!diagnoseKo || ParamDFA_DiagnoseAccess == 1) // writing to DFAs is allowed
             {
-                if (cmdLength == 14) // all current commands have the same length
+                if (cmdLength == 13 && cmd.substr(5, 8) == " history")
+                {
+                    logDebugP("=> DFA-Channel<%u> show history!", (channelIdx + 1));
+                    return _channels[channelIdx]->processCommandDfaHistory(diagnoseKo);
+                }
+                else if (cmdLength == 14) // all current commands have the same length
                 {
                     if (cmd.substr(5, 9) == " timeout!")
                     {

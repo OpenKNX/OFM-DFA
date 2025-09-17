@@ -5,6 +5,7 @@
 #include "OpenKNX.h"
 
 #include "DfaConstants.h"
+#include "DfaHistory.h"
 #include "DfaOutput.h"
 
 // #define DFA_INPUT_TRIGGER_DISABLED 0b00
@@ -81,6 +82,10 @@ class DfaChannel : public OpenKNX::Channel
     uint32_t _stateTimeoutDelay_ms = 0;
     uint32_t _stateTimeoutBegin_ms = 0;
 
+    DfaHistory _history;
+
+    void addHistory(uint8_t input, uint8_t state);
+
     uint16_t getLogicOutputKoNumber(const uint8_t /* intended overlapping name for usage in macro! */ _channelIndex);
     uint16_t getInputKoNumber(const uint8_t input);
     void initInputConfig();
@@ -115,4 +120,5 @@ class DfaChannel : public OpenKNX::Channel
     bool processCommandDfaTimeout(bool diagnoseKo);
     bool processCommandDfaStateSet(const uint8_t stateStarting1, bool diagnoseKo);
     bool processCommandDfaSymbolInsert(const uint8_t inputSymbolNumber, bool diagnoseKo);
+    bool processCommandDfaHistory(bool diagnoseKo);
 };
