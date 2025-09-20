@@ -675,7 +675,7 @@ void DfaChannel::restore()
 
 #pragma region "DFA_CHANNEL_COMMANDS"
 
-bool DfaChannel::processCommandDfa()
+bool DfaChannel::processCommandDfa(bool diagnoseKo)
 {
     logDebugP("status and remaining delay");
     const uint8_t state = _state + 1;
@@ -697,17 +697,19 @@ bool DfaChannel::processCommandDfa()
         const uint16_t timeoutHours = remaining;
 
         logInfoP((timeoutHours < 10) ? "%02d%c%d:%02d:%02d.%03d" : "%02d%c%5d:%02d:%02d", state, mode, timeoutHours, timeoutMinutes, timeoutSeconds, timeoutMillis);
-        openknx.console.writeDiagenoseKo((timeoutHours < 10) ? "%02d%c%d:%02d:%02d.%03d" : "%02d%c%5d:%02d:%02d", state, mode, timeoutHours, timeoutMinutes, timeoutSeconds, timeoutMillis);
+        if (diagnoseKo)
+            openknx.console.writeDiagenoseKo((timeoutHours < 10) ? "%02d%c%d:%02d:%02d.%03d" : "%02d%c%5d:%02d:%02d", state, mode, timeoutHours, timeoutMinutes, timeoutSeconds, timeoutMillis);
     }
     else
     {
         logInfoP("%02d%cNO_TIMEOUT", state, mode);
-        openknx.console.writeDiagenoseKo("%02d%c NO_TIMEOUT", state, mode);
+        if (diagnoseKo)
+            openknx.console.writeDiagenoseKo("%02d%c NO_TIMEOUT", state, mode);
     }
     return true;
 }
 
-bool DfaChannel::processCommandDfaTimeout()
+bool DfaChannel::processCommandDfaTimeout(bool diagnoseKo)
 {
     logInfoP("timeout end now!");
     // TODO define behaviour when disabled
@@ -715,7 +717,7 @@ bool DfaChannel::processCommandDfaTimeout()
     return true;
 }
 
-bool DfaChannel::processCommandDfaStateSet(const uint8_t stateStarting1)
+bool DfaChannel::processCommandDfaStateSet(const uint8_t stateStarting1, bool diagnoseKo)
 {
     const uint8_t state = stateStarting1 - 1;
     // TODO check setState returning valid state
@@ -723,7 +725,7 @@ bool DfaChannel::processCommandDfaStateSet(const uint8_t stateStarting1)
     return isValidState(state);
 }
 
-bool DfaChannel::processCommandDfaSymbolInsert(const uint8_t inputSymbolNumber)
+bool DfaChannel::processCommandDfaSymbolInsert(const uint8_t inputSymbolNumber, bool diagnoseKo)
 {
     transfer(inputSymbolNumber);
     return true;

@@ -216,7 +216,7 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
             if (cmdLength == 5)
             {
                 logDebugP("=> DFA-Channel<%u> overview!", (channelIdx + 1));
-                return _channels[channelIdx]->processCommandDfa();
+                return _channels[channelIdx]->processCommandDfa(diagnoseKo);
             }
             else if (!diagnoseKo || ParamDFA_DiagnoseAccess == 1) // writing to DFAs is allowed
             {
@@ -225,21 +225,21 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
                     if (cmd.substr(5, 9) == " timeout!")
                     {
                         logDebugP("=> DFA-Channel<%u> timeout end now!", (channelIdx + 1));
-                        return _channels[channelIdx]->processCommandDfaTimeout();
+                        return _channels[channelIdx]->processCommandDfaTimeout(diagnoseKo);
                     }
                     else if (cmd.substr(5, 7) == " state=" && std::isdigit(cmd[12]) && std::isdigit(cmd[13]))
                     {
                         const uint8_t newState = std::stoi(cmd.substr(12, 2));
 
                         logDebugP("=> DFA-Channel<%u> set state=%u!", (channelIdx + 1), newState);
-                        return _channels[channelIdx]->processCommandDfaStateSet(newState);
+                        return _channels[channelIdx]->processCommandDfaStateSet(newState, diagnoseKo);
                     }
                     else if (cmd.substr(5, 8) == " symbol=" && ('A' <= cmd[13] && cmd[13] <= 'H'))
                     {
                         const uint8_t inputSymbolNumber = cmd[13] - 'A';
 
                         logDebugP("=> DFA-Channel<%u> input Symbol=%c (%u)!", (channelIdx + 1), ('A' + inputSymbolNumber), inputSymbolNumber);
-                        return _channels[channelIdx]->processCommandDfaSymbolInsert(inputSymbolNumber);
+                        return _channels[channelIdx]->processCommandDfaSymbolInsert(inputSymbolNumber, diagnoseKo);
                     }
                 }
             }

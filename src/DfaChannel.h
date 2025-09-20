@@ -112,8 +112,8 @@ class DfaChannel : public OpenKNX::Channel
     void save();
     void restore();
 
-    bool processCommandDfa();
-    bool processCommandDfaTimeout();
-    bool processCommandDfaStateSet(const uint8_t stateStarting1);
-    bool processCommandDfaSymbolInsert(const uint8_t inputSymbolNumber);
+    bool processCommandDfa(bool diagnoseKo);
+    bool processCommandDfaTimeout(bool diagnoseKo);
+    bool processCommandDfaStateSet(const uint8_t stateStarting1, bool diagnoseKo);
+    bool processCommandDfaSymbolInsert(const uint8_t inputSymbolNumber, bool diagnoseKo);
 };

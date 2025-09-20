@@ -1,3 +1,8 @@
+## upcoming (v0.6.1 or v0.7.0)
+
+* Fix #52: Die Diagnose-Kommandos haben auch beim Aufruf von Konsole aufs KO geschrieben
+
+
 # 2025-07-18 v0.6.0
 
 * Fix #48: Diagnose-Kommandos im Modul wurden auch angezeigt und verarbeitet, wenn das Gerät nicht konfiguriert ist
