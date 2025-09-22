@@ -1,10 +1,10 @@
-## upcoming (v0.6.1 or v0.7.0)
+## 2025-09-22 v0.6.1 ("Diagnose-Ausgabe-Fixes")
 
 * Fix #52: Die Diagnose-Kommandos haben auch beim Aufruf von Konsole aufs KO geschrieben
 * Fix #51: Das Kommando `dfaNN` lieferte keine Information ob der Kanal aktiv ist und läuft
 
 
-# 2025-07-18 v0.6.0
+# 2025-09-18 v0.6.0 ("Detailverbesserungen und -fixes")
 
 * Fix #48: Diagnose-Kommandos im Modul wurden auch angezeigt und verarbeitet, wenn das Gerät nicht konfiguriert ist
 * Fix ETS-App XML: Falsche Zell-Koordinates for Eingangs-Paar-Parameter. Dies hatte keine bekannten Auswirkungen in der ETS5.7/6.3
@@ -12,7 +12,7 @@
 * OpenKNX Update: Anpassungen für neue Producer-Versionen
 
 
-# 2025-07-11 v0.5.0 (with "Output Fixes")
+# 2025-07-11 v0.5.0 (mit "Output Fixes")
 
 * **Fix #39: Für Ausgänge mit Typ DPT9 und DPT14** wurden (i.d.R. deutlich erkennbar) falsche Werte gesendet
   * Möglicher Workaround für ältere Versionen: Ausgabe des identischen Bitmusters über gleichlangen Ganzzahltyps (DPT7/12)
