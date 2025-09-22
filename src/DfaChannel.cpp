@@ -678,8 +678,17 @@ void DfaChannel::restore()
 bool DfaChannel::processCommandDfa(bool diagnoseKo)
 {
     logDebugP("status and remaining delay");
+
+    if (!_channelActive)
+    {
+        logInfoP("NOT_ACTIVE");
+        if (diagnoseKo)
+            openknx.console.writeDiagenoseKo("NOT_ACTIVE");
+        return true;
+    }
+
     const uint8_t state = _state + 1;
-    const char mode = '<';
+    const char mode = _running ? '<' : ']';
     if (state > 99)
     {
         // exclude states with > 2 characters; should never happen

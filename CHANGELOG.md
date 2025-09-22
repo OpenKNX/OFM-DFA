@@ -1,6 +1,7 @@
 ## upcoming (v0.6.1 or v0.7.0)
 
 * Fix #52: Die Diagnose-Kommandos haben auch beim Aufruf von Konsole aufs KO geschrieben
+* Fix #51: Das Kommando `dfaNN` lieferte keine Information ob der Kanal aktiv ist und läuft
 
 
 # 2025-07-18 v0.6.0
