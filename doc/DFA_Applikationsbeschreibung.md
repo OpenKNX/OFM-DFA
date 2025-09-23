@@ -5,6 +5,7 @@
 
 # Inhaltsverzeichnis
 * [Konzepte](#konzepte)
+  * [Deterministische Endliche Automaten](#deterministische-endliche-automaten) 
   * [Zeitbasierter Folgezustand (Timeout)](#zeitbasierter-folgezustand--timeout--)
   * [Rekonstruktion nach Neustart](#rekonstruktion-nach-neustart)
 * ETS-Konfiguration:
@@ -12,7 +13,7 @@
     * [**Allgemein**](#allgemein)
       * [Diagnose](#diagnose)
     * [**DEA n: ...**](#dea-n--)
-      * [DEA-Definition](#dea-definition) 
+      * [Automatendefinition](#automatendefinition) 
       * [Start und Ausführung](#ausführung)
         * [Pausieren erlauben](#pausieren-erlauben)
         * [Rekonstruktion bei erneutem Start](#rekonstruktion-bei-erneutem-start)
@@ -65,7 +66,7 @@ D.h.:
 
 * beim Starten kann alternativ zum regulären Startzustand der zuletzt gespeicherte Zustand aufgerufen werden
 * ein ggf. vorhandener Timeout kann um die bereits abgelaufene Zeit verkürzt werden <!-- (geplant) alternativ soll der Rest-Timeout basierend auf dem zuvor berechneten absoluten Endzeitpunkt neu berechnet werden -->
-* falls pausieren erlaubt ist, wird der gespeicherte Unterbrechnungs-Status genutzt 
+* falls pausieren erlaubt ist, wird der gespeicherte Unterbrechungs-Status genutzt 
 
 Die Rekonstruktion erfordert das erfolgreiche Speichern des momentanen Zustands und des Rest-Timeouts unmittelbar bei Beendigung der Verarbeitung. 
 Dies kann allerdings nicht immer gewährleistet werden. 
@@ -133,7 +134,7 @@ Der Befehlssatz kann sich in zukünftigen Modul-Versionen verändern.
 
 ## DEA n: ...
 
-### DEA-Definition 
+### Automatendefinition
 
 
 <!-- DOC -->
