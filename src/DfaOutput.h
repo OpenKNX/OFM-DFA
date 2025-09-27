@@ -41,7 +41,8 @@ struct DfaTimeout
 };
 
 // TODO check inheritance from Base?
-class DfaOutput {
+class DfaOutput
+{
   private:
     // same as in Base; required for Param-Macros
     uint8_t _channelIndex = 0;
