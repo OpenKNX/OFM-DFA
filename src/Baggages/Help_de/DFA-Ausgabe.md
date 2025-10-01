@@ -6,7 +6,7 @@ Für jede Kombination aus Zustand und Ausgang kann ein Wert und ein Sendeverhalt
 
 #### Bezeichnung/Kommentar (je Ausgabekanal)
 
-Hier sollte zur Dokumentation eine individuelle kurze Beschreibung des jeweiligen Ausgabekanal hinterlegt werden.
+Hier sollte zur Dokumentation eine individuelle kurze Beschreibung des jeweiligen Ausgabekanals hinterlegt werden.
 Der Wert wird ausschließlich in der ETS verwendet (Als Beschriftung von Konfigurationsseiten und KOs) und hat keinen Einfluss auf das Geräteverhalten.
 
 #### Datentyp (je Ausgabekanal)
