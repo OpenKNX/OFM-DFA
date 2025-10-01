@@ -538,32 +538,32 @@ Definiert den Zeitraum bis der Wert erneut auf den Bus gesendet wird, falls ein 
 
 ##### **Sendeverhalten (je Zustand)**
 
-> ***Tipp zur erleichterten ETS-Konfiguration:*** 
-> Über die Tasten `-`, `k`(kein Senden), `w`(Wert), `z`(Zustand), `j`(jedes) kann die jeweilige Sendestrategie schnell ausgewählt, 
-> bzw. zwischen den verschiedenen Ausprägungen gewechselt, werden. Mit `<Tab>` kann zum nächsten Zustand gewechselt werden. 
+> ***Tipp zur erleichterten ETS-Konfiguration:*** Über die Tasten `-`, `k`(kein Senden), `w`(Wert), `z`(Zustand), `j`(jedes) kann die jeweilige Sendestrategie schnell ausgewählt, bzw. zwischen den verschiedenen Ausprägungen gewechselt, werden. Mit `<Tab>` kann zum nächsten Zustand gewechselt werden. 
 
 Definiert, ob in dem Zustand ein Wert für diesen Ausgang zugewiesen wird und wenn ja, ob und wann dieser auf den Bus gesendet wird.
 
-Für den Fall der ***Rekonstruktion*** kann beim Neustart ein "zusätzliches" einmaliges Senden aktiviert werden 
-("...&nbsp;+&nbsp;Rekonstruktion") um die Ausgangswerte auch nach einem Geräte-Neustart oder kompletten Bus-Neustart bereitzustellen.
-Hinweis: In Szenarien, in denen der Empfang des Ausgangswertes als Trigger eine Aktion auslöst oder neu startet, sollte das Senden in diesem Fall unterbleiben.
+> ***Hinweis:*** Sofern keine guten Gründe vorliegen sollte jedem benutzten Zustand ein Wert zugewiesen werden. 
 
-Optional kann eine regelmäßige Wiederholung des Sendevorgangs eingestellt werden ("...&nbsp;+&nbsp;zyklisch"). 
-Die Wiederholung erfolgt dann unabhängig vom Zustand im für diesen Ausgang eingestellten ***Sendeintervall bei zyklischer Wiederholung***.
+* **-**:                           Dem Zustand wird kein Ausgangswert zugeordnet. Der Wert des KOs wird nicht verändert (d.h. der bereits gesetzte Wert bleibt erhalten) und es wird nicht auf den Bus gesendet.
+  *Achtung:* Dieses Verhalten verletzt das Prinzip eines eindeutig allein vom aktuellen Zustand abhängigen Ausgangswertes und sollte daher nur in begründeten Ausnahmefällen genutzt werden (z.B. für Übergangszustände mit kurzen Timeouts). 
+* **kein Senden, nur KO setzen**:  Das KO wird auf den angegebenen Wert gesetzt, ohne diesen auf den Bus zu senden. Anschließend ist ein Abruf per Read-Request möglich.
+* **Wert-Änderung**:               Sendet dann auf den Bus, wenn der zugeordnete Wert vom vorherigen Wert im KO abweicht. Eine Wert-Änderung kann *nur* bei Änderung des Zustandes auftreten, wenn dem vorherigen Zustand ein anderer Wert zugeordnet war. 
+* **Zustands-Änderung**:           Senden immer dann auf den Bus, wenn ein Wechsel des Zustands erfolgt, unabhängig von den Werten die den Zuständen zugeordnet sind. Eine Zustands-Änderung erfolgt beim Starten und beim Wechsel in einen abweichenden Folgezustand durch Symboleingabe, Timeout oder direktes Setzen des Zustands.
+* **jeder Zustands-Aufruf**:       Senden erfolgt bei jedem Aufruf des Zustands, unabhängig von einer Veränderung des Zustands oder des Ausgangswertes. Ein Zustands-Aufruf erfolgt beim Starten, durch direktes Setzen des Zustands, oder bei definierten (nicht zwingend abweichenden) Folgezuständen durch Symboleingabe bzw. Timeout. *Hinweis:* Dieses Verhalten impliziert ein Senden bei Rekonstruktion. 
 
+> ***Anmerkung***: Die Sendehäufigkeit, bzw. die Auslöser für ein Senden, nehmen entsprechend der Reihenfolge der Optionen zu.
 
-<!-- DOCCONTENT
-* **-**:                                            Dem Zustand wird kein Ausgangswert zugeordnet. Der Wert des KOs wird nicht verändert (d.h. der bereits gesetzte Wert bleibt erhalten) und es wird nicht auf den Bus gesendet.
-* **kein Senden, nur KO setzen**:                   Das KO wird auf den angegebenen Wert gesetzt, ohne diesen auf den Bus zu senden. Anschließend ist ein Abruf per Read-Request möglich.
-* **Wert-Änderung**:                                Sendet dann auf den Bus, wenn der zugeordnete Wert vom vorherigen Wert im KO abweicht. Eine Wert-Änderung kann *nur* bei Änderung des Zustandes auftreten, wenn dem vorherigen Zustand ein anderer Wert zugeordnet war. 
-* **Wert-Änderung + Rekonstruktion**:               Wie **Wert-Änderung**, aber auch bei Rekonstruktion.  
-* **Zustands-Änderung**:                            Senden immer dann auf den Bus, wenn ein Wechsel des Zustands erfolgt, unabhängig von den Werten die den Zuständen zugeordnet sind. Eine Zustands-Änderung erfolgt beim Starten und beim Wechsel in einen abweichenden Folgezustand durch Symboleingabe, Timeout oder direktes Setzen des Zustands.
-* **Zustands-Änderung + Rekonstruktion**:           Wie **Zustands-Änderung**, aber auch bei Rekonstruktion.  
-* **jeder Zustands-Aufruf + Rekonstruktion**:       Senden erfolgt bei jedem Aufruf des Zustands, unabhängig von einer Veränderung des Zustands oder des Augsgansgwertes. Ein Zustands-Aufruf erfolgt beim Starten, durch direktes Setzen des Zustands, oder bei definierten (nicht zwingend abweichenden) Folgezuständen durch Symboleingabe bzw. Timeout, sowie auch bei Rekonstruktion. 
-* **... + zyklisch**:                               Sendet ergänzend den aktuellen Wert wiederholt im für diesen Zustand definierten **Sendeintervall**.                               
+Optionen für zusätzliches Senden:
 
-DOCCONTENT -->
-<!-- DOC Skip="13" -->
+* **"... + Rekonstruktion"**:
+  Falls die Option ***[Rekonstruktion bei erneutem Start](#rekonstruktion-bei-erneutem-start)*** aktiviert ist,
+  dann (und nur dann) kann beim Neustart ein "zusätzliches" einmaliges Senden veranlasst werden
+  um die Ausgangswerte auch nach einem Geräte-Neustart oder kompletten Bus-Neustart bereitzustellen.
+  *Hinweis:* In Szenarien, in denen der Empfang des Ausgangswertes als Trigger eine Aktion auslöst oder neu startet, sollte das Senden in diesem Fall unterbleiben.
+* **... + zyklisch**:                               Sendet ergänzend den aktuellen Wert wiederholt im für diesen Zustand definierten ***Sendeintervall bei zyklischer Wiederholung***.
+
+<!-- DOC Skip="14" -->
+###### Übersicht über Sendeverhalten bei verschiedenen Ereignissen
 | Einstellungswert                                  | nach Rekonstruktion | bei Wertänderung (erfordert Zustand-Wechsel) | bei Zustands-Änderung (ohne Wertänderung) | bei Zustandsaufruf (selber Zustand) | zyklisch senden | Beschreibung                                                                                                                                                                                                                     |
 |---------------------------------------------------|:-------------------:|:--------------------------------------------:|:-----------------------------------------:|:-----------------------------------:|:---------------:|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | -                                                 |          -          |                      -                       |                     -                     |                  -                  |        -        | kein Wert (letzter Wert bleibt unverändert)                                                                                                                                                                                      |
@@ -576,8 +576,6 @@ DOCCONTENT -->
 | Zustands-Änderung + Rekonstruktion + zyklisch     |       senden        |                    senden                    |                  senden                   |                  -                  |       ja        | bei Zustandsänderung (z.B. beim Start mit oder ohne Rekonstruktion, durch Symboleingabe, durch Statuseingabe, durch Timeout) oder wiederholt im eingestellten Sendezyklus                                                        |
 | jeder Zustands-Aufruf + Rekonstruktion            |       senden        |                    senden                    |                  senden                   |               senden                |        -        | bei Zustandsaufruf (wie bei Zustandsänderung, aber z.B. auch bei Symboleingabe mit identischem Folgezustand, Statuseingabe des aktuellen Zustands, Timeout mit selbem Folgezustand)                                              |
 | jeder Zustands-Aufruf + Rekonstruktion + zyklisch |       senden        |                    senden                    |                  senden                   |               senden                |       ja        | bei Zustandsaufruf (wie bei Zustandsänderung, aber z.B. auch bei Symboleingabe mit identischem Folgezustand, Statuseingabe des aktuellen Zustands, Timeout mit selbem Folgezustand) oder wiederholt im eingestellten Sendezyklus |
-
-> Die Sendehäufigkeit, bzw. die Auslöser für ein Senden, nehmen entsprechend der Reihenfolge der Optionen zu.
 
 ##### **Ausgabewert (je Zustand)**
 
