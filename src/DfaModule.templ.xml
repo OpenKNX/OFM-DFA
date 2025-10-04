@@ -626,16 +626,16 @@
 
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Ausgabe" UIHint="Headline" />
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Eine Ausgabe von Text (DPT16.001) ist ausschließlich mit O4 möglich." UIHint="Information" />
-                        <ParameterBlock Id="%AID%_PB-%C%04" Name="Outputs%C%" Text="O" Inline="true" Layout="Table" HelpContext="DFA-Ausgabe">
+                        <ParameterBlock Id="%AID%_PB-%C%04" Name="Outputs%C%" Text="  O  " Inline="true" Layout="Table" HelpContext="DFA-Ausgabe">
                           <Rows>
-                            <Row Id="%AID%_PB-04_R-1" Name="Output1" Text="O1" />
-                            <Row Id="%AID%_PB-04_R-2" Name="Output2" Text="O2" />
-                            <Row Id="%AID%_PB-04_R-3" Name="Output3" Text="O3" />
-                            <Row Id="%AID%_PB-04_R-4" Name="Output4" Text="O4" />
+                            <Row Id="%AID%_PB-04_R-1" Name="Output1" Text=" O1 " />
+                            <Row Id="%AID%_PB-04_R-2" Name="Output2" Text=" O2 " />
+                            <Row Id="%AID%_PB-04_R-3" Name="Output3" Text=" O3 " />
+                            <Row Id="%AID%_PB-04_R-4" Name="Output4" Text=" O4 " />
                           </Rows>
                           <Columns>
                             <Column Id="%AID%_PB-04_C-1" Name="Label"           Text="Bezeichnung/Kommentar"      Width="40%" />
-                            <Column Id="%AID%_PB-04_C-2" Name="Source"          Text="Datentyp"                   Width="55%" />
+                            <Column Id="%AID%_PB-04_C-2" Name="Source"          Text="Datentyp"                   Width="60%" />
                           </Columns>
 
                           <ParameterRefRef RefId="%AID%_P-%T%%CC%8100_R-%T%%CC%810001" Cell="1,1" />
