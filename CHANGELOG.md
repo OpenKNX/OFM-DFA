@@ -1,7 +1,7 @@
-## 2025-09-22 v0.6.1 ("Diagnose-Ausgabe-Fixes")
+# 2025-09-22 v0.6.1 ("Diagnose-Ausgabe-Fixes")
 
 * Fix #52: Die Diagnose-Kommandos haben auch beim Aufruf von Konsole aufs KO geschrieben
-* Fix #51: Das Kommando `dfaNN` lieferte keine Information ob der Kanal aktiv ist und läuft
+* Fix #51: Das Kommando `dfaNN` lieferte keine (klare) Information, ob der Kanal aktiv ist und läuft
 
 
 # 2025-09-18 v0.6.0 ("Detailverbesserungen und -fixes")
