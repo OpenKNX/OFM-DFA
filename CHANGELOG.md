@@ -1,3 +1,11 @@
+# (upcoming) v0.7.0
+
+* Fix/Verbesserung ETS-Applikation:
+  * Applikationsbeschreibung und Kontexthilfen: "Kanal verwenden?", "Ausgabe", "Ausgang n", "Pausieren erlauben?"
+  * Tabelle zur Definition der Ausgänge auf 100% Breite
+  * Info-Text für Text-Ausgänge 
+
+
 # 2025-09-22 v0.6.1 ("Diagnose-Ausgabe-Fixes")
 
 * Fix #52: Die Diagnose-Kommandos haben auch beim Aufruf von Konsole aufs KO geschrieben
