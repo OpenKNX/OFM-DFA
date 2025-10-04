@@ -625,7 +625,7 @@
                         </ParameterBlock>
 
                         <ParameterSeparator Id="%AID%_PS-nnn" Text="Ausgabe" UIHint="Headline" />
-                        <ParameterSeparator Id="%AID%_PS-nnn" Text="Eine Ausgabe von Text (DPT16.001) ist ausschließlich mit O4 möglich." UIHint="Information" />
+                        <ParameterSeparator Id="%AID%_PS-nnn" Text="Eine Ausgabe von Text (DPT16.001) ist ausschließlich mit dem letzten Ausgang O4 möglich." UIHint="Information" />
                         <ParameterBlock Id="%AID%_PB-%C%04" Name="Outputs%C%" Text="  O  " Inline="true" Layout="Table" HelpContext="DFA-Ausgabe">
                           <Rows>
                             <Row Id="%AID%_PB-04_R-1" Name="Output1" Text=" O1 " />
