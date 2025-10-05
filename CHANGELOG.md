@@ -5,6 +5,7 @@
   * Tabelle zur Definition der Ausgänge auf 100% Breite
   * Info-Text für Text-Ausgänge
   * Info-Text für Rekonstruktion
+  * Bereinigung XML
 
 
 # 2025-09-22 v0.6.1 ("Diagnose-Ausgabe-Fixes")
