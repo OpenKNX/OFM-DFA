@@ -227,7 +227,7 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
                     logDebugP("=> DFA-Channel<%u> show history!", (channelIdx + 1));
                     return _channels[channelIdx]->processCommandDfaHistory(diagnoseKo);
                 }
-                else if (cmdLength == 14) // all current commands have the same length
+                else if (cmdLength == 14)
                 {
                     if (cmd.substr(5, 9) == " timeout!")
                     {
@@ -250,6 +250,16 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
                         return _channels[channelIdx]->processCommandDfaSymbolInsert(inputSymbolNumber, diagnoseKo);
                     }
                 }
+#ifdef OPENKNX_DEBUG
+                else if (cmdLength == 12)
+                {
+                    if (cmd.substr(5, 7) == " *TEST*")
+                    {
+                        logDebugP("=> DFA-Channel<%u> TESTING!", (channelIdx + 1));
+                        return _channels[channelIdx]->processCommandDfaTesting(diagnoseKo);
+                    }
+                }
+#endif    
             }
         }
         else

@@ -935,6 +935,49 @@ bool DfaChannel::processCommandDfaHistory(bool diagnoseKo)
     return true;
 }
 
+#ifdef OPENKNX_DEBUG
+bool DfaChannel::processCommandDfaTesting(bool diagnoseKo)
+{
+    uint8_t next[256];
+    uint8_t eval[256];
+    bool isState[256];
+    bool isConditional[256];
+    char type[256];
+    logDebugP("TEST Collect:");
+    logIndentUp();
+    for (uint16_t i = 0x00; i <= 0xff; i++)
+    {
+        next[i] = transferGetNextForInput(i);
+        eval[i] = transferEvaluateChoice(i);
+        isState[i] = isValidState(i);
+        isConditional[i] = (64 <= i && i < 64 + DFA_DEF_CHOICESTATES_COUNT);
+        if (i < 8)
+            type[i] = 'A' + i;
+        else if (i == 8)
+            type[i] = 'T';
+        else if (128 <= i && i < 128 + DFA_DEF_STATES_COUNT)
+            type[i] = '=';
+        else if (128 + 64 <= i && i < 128 + 64 + DFA_DEF_CHOICESTATES_COUNT)
+            type[i] = 'a' + (i - 128 - 64);
+        else
+            type[i] = '_';
+    }
+    logIndentDown();
+    logDebugP("TEST[nnn]: T transf   S C choice");
+    for (uint16_t i = 0x00; i <= 0xff; i++)
+    {
+        const uint16_t iFirst = i;
+        logDebugP("TEST[%3u]: %c %3u|x%02x  %u %3u|x%02x", i, type[i], next[i], next[i], isState[i], isConditional[i], eval[i], eval[i]);
+        while (i+1  <= 0xff && next[i+1] == next[i] && eval[i+1] == eval[i] && isState[i+1] == isState[i] && isConditional[i+1] == isConditional[i] && type[i+1] == type[i])
+            i++;
+        if (i > iFirst)
+            logDebugP("... %ux ...", i - iFirst);
+
+    }
+    return true;
+}
+#endif
+
 #pragma endregion "DFA_CHANNEL_COMMANDS"
 
 void DfaChannel::addHistory(uint8_t input, uint8_t state)
