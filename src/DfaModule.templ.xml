@@ -406,21 +406,7 @@
                         <ParameterRefRef RefId="%AID%_UP-%T%%CC%0008_R-%T%%CC%000801" IndentLevel="1" HelpContext="DFA-Rekonstruktion-bei-erneutem-Start" />
                         <choose ParamRefId="%AID%_UP-%T%%CC%0008_R-%T%%CC%000801">
                           <when test="!=0">
-                            <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG: Nachträgliche Konfigurationsänderungen können zu unerwartetem Verhalten oder Fehlern bei der Rekonstruktion und erstmaligem Senderverhalten führen!" UIHint="Information" />
-                            <!--
-                            <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG: Nachträgliche Konfigurationsänderungen können zu unerwartetem Verhalten oder Fehlern bei der Rekonstruktion und (erstmaligem) Senderverhalten führen!" UIHint="Information" />
-                            <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG: Konfigurationsänderungen können zu unerwartetem Verhalten oder Fehlern bei der Rekonstruktion und (erstmaligem) Senderverhalten führen!" UIHint="Information" />
-                            <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG: Bestimmte Kombinationen aus Konfigurationsänderungen und gespeichertem Zustand können bei Rekonstruktion zu unerwartetem Verhalten führen! (Mögliche Fortsetzung in nicht mehr erreich- oder verlassbarebaren Zuständen, oder Fehl-Erkennung von Wertänderungen.)" UIHint="Information" />
-                            <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG: Bestimmte Konfigurationsänderungen können bei Rekonstruktion zu unerwartetem Verhalten führen! (Mögliche Fortsetzung in nicht mehr erreich- oder verlassbarebare Zustände führen, oder) " UIHint="Information" />
-                            <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG: Konfigurationsänderungen können zur Fortsetzung in nicht mehr erreich- oder verlassbarebare Zustände führen, oder " UIHint="Information" />
-
-                            <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG: Wiederherstellen von Zuständen beim Start ist ein experimentelles Feature." UIHint="Information" />
-                            <ParameterSeparator Id="%AID%_PS-nnn" Text="Technische LIMITATIONEN beachten!" UIHint="Information" />
-                            !- -
-                            <ParameterSeparator Id="%AID%_PS-nnn" Text="LIMITATION: Es kann NICHT sichergestellt werden, dass in allen Fällen der letzte Zustand gespeichert wird (z.B. bei Nutzung der Reset-Taste)." UIHint="Information" />
-                            <ParameterSeparator Id="%AID%_PS-nnn" Text="LIMITATION: Es kann auf diesem Wege NICHT sichergestellt werden, dass ein Verhalten wie ohne Unterbrechung erreicht wird." UIHint="Information" />
-                            - -
-                            -->
+                            <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG: Nachträgliche Konfigurationsänderungen können zu unerwartetem Verhalten oder Fehlern bei der Rekonstruktion und erstmaligem Sendeverhalten führen!" UIHint="Information" />
                           </when>
                         </choose>
 
