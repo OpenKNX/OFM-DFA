@@ -13,11 +13,9 @@
           </op:partParams>        
           -->
           <Static>
-            <Parameters part="1">
+            <Parameters>
 <!-- STATE NAME INPUT --> 
               <Parameter Id="%AID%_P-%T%%CC%%DfaStateNumberNN%00" Name="a%C%z%DfaStateNumberNN%Name"              ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Zustand %DfaStateNumberN%"  Value="" />
-            </Parameters>
-            <Parameters part="2">
               <!-- Offset +=42 -->
               <Union SizeInBit="336"><Memory CodeSegment="%MID%" Offset="%DfaStateUnionOffset%" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%%DfaStateNumberNN%01" Name="a%C%d%DfaStateNumberNN%A"                 ParameterType="%AID%_PT-DfaStateNextReset"    Offset="1" BitOffset="0"      Text="trans(%DfaStateNumberNN%,1)"            Value="0" />

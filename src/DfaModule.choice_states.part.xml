@@ -14,11 +14,9 @@
           </op:part>
           -->
           <Static>
-            <Parameters part="1">
+            <Parameters>
 <!-- STATE NAME INPUT --> 
               <Parameter Id="%AID%_P-%T%%CC%65%DfaChoiceStateNumberNN%" Name="a%C%v%DfaChoiceStateNumberNN%Name"              ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Bedingungsauswertung %DfaChoiceStateNumberN%"  Value="" />
-            </Parameters>
-            <Parameters part="2">
               <!--
               1Byte LOG-Number, optional 0
               1Byte 1-Next

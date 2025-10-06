@@ -145,12 +145,10 @@
               </Union>
 
               <!-- name="%DfaChoiceStateUnionOffset%"  value="54" increment="4" / instances="16" -->
-              <op:usePart name="CHOICE_STATE" xpath="//Parameters[@part='1']/*" />
-              <op:usePart name="CHOICE_STATE" xpath="//Parameters[@part='2']/*" />
+              <op:usePart name="CHOICE_STATE" xpath="//Parameters/*" />
 
               <!-- name="%DfaStateUnionOffset%"  value="118" increment="42" / instances="16" -->
-              <op:usePart name="STATE" xpath="//Parameters[@part='1']/*" />
-              <op:usePart name="STATE" xpath="//Parameters[@part='2']/*" />
+              <op:usePart name="STATE" xpath="//Parameters/*" />
 
             </Parameters>
             <ParameterRefs>
