@@ -637,15 +637,20 @@ uint8_t DfaChannel::transferGetNextForInput(const uint8_t input)
     {
         // 1c) special case: direct setting state (X_z)
         const uint8_t directState = (input & 0x7F);
-        if (directState < 64)
+        if (directState < DFA_DEF_STATES_COUNT)
         {
+            nextState = directState;
             logDebugP("State<z%u>: transfer(%u)->%u", _state + 1, directState, directState);
         }
-        else if (directState < 64 + DFA_DEF_CHOICESTATES_COUNT)
+        else if (64 <= nextState && nextState < 64 + DFA_DEF_CHOICESTATES_COUNT)
         {
+            nextState = directState;
             logDebugP("State<z%u>: transfer(%c)->CHOICE", _state + 1, 'a' + directState - 64);
         }
-        nextState = directState;
+        else
+        {
+            // NOT direct state and NOT choice state
+        }
     }
     return nextState;
 }
