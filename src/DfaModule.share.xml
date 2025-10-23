@@ -327,9 +327,10 @@
               
             </ParameterTypes>
             <Parameters>
-              <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="0" BitOffset="0" />
+              <Union SizeInBit="16"><Memory CodeSegment="%MID%" Offset="0" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%000001" Name="VisibleChannels"   ParameterType="%AID%_PT-DFANumChannels"   Offset="0"  BitOffset="0"  Text="Verfügbare Kanäle"               Value="%DFA_NumChannelsDefault%"    SuffixText=" von %N%" />
-                <Parameter Id="%AID%_UP-%T%000002" Name="DiagnoseAccess"    ParameterType="%AID%_PT-DiagnoseAccess"   Offset="0"  BitOffset="0"  Text="Zugriff über Diagnose-Objekt"    Value="0"                                                 />
+                <Parameter Id="%AID%_UP-%T%000002" Name="DiagnoseAccess"    ParameterType="%AID%_PT-DiagnoseAccess"   Offset="1"  BitOffset="0"  Text="Zugriff über Diagnose-Objekt"    Value="0"                                                 />
+                <!-- 7 bits unused -->
               </Union>
             </Parameters>
             <ParameterRefs>
