@@ -600,10 +600,19 @@ void DfaChannel::transfer(const uint8_t input)
     logIndentUp();
 
     // 2) evaluate conditional states
-    while (64 <= nextState && nextState < 64 + DFA_DEF_CHOICESTATES_COUNT)
+    for (uint8_t i = 0; (64 <= nextState && nextState < 64 + DFA_DEF_CHOICESTATES_COUNT); i++)
     {
-        nextState = transferEvaluateChoice(nextState);
+        if (i >= DFA_DEF_CHOICESTATES_COUNT)
+        {
+            // this should NEVER happen, 
+            // as transferEvaluateChoice is only allowed to produce monotonic increasing choicestates
+            // but failing this condition would result in infinite loop
+            logErrorP("ChoiceState<?>: Too many iterations!");
+            nextState = DFA_STATE_UNDEFINED;
+            break;
+        }
 
+        nextState = transferEvaluateChoice(nextState);
         // 2i) repeat until non-choice-state is reached
     }
 
