@@ -27,7 +27,7 @@
               [ 18; 50[ Input A-H Definitions
               [ 50; 54[ Input T Definition
               [ 54;118[ Choice-States
-              [118;790[ States 
+              [118;790[ States
               -->
               <Parameter Id="%AID%_P-%T%%CC%0001"    Name="a%C%Name"                 ParameterType="%AID%_PT-Text40Byte"                Text="Beschreibung" Value="" />
 
@@ -267,13 +267,13 @@
               <ComObject Id="%AID%_O-%T%%CC%0000" Name="KOa%C%State"   Text="Zustand"           Number="%K2%"  FunctionText="DEA %C%, Ausgabe Zustand"    DatapointType="DPST-17-1"  ObjectSize="1 Byte"    ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
               <ComObject Id="%AID%_O-%T%%CC%0100" Name="KOa%C%StateI"  Text="Zustand setzen"    Number="%K3%"  FunctionText="DEA %C%, Eingabe Zustand"    DatapointType="DPST-17-1"  ObjectSize="1 Byte"    ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
 
-              <!-- KO4 reserved--><ComObject Id="%AID%_O-%T%%CC%0011" Name="KOa%C%Dummy01" Text="Dummy01"          Number="%K4%"  FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <!-- KO5 reserved--><ComObject Id="%AID%_O-%T%%CC%0012" Name="KOa%C%Dummy02" Text="Dummy02"          Number="%K5%"  FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <!-- KO6 reserved--><ComObject Id="%AID%_O-%T%%CC%0013" Name="KOa%C%Dummy03" Text="Dummy03"          Number="%K6%"  FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <!-- KO7 reserved--><ComObject Id="%AID%_O-%T%%CC%0014" Name="KOa%C%Dummy04" Text="Dummy04"          Number="%K7%"  FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <!-- KO8 reserved--><ComObject Id="%AID%_O-%T%%CC%0015" Name="KOa%C%Dummy05" Text="Dummy05"          Number="%K8%"  FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <!-- KO9 reserved--><ComObject Id="%AID%_O-%T%%CC%0016" Name="KOa%C%Dummy06" Text="Dummy06"          Number="%K9%"  FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <!-- K10 reserved--><ComObject Id="%AID%_O-%T%%CC%0017" Name="KOa%C%Dummy07" Text="Dummy07"          Number="%K10%" FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <!-- KO4 reserved -->
+              <!-- KO5 reserved -->
+              <!-- KO6 reserved -->
+              <!-- KO7 reserved -->
+              <!-- KO8 reserved -->
+              <!-- KO9 reserved -->
+              <!-- K10 reserved -->
 
               <ComObject Id="%AID%_O-%T%%CC%0001" Name="KOa%C%Input1"  Text="Eingang 1"        Number="%K11%" FunctionText="DEA %C%, Eingang 1"          DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
               <ComObject Id="%AID%_O-%T%%CC%0002" Name="KOa%C%Input2"  Text="Eingang 2"        Number="%K12%" FunctionText="DEA %C%, Eingang 2"          DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
@@ -286,18 +286,19 @@
               <!-- TODO check position! -->
               <ComObject Id="%AID%_O-%T%%CC%0009" Name="KOa%C%InputT"  Text="Eingang T"        Number="%K19%" FunctionText="DEA %C%, Timeout-Auslöser"   DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
 
-              <!-- K20 reserved--><ComObject Id="%AID%_O-%T%%CC%0019" Name="KOa%C%Dummy09" Text="Dummy09"          Number="%K20%" FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <!-- K20 reserved -->
 
               <ComObject Id="%AID%_O-%T%%CC%0201" Name="KOa%C%Output1" Text="Wertausgang 1"    Number="%K21%" FunctionText="DEA %C%, Ausgang 1"                                     ObjectSize="14 Bytes"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
               <ComObject Id="%AID%_O-%T%%CC%0202" Name="KOa%C%Output2" Text="Wertausgang 2"    Number="%K22%" FunctionText="DEA %C%, Ausgang 2"                                     ObjectSize="14 Bytes"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
               <ComObject Id="%AID%_O-%T%%CC%0203" Name="KOa%C%Output3" Text="Wertausgang 3"    Number="%K23%" FunctionText="DEA %C%, Ausgang 3"                                     ObjectSize="14 Bytes"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
               <ComObject Id="%AID%_O-%T%%CC%0204" Name="KOa%C%Output4" Text="Wertausgang 4"    Number="%K24%" FunctionText="DEA %C%, Ausgang 4"                                     ObjectSize="14 Bytes"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
 
-              <!-- K25 reserved--><ComObject Id="%AID%_O-%T%%CC%0020" Name="KOa%C%Dummy10" Text="Dummy10"          Number="%K25%" FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <!-- K26 reserved--><ComObject Id="%AID%_O-%T%%CC%0021" Name="KOa%C%Dummy11" Text="Dummy11"          Number="%K26%" FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <!-- K27 reserved--><ComObject Id="%AID%_O-%T%%CC%0022" Name="KOa%C%Dummy12" Text="Dummy12"          Number="%K27%" FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <!-- K28 reserved--><ComObject Id="%AID%_O-%T%%CC%0023" Name="KOa%C%Dummy13" Text="Dummy13"          Number="%K28%" FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
-              <!-- K29 reserved--><ComObject Id="%AID%_O-%T%%CC%0024" Name="KOa%C%Dummy14" Text="Dummy14"          Number="%K29%" FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
+              <!-- K25 reserved -->
+              <!-- K26 reserved -->
+              <!-- K27 reserved -->
+              <!-- K28 reserved -->
+              <!-- K29 reserved / dummy required for producer -->
+              <ComObject Id="%AID%_O-%T%%CC%0024" Name="KOa%C%Dummy14" Text="Dummy14"          Number="%K29%" FunctionText="Dummy"                       DatapointType="DPST-1-1"   ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
 
             </ComObjectTable>
             <ComObjectRefs>
@@ -323,7 +324,7 @@
 
               <!-- input T -->
               <ComObjectRef Id="%AID%_O-%T%%CC%0009_R-%T%%CC%000901" RefId="%AID%_O-%T%%CC%0009" Text="Symbol T" />
-                                         
+
               <ComObjectRef Id="%AID%_O-%T%%CC%0100_R-%T%%CC%010001" RefId="%AID%_O-%T%%CC%0100" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0101_R-%T%%CC%010101" RefId="%AID%_O-%T%%CC%0101" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0102_R-%T%%CC%010201" RefId="%AID%_O-%T%%CC%0102" />
@@ -645,7 +646,7 @@
                             <when test="!=0">
                               <ParameterRefRef RefId="%AID%_UP-%T%%CC%7903_R-%T%%CC%790301" Cell="13,4" />
                             </when>
-                          </choose>                          
+                          </choose>
 
                         </ParameterBlock>
 
@@ -885,7 +886,7 @@
                           <ParameterSeparator Id="%AID%_PS-nnn" Text="Bedingte Übergänge mit dynamischer Entscheidung durch Logik-Kanäle" UIHint="Headline" />
 
                           <ParameterSeparator Id="%AID%_PS-nnn" Text="Referenzierte Logik-Kanäle MÜSSEN mit DPT1 Ausgangs-KO aktiv sein.&#10;ELSE setzt mit nächster Zeile fort.&#10;Leere Zeilen und undefinierte Folgezustände beenden ohne Zustandswechsel." UIHint="Information" />
-                          
+
                           <!-- Choice-States-Table -->
                           <ParameterBlock Id="%AID%_PB-%C%02" Name="ChoiceStates%C%" Text="" Inline="true" Layout="Table"><!-- TODO HelpContext="DFA-Tabelle-Zustaende-und-Uebergaenge" -->
                             <Rows>
