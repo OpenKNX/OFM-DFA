@@ -29,6 +29,7 @@ Zur **Konfiguration in der ETS** siehe [Applikationsbeschreibung](doc/DFA_Applik
 * [Einsatz](#einsatz)
 * [Beispiele](#beispiele)
 * [Grundidee in Anlehnung an gängige formale Definitionen](#grundidee-in-anlehnung-an-gängige-formale-definitionen)
+* [Für Entwickler: Integration in OpenKNX OAMs](#für-entwickler-integration-in-openknx-oams)
 
 
 ## Einsatz
@@ -104,3 +105,74 @@ oder sogar für alle z<sub>i</sub>&in;X<sub>z</sub> (*Neustart von bereits geset
 ... werden nicht explizit abgebildet.
 Im Rahmen einer Nachverarbeitung kann jedoch leicht ermittelt werden, ob ein Zustand aus dieser Menge eingenommen wurde.
 Es können Zustände definiert werden, die nicht mehr durch Eingabe eines Symbols verlassen werden.
+
+
+## Für Entwickler: Integration in OpenKNX OAMs
+
+> ***Wichtig***:
+Die Anzahl der Kanäle muss vor einer Integration kritisch abgewogen werden, 
+da die je Kanal enthaltenen Anzahl von Parametern und der erforderliche Parameterspeicher deutlich größer sind als bei anderen OpenKNX-Modulen.
+Eine zu hohe Anzahl von Kanälen kann sich negativ auf die Performance in der gesamten erzeugten ETS-Applikation auswirken.
+Mit einem Bedarf von knapp 1 KB Parameterspeicher je Kanal wird u.U. eine Anpassung des Speicherlayouts erforderlich. 
+
+
+Dieses Modul besteht aus
+einem [Applikationsteil](#integration-in-ets-applikation)
+und 
+einem [Firmware-Modul](#integration-in-firmware).
+Diese müssen beide innerhalb eines OpenKNX-Applikations-Projektes eingebunden werden, wie unten gezeigt.
+
+### Abhängigkeiten
+
+Das Modul erfordert die gleichzeitige Integration des [OpenKNX Logikmoduls](https://github.com/OpenKNX/OFM-LogicModule).
+Da dieses i.d.R. in allen OpenKNX-Applikationen enthalten ist, stellt dies in der Praxis keine besondere Anforderung dar. 
+
+### Integration in ETS-Applikation
+
+Das Modul stellt folgende KOs bereit:
+
+* 30 für jeden Kanal (Automatendefinition)
+* keine kanalunabhängigen KOs
+
+***Achtung***:
+Es muss zwingend ein ModulTyp mit nur einer Ziffer festgelegt werden, da ein vergrößerter Namespace für Parameter verwendet wird.
+Der im Beispiel gezeigte ModulTyp 2 entspricht einer gleichzeitigen Benutzung der ModulTypen 20 bis 29,
+die somit nicht mehr durch andere Module verwendet werden dürfen! 
+
+
+```
+  <!-- Number of visible channels before configuration: -->
+  <op:config name="%DFA_NumChannelsDefault%"  value="2" />
+
+  <!-- 30 KOs / Channel, NO central KOs -->
+  <op:define prefix="DFA"
+             share="../lib/OFM-DFA/src/DfaModule.share.xml"
+             template="../lib/OFM-DFA/src/DfaModule.templ.xml"
+             NumChannels="%DFA_NumChannels%"
+             KoOffset="30"
+             ModuleType="2" >
+    <op:verify File="../lib/OFM-DFA/library.json" ModuleVersion="%DFA_VerifyVersion%" />
+  </op:define>
+```
+
+### Integration in Firmware
+
+<!-- * Sehr hoher Bedarf an Konfigurationsspeicher -->
+
+
+```
+// ...
+#include "Logic.h"
+#include "DfaModule.h"
+// ...
+
+void setup()
+{
+    // ...
+    openknx.addModule(1, openknxLogic);
+    openknx.addModule(2, openknxDfaModule);
+    // ...
+}
+
+// ...
+```
