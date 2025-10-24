@@ -644,7 +644,7 @@ uint8_t DfaChannel::transferGetNextForInput(const uint8_t input)
             nextState = directState;
             logDebugP("State<z%u>: transfer(%u)->%u", _state + 1, directState, directState);
         }
-        else if (64 <= nextState && nextState < 64 + DFA_DEF_CHOICESTATES_COUNT)
+        else if (64 <= directState && directState < 64 + DFA_DEF_CHOICESTATES_COUNT)
         {
             nextState = directState;
             logDebugP("State<z%u>: transfer(%c)->CHOICE", _state + 1, 'a' + directState - 64);
