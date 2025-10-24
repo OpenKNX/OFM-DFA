@@ -572,6 +572,8 @@ void DfaChannel::setState(const uint8_t nextState, const DfaDirectSetSame sameSt
     }
 }
 
+#pragma region "DFA_CHANNEL_TRANSFER"
+
 /**
  * @brief Transfer the DFA to the next state based on the current state and input symbol.
  * @param input
@@ -771,6 +773,8 @@ void DfaChannel::transferProcessNext(const uint8_t nextState)
         logErrorP("=> UNEXPECTED int:%u", nextState);
     }
 }
+
+#pragma endregion "DFA_CHANNEL_TRANSFER"
 
 #pragma region "DFA_CHANNEL_STATE_TIMEOUT"
 
