@@ -1,11 +1,28 @@
 # (upcoming) v0.7.0
 
+* Feature: Bedingte Zustandsübergänge (Verwandt, aber nicht identisch, mit UML "Choice" Pseudo-Zuständen)
+  * Neuer Parameter-Block "Bedingte Übergänge"
+  * Diagnose-Kommando `dfaNN choice=x` zum direkten Aufruf von bedingten Übergängen (unabhängig vom aktuellen Zustand)
+* Refactor:
+  * Interne Verarbeitung von Timeouts durch transfer('T')
+  * Neue 3-phasige Verarbeitung von Zustandsübergängen (Voraussetzung für bedingte Zustandsübergänge)
+  * Verschiebung von Constanten in eine DfaConstants.h
+  * Code-Region definiert
+* Feature: Eingabe-Symbol/Eingang T zum direkten Auslösen von Timeout 
 * Fix/Verbesserung ETS-Applikation:
   * Applikationsbeschreibung und Kontexthilfen: "Kanal verwenden?", "Ausgabe", "Ausgang n", "Pausieren erlauben?"
   * Tabelle zur Definition der Ausgänge auf 100% Breite
   * Info-Text für Text-Ausgänge
   * Info-Text für Rekonstruktion
-  * Bereinigung XML
+* Fix #57: Überlappende Parameter für sich sichtbare Kanäle und Diagnose mit Schriftzugriff (ohne bekannte Auswirkungen bei der Ausführung)
+* OpenKNX Update: Unterstützung für OpenKNXproducer 3.12.2
+* Doc: Hinweise zur Integration in OpenKNX OAMs
+* Feature (Unvollständig Umsetzung!): Historienfunktion zur Diagnose
+* Bereinigung ETS-Applikation/XML<br/>u.A.:
+  * Reihenfolge von Parameter-Definitionen
+  * Vereinfachung Integration von Parts
+  * Entfernen von Dummy-KOs (mit aktueller Producer-Version nicht mehr benötigt)
+* Feature (Entwicklung): Kommando `dfaNN *TEST*` für Testing/Debugging
 
 
 # 2025-09-22 v0.6.1 ("Diagnose-Ausgabe-Fixes")
