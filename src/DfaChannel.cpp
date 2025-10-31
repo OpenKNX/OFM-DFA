@@ -935,6 +935,12 @@ bool DfaChannel::processCommandDfaSymbolInsert(const uint8_t inputSymbolNumber, 
     return true;
 }
 
+bool DfaChannel::processCommandDfaChoice(const uint8_t inputChoiceNumber, bool diagnoseKo)
+{
+    transfer(0xC0 | inputChoiceNumber);
+    return true;
+}
+
 bool DfaChannel::processCommandDfaHistory(bool diagnoseKo)
 {
     std::string historyStr = _history.getCompactHistoryString();

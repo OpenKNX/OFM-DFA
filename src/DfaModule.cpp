@@ -145,6 +145,7 @@ void DfaModule::showHelp()
         openknx.console.printHelpLine("dfaNN timeout!", "Let timeout of channel NN end now!");
         openknx.console.printHelpLine("dfaNN state=SS", "Change state to SS");
         openknx.console.printHelpLine("dfaNN symbol=X", "Input the symbol X (A,..,H,T)");
+        openknx.console.printHelpLine("dfaNN choice=x", "Input the choice x (a,..,p)");
     }
 #ifdef OPENKNX_RUNTIME_STAT
     openknx.console.printHelpLine("dfa runtime",    "Show detailed runtime statistic");
@@ -194,6 +195,10 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
                 openknx.console.writeDiagenoseKo("");
                 openknx.console.writeDiagenoseKo("-> .. symbol=X");
                 openknx.console.writeDiagenoseKo("");
+                /* TODO include when stable
+                openknx.console.writeDiagenoseKo("-> .. choice=x");
+                openknx.console.writeDiagenoseKo("");
+                */
                 openknx.console.writeDiagenoseKo("-> .. history");
                 openknx.console.writeDiagenoseKo("");
                 openknx.console.writeDiagenoseKo("(diagCtrl=ON)");
@@ -248,6 +253,14 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
 
                         logDebugP("=> DFA-Channel<%u> input Symbol=%c (%u)!", (channelIdx + 1), cmd[13], inputSymbolNumber);
                         return _channels[channelIdx]->processCommandDfaSymbolInsert(inputSymbolNumber, diagnoseKo);
+                    }
+                    else if (cmd.substr(5, 8) == " choice=" && ('a' <= cmd[13] && cmd[13] <= 'a' + DFA_DEF_CHOICESTATES_COUNT - 1))
+                    {
+                        // TODO check moving conversion into channel
+                        const uint8_t inputChoiceNumber = cmd[13] - 'a';
+
+                        logDebugP("=> DFA-Channel<%u> input Choice=%c (%u)!", (channelIdx + 1), cmd[13], inputChoiceNumber);
+                        return _channels[channelIdx]->processCommandDfaChoice(inputChoiceNumber, diagnoseKo);
                     }
                 }
 #ifdef OPENKNX_DEBUG

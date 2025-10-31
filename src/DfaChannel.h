@@ -121,6 +121,7 @@ class DfaChannel : public OpenKNX::Channel
     bool processCommandDfaTimeout(bool diagnoseKo);
     bool processCommandDfaStateSet(const uint8_t stateStarting1, bool diagnoseKo);
     bool processCommandDfaSymbolInsert(const uint8_t inputSymbolNumber, bool diagnoseKo);
+    bool processCommandDfaChoice(const uint8_t inputChoiceNumber, bool diagnoseKo);
     bool processCommandDfaHistory(bool diagnoseKo);
 #ifdef OPENKNX_DEBUG    
     bool processCommandDfaTesting(bool diagnoseKo);
