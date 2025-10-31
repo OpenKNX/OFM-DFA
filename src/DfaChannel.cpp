@@ -619,7 +619,7 @@ void DfaChannel::transfer(const uint8_t input)
     // 3) set the next state
     transferProcessNext(nextState);
 
-    addHistory(input, _state);
+    addHistory(input, _state); // write history with resulting state after processing
     logIndentDown();
 }
 
@@ -646,15 +646,17 @@ uint8_t DfaChannel::transferGetNextForInput(const uint8_t input)
     }
     else if (input & 0x80)
     {
-        // 1c) special case: direct setting state (X_z)
+        // 1c) special case: direct setting state (X_z) and direct setting choice-states 
         const uint8_t directState = (input & 0x7F);
         if (directState < DFA_DEF_STATES_COUNT)
         {
+            // direct state
             nextState = directState;
             logDebugP("State<z%u>: transfer(%u)->%u", _state + 1, directState, directState);
         }
         else if (64 <= directState && directState < 64 + DFA_DEF_CHOICESTATES_COUNT)
         {
+            // direct choice-state
             nextState = directState;
             logDebugP("State<z%u>: transfer(%c)->CHOICE", _state + 1, 'a' + directState - 64);
         }
