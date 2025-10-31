@@ -25,10 +25,10 @@
               -->
               <!-- Offset +=4 -->
               <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="%DfaChoiceStateUnionOffset%" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%67%DfaChoiceStateNumberNN%" Name="a%C%v%DfaChoiceStateNumberNN%LOG"       ParameterType="%AID%_PT-DfaInputLogicNumberOptional"  Offset="0" BitOffset="0"      Text="Bedingungsauswertung %DfaChoiceStateNumberN% - Logikkanal"                    Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%68%DfaChoiceStateNumberNN%" Name="a%C%v%DfaChoiceStateNumberNN%t"         ParameterType="%AID%_PT-DfaStateNextChoice"           Offset="1" BitOffset="0"      Text="Bedingungsauswertung %DfaChoiceStateNumberN% - Folgezustand bei 1"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%69%DfaChoiceStateNumberNN%" Name="a%C%v%DfaChoiceStateNumberNN%f"         ParameterType="%AID%_PT-DfaStateNextChoice"           Offset="2" BitOffset="0"      Text="Bedingungsauswertung %DfaChoiceStateNumberN% - Folgezustand bei 0"            Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%66%DfaChoiceStateNumberNN%" Name="a%C%v%DfaChoiceStateNumberNN%u"         ParameterType="%AID%_PT-DfaStateNextChoice"           Offset="3" BitOffset="0"      Text="Bedingungsauswertung %DfaChoiceStateNumberN% - Folgezustand bei UNDEFINIERT"  Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%67%DfaChoiceStateNumberNN%" Name="a%C%C%DfaChoiceStateLetterA%LOG"       ParameterType="%AID%_PT-DfaInputLogicNumberOptional"  Offset="0" BitOffset="0"      Text="Bedingungsauswertung %DfaChoiceStateNumberN% - Logikkanal"                    Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%68%DfaChoiceStateNumberNN%" Name="a%C%C%DfaChoiceStateLetterA%T"         ParameterType="%AID%_PT-DfaStateNextChoice"           Offset="1" BitOffset="0"      Text="Bedingungsauswertung %DfaChoiceStateNumberN% - Folgezustand bei 1"            Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%69%DfaChoiceStateNumberNN%" Name="a%C%C%DfaChoiceStateLetterA%F"         ParameterType="%AID%_PT-DfaStateNextChoice"           Offset="2" BitOffset="0"      Text="Bedingungsauswertung %DfaChoiceStateNumberN% - Folgezustand bei 0"            Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%66%DfaChoiceStateNumberNN%" Name="a%C%C%DfaChoiceStateLetterA%U"         ParameterType="%AID%_PT-DfaStateNextChoice"           Offset="3" BitOffset="0"      Text="Bedingungsauswertung %DfaChoiceStateNumberN% - Folgezustand bei UNDEFINIERT"  Value="0" />
               </Union>              
             </Parameters>
             <ParameterRefs>
