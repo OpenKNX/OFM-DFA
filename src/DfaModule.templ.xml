@@ -33,24 +33,23 @@
 
               <Parameter Id="%AID%_P-%T%%CC%0090" Name="a%C%Comment"         ParameterType="%AID%_PT-Text512Byte"  Text="Kommentar"                     Value="" />
 
-              <Union SizeInBit="40"><Memory CodeSegment="%MID%" Offset="0" BitOffset="0" />
+              <Union SizeInBit="48"><Memory CodeSegment="%MID%" Offset="0" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0006" Name="a%C%Active"               ParameterType="%AID%_PT-ChannelSwitchMaster"       Offset="0" BitOffset="0" Text="Kanal verwenden?"                      Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0007" Name="a%C%StartPause"           ParameterType="%AID%_PT-ChannelSwitchByKo"         Offset="0" BitOffset="2" Text="Pausieren erlauben"                 Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0008" Name="a%C%StateRestore"         ParameterType="%AID%_PT-StatePersistance"          Offset="0" BitOffset="4" Text="Rekonstruktion bei erneutem Start"     Value="0" />
                 <!-- 2 bits unused; TODO reduce size! -->
                 <Parameter Id="%AID%_UP-%T%%CC%0005" Name="a%C%StateSetting"         ParameterType="%AID%_PT-StateDirectSetting"        Offset="1" BitOffset="0" Text="Direktes Setzen von Zustand erlauben?" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0009" Name="a%C%StateSettingSame"     ParameterType="%AID%_PT-StateDirectSettingSame"    Offset="1" BitOffset="2" Text="Erneutes Setzen von aktuellem Zustand" Value="1" />
-                <!-- 4 bits unused; TODO reduce size! -->
-                <Parameter Id="%AID%_UP-%T%%CC%0002" Name="a%C%z0"                   ParameterType="%AID%_PT-DfaState"                  Offset="2" BitOffset="0" Text="Startzustand"                          Value="1" />
-                <Parameter Id="%AID%_UP-%T%%CC%0003" Name="a%C%StartupDelayBase"     ParameterType="%AID%_PT-DelayBase"                 Offset="3" BitOffset="0" Text="Einschaltverzögerung Zeitbasis"        Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0004" Name="a%C%StartupDelayTime"     ParameterType="%AID%_PT-DelayTime"                 Offset="3" BitOffset="2" Text="Einschaltverzögerung Zeit"             Value="1" />
-              </Union>
-              <Union SizeInBit="8"><Memory CodeSegment="%MID%" Offset="5" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%7001" Name="a%C%SymbolPairAB"         ParameterType="%AID%_PT-CheckBox"          Offset="0" BitOffset="0" Text="Kombination A/B" SuffixText="A/B"      Value="0" /><!-- use suffix for grid-display -->
-                <Parameter Id="%AID%_UP-%T%%CC%7002" Name="a%C%SymbolPairCD"         ParameterType="%AID%_PT-CheckBox"          Offset="0" BitOffset="1" Text="Kombination C/D" SuffixText="C/D"      Value="0" /><!-- use suffix for grid-display -->
-                <Parameter Id="%AID%_UP-%T%%CC%7003" Name="a%C%SymbolPairEF"         ParameterType="%AID%_PT-CheckBox"          Offset="0" BitOffset="2" Text="Kombination E/F" SuffixText="E/F"      Value="0" /><!-- use suffix for grid-display -->
-                <Parameter Id="%AID%_UP-%T%%CC%7004" Name="a%C%SymbolPairGH"         ParameterType="%AID%_PT-CheckBox"          Offset="0" BitOffset="3" Text="Kombination G/H" SuffixText="G/H"      Value="0" /><!-- use suffix for grid-display -->
-                <!-- 4 bits unused; TODO reduce size! -->
+
+                <Parameter Id="%AID%_UP-%T%%CC%7001" Name="a%C%SymbolPairAB"         ParameterType="%AID%_PT-CheckBox"                  Offset="1" BitOffset="4" Text="Kombination A/B" SuffixText="A/B"      Value="0" /><!-- use suffix for grid-display -->
+                <Parameter Id="%AID%_UP-%T%%CC%7002" Name="a%C%SymbolPairCD"         ParameterType="%AID%_PT-CheckBox"                  Offset="1" BitOffset="5" Text="Kombination C/D" SuffixText="C/D"      Value="0" /><!-- use suffix for grid-display -->
+                <Parameter Id="%AID%_UP-%T%%CC%7003" Name="a%C%SymbolPairEF"         ParameterType="%AID%_PT-CheckBox"                  Offset="1" BitOffset="6" Text="Kombination E/F" SuffixText="E/F"      Value="0" /><!-- use suffix for grid-display -->
+                <Parameter Id="%AID%_UP-%T%%CC%7004" Name="a%C%SymbolPairGH"         ParameterType="%AID%_PT-CheckBox"                  Offset="1" BitOffset="7" Text="Kombination G/H" SuffixText="G/H"      Value="0" /><!-- use suffix for grid-display -->
+
+                <Parameter Id="%AID%_UP-%T%%CC%0002" Name="a%C%z0"                   ParameterType="%AID%_PT-DfaStateFirst"             Offset="2" BitOffset="0" Text="Startzustand / bedingte Auswahl"       Value="1" />
+                <Parameter Id="%AID%_UP-%T%%CC%0010" Name="a%C%z0Fallback"           ParameterType="%AID%_PT-DfaState"                  Offset="3" BitOffset="0" Text="... bei erfolgloser Auswertung"        Value="1" />
+                <Parameter Id="%AID%_UP-%T%%CC%0003" Name="a%C%StartupDelayBase"     ParameterType="%AID%_PT-DelayBase"                 Offset="4" BitOffset="0" Text="Einschaltverzögerung Zeitbasis"        Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%0004" Name="a%C%StartupDelayTime"     ParameterType="%AID%_PT-DelayTime"                 Offset="4" BitOffset="2" Text="Einschaltverzögerung Zeit"             Value="1" />
               </Union>
 
               <!-- Output Definitions (NOT the state-depedent values -->
@@ -152,7 +151,7 @@
 
             </Parameters>
             <ParameterRefs>
-              <ParameterRef Id="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" RefId="%AID%_P-%T%%CC%0001" />
+              <ParameterRef  Id="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" RefId="%AID%_P-%T%%CC%0001" />
               <ParameterRef Id="%AID%_UP-%T%%CC%0002_R-%T%%CC%000201" RefId="%AID%_UP-%T%%CC%0002" />
               <ParameterRef Id="%AID%_UP-%T%%CC%0003_R-%T%%CC%000301" RefId="%AID%_UP-%T%%CC%0003" />
               <ParameterRef Id="%AID%_UP-%T%%CC%0004_R-%T%%CC%000401" RefId="%AID%_UP-%T%%CC%0004" />
@@ -161,8 +160,9 @@
               <ParameterRef Id="%AID%_UP-%T%%CC%0007_R-%T%%CC%000701" RefId="%AID%_UP-%T%%CC%0007" />
               <ParameterRef Id="%AID%_UP-%T%%CC%0008_R-%T%%CC%000801" RefId="%AID%_UP-%T%%CC%0008" />
               <ParameterRef Id="%AID%_UP-%T%%CC%0009_R-%T%%CC%000901" RefId="%AID%_UP-%T%%CC%0009" />
+              <ParameterRef Id="%AID%_UP-%T%%CC%0010_R-%T%%CC%001001" RefId="%AID%_UP-%T%%CC%0010" />
 
-              <ParameterRef Id="%AID%_P-%T%%CC%0090_R-%T%%CC%009001" RefId="%AID%_P-%T%%CC%0090" />
+              <ParameterRef  Id="%AID%_P-%T%%CC%0090_R-%T%%CC%009001" RefId="%AID%_P-%T%%CC%0090" />
 
               <!-- combined inputs -->
               <ParameterRef Id="%AID%_UP-%T%%CC%7001_R-%T%%CC%700101" RefId="%AID%_UP-%T%%CC%7001" />
@@ -684,6 +684,11 @@
                           <ParameterSeparator Id="%AID%_PS-nnn" Text="Zustände und Übergangsfunktion einschließlich zeitbasierter Folgezustände" UIHint="Headline" />
                           <!-- Startzustand -->
                           <ParameterRefRef RefId="%AID%_UP-%T%%CC%0002_R-%T%%CC%000201" HelpContext="DFA-Startzustand" />
+                          <choose ParamRefId="%AID%_UP-%T%%CC%0002_R-%T%%CC%000201">
+                            <when test="&gt;64">
+                              <ParameterRefRef RefId="%AID%_UP-%T%%CC%0010_R-%T%%CC%001001" IndentLevel="1" HelpContext="DFA-Startzustand" />
+                            </when>
+                          </choose>
                           <ParameterRefRef RefId="%AID%_UP-%T%%CC%0005_R-%T%%CC%000501" HelpContext="DFA-Direktes-Setzen-von-Zustand-erlauben" />
                           <choose ParamRefId="%AID%_UP-%T%%CC%0005_R-%T%%CC%000501">
                             <when test="1">

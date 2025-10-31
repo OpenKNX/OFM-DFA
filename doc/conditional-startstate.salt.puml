@@ -1,0 +1,83 @@
+@startuml
+'https://plantuml.com/salt
+
+salt
+{
+
+= Entwurf 1
+{
+{ Startzustand | . | : }                 | {"1       "|[<&resize-height>]}
+{ . |  Bedingter Zustand | . | : | .  }  | ^ -        ^^ - ^^ a> ^^ b> ^^ ... ^^ p> ^
+}
+
+ .
+ .
+ .
+ .
+ .
+
+= Entwurf 2a
+{
+{ Startzustand / bedingte Auswahl  | . | : }                 | ^ 1         ^^ 1 ^^ ... ^^ 16 ^^ a> ^^ ... ^^ p> ^
+}
+
+ .
+ .
+ .
+ .
+ .
+ .
+
+= Entwurf 2b
+{
+{ Startzustand / bedingte Auswahl | . | : | . }                 | ^ b>        ^
+{ . | . | Bei erfolgloser Auswertung | . | : }             | {"1        "|[<&resize-height>]}
+}
+
+ .
+
+= Entwurf 3a
+{
+Startzustand: | . | . | ^ 3  ^ |
+}
+
+ .
+
+= Entwurf 3b
+{
+Startzustand: | . | . | ^ b> ^ | .  | ersatz | . | {" 1 "|[<&resize-height>]}
+}
+
+
+
+/'
+{
+.       | **Beschreibung**     | **1** | **0**
+**C1**  | "Abbruch Fehler 1  " | ^1  ^ | ^2  ^
+**C2**  | "                  " | ^3  ^ | ^4  ^
+**C3**  | "                  " | ^5  ^ | ^6  ^
+}
+
+= Entwurf 2
+{#
+.       | **Beschreibung**     | **Logik-Kanal** | **EIN** | **AUS**
+**C1**  | "Abbruch Fehler 1  " | {"1    "|[<&resize-height>]} | ^1  ^ | ^2  ^
+**C2**  | "                  " | {"11   "|[<&resize-height>]} | ^3  ^ | ^4  ^
+**C3**  | "                  " | {"99   "|[<&resize-height>]} | ^5  ^ | ^6  ^
+}
+= Entwurf 3
+{#
+.       | **Beschreibung**     | **Logik-Kanal** | **EIN** | **AUS**
+**C1**  | "Fallunterscheidung" | {"1    "|[<&resize-height>]} | ^1  ^ | ^2  ^^-^^Ausgang^^<<^^1^^2^^3^^4^^5^
+**C2**  | "                  " | {"11   "|[<&resize-height>]} | ^3  ^ | ^4  ^
+**C3**  | "                  " | {"99   "|[<&resize-height>]} | ^5  ^ | ^6  ^
+}
+
+= Benennung
+* **D** = Dynamische Zustände
+* **C** = Conditional State
+* **V** = Verzweigende Zustände
+'/
+
+}
+@enduml

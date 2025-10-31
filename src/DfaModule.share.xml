@@ -128,6 +128,18 @@
                 </TypeRestriction>
               </ParameterType>
 
+              <ParameterType Id="%AID%_PT-DfaStateFirst" Name="DfaStateFirst">
+                <TypeRestriction Base="Value" SizeInBit="8">
+
+                  <!-- options for state selection -->
+                  <op:usePart name="STATE_NUMBER" xpath="//ParameterType[@Name='DfaStateENUM']/TypeRestriction/*" />
+
+                  <!-- options for choice state selection -->
+                  <op:usePart name="CHOICE_STATE_NUMBER" xpath="//ParameterType[@Name='DfaChoiceStateENUM']/TypeRestriction/*" />
+
+                </TypeRestriction>
+              </ParameterType>
+
               <ParameterType Id="%AID%_PT-DfaStateNextReset" Name="DfaStateNextReset">
                 <TypeRestriction Base="Value" SizeInBit="8">
 
