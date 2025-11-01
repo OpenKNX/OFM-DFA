@@ -135,13 +135,14 @@ Das Modul stellt folgende KOs bereit:
 * keine kanalunabhängigen KOs
 
 ***Achtung***:
-Es muss zwingend ein ModulTyp mit nur einer Ziffer festgelegt werden, da ein vergrößerter Namespace für Parameter verwendet wird.
-Der im Beispiel gezeigte ModulTyp 2 entspricht einer gleichzeitigen Benutzung der ModulTypen 20 bis 29,
+`ModulType` muss mit nur einer Ziffer definiert werden, da ein vergrößerter Namespace für Parameter verwendet wird.
+Der im nachfolgenden Beispiel gezeigte ModulType 2 entspricht einer gleichzeitigen Benutzung der ModulTypen 20 bis 29,
 die somit nicht mehr durch andere Module verwendet werden dürfen! 
 
+An der gewünschten Stelle in der jeweiligen `{ApplikationName}.xml` den folgenden Code einbinden:
 
 ```
-  <!-- Number of visible channels before configuration: -->
+  <!-- Number of visible channels before configuration, can be defined in separate config file: -->
   <op:config name="%DFA_NumChannelsDefault%"  value="2" />
 
   <!-- 30 KOs / Channel, NO central KOs -->
