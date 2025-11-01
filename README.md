@@ -134,10 +134,12 @@ Das Modul stellt folgende KOs bereit:
 * 30 für jeden Kanal (Automatendefinition)
 * keine kanalunabhängigen KOs
 
-***Achtung***:
-`ModulType` muss mit nur einer Ziffer definiert werden, da ein vergrößerter Namespace für Parameter verwendet wird.
-Der im nachfolgenden Beispiel gezeigte ModulType 2 entspricht einer gleichzeitigen Benutzung der ModulTypen 20 bis 29,
-die somit nicht mehr durch andere Module verwendet werden dürfen! 
+> ***Achtung***:
+> `ModulType` muss auf einen Wert im Bereich 2 bis 9 gesetzt werden, da ein vergrößerter Namespace für Parameter verwendet wird.
+> Ein solcher einstelliger *ModulType* `m` entspricht einer gleichzeitigen Belegung des vollständigen Bereichs von *ModuleType* `10*m` bis *ModuleType* `10*m+9`, 
+> d.h. es darf kein anderes Modul mit einem *ModulType* in diesem Bereich in der Applikation eingebunden werden.  
+> 
+> Beispiel: Der nachfolgend gezeigte *ModulType* `2` verbietet andere Module mit meinem *ModulType* von `20` bis `29`.
 
 An der gewünschten Stelle in der jeweiligen `{ApplikationName}.xml` den folgenden Code einbinden:
 
@@ -146,6 +148,7 @@ An der gewünschten Stelle in der jeweiligen `{ApplikationName}.xml` den folgend
   <op:config name="%DFA_NumChannelsDefault%"  value="2" />
 
   <!-- 30 KOs / Channel, NO central KOs -->
+  <!-- IMPORTANT: ModuleType must be set to 1-digit value from 2 to 9, without conflict to 2-digit values starting with the same digit; see documentation! -->
   <op:define prefix="DFA"
              share="../lib/OFM-DFA/src/DfaModule.share.xml"
              template="../lib/OFM-DFA/src/DfaModule.templ.xml"
