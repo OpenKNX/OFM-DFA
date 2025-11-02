@@ -1,4 +1,4 @@
-# (upcoming) v0.7.0
+# 2025-11-02 v0.7.0 ("Bedingte Zustandsübergänge")
 
 * Feature: Bedingte Zustandsübergänge (Verwandt, aber nicht identisch, mit UML "Choice" Pseudo-Zuständen)
   * Neuer Parameter-Block "Bedingte Übergänge"
@@ -17,7 +17,7 @@
 * Fix #57: Überlappende Parameter für sich sichtbare Kanäle und Diagnose mit Schriftzugriff (ohne bekannte Auswirkungen bei der Ausführung)
 * OpenKNX Update: Unterstützung für OpenKNXproducer 3.12.2
 * Doc: Hinweise zur Integration in OpenKNX OAMs
-* Feature (Unvollständig Umsetzung!): Historienfunktion zur Diagnose
+* Feature-Vorschau (Unvollständige Umsetzung!): Historien-Funktion zur Diagnose
 * Bereinigung ETS-Applikation/XML<br/>u.A.:
   * Reihenfolge von Parameter-Definitionen
   * Vereinfachung Integration von Parts
