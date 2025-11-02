@@ -303,7 +303,7 @@ DOCCONTENT -->
 <!-- DOC -->
 ### Eingabesymbole
 
-Das Eingabealphabet des Automaten umfasst 8 Symbole, die in der Oberfläche kurz mit den Großbuchstaben A bis H bezeichnet sind. 
+Das Eingabealphabet des Automaten umfasst 9 Symbole, darunter 8 universelle Symbole die in der Oberfläche kurz mit den Großbuchstaben A bis H bezeichnet sind, sowie das mit T bezeichnete Symbol für das vorgezogene Auslösen des Timeouts. 
 Die Eingabesymbole werden durch externe Ereignisse erzeugt, 
 die jeweils durch die Kombination von einem binären Eingabekanal und einem oder mehrerer Auslösewerte definiert werden.
 
