@@ -962,7 +962,7 @@ bool DfaChannel::processCommandDfaHistory(bool diagnoseKo)
 }
 
 #ifdef OPENKNX_DEBUG
-bool DfaChannel::processCommandDfaTesting(bool diagnoseKo)
+bool DfaChannel::processCommandDfaTesting()
 {
     uint8_t next[256];
     uint8_t eval[256];

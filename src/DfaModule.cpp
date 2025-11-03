@@ -263,17 +263,17 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
                         return _channels[channelIdx]->processCommandDfaChoice(inputChoiceNumber, diagnoseKo);
                     }
                 }
-#ifdef OPENKNX_DEBUG
-                else if (cmdLength == 12)
-                {
-                    if (cmd.substr(5, 7) == " *TEST*")
-                    {
-                        logDebugP("=> DFA-Channel<%u> TESTING!", (channelIdx + 1));
-                        return _channels[channelIdx]->processCommandDfaTesting(diagnoseKo);
-                    }
-                }
-#endif    
             }
+#ifdef OPENKNX_DEBUG
+            else if (cmdLength == 12)
+            {
+                if (!diagnoseKo && cmd.substr(5, 7) == " *TEST*")
+                {
+                    logDebugP("=> DFA-Channel<%u> TESTING!", (channelIdx + 1));
+                    return _channels[channelIdx]->processCommandDfaTesting();
+                }
+            }
+#endif    
         }
         else
         {
