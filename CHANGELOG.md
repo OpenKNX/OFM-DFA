@@ -1,3 +1,10 @@
+# (upcoming) v0.7.1 ("Bedingte Zustandsübergänge")
+
+* Fix: Verarbeitung von Kommandos `*TEST*` und `history` auch ohne in der ETS aktivierte Steuerung
+* Refactor: Kommando-Vorverarbeitung
+* Doc (Entwicklung): Konzept für Historien-Darstellung/Ausgabe
+
+
 # 2025-11-02 v0.7.0 ("Bedingte Zustandsübergänge")
 
 * Feature: Bedingte Zustandsübergänge (Verwandt, aber nicht identisch, mit UML "Choice" Pseudo-Zuständen)
