@@ -225,14 +225,14 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
                 logDebugP("=> DFA-Channel<%u> overview!", (channelIdx + 1));
                 return _channels[channelIdx]->processCommandDfa(diagnoseKo);
             }
+            else if (cmdLength == 13 && cmd.substr(5, 8) == " history")
+            {
+                logDebugP("=> DFA-Channel<%u> show history!", (channelIdx + 1));
+                return _channels[channelIdx]->processCommandDfaHistory(diagnoseKo);
+            }
             else if (!diagnoseKo || ParamDFA_DiagnoseAccess == 1) // writing to DFAs is allowed
             {
-                if (cmdLength == 13 && cmd.substr(5, 8) == " history")
-                {
-                    logDebugP("=> DFA-Channel<%u> show history!", (channelIdx + 1));
-                    return _channels[channelIdx]->processCommandDfaHistory(diagnoseKo);
-                }
-                else if (cmdLength == 14)
+                if (cmdLength == 14)
                 {
                     if (cmd.substr(5, 9) == " timeout!")
                     {
