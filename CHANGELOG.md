@@ -17,7 +17,7 @@
 * Fix #57: Überlappende Parameter für sich sichtbare Kanäle und Diagnose mit Schriftzugriff (ohne bekannte Auswirkungen bei der Ausführung)
 * OpenKNX Update: Unterstützung für OpenKNXproducer 3.12.2
 * Doc: Hinweise zur Integration in OpenKNX OAMs
-* Feature-Vorschau (Unvollständige Umsetzung!): Historien-Funktion zur Diagnose
+* Feature-Vorschau (Unvollständige Umsetzung!): Historien-Funktion zur Diagnose (Kommando `dfaNN history`)
 * Bereinigung ETS-Applikation/XML<br/>u.A.:
   * Reihenfolge von Parameter-Definitionen
   * Vereinfachung Integration von Parts
