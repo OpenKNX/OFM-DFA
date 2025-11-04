@@ -577,16 +577,15 @@ void DfaChannel::setState(const uint8_t nextState, const DfaDirectSetSame sameSt
 /**
  * @brief Transfer the DFA to the next state based on the current state and input symbol.
  * @param input
- *  'A'..'H'    => 0..7
- *  'T'         => 8 (DFA_INPUT_SYMBOL_T)
- *  '<'         => ? 9
+ *  'A'..'H'    => 0x00 | 0..7
+ *  'T'         => 0x00 | 8 (DFA_INPUT_SYMBOL_T)
+ *  '<'         => 0x00 | ? 9
  *  1..16/32/64 => 0x80 | 0..15/31/63 => 128..143/159/191
- *  'a'..'h'    => 0x80 | 64..        => 192..199
+ *  'a'..'p'    => 0xC0 | 0..15       => 192..199
  */
 void DfaChannel::transfer(const uint8_t input)
 {
     // ensure the current state is valid, otherwhise following state is not defined (at least for regular symbols)
-    // TODO check if direct setting state should be allowed here
     if (!isValidState(_state))
     {
         logDebugP("State<int:%u>: transfer(int:%u)->IGNORE (current state not valid)", input, _state);
