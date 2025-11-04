@@ -625,7 +625,6 @@ void DfaChannel::transfer(const uint8_t input)
 
 uint8_t DfaChannel::transferGetNextForInput(const uint8_t input)
 {
-    uint8_t nextState = DFA_STATE_UNDEFINED; // must be uint8_t to ensure conversion from ETS-param to required state
     if (input < DFA_DEF_INPUTS_WITH_T_COUNT)
     {
         // 1a) regular symbols (X_z)
@@ -636,13 +635,14 @@ uint8_t DfaChannel::transferGetNextForInput(const uint8_t input)
         // Expected Values: ETS-Param => Converted by -1
         // 0 - no following state    => 255
         // 1-16/1-32/1-64 next state => 0-15/1-31/1-63
-        // 65-80 choce states a..p   => 64-79
+        // 65-80 choice states a..p  => 64-79
         // 127 timeout reset         => 126
 
-        // must be uint8_t! 0x00 -> 0xff
-        nextState = knx.paramByte(nextStateParamIdx) - 1;
+        // must be uint8_t to ensure conversion from ETS-param to required state (0x00 -> 0xff)
+        const uint8_t nextState = knx.paramByte(nextStateParamIdx) - 1;
 
         logDebugP("State<z%u>: transfer(%c)->%u", _state + 1, input == DFA_INPUT_SYMBOL_T ? 'T' : ('A' + input), nextState);
+        return nextState;
     }
     else if (input & 0x80)
     {
@@ -651,21 +651,18 @@ uint8_t DfaChannel::transferGetNextForInput(const uint8_t input)
         if (directState < DFA_DEF_STATES_COUNT)
         {
             // direct state
-            nextState = directState;
             logDebugP("State<z%u>: transfer(%u)->%u", _state + 1, directState, directState);
+            return directState;
         }
         else if (64 <= directState && directState < 64 + DFA_DEF_CHOICESTATES_COUNT)
         {
             // direct choice-state
-            nextState = directState;
             logDebugP("State<z%u>: transfer(%c)->CHOICE", _state + 1, 'a' + directState - 64);
+            return directState;
         }
-        else
-        {
-            // NOT direct state and NOT choice state
-        }
+        // NOT direct state and NOT choice state
     }
-    return nextState;
+    return DFA_STATE_UNDEFINED;
 }
 
 uint8_t DfaChannel::transferEvaluateChoice(const uint8_t nextState)
