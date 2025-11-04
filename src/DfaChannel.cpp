@@ -443,16 +443,17 @@ void DfaChannel::processInputKo(GroupObject &ko)
             // input only for visible KO, so no need to check:
             // .. && ParamDFA_aStateSetting==0b01
             logDebugP("processInputKo set state (separate); StateSetting=%d, ..Same=%d", ParamDFA_aStateSetting, ParamDFA_aStateSettingSame);
-            setState(ko.value(DPT_SceneNumber), static_cast<DfaDirectSetSame>(ParamDFA_aStateSettingSame));
-            // TODO check updating history
+            transfer((uint8_t)ko.value(DPT_SceneNumber) | 0x80); // setting the same state is handled based on parameters
         }
         else if (koNumber == DFA_KoCalcNumber(DFA_KoKOaState) && ParamDFA_aStateSetting == 0b10)
         {
             logDebugP("processInputKo set state (combined); StateSetting=%d, ..Same=%d", ParamDFA_aStateSetting, ParamDFA_aStateSettingSame);
 
-            // ignore same state to prevent processing the result of own sending to shared K
-            setState(ko.value(DPT_SceneNumber), DfaDirectSetSame::ignore);
-            // TODO check updating history
+            const uint8_t nextState = ko.value(DPT_SceneNumber);
+            if (_state != nextState) // ignore same state to prevent processing the result of own sending to shared KO
+            {
+                transfer(nextState | 0x80);
+            }
 
             // ensure KO has the value of current state!
             // TODO restore KO value for invalid state only
@@ -495,8 +496,7 @@ void DfaChannel::setRunning(const bool requestRun, const bool first /*= false*/)
         {
             // first activation
             logDebugP("first activation");
-            setState(_firstState);   // TODO check using transfer(..)
-            addHistory(249, _state); // TODO define constant
+            transfer(DFA_INPUT_SYMBOL_START); // set the start-state
 
             logDebugP("restore: _stateTimeoutDelay_ms=%d ParamDFA_aStateRestore=%d _firstStateTimeoutDelay_ms=%d ParamDFA_aChannelDelayTimeMS=%d", _stateTimeoutDelay_ms, ParamDFA_aStateRestore, _firstStateTimeoutDelay_ms, ParamDFA_aStartupDelayTimeMS);
             // TODO check usage of _firstStateTimeoutDelay_ms, this is the remaining delay and should be renamed
@@ -591,24 +591,37 @@ void DfaChannel::setState(const uint8_t nextState, const DfaDirectSetSame sameSt
  *   ..32       : (0x80 |  ..31) =    ..159                   >            ..31
  *   ..64       : (0x80 |  ..63) =    ..191                  /             ..63
  *  'a'..'p'    : (0xC0 | 0..15) = 192..207                  -> (when defined and evaluated with result) set state 0..15
+ *  'START'     : (0x00 | 249  )   (DFA_INPUT_SYMBOL_START)  -> set state 0..15
  */
 void DfaChannel::transfer(const uint8_t input)
 {
-    // ensure the current state is valid, otherwhise following state is not defined (at least for regular symbols)
-    if (!isValidState(_state))
+    // 1) get the next state + 2) evaluate conditional states
+    uint8_t nextState = DFA_STATE_UNDEFINED;
+    if (input == DFA_INPUT_SYMBOL_START) // check first, otherwise 2') could result in unexpected behaviour
     {
-        logDebugP("State<int:%u>: transfer(int:%u)->IGNORE (current state not valid)", input, _state);
-        addHistory(input, _state);
-        return;
+        logDebugP("State<z%u>: transfer(START)->int:%u",  _state + 1, _firstState);
+        logIndentUp();
+        nextState = transferEvaluateChoiceLoop(_firstState);
+// TODO remove conditional when included in ETS-App. With v0.7 the firmware should work as before, just without using conditional states as z0
+#ifdef ParamDFA_az0Fallback            
+        // 2') use fallback for start, when using choice evaluation without resulting state
+        if (nextState == DFA_STATE_UNDEFINED)
+        {
+            nextState = ParamDFA_az0Fallback - 1;
+        }
+#endif
     }
-
-    // 1) get the next state
-    uint8_t nextState = transferGetNextForInput(input);
-
-    logIndentUp();
-
-    // 2) evaluate conditional states
-    nextState = transferEvaluateChoiceLoop(nextState);
+    else if (isValidState(_state))
+    {
+        nextState = transferGetNextForInput(input);
+        logIndentUp();
+        nextState = transferEvaluateChoiceLoop(nextState);
+    }
+    else 
+    {
+        logIndentUp();
+        logDebugP("State<z%u>: transfer(int:%u)->IGNORE (invalid state & no startup)",  _state + 1, _state);
+    }
 
     // 3) set the next state
     transferProcessNext(nextState);
@@ -645,6 +658,12 @@ uint8_t DfaChannel::transferGetNextForInput(const uint8_t input)
         if (directState < DFA_DEF_STATES_COUNT)
         {
             // direct state
+            if (directState == _state && (static_cast<DfaDirectSetSame>(ParamDFA_aStateSettingSame) == DfaDirectSetSame::ignore))
+            {
+                logDebugP("State<z%u>: transfer(%u)->IGNORE (same state)", _state + 1, directState);
+                return DFA_STATE_UNDEFINED;
+            }
+
             logDebugP("State<z%u>: transfer(%u)->%u", _state + 1, directState, directState);
             return directState;
         }
@@ -948,8 +967,7 @@ bool DfaChannel::processCommandDfaTimeout(bool diagnoseKo)
 bool DfaChannel::processCommandDfaStateSet(const uint8_t stateStarting1, bool diagnoseKo)
 {
     const uint8_t state = stateStarting1 - 1;
-    // TODO check setState returning valid state
-    setState(state); // TODO check using transfer(..)
+    transfer(state | 0x80); // TODO check using a return-value
     return isValidState(state);
 }
 

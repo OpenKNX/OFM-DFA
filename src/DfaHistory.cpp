@@ -60,6 +60,10 @@ std::string DfaHistory::getCompactHistoryString() const
             uint8_t choiceState = (input & 0x7F) - 64;
             symbol = 'a' + choiceState;
         }
+        else if (input == DFA_INPUT_SYMBOL_START)
+        {
+            symbol = '*';
+        }
         else // unknown symbol
         {
             symbol = '?';
