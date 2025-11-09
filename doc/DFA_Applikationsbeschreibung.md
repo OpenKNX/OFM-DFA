@@ -7,7 +7,7 @@
 * [Konzepte](#konzepte)
   * [Deterministische Endliche Automaten](#deterministische-endliche-automaten) 
   * [Zeitbasierter Folgezustand (Timeout)](#zeitbasierter-folgezustand--timeout--)
-  * [Bedingte Übergänge](#bedingte-übergänge)
+  * [Bedingte Zustandsübergänge](#bedingte-zustandsübergänge)
   * [Rekonstruktion nach Neustart](#rekonstruktion-nach-neustart)
 * ETS-Konfiguration:
   [**Zustandsautomaten**](#ets-applikationsteilbr-zustandsautomaten)
@@ -26,8 +26,14 @@
         * [Übergangsfunktion einschließlich zeitbasierter Folgezustände](#zustände-und-übergangsfunktion-einschließlich-zeitbasierter-folgezustände)
       * [Bedingte Übergänge](#bedingte-übergänge-1)
       * [**Ausgang n: ...**](#ausgang-n-)
-* [Kommunikationsobjekte](#kommunikationsobjekte) 
-  * Je DEA
+  * [Kommunikationsobjekte](#kommunikationsobjekte) 
+    * Je DEA
+* [Hinweise und Tipps zur Modellierung & Nutzung (FAQs)](#hinweise-und-tipps-zur-modellierung--nutzung-faqs)
+  * [Warum ist die Auswahl und Definition des Startzustands so wichtig?](#warum-ist-die-auswahl-und-definition-des-startzustands-so-wichtig)
+  * [Warum ist es problematisch, wenn man Ausgabewerte für einzelne Zustände einfach weglässt?]()
+  * [Kann ich die Eingabe der vielen Parameter irgendwie beschleunigen?](#kann-ich-die-eingabe-der-vielen-parameter-irgendwie-beschleunigen)
+  * [Was kann ich tun, wenn die 4 Ausgänge nicht ausreichen?](#was-kann-ich-tun-wenn-die-4-ausgänge-nicht-ausreichen)
+
 
 # Konzepte
 
@@ -57,7 +63,7 @@ Die Zeitmessung wird zurückgesetzt, falls derselbe Zustand erneut aufgerufen wi
 * für jedes Eingabesymbol kann durch Auswahl desselben Folgezustands ein Reset umgesetzt werden
 
 
-## Bedingte Übergänge
+## Bedingte Zustandsübergänge
 
 Erweitert das Basismodell (Deterministische Endliche Automaten) um die Möglichkeit zur dynamischen Ermittlung eines Folgezustands.
 Dazu kann alternativ zu einem festen Folgezustand ein "Bedingter Übergang" angegeben werden, 
@@ -641,9 +647,11 @@ Falls ein Sendeverhalten für diesen Zustand definiert wurde, kann hier der Wert
 
 
 
-# Kommunikationsobjekte
+## Kommunikationsobjekte
 
-## Je DEA
+Dieses Modul besitzt keine Kanal-unabhängigen KOs.
+
+### Je DEA
 
 |       KO |    DPT | Bezeichnung                 | Erklärung                                                                                                                                                                                                           |
 |---------:|-------:|-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -669,4 +677,97 @@ Falls ein Sendeverhalten für diesen Zustand definiert wurde, kann hier der Wert
 |    (+22) |      * | Ausgang 2 - Zustandswert 2  | Analog *Ausgang 1 - Zustandswert 1*                                                                                                                                                                                 |
 |    (+23) |      * | Ausgang 3 - Zustandswert 3  | Analog *Ausgang 1 - Zustandswert 1*                                                                                                                                                                                 |
 |    (+24) |      * | Ausgang 4 - Zustandswert 4  | Analog *Ausgang 1 - Zustandswert 1* mit zusätzlichem Ausgangstyp DPT16.001 Text.                                                                                                                                    |
+
+
+
+
+# Hinweise und Tipps zur Modellierung & Nutzung (FAQs)
+
+## Warum ist die Auswahl und Definition des Startzustands so wichtig?
+
+Der Startzustand wird beim ersten Ausführen des Automaten aufgerufen; 
+nach der Startverzögerung und ohne weitere Bedingungen.
+Insbesondere wird der Startzustand auch bei jedem Neustart des Gerätes oder KNX-Busses genutzt,
+sofern *nicht* die [Rekonstruktionsfunktion](#rekonstruktion-nach-neustart) aktiviert ist.
+D.h.: Der Startzustand kann z.B. auch bei einem Neustart nach Stromausfall in Abwesenheit aufgerufen werden.
+
+Daher ist es empfehlenswert **einen "neutralen" bzw. "sicheren" Zustand als Startzustand** zu nutzen,
+der (durch seine Ausgangswerte) keine Auswirkungen mit unerwünschten Effekten verursacht,
+ggf. unterstützt durch eine zeitliche Beschränkung die bei ansonsten fehlenden Eingangsereignissen greift.
+
+Beispiel:
+
+* Ein Automat der Warnmeldungen erzeugt, 
+  kann entweder direkt im Startzustand einen warnenden Ausgangswert liefern,
+  oder zunächst keinen und erst in einem durch Timeout aus dem Startzustand aufgerufenen Folgezustand. 
+
+[Bedingte Zustandsübergänge](#bedingte-übergänge) können dabei helfen einen Zustand herzustellen, der den tatsächlichen Umgebungsbedingungen entspricht.
+
+
+## Warum ist es problematisch, wenn man Ausgabewerte für einzelne Zustände einfach weglässt?
+
+Wenn Ausgangswerte für einzelne Zustände *nicht* definiert werden, 
+dann fehlt es an einem eindeutigen Zusammenhang von Zustand und Ausgangswert.
+D.h.: Bei wiederholtem Aufruf desselben Zustands ist dann *nicht* garantiert immer denselben Ausgangswert zu erhalten.
+Die Eindeutig und Klarheit des zugrundeliegenden Modells der deterministischen endlichen Automaten wird mit dieser Konfiguration verletzt.
+
+Hintergrund: Ohne einen definierten Ausgangswert für den aufgerufenen Zustand behält das Ausgangs-KO den letzte Wert.
+Der resultierende Ausgangswert wird somit durch einen anderen *vorangegangenen* Zustand bestimmt.
+Insbesondere in Verbindung mit einem Direktaufruf von Zuständen führt dies zu einem schwer vorhersehbarem Verhalten.
+
+Um eine übermäßige Belastung ("Vollmüllen") des Busses zu vermeiden 
+sollte stattdessen ein Sendeverhalten vom Typ *Wert-Änderung* vewendet werde 
+und ggf. mehreren Zuständen derselbe Wert zugewiesen werden.
+
+***Ergänzende Bemerkung:***
+
+* Das Auslassen von Ausgangswerten kann *in begründeten Fällen durchaus nützlich* sein; 
+  u.A. kann dadurch die Anzahl der benötigen Zustände deutlich reduziert und ein "Zustandsexplosion" vermieden werden.
+  <br/>Beispiel: Bei Übergangszuständen mit einem kurzen Timeout kann dis als verzögertes Wirksamwerden des neuen Ausgangswertes interpretiert werden.  
+   
+* Bei Nutzung der Rekonstruktionsfunktion steht kein vorangegangener Wert zur Verfügung, 
+  d.h. das KO bleibt bei fehlendem Ausgangswert zunächst leer.
+
+
+
+
+## Kann ich die Eingabe der vielen Parameter irgendwie beschleunigen?
+
+Ja, durch die Umsetzung der Auswahl-Listen ist ein direkter Aufruf per Tastatur möglich. 
+
+* **Erleichterte Eingabe von Folgezuständen:**
+  Die Zustandsnummer kann über die Tastatur eingegeben und mit \<Tab\> zum nächsten Eingabefeld gewechselt werden.
+* **Erleichterte Eingabe des Sendeverhaltens:**
+  Über die Tasten
+    * `-`: (ohne Wertzuweisung)
+    * `k`: **k**ein Senden ...
+    * `w`: **W**ert-Änderung ...
+    * `z`: **Z**ustand-Änderung ...
+    * `j`: **j**eder Zustands-Aufruf ...
+
+  kann die jeweilige Sendestrategie schnell ausgewählt, 
+  bzw. zwischen den verschiedenen Ausprägungen gewechselt, werden.
+  Mit der \<Tab\>-Taste kann zum nächsten Zustand gewechselt werden.
+  Durch Mehrfach-Auswahl (mit Strg-Taste) kann das Sendeverhalten gleichzeitig für mehrere Ausgänge gesetzt werden, 
+  da häufig in denselben Zuständen gesendet werden soll.
+
+
+## Was kann ich tun, wenn die 4 Ausgänge nicht ausreichen?
+
+In Verbindung mit dem [*direkten Setzen des Zustands*](#direktes-setzen-von-zustand-erlauben) besteht die Möglichkeit zur Kopplung von mehreren Automaten.
+Dazu wird das Zustands-Ausgang KO des "Hauptautomaten" mit dem Zustands-Eingang des "Folgenden Automaten" verknüpft (siehe *Abb. Faq1*).
+In einem "Folgende Automaten" dürfen keine eigenen Zustandswechsel (weder über reguläre Symbole, noch per Timeout) erfolgen 
+und es müssen dieselben Zustände definiert sein wie im "Hauptautomaten".
+Die Ausgänge der "Folgende Automaten" schalten dann passend zum Zustand des "Hauptautomaten".
+
+***Hinweis:*** Das Verhalten kann in Detail abweichen von der Nutzung der integrierten Ausgänge.
+
+<!-- use KBD for visual impression on GitHub -->
+<kbd>![Screenshot](FAQ/Folgender_Automat_Ventile.marked.png)</kbd>
+<small>**Abb. Faq1**: Folgender Automat</small>
+
+***Tipp:***
+Die Kopierfunktion vom OpenKNX-Konfigurationstransfer kann beim Erzeugen von "Folgenden Automaten" helfen, 
+es müssen jedoch weitere Anpassungen an der Konfiguration erfolgen.
+Alternativ können gemeinsamen mehrere gleichartige Automaten angelegt werden.
 
