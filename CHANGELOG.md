@@ -1,8 +1,10 @@
-# (upcoming) v0.7.1 ("Bedingte Zustandsübergänge")
+# 2025-11-09 v0.7.1 ("Bedingte Zustandsübergänge")
 
 * Fix: Verarbeitung von Kommandos `*TEST*` und `history` auch ohne in der ETS aktivierte Steuerung
 * Refactor: Kommando-Vorverarbeitung
+* Doc: Hinweise und Tipps zur Modellierung & Nutzung (FAQs)
 * Doc (Entwicklung): Konzept für Historien-Darstellung/Ausgabe
+* Doc/Fix: Changelog v0.7.0
 
 
 # 2025-11-02 v0.7.0 ("Bedingte Zustandsübergänge")
@@ -11,7 +13,7 @@
   * Neuer Parameter-Block "Bedingte Übergänge"
   * Diagnose-Kommando `dfaNN choice=x` zum direkten Aufruf von bedingten Übergängen (unabhängig vom aktuellen Zustand)
 * Refactor:
-  * Interne Verarbeitung von Timeouts durch transfer('T')
+  * Interne Verarbeitung von Timeouts durch `transfer('T')`
   * Neue 3-phasige Verarbeitung von Zustandsübergängen (Voraussetzung für bedingte Zustandsübergänge)
   * Verschiebung von Constanten in eine DfaConstants.h
   * Code-Region definiert
@@ -29,7 +31,7 @@
   * Reihenfolge von Parameter-Definitionen
   * Vereinfachung Integration von Parts
   * Entfernen von Dummy-KOs (mit aktueller Producer-Version nicht mehr benötigt)
-* Feature (Entwicklung): Kommando `dfaNN *TEST*` für Testing/Debugging
+* Feature (Entwicklung): Kommando `dfaNN *TEST*` für Testing (nur in Builds mit `OPENKNX_DEBUG`)
 
 
 # 2025-09-22 v0.6.1 ("Diagnose-Ausgabe-Fixes")
