@@ -29,8 +29,9 @@
   * [Kommunikationsobjekte](#kommunikationsobjekte) 
     * Je DEA
 * [Hinweise und Tipps zur Modellierung & Nutzung (FAQs)](#hinweise-und-tipps-zur-modellierung--nutzung-faqs)
+  <!-- Keep in mind to update in README.md --> 
   * [Warum ist die Auswahl und Definition des Startzustands so wichtig?](#warum-ist-die-auswahl-und-definition-des-startzustands-so-wichtig)
-  * [Warum ist es problematisch, wenn man Ausgabewerte für einzelne Zustände einfach weglässt?]()
+  * [Warum ist es problematisch, wenn man Ausgabewerte für einzelne Zustände einfach weglässt?](#warum-ist-es-problematisch-wenn-man-ausgabewerte-für-einzelne-zustände-einfach-weglässt)
   * [Kann ich die Eingabe der vielen Parameter irgendwie beschleunigen?](#kann-ich-die-eingabe-der-vielen-parameter-irgendwie-beschleunigen)
   * [Was kann ich tun, wenn die 4 Ausgänge nicht ausreichen?](#was-kann-ich-tun-wenn-die-4-ausgänge-nicht-ausreichen)
 

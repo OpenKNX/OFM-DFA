@@ -23,13 +23,14 @@ eine Unterbrechung der Ausführung,
 sowie Rekonstruktion des letzten Zustands und Status nach einem Neustart.
 
 Die Definition in der ETS erfolgt über eine (zwei-dimensionale) Zustandsübergangstabelle.<br />
-Zur **Konfiguration in der ETS** siehe [Applikationsbeschreibung](doc/DFA_Applikationsbeschreibung.md)
+Zur **Konfiguration in der ETS** siehe [Applikationsbeschreibung](doc/DFA_Applikationsbeschreibung.md#applikationsbeschreibung-ofm-dfa)
 
 
 ## Inhalte
 
 <!-- * [Kurzbeschreibung](#kurzbeschreibung) -->
 * [Einsatz](#einsatz)
+  * [Hinweise und Tipps zur Modellierung & Nutzung (FAQs)](#hinweise-und-tipps-zur-modellierung--nutzung-faqs)
 * [Beispiele](#beispiele)
 * [Grundidee in Anlehnung an gängige formale Definitionen](#grundidee-in-anlehnung-an-gängige-formale-definitionen)
 * [Für Entwickler: Integration in OpenKNX OAMs](#für-entwickler-integration-in-openknx-oams)
@@ -51,6 +52,12 @@ Für Standardprobleme sollten spezialisierte Module wie z.B.
 [OpenKNX PresenceModule](https://github.com/OpenKNX/OFM-PresenceModule) genutzt werden;
 dieses bieten eine auf den jeden Anwendungsfall optimierte Konfiguration.
 
+### Hinweise und Tipps zur Modellierung & Nutzung (FAQs)
+
+* [Warum ist die Auswahl und Definition des Startzustands so wichtig?](doc/DFA_Applikationsbeschreibung.md#warum-ist-die-auswahl-und-definition-des-startzustands-so-wichtig)
+* [Warum ist es problematisch, wenn man Ausgabewerte für einzelne Zustände einfach weglässt?](doc/DFA_Applikationsbeschreibung.md#warum-ist-es-problematisch-wenn-man-ausgabewerte-für-einzelne-zustände-einfach-weglässt)
+* [Kann ich die Eingabe der vielen Parameter irgendwie beschleunigen?](doc/DFA_Applikationsbeschreibung.md#kann-ich-die-eingabe-der-vielen-parameter-irgendwie-beschleunigen)
+* [Was kann ich tun, wenn die 4 Ausgänge nicht ausreichen?](doc/DFA_Applikationsbeschreibung.md#was-kann-ich-tun-wenn-die-4-ausgänge-nicht-ausreichen)
 
 
 ## Beispiele
