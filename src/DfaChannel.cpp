@@ -412,7 +412,6 @@ void DfaChannel::loop()
     }
 }
 
-
 void DfaChannel::processInputKo(GroupObject &ko)
 {
     if (!_channelActive)
@@ -603,7 +602,7 @@ void DfaChannel::transfer(const uint8_t input)
     {
         if (i >= DFA_DEF_CHOICESTATES_COUNT)
         {
-            // this should NEVER happen, 
+            // this should NEVER happen,
             // as transferEvaluateChoice is only allowed to produce monotonic increasing choicestates
             // but failing this condition would result in infinite loop
             logErrorP("ChoiceState<?>: Too many iterations!");
@@ -645,7 +644,7 @@ uint8_t DfaChannel::transferGetNextForInput(const uint8_t input)
     }
     else if (input & 0x80)
     {
-        // 1c) special case: direct setting state (X_z) and direct setting choice-states 
+        // 1c) special case: direct setting state (X_z) and direct setting choice-states
         const uint8_t directState = (input & 0x7F);
         if (directState < DFA_DEF_STATES_COUNT)
         {
@@ -755,7 +754,6 @@ uint8_t DfaChannel::transferEvaluateChoice(const uint8_t nextState)
         // all next definitions not a state, or not explicitly else
         return DFA_STATE_UNDEFINED;
     }
-
 }
 
 void DfaChannel::transferProcessNext(const uint8_t nextState)
@@ -997,7 +995,6 @@ bool DfaChannel::processCommandDfaTesting()
             i++;
         if (i > iFirst)
             logDebugP("... %ux ...", i - iFirst);
-
     }
     return true;
 }

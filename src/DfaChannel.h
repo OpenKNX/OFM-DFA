@@ -38,9 +38,6 @@ struct DfaInputs
     uint16_t koNumber;
 };
 
-
-
-
 class DfaChannel : public OpenKNX::Channel
 {
   private:
@@ -123,8 +120,7 @@ class DfaChannel : public OpenKNX::Channel
     bool processCommandDfaSymbolInsert(const uint8_t inputSymbolNumber, bool diagnoseKo);
     bool processCommandDfaChoice(const uint8_t inputChoiceNumber, bool diagnoseKo);
     bool processCommandDfaHistory(bool diagnoseKo);
-#ifdef OPENKNX_DEBUG    
+#ifdef OPENKNX_DEBUG
     bool processCommandDfaTesting();
-#endif    
-
+#endif
 };

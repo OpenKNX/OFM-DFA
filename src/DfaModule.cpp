@@ -234,7 +234,7 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
             {
                 if (!diagnoseKo || ParamDFA_DiagnoseAccess == 1)
                 {
-                    // writing to DFAs is allowed; MUST be allowed for the following commands: 
+                    // writing to DFAs is allowed; MUST be allowed for the following commands:
                     if (cmd.substr(5, 9) == " timeout!")
                     {
                         logDebugP("=> DFA-Channel<%u> timeout end now!", (channelIdx + 1));
@@ -274,7 +274,7 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
                     return _channels[channelIdx]->processCommandDfaTesting();
                 }
             }
-#endif    
+#endif
         }
         else
         {
