@@ -1,3 +1,8 @@
+# (Nächste Version mit ETS-Update) v0.8.0
+
+* Fix(Typo) in Context-Hilfe
+
+
 # (Nächste Version)
 
 * Fix: Inhaltsverzeichnis in Applikationsbeschreibung
