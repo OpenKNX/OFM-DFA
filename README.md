@@ -6,7 +6,7 @@ Von Cornelius Köpp 2023-09 -- 2025
 
 **Hinweis:** 
 Die [OpenKNX StateEngine](https://github.com/OpenKNX/OAM-StateEngine/) dient als Referenz-Applikation für dieses Modul
-und bietet eine besonders hohe Anzahl von unabhängigen Automaten-Definitionen/Kanäle. 
+und bietet eine besonders hohe Anzahl von unabhängigen Automaten-Definitionen/Kanälen. 
 Eine geringere Anzahl von Automaten ist u.A. auch im [OpenKNX RaumController](https://github.com/OpenKNX/OAM-RaumController/) integriert.
 
 
