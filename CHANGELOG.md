@@ -1,3 +1,8 @@
+# (Nächste Version)
+
+* Kleinere Fixes: Bool statt uint8_t, Naming, Format, Define
+
+
 # 2025-11-09 v0.7.1 ("Bedingte Zustandsübergänge")
 
 * Fix: Verarbeitung von Kommandos `*TEST*` und `history` auch ohne in der ETS aktivierte Steuerung

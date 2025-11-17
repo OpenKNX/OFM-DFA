@@ -42,7 +42,7 @@ const uint16_t DfaChannel::_inputConfPRI[DFA_DEF_INPUTS_COUNT] = {
 // Value of DFA_aInputSymbol[1-8]Ko by 0-based index
 #define DFA_aSymbol__N__Ko(IDX) DFA_aSymbolAInput + IDX * (DFA_aSymbolBInput - DFA_aSymbolAInput)
 //     const uint8_t inputConf = ((knx.paramByte(DFA_ParamCalcIndex(_inputConfPRI[input])) & DFA_aSymbolAInputMask) >> DFA_aSymbolAInputShift);
-#define DFA_Channel_Input_Config(IDX) ((knx.paramByte(DFA_aSymbol__N__Ko(input)) & DFA_aSymbolAInputMask) >> DFA_aSymbolAInputShift)
+#define DFA_Channel_Input_Config(IDX) ((knx.paramByte(DFA_aSymbol__N__Ko(IDX)) & DFA_aSymbolAInputMask) >> DFA_aSymbolAInputShift)
 
 
 #if DFA_aSymbolALogicNumber != DFA_aSymbolAKoNumber

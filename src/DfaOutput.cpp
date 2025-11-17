@@ -24,7 +24,7 @@ void DfaOutput::loop()
 
 #pragma region "DFA_CHANNEL_OUTPUT_SEND"
 
-void DfaOutput::stateUpdate(const uint8_t newState, const bool _restoreOutputs)
+void DfaOutput::stateUpdate(const uint8_t newState, const bool restoreOutputs)
 {
     const bool stateChanged = (_state != newState);
     _state = newState;
@@ -66,7 +66,7 @@ void DfaOutput::stateUpdate(const uint8_t newState, const bool _restoreOutputs)
                 i + 1, updateKo, sendOnChangedValue, sendOnChangedState, sendAlways, repeatedSending);
 
     const bool forceSend = sendAlways || (sendOnChangedState && stateChanged);
-    const bool allowSend = !_restoreOutputs || sendOnRestore;
+    const bool allowSend = !restoreOutputs || sendOnRestore;
     outputUpdate(allowSend && sendOnChangedValue, allowSend && forceSend);
 }
 

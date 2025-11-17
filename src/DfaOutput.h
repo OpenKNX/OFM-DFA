@@ -68,6 +68,6 @@ class DfaOutput
   public:
     DfaOutput(uint8_t channelIndex, uint8_t outputIndex);
     void loop();
-    void stateUpdate(const uint8_t newState, const bool _restoreOutputs);
+    void stateUpdate(const uint8_t newState, const bool restoreOutputs);
 
 };

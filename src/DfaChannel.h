@@ -56,7 +56,7 @@ class DfaChannel : public OpenKNX::Channel
 
     DfaInputs _inputs[DFA_DEF_INPUTS_WITH_T_COUNT] = {};
 
-    DfaOutput* _outputs[DFA_DEF_OUTPUTS_COUNT] = {};
+    DfaOutput *_outputs[DFA_DEF_OUTPUTS_COUNT] = {};
 
     // wait while startup is delayed
     bool _processStartup = false;
@@ -73,7 +73,7 @@ class DfaChannel : public OpenKNX::Channel
     uint8_t _firstState = DFA_STATE_UNDEFINED;
     uint32_t _firstStateTimeoutDelay_ms = 0;
     // indicate last state was restored, which should result in special handling of sending
-    uint8_t _restoreOutputs = false;
+    bool _restoreOutputs = false;
 
     uint8_t _state = DFA_STATE_UNDEFINED;
     uint32_t _stateTimeoutDelay_ms = 0;
