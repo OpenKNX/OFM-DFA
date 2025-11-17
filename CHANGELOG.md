@@ -1,5 +1,6 @@
 # (Nächste Version)
 
+* Fix: Inhaltsverzeichnis in Applikationsbeschreibung
 * Kleinere Fixes: Bool statt uint8_t, Naming, Format, Define
 
 

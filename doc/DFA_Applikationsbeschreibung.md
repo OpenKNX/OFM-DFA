@@ -24,7 +24,7 @@
         * [Startzustand](#startzustand)
         * [Direktes Setzen von Zustand](#direktes-setzen-von-zustand-erlauben)
         * [Übergangsfunktion einschließlich zeitbasierter Folgezustände](#zustände-und-übergangsfunktion-einschließlich-zeitbasierter-folgezustände)
-      * [Bedingte Übergänge](#bedingte-übergänge-1)
+      * [**Bedingte Übergänge**](#bedingte-übergänge)
       * [**Ausgang n: ...**](#ausgang-n-)
   * [Kommunikationsobjekte](#kommunikationsobjekte) 
     * Je DEA
