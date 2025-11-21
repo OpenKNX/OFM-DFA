@@ -39,10 +39,6 @@
               <ParameterRef Id="%AID%_UP-%T%%CC%69%DfaChoiceStateNumberNN%_R-%T%%CC%69%DfaChoiceStateNumberNN%01" RefId="%AID%_UP-%T%%CC%69%DfaChoiceStateNumberNN%" />
               <ParameterRef Id="%AID%_UP-%T%%CC%66%DfaChoiceStateNumberNN%_R-%T%%CC%66%DfaChoiceStateNumberNN%01" RefId="%AID%_UP-%T%%CC%66%DfaChoiceStateNumberNN%" />
             </ParameterRefs>
-            <ComObjectTable>
-            </ComObjectTable>
-            <ComObjectRefs>
-            </ComObjectRefs>
           </Static>
           <Dynamic>
             <ChannelIndependentBlock> 

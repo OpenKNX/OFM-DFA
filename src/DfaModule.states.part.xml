@@ -160,10 +160,6 @@
               <ParameterRef Id="%AID%_UP-%T%%CC%%DfaStateNumberNN%93_R-%T%%CC%%DfaStateNumberNN%9301" RefId="%AID%_UP-%T%%CC%%DfaStateNumberNN%93" />
               <ParameterRef Id="%AID%_UP-%T%%CC%%DfaStateNumberNN%94_R-%T%%CC%%DfaStateNumberNN%9401" RefId="%AID%_UP-%T%%CC%%DfaStateNumberNN%94" />
             </ParameterRefs>
-            <ComObjectTable>
-            </ComObjectTable>
-            <ComObjectRefs>
-            </ComObjectRefs>
           </Static>
           <Dynamic>
             <ChannelIndependentBlock> 
