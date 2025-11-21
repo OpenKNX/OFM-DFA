@@ -288,9 +288,9 @@
 
               <!-- K20 reserved -->
 
-              <ComObject Id="%AID%_O-%T%%CC%0201" Name="KOa%C%Output1" Text="Wertausgang 1"    Number="%K21%" FunctionText="DEA %C%, Ausgang 1"                                     ObjectSize="14 Bytes"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CC%0202" Name="KOa%C%Output2" Text="Wertausgang 2"    Number="%K22%" FunctionText="DEA %C%, Ausgang 2"                                     ObjectSize="14 Bytes"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
-              <ComObject Id="%AID%_O-%T%%CC%0203" Name="KOa%C%Output3" Text="Wertausgang 3"    Number="%K23%" FunctionText="DEA %C%, Ausgang 3"                                     ObjectSize="14 Bytes"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CC%0201" Name="KOa%C%Output1" Text="Wertausgang 1"    Number="%K21%" FunctionText="DEA %C%, Ausgang 1"                                     ObjectSize="4 Bytes"   ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CC%0202" Name="KOa%C%Output2" Text="Wertausgang 2"    Number="%K22%" FunctionText="DEA %C%, Ausgang 2"                                     ObjectSize="4 Bytes"   ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
+              <ComObject Id="%AID%_O-%T%%CC%0203" Name="KOa%C%Output3" Text="Wertausgang 3"    Number="%K23%" FunctionText="DEA %C%, Ausgang 3"                                     ObjectSize="4 Bytes"   ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
               <ComObject Id="%AID%_O-%T%%CC%0204" Name="KOa%C%Output4" Text="Wertausgang 4"    Number="%K24%" FunctionText="DEA %C%, Ausgang 4"                                     ObjectSize="14 Bytes"  ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
 
               <!-- K25 reserved -->
@@ -340,10 +340,11 @@
               <ComObjectRef Id="%AID%_O-%T%%CC%0201_R-%T%%CC%020112" RefId="%AID%_O-%T%%CC%0201" Text="{{0:Zustandswert 1}}"    ObjectSize="4 Bytes"  DatapointType="DPT-12"       TextParameterRefId="%AID%_P-%T%%CC%8100_R-%T%%CC%810001" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0201_R-%T%%CC%020113" RefId="%AID%_O-%T%%CC%0201" Text="{{0:Zustandswert 1}}"    ObjectSize="4 Bytes"  DatapointType="DPT-13"       TextParameterRefId="%AID%_P-%T%%CC%8100_R-%T%%CC%810001" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0201_R-%T%%CC%020114" RefId="%AID%_O-%T%%CC%0201" Text="{{0:Zustandswert 1}}"    ObjectSize="4 Bytes"  DatapointType="DPT-14"       TextParameterRefId="%AID%_P-%T%%CC%8100_R-%T%%CC%810001" />
-              <ComObjectRef Id="%AID%_O-%T%%CC%0201_R-%T%%CC%020116" RefId="%AID%_O-%T%%CC%0201" Text="{{0:Zustandswert 1}}"    ObjectSize="14 Bytes" DatapointType="DPST-16-1"    TextParameterRefId="%AID%_P-%T%%CC%8100_R-%T%%CC%810001" />
+              <!-- no DPT16 Id="%AID%_O-%T%%CC%0201_R-%T%%CC%020116" RefId="%AID%_O-%T%%CC%0201" Text="{{0:Zustandswert 1}}"    ObjectSize="14 Bytes" DatapointType="DPST-16-1"    TextParameterRefId="%AID%_P-%T%%CC%8100_R-%T%%CC%810001" /-->
               <ComObjectRef Id="%AID%_O-%T%%CC%0201_R-%T%%CC%020117" RefId="%AID%_O-%T%%CC%0201" Text="{{0:Zustandswert 1}}"    ObjectSize="1 Byte"   DatapointType="DPST-17-1"    TextParameterRefId="%AID%_P-%T%%CC%8100_R-%T%%CC%810001" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0201_R-%T%%CC%020132" RefId="%AID%_O-%T%%CC%0201" Text="{{0:Zustandswert 1}}"    ObjectSize="3 Bytes"  DatapointType="DPST-232-600" TextParameterRefId="%AID%_P-%T%%CC%8100_R-%T%%CC%810001" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0201_R-%T%%CC%020151" RefId="%AID%_O-%T%%CC%0201" Text="{{0:Zustandswert 1}}"    ObjectSize="1 Byte"   DatapointType="DPST-5-1"     TextParameterRefId="%AID%_P-%T%%CC%8100_R-%T%%CC%810001" />
+
               <!-- output 2 -->
               <ComObjectRef Id="%AID%_O-%T%%CC%0202_R-%T%%CC%020201" RefId="%AID%_O-%T%%CC%0202" Text="{{0:Zustandswert 2}}"    ObjectSize="1 Bit"    DatapointType="DPST-1-1"     TextParameterRefId="%AID%_P-%T%%CC%8200_R-%T%%CC%820001" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0202_R-%T%%CC%020202" RefId="%AID%_O-%T%%CC%0202" Text="{{0:Zustandswert 2}}"    ObjectSize="2 Bit"    DatapointType="DPST-2-1"     TextParameterRefId="%AID%_P-%T%%CC%8200_R-%T%%CC%820001" />
@@ -355,10 +356,11 @@
               <ComObjectRef Id="%AID%_O-%T%%CC%0202_R-%T%%CC%020212" RefId="%AID%_O-%T%%CC%0202" Text="{{0:Zustandswert 2}}"    ObjectSize="4 Bytes"  DatapointType="DPT-12"       TextParameterRefId="%AID%_P-%T%%CC%8200_R-%T%%CC%820001" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0202_R-%T%%CC%020213" RefId="%AID%_O-%T%%CC%0202" Text="{{0:Zustandswert 2}}"    ObjectSize="4 Bytes"  DatapointType="DPT-13"       TextParameterRefId="%AID%_P-%T%%CC%8200_R-%T%%CC%820001" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0202_R-%T%%CC%020214" RefId="%AID%_O-%T%%CC%0202" Text="{{0:Zustandswert 2}}"    ObjectSize="4 Bytes"  DatapointType="DPT-14"       TextParameterRefId="%AID%_P-%T%%CC%8200_R-%T%%CC%820001" />
-              <ComObjectRef Id="%AID%_O-%T%%CC%0202_R-%T%%CC%020216" RefId="%AID%_O-%T%%CC%0202" Text="{{0:Zustandswert 2}}"    ObjectSize="14 Bytes" DatapointType="DPST-16-1"    TextParameterRefId="%AID%_P-%T%%CC%8200_R-%T%%CC%820001" />
+              <!-- no DPT16 Id="%AID%_O-%T%%CC%0202_R-%T%%CC%020216" RefId="%AID%_O-%T%%CC%0202" Text="{{0:Zustandswert 2}}"    ObjectSize="14 Bytes" DatapointType="DPST-16-1"    TextParameterRefId="%AID%_P-%T%%CC%8200_R-%T%%CC%820001" /-->
               <ComObjectRef Id="%AID%_O-%T%%CC%0202_R-%T%%CC%020217" RefId="%AID%_O-%T%%CC%0202" Text="{{0:Zustandswert 2}}"    ObjectSize="1 Byte"   DatapointType="DPST-17-1"    TextParameterRefId="%AID%_P-%T%%CC%8200_R-%T%%CC%820001" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0202_R-%T%%CC%020232" RefId="%AID%_O-%T%%CC%0202" Text="{{0:Zustandswert 2}}"    ObjectSize="3 Bytes"  DatapointType="DPST-232-600" TextParameterRefId="%AID%_P-%T%%CC%8200_R-%T%%CC%820001" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0202_R-%T%%CC%020251" RefId="%AID%_O-%T%%CC%0202" Text="{{0:Zustandswert 2}}"    ObjectSize="1 Byte"   DatapointType="DPST-5-1"     TextParameterRefId="%AID%_P-%T%%CC%8200_R-%T%%CC%820001" />
+
               <!-- output 3 -->
               <ComObjectRef Id="%AID%_O-%T%%CC%0203_R-%T%%CC%020301" RefId="%AID%_O-%T%%CC%0203" Text="{{0:Zustandswert 3}}"    ObjectSize="1 Bit"    DatapointType="DPST-1-1"     TextParameterRefId="%AID%_P-%T%%CC%8300_R-%T%%CC%830001" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0203_R-%T%%CC%020302" RefId="%AID%_O-%T%%CC%0203" Text="{{0:Zustandswert 3}}"    ObjectSize="2 Bit"    DatapointType="DPST-2-1"     TextParameterRefId="%AID%_P-%T%%CC%8300_R-%T%%CC%830001" />
@@ -370,10 +372,11 @@
               <ComObjectRef Id="%AID%_O-%T%%CC%0203_R-%T%%CC%020312" RefId="%AID%_O-%T%%CC%0203" Text="{{0:Zustandswert 3}}"    ObjectSize="4 Bytes"  DatapointType="DPT-12"       TextParameterRefId="%AID%_P-%T%%CC%8300_R-%T%%CC%830001" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0203_R-%T%%CC%020313" RefId="%AID%_O-%T%%CC%0203" Text="{{0:Zustandswert 3}}"    ObjectSize="4 Bytes"  DatapointType="DPT-13"       TextParameterRefId="%AID%_P-%T%%CC%8300_R-%T%%CC%830001" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0203_R-%T%%CC%020314" RefId="%AID%_O-%T%%CC%0203" Text="{{0:Zustandswert 3}}"    ObjectSize="4 Bytes"  DatapointType="DPT-14"       TextParameterRefId="%AID%_P-%T%%CC%8300_R-%T%%CC%830001" />
-              <ComObjectRef Id="%AID%_O-%T%%CC%0203_R-%T%%CC%020316" RefId="%AID%_O-%T%%CC%0203" Text="{{0:Zustandswert 3}}"    ObjectSize="14 Bytes" DatapointType="DPST-16-1"    TextParameterRefId="%AID%_P-%T%%CC%8300_R-%T%%CC%830001" />
+              <!-- no DPT16 Id="%AID%_O-%T%%CC%0203_R-%T%%CC%020316" RefId="%AID%_O-%T%%CC%0203" Text="{{0:Zustandswert 3}}"    ObjectSize="14 Bytes" DatapointType="DPST-16-1"    TextParameterRefId="%AID%_P-%T%%CC%8300_R-%T%%CC%830001" /-->
               <ComObjectRef Id="%AID%_O-%T%%CC%0203_R-%T%%CC%020317" RefId="%AID%_O-%T%%CC%0203" Text="{{0:Zustandswert 3}}"    ObjectSize="1 Byte"   DatapointType="DPST-17-1"    TextParameterRefId="%AID%_P-%T%%CC%8300_R-%T%%CC%830001" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0203_R-%T%%CC%020332" RefId="%AID%_O-%T%%CC%0203" Text="{{0:Zustandswert 3}}"    ObjectSize="3 Bytes"  DatapointType="DPST-232-600" TextParameterRefId="%AID%_P-%T%%CC%8300_R-%T%%CC%830001" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0203_R-%T%%CC%020351" RefId="%AID%_O-%T%%CC%0203" Text="{{0:Zustandswert 3}}"    ObjectSize="1 Byte"   DatapointType="DPST-5-1"     TextParameterRefId="%AID%_P-%T%%CC%8300_R-%T%%CC%830001" />
+
               <!-- output 4 -->
               <ComObjectRef Id="%AID%_O-%T%%CC%0204_R-%T%%CC%020401" RefId="%AID%_O-%T%%CC%0204" Text="{{0:Zustandswert 4}}"    ObjectSize="1 Bit"    DatapointType="DPST-1-1"     TextParameterRefId="%AID%_P-%T%%CC%8400_R-%T%%CC%840001" />
               <ComObjectRef Id="%AID%_O-%T%%CC%0204_R-%T%%CC%020402" RefId="%AID%_O-%T%%CC%0204" Text="{{0:Zustandswert 4}}"    ObjectSize="2 Bit"    DatapointType="DPST-2-1"     TextParameterRefId="%AID%_P-%T%%CC%8400_R-%T%%CC%840001" />
@@ -1274,7 +1277,7 @@
                               <when test="120" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0201_R-%T%%CC%020112" /></when>
                               <when test="130" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0201_R-%T%%CC%020113" /></when>
                               <when test="140" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0201_R-%T%%CC%020114" /></when>
-                              <when test="161" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0201_R-%T%%CC%020116" /></when>
+                              <!--  test="161":  DPT 16 not supported for O1 -->
                               <when test="171" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0201_R-%T%%CC%020117" /></when>
                               <when test="232" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0201_R-%T%%CC%020132" /></when>
                             </choose>
@@ -1291,7 +1294,7 @@
                               <when test="120" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0202_R-%T%%CC%020212" /></when>
                               <when test="130" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0202_R-%T%%CC%020213" /></when>
                               <when test="140" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0202_R-%T%%CC%020214" /></when>
-                              <when test="161" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0202_R-%T%%CC%020216" /></when>
+                              <!--  test="161":  DPT 16 not supported for O2 -->
                               <when test="171" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0202_R-%T%%CC%020217" /></when>
                               <when test="232" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0202_R-%T%%CC%020232" /></when>
                             </choose>
@@ -1308,7 +1311,7 @@
                               <when test="120" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0203_R-%T%%CC%020312" /></when>
                               <when test="130" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0203_R-%T%%CC%020313" /></when>
                               <when test="140" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0203_R-%T%%CC%020314" /></when>
-                              <when test="161" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0203_R-%T%%CC%020316" /></when>
+                              <!--  test="161":  DPT 16 not supported for O3 -->
                               <when test="171" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0203_R-%T%%CC%020317" /></when>
                               <when test="232" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0203_R-%T%%CC%020332" /></when>
                             </choose>
@@ -1325,7 +1328,9 @@
                               <when test="120" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0204_R-%T%%CC%020412" /></when>
                               <when test="130" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0204_R-%T%%CC%020413" /></when>
                               <when test="140" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0204_R-%T%%CC%020414" /></when>
+
                               <when test="161" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0204_R-%T%%CC%020416" /></when>
+
                               <when test="171" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0204_R-%T%%CC%020417" /></when>
                               <when test="232" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0204_R-%T%%CC%020432" /></when>
                             </choose>
