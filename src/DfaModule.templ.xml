@@ -302,8 +302,8 @@
 
             </ComObjectTable>
             <ComObjectRefs>
-              <ComObjectRef Id="%AID%_O-%T%%CC%0000_R-%T%%CC%000001" RefId="%AID%_O-%T%%CC%0000" Text="Aktueller Zustand"                                                                                                   />
-              <ComObjectRef Id="%AID%_O-%T%%CC%0000_R-%T%%CC%000002" RefId="%AID%_O-%T%%CC%0000" Text="Zustand"                    FunctionText="DEA %C%: Ausgabe/Eingabe Zustand" WriteFlag="Enabled" /><!-- prevent timeout reset on read-response: do NOT set UpdateFlag="Enabled" -->
+              <ComObjectRef Id="%AID%_O-%T%%CC%0000_R-%T%%CC%000001" RefId="%AID%_O-%T%%CC%0000" Text="{{0:Zustandsautomat %C%}}: Aktueller Zustand"                                                                         TextParameterRefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" />
+              <ComObjectRef Id="%AID%_O-%T%%CC%0000_R-%T%%CC%000002" RefId="%AID%_O-%T%%CC%0000" Text="{{0:Zustandsautomat %C%}}: Zustand"                    FunctionText="DEA %C%: Ausgabe/Eingabe Zustand"                TextParameterRefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101"    WriteFlag="Enabled" /><!-- prevent timeout reset on read-response: do NOT set UpdateFlag="Enabled" -->
 
               <!-- input A + B -->
               <ComObjectRef Id="%AID%_O-%T%%CC%0001_R-%T%%CC%000101" RefId="%AID%_O-%T%%CC%0001" Text="{{0:Eingang 1}}"            FunctionText="DEA %C%: Eingang Symbol A"                                                  TextParameterRefId="%AID%_P-%T%%CC%7100_R-%T%%CC%710001" />
@@ -323,11 +323,11 @@
               <ComObjectRef Id="%AID%_O-%T%%CC%0008_R-%T%%CC%000801" RefId="%AID%_O-%T%%CC%0008" Text="{{0:Eingang 8}}"            FunctionText="DEA %C%: Eingang Symbol H"                                                  TextParameterRefId="%AID%_P-%T%%CC%7800_R-%T%%CC%780001" />
 
               <!-- input T -->
-              <ComObjectRef Id="%AID%_O-%T%%CC%0009_R-%T%%CC%000901" RefId="%AID%_O-%T%%CC%0009" Text="Timeout direkt auslösen" />
+              <ComObjectRef Id="%AID%_O-%T%%CC%0009_R-%T%%CC%000901" RefId="%AID%_O-%T%%CC%0009" Text="{{0:Zustandsautomat %C%}}: Timeout direkt auslösen"                                                                   TextParameterRefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" />
 
-              <ComObjectRef Id="%AID%_O-%T%%CC%0100_R-%T%%CC%010001" RefId="%AID%_O-%T%%CC%0100" />
-              <ComObjectRef Id="%AID%_O-%T%%CC%0101_R-%T%%CC%010101" RefId="%AID%_O-%T%%CC%0101" />
-              <ComObjectRef Id="%AID%_O-%T%%CC%0102_R-%T%%CC%010201" RefId="%AID%_O-%T%%CC%0102" />
+              <ComObjectRef Id="%AID%_O-%T%%CC%0100_R-%T%%CC%010001" RefId="%AID%_O-%T%%CC%0100" Text="{{0:Zustandsautomat %C%}}: Zustand setzen"                                                                            TextParameterRefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" />
+              <ComObjectRef Id="%AID%_O-%T%%CC%0101_R-%T%%CC%010101" RefId="%AID%_O-%T%%CC%0101" Text="{{0:Zustandsautomat %C%}}: starten/pausieren"                                                                         TextParameterRefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" />
+              <ComObjectRef Id="%AID%_O-%T%%CC%0102_R-%T%%CC%010201" RefId="%AID%_O-%T%%CC%0102" Text="{{0:Zustandsautomat %C%}}: läuft?"                                                                                    TextParameterRefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" />
 
               <!-- output 1 -->
               <ComObjectRef Id="%AID%_O-%T%%CC%0201_R-%T%%CC%020101" RefId="%AID%_O-%T%%CC%0201" Text="{{0:Zustandswert 1}}"    ObjectSize="1 Bit"    DatapointType="DPST-1-1"     TextParameterRefId="%AID%_P-%T%%CC%8100_R-%T%%CC%810001" />
