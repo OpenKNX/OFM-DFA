@@ -1,7 +1,12 @@
 # (Nächste Version)
 
-* Fix: Inhaltsverzeichnis in Applikationsbeschreibung
-* Kleinere Fixes: Bool statt uint8_t, Naming, Format, Define
+* Fix Dokumentation:
+  * Inhaltsverzeichnis in Applikationsbeschreibung
+  * Readme
+* Kleinere Verbesserungen, ohne funktionale Änderungen:
+  * Fixes: Bool statt uint8_t, Naming, Format, Define
+  * Kommentare
+  * Log-Ausgaben
 
 
 # 2025-11-09 v0.7.1 ("Bedingte Zustandsübergänge")
