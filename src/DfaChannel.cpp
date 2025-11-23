@@ -600,21 +600,7 @@ void DfaChannel::transfer(const uint8_t input)
     logIndentUp();
 
     // 2) evaluate conditional states
-    for (uint8_t i = 0; (64 <= nextState && nextState < 64 + DFA_DEF_CHOICESTATES_COUNT); i++)
-    {
-        if (i >= DFA_DEF_CHOICESTATES_COUNT)
-        {
-            // this should NEVER happen,
-            // as transferEvaluateChoice is only allowed to produce monotonic increasing choicestates
-            // but failing this condition would result in infinite loop
-            logErrorP("ChoiceState<?>: Too many iterations!");
-            nextState = DFA_STATE_UNDEFINED;
-            break;
-        }
-
-        nextState = transferEvaluateChoice(nextState);
-        // 2i) repeat until non-choice-state is reached
-    }
+    nextState = transferEvaluateChoiceLoop(nextState);
 
     // 3) set the next state
     transferProcessNext(nextState);
@@ -663,6 +649,25 @@ uint8_t DfaChannel::transferGetNextForInput(const uint8_t input)
         // NOT direct state and NOT choice state
     }
     return DFA_STATE_UNDEFINED;
+}
+
+uint8_t DfaChannel::transferEvaluateChoiceLoop(uint8_t nextState)
+{
+    for (uint8_t i = 0; (64 <= nextState && nextState < 64 + DFA_DEF_CHOICESTATES_COUNT); i++)
+    {
+        if (i >= DFA_DEF_CHOICESTATES_COUNT)
+        {
+            // this should NEVER happen,
+            // as transferEvaluateChoice is only allowed to produce monotonic increasing choicestates
+            // but failing this condition would result in infinite loop
+            logErrorP("ChoiceState<?>: Too many iterations!");
+            return DFA_STATE_UNDEFINED;
+        }
+
+        nextState = transferEvaluateChoice(nextState);
+        // 2i) repeat until non-choice-state is reached
+    }
+    return nextState;
 }
 
 uint8_t DfaChannel::transferEvaluateChoice(const uint8_t nextState)
