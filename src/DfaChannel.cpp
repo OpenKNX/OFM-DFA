@@ -541,7 +541,6 @@ bool DfaChannel::isValidState(const uint8_t state)
 
 void DfaChannel::setState(const uint8_t nextState, const DfaDirectSetSame sameStateBehaviour /*= DfaDirectSetSame::timeout_restart*/)
 {
-    // logDebugP("setState %d->%d", _state, nextState);
     if (isValidState(nextState))
     {
         const bool stateChanged = (_state != nextState);
@@ -684,7 +683,7 @@ uint8_t DfaChannel::transferEvaluateChoice(const uint8_t nextState)
     // 2c) check choice enabled
     if (choiceStateLogChannel == 0)
     {
-        logInfoP("ChoiceState<%c>: Misconfiguration/Inactive!", 'a' + choiceState);
+        logInfoP("ChoiceState<%c>: Inactive!", 'a' + choiceState);
         return DFA_STATE_UNDEFINED;
     }
 
@@ -748,8 +747,7 @@ uint8_t DfaChannel::transferEvaluateChoice(const uint8_t nextState)
     else
     {
         // 2h) ignore empty following
-
-        // TODO check if we need a special-handling for arbitraty choice-states (could result in endless loop!) or reset-pseudo-state
+        // exclude arbitrary following choice-states (could result in endless loop!) or reset-pseudo-state
         logDebugP("ChoiceState<%c>: selected NO next state", 'a' + choiceState);
         // all next definitions not a state, or not explicitly else
         return DFA_STATE_UNDEFINED;
