@@ -575,11 +575,14 @@ void DfaChannel::setState(const uint8_t nextState, const DfaDirectSetSame sameSt
 /**
  * @brief Transfer the DFA to the next state based on the current state and input symbol.
  * @param input
- *  'A'..'H'    => 0x00 | 0..7
- *  'T'         => 0x00 | 8 (DFA_INPUT_SYMBOL_T)
- *  '<'         => 0x00 | ? 9
- *  1..16/32/64 => 0x80 | 0..15/31/63 => 128..143/159/191
- *  'a'..'p'    => 0xC0 | 0..15       => 192..199
+ *  SYMBOL      : VALUE                                       > RESULT
+ *  'A'..'H'    : (       0..7 )                             \
+ *  'T'         : (       8    )   (DFA_INPUT_SYMBOL_T)       > (depends on defined following state or choice)
+ *  '<'         : (       9    )   (possible extension)      /
+ *  1..16       : (0x80 | 0..15) = 128..143                  \  set state 0..15
+ *   ..32       : (0x80 |  ..31) =    ..159                   >            ..31
+ *   ..64       : (0x80 |  ..63) =    ..191                  /             ..63
+ *  'a'..'p'    : (0xC0 | 0..15) = 192..207                  -> (when defined and evaluated with result) set state 0..15
  */
 void DfaChannel::transfer(const uint8_t input)
 {
