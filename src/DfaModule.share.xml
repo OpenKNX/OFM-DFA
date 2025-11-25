@@ -346,7 +346,7 @@
             <Channel Name="DfaChannel" Text="Zustandsautomaten" Number="%PREFIX%" Id="%AID%_CH-%PREFIX%" Icon="ofm-dfa" >
               <ParameterBlock Name="DfaInfo" Text="Allgemein" Id="%AID%_PB-nnn" Icon="cog-outline"><!-- HelpContext="DFA-Dokumentation" -->
 
-                <ParameterSeparator Id="%AID%_PS-nnn" Text="Deterministische Endliche Automaten (DEAs)" UIHint="Headline" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Zustandsautomaten auf Basis deterministischer endlicher Automaten (DEAs)" UIHint="Headline" />
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="Version: %ModuleVersion%"  />
 
                 <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
