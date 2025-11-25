@@ -1,7 +1,8 @@
 # (Nächste Version mit ETS-Update) v0.8.0
 
 * ETS-Applikation:
-  * Überarbeitete KO-Bezeichner (Name und Objektfunktion) entsprechend einheitlicher Konventionen für OpenKNX-Module 
+  * Überarbeitete KO-Bezeichner (Name und Objektfunktion) entsprechend einheitlicher Konventionen für OpenKNX-Module, inklusive KO-Baum
+  * Überarbeiteter Modul-Titel
   * Fix(Typo) in Context-Hilfe
 
 
