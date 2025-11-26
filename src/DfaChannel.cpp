@@ -877,6 +877,11 @@ void DfaChannel::restore()
 
 #pragma endregion "DFA_CHANNEL_PERSISTANCE"
 
+bool DfaChannel::isActive()
+{
+    return _channelActive;
+}
+
 #pragma region "DFA_CHANNEL_COMMANDS"
 
 bool DfaChannel::processCommandDfa(bool diagnoseKo)
