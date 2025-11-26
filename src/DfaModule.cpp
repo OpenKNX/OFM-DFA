@@ -212,6 +212,20 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
             return true;
         }
 
+        if (cmdLength == 7 && !diagnoseKo && cmd.substr(3, 4) == " all")
+        {
+            logDebugP("DFA all (enabled) channels overview!");
+            for (uint8_t i = 0; i < DFA_ChannelCount; i++)
+            {
+                if (_channels[i]->isActive())
+                {
+                    _channels[i]->processCommandDfa(false);
+                    _channels[i]->processCommandDfaHistory(false);
+                }
+            }
+            return true;
+        }
+
         if (!std::isdigit(cmd[3]) || !std::isdigit(cmd[4]))
         {
             logErrorP("=> invalid channel-number '%s'!", cmd.substr(3, 2).c_str());
