@@ -81,7 +81,8 @@ uint16_t DfaModule::flashSize()
     //   [1] CH_CONF
     //   [1] CH_STATE
     //   [4] CH_TIMEOUT
-    return 4 + 1 + DFA_ChannelCount * (1 + 1 + 4);
+    // =>  ( 4 + 1 )             + N                * ( 1 + 1 + 4 )
+    return DFA_FLASH_MODULE_SIZE + DFA_ChannelCount * DFA_FLASH_CHANNEL_SIZE;
 }
 
 void DfaModule::writeFlash()
@@ -104,7 +105,7 @@ void DfaModule::writeFlash()
 
 void DfaModule::readFlash(const uint8_t *buf, const uint16_t size)
 {
-    if (size < 4 + 1) // no channels present
+    if (size < DFA_FLASH_MODULE_SIZE) // no channels present
     {
         logDebugP("Flash data short!");
         return;
@@ -126,7 +127,7 @@ void DfaModule::readFlash(const uint8_t *buf, const uint16_t size)
         return;
     }
 
-    const uint8_t chDataMaxCount = (size - 4 - 1) / (1 + 1 + 4);
+    const uint8_t chDataMaxCount = (size - DFA_FLASH_MODULE_SIZE) / DFA_FLASH_CHANNEL_SIZE;
     logDebugP("Found %d of %d channels", chDataMaxCount, DFA_ChannelCount);
     const uint8_t n = MIN(chDataMaxCount, DFA_ChannelCount);
     for (uint8_t i = 0; i < n; i++)
@@ -207,6 +208,20 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
             {
                 openknx.console.writeDiagenoseKo("");
                 openknx.console.writeDiagenoseKo("(diagCtrl=OFF)");
+            }
+            return true;
+        }
+
+        if (cmdLength == 7 && !diagnoseKo && cmd.substr(3, 4) == " all")
+        {
+            logDebugP("DFA all (enabled) channels overview!");
+            for (uint8_t i = 0; i < DFA_ChannelCount; i++)
+            {
+                if (_channels[i]->isActive())
+                {
+                    _channels[i]->processCommandDfa(false);
+                    _channels[i]->processCommandDfaHistory(false);
+                }
             }
             return true;
         }

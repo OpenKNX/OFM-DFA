@@ -41,7 +41,7 @@ std::string DfaHistory::getCompactHistoryString() const
         {
             symbol = 'T';
         }
-        else if (input < 8) // regular input symbols A-H (0-7) // TODO use DFA_DEF_INPUTS_COUNT
+        else if (input < DFA_DEF_INPUTS_COUNT) // regular input symbols A-H (0-7)
         {
             symbol = 'A' + input;
         }

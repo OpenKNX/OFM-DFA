@@ -575,11 +575,14 @@ void DfaChannel::setState(const uint8_t nextState, const DfaDirectSetSame sameSt
 /**
  * @brief Transfer the DFA to the next state based on the current state and input symbol.
  * @param input
- *  'A'..'H'    => 0x00 | 0..7
- *  'T'         => 0x00 | 8 (DFA_INPUT_SYMBOL_T)
- *  '<'         => 0x00 | ? 9
- *  1..16/32/64 => 0x80 | 0..15/31/63 => 128..143/159/191
- *  'a'..'p'    => 0xC0 | 0..15       => 192..199
+ *  SYMBOL      : VALUE                                       > RESULT
+ *  'A'..'H'    : (       0..7 )                             \
+ *  'T'         : (       8    )   (DFA_INPUT_SYMBOL_T)       > (depends on defined following state or choice)
+ *  '<'         : (       9    )   (possible extension)      /
+ *  1..16       : (0x80 | 0..15) = 128..143                  \  set state 0..15
+ *   ..32       : (0x80 |  ..31) =    ..159                   >            ..31
+ *   ..64       : (0x80 |  ..63) =    ..191                  /             ..63
+ *  'a'..'p'    : (0xC0 | 0..15) = 192..207                  -> (when defined and evaluated with result) set state 0..15
  */
 void DfaChannel::transfer(const uint8_t input)
 {
@@ -597,21 +600,7 @@ void DfaChannel::transfer(const uint8_t input)
     logIndentUp();
 
     // 2) evaluate conditional states
-    for (uint8_t i = 0; (64 <= nextState && nextState < 64 + DFA_DEF_CHOICESTATES_COUNT); i++)
-    {
-        if (i >= DFA_DEF_CHOICESTATES_COUNT)
-        {
-            // this should NEVER happen,
-            // as transferEvaluateChoice is only allowed to produce monotonic increasing choicestates
-            // but failing this condition would result in infinite loop
-            logErrorP("ChoiceState<?>: Too many iterations!");
-            nextState = DFA_STATE_UNDEFINED;
-            break;
-        }
-
-        nextState = transferEvaluateChoice(nextState);
-        // 2i) repeat until non-choice-state is reached
-    }
+    nextState = transferEvaluateChoiceLoop(nextState);
 
     // 3) set the next state
     transferProcessNext(nextState);
@@ -622,7 +611,6 @@ void DfaChannel::transfer(const uint8_t input)
 
 uint8_t DfaChannel::transferGetNextForInput(const uint8_t input)
 {
-    uint8_t nextState = DFA_STATE_UNDEFINED; // must be uint8_t to ensure conversion from ETS-param to required state
     if (input < DFA_DEF_INPUTS_WITH_T_COUNT)
     {
         // 1a) regular symbols (X_z)
@@ -633,13 +621,14 @@ uint8_t DfaChannel::transferGetNextForInput(const uint8_t input)
         // Expected Values: ETS-Param => Converted by -1
         // 0 - no following state    => 255
         // 1-16/1-32/1-64 next state => 0-15/1-31/1-63
-        // 65-80 choce states a..p   => 64-79
+        // 65-80 choice states a..p  => 64-79
         // 127 timeout reset         => 126
 
-        // must be uint8_t! 0x00 -> 0xff
-        nextState = knx.paramByte(nextStateParamIdx) - 1;
+        // must be uint8_t to ensure conversion from ETS-param to required state (0x00 -> 0xff)
+        const uint8_t nextState = knx.paramByte(nextStateParamIdx) - 1;
 
         logDebugP("State<z%u>: transfer(%c)->%u", _state + 1, input == DFA_INPUT_SYMBOL_T ? 'T' : ('A' + input), nextState);
+        return nextState;
     }
     else if (input & 0x80)
     {
@@ -648,19 +637,35 @@ uint8_t DfaChannel::transferGetNextForInput(const uint8_t input)
         if (directState < DFA_DEF_STATES_COUNT)
         {
             // direct state
-            nextState = directState;
             logDebugP("State<z%u>: transfer(%u)->%u", _state + 1, directState, directState);
+            return directState;
         }
         else if (64 <= directState && directState < 64 + DFA_DEF_CHOICESTATES_COUNT)
         {
             // direct choice-state
-            nextState = directState;
             logDebugP("State<z%u>: transfer(%c)->CHOICE", _state + 1, 'a' + directState - 64);
+            return directState;
         }
-        else
+        // NOT direct state and NOT choice state
+    }
+    return DFA_STATE_UNDEFINED;
+}
+
+uint8_t DfaChannel::transferEvaluateChoiceLoop(uint8_t nextState)
+{
+    for (uint8_t i = 0; (64 <= nextState && nextState < 64 + DFA_DEF_CHOICESTATES_COUNT); i++)
+    {
+        if (i >= DFA_DEF_CHOICESTATES_COUNT)
         {
-            // NOT direct state and NOT choice state
+            // this should NEVER happen,
+            // as transferEvaluateChoice is only allowed to produce monotonic increasing choicestates
+            // but failing this condition would result in infinite loop
+            logErrorP("ChoiceState<?>: Too many iterations!");
+            return DFA_STATE_UNDEFINED;
         }
+
+        nextState = transferEvaluateChoice(nextState);
+        // 2i) repeat until non-choice-state is reached
     }
     return nextState;
 }
@@ -836,7 +841,7 @@ void DfaChannel::restore()
     const uint8_t conf = openknx.flash.readByte();
     const uint8_t state = openknx.flash.readByte();
     const uint32_t timeout = openknx.flash.readInt();
-    logDebugP("restored conf=%d state=%d timeout=%d", conf, state, timeout);
+    logDebugP("restored conf=0x%02x state=%3u(raw) timeout=%u", conf, state, timeout);
 
     // do not restore inactive channels, but must always read all bytes!
     if (conf & (1 << 7) == 0)
@@ -873,6 +878,11 @@ void DfaChannel::restore()
 }
 
 #pragma endregion "DFA_CHANNEL_PERSISTANCE"
+
+bool DfaChannel::isActive()
+{
+    return _channelActive;
+}
 
 #pragma region "DFA_CHANNEL_COMMANDS"
 

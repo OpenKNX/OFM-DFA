@@ -94,6 +94,7 @@ class DfaChannel : public OpenKNX::Channel
 
     void transfer(const uint8_t input);
     uint8_t transferGetNextForInput(const uint8_t input);
+    uint8_t transferEvaluateChoiceLoop(uint8_t nextState);
     uint8_t transferEvaluateChoice(const uint8_t nextState);
     void transferProcessNext(const uint8_t nextState);
 
@@ -113,6 +114,8 @@ class DfaChannel : public OpenKNX::Channel
 
     void save();
     void restore();
+
+    bool isActive();
 
     bool processCommandDfa(bool diagnoseKo);
     bool processCommandDfaTimeout(bool diagnoseKo);

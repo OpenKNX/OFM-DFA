@@ -8,6 +8,10 @@
 
 # (Nächste Version)
 
+* Feature: Diagnose-Kommando `dfa all` zur Statusübersicht aller aktiv konfigurierter Automaten
+* Refactor Verarbeitung Zustandsübergang (Vorbereitung für bedingte Zustandsübergänge zum Start):
+  * Phase 1: Ermittlung des Folgezustands (Direkte Rückgabe zur Vereinfachung Kontrollfluss)
+  * Phase 2: Evaluation von bedingten Übergängen
 * Fix Dokumentation:
   * Inhaltsverzeichnis in Applikationsbeschreibung
   * Readme
@@ -15,6 +19,8 @@
   * Fixes: Bool statt uint8_t, Naming, Format, Define
   * Kommentare
   * Log-Ausgaben
+  * Nutzung von Define-Constanten
+  * Modul kann prüfen welche Automaten aktiviert sind
 
 
 # 2025-11-09 v0.7.1 ("Bedingte Zustandsübergänge")
