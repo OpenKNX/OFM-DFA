@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-only
-// Copyright (C) 2023-2024 Cornelius Koepp
+// Copyright (C) 2023-2025 Cornelius Koepp
 
 #pragma once
 #include "DfaChannel.h"
@@ -8,6 +8,8 @@
 #include "OpenKNX/Stat/RuntimeStat.h"
 
 #define DFA_FLASH_MAGIC_WORD_LEN 4
+#define DFA_FLASH_MODULE_SIZE (4 + 1)
+#define DFA_FLASH_CHANNEL_SIZE (1 + 1 + 4)
 
 class DfaModule : public OpenKNX::Module
 {
