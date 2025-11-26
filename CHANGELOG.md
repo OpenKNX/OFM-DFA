@@ -1,6 +1,9 @@
 # (Nächste Version)
 
 * Feature: Diagnose-Kommando `dfa all` zur Statusübersicht aller aktiv konfigurierter Automaten
+* Refactor Verarbeitung Zustandsübergang (Vorbereitung für bedingte Zustandsübergänge zum Start):
+  * Phase 1: Ermittlung des Folgezustands (Direkte Rückgabe zur Vereinfachung Kontrollfluss)
+  * Phase 2: Evaluation von bedingten Übergängen
 * Fix Dokumentation:
   * Inhaltsverzeichnis in Applikationsbeschreibung
   * Readme
