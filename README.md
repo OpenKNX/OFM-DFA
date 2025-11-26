@@ -145,11 +145,11 @@ Das Modul stellt folgende KOs bereit:
 * keine kanalunabhängigen KOs
 
 > ***Achtung***:
-> `ModulType` muss auf einen Wert im Bereich 2 bis 9 gesetzt werden, da ein vergrößerter Namespace für Parameter verwendet wird.
-> Ein solcher einstelliger *ModulType* `m` entspricht einer gleichzeitigen Belegung des vollständigen Bereichs von *ModuleType* `10*m` bis *ModuleType* `10*m+9`, 
-> d.h. es darf kein anderes Modul mit einem *ModulType* in diesem Bereich in der Applikation eingebunden werden.  
+> `ModuleType` muss auf einen Wert im Bereich 2 bis 9 gesetzt werden, da ein vergrößerter Namespace für Parameter verwendet wird.
+> Ein solcher einstelliger *ModuleType* `m` entspricht einer gleichzeitigen Belegung des vollständigen Bereichs von *ModuleType* `10*m` bis *ModuleType* `10*m+9`, 
+> d.h. es darf kein anderes Modul mit einem *ModuleType* in diesem Bereich in der Applikation eingebunden werden.  
 > 
-> Beispiel: Der nachfolgend gezeigte *ModulType* `2` verbietet andere Module mit meinem *ModulType* von `20` bis `29`.
+> Beispiel: Der nachfolgend gezeigte *ModuleType* `2` verbietet andere Module mit einem *ModuleType* von `20` bis `29`.
 
 An der gewünschten Stelle in der jeweiligen `{ApplikationName}.xml` den folgenden Code einbinden:
 
