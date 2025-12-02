@@ -246,10 +246,11 @@ const std::string DfaChannel::name()
 void DfaChannel::setup()
 {
     _channelActive = (ParamDFA_aActive == 0b01);
-    logDebugP("setup (act=%d dly=%ds run=%d)", _channelActive, ParamDFA_aStartupDelayTimeMS / 1000, ParamDFA_aStartPause != 2);
-
     if (_channelActive)
     {
+        logDebugP("setup(delay=%ds run=%d)", _channelActive, ParamDFA_aStartupDelayTimeMS / 1000, ParamDFA_aStartPause != 2);
+        logIndentUp();
+
         initInputConfig();
 
         // TODO QS: check first state handling, especially sending
@@ -260,6 +261,7 @@ void DfaChannel::setup()
         _firstRunning = (ParamDFA_aStartPause != 2);
 
         // actual starting in processAfterStartupDelay() ...
+        logIndentDown();
     }
 }
 
@@ -328,7 +330,10 @@ void DfaChannel::initNonPairedInput(const uint8_t i)
     const uint16_t koNumber = getInputKoNumber(i);
     _inputs[i].koNumber = koNumber;
     _inputs[i].trigger = (koNumber > 0) ? static_cast<DfaInputTrigger>((knx.paramByte(DFA_ParamCalcIndex(_inputTriggerPRI[i])) & DFA_aSymbol___TriggerMask) >> DFA_aSymbol___TriggerShift) : DfaInputTrigger::disabled;
-    logDebugP("  separate: %d ko=%i trigger=%i", i, koNumber, _inputs[i].trigger);
+    if (koNumber != 0 || _inputs[i].trigger != DfaInputTrigger::disabled)
+    {
+        logDebugP("separate: %d ko=%-4i trigger=%c%c", i, koNumber, (static_cast<uint8_t>(_inputs[i].trigger) & 0b10) ? '1' : '_', (static_cast<uint8_t>(_inputs[i].trigger) & 0b01) ? '0' : '_');
+    }
 }
 
 void DfaChannel::initInputConfig()
@@ -364,7 +369,10 @@ void DfaChannel::initInputConfig()
 #ifdef OPENKNX_DEBUG
     for (size_t i = 0; i < DFA_DEF_INPUTS_WITH_T_COUNT; i++)
     {
-        logDebugP("input[%d]: ko=%d trigger=%d", i, _inputs[i].koNumber, _inputs[i].trigger);
+        if (_inputs[i].koNumber != 0 || _inputs[i].trigger != DfaInputTrigger::disabled)
+        {
+            logDebugP("input[%d]: ko=%-4d trigger=%c%c", i, _inputs[i].koNumber, (static_cast<uint8_t>(_inputs[i].trigger) & 0b10) ? '1' : '_', (static_cast<uint8_t>(_inputs[i].trigger) & 0b01) ? '0' : '_');
+        }
     }
 #endif
 }
