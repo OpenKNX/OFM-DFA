@@ -1,5 +1,12 @@
 # (Nächste Version mit ETS-Update) v0.8.0
 
+* Feature: Bedingte Zustandsübergänge können nun zur Ermittlung des Startzustands genutzt werden
+  * Ergänzend muss in diesem Fall ein Status angegeben werden, der genutzt wird, falls die Auswahl scheitert  
+* Refactor: Verarbeitung von Zustandsübergängen wurde in der Struktur angepasst zur Unterstützung bedingter Startzustände
+  * Ersetzen von Zustandsaufrufen `setState(...)` durch `transfer(..)`
+    * Direktes Setzen von Zuständen über KO oder Konsole
+    * Erster Start des Automaten
+* 
 * ETS-Applikation:
   * Überarbeitete KO-Bezeichner (Name und Objektfunktion) entsprechend einheitlicher Konventionen für OpenKNX-Module, inklusive KO-Baum
   * Überarbeiteter Modul-Titel

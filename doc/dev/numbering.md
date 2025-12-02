@@ -33,8 +33,8 @@ With:
 |           | 6..7 | *      |      | **output3**                     |                               |
 |           | 8..9 | *      |      | **output4**                     |                               |
 |        65 | *    | *      |  100 | **Choice-State** Label          |                               |
-|        66 | *    | *      |  100 | **Choice-State** *(unused)*     |                               |
-|        67 | *    | *      |  100 | **Choice-State** Choice         |                               |
+|        66 | *    | *      |  100 | **Choice-State** for undefined  |                               |
+|        67 | *    | *      |  100 | **Choice-State** LOG-channel    |                               |
 |        68 | *    | *      |  100 | **Choice-State** for 1          |                               |
 |        69 | *    | *      |  100 | **Choice-State** for 0          |                               |
 |        70 | *    | *      |  100 |                                 |                               |

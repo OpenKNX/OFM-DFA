@@ -606,6 +606,7 @@ void DfaChannel::transfer(const uint8_t input)
         if (nextState == DFA_STATE_UNDEFINED)
         {
             nextState = ParamDFA_az0Fallback - 1;
+            logDebugP("Start-Fallback: selected z%u",  nextState + 1);
         }
     }
     else if (isValidState(_state))
