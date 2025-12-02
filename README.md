@@ -1,13 +1,13 @@
-# OpenKNX-Modul zur Definition zustandsbehaftetem Verhalten auf Basis von  Deterministischen Endlichen Automaten (DEA)
+# OpenKNX-Modul zur Definition zustandsbehaftetem Verhalten auf Basis von Deterministischen Endlichen Automaten (DEA)
 
-Implementierung von Zustandsmodellen für KNX, konfigurierbar über die ETS.
+Implementierung von Zustandsautomaten mit funktionalen Erweiterungen für KNX, konfigurierbar über die ETS.
 
 Von Cornelius Köpp 2023-09 -- 2025
 
 **Hinweis:** 
 Die [OpenKNX StateEngine](https://github.com/OpenKNX/OAM-StateEngine/) dient als Referenz-Applikation für dieses Modul
 und bietet eine besonders hohe Anzahl von unabhängigen Automaten-Definitionen/Kanälen. 
-Eine geringere Anzahl von Automaten ist u.A. auch im [OpenKNX RaumController](https://github.com/OpenKNX/OAM-RaumController/) integriert.
+Eine geringere Anzahl von Automaten ist u.A. im [OpenKNX RaumController](https://github.com/OpenKNX/OAM-RaumController/) integriert.
 
 
 
@@ -15,6 +15,7 @@ Eine geringere Anzahl von Automaten ist u.A. auch im [OpenKNX RaumController](ht
 Dieses Modul erlaubt eine universelle Modellierung von zustandsabhängigem Verhalten:<br />
 Jeder Kanal repräsentiert eine Automaten-Definition mit 16 verschiedenen Zuständen.
 Zwischen den Zuständen kann durch 8 verschiedenen Eingabeereignisse oder Ablauf eines zustandsabhängigen Timeouts gewechselt werden.
+Als optionale Erweiterung können bedingte Zustandsübergänge genutzt werden, die bei Eintritt des Eingabeereignisses dynamisch ausgewertet werden.
 Über 4 Ausgangskanäle können zustandsspezifische Werte mit zustandsspezifischem Sendeverhalten ausgegeben werden, 
 in verschiedenen gängigen DPTs.
 Zusätzlich erfolgt eine Ausgabe des aktuellen Zustands. 
@@ -24,6 +25,8 @@ sowie Rekonstruktion des letzten Zustands und Status nach einem Neustart.
 
 Die Definition in der ETS erfolgt über eine (zwei-dimensionale) Zustandsübergangstabelle.<br />
 Zur **Konfiguration in der ETS** siehe [Applikationsbeschreibung](doc/DFA_Applikationsbeschreibung.md#applikationsbeschreibung-ofm-dfa)
+
+**Änderungen** zwischen den Versionen können im [**Changelog**](CHANGELOG.md) eingesehen werden. 
 
 
 ## Inhalte
