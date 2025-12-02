@@ -602,14 +602,11 @@ void DfaChannel::transfer(const uint8_t input)
         logDebugP("State<z%u>: transfer(START)->int:%u",  _state + 1, _firstState);
         logIndentUp();
         nextState = transferEvaluateChoiceLoop(_firstState);
-// TODO remove conditional when included in ETS-App. With v0.7 the firmware should work as before, just without using conditional states as z0
-#ifdef ParamDFA_az0Fallback            
         // 2') use fallback for start, when using choice evaluation without resulting state
         if (nextState == DFA_STATE_UNDEFINED)
         {
             nextState = ParamDFA_az0Fallback - 1;
         }
-#endif
     }
     else if (isValidState(_state))
     {
