@@ -1,0 +1,45 @@
+# This CITATION.cff file was generated with support of cffinit.
+# Visit https://bit.ly/cffinit to update or generate yours today!
+
+cff-version: 1.2.0
+title: 'OFM-DFA: Deterministic Finite Automaton (DFA) Module for OpenKNX'
+message: >-
+  If you use this module, or implement a solution based on the concept,
+  please cite it using the metadata from this file.
+type: software
+authors:
+  - affiliation: OpenKNX
+    # email: ck@example.com
+    given-names: Cornelius
+    family-names: Köpp
+repository-code: 'https://github.com/OpenKNX/OFM-DFA.git'
+url: 'https://github.com/OpenKNX/OFM-DFA'
+abstract: >-
+  OFM-DFA is an OpenKNX module that enables universal modeling of state-dependent
+  behavior for KNX building automation systems based on Deterministic Finite Automata
+  (DFA) with optional extensions. The module allows users to configure state machines
+  directly via the KNX ETS (Engineering Tool Software), with multiple channels each
+  representing an automaton definition supporting up to 16 different states. State
+  transitions are triggered by up to 8 different inputs or state-specific timeouts,
+  with 4 configurable outputs supporting various common data point types (DPTs).
+  The module is designed for event-oriented processing of state-dependent behavior
+  that depends on the sequence or temporal progression of events in KNX installations.
+  Configuration is performed using a two-dimensional state transition table in ETS,
+  making complex automation logic accessible without custom programming. The module
+  integrates with other OpenKNX modules, particularly the Logic Module (OFM-LogicModule),
+  for preprocessing input values and enabling sophisticated building automation scenarios.
+  Optional extensions include conditional state transitions based on logic channel outputs,
+  reconstruction after restart, execution interruption and direct state invocation.
+date-released: 2025
+keywords:
+  - state-machine
+  - finite-state-machine
+  - state-machines
+  - dfa
+  - knx
+  - building automation
+  - openknx
+  - deterministic-finite-automata
+  - deterministic-finite-automaton
+  - state-dependent behavior
+license: AGPL-3.0-only
