@@ -599,14 +599,14 @@ void DfaChannel::transfer(const uint8_t input)
     uint8_t nextState = DFA_STATE_UNDEFINED;
     if (input == DFA_INPUT_SYMBOL_START) // check first, otherwise 2') could result in unexpected behaviour
     {
-        logDebugP("State<z%u>: transfer(START)->int:%u",  _state + 1, _firstState);
+        logDebugP("State<z%u>: transfer(START)->int:%u", _state + 1, _firstState);
         logIndentUp();
         nextState = transferEvaluateChoiceLoop(_firstState);
         // 2') use fallback for start, when using choice evaluation without resulting state
         if (nextState == DFA_STATE_UNDEFINED)
         {
             nextState = ParamDFA_az0Fallback - 1;
-            logDebugP("Start-Fallback: selected z%u",  nextState + 1);
+            logDebugP("Start-Fallback: selected z%u", nextState + 1);
         }
     }
     else if (isValidState(_state))
@@ -615,10 +615,10 @@ void DfaChannel::transfer(const uint8_t input)
         logIndentUp();
         nextState = transferEvaluateChoiceLoop(nextState);
     }
-    else 
+    else
     {
         logIndentUp();
-        logDebugP("State<z%u>: transfer(int:%u)->IGNORE (invalid state & no startup)",  _state + 1, _state);
+        logDebugP("State<z%u>: transfer(int:%u)->IGNORE (invalid state & no startup)", _state + 1, _state);
     }
 
     // 3) set the next state
