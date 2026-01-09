@@ -10,7 +10,7 @@
   * [Bedingte Zustandsübergänge](#bedingte-zustandsübergänge)
   * [Rekonstruktion nach Neustart](#rekonstruktion-nach-neustart)
 * ETS-Konfiguration:
-  [**Zustandsautomaten**](#ets-applikationsteilbr-zustandsautomaten)
+  [**Zustandsautomaten**](#ets-applikationsteilzustandsautomaten)
     * [**Allgemein**](#allgemein)
       * [Diagnose](#diagnose)
     * [**DEA n: ...**](#dea-n--)
