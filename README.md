@@ -2,7 +2,7 @@
 
 Implementierung von Zustandsautomaten mit funktionalen Erweiterungen für KNX, konfigurierbar über die ETS.
 
-Von Cornelius Köpp 2023-09 -- 2025
+Von Cornelius Köpp 2023 -- 2026
 
 **Hinweis:** 
 Die [OpenKNX StateEngine](https://github.com/OpenKNX/OAM-StateEngine/) dient als Referenz-Applikation für dieses Modul
