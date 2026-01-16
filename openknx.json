@@ -1,0 +1,23 @@
+{
+  "OpenKnxContentType": "OpenKNX/Repo/Info",
+  "OpenKnxFormatVersion": "v0.1.0",
+  "ofm": {
+    "name": "OFM-DFA",
+    "title": "Zustandsautomaten",
+    "icon": "ofm-dfa@.",
+    "description": "Beschreibung von zustandsbasiertem Verhalten auf Basis von deterministischen endlichen Automaten erweitert mit Timeouts und bedingten Zustandsübergängen",
+    "prefix": "DFA",
+    "ref_oam": "OAM-StateEngine",
+    "oam_notes": {
+      "OAM-StateEngine": "Empfohlen, wenn viele Zustandsautomaten benötigt werden; z.B. als Ersatz für einen einfachen Logik-Server.",
+      "OAM-RaumController": "Empfohlen, wenn neben Logikkanälen und einigen Zustandsautomaten auch noch die Funktionen anderer OpenKNX-Module nützlich sind."
+    },
+    "dependencies": [
+      "OFM-LogicModule"
+    ],
+    "kuf_url": "https://knx-user-forum.de/forum/projektforen/openknx/2024474-openknx-stateengine-universelle-zustandsautomaten-in-knx",
+    "doc_ets_app": "doc/DFA_Applikationsbeschreibung.md",
+    "img_teaser": "doc/Beispiel1_VirtuellerAktor/DFA_Beispiel1_VSA_table.png",
+    "type": "universal-logic"
+  }
+}
