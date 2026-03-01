@@ -1,6 +1,7 @@
 ﻿### Bedingte Übergänge
 
-Die bedingten Übergänge können auf der Seite *Zustände & Übergänge* als Alternative zu "regulären" Folgezuständen angegeben werden.
+Die bedingten Übergänge können
+ als Alternative zu "regulären" Folgezuständen angegeben werden.
 Statt eines direkten Zustandsaufrufs führt dies dann - bei Symboleingang - zur Auswertung des angegebenen bedingten Übergangs. 
 Die Auswertung basiert auf einem Logik-Kanal, der neben den Werten *1* und *0* zunächst auch *undefiniert* sein kann.
 Für jeden dieser drei Werte kann ein individuelles Verhalten definiert werden.

@@ -10,7 +10,9 @@
 * ETS-Applikation:
   * Überarbeitete KO-Bezeichner (Name und Objektfunktion) entsprechend einheitlicher Konventionen für OpenKNX-Module, inklusive KO-Baum
   * Überarbeiteter Modul-Titel
-  * Fix(Typo) in Context-Hilfe
+  * Context-Hilfe
+    * Fix(Typo)
+    * Hinweis auf Sichtbarkeit der Option im Hilfetext (der nur unter dieser Bedingung in der Kontexthilfe sichtbar ist)
 
 
 # (Nächste Version)
