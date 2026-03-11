@@ -1,26 +1,20 @@
-# (Nächste Version mit ETS-Update) v0.8.0
+# 2026-03-11 v0.8.0 ("Bedingter Startzustand")
 
-* Feature: Bedingte Zustandsübergänge können nun zur Ermittlung des Startzustands genutzt werden
+* Feature: **Bedingte Zustandsübergänge können nun zur Ermittlung des Startzustands genutzt werden**
   * Ergänzend muss in diesem Fall ein Status angegeben werden, der genutzt wird, falls die Auswahl scheitert  
 * Refactor: Verarbeitung von Zustandsübergängen wurde in der Struktur angepasst zur Unterstützung bedingter Startzustände
+  * Phase 1: Ermittlung des Folgezustands (Direkte Rückgabe zur Vereinfachung Kontrollfluss)
+  * Phase 2: Evaluation von bedingten Übergängen
   * Ersetzen von Zustandsaufrufen `setState(...)` durch `transfer(..)`
     * Direktes Setzen von Zuständen über KO oder Konsole
     * Erster Start des Automaten
-* 
 * ETS-Applikation:
-  * Überarbeitete KO-Bezeichner (Name und Objektfunktion) entsprechend einheitlicher Konventionen für OpenKNX-Module, inklusive KO-Baum
+  * Überarbeitete **KO-Bezeichner (Name und Objektfunktion) entsprechend einheitlicher Konventionen für OpenKNX-Module**, inklusive KO-Baum
   * Überarbeiteter Modul-Titel
   * Context-Hilfe
     * Fix(Typo)
     * Hinweis auf Sichtbarkeit der Option im Hilfetext (der nur unter dieser Bedingung in der Kontexthilfe sichtbar ist)
-
-
-# (Nächste Version)
-
 * Feature: Diagnose-Kommando `dfa all` zur Statusübersicht aller aktiv konfigurierter Automaten
-* Refactor Verarbeitung Zustandsübergang (Vorbereitung für bedingte Zustandsübergänge zum Start):
-  * Phase 1: Ermittlung des Folgezustands (Direkte Rückgabe zur Vereinfachung Kontrollfluss)
-  * Phase 2: Evaluation von bedingten Übergängen
 * Dokumentation:
   * Fix: Inhaltsverzeichnis in Applikationsbeschreibung
   * Fix und Erweiterung: Readme
@@ -30,6 +24,7 @@
   * Log-Ausgaben
   * Nutzung von Define-Constanten
   * Modul kann prüfen welche Automaten aktiviert sind
+  * Abhängigkeit von Logikmodul deklariert (mit neuer Erweitererng aus Producer Version 4.0)
 
 
 # 2025-11-09 v0.7.1 ("Bedingte Zustandsübergänge")
