@@ -1,6 +1,6 @@
 # Check build of OpenKNX OFM with Reference OAM (merging/building of OpenKNX knxprod + build of full releases)
 # SPDX-License-Identifier: AGPL-3.0-only
-# Copyright (C) 2024-2025 Cornelius Koepp
+# Copyright (C) 2024-2026 Cornelius Koepp
 
 name: openknx-ofm-check
 run-name: Check OpenKNX OFM Build in Reference OAM
@@ -37,11 +37,6 @@ jobs:
           echo "PRODUCER_URL=${PRODUCER_URL}" >> $GITHUB_ENV
           echo "PRODUCER_FILENAME=${PRODUCER_FILENAME}" >> $GITHUB_ENV
 
-      # DO this after restore the use current commit
-      # - uses: actions/checkout@v4
-      #   with:
-      #     path: OFM-DFA
-
       - name: Check for Same Name Branch in Reference OAM
         id: oam_branch
         run: |
@@ -53,17 +48,16 @@ jobs:
           echo "ref_name=$BRANCH" >> $GITHUB_OUTPUT
           echo "Selected branch: $BRANCH"
 
+      # 1. checkout OAM
+      # 2. restore
+      # 3. overwrite OFM with current commit
+
       - name: Checkout Reference OAM
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: openknx/${{ inputs.oam }}
           ref: ${{ steps.oam_branch.outputs.ref_name }}
           path: ${{ inputs.oam }}
-
-      # - name: DEBUG paths
-      #   run: |
-      #     pwd
-      #     find
 
       - name: Restore OAM
         shell: pwsh
@@ -72,7 +66,7 @@ jobs:
           ./Restore-Dependencies.ps1
 
       - name: Restore Current OFM Commit
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           # ref: ${{ github.ref_name }}
           path: OFM-DFA
