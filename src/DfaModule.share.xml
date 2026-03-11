@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-model href="../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <KNX xmlns:op="http://github.com/OpenKNX/OpenKNXproducer" xmlns="http://knx.org/xml/project/20" CreatedBy="KNX MT" ToolVersion="5.1.255.16695">
+
+  <op:minOpenKNXproducerVersion value="4.0.1" />
+  <op:minModuleVersion prefix="LOG" dependency="forceUsage" value="4.0" /><!-- DFA requirees LOG (channels can be referenced for input preprocessing) -->
+
   <op:config name="%DFA_NumChannelsDefault%" value="2" />
 
   <op:config name="%DFA_NumStates%" value="16" />
