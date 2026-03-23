@@ -1,3 +1,8 @@
+# (nächstes Release)
+
+* OpenKNX Update: Anpassungen für Producer-Versionen >= v4.2.7
+
+
 # 2026-03-11 v0.8.0 ("Bedingter Startzustand")
 
 * Feature: **Bedingte Zustandsübergänge können nun zur Ermittlung des Startzustands genutzt werden**
