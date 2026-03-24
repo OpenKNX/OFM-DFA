@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-only
-// Copyright (C) 2023-2025 Cornelius Koepp
+// Copyright (C) 2023-2026 Cornelius Koepp
 
 #include "DfaOutput.h"
 
-// TODO calculate index; expected distance should be protected by compile error
 // TODO special handling of indices for >32 DFA required
 // Define (relative) parameter address-index for next state by current state and input
 

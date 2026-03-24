@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-only
-// Copyright (C) 2023-2025 Cornelius Koepp
+// Copyright (C) 2023-2026 Cornelius Koepp
 
 #include "DfaOutput.h"
 #include "DfaOutputConfigHelper.h"
@@ -35,16 +35,16 @@ void DfaOutput::stateUpdate(const uint8_t newState, const bool restoreOutputs)
 
     //  <ParameterType Id="%AID%_PT-DfaOutputConf" Name="DfaOutputConf">
     //    <TypeRestriction Base="Value" SizeInBit="8">
-    //      <Enumeration Text="-"                                              Value="0" Id="%ENID%" />
-    //      <Enumeration Text="kein Senden, nur KO setzen"                     Value="1" Id="%ENID%" />
-    //      <Enumeration Text="Wert-Änderung, nicht nach Rekonstruktion"      Value="10" Id="%ENID%" />
-    //      <Enumeration Text="Wert-Änderung"                                  Value="2" Id="%ENID%" />
-    //      <Enumeration Text="Wert-Änderung                  + zyklisch"      Value="3" Id="%ENID%" />
-    //      <Enumeration Text="Zustands-Änderung, nicht nach Rekonstruktion"  Value="12" Id="%ENID%" />
-    //      <Enumeration Text="Zustands-Änderung"                              Value="4" Id="%ENID%" />
-    //      <Enumeration Text="Zustands-Änderung           + zyklisch"         Value="5" Id="%ENID%" />
-    //      <Enumeration Text="jeder Zustands-Aufruf"                          Value="6" Id="%ENID%" />
-    //      <Enumeration Text="jeder Zustands-Aufruf        + zyklisch"        Value="7" Id="%ENID%" />
+    //      <Enumeration Text="-"                                                     Value="0" Id="%ENID%" />  0b       0
+    //      <Enumeration Text="kein Senden, nur KO setzen"                            Value="1" Id="%ENID%" />  0b       1
+    //      <Enumeration Text="Wert-Änderung"                                        Value="10" Id="%ENID%" />  0b 1 - 1 -
+    //      <Enumeration Text="Wert-Änderung + Rekonstruktion"                        Value="2" Id="%ENID%" />  0b     1 -
+    //      <Enumeration Text="Wert-Änderung + Rekonstruktion + zyklisch"             Value="3" Id="%ENID%" />  0b     1 1
+    //      <Enumeration Text="Zustands-Änderung"                                    Value="12" Id="%ENID%" />  0b 1 1 - -
+    //      <Enumeration Text="Zustands-Änderung + Rekonstruktion"                    Value="4" Id="%ENID%" />  0b   1 - -
+    //      <Enumeration Text="Zustands-Änderung + Rekonstruktion + zyklisch"         Value="5" Id="%ENID%" />  0b   1 - 1
+    //      <Enumeration Text="jeder Zustands-Aufruf + Rekonstruktion"                Value="6" Id="%ENID%" />  0b   1 1 -
+    //      <Enumeration Text="jeder Zustands-Aufruf + Rekonstruktion + zyklisch"     Value="7" Id="%ENID%" />  0b   1 1 1
     //    </TypeRestriction>
     //  </ParameterType>
 #if defined(OPENKNX_TRACE1) || defined(OPENKNX_TRACE2) || defined(OPENKNX_TRACE3) || defined(OPENKNX_TRACE4) || defined(OPENKNX_TRACE5)
@@ -129,7 +129,6 @@ void DfaOutput::outputUpdate(const bool send, const bool forceSend /* = false */
             {
                 case DFA_OUTPUT_TYPE_DPT1:
                     // works, as long as using same location as other dpt values
-                    // TODO check Using paramBit
                     // producer:   (knx.paramByte(DFA_ParamCalcIndex(DFA_az01o1Dpt1)))
                     outputUpdateKO((knx.paramByte(pIdxValue) != 0), DPT_Switch, send, forceSend);
                     break;
@@ -185,6 +184,7 @@ void DfaOutput::outputUpdate(const bool send, const bool forceSend /* = false */
                     outputUpdateKO(knx.paramInt(pIdxValue), DPT_Value_4_Ucount, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT16:
+                    // note: no explicit length check as processing of DPT16 is limited to 14 characters
                     outputUpdateKO((char *)knx.paramData(pIdxValue), DPT_String_8859_1, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT17:
@@ -192,10 +192,8 @@ void DfaOutput::outputUpdate(const bool send, const bool forceSend /* = false */
                     outputUpdateKO(knx.paramByte(pIdxValue), DPT_SceneNumber, send, forceSend);
                     break;
                 case DFA_OUTPUT_TYPE_DPT232:
-                    // get value as defined in ParamDFA_az01o1Dpt232
-                    // TODO Ensure same values for DFA_az{$state}o{$output}Dpt232Mask and DFA_az{$state}o{$output}Dpt232Shift
-                    //  producer:  ((knx.paramInt(DFA_ParamCalcIndex(DFA_az01o1Dpt232))
-                    //                                         & DFA_az01o1Dpt232Mask) >> DFA_az01o1Dpt232Shift)
+                    // get value as defined in ParamDFA_az{$state}o{$output}Dpt232
+                    // producer:  ((knx.paramInt(DFA_ParamCalcIndex(DFA_az01o1Dpt232)) & DFA_az01o1Dpt232Mask) >> DFA_az01o1Dpt232Shift)
                     outputUpdateKO((knx.paramInt(pIdxValue) & DFA_az01o1Dpt232Mask) >> DFA_az01o1Dpt232Shift, DPT_Colour_RGB, send, forceSend);
                     break;
                 default:
