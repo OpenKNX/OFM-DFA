@@ -1,12 +1,14 @@
-# (nächstes Release)
+# 2026-03-29 v0.8.1 ("Bedingter Startzustand")
 
-* OpenKNX Update: Anpassungen für Producer-Versionen >= v4.2.7
+* OpenKNX Update: Anpassungen für Producer-Versionen &gt;= v4.2.7
+* Fix Changelog v0.8.0
+* Dokumentation: Readme
 
 
 # 2026-03-11 v0.8.0 ("Bedingter Startzustand")
 
 * Feature: **Bedingte Zustandsübergänge können nun zur Ermittlung des Startzustands genutzt werden**
-  * Ergänzend muss in diesem Fall ein Status angegeben werden, der genutzt wird, falls die Auswahl scheitert  
+  * Ergänzend muss in diesem Fall ein Zustand angegeben werden, der genutzt wird, falls die Auswahl scheitert  
 * Refactor: Verarbeitung von Zustandsübergängen wurde in der Struktur angepasst zur Unterstützung bedingter Startzustände
   * Phase 1: Ermittlung des Folgezustands (Direkte Rückgabe zur Vereinfachung Kontrollfluss)
   * Phase 2: Evaluation von bedingten Übergängen
@@ -29,7 +31,7 @@
   * Log-Ausgaben
   * Nutzung von Define-Constanten
   * Modul kann prüfen welche Automaten aktiviert sind
-  * Abhängigkeit von Logikmodul deklariert (mit neuer Erweitererng aus Producer Version 4.0)
+  * Abhängigkeit von Logikmodul deklariert (mit neuer Erweiterung aus Producer Version 4.0)
 
 
 # 2025-11-09 v0.7.1 ("Bedingte Zustandsübergänge")

@@ -82,9 +82,13 @@ Weitere Anwendungen (ohne detaillierte Dokumentation):
 * Erkennung von/Reaktion auf bestimmten aufeinanderfolgenden Ereignissen, oder deren Ausbleiben
 
 
-## Grundidee in Anlehnung an gängige formale Definitionen:
+## Grundidee in Anlehnung an gängige formale Definitionen
 > Informatikern wird das Modell bekannt und vertraut vorkommen; 
 > bei genauerem Hinsehen werden allerdings gewisse Abweichungen deutlich um das Konzept an den Praxisbedarf anzupassen.
+> 
+> ***Hinweis:*** 
+> Die Erweiterung mit bedingten Übergängen ist nicht mehr durch das nachfolgend beschriebene Modell abgedeckt.
+> Werden diese verwendet, so werden damit bestimmte Garantieren verloren.  
 
 ### Z&subset;{z<sub>1</sub>,..,z<sub>16</sub>} := Menge der Zustände
 ... wird als Teilmenge von DPT17.001 (Szenen: {0=Szene1,..,63=Szene64}) dargestellt.
@@ -125,6 +129,11 @@ Falls X<sub>z</sub>&subset;X (*Direktes Setzen von Zuständen ist erlaubt*),
 so gilt d(z,z<sub>i</sub>)=z<sub>i</sub> 
 für alle z<sub>i</sub>&in;X<sub>z</sub>\\{z} (*ignorieren von erneutem Aufruf des bereits gesetzten Zustands*), 
 oder sogar für alle z<sub>i</sub>&in;X<sub>z</sub> (*Neustart von bereits gesetztem Zustand*).
+
+> ***Hinweis:***
+> Bei Nutzung von bedingten Übergängen ist der Folgezustand nicht mehr eindeutig
+> und wird bei jedem Aufruf, durch den momentanen Ausgangswert von bis zu 16 Logikkanälen ermittelt.
+> Der formale Zusammenhang ist damit deutlich komplizierter.
 
 
 ### *Endzustände* 
