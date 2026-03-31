@@ -1,3 +1,6 @@
+# (geplant) v0.8.2 ("Bedingter Startzustand + Input Fixes")
+
+
 # 2026-03-29 v0.8.1 ("Bedingter Startzustand")
 
 * OpenKNX Update: Anpassungen für Producer-Versionen &gt;= v4.2.7
