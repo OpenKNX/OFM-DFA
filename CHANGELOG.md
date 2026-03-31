@@ -1,5 +1,7 @@
 # (geplant) v0.8.2 ("Bedingter Startzustand + Input Fixes")
 
+* Fix #65: Für Symbol-Eingänge deren *Eingabekanal* als *Bestehendes KO* konfiguriert ist, wurde die KO-Nummer mit Faktor 2 multipliziert.
+  * Hinweis: Dieser Fehler betrifft alle bislang veröffentlichten Versionen  
 
 # 2026-03-29 v0.8.1 ("Bedingter Startzustand")
 

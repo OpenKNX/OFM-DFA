@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-only
-// Copyright (C) 2023-2025 Cornelius Koepp
+// Copyright (C) 2023-2026 Cornelius Koepp
 
 #include "DfaChannel.h"
 
@@ -319,7 +319,29 @@ uint16_t DfaChannel::getInputKoNumber(const uint8_t input)
                 return getLogicOutputKoNumber(logicNumber - 1);
             }
         case 2: // Existing KO
-            return knx.paramWord(DFA_ParamCalcIndex(_inputConfNumberPRI[input]));
+
+            // TODO move asserts to separate file and refactor parameter handling!
+            static_assert(DFA_aSymbolBKoNumberMask == DFA_aSymbolAKoNumberMask, "DFA_aSymbol{?}KoNumberMask mismatch for {A,B}");
+            static_assert(DFA_aSymbolCKoNumberMask == DFA_aSymbolAKoNumberMask, "DFA_aSymbol{?}KoNumberMask mismatch for {A,C}");
+            static_assert(DFA_aSymbolDKoNumberMask == DFA_aSymbolAKoNumberMask, "DFA_aSymbol{?}KoNumberMask mismatch for {A,D}");
+            static_assert(DFA_aSymbolEKoNumberMask == DFA_aSymbolAKoNumberMask, "DFA_aSymbol{?}KoNumberMask mismatch for {A,E}");
+            static_assert(DFA_aSymbolFKoNumberMask == DFA_aSymbolAKoNumberMask, "DFA_aSymbol{?}KoNumberMask mismatch for {A,F}");
+            static_assert(DFA_aSymbolGKoNumberMask == DFA_aSymbolAKoNumberMask, "DFA_aSymbol{?}KoNumberMask mismatch for {A,G}");
+            static_assert(DFA_aSymbolHKoNumberMask == DFA_aSymbolAKoNumberMask, "DFA_aSymbol{?}KoNumberMask mismatch for {A,H}");
+            static_assert(DFA_aSymbolTKoNumberMask == DFA_aSymbolAKoNumberMask, "DFA_aSymbol{?}KoNumberMask mismatch for {A,T}");
+
+            static_assert(DFA_aSymbolBKoNumberShift == DFA_aSymbolAKoNumberShift, "DFA_aSymbol{?}KoNumberShift mismatch for {A,B}");
+            static_assert(DFA_aSymbolCKoNumberShift == DFA_aSymbolAKoNumberShift, "DFA_aSymbol{?}KoNumberShift mismatch for {A,C}");
+            static_assert(DFA_aSymbolDKoNumberShift == DFA_aSymbolAKoNumberShift, "DFA_aSymbol{?}KoNumberShift mismatch for {A,D}");
+            static_assert(DFA_aSymbolEKoNumberShift == DFA_aSymbolAKoNumberShift, "DFA_aSymbol{?}KoNumberShift mismatch for {A,E}");
+            static_assert(DFA_aSymbolFKoNumberShift == DFA_aSymbolAKoNumberShift, "DFA_aSymbol{?}KoNumberShift mismatch for {A,F}");
+            static_assert(DFA_aSymbolGKoNumberShift == DFA_aSymbolAKoNumberShift, "DFA_aSymbol{?}KoNumberShift mismatch for {A,G}");
+            static_assert(DFA_aSymbolHKoNumberShift == DFA_aSymbolAKoNumberShift, "DFA_aSymbol{?}KoNumberShift mismatch for {A,H}");
+            static_assert(DFA_aSymbolTKoNumberShift == DFA_aSymbolAKoNumberShift, "DFA_aSymbol{?}KoNumberShift mismatch for {A,T}");
+
+            // #define ParamDFA_aSymbolAKoNumber                    
+            //     ((knx.paramWord(DFA_ParamCalcIndex(DFA_aSymbolAKoNumber      )) & DFA_aSymbolAKoNumberMask) >> DFA_aSymbolAKoNumberShift)
+            return ((knx.paramWord(DFA_ParamCalcIndex(_inputConfNumberPRI[input])) & DFA_aSymbolAKoNumberMask) >> DFA_aSymbolAKoNumberShift);
     }
     // default, including case 0 (disabled)
     return 0;
