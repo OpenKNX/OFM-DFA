@@ -13,7 +13,7 @@
 
 #pragma region "DFA_CHANNEL_ADDR"
 
-const uint8_t DfaChannel::_inputKo[DFA_DEF_INPUTS_COUNT] = {
+const uint8_t DfaChannel::_inputKo[DFA_DEF_INPUTS_WITH_T_COUNT] = {
     DFA_KoKOaInput1,
     DFA_KoKOaInput2,
     DFA_KoKOaInput3,
@@ -22,6 +22,7 @@ const uint8_t DfaChannel::_inputKo[DFA_DEF_INPUTS_COUNT] = {
     DFA_KoKOaInput6,
     DFA_KoKOaInput7,
     DFA_KoKOaInput8,
+    DFA_KoKOaInputT,
 };
 // Value of DFA_KoKOaInput[1-8] by 0-based index
 #define DFA_KoKOaInput__N__(IDX) DFA_KoKOaInput1 + IDX * (DFA_KoKOaInput2 - DFA_KoKOaInput1)
@@ -29,7 +30,7 @@ const uint8_t DfaChannel::_inputKo[DFA_DEF_INPUTS_COUNT] = {
 #define DFA_Channel_Input_KO(IDX) DFA_KoCalcNumber(DFA_KoKOaInput__N__(IDX))
 
 // TODO calculate index; expected distance should be protected by compile error
-const uint16_t DfaChannel::_inputConfPRI[DFA_DEF_INPUTS_COUNT] = {
+const uint16_t DfaChannel::_inputConfPRI[DFA_DEF_INPUTS_WITH_T_COUNT] = {
     DFA_aSymbolAInput,
     DFA_aSymbolBInput,
     DFA_aSymbolCInput,
@@ -38,6 +39,7 @@ const uint16_t DfaChannel::_inputConfPRI[DFA_DEF_INPUTS_COUNT] = {
     DFA_aSymbolFInput,
     DFA_aSymbolGInput,
     DFA_aSymbolHInput,
+    DFA_aSymbolTInput,
 };
 // Value of DFA_aInputSymbol[1-8]Ko by 0-based index
 #define DFA_aSymbol__N__Ko(IDX) DFA_aSymbolAInput + IDX * (DFA_aSymbolBInput - DFA_aSymbolAInput)
@@ -48,7 +50,7 @@ const uint16_t DfaChannel::_inputConfPRI[DFA_DEF_INPUTS_COUNT] = {
 #if DFA_aSymbolALogicNumber != DFA_aSymbolAKoNumber
     #error "DFA_aSymbolALogicNumber != DFA_aSymbolAKoNumber"
 #endif
-const uint16_t DfaChannel::_inputConfNumberPRI[DFA_DEF_INPUTS_COUNT] = {
+const uint16_t DfaChannel::_inputConfNumberPRI[DFA_DEF_INPUTS_WITH_T_COUNT] = {
     DFA_aSymbolAKoNumber,
     DFA_aSymbolBKoNumber,
     DFA_aSymbolCKoNumber,
@@ -57,8 +59,9 @@ const uint16_t DfaChannel::_inputConfNumberPRI[DFA_DEF_INPUTS_COUNT] = {
     DFA_aSymbolFKoNumber,
     DFA_aSymbolGKoNumber,
     DFA_aSymbolHKoNumber,
+    DFA_aSymbolTKoNumber,
 };
-const uint16_t DfaChannel::_inputTriggerPRI[DFA_DEF_INPUTS_COUNT] = {
+const uint16_t DfaChannel::_inputTriggerPRI[DFA_DEF_INPUTS_WITH_T_COUNT] = {
     DFA_aSymbolATrigger,
     DFA_aSymbolBTrigger,
     DFA_aSymbolCTrigger,
@@ -67,6 +70,7 @@ const uint16_t DfaChannel::_inputTriggerPRI[DFA_DEF_INPUTS_COUNT] = {
     DFA_aSymbolFTrigger,
     DFA_aSymbolGTrigger,
     DFA_aSymbolHTrigger,
+    DFA_aSymbolTTrigger,
 };
 
 

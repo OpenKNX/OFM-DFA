@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-only
-// Copyright (C) 2023-2025 Cornelius Koepp
+// Copyright (C) 2023-2026 Cornelius Koepp
 
 #pragma once
 #include "OpenKNX.h"
@@ -43,10 +43,10 @@ class DfaChannel : public OpenKNX::Channel
   private:
     static const uint8_t _magicWord[4];
 
-    static const uint8_t _inputKo[DFA_DEF_INPUTS_COUNT];
-    static const uint16_t _inputConfPRI[DFA_DEF_INPUTS_COUNT];
-    static const uint16_t _inputConfNumberPRI[DFA_DEF_INPUTS_COUNT];
-    static const uint16_t _inputTriggerPRI[DFA_DEF_INPUTS_COUNT];
+    static const uint8_t _inputKo[DFA_DEF_INPUTS_WITH_T_COUNT];
+    static const uint16_t _inputConfPRI[DFA_DEF_INPUTS_WITH_T_COUNT];
+    static const uint16_t _inputConfNumberPRI[DFA_DEF_INPUTS_WITH_T_COUNT];
+    static const uint16_t _inputTriggerPRI[DFA_DEF_INPUTS_WITH_T_COUNT];
 
     static const uint16_t _transPRI[DFA_DEF_STATES_COUNT][DFA_DEF_INPUTS_WITH_T_COUNT];
     static const uint16_t _timeoutPRI[DFA_DEF_STATES_COUNT];

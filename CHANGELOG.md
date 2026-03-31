@@ -2,6 +2,8 @@
 
 * Fix #65: Für Symbol-Eingänge deren *Eingabekanal* als *Bestehendes KO* konfiguriert ist, wurde die KO-Nummer mit Faktor 2 multipliziert.
   * Hinweis: Dieser Fehler betrifft alle bislang veröffentlichten Versionen  
+* Fix #66: Die Auslösung des Eingabesymbols T funktionierte nicht, oder hätte ein vollkommen undefiniertes Verhalten aufgewiesen.
+  * Hinweis: Der Fehler bestand seit Einführung dieses Eingangs in v0.7.0. Eine Auslösung über das Diagnose-Objekt war möglich.
 
 # 2026-03-29 v0.8.1 ("Bedingter Startzustand")
 
