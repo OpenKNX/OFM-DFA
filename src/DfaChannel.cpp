@@ -895,7 +895,7 @@ void DfaChannel::restore()
     logDebugP("restored conf=0x%02x state=%3u(raw) timeout=%u", conf, state, timeout);
 
     // do not restore inactive channels, but must always read all bytes!
-    if (conf & (1 << 7) == 0)
+    if ((conf & (1 << 7)) == 0)
         return;
 
     //  <ParameterType Id="%AID%_PT-StatePersistance" Name="StatePersistance">

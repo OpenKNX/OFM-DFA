@@ -4,6 +4,9 @@
   * Hinweis: Dieser Fehler betrifft alle bislang veröffentlichten Versionen  
 * Fix #66: Die Auslösung des Eingabesymbols T funktionierte nicht, oder hätte ein vollkommen undefiniertes Verhalten aufgewiesen.
   * Hinweis: Der Fehler bestand seit Einführung dieses Eingangs in v0.7.0. Eine Auslösung über das Diagnose-Objekt war möglich.
+* Fix: Beim Laden der beim Geräte-Shutdown gespeicherten Modul-Kanal-Daten wurde nicht korrekt geprüft, ob der Kanal zuvor inaktiv war.
+  * Dies hätte bei erlaubtem Pausieren dazu geführt, dass der Automat (unabhängig von der gewählten Konfiguration) pausiert startet, nachdem die Konfiguration von Inaktiv auf Aktiv geändert wurde
+  * Hinweis: Dieser Fehler betrifft alle bislang veröffentlichten Versionen
 
 # 2026-03-29 v0.8.1 ("Bedingter Startzustand")
 
