@@ -857,14 +857,30 @@ void DfaChannel::resetTimeout()
     _stateTimeoutBegin_ms = millis();
 }
 
-// TODO check definition of behaviour for non-timeout
+// calculate the remaining timeout, or 0 for no timeout defined for current state
 uint32_t DfaChannel::timeoutRemaining_ms()
 {
-    // futureDelay = _stateTimeoutBegin_ms + _stateTimeoutDelay_ms - millis();
-    // futureDelay = (_stateTimeoutBegin_ms - millis()) + _stateTimeoutDelay_ms;
-    // futureDelay = _stateTimeoutDelay_ms - (millis() - _stateTimeoutBegin_ms)
-    // TODO check for correct handling of overflow
-    return _stateTimeoutDelay_ms - (millis() - _stateTimeoutBegin_ms);
+    if (_stateTimeoutDelay_ms == 0)
+    {
+        return 0; // no timeout defined in current state
+    }
+
+    // important: use same time for all comparisons and calculations
+    const unsigned long now = millis();
+
+    // note: the following condition is used to check time-out-end in loop:
+    // (_stateTimeoutDelay_ms > 0 && delayCheckMillis(_stateTimeoutBegin_ms, _stateTimeoutDelay_ms))
+    if (_stateTimeoutDelay_ms > 0 && (now - _stateTimeoutBegin_ms >= _stateTimeoutDelay_ms))
+    {
+        return 1; // timeout reached
+    }
+
+    //          remaining_ms = _stateTimeoutBegin_ms + _stateTimeoutDelay_ms - millis();
+    //          remaining_ms = (_stateTimeoutBegin_ms - millis()) + _stateTimeoutDelay_ms;
+    //          remaining_ms   = _stateTimeoutDelay_ms - (millis() - _stateTimeoutBegin_ms)
+    const uint32_t remaining_ms = _stateTimeoutDelay_ms - (now - _stateTimeoutBegin_ms);
+    // note: prevent 0, as indicator for no timeout
+    return (remaining_ms > 0) ? remaining_ms : 1;
 }
 
 #pragma endregion "DFA_CHANNEL_STATE_TIMEOUT"

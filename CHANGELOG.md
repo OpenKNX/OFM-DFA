@@ -7,6 +7,10 @@
 * Fix: Beim Laden der beim Geräte-Shutdown gespeicherten Modul-Kanal-Daten wurde nicht korrekt geprüft, ob der Kanal zuvor inaktiv war.
   * Dies hätte bei erlaubtem Pausieren dazu geführt, dass der Automat (unabhängig von der gewählten Konfiguration) pausiert startet, nachdem die Konfiguration von Inaktiv auf Aktiv geändert wurde
   * Hinweis: Dieser Fehler betrifft alle bislang veröffentlichten Versionen
+* Fix: Rekonstruktionsfunktion hätte zu fehlerhaftem Rest-Timeout führen können, wenn das Speichern zeitnah zum, oder nach dem Timeout erfolgt
+  * Eine Fortsetzung hätte mit extrem langem Timeout oder unter Ignornieren des gespeicherten Timeouts erfolgen können 
+  * Hinweis: Dieser Fehler betrifft alle bislang veröffentlichten Versionen
+
 
 # 2026-03-29 v0.8.1 ("Bedingter Startzustand")
 
