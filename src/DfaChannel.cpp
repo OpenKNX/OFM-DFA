@@ -343,7 +343,7 @@ uint16_t DfaChannel::getInputKoNumber(const uint8_t input)
             static_assert(DFA_aSymbolHKoNumberShift == DFA_aSymbolAKoNumberShift, "DFA_aSymbol{?}KoNumberShift mismatch for {A,H}");
             static_assert(DFA_aSymbolTKoNumberShift == DFA_aSymbolAKoNumberShift, "DFA_aSymbol{?}KoNumberShift mismatch for {A,T}");
 
-            // #define ParamDFA_aSymbolAKoNumber                    
+            // #define ParamDFA_aSymbolAKoNumber
             //     ((knx.paramWord(DFA_ParamCalcIndex(DFA_aSymbolAKoNumber      )) & DFA_aSymbolAKoNumberMask) >> DFA_aSymbolAKoNumberShift)
             return ((knx.paramWord(DFA_ParamCalcIndex(_inputConfNumberPRI[input])) & DFA_aSymbolAKoNumberMask) >> DFA_aSymbolAKoNumberShift);
     }
