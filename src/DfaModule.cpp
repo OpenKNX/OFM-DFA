@@ -143,7 +143,6 @@ void DfaModule::showHelp()
     {
         // TODO Check and refine command definitions after first tests and extension!
         openknx.console.printHelpLine("dfaNN",          "Show current state and timeout remain");
-        openknx.console.printHelpLine("dfaNN timeout!", "Let timeout of channel NN end now!");
         openknx.console.printHelpLine("dfaNN state=SS", "Change state to SS");
         openknx.console.printHelpLine("dfaNN symbol=X", "Input the symbol X (A,..,H,T)");
         openknx.console.printHelpLine("dfaNN choice=x", "Input the choice x (a,..,p)");
@@ -189,8 +188,6 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
             // Note: empty lines as workaround to prevent missing outputs
             if (ParamDFA_DiagnoseAccess == 1) // writing to DFAs is allowed
             {
-                openknx.console.writeDiagnoseKo("");
-                openknx.console.writeDiagnoseKo("-> .. timeout!");
                 openknx.console.writeDiagnoseKo("");
                 openknx.console.writeDiagnoseKo("-> .. state=SS");
                 openknx.console.writeDiagnoseKo("");
@@ -250,12 +247,7 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
                 if (!diagnoseKo || ParamDFA_DiagnoseAccess == 1)
                 {
                     // writing to DFAs is allowed; MUST be allowed for the following commands:
-                    if (cmd.substr(5, 9) == " timeout!")
-                    {
-                        logDebugP("=> DFA-Channel<%u> timeout end now!", (channelIdx + 1));
-                        return _channels[channelIdx]->processCommandDfaTimeout(diagnoseKo);
-                    }
-                    else if (cmd.substr(5, 7) == " state=" && std::isdigit(cmd[12]) && std::isdigit(cmd[13]))
+                    if (cmd.substr(5, 7) == " state=" && std::isdigit(cmd[12]) && std::isdigit(cmd[13]))
                     {
                         const uint8_t newState = std::stoi(cmd.substr(12, 2));
 

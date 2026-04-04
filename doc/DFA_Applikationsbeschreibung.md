@@ -139,7 +139,6 @@ Die Kommandos beginnen jeweils mit `dfaNN`, wobei `NN` die Kanalnummer des Autom
 * `dfaNN` - Liefert den aktuellen Zustand und die verbleibende Timeout-Zeit von Automat `NN`.
 * (Steuerung) `dfaNN state=SS` - Setzt den Zustand von Automat `NN` auf `SS` (`00` bis `16`).
 * (Steuerung) `dfaNN symbol=X` - Gibt das Symbol `X` (`A` bis `H`, sowie `T`) in Automat `NN` ein.
-* (Steuerung) `dfaNN timeout!` - Beendet die Timeout-Zeit von Automat `NN` sofort.
 
 <!-- DOC Skip="5" -->
 Befehle die nur auf der seriellen Konsole verfügbar sind:

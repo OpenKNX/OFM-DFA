@@ -565,17 +565,6 @@ void DfaChannel::transferProcessNext(const uint8_t nextState)
 
 #pragma region "DFA_CHANNEL_STATE_TIMEOUT"
 
-void DfaChannel::endTimeout()
-{
-    if (_stateTimeoutDelay_ms > 0)
-    {
-        logDebugP("change timeout %d -> 1ms", _stateTimeoutDelay_ms);
-
-        // set to shortest possible valid timeout of 1ms; might result in up to 1ms delay until end, when executed directly after state change
-        _stateTimeoutDelay_ms = 1;
-    }
-}
-
 void DfaChannel::resetTimeout()
 {
     // do NOT check: if (_stateTimeoutDelay_ms > 0)
@@ -726,14 +715,6 @@ bool DfaChannel::processCommandDfa(bool diagnoseKo)
         if (diagnoseKo)
             openknx.console.writeDiagnoseKo("%02d%c NO_TIMEOUT", state, mode);
     }
-    return true;
-}
-
-bool DfaChannel::processCommandDfaTimeout(bool diagnoseKo)
-{
-    logInfoP("timeout end now!");
-    // TODO define behaviour when disabled
-    endTimeout();
     return true;
 }
 

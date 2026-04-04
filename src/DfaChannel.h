@@ -90,7 +90,6 @@ class DfaChannel : public OpenKNX::Channel
     uint8_t transferEvaluateChoice(const uint8_t nextState);
     void transferProcessNext(const uint8_t nextState);
 
-    void endTimeout();
     void resetTimeout();
     uint32_t timeoutRemaining_ms();
 
@@ -110,7 +109,6 @@ class DfaChannel : public OpenKNX::Channel
     bool isActive();
 
     bool processCommandDfa(bool diagnoseKo);
-    bool processCommandDfaTimeout(bool diagnoseKo);
     bool processCommandDfaStateSet(const uint8_t stateStarting1, bool diagnoseKo);
     bool processCommandDfaSymbolInsert(const uint8_t inputSymbolNumber, bool diagnoseKo);
     bool processCommandDfaChoice(const uint8_t inputChoiceNumber, bool diagnoseKo);
