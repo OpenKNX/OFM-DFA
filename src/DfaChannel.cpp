@@ -3,13 +3,7 @@
 
 #include "DfaChannel.h"
 
-#if (DFA_DEF_STATES_COUNT == 16)
-    // ok
-#elif (DFA_DEF_STATES_COUNT == 32)
-    // ok
-#else
-    #error "illegal DFA_DEF_STATES_COUNT!"
-#endif
+static_assert(DFA_DEF_STATES_COUNT == 16 || DFA_DEF_STATES_COUNT == 32, "illegal DFA_DEF_STATES_COUNT");
 
 #pragma region "DFA_CHANNEL_ADDR"
 
