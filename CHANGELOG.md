@@ -1,3 +1,9 @@
+# (upcoming)
+
+* Minor Cleanup: Compile-Time-Checks
+* Doc: Minor Fixes
+
+
 # 2026-04-04 v0.8.2 ("Bedingter Startzustand + Input Fixes")
 
 * Fix #65: Für Symbol-Eingänge deren *Eingabekanal* als *Bestehendes KO* konfiguriert ist, wurde die KO-Nummer mit Faktor 2 multipliziert.
@@ -8,7 +14,7 @@
   * Dies hätte bei erlaubtem Pausieren dazu geführt, dass der Automat (unabhängig von der gewählten Konfiguration) pausiert startet, nachdem die Konfiguration von Inaktiv auf Aktiv geändert wurde
   * Hinweis: Dieser Fehler betrifft alle bislang veröffentlichten Versionen
 * Fix: Rekonstruktionsfunktion hätte zu fehlerhaftem Rest-Timeout führen können, wenn das Speichern zeitnah zum, oder nach dem Timeout erfolgt
-  * Eine Fortsetzung hätte mit extrem langem Timeout oder unter Ignornieren des gespeicherten Timeouts erfolgen können 
+  * Eine Fortsetzung hätte mit extrem langem Timeout oder unter Ignorieren des gespeicherten Timeouts erfolgen können 
   * Hinweis: Dieser Fehler betrifft alle bislang veröffentlichten Versionen
 
 
