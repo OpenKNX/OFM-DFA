@@ -955,7 +955,7 @@ bool DfaChannel::processCommandDfa(bool diagnoseKo)
     {
         logInfoP("NOT_ACTIVE");
         if (diagnoseKo)
-            openknx.console.writeDiagenoseKo("NOT_ACTIVE");
+            openknx.console.writeDiagnoseKo("NOT_ACTIVE");
         return true;
     }
 
@@ -979,13 +979,13 @@ bool DfaChannel::processCommandDfa(bool diagnoseKo)
 
         logInfoP((timeoutHours < 10) ? "%02d%c%d:%02d:%02d.%03d" : "%02d%c%5d:%02d:%02d", state, mode, timeoutHours, timeoutMinutes, timeoutSeconds, timeoutMillis);
         if (diagnoseKo)
-            openknx.console.writeDiagenoseKo((timeoutHours < 10) ? "%02d%c%d:%02d:%02d.%03d" : "%02d%c%5d:%02d:%02d", state, mode, timeoutHours, timeoutMinutes, timeoutSeconds, timeoutMillis);
+            openknx.console.writeDiagnoseKo((timeoutHours < 10) ? "%02d%c%d:%02d:%02d.%03d" : "%02d%c%5d:%02d:%02d", state, mode, timeoutHours, timeoutMinutes, timeoutSeconds, timeoutMillis);
     }
     else
     {
         logInfoP("%02d%cNO_TIMEOUT", state, mode);
         if (diagnoseKo)
-            openknx.console.writeDiagenoseKo("%02d%c NO_TIMEOUT", state, mode);
+            openknx.console.writeDiagnoseKo("%02d%c NO_TIMEOUT", state, mode);
     }
     return true;
 }
@@ -1022,7 +1022,7 @@ bool DfaChannel::processCommandDfaHistory(bool diagnoseKo)
     std::string historyStr = _history.getCompactHistoryString();
     logInfoP("History: %s", historyStr.c_str());
     if (diagnoseKo)
-        openknx.console.writeDiagenoseKo(historyStr.c_str());
+        openknx.console.writeDiagnoseKo(historyStr.c_str());
     return true;
 }
 

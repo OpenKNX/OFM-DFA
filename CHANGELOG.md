@@ -1,5 +1,6 @@
 # (upcoming)
 
+* Cleanup/Fix: Misspelling call of `openknx.console` method `writeDiagenoseKo` -> `writeDiagnoseKo`
 * Minor Cleanup: Compile-Time-Checks
 * Doc: Minor Fixes
 

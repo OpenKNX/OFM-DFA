@@ -185,29 +185,29 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
         // command `dfa h`
         if (diagnoseKo && cmdLength == 5 && cmd.substr(3, 2) == " h")
         {
-            openknx.console.writeDiagenoseKo("-> dfaNN");
+            openknx.console.writeDiagnoseKo("-> dfaNN");
             // TODO: empty lines as workaround to prevent missing outputs
             if (ParamDFA_DiagnoseAccess == 1) // writing to DFAs is allowed
             {
-                openknx.console.writeDiagenoseKo("");
-                openknx.console.writeDiagenoseKo("-> .. timeout!");
-                openknx.console.writeDiagenoseKo("");
-                openknx.console.writeDiagenoseKo("-> .. state=SS");
-                openknx.console.writeDiagenoseKo("");
-                openknx.console.writeDiagenoseKo("-> .. symbol=X");
-                openknx.console.writeDiagenoseKo("");
+                openknx.console.writeDiagnoseKo("");
+                openknx.console.writeDiagnoseKo("-> .. timeout!");
+                openknx.console.writeDiagnoseKo("");
+                openknx.console.writeDiagnoseKo("-> .. state=SS");
+                openknx.console.writeDiagnoseKo("");
+                openknx.console.writeDiagnoseKo("-> .. symbol=X");
+                openknx.console.writeDiagnoseKo("");
                 /* TODO include when stable
-                openknx.console.writeDiagenoseKo("-> .. choice=x");
-                openknx.console.writeDiagenoseKo("");
+                openknx.console.writeDiagnoseKo("-> .. choice=x");
+                openknx.console.writeDiagnoseKo("");
                 */
-                openknx.console.writeDiagenoseKo("-> .. history");
-                openknx.console.writeDiagenoseKo("");
-                openknx.console.writeDiagenoseKo("(diagCtrl=ON)");
+                openknx.console.writeDiagnoseKo("-> .. history");
+                openknx.console.writeDiagnoseKo("");
+                openknx.console.writeDiagnoseKo("(diagCtrl=ON)");
             }
             else
             {
-                openknx.console.writeDiagenoseKo("");
-                openknx.console.writeDiagenoseKo("(diagCtrl=OFF)");
+                openknx.console.writeDiagnoseKo("");
+                openknx.console.writeDiagnoseKo("(diagCtrl=OFF)");
             }
             return true;
         }
