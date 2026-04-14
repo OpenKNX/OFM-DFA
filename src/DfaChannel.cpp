@@ -959,6 +959,14 @@ bool DfaChannel::processCommandDfa(bool diagnoseKo)
         return true;
     }
 
+    if (_processStartup)
+    {
+        logInfoP("STARTUP");
+        if (diagnoseKo)
+            openknx.console.writeDiagnoseKo("STARTUP");
+        return true;
+    }
+
     const uint8_t state = _state + 1;
     const char mode = _running ? '<' : ']';
     if (state > 99)
