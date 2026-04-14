@@ -88,7 +88,7 @@ Weitere Anwendungen (ohne detaillierte Dokumentation):
 > 
 > ***Hinweis:*** 
 > Die Erweiterung mit bedingten Übergängen ist nicht mehr durch das nachfolgend beschriebene Modell abgedeckt.
-> Werden diese verwendet, so werden damit bestimmte Garantieren verloren.  
+> Werden diese verwendet, so gehen damit bestimmte Garantieren verloren.  
 
 ### Z&subset;{z<sub>1</sub>,..,z<sub>16</sub>} := Menge der Zustände
 ... wird als Teilmenge von DPT17.001 (Szenen: {0=Szene1,..,63=Szene64}) dargestellt.
