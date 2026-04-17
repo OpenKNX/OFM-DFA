@@ -4,6 +4,7 @@
   * Für Eingänge, Zustandsübergänge und Ausgänge 
   * Erweiterung (Entwicklung): Strukturierte Test- und Ausgabemöglichkeit für Kanal-Parameter in Debug-Build (Kommandos `dfa *test*` und `dfa *parm*`)
 * Fix #72: Anzeige von Startvorgang und Entfernen von `NO_TIMEOUT` in Kanal-Diagnose-Antwort
+* Fix (Doc): Fehlende Dokumentationfür Kommando `symbol=T` ergänzt
 * Fix: ParameterType-Namen wichen von Ids ab
     * DocText255, DfaInputLogicNumberOptional
     * Merged Part: DfaChoiceStateENUM (wurde nicht Teil des ausgegebenen XML)
@@ -11,7 +12,7 @@
   * Compile-Time-Checks
   * Falsch geschriebener Methoden-Name für  `openknx.console` (Methode `writeDiagenoseKo` -> `writeDiagnoseKo`)
   * Alte TODOs entfernt
-* Dokumentation: Kleinere Korrekturen
+  * Dokumentation: Kleinere Korrekturen
 
 
 # 2026-04-04 v0.8.2 ("Bedingter Startzustand + Input Fixes")
