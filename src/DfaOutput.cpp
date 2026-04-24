@@ -122,7 +122,7 @@ void DfaOutput::outputUpdate(const bool send, const bool forceSend /* = false */
         // output has value for state?
         if (outputStateSend != 0)
         {
-            const uint32_t pIdxValue = DFA_ParamCalcIndex(_outputValuePRI[_state][i]);
+            const uint32_t pIdxValue = DFA_ParamCalcIndex(_DFA_az___o___Dpt1(_state, i));
             // logDebugP("         -> paramIndex=%i", pIdxValue);
 
             // set value based on dpt
