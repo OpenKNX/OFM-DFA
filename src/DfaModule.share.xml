@@ -34,7 +34,7 @@
                 </TypeRestriction>
               </ParameterType>
 
-              <ParameterType Id="%AID%_PT-DocText255" Name="DocumentationText255Char">
+              <ParameterType Id="%AID%_PT-DocText255" Name="DocText255">
                 <TypeText SizeInBit="2040" />
               </ParameterType>              
 
@@ -120,7 +120,7 @@
                 <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="1" maxInclusive="%LOG_NumChannels%" />
               </ParameterType>
 
-              <ParameterType Id="%AID%_PT-DfaInputLogicNumberOptional" Name="DfaInputLogicNumber">
+              <ParameterType Id="%AID%_PT-DfaInputLogicNumberOptional" Name="DfaInputLogicNumberOptional">
                 <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="0" maxInclusive="%LOG_NumChannels%" />
               </ParameterType>
 
