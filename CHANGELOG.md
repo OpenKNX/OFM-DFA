@@ -1,3 +1,7 @@
+# (upcoming with new xml version)
+ 
+* Fix: ParameterType-Names were not in sync with id (DocText255, DfaInputLogicNumberOptional)
+
 # (upcoming)
 
 * Fix #72: Show Startup and do not include "NO_TIMEOUT" in Channel-State Response
