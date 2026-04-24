@@ -73,7 +73,7 @@ void DfaOutput::stateUpdate(const uint8_t newState, const bool restoreOutputs)
 uint8_t DfaOutput::outputGetDpt()
 {
     // return knx.paramByte(DFA_ParamCalcIndex(_outputDptPRI[i]));
-    return ParamDFA_aOutput_I_Dpt(i);
+    return _ParamDFA_aOutput___Dpt(i);
 }
 
 uint8_t DfaOutput::getCurrentStateSendConfig()

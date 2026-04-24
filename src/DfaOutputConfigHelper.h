@@ -16,13 +16,13 @@ static_assert(_DFA_KoKOaOutput___(3) == DFA_KoKOaOutput4);
 #define _KoDFA_KOaOutput___(IDX)  (knx.getGroupObject(DFA_KoCalcNumber(_DFA_KoKOaOutput___(IDX))))
 
 // calc local Param-Offset for Ausgangs-Datentyp
-#define index_ParamDFA_aOutput_I_Dpt(i)                (DFA_aOutput1Dpt + i * (DFA_aOutput2Dpt-DFA_aOutput1Dpt))
-    static_assert(DFA_aOutput1Dpt == index_ParamDFA_aOutput_I_Dpt(0), "Wrong index_ParamDFA_aOutput_I_Dpt(0)");
-    static_assert(DFA_aOutput2Dpt == index_ParamDFA_aOutput_I_Dpt(1), "Wrong index_ParamDFA_aOutput_I_Dpt(1)");
-    static_assert(DFA_aOutput3Dpt == index_ParamDFA_aOutput_I_Dpt(2), "Wrong index_ParamDFA_aOutput_I_Dpt(2)");
-    static_assert(DFA_aOutput4Dpt == index_ParamDFA_aOutput_I_Dpt(3), "Wrong index_ParamDFA_aOutput_I_Dpt(3)");
+#define _DFA_aOutput___Dpt(IDX)       (DFA_aOutput1Dpt + IDX * (DFA_aOutput2Dpt - DFA_aOutput1Dpt))
+static_assert(_DFA_aOutput___Dpt(0) == DFA_aOutput1Dpt);
+static_assert(_DFA_aOutput___Dpt(1) == DFA_aOutput2Dpt);
+static_assert(_DFA_aOutput___Dpt(2) == DFA_aOutput3Dpt);
+static_assert(_DFA_aOutput___Dpt(3) == DFA_aOutput4Dpt);
 // Datentyp Ausgabe i (0-based)
-#define ParamDFA_aOutput_I_Dpt(i)                      (knx.paramByte(DFA_ParamCalcIndex(index_ParamDFA_aOutput_I_Dpt(i))))
+#define _ParamDFA_aOutput___Dpt(IDX)  (knx.paramByte(DFA_ParamCalcIndex(_DFA_aOutput___Dpt(IDX))))
 
 const uint16_t DfaOutput::_outputIntervalPRI[DFA_DEF_OUTPUTS_COUNT] = {
     DFA_aOutput1IntervalTime,
