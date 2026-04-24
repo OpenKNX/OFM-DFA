@@ -85,7 +85,7 @@ uint8_t DfaOutput::getCurrentStateSendConfig()
 {
     bool hasSend = false;
 
-    GroupObject *ko = &KoDFA_KOaOutput_N_(i);
+    GroupObject *ko = &_KoDFA_KOaOutput___(i);
     if (forceSend)
     {
         ko->value(value, type);

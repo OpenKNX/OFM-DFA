@@ -7,13 +7,13 @@
 // Define (relative) parameter address-index for next state by current state and input
 
 // calc local GO-Number for Wertausgang
-#define number_DFA_KoNumber_Output_I_(i)               (DFA_KoKOaOutput1 + i)
-    static_assert(DFA_KoKOaOutput1 == number_DFA_KoNumber_Output_I_(0), "Wrong number_DFA_KoNumber_Output_I_(0)");
-    static_assert(DFA_KoKOaOutput2 == number_DFA_KoNumber_Output_I_(1), "Wrong number_DFA_KoNumber_Output_I_(1)");
-    static_assert(DFA_KoKOaOutput3 == number_DFA_KoNumber_Output_I_(2), "Wrong number_DFA_KoNumber_Output_I_(2)");
-    static_assert(DFA_KoKOaOutput4 == number_DFA_KoNumber_Output_I_(3), "Wrong number_DFA_KoNumber_Output_I_(3)");
+#define _DFA_KoKOaOutput___(IDX)       (DFA_KoKOaOutput1 + IDX)
+static_assert(_DFA_KoKOaOutput___(0) == DFA_KoKOaOutput1);
+static_assert(_DFA_KoKOaOutput___(1) == DFA_KoKOaOutput2);
+static_assert(_DFA_KoKOaOutput___(2) == DFA_KoKOaOutput3);
+static_assert(_DFA_KoKOaOutput___(3) == DFA_KoKOaOutput4);
 // Wertausgang i (0-based)
-#define KoDFA_KOaOutput_N_(i)                        (knx.getGroupObject(DFA_KoCalcNumber(DFA_KoKOaOutput1 + i)))
+#define _KoDFA_KOaOutput___(IDX)  (knx.getGroupObject(DFA_KoCalcNumber(_DFA_KoKOaOutput___(IDX))))
 
 // calc local Param-Offset for Ausgangs-Datentyp
 #define index_ParamDFA_aOutput_I_Dpt(i)                (DFA_aOutput1Dpt + i * (DFA_aOutput2Dpt-DFA_aOutput1Dpt))
