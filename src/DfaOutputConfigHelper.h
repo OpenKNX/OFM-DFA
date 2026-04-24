@@ -24,12 +24,12 @@ static_assert(_DFA_aOutput___Dpt(3) == DFA_aOutput4Dpt);
 // Datentyp Ausgabe i (0-based)
 #define _ParamDFA_aOutput___Dpt(IDX)  (knx.paramByte(DFA_ParamCalcIndex(_DFA_aOutput___Dpt(IDX))))
 
-const uint16_t DfaOutput::_outputIntervalPRI[DFA_DEF_OUTPUTS_COUNT] = {
-    DFA_aOutput1IntervalTime,
-    DFA_aOutput2IntervalTime,
-    DFA_aOutput3IntervalTime,
-    DFA_aOutput4IntervalTime,
-};
+# define _DFA_aOutput___IntervalTime(IDX)      (DFA_aOutput1IntervalTime + IDX * (DFA_aOutput2IntervalTime - DFA_aOutput1IntervalTime))
+static_assert(_DFA_aOutput___IntervalTime(0) == DFA_aOutput1IntervalTime);
+static_assert(_DFA_aOutput___IntervalTime(1) == DFA_aOutput2IntervalTime);
+static_assert(_DFA_aOutput___IntervalTime(2) == DFA_aOutput3IntervalTime);
+static_assert(_DFA_aOutput___IntervalTime(3) == DFA_aOutput4IntervalTime);
+#define _ParamDFA_aOutput___IntervalTimeMS(IDX)  (paramDelay(knx.paramWord(DFA_ParamCalcIndex(_DFA_aOutput___IntervalTime(IDX)))))
 
 
 const uint16_t DfaOutput::_outputSendPRI[DFA_DEF_STATES_COUNT][DFA_DEF_OUTPUTS_COUNT] = {

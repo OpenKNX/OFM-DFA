@@ -60,7 +60,7 @@ void DfaOutput::stateUpdate(const uint8_t newState, const bool restoreOutputs)
 
     // TODO check removal of `(outputGetDpt(i) != 0)`
     const bool cyclicSending = (outputGetDpt() != 0) && repeatedSending;
-    _timeout.delay_ms = cyclicSending ? paramDelay(knx.paramWord(DFA_ParamCalcIndex(_outputIntervalPRI[i]))) : 0;
+    _timeout.delay_ms = cyclicSending ? _ParamDFA_aOutput___IntervalTimeMS(i) : 0;
 
     logTraceP("Output<%d>: ko=%i on~Val=%i on~State=%i all=%i ; cyclic=%i",
                 i + 1, updateKo, sendOnChangedValue, sendOnChangedState, sendAlways, repeatedSending);
