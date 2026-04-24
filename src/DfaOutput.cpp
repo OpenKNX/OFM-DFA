@@ -76,9 +76,10 @@ uint8_t DfaOutput::outputGetDpt()
     return _ParamDFA_aOutput___Dpt(i);
 }
 
+// TODO inline
 uint8_t DfaOutput::getCurrentStateSendConfig()
 {
-    return knx.paramByte(DFA_ParamCalcIndex(_outputSendPRI[_state][i]));
+    return _ParamDFA_az___o___Send(_state, i);
 }
 
 /*bool*/ void DfaOutput::outputUpdateKO(const KNXValue &value, const Dpt &type, const bool send /* = false */, const bool forceSend /* = false */)
