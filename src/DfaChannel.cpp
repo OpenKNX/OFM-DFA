@@ -48,20 +48,49 @@ static_assert((DFA_aSymbolTInputMask == DFA_aSymbolAInputMask) && (DFA_aSymbolTI
 #define DFA_Channel_Input_Config(IDX) ((knx.paramByte(DFA_aSymbol__N__Ko(IDX)) & DFA_aSymbolAInputMask) >> DFA_aSymbolAInputShift)
 
 
-#if DFA_aSymbolALogicNumber != DFA_aSymbolAKoNumber
-    #error "DFA_aSymbolALogicNumber != DFA_aSymbolAKoNumber"
+#define _DFA_aSymbol___LogicNumber(IDX) (DFA_aSymbolALogicNumber + IDX * (DFA_aSymbolBLogicNumber - DFA_aSymbolALogicNumber))
+static_assert(_DFA_aSymbol___LogicNumber(0) == DFA_aSymbolALogicNumber);
+static_assert(_DFA_aSymbol___LogicNumber(1) == DFA_aSymbolBLogicNumber);
+static_assert(_DFA_aSymbol___LogicNumber(2) == DFA_aSymbolCLogicNumber);
+static_assert(_DFA_aSymbol___LogicNumber(3) == DFA_aSymbolDLogicNumber);
+static_assert(_DFA_aSymbol___LogicNumber(4) == DFA_aSymbolELogicNumber);
+static_assert(_DFA_aSymbol___LogicNumber(5) == DFA_aSymbolFLogicNumber);
+static_assert(_DFA_aSymbol___LogicNumber(6) == DFA_aSymbolGLogicNumber);
+static_assert(_DFA_aSymbol___LogicNumber(7) == DFA_aSymbolHLogicNumber);
+static_assert(_DFA_aSymbol___LogicNumber(8) == DFA_aSymbolTLogicNumber);
+#ifdef DFA_aSymbolALogicNumberMask
+    #error "DFA_aSymbolALogicNumber not expected to have Mask!"
 #endif
-const uint16_t DfaChannel::_inputConfNumberPRI[DFA_DEF_INPUTS_WITH_T_COUNT] = {
-    DFA_aSymbolAKoNumber,
-    DFA_aSymbolBKoNumber,
-    DFA_aSymbolCKoNumber,
-    DFA_aSymbolDKoNumber,
-    DFA_aSymbolEKoNumber,
-    DFA_aSymbolFKoNumber,
-    DFA_aSymbolGKoNumber,
-    DFA_aSymbolHKoNumber,
-    DFA_aSymbolTKoNumber,
-};
+#ifdef DFA_aSymbolALogicNumberShift
+    #error "DFA_aSymbolALogicNumber not expected to have Shift!"
+#endif
+#define _ParamDFA_aSymbol___LogicNumber(IDX) (knx.paramWord(DFA_ParamCalcIndex(_DFA_aSymbol___LogicNumber(IDX))))
+
+// return ((knx.paramWord(DFA_ParamCalcIndex(
+//                                  DFA_aSymbolAKoNumber + input * (DFA_aSymbolBKoNumber - DFA_aSymbolAKoNumber))) & DFA_aSymbolAKoNumberMask) >> DFA_aSymbolAKoNumberShift);
+#define _DFA_aSymbol___KoNumber(IDX) (DFA_aSymbolAKoNumber + IDX * (DFA_aSymbolBKoNumber - DFA_aSymbolAKoNumber))
+static_assert(_DFA_aSymbol___KoNumber(0) == DFA_aSymbolAKoNumber);
+static_assert(_DFA_aSymbol___KoNumber(1) == DFA_aSymbolBKoNumber);
+static_assert(_DFA_aSymbol___KoNumber(2) == DFA_aSymbolCKoNumber);
+static_assert(_DFA_aSymbol___KoNumber(3) == DFA_aSymbolDKoNumber);
+static_assert(_DFA_aSymbol___KoNumber(4) == DFA_aSymbolEKoNumber);
+static_assert(_DFA_aSymbol___KoNumber(5) == DFA_aSymbolFKoNumber);
+static_assert(_DFA_aSymbol___KoNumber(6) == DFA_aSymbolGKoNumber);
+static_assert(_DFA_aSymbol___KoNumber(7) == DFA_aSymbolHKoNumber);
+static_assert(_DFA_aSymbol___KoNumber(8) == DFA_aSymbolTKoNumber);
+#define _DFA_aSymbol___KoNumberMask (DFA_aSymbolAKoNumberMask)
+#define _DFA_aSymbol___KoNumberShift (DFA_aSymbolAKoNumberShift)
+static_assert(DFA_aSymbolAKoNumberMask == _DFA_aSymbol___KoNumberMask); static_assert(DFA_aSymbolAKoNumberShift == _DFA_aSymbol___KoNumberShift);
+static_assert(DFA_aSymbolBKoNumberMask == _DFA_aSymbol___KoNumberMask); static_assert(DFA_aSymbolBKoNumberShift == _DFA_aSymbol___KoNumberShift);
+static_assert(DFA_aSymbolCKoNumberMask == _DFA_aSymbol___KoNumberMask); static_assert(DFA_aSymbolCKoNumberShift == _DFA_aSymbol___KoNumberShift);
+static_assert(DFA_aSymbolDKoNumberMask == _DFA_aSymbol___KoNumberMask); static_assert(DFA_aSymbolDKoNumberShift == _DFA_aSymbol___KoNumberShift);
+static_assert(DFA_aSymbolEKoNumberMask == _DFA_aSymbol___KoNumberMask); static_assert(DFA_aSymbolEKoNumberShift == _DFA_aSymbol___KoNumberShift);
+static_assert(DFA_aSymbolFKoNumberMask == _DFA_aSymbol___KoNumberMask); static_assert(DFA_aSymbolFKoNumberShift == _DFA_aSymbol___KoNumberShift);
+static_assert(DFA_aSymbolGKoNumberMask == _DFA_aSymbol___KoNumberMask); static_assert(DFA_aSymbolGKoNumberShift == _DFA_aSymbol___KoNumberShift);
+static_assert(DFA_aSymbolHKoNumberMask == _DFA_aSymbol___KoNumberMask); static_assert(DFA_aSymbolHKoNumberShift == _DFA_aSymbol___KoNumberShift);
+static_assert(DFA_aSymbolTKoNumberMask == _DFA_aSymbol___KoNumberMask); static_assert(DFA_aSymbolTKoNumberShift == _DFA_aSymbol___KoNumberShift);
+#define _ParamDFA_aSymbol___KoNumber(IDX) ((knx.paramWord(DFA_ParamCalcIndex(_DFA_aSymbol___KoNumber(IDX))) & _DFA_aSymbol___KoNumberMask) >> _DFA_aSymbol___KoNumberShift)
+
 const uint16_t DfaChannel::_inputTriggerPRI[DFA_DEF_INPUTS_WITH_T_COUNT] = {
     DFA_aSymbolATrigger,
     DFA_aSymbolBTrigger,
@@ -298,8 +327,7 @@ uint16_t DfaChannel::getInputKoNumber(const uint8_t input)
             return _KoDFA_KOaInput___(input);
         case 3: // Logic-Output (KO)
             {
-                // TODO optimize/use API for this
-                const u_int16_t logicNumber = knx.paramWord(DFA_ParamCalcIndex(_inputConfNumberPRI[input]));
+                const u_int16_t logicNumber = _ParamDFA_aSymbol___LogicNumber(input);
                 if (logicNumber > LOG_ChannelCount || logicNumber > 99)
                 {
                     logErrorP("Invalid LOG-channel %u for input %u", logicNumber, input);
@@ -308,19 +336,7 @@ uint16_t DfaChannel::getInputKoNumber(const uint8_t input)
                 return getLogicOutputKoNumber(logicNumber - 1);
             }
         case 2: // Existing KO
-
-            // TODO move asserts to separate file and refactor parameter handling!
-            static_assert((DFA_aSymbolBKoNumberMask == DFA_aSymbolAKoNumberMask) && (DFA_aSymbolBKoNumberShift == DFA_aSymbolAKoNumberShift), "DFA_aSymbol{?}KoNumber{Mask,Shift} mismatch for {A,B}");
-            static_assert((DFA_aSymbolCKoNumberMask == DFA_aSymbolAKoNumberMask) && (DFA_aSymbolCKoNumberShift == DFA_aSymbolAKoNumberShift), "DFA_aSymbol{?}KoNumber{Mask,Shift} mismatch for {A,C}");
-            static_assert((DFA_aSymbolDKoNumberMask == DFA_aSymbolAKoNumberMask) && (DFA_aSymbolDKoNumberShift == DFA_aSymbolAKoNumberShift), "DFA_aSymbol{?}KoNumber{Mask,Shift} mismatch for {A,D}");
-            static_assert((DFA_aSymbolEKoNumberMask == DFA_aSymbolAKoNumberMask) && (DFA_aSymbolEKoNumberShift == DFA_aSymbolAKoNumberShift), "DFA_aSymbol{?}KoNumber{Mask,Shift} mismatch for {A,E}");
-            static_assert((DFA_aSymbolFKoNumberMask == DFA_aSymbolAKoNumberMask) && (DFA_aSymbolFKoNumberShift == DFA_aSymbolAKoNumberShift), "DFA_aSymbol{?}KoNumber{Mask,Shift} mismatch for {A,F}");
-            static_assert((DFA_aSymbolGKoNumberMask == DFA_aSymbolAKoNumberMask) && (DFA_aSymbolGKoNumberShift == DFA_aSymbolAKoNumberShift), "DFA_aSymbol{?}KoNumber{Mask,Shift} mismatch for {A,G}");
-            static_assert((DFA_aSymbolHKoNumberMask == DFA_aSymbolAKoNumberMask) && (DFA_aSymbolHKoNumberShift == DFA_aSymbolAKoNumberShift), "DFA_aSymbol{?}KoNumber{Mask,Shift} mismatch for {A,H}");
-            static_assert((DFA_aSymbolTKoNumberMask == DFA_aSymbolAKoNumberMask) && (DFA_aSymbolTKoNumberShift == DFA_aSymbolAKoNumberShift), "DFA_aSymbol{?}KoNumber{Mask,Shift} mismatch for {A,T}");
-            // #define ParamDFA_aSymbolAKoNumber
-            //     ((knx.paramWord(DFA_ParamCalcIndex(DFA_aSymbolAKoNumber      )) & DFA_aSymbolAKoNumberMask) >> DFA_aSymbolAKoNumberShift)
-            return ((knx.paramWord(DFA_ParamCalcIndex(_inputConfNumberPRI[input])) & DFA_aSymbolAKoNumberMask) >> DFA_aSymbolAKoNumberShift);
+            return _ParamDFA_aSymbol___KoNumber(input);
     }
     // default, including case 0 (disabled)
     return 0;
