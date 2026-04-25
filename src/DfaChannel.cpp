@@ -190,78 +190,77 @@ static_assert(_DFA_ad___(63, 0) == DFA_ad64A); static_assert(_DFA_ad___(63, 1) =
 //                                              knx.paramByte(DFA_ParamCalcIndex(_DFA_ad___(_state, input)))
 #define _ParamDFA_ad___(STATE_IDX, SYMBOL_IDX) (knx.paramByte(DFA_ParamCalcIndex(_DFA_ad___(STATE_IDX, SYMBOL_IDX))))
 
-// TODO calculate index; expected distance should be protected by compile error
 // Define (relative) parameter address-index for timeout duration and timeout state
-const uint16_t DfaChannel::_timeoutPRI[DFA_DEF_STATES_COUNT] = {
-    {DFA_ad01TTime},
-    {DFA_ad02TTime},
-    {DFA_ad03TTime},
-    {DFA_ad04TTime},
-    {DFA_ad05TTime},
-    {DFA_ad06TTime},
-    {DFA_ad07TTime},
-    {DFA_ad08TTime},
-    {DFA_ad09TTime},
-    {DFA_ad10TTime},
-    {DFA_ad11TTime},
-    {DFA_ad12TTime},
-    {DFA_ad13TTime},
-    {DFA_ad14TTime},
-    {DFA_ad15TTime},
-    {DFA_ad16TTime},
+#define _DFA_ad___TTime(IDX) (DFA_ad01TTime + IDX * (DFA_ad02TTime - DFA_ad01TTime))
+static_assert(_DFA_ad___TTime( 0) == DFA_ad01TTime);
+static_assert(_DFA_ad___TTime( 1) == DFA_ad02TTime);
+static_assert(_DFA_ad___TTime( 2) == DFA_ad03TTime);
+static_assert(_DFA_ad___TTime( 3) == DFA_ad04TTime);
+static_assert(_DFA_ad___TTime( 4) == DFA_ad05TTime);
+static_assert(_DFA_ad___TTime( 5) == DFA_ad06TTime);
+static_assert(_DFA_ad___TTime( 6) == DFA_ad07TTime);
+static_assert(_DFA_ad___TTime( 7) == DFA_ad08TTime);
+static_assert(_DFA_ad___TTime( 8) == DFA_ad09TTime);
+static_assert(_DFA_ad___TTime( 9) == DFA_ad10TTime);
+static_assert(_DFA_ad___TTime(10) == DFA_ad11TTime);
+static_assert(_DFA_ad___TTime(11) == DFA_ad12TTime);
+static_assert(_DFA_ad___TTime(12) == DFA_ad13TTime);
+static_assert(_DFA_ad___TTime(13) == DFA_ad14TTime);
+static_assert(_DFA_ad___TTime(14) == DFA_ad15TTime);
+static_assert(_DFA_ad___TTime(15) == DFA_ad16TTime);
 #if DFA_DEF_STATES_COUNT > 16
-    {DFA_ad17TTime},
-    {DFA_ad18TTime},
-    {DFA_ad19TTime},
-    {DFA_ad20TTime},
-    {DFA_ad21TTime},
-    {DFA_ad22TTime},
-    {DFA_ad23TTime},
-    {DFA_ad24TTime},
-    {DFA_ad25TTime},
-    {DFA_ad26TTime},
-    {DFA_ad27TTime},
-    {DFA_ad28TTime},
-    {DFA_ad29TTime},
-    {DFA_ad30TTime},
-    {DFA_ad31TTime},
-    {DFA_ad32TTime},
+static_assert(_DFA_ad___TTime(16) == DFA_ad17TTime);
+static_assert(_DFA_ad___TTime(17) == DFA_ad18TTime);
+static_assert(_DFA_ad___TTime(18) == DFA_ad19TTime);
+static_assert(_DFA_ad___TTime(19) == DFA_ad20TTime);
+static_assert(_DFA_ad___TTime(20) == DFA_ad21TTime);
+static_assert(_DFA_ad___TTime(21) == DFA_ad22TTime);
+static_assert(_DFA_ad___TTime(22) == DFA_ad23TTime);
+static_assert(_DFA_ad___TTime(23) == DFA_ad24TTime);
+static_assert(_DFA_ad___TTime(24) == DFA_ad25TTime);
+static_assert(_DFA_ad___TTime(25) == DFA_ad26TTime);
+static_assert(_DFA_ad___TTime(26) == DFA_ad27TTime);
+static_assert(_DFA_ad___TTime(27) == DFA_ad28TTime);
+static_assert(_DFA_ad___TTime(28) == DFA_ad29TTime);
+static_assert(_DFA_ad___TTime(29) == DFA_ad30TTime);
+static_assert(_DFA_ad___TTime(30) == DFA_ad31TTime);
+static_assert(_DFA_ad___TTime(31) == DFA_ad32TTime);
 #endif
 #if DFA_DEF_STATES_COUNT > 32
-    {DFA_ad33TTime},
-    {DFA_ad34TTime},
-    {DFA_ad35TTime},
-    {DFA_ad36TTime},
-    {DFA_ad37TTime},
-    {DFA_ad38TTime},
-    {DFA_ad39TTime},
-    {DFA_ad40TTime},
-    {DFA_ad41TTime},
-    {DFA_ad42TTime},
-    {DFA_ad43TTime},
-    {DFA_ad44TTime},
-    {DFA_ad45TTime},
-    {DFA_ad46TTime},
-    {DFA_ad47TTime},
-    {DFA_ad48TTime},
-    {DFA_ad49TTime},
-    {DFA_ad50TTime},
-    {DFA_ad51TTime},
-    {DFA_ad52TTime},
-    {DFA_ad53TTime},
-    {DFA_ad54TTime},
-    {DFA_ad55TTime},
-    {DFA_ad56TTime},
-    {DFA_ad57TTime},
-    {DFA_ad58TTime},
-    {DFA_ad59TTime},
-    {DFA_ad60TTime},
-    {DFA_ad61TTime},
-    {DFA_ad62TTime},
-    {DFA_ad63TTime},
-    {DFA_ad64TTime},
+static_assert(_DFA_ad___TTime(32) == DFA_ad33TTime);
+static_assert(_DFA_ad___TTime(33) == DFA_ad34TTime);
+static_assert(_DFA_ad___TTime(34) == DFA_ad35TTime);
+static_assert(_DFA_ad___TTime(35) == DFA_ad36TTime);
+static_assert(_DFA_ad___TTime(36) == DFA_ad37TTime);
+static_assert(_DFA_ad___TTime(37) == DFA_ad38TTime);
+static_assert(_DFA_ad___TTime(38) == DFA_ad39TTime);
+static_assert(_DFA_ad___TTime(39) == DFA_ad40TTime);
+static_assert(_DFA_ad___TTime(40) == DFA_ad41TTime);
+static_assert(_DFA_ad___TTime(41) == DFA_ad42TTime);
+static_assert(_DFA_ad___TTime(42) == DFA_ad43TTime);
+static_assert(_DFA_ad___TTime(43) == DFA_ad44TTime);
+static_assert(_DFA_ad___TTime(44) == DFA_ad45TTime);
+static_assert(_DFA_ad___TTime(45) == DFA_ad46TTime);
+static_assert(_DFA_ad___TTime(46) == DFA_ad47TTime);
+static_assert(_DFA_ad___TTime(47) == DFA_ad48TTime);
+static_assert(_DFA_ad___TTime(48) == DFA_ad49TTime);
+static_assert(_DFA_ad___TTime(49) == DFA_ad50TTime);
+static_assert(_DFA_ad___TTime(50) == DFA_ad51TTime);
+static_assert(_DFA_ad___TTime(51) == DFA_ad52TTime);
+static_assert(_DFA_ad___TTime(52) == DFA_ad53TTime);
+static_assert(_DFA_ad___TTime(53) == DFA_ad54TTime);
+static_assert(_DFA_ad___TTime(54) == DFA_ad55TTime);
+static_assert(_DFA_ad___TTime(55) == DFA_ad56TTime);
+static_assert(_DFA_ad___TTime(56) == DFA_ad57TTime);
+static_assert(_DFA_ad___TTime(57) == DFA_ad58TTime);
+static_assert(_DFA_ad___TTime(58) == DFA_ad59TTime);
+static_assert(_DFA_ad___TTime(59) == DFA_ad60TTime);
+static_assert(_DFA_ad___TTime(60) == DFA_ad61TTime);
+static_assert(_DFA_ad___TTime(61) == DFA_ad62TTime);
+static_assert(_DFA_ad___TTime(62) == DFA_ad63TTime);
+static_assert(_DFA_ad___TTime(63) == DFA_ad64TTime);
 #endif
-};
+#define _ParamDFA_ad___TTimeMS(IDX) (paramDelay(knx.paramWord(DFA_ParamCalcIndex(_DFA_ad___TTime(IDX)))))
 
 #pragma endregion "DFA_CHANNEL_ADDR"
 
@@ -551,7 +550,7 @@ void DfaChannel::setRunning(const bool requestRun, const bool first /*= false*/)
 uint32_t DfaChannel::getStateTimeoutDelay_ms(const uint8_t state)
 {
     // TODO ensure returning 0 for undefined timeout state
-    return paramDelay(knx.paramWord(DFA_ParamCalcIndex(_timeoutPRI[state])));
+    return _ParamDFA_ad___TTimeMS(state);
 }
 
 bool DfaChannel::isValidState(const uint8_t state)
