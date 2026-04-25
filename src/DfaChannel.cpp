@@ -7,21 +7,18 @@ static_assert(DFA_DEF_STATES_COUNT == 16 || DFA_DEF_STATES_COUNT == 32, "illegal
 
 #pragma region "DFA_CHANNEL_ADDR"
 
-const uint8_t DfaChannel::_inputKo[DFA_DEF_INPUTS_WITH_T_COUNT] = {
-    DFA_KoKOaInput1,
-    DFA_KoKOaInput2,
-    DFA_KoKOaInput3,
-    DFA_KoKOaInput4,
-    DFA_KoKOaInput5,
-    DFA_KoKOaInput6,
-    DFA_KoKOaInput7,
-    DFA_KoKOaInput8,
-    DFA_KoKOaInputT,
-};
-// Value of DFA_KoKOaInput[1-8] by 0-based index
-#define DFA_KoKOaInput__N__(IDX) DFA_KoKOaInput1 + IDX * (DFA_KoKOaInput2 - DFA_KoKOaInput1)
-// Value of DFA_KoCalcNumber(DFA_KoKOaInput[1-8]) by 0-based index
-#define DFA_Channel_Input_KO(IDX) DFA_KoCalcNumber(DFA_KoKOaInput__N__(IDX))
+// Value of DFA_KoKOaInput{1..8,T} by 0-based index
+#define _DFA_KoKOaInput___(IDX) (DFA_KoKOaInput1 + IDX * (DFA_KoKOaInput2 - DFA_KoKOaInput1))
+static_assert(_DFA_KoKOaInput___(0) == DFA_KoKOaInput1);
+static_assert(_DFA_KoKOaInput___(1) == DFA_KoKOaInput2);
+static_assert(_DFA_KoKOaInput___(2) == DFA_KoKOaInput3);
+static_assert(_DFA_KoKOaInput___(3) == DFA_KoKOaInput4);
+static_assert(_DFA_KoKOaInput___(4) == DFA_KoKOaInput5);
+static_assert(_DFA_KoKOaInput___(5) == DFA_KoKOaInput6);
+static_assert(_DFA_KoKOaInput___(6) == DFA_KoKOaInput7);
+static_assert(_DFA_KoKOaInput___(7) == DFA_KoKOaInput8);
+static_assert(_DFA_KoKOaInput___(8) == DFA_KoKOaInputT);
+#define _KoDFA_KOaInput___(IDX) (DFA_KoCalcNumber(_DFA_KoKOaInput___(IDX)))
 
 // TODO calculate index; expected distance should be protected by compile error
 const uint16_t DfaChannel::_inputConfPRI[DFA_DEF_INPUTS_WITH_T_COUNT] = {
@@ -298,7 +295,7 @@ uint16_t DfaChannel::getInputKoNumber(const uint8_t input)
     switch (inputConf)
     {
         case 1: // Own KO
-            return DFA_KoCalcNumber(_inputKo[input]);
+            return _KoDFA_KOaInput___(input);
         case 3: // Logic-Output (KO)
             {
                 // TODO optimize/use API for this
