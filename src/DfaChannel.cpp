@@ -91,27 +91,29 @@ static_assert(DFA_aSymbolHKoNumberMask == _DFA_aSymbol___KoNumberMask); static_a
 static_assert(DFA_aSymbolTKoNumberMask == _DFA_aSymbol___KoNumberMask); static_assert(DFA_aSymbolTKoNumberShift == _DFA_aSymbol___KoNumberShift);
 #define _ParamDFA_aSymbol___KoNumber(IDX) ((knx.paramWord(DFA_ParamCalcIndex(_DFA_aSymbol___KoNumber(IDX))) & _DFA_aSymbol___KoNumberMask) >> _DFA_aSymbol___KoNumberShift)
 
-const uint16_t DfaChannel::_inputTriggerPRI[DFA_DEF_INPUTS_WITH_T_COUNT] = {
-    DFA_aSymbolATrigger,
-    DFA_aSymbolBTrigger,
-    DFA_aSymbolCTrigger,
-    DFA_aSymbolDTrigger,
-    DFA_aSymbolETrigger,
-    DFA_aSymbolFTrigger,
-    DFA_aSymbolGTrigger,
-    DFA_aSymbolHTrigger,
-    DFA_aSymbolTTrigger,
-};
-static_assert((DFA_aSymbolBTriggerMask == DFA_aSymbolATriggerMask) && (DFA_aSymbolBTriggerShift == DFA_aSymbolATriggerShift));
-static_assert((DFA_aSymbolCTriggerMask == DFA_aSymbolATriggerMask) && (DFA_aSymbolCTriggerShift == DFA_aSymbolATriggerShift));
-static_assert((DFA_aSymbolDTriggerMask == DFA_aSymbolATriggerMask) && (DFA_aSymbolDTriggerShift == DFA_aSymbolATriggerShift));
-static_assert((DFA_aSymbolETriggerMask == DFA_aSymbolATriggerMask) && (DFA_aSymbolETriggerShift == DFA_aSymbolATriggerShift));
-static_assert((DFA_aSymbolFTriggerMask == DFA_aSymbolATriggerMask) && (DFA_aSymbolFTriggerShift == DFA_aSymbolATriggerShift));
-static_assert((DFA_aSymbolGTriggerMask == DFA_aSymbolATriggerMask) && (DFA_aSymbolGTriggerShift == DFA_aSymbolATriggerShift));
-static_assert((DFA_aSymbolHTriggerMask == DFA_aSymbolATriggerMask) && (DFA_aSymbolHTriggerShift == DFA_aSymbolATriggerShift));
-static_assert((DFA_aSymbolTTriggerMask == DFA_aSymbolATriggerMask) && (DFA_aSymbolTTriggerShift == DFA_aSymbolATriggerShift));
-#define DFA_aSymbol___TriggerMask DFA_aSymbolATriggerMask
-#define DFA_aSymbol___TriggerShift DFA_aSymbolATriggerShift
+#define _DFA_aSymbol___Trigger(IDX) (DFA_aSymbolATrigger + IDX * (DFA_aSymbolBTrigger - DFA_aSymbolATrigger))
+static_assert(_DFA_aSymbol___Trigger(0) == DFA_aSymbolATrigger);
+static_assert(_DFA_aSymbol___Trigger(1) == DFA_aSymbolBTrigger);
+static_assert(_DFA_aSymbol___Trigger(2) == DFA_aSymbolCTrigger);
+static_assert(_DFA_aSymbol___Trigger(3) == DFA_aSymbolDTrigger);
+static_assert(_DFA_aSymbol___Trigger(4) == DFA_aSymbolETrigger);
+static_assert(_DFA_aSymbol___Trigger(5) == DFA_aSymbolFTrigger);
+static_assert(_DFA_aSymbol___Trigger(6) == DFA_aSymbolGTrigger);
+static_assert(_DFA_aSymbol___Trigger(7) == DFA_aSymbolHTrigger);
+static_assert(_DFA_aSymbol___Trigger(8) == DFA_aSymbolTTrigger);
+#define _DFA_aSymbol___TriggerMask (DFA_aSymbolATriggerMask)
+#define _DFA_aSymbol___TriggerShift (DFA_aSymbolATriggerShift)
+static_assert(DFA_aSymbolATriggerMask == _DFA_aSymbol___TriggerMask); static_assert(DFA_aSymbolATriggerShift == _DFA_aSymbol___TriggerShift);
+static_assert(DFA_aSymbolBTriggerMask == _DFA_aSymbol___TriggerMask); static_assert(DFA_aSymbolBTriggerShift == _DFA_aSymbol___TriggerShift);
+static_assert(DFA_aSymbolCTriggerMask == _DFA_aSymbol___TriggerMask); static_assert(DFA_aSymbolCTriggerShift == _DFA_aSymbol___TriggerShift);
+static_assert(DFA_aSymbolDTriggerMask == _DFA_aSymbol___TriggerMask); static_assert(DFA_aSymbolDTriggerShift == _DFA_aSymbol___TriggerShift);
+static_assert(DFA_aSymbolETriggerMask == _DFA_aSymbol___TriggerMask); static_assert(DFA_aSymbolETriggerShift == _DFA_aSymbol___TriggerShift);
+static_assert(DFA_aSymbolFTriggerMask == _DFA_aSymbol___TriggerMask); static_assert(DFA_aSymbolFTriggerShift == _DFA_aSymbol___TriggerShift);
+static_assert(DFA_aSymbolGTriggerMask == _DFA_aSymbol___TriggerMask); static_assert(DFA_aSymbolGTriggerShift == _DFA_aSymbol___TriggerShift);
+static_assert(DFA_aSymbolHTriggerMask == _DFA_aSymbol___TriggerMask); static_assert(DFA_aSymbolHTriggerShift == _DFA_aSymbol___TriggerShift);
+static_assert(DFA_aSymbolTTriggerMask == _DFA_aSymbol___TriggerMask); static_assert(DFA_aSymbolTTriggerShift == _DFA_aSymbol___TriggerShift);
+// old usage:                              (knx.paramByte(DFA_ParamCalcIndex(DFA_aSymbol___Trigger( i ))) & DFA_aSymbol___TriggerMask) >> DFA_aSymbol___TriggerShift;
+#define _ParamDFA_aSymbol___Trigger(IDX) ((knx.paramByte(DFA_ParamCalcIndex(_DFA_aSymbol___Trigger(IDX))) & _DFA_aSymbol___TriggerMask) >> _DFA_aSymbol___TriggerShift)
 
 
 // TODO calculate index; expected distance should be protected by compile error
@@ -346,7 +348,7 @@ void DfaChannel::initNonPairedInput(const uint8_t i)
 {
     const uint16_t koNumber = getInputKoNumber(i);
     _inputs[i].koNumber = koNumber;
-    _inputs[i].trigger = (koNumber > 0) ? static_cast<DfaInputTrigger>((knx.paramByte(DFA_ParamCalcIndex(_inputTriggerPRI[i])) & DFA_aSymbol___TriggerMask) >> DFA_aSymbol___TriggerShift) : DfaInputTrigger::disabled;
+    _inputs[i].trigger = (koNumber > 0) ? static_cast<DfaInputTrigger>(_ParamDFA_aSymbol___Trigger(i)) : DfaInputTrigger::disabled;
     if (koNumber != 0 || _inputs[i].trigger != DfaInputTrigger::disabled)
     {
         logDebugP("separate: %d ko=%-4i trigger=%c%c", i, koNumber, (static_cast<uint8_t>(_inputs[i].trigger) & 0b10) ? '1' : '_', (static_cast<uint8_t>(_inputs[i].trigger) & 0b01) ? '0' : '_');
