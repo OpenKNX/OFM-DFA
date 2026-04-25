@@ -313,24 +313,27 @@ uint16_t DfaChannel::getLogicOutputKoNumber(const uint8_t /* intended overlappin
 
 uint16_t DfaChannel::getInputKoNumber(const uint8_t input)
 {
-    const uint8_t inputConf = _ParamDFA_aSymbol___Input(input);
-    // logDebugP("  get ko for input=%i -> conf=%i", input, inputConf);
-    switch (inputConf)
+    if (input < DFA_DEF_INPUTS_WITH_T_COUNT)
     {
-        case 1: // Own KO
-            return _KoDFA_KOaInput___(input);
-        case 3: // Logic-Output (KO)
-            {
-                const u_int16_t logicNumber = _ParamDFA_aSymbol___LogicNumber(input);
-                if (logicNumber > LOG_ChannelCount || logicNumber > 99)
+        const uint8_t inputConf = _ParamDFA_aSymbol___Input(input);
+        // logDebugP("  get ko for input=%i -> conf=%i", input, inputConf);
+        switch (inputConf)
+        {
+            case 1: // Own KO
+                return _KoDFA_KOaInput___(input);
+            case 3: // Logic-Output (KO)
                 {
-                    logErrorP("Invalid LOG-channel %u for input %u", logicNumber, input);
-                    return 0;
+                    const u_int16_t logicNumber = _ParamDFA_aSymbol___LogicNumber(input);
+                    if (logicNumber > LOG_ChannelCount || logicNumber > 99)
+                    {
+                        logErrorP("Invalid LOG-channel %u for input %u", logicNumber, input);
+                        return 0;
+                    }
+                    return getLogicOutputKoNumber(logicNumber - 1);
                 }
-                return getLogicOutputKoNumber(logicNumber - 1);
-            }
-        case 2: // Existing KO
-            return _ParamDFA_aSymbol___KoNumber(input);
+            case 2: // Existing KO
+                return _ParamDFA_aSymbol___KoNumber(input);
+        }
     }
     // default, including case 0 (disabled)
     return 0;
