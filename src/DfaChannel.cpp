@@ -20,32 +20,30 @@ static_assert(_DFA_KoKOaInput___(7) == DFA_KoKOaInput8);
 static_assert(_DFA_KoKOaInput___(8) == DFA_KoKOaInputT);
 #define _KoDFA_KOaInput___(IDX) (DFA_KoCalcNumber(_DFA_KoKOaInput___(IDX)))
 
-// TODO calculate index; expected distance should be protected by compile error
-const uint16_t DfaChannel::_inputConfPRI[DFA_DEF_INPUTS_WITH_T_COUNT] = {
-    DFA_aSymbolAInput,
-    DFA_aSymbolBInput,
-    DFA_aSymbolCInput,
-    DFA_aSymbolDInput,
-    DFA_aSymbolEInput,
-    DFA_aSymbolFInput,
-    DFA_aSymbolGInput,
-    DFA_aSymbolHInput,
-    DFA_aSymbolTInput,
-};
-// Value of DFA_aInputSymbol[1-8]Ko by 0-based index
-#define DFA_aSymbol__N__Ko(IDX) DFA_aSymbolAInput + IDX * (DFA_aSymbolBInput - DFA_aSymbolAInput)
-static_assert((DFA_aSymbolBInputMask == DFA_aSymbolAInputMask) && (DFA_aSymbolBInputShift == DFA_aSymbolAInputShift));
-static_assert((DFA_aSymbolCInputMask == DFA_aSymbolAInputMask) && (DFA_aSymbolCInputShift == DFA_aSymbolAInputShift));
-static_assert((DFA_aSymbolDInputMask == DFA_aSymbolAInputMask) && (DFA_aSymbolDInputShift == DFA_aSymbolAInputShift));
-static_assert((DFA_aSymbolEInputMask == DFA_aSymbolAInputMask) && (DFA_aSymbolEInputShift == DFA_aSymbolAInputShift));
-static_assert((DFA_aSymbolFInputMask == DFA_aSymbolAInputMask) && (DFA_aSymbolFInputShift == DFA_aSymbolAInputShift));
-static_assert((DFA_aSymbolGInputMask == DFA_aSymbolAInputMask) && (DFA_aSymbolGInputShift == DFA_aSymbolAInputShift));
-static_assert((DFA_aSymbolHInputMask == DFA_aSymbolAInputMask) && (DFA_aSymbolHInputShift == DFA_aSymbolAInputShift));
-static_assert((DFA_aSymbolTInputMask == DFA_aSymbolAInputMask) && (DFA_aSymbolTInputShift == DFA_aSymbolAInputShift));
-#define DFA_aSymbol___InputMask DFA_aSymbolAInputMask
-#define DFA_aSymbol___InputShift DFA_aSymbolAInputShift
-//     const uint8_t inputConf = ((knx.paramByte(DFA_ParamCalcIndex(_inputConfPRI[input])) & DFA_aSymbolAInputMask) >> DFA_aSymbolAInputShift);
-#define DFA_Channel_Input_Config(IDX) ((knx.paramByte(DFA_aSymbol__N__Ko(IDX)) & DFA_aSymbolAInputMask) >> DFA_aSymbolAInputShift)
+// Value of DFA_aInputSymbol{1..8,T}Ko by 0-based index
+#define _DFA_aSymbol___Input(IDX) (DFA_aSymbolAInput + IDX * (DFA_aSymbolBInput - DFA_aSymbolAInput))
+static_assert(_DFA_aSymbol___Input(0) == DFA_aSymbolAInput);
+static_assert(_DFA_aSymbol___Input(1) == DFA_aSymbolBInput);
+static_assert(_DFA_aSymbol___Input(2) == DFA_aSymbolCInput);
+static_assert(_DFA_aSymbol___Input(3) == DFA_aSymbolDInput);
+static_assert(_DFA_aSymbol___Input(4) == DFA_aSymbolEInput);
+static_assert(_DFA_aSymbol___Input(5) == DFA_aSymbolFInput);
+static_assert(_DFA_aSymbol___Input(6) == DFA_aSymbolGInput);
+static_assert(_DFA_aSymbol___Input(7) == DFA_aSymbolHInput);
+static_assert(_DFA_aSymbol___Input(8) == DFA_aSymbolTInput);
+#define _DFA_aSymbol___InputMask (DFA_aSymbolAInputMask)
+#define _DFA_aSymbol___InputShift (DFA_aSymbolAInputShift)
+static_assert(DFA_aSymbolAInputMask == _DFA_aSymbol___InputMask); static_assert(DFA_aSymbolAInputShift == _DFA_aSymbol___InputShift);
+static_assert(DFA_aSymbolBInputMask == _DFA_aSymbol___InputMask); static_assert(DFA_aSymbolBInputShift == _DFA_aSymbol___InputShift);
+static_assert(DFA_aSymbolCInputMask == _DFA_aSymbol___InputMask); static_assert(DFA_aSymbolCInputShift == _DFA_aSymbol___InputShift);
+static_assert(DFA_aSymbolDInputMask == _DFA_aSymbol___InputMask); static_assert(DFA_aSymbolDInputShift == _DFA_aSymbol___InputShift);
+static_assert(DFA_aSymbolEInputMask == _DFA_aSymbol___InputMask); static_assert(DFA_aSymbolEInputShift == _DFA_aSymbol___InputShift);
+static_assert(DFA_aSymbolFInputMask == _DFA_aSymbol___InputMask); static_assert(DFA_aSymbolFInputShift == _DFA_aSymbol___InputShift);
+static_assert(DFA_aSymbolGInputMask == _DFA_aSymbol___InputMask); static_assert(DFA_aSymbolGInputShift == _DFA_aSymbol___InputShift);
+static_assert(DFA_aSymbolHInputMask == _DFA_aSymbol___InputMask); static_assert(DFA_aSymbolHInputShift == _DFA_aSymbol___InputShift);
+static_assert(DFA_aSymbolTInputMask == _DFA_aSymbol___InputMask); static_assert(DFA_aSymbolTInputShift == _DFA_aSymbol___InputShift);
+//                                    ((knx.paramByte(DFA_ParamCalcIndex(DFA_aSymbol{?}Input))     & DFA_aSymbolAInputMask) >> DFA_aSymbolAInputShift);
+#define _ParamDFA_aSymbol___Input(IDX) ((knx.paramByte(DFA_ParamCalcIndex(_DFA_aSymbol___Input(IDX))) & _DFA_aSymbol___InputMask) >> _DFA_aSymbol___InputShift)
 
 
 #define _DFA_aSymbol___LogicNumber(IDX) (DFA_aSymbolALogicNumber + IDX * (DFA_aSymbolBLogicNumber - DFA_aSymbolALogicNumber))
@@ -320,8 +318,7 @@ uint16_t DfaChannel::getLogicOutputKoNumber(const uint8_t /* intended overlappin
 
 uint16_t DfaChannel::getInputKoNumber(const uint8_t input)
 {
-    // TODO ensure position of T
-    const uint8_t inputConf = ((knx.paramByte(DFA_ParamCalcIndex(_inputConfPRI[input])) & DFA_aSymbol___InputMask) >> DFA_aSymbol___InputShift);
+    const uint8_t inputConf = _ParamDFA_aSymbol___Input(input);
     // logDebugP("  get ko for input=%i -> conf=%i", input, inputConf);
     switch (inputConf)
     {
