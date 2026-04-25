@@ -552,8 +552,7 @@ void DfaChannel::setRunning(const bool requestRun, const bool first /*= false*/)
 
 uint32_t DfaChannel::getStateTimeoutDelay_ms(const uint8_t state)
 {
-    // TODO ensure returning 0 for undefined timeout state
-    return _ParamDFA_ad___TTimeMS(state);
+    return (state < DFA_DEF_STATES_COUNT) ? _ParamDFA_ad___TTimeMS(state) : 0;
 }
 
 bool DfaChannel::isValidState(const uint8_t state)
