@@ -2,6 +2,9 @@
 // Copyright (C) 2023-2026 Cornelius Koepp
 
 #include "DfaChannel.h"
+#ifdef OPENKNX_DEBUG
+    #include "DfaOutputConfigHelper.h"
+#endif
 
 static_assert(DFA_DEF_STATES_COUNT == 16 || DFA_DEF_STATES_COUNT == 32, "illegal DFA_DEF_STATES_COUNT");
 
@@ -1063,6 +1066,53 @@ bool DfaChannel::processCommandDfaTesting()
         if (i > iFirst)
             logDebugP("... %ux ...", i - iFirst);
     }
+    return true;
+}
+
+bool DfaChannel::processCommandDfaParams()
+{
+    logDebugP("PARAM Collect:");
+    for (uint8_t i = 0; i <= 8; i++)
+    {
+        // _DFA_KoKOaInput___(i)
+        // _KoDFA_KOaInput___(i)
+
+        logDebugP("Input[%u]: %u {LOG=%u KO=%u} trigger=%u", i,
+            _ParamDFA_aSymbol___Input(i),        // _DFA_aSymbol___Input(i)
+            _ParamDFA_aSymbol___LogicNumber(i),  // _DFA_aSymbol___LogicNumber(i)
+            _ParamDFA_aSymbol___KoNumber(i),     // _DFA_aSymbol___KoNumber(i)
+            _ParamDFA_aSymbol___Trigger(i)       // _DFA_aSymbol___Trigger(i)
+        );
+    }
+
+    //       ("State z%02u: %3u %3u %3u %3u %3u %3u %3u %3u | %3u @ %10ums (%u)", z + 1);
+    logDebugP("[Address]    A   B   C   D   E   F   G   H     T     Timeout | Send/Dpt1 for 4 outputs");
+    for (uint8_t z = 0; z < DFA_DEF_STATES_COUNT; z++)
+    {
+        logDebugP("State z%02u: %3u %3u %3u %3u %3u %3u %3u %3u | %3u @ %3u | %03u %03u %03u %03u %03u %03u %03u %03u", z + 1,
+            _DFA_ad___(z, 0), _DFA_ad___(z, 1), _DFA_ad___(z, 2), _DFA_ad___(z, 3),
+            _DFA_ad___(z, 4), _DFA_ad___(z, 5), _DFA_ad___(z, 6), _DFA_ad___(z, 7),
+            _DFA_ad___(z, 8), _DFA_ad___TTime(z),
+            _DFA_az___o___Send(z, 0), _DFA_az___o___Dpt1(z, 0),
+            _DFA_az___o___Send(z, 1), _DFA_az___o___Dpt1(z, 1),
+            _DFA_az___o___Send(z, 2), _DFA_az___o___Dpt1(z, 2),
+            _DFA_az___o___Send(z, 3), _DFA_az___o___Dpt1(z, 3)
+        );
+    }
+    logDebugP("[Values]     A   B   C   D   E   F   G   H     T     Timeout   | Send/Spt for 4 outputs");
+    for (uint8_t z = 0; z < DFA_DEF_STATES_COUNT; z++)
+    {
+        logDebugP("State z%02u: %3u %3u %3u %3u %3u %3u %3u %3u | %3u @ %10ums | %2x %08x %2x %08x %2x %08x %2x %08x", z + 1,
+            _ParamDFA_ad___(z, 0), _ParamDFA_ad___(z, 1), _ParamDFA_ad___(z, 2), _ParamDFA_ad___(z, 3),
+            _ParamDFA_ad___(z, 4), _ParamDFA_ad___(z, 5), _ParamDFA_ad___(z, 6), _ParamDFA_ad___(z, 7),
+            _ParamDFA_ad___(z, 8), _ParamDFA_ad___TTimeMS(z),
+            _ParamDFA_az___o___Send(z, 0), knx.paramInt(DFA_ParamCalcIndex(_DFA_az___o___Dpt1(z, 0))),
+            _ParamDFA_az___o___Send(z, 1), knx.paramInt(DFA_ParamCalcIndex(_DFA_az___o___Dpt1(z, 1))),
+            _ParamDFA_az___o___Send(z, 2), knx.paramInt(DFA_ParamCalcIndex(_DFA_az___o___Dpt1(z, 2))),
+            _ParamDFA_az___o___Send(z, 3), knx.paramInt(DFA_ParamCalcIndex(_DFA_az___o___Dpt1(z, 3)))
+        );
+    }
+
     return true;
 }
 #endif

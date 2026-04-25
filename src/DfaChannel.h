@@ -117,5 +117,6 @@ class DfaChannel : public OpenKNX::Channel
     bool processCommandDfaHistory(bool diagnoseKo);
 #ifdef OPENKNX_DEBUG
     bool processCommandDfaTesting();
+    bool processCommandDfaParams();
 #endif
 };

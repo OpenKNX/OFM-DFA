@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-only
-// Copyright (C) 2023-2025 Cornelius Koepp
+// Copyright (C) 2023-2026 Cornelius Koepp
 
 #include "DfaModule.h"
 
@@ -279,12 +279,15 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
                 }
             }
 #ifdef OPENKNX_DEBUG
-            else if (cmdLength == 12)
+            else if (cmdLength == 12 && !diagnoseKo)
             {
-                if (!diagnoseKo && cmd.substr(5, 7) == " *TEST*")
+                if (cmd.substr(5, 7) == " *test*")
                 {
-                    logDebugP("=> DFA-Channel<%u> TESTING!", (channelIdx + 1));
                     return _channels[channelIdx]->processCommandDfaTesting();
+                }
+                else if (cmd.substr(5, 7) == " *parm*")
+                {
+                    return _channels[channelIdx]->processCommandDfaParams();
                 }
             }
 #endif
