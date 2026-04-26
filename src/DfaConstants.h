@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-only
-// Copyright (C) 2023-2025 Cornelius Koepp
+// Copyright (C) 2023-2026 Cornelius Koepp
 
 #pragma once
 
-// TODO check best place to define constants
 #define DFA_DEF_STATES_COUNT 16
 #define DFA_DEF_CHOICESTATES_COUNT 16
 #define DFA_DEF_INPUTS_COUNT 8
@@ -26,7 +25,6 @@
 // TODO ensure not overlapping
 #define DFA_INPUT_SYMBOL_START 249
 
-// TODO check best place to define constants
 // ETS-Param 0 =(-1)=> 255
 #define DFA_STATE_UNDEFINED 0xff
 // ETS-Param 127 =(-1)=> 126

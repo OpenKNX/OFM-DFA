@@ -493,7 +493,7 @@ void DfaChannel::processInputKo(GroupObject &ko)
                     if (triggered)
                     {
                         transfer(i);
-                        break; // only one! // TODO check
+                        break; // only one! (Same input should NOT generate multiple symbols)
                     }
                 }
             }

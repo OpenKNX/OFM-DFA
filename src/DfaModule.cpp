@@ -186,7 +186,7 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
         if (diagnoseKo && cmdLength == 5 && cmd.substr(3, 2) == " h")
         {
             openknx.console.writeDiagnoseKo("-> dfaNN");
-            // TODO: empty lines as workaround to prevent missing outputs
+            // Note: empty lines as workaround to prevent missing outputs
             if (ParamDFA_DiagnoseAccess == 1) // writing to DFAs is allowed
             {
                 openknx.console.writeDiagnoseKo("");
@@ -264,7 +264,6 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
                     }
                     else if (cmd.substr(5, 8) == " symbol=" && ('A' <= cmd[13] && cmd[13] <= 'H' || cmd[13] == 'T'))
                     {
-                        // TODO check moving conversion into channel
                         const uint8_t inputSymbolNumber = cmd[13] == 'T' ? DFA_INPUT_SYMBOL_T : cmd[13] - 'A';
 
                         logDebugP("=> DFA-Channel<%u> input Symbol=%c (%u)!", (channelIdx + 1), cmd[13], inputSymbolNumber);
@@ -272,7 +271,6 @@ bool DfaModule::processCommand(const std::string cmd, bool diagnoseKo)
                     }
                     else if (cmd.substr(5, 8) == " choice=" && ('a' <= cmd[13] && cmd[13] <= 'a' + DFA_DEF_CHOICESTATES_COUNT - 1))
                     {
-                        // TODO check moving conversion into channel
                         const uint8_t inputChoiceNumber = cmd[13] - 'a';
 
                         logDebugP("=> DFA-Channel<%u> input Choice=%c (%u)!", (channelIdx + 1), cmd[13], inputChoiceNumber);
