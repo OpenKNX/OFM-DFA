@@ -7,7 +7,7 @@
 
 static_assert(DFA_DEF_STATES_COUNT == 16 || DFA_DEF_STATES_COUNT == 32, "illegal DFA_DEF_STATES_COUNT");
 
-#pragma region "DFA_CHANNEL_ADDR"
+#pragma region "INPUT_PARAMS"
 
 // Value of DFA_KoKOaInput{1..8,T} by 0-based index
 #define _DFA_KoKOaInput___(IDX) (DFA_KoKOaInput1 + IDX * (DFA_KoKOaInput2 - DFA_KoKOaInput1))
@@ -115,6 +115,9 @@ static_assert(DFA_aSymbolTTriggerMask == _DFA_aSymbol___TriggerMask); static_ass
 // old usage:                              (knx.paramByte(DFA_ParamCalcIndex(DFA_aSymbol___Trigger( i ))) & DFA_aSymbol___TriggerMask) >> DFA_aSymbol___TriggerShift;
 #define _ParamDFA_aSymbol___Trigger(IDX) ((knx.paramByte(DFA_ParamCalcIndex(_DFA_aSymbol___Trigger(IDX))) & _DFA_aSymbol___TriggerMask) >> _DFA_aSymbol___TriggerShift)
 
+#pragma endregion "INPUT_PARAMS"
+
+#pragma region "TRANSITION_PARAMS"
 
 // Define (relative) parameter address-index for next state by current state and input
 
@@ -264,7 +267,7 @@ static_assert(_DFA_ad___TTime(63) == DFA_ad64TTime);
 #endif
 #define _ParamDFA_ad___TTimeMS(IDX) (paramDelay(knx.paramWord(DFA_ParamCalcIndex(_DFA_ad___TTime(IDX)))))
 
-#pragma endregion "DFA_CHANNEL_ADDR"
+#pragma endregion "TRANSITION_PARAMS"
 
 #pragma region "OUTPUT_PARAMS"
 
