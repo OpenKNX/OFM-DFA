@@ -265,3 +265,53 @@ static_assert(_DFA_ad___TTime(63) == DFA_ad64TTime);
 #define _ParamDFA_ad___TTimeMS(IDX) (paramDelay(knx.paramWord(DFA_ParamCalcIndex(_DFA_ad___TTime(IDX)))))
 
 #pragma endregion "DFA_CHANNEL_ADDR"
+
+#pragma region "OUTPUT_PARAMS"
+
+// knx.paramByte(DFA_ParamCalcIndex(DFA_aCaLOG + choiceState * (DFA_aCbLOG - DFA_aCaLOG)));
+#define _DFA_aC___LOG(IDX) (DFA_aCaLOG + IDX * (DFA_aCbLOG - DFA_aCaLOG))
+static_assert(_DFA_aC___LOG( 0) == DFA_aCaLOG);
+static_assert(_DFA_aC___LOG( 1) == DFA_aCbLOG);
+static_assert(_DFA_aC___LOG( 2) == DFA_aCcLOG);
+static_assert(_DFA_aC___LOG( 3) == DFA_aCdLOG);
+static_assert(_DFA_aC___LOG( 4) == DFA_aCeLOG);
+static_assert(_DFA_aC___LOG( 5) == DFA_aCfLOG);
+static_assert(_DFA_aC___LOG( 6) == DFA_aCgLOG);
+static_assert(_DFA_aC___LOG( 7) == DFA_aChLOG);
+static_assert(_DFA_aC___LOG( 8) == DFA_aCiLOG);
+static_assert(_DFA_aC___LOG( 9) == DFA_aCjLOG);
+static_assert(_DFA_aC___LOG(10) == DFA_aCkLOG);
+static_assert(_DFA_aC___LOG(11) == DFA_aClLOG);
+static_assert(_DFA_aC___LOG(12) == DFA_aCmLOG);
+static_assert(_DFA_aC___LOG(13) == DFA_aCnLOG);
+static_assert(_DFA_aC___LOG(14) == DFA_aCoLOG);
+static_assert(_DFA_aC___LOG(15) == DFA_aCpLOG);
+#define _ParamDFA_aC___LOG(IDX) (knx.paramByte(DFA_ParamCalcIndex(_DFA_aC___LOG(IDX))))
+
+// knx.paramByte(DFA_ParamCalcIndex(DFA_aCaU + choiceState * (DFA_aCbU - DFA_aCaU)));
+// knx.paramByte(DFA_ParamCalcIndex(DFA_aCaT + choiceState * (DFA_aCbT - DFA_aCaT)))
+// knx.paramByte(DFA_ParamCalcIndex(DFA_aCaF + choiceState * (DFA_aCbF - DFA_aCaF)));
+#define _DFA_aC___U(IDX) (DFA_aCaU + IDX * (DFA_aCbU - DFA_aCaU))
+#define _DFA_aC___T(IDX) (DFA_aCaT + IDX * (DFA_aCbT - DFA_aCaT))
+#define _DFA_aC___F(IDX) (DFA_aCaF + IDX * (DFA_aCbF - DFA_aCaF))
+static_assert(_DFA_aC___U( 0) == DFA_aCaU); static_assert(_DFA_aC___T( 0) == DFA_aCaT); static_assert(_DFA_aC___F( 0) == DFA_aCaF);
+static_assert(_DFA_aC___U( 1) == DFA_aCbU); static_assert(_DFA_aC___T( 1) == DFA_aCbT); static_assert(_DFA_aC___F( 1) == DFA_aCbF);
+static_assert(_DFA_aC___U( 2) == DFA_aCcU); static_assert(_DFA_aC___T( 2) == DFA_aCcT); static_assert(_DFA_aC___F( 2) == DFA_aCcF);
+static_assert(_DFA_aC___U( 3) == DFA_aCdU); static_assert(_DFA_aC___T( 3) == DFA_aCdT); static_assert(_DFA_aC___F( 3) == DFA_aCdF);
+static_assert(_DFA_aC___U( 4) == DFA_aCeU); static_assert(_DFA_aC___T( 4) == DFA_aCeT); static_assert(_DFA_aC___F( 4) == DFA_aCeF);
+static_assert(_DFA_aC___U( 5) == DFA_aCfU); static_assert(_DFA_aC___T( 5) == DFA_aCfT); static_assert(_DFA_aC___F( 5) == DFA_aCfF);
+static_assert(_DFA_aC___U( 6) == DFA_aCgU); static_assert(_DFA_aC___T( 6) == DFA_aCgT); static_assert(_DFA_aC___F( 6) == DFA_aCgF);
+static_assert(_DFA_aC___U( 7) == DFA_aChU); static_assert(_DFA_aC___T( 7) == DFA_aChT); static_assert(_DFA_aC___F( 7) == DFA_aChF);
+static_assert(_DFA_aC___U( 8) == DFA_aCiU); static_assert(_DFA_aC___T( 8) == DFA_aCiT); static_assert(_DFA_aC___F( 8) == DFA_aCiF);
+static_assert(_DFA_aC___U( 9) == DFA_aCjU); static_assert(_DFA_aC___T( 9) == DFA_aCjT); static_assert(_DFA_aC___F( 9) == DFA_aCjF);
+static_assert(_DFA_aC___U(10) == DFA_aCkU); static_assert(_DFA_aC___T(10) == DFA_aCkT); static_assert(_DFA_aC___F(10) == DFA_aCkF);
+static_assert(_DFA_aC___U(11) == DFA_aClU); static_assert(_DFA_aC___T(11) == DFA_aClT); static_assert(_DFA_aC___F(11) == DFA_aClF);
+static_assert(_DFA_aC___U(12) == DFA_aCmU); static_assert(_DFA_aC___T(12) == DFA_aCmT); static_assert(_DFA_aC___F(12) == DFA_aCmF);
+static_assert(_DFA_aC___U(13) == DFA_aCnU); static_assert(_DFA_aC___T(13) == DFA_aCnT); static_assert(_DFA_aC___F(13) == DFA_aCnF);
+static_assert(_DFA_aC___U(14) == DFA_aCoU); static_assert(_DFA_aC___T(14) == DFA_aCoT); static_assert(_DFA_aC___F(14) == DFA_aCoF);
+static_assert(_DFA_aC___U(15) == DFA_aCpU); static_assert(_DFA_aC___T(15) == DFA_aCpT); static_assert(_DFA_aC___F(15) == DFA_aCpF);
+#define _ParamDFA_aC___U(IDX) (knx.paramByte(DFA_ParamCalcIndex(_DFA_aC___U(IDX))))
+#define _ParamDFA_aC___T(IDX) (knx.paramByte(DFA_ParamCalcIndex(_DFA_aC___T(IDX))))
+#define _ParamDFA_aC___F(IDX) (knx.paramByte(DFA_ParamCalcIndex(_DFA_aC___F(IDX))))
+
+#pragma endregion "OUTPUT_PARAMS"

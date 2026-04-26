@@ -461,8 +461,7 @@ uint8_t DfaChannel::transferEvaluateChoice(const uint8_t nextState)
     }
 
     // 2b) get choice-state config
-    // TODO ensure expected memory layout!
-    const uint8_t choiceStateLogChannel = knx.paramByte(DFA_ParamCalcIndex(DFA_aCaLOG + choiceState * (DFA_aCbLOG - DFA_aCaLOG)));
+    const uint8_t choiceStateLogChannel = _DFA_aC___LOG(choiceState);
 
     // 2c) check choice enabled
     if (choiceStateLogChannel == 0)
@@ -493,8 +492,7 @@ uint8_t DfaChannel::transferEvaluateChoice(const uint8_t nextState)
     {
         logInfoP("ChoiceState<%c>: Uninitialized LOG[%u](KO %u)", 'a' + choiceState, choiceStateLogChannel, logOutputKoNumber);
         // 2g) get the following state
-        // TODO ensure expected memory layout!
-        selectedNext = knx.paramByte(DFA_ParamCalcIndex(DFA_aCaU + choiceState * (DFA_aCbU - DFA_aCaU)));
+        selectedNext = _ParamDFA_aC___U(choiceState);
     }
     else
     {
@@ -502,10 +500,9 @@ uint8_t DfaChannel::transferEvaluateChoice(const uint8_t nextState)
         const bool choice = logOutputKo->value(DPT_Switch);
         logDebugP("ChoiceState<%c>: LOG[%u](KO %u)=%d", 'a' + choiceState, choiceStateLogChannel, logOutputKoNumber, choice);
         // 2g) get the following state
-        // TODO ensure expected memory layout!
         selectedNext = choice
-                           ? knx.paramByte(DFA_ParamCalcIndex(DFA_aCaT + choiceState * (DFA_aCbT - DFA_aCaT)))
-                           : knx.paramByte(DFA_ParamCalcIndex(DFA_aCaF + choiceState * (DFA_aCbF - DFA_aCaF)));
+                           ? _ParamDFA_aC___T(choiceState)
+                           : _ParamDFA_aC___F(choiceState);
     }
 
     const uint8_t selectedNextState = selectedNext - 1;
