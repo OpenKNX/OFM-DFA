@@ -1,6 +1,8 @@
 # (upcoming with new xml version)
  
-* Fix: ParameterType-Names were not in sync with id (DocText255, DfaInputLogicNumberOptional)
+* Fix: ParameterType-Names were not in sync with id
+  * DocText255, DfaInputLogicNumberOptional
+  * Merged Part: DfaChoiceStateENUM (not included in resulting XML)
 
 # (upcoming)
 
