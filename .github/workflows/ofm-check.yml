@@ -1,5 +1,3 @@
-name: ofm-check
-run-name: OFM-Check
 
 on: [push]
 
@@ -9,9 +7,10 @@ jobs:
 
     uses: openknx/actions/.github/workflows/openknx-ofm-check.yml@v0
     with:
-      ofm: OFM-DFA
+      # ofm: OFM-DFA
+      # ofm: ${{ github.event.repository.name }}
       # Note: use ${{ github.ref_name }} from OFM-repo
-      ofm_ref: ${{ github.ref_name }}
+      # ofm_ref: ${{ github.ref_name }}
       ofm_prefix: DFA
       oam: OAM-StateEngine
       # oam_ref: v1dev
