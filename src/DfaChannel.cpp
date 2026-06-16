@@ -27,7 +27,7 @@ const std::string DfaChannel::name()
 
 void DfaChannel::setup()
 {
-    _channelActive = (ParamDFA_aActive == 0b01);
+    _channelActive = ParamDFA_aActive && !(ParamDFA_fSuspended);
     if (_channelActive)
     {
         logDebugP("setup(delay=%ds run=%d)", _channelActive, ParamDFA_aStartupDelayTimeMS / 1000, ParamDFA_aStartPause != 2);

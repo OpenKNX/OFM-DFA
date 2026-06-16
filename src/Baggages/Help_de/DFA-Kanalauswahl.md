@@ -1,12 +1,17 @@
 ﻿### Kanalauswahl
 
-#### Verfügbare Kanäle
+### Automat
 
-Je nach Applikation kann eine größere Anzahl von Kanälen vorhanden sein, 
-wobei oft nur einige wenige benötigt werden. 
-Mit diesem Parameter können nicht benötigt Kanäle in der ETS ausgeblendet werden, bzw. nur die notwendigen angezeigt.
+Legt fest, ob dieser Automat konfiguriert und ausgeführt wird.
 
-***Bemerkung***:
-Ausgeblendete Kanäle sind inaktiv und zugehörige KOs sind ausgeblendet. 
+* **Deaktiviert**: Dieser Kanal wird *nicht* genutzt und bleibt *ausgeblendet*, einschließlich der zugehörigen KOs. 
+* **Aktiviert**: Zur Verwendung *muss* diese Einstellung gewählt werden.
+***Hinweis:*** 
+Über die Option *Suspendiert* kann ein Automat dann immer noch funktionslos gestellt werden. 
 
+
+### Beschreibung
+
+Zeigt die Beschreibung des betreffenden Automaten und erlaubt ein direktes Ändern.
+Auch für *deaktivierte* Automaten möglich.  
 

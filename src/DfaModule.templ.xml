@@ -29,13 +29,16 @@
               [ 54;118[ Choice-States
               [118;790[ States
               -->
-              <Parameter Id="%AID%_P-%T%%CC%0001"    Name="a%C%Name"                 ParameterType="%AID%_PT-Text40Byte"                Text="Beschreibung" Value="" />
+              <Parameter Id="%AID%_P-%T%%CC%0001"    Name="a%C%Name"                 ParameterType="%AID%_PT-Text40Byte"                Text="Beschreibung"            Value="" />
+              <Parameter Id="%AID%_P-%T%%CC%9999"    Name="f%C%NameDisplay"          ParameterType="%AID%_PT-Text45Byte"                Text="Beschreibung (Anzeige)"  Value="" Access="Read" op:configTransfer="never" />
 
               <Parameter Id="%AID%_P-%T%%CC%0090" Name="a%C%Comment"         ParameterType="%AID%_PT-Text512Byte"  Text="Kommentar"                     Value="" />
 
               <Union SizeInBit="48"><Memory CodeSegment="%MID%" Offset="0" BitOffset="0" />
+                <!-- TODO check migration path for splitting params -->
                 <Parameter Id="%AID%_UP-%T%%CC%0006" Name="a%C%Active"               ParameterType="%AID%_PT-ChannelSwitchMaster"       Offset="0" BitOffset="0" Text="Kanal verwenden?"                      Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CC%0007" Name="a%C%StartPause"           ParameterType="%AID%_PT-ChannelSwitchByKo"         Offset="0" BitOffset="2" Text="Pausieren erlauben"                 Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%0011" Name="f%C%Suspended"            ParameterType="%AID%_PT-Suspended"                 Offset="0" BitOffset="1" Text="Suspendiert"                           Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CC%0007" Name="a%C%StartPause"           ParameterType="%AID%_PT-ChannelSwitchByKo"         Offset="0" BitOffset="2" Text="Pausieren erlauben"                    Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%0008" Name="a%C%StateRestore"         ParameterType="%AID%_PT-StatePersistance"          Offset="0" BitOffset="4" Text="Rekonstruktion bei erneutem Start"     Value="0" />
                 <!-- 2 bits unused; TODO reduce size! -->
                 <Parameter Id="%AID%_UP-%T%%CC%0005" Name="a%C%StateSetting"         ParameterType="%AID%_PT-StateDirectSetting"        Offset="1" BitOffset="0" Text="Direktes Setzen von Zustand erlauben?" Value="0" />
@@ -151,7 +154,8 @@
 
             </Parameters>
             <ParameterRefs>
-              <ParameterRef  Id="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" RefId="%AID%_P-%T%%CC%0001" />
+              <ParameterRef  Id="%AID%_P-%T%%CC%0001_R-%T%%CC%000101"  RefId="%AID%_P-%T%%CC%0001" />
+
               <ParameterRef Id="%AID%_UP-%T%%CC%0002_R-%T%%CC%000201" RefId="%AID%_UP-%T%%CC%0002" />
               <ParameterRef Id="%AID%_UP-%T%%CC%0003_R-%T%%CC%000301" RefId="%AID%_UP-%T%%CC%0003" />
               <ParameterRef Id="%AID%_UP-%T%%CC%0004_R-%T%%CC%000401" RefId="%AID%_UP-%T%%CC%0004" />
@@ -161,6 +165,7 @@
               <ParameterRef Id="%AID%_UP-%T%%CC%0008_R-%T%%CC%000801" RefId="%AID%_UP-%T%%CC%0008" />
               <ParameterRef Id="%AID%_UP-%T%%CC%0009_R-%T%%CC%000901" RefId="%AID%_UP-%T%%CC%0009" />
               <ParameterRef Id="%AID%_UP-%T%%CC%0010_R-%T%%CC%001001" RefId="%AID%_UP-%T%%CC%0010" />
+              <ParameterRef Id="%AID%_UP-%T%%CC%0011_R-%T%%CC%001101" RefId="%AID%_UP-%T%%CC%0011" />
 
               <ParameterRef  Id="%AID%_P-%T%%CC%0090_R-%T%%CC%009001" RefId="%AID%_P-%T%%CC%0090" />
 
@@ -260,7 +265,19 @@
               <ParameterRef Id="%AID%_UP-%T%%CC%7504_R-%T%%CC%750402" RefId="%AID%_UP-%T%%CC%7504" Text="Logik-Ausgang Eingabe E/F" />
               <ParameterRef Id="%AID%_UP-%T%%CC%7704_R-%T%%CC%770402" RefId="%AID%_UP-%T%%CC%7704" Text="Logik-Ausgang Eingabe G/H" />
 
+              <ParameterRef  Id="%AID%_P-%T%%CC%9999_R-%T%%CC%999901"  RefId="%AID%_P-%T%%CC%9999" />
             </ParameterRefs>
+            <ParameterCalculations>
+              <ParameterCalculation Id="%AID%_PC-%T%%CC%0001" Language="JavaScript" Name="MarkInactive%CC%" LRTransformationFunc="BASE_MarkInactive" RLTransformationFunc="BASE_Nop">
+                <LParameters>
+                  <ParameterRefRef RefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" AliasName="TextInput" />
+                  <ParameterRefRef RefId="%AID%_UP-%T%%CC%0011_R-%T%%CC%001101" AliasName="CheckboxInactive" />
+                </LParameters>
+                <RParameters>
+                  <ParameterRefRef RefId="%AID%_P-%T%%CC%9999_R-%T%%CC%999901" AliasName="TextOutput" />
+                </RParameters>
+              </ParameterCalculation>
+            </ParameterCalculations>
             <ComObjectTable>
               <ComObject Id="%AID%_O-%T%%CC%0102" Name="KOa%C%Running" Text="läuft?"            Number="%K0%"  FunctionText="Automat %C%: Ausführungsstatus"  DatapointType="DPST-1-11"  ObjectSize="1 Bit"     ReadFlag="Enabled"  WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled"  UpdateFlag="Disabled" ReadOnInitFlag="Disabled" />
               <ComObject Id="%AID%_O-%T%%CC%0101" Name="KOa%C%RunSet"  Text="starten/pausieren" Number="%K1%"  FunctionText="Automat %C%: Ausführen setzen"   DatapointType="DPST-1-10"  ObjectSize="1 Bit"     ReadFlag="Disabled" WriteFlag="Enabled"  CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Enabled"  ReadOnInitFlag="Disabled" />
@@ -395,13 +412,28 @@
           </Static>
           <Dynamic>
             <ChannelIndependentBlock>
-              <choose ParamRefId="%AID%_UP-%T%000001_R-%T%00000101">
-                <when test="&gt;=%C%">
-                  <ParameterBlock Id="%AID%_PB-%C%01" Name="a%C%DFA" Text="%C%: {{0: ...}}" TextParameterRefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" Icon="state-machine" >
+             <ParameterBlock Name="ChannelSelection" Id="%AID%_PB-nnn" >
+                   <ParameterBlock Id="%AID%_PB-nnn" Inline="true" Layout="Grid">
+                     <Rows>
+                       <Row Id="%AID%_PB-nnn_R-1" />
+                     </Rows>
+                     <Columns>
+                       <Column Id="%AID%_PB-nnn_C-1" Width="10%" />
+                       <Column Id="%AID%_PB-nnn_C-2" Width="35%" />
+                       <Column Id="%AID%_PB-nnn_C-3" Width="55%" />
+                     </Columns>
+                     <ParameterSeparator Id="%AID%_PS-nnn" Text="DEA %C%"          Cell="1,1" />
+                     <ParameterRefRef RefId="%AID%_UP-%T%%CC%0006_R-%T%%CC%000601" Cell="1,2" />
+                     <ParameterRefRef RefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101"  Cell="1,3" />
+                   </ParameterBlock>
+             </ParameterBlock>
+             <ParameterBlock Name="ChannelDefinition" Id="%AID%_PB-nnn" >
+              <choose ParamRefId="%AID%_UP-%T%%CC%0006_R-%T%%CC%000601">
+                <when test="1">
+                  <ParameterBlock Id="%AID%_PB-%C%01" Name="a%C%DFA" Text="%C%: {{0: ...}}" TextParameterRefId="%AID%_P-%T%%CC%9999_R-%T%%CC%999901" Icon="state-machine" >
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Automatendefinition" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" HelpContext="DFA-Beschreibung-des-DEA" IndentLevel="1" />
-
-                    <ParameterRefRef RefId="%AID%_UP-%T%%CC%0006_R-%T%%CC%000601" HelpContext="DFA-Kanal-verwenden" IndentLevel="1" />
+                    <ParameterRefRef RefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" HelpContext="DFA-Beschreibung" IndentLevel="1" />
+                    <ParameterRefRef RefId="%AID%_UP-%T%%CC%0011_R-%T%%CC%001101" HelpContext="BASE-ChannelSuspended" IndentLevel="1" />
 
                     <!-- Documentation / Multi-Line Comment (not the Module from Common) -->
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
@@ -409,11 +441,9 @@
                     <Button Id="%AID%_B-%T%%CC%0090" Text="Alle '\n' im Text durch Zeilenumbruch ersetzen" EventHandler="newline" EventHandlerParameters="{ &quot;textbox&quot;:&quot;%PREFIX%_a%C%Comment&quot; }" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
 
-                    <choose ParamRefId="%AID%_UP-%T%%CC%0006_R-%T%%CC%000601">
-                      <when test="!=0">
-                        <ParameterSeparator Id="%AID%_PS-nnn" Text="Start und Ausführung" UIHint="Headline" />
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="Start und Ausführung" UIHint="Headline" />
                         <!-- ChannelDelay Delay pattern, as used in LOG or VPM -->
-                        <ParameterBlock Id="%AID%_PB-nnn" Name="a%C%ChannelDelayCycle" Inline="true" Layout="Grid" HelpContext="DFA-Verzoegerung-nach-Geraetestart">
+                    <ParameterBlock Id="%AID%_PB-nnn" Name="a%C%ChannelDelayCycle" Inline="true" Layout="Grid" HelpContext="DFA-Verzoegerung-nach-Geraetestart">
                           <Rows>
                             <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
                           </Rows>
@@ -425,19 +455,19 @@
                           <ParameterSeparator Id="%AID%_PS-nnn" Text="  Verzögerung nach Gerätestart" Cell="1,1" />
                           <ParameterRefRef RefId="%AID%_UP-%T%%CC%0004_R-%T%%CC%000401" Cell="1,2" />
                           <ParameterRefRef RefId="%AID%_UP-%T%%CC%0003_R-%T%%CC%000301" Cell="1,3" />
-                        </ParameterBlock>
+                    </ParameterBlock>
 
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CC%0007_R-%T%%CC%000701" IndentLevel="1" HelpContext="DFA-Pausieren-erlauben" />
+                    <ParameterRefRef RefId="%AID%_UP-%T%%CC%0007_R-%T%%CC%000701" IndentLevel="1" HelpContext="DFA-Pausieren-erlauben" />
 
-                        <ParameterRefRef RefId="%AID%_UP-%T%%CC%0008_R-%T%%CC%000801" IndentLevel="1" HelpContext="DFA-Rekonstruktion-bei-erneutem-Start" />
-                        <choose ParamRefId="%AID%_UP-%T%%CC%0008_R-%T%%CC%000801">
+                    <ParameterRefRef RefId="%AID%_UP-%T%%CC%0008_R-%T%%CC%000801" IndentLevel="1" HelpContext="DFA-Rekonstruktion-bei-erneutem-Start" />
+                    <choose ParamRefId="%AID%_UP-%T%%CC%0008_R-%T%%CC%000801">
                           <when test="!=0">
                             <ParameterSeparator Id="%AID%_PS-nnn" Text="ACHTUNG: Nachträgliche Konfigurationsänderungen können zu unerwartetem Verhalten oder Fehlern bei der Rekonstruktion und erstmaligem Sendeverhalten führen!" UIHint="Information" />
                           </when>
-                        </choose>
+                    </choose>
 
-                        <ParameterSeparator Id="%AID%_PS-nnn" Text="Eingabesymbole" UIHint="Headline" />
-                        <ParameterBlock Id="%AID%_PB-nnn" Name="InputSymbols%C%Combined" Inline="true" Layout="Grid" HelpContext="DFA-Eingabesymbole">
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="Eingabesymbole" UIHint="Headline" />
+                    <ParameterBlock Id="%AID%_PB-nnn" Name="InputSymbols%C%Combined" Inline="true" Layout="Grid" HelpContext="DFA-Eingabesymbole">
                           <Rows>
                             <Row Id="%AID%_PB-nnn_R-1" Name="Row1" />
                           </Rows>
@@ -456,8 +486,8 @@
                           <ParameterRefRef RefId="%AID%_UP-%T%%CC%7002_R-%T%%CC%700201"                       Cell="1,4" />
                           <ParameterRefRef RefId="%AID%_UP-%T%%CC%7003_R-%T%%CC%700301"                       Cell="1,6" />
                           <ParameterRefRef RefId="%AID%_UP-%T%%CC%7004_R-%T%%CC%700401"                       Cell="1,8" />
-                        </ParameterBlock>
-                        <ParameterBlock Id="%AID%_PB-%C%03" Name="InputSymbols%C%" Text="  x  " Inline="true" Layout="Table" HelpContext="DFA-Eingabesymbole">
+                    </ParameterBlock>
+                    <ParameterBlock Id="%AID%_PB-%C%03" Name="InputSymbols%C%" Text="  x  " Inline="true" Layout="Table" HelpContext="DFA-Eingabesymbole">
                           <Rows>
                             <Row Id="%AID%_PB-03_R-1"  Name="Input1"  Text="  A  "     CollapseIfEmpty="true" />
                             <Row Id="%AID%_PB-03_R-2"  Name="Input2"  Text="  B  "     CollapseIfEmpty="true" />
@@ -650,12 +680,12 @@
                             </when>
                           </choose>
 
-                        </ParameterBlock>
+                    </ParameterBlock>
 
 
-                        <ParameterSeparator Id="%AID%_PS-nnn" Text="Ausgabe" UIHint="Headline" />
-                        <ParameterSeparator Id="%AID%_PS-nnn" Text="Eine Ausgabe von Text (DPT16.001) ist ausschließlich mit dem letzten Ausgang O4 möglich." UIHint="Information" />
-                        <ParameterBlock Id="%AID%_PB-%C%04" Name="Outputs%C%" Text="  O  " Inline="true" Layout="Table" HelpContext="DFA-Ausgabe">
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="Ausgabe" UIHint="Headline" />
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="Eine Ausgabe von Text (DPT16.001) ist ausschließlich mit dem letzten Ausgang O4 möglich." UIHint="Information" />
+                    <ParameterBlock Id="%AID%_PB-%C%04" Name="Outputs%C%" Text="  O  " Inline="true" Layout="Table" HelpContext="DFA-Ausgabe">
                           <Rows>
                             <Row Id="%AID%_PB-04_R-1" Name="Output1" Text=" O1 " />
                             <Row Id="%AID%_PB-04_R-2" Name="Output2" Text=" O2 " />
@@ -676,10 +706,10 @@
                           <ParameterRefRef RefId="%AID%_UP-%T%%CC%8201_R-%T%%CC%820101" Cell="2,2" />
                           <ParameterRefRef RefId="%AID%_UP-%T%%CC%8301_R-%T%%CC%830101" Cell="3,2" />
                           <ParameterRefRef RefId="%AID%_UP-%T%%CC%8401_R-%T%%CC%840101" Cell="4,2" />
-                        </ParameterBlock>
+                    </ParameterBlock>
 
-                        <!-- States- and Transfer-Table -->
-                        <ParameterBlock Id="%AID%_PB-nnn" Name="a%C%DFAStates" Text="Zustände &amp; Übergänge" Icon="grid" >
+                    <!-- States- and Transfer-Table -->
+                    <ParameterBlock Id="%AID%_PB-nnn" Name="a%C%DFAStates" Text="Zustände &amp; Übergänge" Icon="grid" >
                           <ParameterSeparator Id="%AID%_PS-nnn" Text="Zustände und Übergangsfunktion einschließlich zeitbasierter Folgezustände" UIHint="Headline" />
                           <!-- Startzustand -->
                           <ParameterRefRef RefId="%AID%_UP-%T%%CC%0002_R-%T%%CC%000201" HelpContext="DFA-Startzustand" />
@@ -886,10 +916,10 @@
                             <op:usePart name="STATE" xpath="//ParameterBlock[@Name='DFA_STATE_TABLE_NAME_TIMEOUT']/*" />
 
                           </ParameterBlock>
-                        </ParameterBlock>
+                    </ParameterBlock>
 
-                        <!-- Choice-States -->
-                        <ParameterBlock Id="%AID%_PB-nnn" Name="a%C%DFAChoiseStates" Text="Bedingte Übergänge" HelpContext="DFA-Bedingte-Uebergaenge" Icon="call-split--90deg" >
+                    <!-- Choice-States -->
+                    <ParameterBlock Id="%AID%_PB-nnn" Name="a%C%DFAChoiseStates" Text="Bedingte Übergänge" HelpContext="DFA-Bedingte-Uebergaenge" Icon="call-split--90deg" >
                           <ParameterSeparator Id="%AID%_PS-nnn" Text="Bedingte Übergänge mit dynamischer Entscheidung durch Logik-Kanäle" UIHint="Headline" />
 
                           <ParameterSeparator Id="%AID%_PS-nnn" Text="Referenzierte Logik-Kanäle MÜSSEN mit DPT1 Ausgangs-KO aktiv sein.&#10;ELSE setzt mit nächster Zeile fort.&#10;Leere Zeilen und undefinierte Folgezustände beenden ohne Zustandswechsel." UIHint="Information" />
@@ -910,10 +940,10 @@
                             <op:usePart name="CHOICE_STATE" xpath="//ParameterBlock[@Name='DFA_CSTATE_ROW_CONTENT']/*" />
 
                           </ParameterBlock>
-                        </ParameterBlock>
+                    </ParameterBlock>
 
                         <!-- Ouput 1 -->
-                        <choose ParamRefId="%AID%_UP-%T%%CC%8101_R-%T%%CC%810101">
+                    <choose ParamRefId="%AID%_UP-%T%%CC%8101_R-%T%%CC%810101">
                             <when test="!=0">
                               <ParameterBlock Id="%AID%_PB-%C%1020" Name="a%C%Output1" Text="Ausgang 1: {{0:...}}"  TextParameterRefId="%AID%_P-%T%%CC%8100_R-%T%%CC%810001" Icon="chevron-left-circle-outline" HelpContext="DFA-Ausgang-n" >
                                 <!-- ChannelDelay Delay pattern, as used in LOG or VPM -->
@@ -965,9 +995,9 @@
                                 </ParameterBlock>
                               </ParameterBlock>
                             </when>
-                        </choose>
+                    </choose>
                         <!-- Ouput 2 -->
-                        <choose ParamRefId="%AID%_UP-%T%%CC%8201_R-%T%%CC%820101">
+                    <choose ParamRefId="%AID%_UP-%T%%CC%8201_R-%T%%CC%820101">
                             <when test="!=0">
                               <ParameterBlock Id="%AID%_PB-%C%2020" Name="a%C%Output2" Text="Ausgang 2: {{0:...}}"  TextParameterRefId="%AID%_P-%T%%CC%8200_R-%T%%CC%820001" Icon="chevron-left-circle-outline" HelpContext="DFA-Ausgang-n" >
                                 <!-- ChannelDelay Delay pattern, as used in LOG or VPM -->
@@ -1019,9 +1049,9 @@
                                 </ParameterBlock>
                               </ParameterBlock>
                             </when>
-                        </choose>
+                    </choose>
                         <!-- Ouput 3 -->
-                        <choose ParamRefId="%AID%_UP-%T%%CC%8301_R-%T%%CC%830101">
+                    <choose ParamRefId="%AID%_UP-%T%%CC%8301_R-%T%%CC%830101">
                             <when test="!=0">
                               <ParameterBlock Id="%AID%_PB-%C%3020" Name="a%C%Output3" Text="Ausgang 3: {{0:...}}"  TextParameterRefId="%AID%_P-%T%%CC%8300_R-%T%%CC%830001" Icon="chevron-left-circle-outline" HelpContext="DFA-Ausgang-n" >
                                 <!-- ChannelDelay Delay pattern, as used in LOG or VPM -->
@@ -1073,9 +1103,9 @@
                                 </ParameterBlock>
                               </ParameterBlock>
                             </when>
-                        </choose>
+                    </choose>
                         <!-- Ouput 4 -->
-                        <choose ParamRefId="%AID%_UP-%T%%CC%8401_R-%T%%CC%840101">
+                    <choose ParamRefId="%AID%_UP-%T%%CC%8401_R-%T%%CC%840101">
                             <when test="!=0">
                               <ParameterBlock Id="%AID%_PB-%C%4020" Name="a%C%Output4" Text="Ausgang 4: {{0:...}}"  TextParameterRefId="%AID%_P-%T%%CC%8400_R-%T%%CC%840001" Icon="chevron-left-circle-outline" HelpContext="DFA-Ausgang-n" >
                                 <!-- ChannelDelay Delay pattern, as used in LOG or VPM -->
@@ -1130,10 +1160,10 @@
                                 </ParameterBlock>
                               </ParameterBlock>
                             </when>
-                        </choose>
+                    </choose>
 
 
-                        <ParameterBlock Id="%AID%_PB-nnn" Name="a%CC%Dfa" Text="Automat %C%: {{0: ...}}" TextParameterRefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" ShowInComObjectTree="true" Inline="true" >
+                    <ParameterBlock Id="%AID%_PB-nnn" Name="a%CC%Dfa" Text="Automat %C%: {{0: ...}}" TextParameterRefId="%AID%_P-%T%%CC%9999_R-%T%%CC%999901" ShowInComObjectTree="true" Inline="true" >
                             <!-- KOs for start/pause -->
                             <choose ParamRefId="%AID%_UP-%T%%CC%0007_R-%T%%CC%000701">
                               <when test="!=0">
@@ -1338,14 +1368,12 @@
                               <when test="171" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0204_R-%T%%CC%020417" /></when>
                               <when test="232" ><ComObjectRefRef RefId="%AID%_O-%T%%CC%0204_R-%T%%CC%020432" /></when>
                             </choose>
-                        </ParameterBlock>
-
-                      </when>
-                    </choose>
+                    </ParameterBlock>
 
                   </ParameterBlock>
                 </when>
-              </choose>
+               </choose>
+             </ParameterBlock>
             </ChannelIndependentBlock>
           </Dynamic>
         </ApplicationProgram>
