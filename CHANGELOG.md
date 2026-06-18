@@ -3,6 +3,7 @@
 * Refactor: Nutzung von Makros für indizierte Parameter und KOs (nach Zustand, Eingang, Ausgang), abgesichert zur Entwicklungszeit durch Asserts
   * Für Eingänge, Zustandsübergänge und Ausgänge 
   * Erweiterung (Entwicklung): Strukturierte Test- und Ausgabemöglichkeit für Kanal-Parameter in Debug-Build (Kommandos `dfa *test*` und `dfa *parm*`)
+* Fix (BREAKING: Verändertes Verhalten bei neuen Instanzen!): Update-Flags von Eingangs-KOS (Eingänge A,...,H,T) entfernt um ein Auslösen durch Antwort-Telegramme auf Leseanfragen zu vermeiden
 * Entfernt: Kommando `dfaNN timeout!`; kann durch `dfaNN symbol=T` ersetzt werden
   * Hinweis: Der Diagnose-Befehlssatz war ausdrücklich als nicht-stabil dokumentiert ("Der Befehlssatz kann sich in zukünftigen Modul-Versionen verändern.")
 * Fix #72: Anzeige von Startvorgang und Entfernen von `NO_TIMEOUT` in Kanal-Diagnose-Antwort
