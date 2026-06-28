@@ -17,6 +17,7 @@
 * Bereinigung/Fix/Dokumentation:
   * Compile-Time-Checks
   * Falsch geschriebener Methoden-Name für  `openknx.console` (Methode `writeDiagenoseKo` -> `writeDiagnoseKo`)
+  * Dokumentation ungenutzte Bits für Parameter zu Eingabesymbolen (Bisher nur A)  
   * Alte TODOs entfernt
   * Dokumentation: Kleinere Korrekturen
 

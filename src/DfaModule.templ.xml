@@ -85,9 +85,12 @@
               <Parameter Id="%AID%_P-%T%%CC%7100" Name="a%C%SymbolAName"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Eingabe 1"  Value="" />
               <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="18" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CC%7101" Name="a%C%SymbolAInput"         ParameterType="%AID%_PT-DfaInputKo"                             Offset="0" BitOffset="0"      Text="KO Eingabe 1"                              Value="0" />
+                <!-- TOOD 6 bits unused -->
                 <Parameter Id="%AID%_UP-%T%%CC%7102" Name="a%C%SymbolAKoNumber"      ParameterType="%AID%_PT-KONumber"             op:nowarn="true"  Offset="1" BitOffset="0"      Text="KO-Nummer Eingabe 1"                       Value="1" />
+                <!-- KONumber has 15 bits -->
                 <Parameter Id="%AID%_UP-%T%%CC%7104" Name="a%C%SymbolALogicNumber"   ParameterType="%AID%_PT-DfaInputLogicNumber"  op:nowarn="true"  Offset="1" BitOffset="0"      Text="Logik-Kanal-Ausgangs-Nummer Eingabe 1"     Value="1" />
                 <Parameter Id="%AID%_UP-%T%%CC%7103" Name="a%C%SymbolATrigger"       ParameterType="%AID%_PT-DfaInputTrigger"                        Offset="3" BitOffset="0"      Text="Eingabewert 1"                             Value="2" />
+                <!-- TOOD 6 bits unused -->
               </Union>
               <Parameter Id="%AID%_P-%T%%CC%7200" Name="a%C%SymbolBName"          ParameterType="%AID%_PT-Text40Byte"                                         Text="Bezeichnung Eingabe 2"  Value="" />
               <Union SizeInBit="32"><Memory CodeSegment="%MID%" Offset="22" BitOffset="0" />
