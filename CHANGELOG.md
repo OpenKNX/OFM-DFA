@@ -1,15 +1,15 @@
-# (upcoming)
+# (upcoming) v0.9.0 <!-- TODO remove `-DEV` Suffix from Version -->
 
-* Refactor: Indexed parameters/KOs by state, input and output with calculation checked by assert at compile-time
-  * For inputs, transition-table, outputs 
-  * Add channel-parameter-dump for debug-build
-* Fix #72: Show Startup and do not include "NO_TIMEOUT" in Channel-State Response
-* Fix: ParameterType-Names were not in sync with id for Part DfaChoiceStateENUM
-* Minor Cleanup: Compile-Time-Checks
-* Cleanup/Fix:
-  * Misspelling call of `openknx.console` method `writeDiagenoseKo` -> `writeDiagnoseKo`
-  * Remove solved TODOs
-* Doc: Minor Fixes
+* Refactor: Nutzung von Makros für indizierte Parameter und KOs (nach Zustand, Eingang, Ausgang), abgesichert zur Entwicklungszeit durch Asserts
+  * Für Eingänge, Zustandsübergänge und Ausgänge 
+  * Erweiterung (Entwicklung): Strukturierte Test- und Ausgabemöglichkeit für Kanal-Parameter in Debug-Build (Kommandos `dfa *test*` und `dfa *parm*`)
+* Fix #72: Anzeige von Startvorgang und Entfernen von `NO_TIMEOUT` in Kanal-Diagnose-Antwort
+* Fix: ParameterType Name wich von Id ab für XML-Part DfaChoiceStateENUM
+* Bereinigung/Fix/Dokumentation:
+  * Compile-Time-Checks
+  * Falsch geschriebener Methoden-Name für  `openknx.console` (Methode `writeDiagenoseKo` -> `writeDiagnoseKo`)
+  * Alte TODOs entfernt
+* Dokumentation: Kleinere Korrekturen
 
 
 # 2026-04-04 v0.8.2 ("Bedingter Startzustand + Input Fixes")
