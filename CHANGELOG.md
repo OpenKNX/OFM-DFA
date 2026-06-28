@@ -1,9 +1,14 @@
 # (upcoming)
 
+* Refactor: Indexed parameters/KOs by state, input and output with calculation checked by assert at compile-time
+  * For inputs, transition-table, outputs 
+  * Add channel-parameter-dump for debug-build
 * Fix #72: Show Startup and do not include "NO_TIMEOUT" in Channel-State Response
-* Cleanup/Fix: Misspelling call of `openknx.console` method `writeDiagenoseKo` -> `writeDiagnoseKo`
 * Fix: ParameterType-Names were not in sync with id for Part DfaChoiceStateENUM
 * Minor Cleanup: Compile-Time-Checks
+* Cleanup/Fix:
+  * Misspelling call of `openknx.console` method `writeDiagenoseKo` -> `writeDiagnoseKo`
+  * Remove solved TODOs
 * Doc: Minor Fixes
 
 
