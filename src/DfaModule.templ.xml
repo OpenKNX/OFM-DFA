@@ -395,7 +395,7 @@
             </ComObjectRefs>
           </Static>
           <Dynamic>
-            <ChannelIndependentBlock> 
+            <ChannelIndependentBlock>
               <choose ParamRefId="%AID%_UP-%T%000001_R-%T%00000101">
                 <when test="&gt;=%C%">
                   <ParameterBlock Id="%AID%_PB-%C%01" Name="a%C%DFA" Text="%C%: {{0: ...}}" TextParameterRefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" Icon="state-machine" >
@@ -517,7 +517,7 @@
                                 <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7104_R-%T%%CC%710402"         Cell="3,3" /></when><!-- LOG -->
                                 <when test="!=0">
                                   <ParameterSeparator Id="%AID%_PS-nnn" Text="1 -&gt; A   /   0 -&gt; B"                    Cell="3,4" />
-                                </when>                                
+                                </when>
                               </choose>
                             </when>
                           </choose>
@@ -555,7 +555,7 @@
                                 <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7304_R-%T%%CC%730402"         Cell="6,3" /></when><!-- LOG -->
                                 <when test="!=0">
                                   <ParameterSeparator Id="%AID%_PS-nnn" Text="1 -&gt; C   /   0 -&gt; D"                    Cell="6,4" />
-                                </when>                                
+                                </when>
                               </choose>
                             </when>
                           </choose>
@@ -593,7 +593,7 @@
                                 <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7504_R-%T%%CC%750402"         Cell="9,3" /></when><!-- LOG -->
                                 <when test="!=0">
                                   <ParameterSeparator Id="%AID%_PS-nnn" Text="1 -&gt; E   /   0 -&gt; F"                    Cell="9,4" />
-                                </when>                                
+                                </when>
                               </choose>
                             </when>
                           </choose>
@@ -631,7 +631,7 @@
                                 <when test="3"><ParameterRefRef RefId="%AID%_UP-%T%%CC%7704_R-%T%%CC%770402"         Cell="12,3" /></when><!-- LOG -->
                                 <when test="!=0">
                                   <ParameterSeparator Id="%AID%_PS-nnn" Text="1 -&gt; G   /   0 -&gt; H"                    Cell="12,4" />
-                                </when>                                
+                                </when>
                               </choose>
                             </when>
                           </choose>
