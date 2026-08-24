@@ -399,13 +399,13 @@
                 <when test="&gt;=%C%">
                   <ParameterBlock Id="%AID%_PB-%C%01" Name="a%C%DFA" Text="%C%: {{0: ...}}" TextParameterRefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" Icon="state-machine" >
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="Automatendefinition" UIHint="Headline" />
-                    <ParameterRefRef RefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" HelpContext="DFA-Beschreibung-des-DEA" />
+                    <ParameterRefRef RefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" HelpContext="DFA-Beschreibung-des-DEA" IndentLevel="1" />
 
-                    <ParameterRefRef RefId="%AID%_UP-%T%%CC%0006_R-%T%%CC%000601" HelpContext="DFA-Kanal-verwenden" />
+                    <ParameterRefRef RefId="%AID%_UP-%T%%CC%0006_R-%T%%CC%000601" HelpContext="DFA-Kanal-verwenden" IndentLevel="1" />
 
                     <!-- Documentation / Multi-Line Comment (not the Module from Common) -->
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
-                    <ParameterRefRef RefId="%AID%_P-%T%%CC%0090_R-%T%%CC%009001" HelpContext="DFA-Kommentar" />
+                    <ParameterRefRef RefId="%AID%_P-%T%%CC%0090_R-%T%%CC%009001" HelpContext="DFA-Kommentar" IndentLevel="1" />
                     <Button Id="%AID%_B-%T%%CC%0090" Text="Alle '\n' im Text durch Zeilenumbruch ersetzen" EventHandler="newline" EventHandlerParameters="{ &quot;textbox&quot;:&quot;%PREFIX%_a%C%Comment&quot; }" />
                     <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
 
