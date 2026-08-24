@@ -398,7 +398,7 @@
               <choose ParamRefId="%AID%_UP-%T%000001_R-%T%00000101">
                 <when test="&gt;=%C%">
                   <ParameterBlock Id="%AID%_PB-%C%01" Name="a%C%DFA" Text="%C%: {{0: ...}}" TextParameterRefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" Icon="state-machine" >
-                    <ParameterSeparator Id="%AID%_PS-nnn" Text="Automatendefinition (Typ: Deterministischer Endlicher Automat)" UIHint="Headline" />
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="Automatendefinition" UIHint="Headline" />
                     <ParameterRefRef RefId="%AID%_P-%T%%CC%0001_R-%T%%CC%000101" HelpContext="DFA-Beschreibung-des-DEA" />
 
                     <ParameterRefRef RefId="%AID%_UP-%T%%CC%0006_R-%T%%CC%000601" HelpContext="DFA-Kanal-verwenden" />
