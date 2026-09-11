@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-only
-// Copyright (C) 2023-2025 Cornelius Koepp
+// Copyright (C) 2023-2026 Cornelius Koepp
 
 #pragma once
 #include "DfaConstants.h"
@@ -35,11 +35,6 @@ class DfaOutput
   private:
     // same as in Base; required for Param-Macros
     uint8_t _channelIndex = 0;
-
-    // note: uint8_t is to small
-    static const uint16_t _outputIntervalPRI[DFA_DEF_OUTPUTS_COUNT];
-    static const uint16_t _outputSendPRI[DFA_DEF_STATES_COUNT][DFA_DEF_OUTPUTS_COUNT];
-    static const uint16_t _outputValuePRI[DFA_DEF_STATES_COUNT][DFA_DEF_OUTPUTS_COUNT];
 
     /** the 0-based output-number */
     uint8_t i;

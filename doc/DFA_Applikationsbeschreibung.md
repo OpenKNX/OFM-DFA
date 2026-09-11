@@ -1,5 +1,5 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
-<!-- Copyright (C) 2023 Cornelius Koepp -->
+<!-- Copyright (C) 2023-2026 Cornelius Koepp -->
 # Applikationsbeschreibung OFM-DFA
 
 
@@ -109,19 +109,6 @@ Diese Version folgt dem Versionierungsschema der ETS und nicht dem Prinzip der S
 
 
 <!-- DOC -->
-### Kanalauswahl
-
-#### Verfügbare Kanäle
-
-Je nach Applikation kann eine größere Anzahl von Kanälen vorhanden sein, 
-wobei oft nur einige wenige benötigt werden. 
-Mit diesem Parameter können nicht benötigt Kanäle in der ETS ausgeblendet werden, bzw. nur die notwendigen angezeigt.
-
-***Bemerkung***:
-Ausgeblendete Kanäle sind inaktiv und zugehörige KOs sind ausgeblendet. 
-
-
-<!-- DOC -->
 ### Diagnose
 
 #### Zugriff über Diagnose-Objekt
@@ -138,8 +125,7 @@ Die Kommandos beginnen jeweils mit `dfaNN`, wobei `NN` die Kanalnummer des Autom
 
 * `dfaNN` - Liefert den aktuellen Zustand und die verbleibende Timeout-Zeit von Automat `NN`.
 * (Steuerung) `dfaNN state=SS` - Setzt den Zustand von Automat `NN` auf `SS` (`00` bis `16`).
-* (Steuerung) `dfaNN symbol=X` - Gibt das Symbol `X` (`A` bis `H`) in Automat `NN` ein.
-* (Steuerung) `dfaNN timeout!` - Beendet die Timeout-Zeit von Automat `NN` sofort.
+* (Steuerung) `dfaNN symbol=X` - Gibt das Symbol `X` (`A` bis `H`, sowie `T`) in Automat `NN` ein.
 
 <!-- DOC Skip="5" -->
 Befehle die nur auf der seriellen Konsole verfügbar sind:
@@ -151,16 +137,51 @@ Befehle die nur auf der seriellen Konsole verfügbar sind:
 Der Befehlssatz kann sich in zukünftigen Modul-Versionen verändern.
 
 
-## DEA n: ...
+<!-- DOC -->
+## Kanalauswahl
+
+<!-- DOC Skip="4" -->
+### Kanal
+
+Zeigt die Kanal-Nummer des betreffenden Automaten.
+
+### Automat
+
+Legt fest, ob dieser Automat konfiguriert und ausgeführt wird.
+
+* **Deaktiviert**: Dieser Kanal wird *nicht* genutzt und bleibt *ausgeblendet*, einschließlich der zugehörigen KOs. 
+* **Aktiviert**: Zur Verwendung *muss* diese Einstellung gewählt werden.
+***Hinweis:*** 
+Über die Option [*Suspendiert*](#suspendiert) kann ein Automat dann immer noch funktionslos gestellt werden. 
+
+
+### Beschreibung
+
+Zeigt die [Beschreibung](#beschreibung-1) des betreffenden Automaten und erlaubt ein direktes Ändern.
+Auch für *deaktivierte* Automaten möglich.  
+
+## n: ... (Automatendefinition)
 
 ### Automatendefinition
 
 
 <!-- DOC -->
-#### Beschreibung des DEA
+#### Beschreibung
 
 Hier sollte zur Dokumentation eine individuelle und eindeutige kurze Beschreibung des Automaten hinterlegt werden.
+
 Der Wert wird ausschließlich in der ETS verwendet (als Teil der Kanalbezeichnung) und hat keinen Einfluss auf das Geräteverhalten.
+
+
+<!-- DOC -->
+#### Suspendiert?
+
+Die Konfiguration dieses Kanals wird *ignoriert*, aber die Kommunikationsobjekte und alle Einstellungen bleiben sichtbar. 
+Dadurch müssen GA-Verknüpfungen des zuvor 'aktiv' konfigurierten Kanals *nicht* entfernt werden und ein erneutes Hinzufügen beim späteren reaktivieren entfällt.
+
+Suspendierten Kanäle werden durch ein ⛔-Symbol vor der Bezeichnung gekennzeichnet. 
+
+> Bei Einstellung *Suspendiert* sind alle nachfolgenden Konfigurationen unwirksam.
 
 
 <!-- DOC -->
@@ -183,34 +204,6 @@ Anschließend kann der Text mehrzeilig bearbeitet werden.
 > mit mehreren
 > Zeilen!
 > ```
-
-
-<!-- DOC -->
-#### Kanal verwenden?
-
-Legt fest, ob dieser Automat konfiguriert und ausgeführt wird. 
-
-<!-- DOCCONTENT
-* **inaktiv**: *(Standardwert)* Dieser Kanal wird *nicht* genutzt.
-* **aktiv**: Zur Verwendung *muss* diese Einstellung gewählt werden.
-* **temporär inaktiv**: Die Konfiguration dieses Kanals wird *ignoriert*, aber die Kommunikationsobjekte und alle Einstellungen bleiben sichtbar. 
-Dadurch müssen GA-Verknüpfungen des zuvor 'aktiv' konfigurierten Kanals *nicht* entfernt werden und ein erneutes Hinzufügen beim späteren reaktivieren entfällt.
-
-Bei Einstellung *temporär inaktiv* sind alle nachfolgenden Konfigurationen unwirksam.
-DOCCONTENT -->
-
-
-<!-- DOCEND -->
-| Einstellungswert | Erklärung                                                                                                                                                                                                                                                                                  | ausführen | KOs/Konfiguration |
-|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|-------------------|
-| inaktiv          | *(Standardwert)* Dieser Kanal wird *nicht* genutzt.                                                                                                                                                                                                                                        | -         | -                 |
-| aktiv            | Zur Verwendung muss diese Einstellung gewählt werden.                                                                                                                                                                                                                                      | ja        | sichtbar          |
-| temporär inaktiv | Die Konfiguration dieses Kanals wird *ignoriert*, aber die Kommunikationsobjekte und alle Einstellungen bleiben sichtbar. Dadurch müssen GA-Verknüpfungen des zuvor 'aktiv' konfigurierten Kanals *nicht* entfernt werden und ein erneutes Hinzufügen beim späteren reaktivieren entfällt. | -         | sichtbar          |
-
-> Bei Einstellung *inaktiv* sind alle nachfolgenden Konfigurationen ausgeblendet.
-
-> Bei Einstellung *temporär inaktiv* sind alle nachfolgenden Konfigurationen unwirksam.
-
 
 
 ### Ausführung

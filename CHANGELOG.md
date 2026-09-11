@@ -1,10 +1,25 @@
-# (upcoming)
+# (upcoming) v0.9.0 <!-- TODO remove `-DEV` Suffix from Version -->
 
-* Fix #72: Show Startup and do not include "NO_TIMEOUT" in Channel-State Response
-* Cleanup/Fix: Misspelling call of `openknx.console` method `writeDiagenoseKo` -> `writeDiagnoseKo`
-* Fix: ParameterType-Names were not in sync with id for Part DfaChoiceStateENUM
-* Minor Cleanup: Compile-Time-Checks
-* Doc: Minor Fixes
+* Fix (BREAKING: Verändertes Verhalten bei neuen Instanzen!): Update-Flags von KOs wurden entfernt, um ein unerwartetes Auslösen durch Antwort-Telegramme auf Leseanfragen zu vermeiden
+    * Fix: Update-Flags von Eingangs-KOs (für Eingänge A,...,H,T) sind nicht mehr in der Standardeinstellung gesetzt
+    * Fix: Update-Flag von Zustand-Setzen-KO sind nicht mehr in der Standardeinstellung gesetzt
+* OpenKNX standardization: New channel activation on separate page and split of suspended setting
+* Refactor: Nutzung von Makros für indizierte Parameter und KOs (nach Zustand, Eingang, Ausgang), abgesichert zur Entwicklungszeit durch Asserts
+  * Für Eingänge, Zustandsübergänge und Ausgänge 
+  * Erweiterung (Entwicklung): Strukturierte Test- und Ausgabemöglichkeit für Kanal-Parameter in Debug-Build (Kommandos `dfa *test*` und `dfa *parm*`)
+* Entfernt: Kommando `dfaNN timeout!`; kann durch `dfaNN symbol=T` ersetzt werden
+  * Hinweis: Der Diagnose-Befehlssatz war ausdrücklich als nicht-stabil dokumentiert ("Der Befehlssatz kann sich in zukünftigen Modul-Versionen verändern.")
+* Fix #72: Anzeige von Startvorgang und Entfernen von `NO_TIMEOUT` in Kanal-Diagnose-Antwort
+* Fix (Doc): Fehlende Dokumentation für Kommando `symbol=T` ergänzt
+* Fix: ParameterType-Namen wichen von Ids ab
+    * DocText255, DfaInputLogicNumberOptional
+    * Merged Part: DfaChoiceStateENUM (wurde nicht Teil des ausgegebenen XML)
+* Bereinigung/Fix/Dokumentation:
+  * Compile-Time-Checks
+  * Falsch geschriebener Methoden-Name für  `openknx.console` (Methode `writeDiagenoseKo` -> `writeDiagnoseKo`)
+  * Dokumentation ungenutzte Bits für Parameter zu Eingabesymbolen (Bisher nur A)  
+  * Alte TODOs entfernt
+  * Dokumentation: Kleinere Korrekturen
 
 
 # 2026-04-04 v0.8.2 ("Bedingter Startzustand + Input Fixes")

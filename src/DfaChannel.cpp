@@ -1,227 +1,11 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // Copyright (C) 2023-2026 Cornelius Koepp
 
+#include "DfaChannelConfigHelper.h"
 #include "DfaChannel.h"
-
-static_assert(DFA_DEF_STATES_COUNT == 16 || DFA_DEF_STATES_COUNT == 32, "illegal DFA_DEF_STATES_COUNT");
-
-#pragma region "DFA_CHANNEL_ADDR"
-
-const uint8_t DfaChannel::_inputKo[DFA_DEF_INPUTS_WITH_T_COUNT] = {
-    DFA_KoKOaInput1,
-    DFA_KoKOaInput2,
-    DFA_KoKOaInput3,
-    DFA_KoKOaInput4,
-    DFA_KoKOaInput5,
-    DFA_KoKOaInput6,
-    DFA_KoKOaInput7,
-    DFA_KoKOaInput8,
-    DFA_KoKOaInputT,
-};
-// Value of DFA_KoKOaInput[1-8] by 0-based index
-#define DFA_KoKOaInput__N__(IDX) DFA_KoKOaInput1 + IDX * (DFA_KoKOaInput2 - DFA_KoKOaInput1)
-// Value of DFA_KoCalcNumber(DFA_KoKOaInput[1-8]) by 0-based index
-#define DFA_Channel_Input_KO(IDX) DFA_KoCalcNumber(DFA_KoKOaInput__N__(IDX))
-
-// TODO calculate index; expected distance should be protected by compile error
-const uint16_t DfaChannel::_inputConfPRI[DFA_DEF_INPUTS_WITH_T_COUNT] = {
-    DFA_aSymbolAInput,
-    DFA_aSymbolBInput,
-    DFA_aSymbolCInput,
-    DFA_aSymbolDInput,
-    DFA_aSymbolEInput,
-    DFA_aSymbolFInput,
-    DFA_aSymbolGInput,
-    DFA_aSymbolHInput,
-    DFA_aSymbolTInput,
-};
-// Value of DFA_aInputSymbol[1-8]Ko by 0-based index
-#define DFA_aSymbol__N__Ko(IDX) DFA_aSymbolAInput + IDX * (DFA_aSymbolBInput - DFA_aSymbolAInput)
-//     const uint8_t inputConf = ((knx.paramByte(DFA_ParamCalcIndex(_inputConfPRI[input])) & DFA_aSymbolAInputMask) >> DFA_aSymbolAInputShift);
-#define DFA_Channel_Input_Config(IDX) ((knx.paramByte(DFA_aSymbol__N__Ko(IDX)) & DFA_aSymbolAInputMask) >> DFA_aSymbolAInputShift)
-
-
-#if DFA_aSymbolALogicNumber != DFA_aSymbolAKoNumber
-    #error "DFA_aSymbolALogicNumber != DFA_aSymbolAKoNumber"
+#ifdef OPENKNX_DEBUG
+    #include "DfaOutputConfigHelper.h"
 #endif
-const uint16_t DfaChannel::_inputConfNumberPRI[DFA_DEF_INPUTS_WITH_T_COUNT] = {
-    DFA_aSymbolAKoNumber,
-    DFA_aSymbolBKoNumber,
-    DFA_aSymbolCKoNumber,
-    DFA_aSymbolDKoNumber,
-    DFA_aSymbolEKoNumber,
-    DFA_aSymbolFKoNumber,
-    DFA_aSymbolGKoNumber,
-    DFA_aSymbolHKoNumber,
-    DFA_aSymbolTKoNumber,
-};
-const uint16_t DfaChannel::_inputTriggerPRI[DFA_DEF_INPUTS_WITH_T_COUNT] = {
-    DFA_aSymbolATrigger,
-    DFA_aSymbolBTrigger,
-    DFA_aSymbolCTrigger,
-    DFA_aSymbolDTrigger,
-    DFA_aSymbolETrigger,
-    DFA_aSymbolFTrigger,
-    DFA_aSymbolGTrigger,
-    DFA_aSymbolHTrigger,
-    DFA_aSymbolTTrigger,
-};
-
-
-// TODO calculate index; expected distance should be protected by compile error
-// Define (relative) parameter address-index for next state by current state and input
-
-// Value of DFA_KoKOaInput[1-8] by 0-based index
-#define DFA_aTransfer_State__N__Input__M__(N, M) DFA_ad01A + N * (DFA_ad02A - DFA_ad01A) + M * (DFA_ad01B - DFA_ad01A)
-// Value of DFA_KoCalcNumber(DFA_KoKOaInput[1-8]) by 0-based index
-#define DFA_Channel_TransferByStateInput(STATE_IDX, IN_IDX) DFA_KoCalcNumber(DFA_aTransfer_State__N__Input__M__(STATE_IDX, IN_IDX))
-
-
-const uint16_t DfaChannel::_transPRI[DFA_DEF_STATES_COUNT][DFA_DEF_INPUTS_WITH_T_COUNT] = {
-    {DFA_ad01A, DFA_ad01B, DFA_ad01C, DFA_ad01D, DFA_ad01E, DFA_ad01F, DFA_ad01G, DFA_ad01H, DFA_ad01T},
-    {DFA_ad02A, DFA_ad02B, DFA_ad02C, DFA_ad02D, DFA_ad02E, DFA_ad02F, DFA_ad02G, DFA_ad02H, DFA_ad02T},
-    {DFA_ad03A, DFA_ad03B, DFA_ad03C, DFA_ad03D, DFA_ad03E, DFA_ad03F, DFA_ad03G, DFA_ad03H, DFA_ad03T},
-    {DFA_ad04A, DFA_ad04B, DFA_ad04C, DFA_ad04D, DFA_ad04E, DFA_ad04F, DFA_ad04G, DFA_ad04H, DFA_ad04T},
-    {DFA_ad05A, DFA_ad05B, DFA_ad05C, DFA_ad05D, DFA_ad05E, DFA_ad05F, DFA_ad05G, DFA_ad05H, DFA_ad05T},
-    {DFA_ad06A, DFA_ad06B, DFA_ad06C, DFA_ad06D, DFA_ad06E, DFA_ad06F, DFA_ad06G, DFA_ad06H, DFA_ad06T},
-    {DFA_ad07A, DFA_ad07B, DFA_ad07C, DFA_ad07D, DFA_ad07E, DFA_ad07F, DFA_ad07G, DFA_ad07H, DFA_ad07T},
-    {DFA_ad08A, DFA_ad08B, DFA_ad08C, DFA_ad08D, DFA_ad08E, DFA_ad08F, DFA_ad08G, DFA_ad08H, DFA_ad08T},
-    {DFA_ad09A, DFA_ad09B, DFA_ad09C, DFA_ad09D, DFA_ad09E, DFA_ad09F, DFA_ad09G, DFA_ad09H, DFA_ad09T},
-    {DFA_ad10A, DFA_ad10B, DFA_ad10C, DFA_ad10D, DFA_ad10E, DFA_ad10F, DFA_ad10G, DFA_ad10H, DFA_ad10T},
-    {DFA_ad11A, DFA_ad11B, DFA_ad11C, DFA_ad11D, DFA_ad11E, DFA_ad11F, DFA_ad11G, DFA_ad11H, DFA_ad11T},
-    {DFA_ad12A, DFA_ad12B, DFA_ad12C, DFA_ad12D, DFA_ad12E, DFA_ad12F, DFA_ad12G, DFA_ad12H, DFA_ad12T},
-    {DFA_ad13A, DFA_ad13B, DFA_ad13C, DFA_ad13D, DFA_ad13E, DFA_ad13F, DFA_ad13G, DFA_ad13H, DFA_ad13T},
-    {DFA_ad14A, DFA_ad14B, DFA_ad14C, DFA_ad14D, DFA_ad14E, DFA_ad14F, DFA_ad14G, DFA_ad14H, DFA_ad14T},
-    {DFA_ad15A, DFA_ad15B, DFA_ad15C, DFA_ad15D, DFA_ad15E, DFA_ad15F, DFA_ad15G, DFA_ad15H, DFA_ad15T},
-    {DFA_ad16A, DFA_ad16B, DFA_ad16C, DFA_ad16D, DFA_ad16E, DFA_ad16F, DFA_ad16G, DFA_ad16H, DFA_ad16T},
-#if DFA_DEF_STATES_COUNT > 16
-    {DFA_ad17A, DFA_ad17B, DFA_ad17C, DFA_ad17D, DFA_ad17E, DFA_ad17F, DFA_ad17G, DFA_ad17H, DFA_ad17T},
-    {DFA_ad18A, DFA_ad18B, DFA_ad18C, DFA_ad18D, DFA_ad18E, DFA_ad18F, DFA_ad18G, DFA_ad18H, DFA_ad18T},
-    {DFA_ad19A, DFA_ad19B, DFA_ad19C, DFA_ad19D, DFA_ad19E, DFA_ad19F, DFA_ad19G, DFA_ad19H, DFA_ad19T},
-    {DFA_ad20A, DFA_ad20B, DFA_ad20C, DFA_ad20D, DFA_ad20E, DFA_ad20F, DFA_ad20G, DFA_ad20H, DFA_ad20T},
-    {DFA_ad21A, DFA_ad21B, DFA_ad21C, DFA_ad21D, DFA_ad21E, DFA_ad21F, DFA_ad21G, DFA_ad21H, DFA_ad21T},
-    {DFA_ad22A, DFA_ad22B, DFA_ad22C, DFA_ad22D, DFA_ad22E, DFA_ad22F, DFA_ad22G, DFA_ad22H, DFA_ad22T},
-    {DFA_ad23A, DFA_ad23B, DFA_ad23C, DFA_ad23D, DFA_ad23E, DFA_ad23F, DFA_ad23G, DFA_ad23H, DFA_ad23T},
-    {DFA_ad24A, DFA_ad24B, DFA_ad24C, DFA_ad24D, DFA_ad24E, DFA_ad24F, DFA_ad24G, DFA_ad24H, DFA_ad24T},
-    {DFA_ad25A, DFA_ad25B, DFA_ad25C, DFA_ad25D, DFA_ad25E, DFA_ad25F, DFA_ad25G, DFA_ad25H, DFA_ad25T},
-    {DFA_ad26A, DFA_ad26B, DFA_ad26C, DFA_ad26D, DFA_ad26E, DFA_ad26F, DFA_ad26G, DFA_ad26H, DFA_ad26T},
-    {DFA_ad27A, DFA_ad27B, DFA_ad27C, DFA_ad27D, DFA_ad27E, DFA_ad27F, DFA_ad27G, DFA_ad27H, DFA_ad27T},
-    {DFA_ad28A, DFA_ad28B, DFA_ad28C, DFA_ad28D, DFA_ad28E, DFA_ad28F, DFA_ad28G, DFA_ad28H, DFA_ad28T},
-    {DFA_ad29A, DFA_ad29B, DFA_ad29C, DFA_ad29D, DFA_ad29E, DFA_ad29F, DFA_ad29G, DFA_ad29H, DFA_ad29T},
-    {DFA_ad30A, DFA_ad30B, DFA_ad30C, DFA_ad30D, DFA_ad30E, DFA_ad30F, DFA_ad30G, DFA_ad30H, DFA_ad30T},
-    {DFA_ad31A, DFA_ad31B, DFA_ad31C, DFA_ad31D, DFA_ad31E, DFA_ad31F, DFA_ad31G, DFA_ad31H, DFA_ad31T},
-    {DFA_ad32A, DFA_ad32B, DFA_ad32C, DFA_ad32D, DFA_ad32E, DFA_ad32F, DFA_ad32G, DFA_ad32H, DFA_ad32T},
-#endif
-#if DFA_DEF_STATES_COUNT > 32
-    {DFA_ad33A, DFA_ad33B, DFA_ad33C, DFA_ad33D, DFA_ad33E, DFA_ad33F, DFA_ad33G, DFA_ad33H, DFA_ad33T},
-    {DFA_ad34A, DFA_ad34B, DFA_ad34C, DFA_ad34D, DFA_ad34E, DFA_ad34F, DFA_ad34G, DFA_ad34H, DFA_ad34T},
-    {DFA_ad35A, DFA_ad35B, DFA_ad35C, DFA_ad35D, DFA_ad35E, DFA_ad35F, DFA_ad35G, DFA_ad35H, DFA_ad35T},
-    {DFA_ad36A, DFA_ad36B, DFA_ad36C, DFA_ad36D, DFA_ad36E, DFA_ad36F, DFA_ad36G, DFA_ad36H, DFA_ad36T},
-    {DFA_ad37A, DFA_ad37B, DFA_ad37C, DFA_ad37D, DFA_ad37E, DFA_ad37F, DFA_ad37G, DFA_ad37H, DFA_ad37T},
-    {DFA_ad38A, DFA_ad38B, DFA_ad38C, DFA_ad38D, DFA_ad38E, DFA_ad38F, DFA_ad38G, DFA_ad38H, DFA_ad38T},
-    {DFA_ad39A, DFA_ad39B, DFA_ad39C, DFA_ad39D, DFA_ad39E, DFA_ad39F, DFA_ad39G, DFA_ad39H, DFA_ad39T},
-    {DFA_ad40A, DFA_ad40B, DFA_ad40C, DFA_ad40D, DFA_ad40E, DFA_ad40F, DFA_ad40G, DFA_ad40H, DFA_ad40T},
-    {DFA_ad41A, DFA_ad41B, DFA_ad41C, DFA_ad41D, DFA_ad41E, DFA_ad41F, DFA_ad41G, DFA_ad41H, DFA_ad41T},
-    {DFA_ad42A, DFA_ad42B, DFA_ad42C, DFA_ad42D, DFA_ad42E, DFA_ad42F, DFA_ad42G, DFA_ad42H, DFA_ad42T},
-    {DFA_ad43A, DFA_ad43B, DFA_ad43C, DFA_ad43D, DFA_ad43E, DFA_ad43F, DFA_ad43G, DFA_ad43H, DFA_ad43T},
-    {DFA_ad44A, DFA_ad44B, DFA_ad44C, DFA_ad44D, DFA_ad44E, DFA_ad44F, DFA_ad44G, DFA_ad44H, DFA_ad44T},
-    {DFA_ad45A, DFA_ad45B, DFA_ad45C, DFA_ad45D, DFA_ad45E, DFA_ad45F, DFA_ad45G, DFA_ad45H, DFA_ad45T},
-    {DFA_ad46A, DFA_ad46B, DFA_ad46C, DFA_ad46D, DFA_ad46E, DFA_ad46F, DFA_ad46G, DFA_ad46H, DFA_ad46T},
-    {DFA_ad47A, DFA_ad47B, DFA_ad47C, DFA_ad47D, DFA_ad47E, DFA_ad47F, DFA_ad47G, DFA_ad47H, DFA_ad47T},
-    {DFA_ad48A, DFA_ad48B, DFA_ad48C, DFA_ad48D, DFA_ad48E, DFA_ad48F, DFA_ad48G, DFA_ad48H, DFA_ad48T},
-    {DFA_ad49A, DFA_ad49B, DFA_ad49C, DFA_ad49D, DFA_ad49E, DFA_ad49F, DFA_ad49G, DFA_ad49H, DFA_ad49T},
-    {DFA_ad50A, DFA_ad50B, DFA_ad50C, DFA_ad50D, DFA_ad50E, DFA_ad50F, DFA_ad50G, DFA_ad50H, DFA_ad50T},
-    {DFA_ad51A, DFA_ad51B, DFA_ad51C, DFA_ad51D, DFA_ad51E, DFA_ad51F, DFA_ad51G, DFA_ad51H, DFA_ad51T},
-    {DFA_ad52A, DFA_ad52B, DFA_ad52C, DFA_ad52D, DFA_ad52E, DFA_ad52F, DFA_ad52G, DFA_ad52H, DFA_ad52T},
-    {DFA_ad53A, DFA_ad53B, DFA_ad53C, DFA_ad53D, DFA_ad53E, DFA_ad53F, DFA_ad53G, DFA_ad53H, DFA_ad53T},
-    {DFA_ad54A, DFA_ad54B, DFA_ad54C, DFA_ad54D, DFA_ad54E, DFA_ad54F, DFA_ad54G, DFA_ad54H, DFA_ad54T},
-    {DFA_ad55A, DFA_ad55B, DFA_ad55C, DFA_ad55D, DFA_ad55E, DFA_ad55F, DFA_ad55G, DFA_ad55H, DFA_ad55T},
-    {DFA_ad56A, DFA_ad56B, DFA_ad56C, DFA_ad56D, DFA_ad56E, DFA_ad56F, DFA_ad56G, DFA_ad56H, DFA_ad56T},
-    {DFA_ad57A, DFA_ad57B, DFA_ad57C, DFA_ad57D, DFA_ad57E, DFA_ad57F, DFA_ad57G, DFA_ad57H, DFA_ad57T},
-    {DFA_ad58A, DFA_ad58B, DFA_ad58C, DFA_ad58D, DFA_ad58E, DFA_ad58F, DFA_ad58G, DFA_ad58H, DFA_ad58T},
-    {DFA_ad59A, DFA_ad59B, DFA_ad59C, DFA_ad59D, DFA_ad59E, DFA_ad59F, DFA_ad59G, DFA_ad59H, DFA_ad59T},
-    {DFA_ad60A, DFA_ad60B, DFA_ad60C, DFA_ad60D, DFA_ad60E, DFA_ad60F, DFA_ad60G, DFA_ad60H, DFA_ad60T},
-    {DFA_ad61A, DFA_ad61B, DFA_ad61C, DFA_ad61D, DFA_ad61E, DFA_ad61F, DFA_ad61G, DFA_ad61H, DFA_ad61T},
-    {DFA_ad62A, DFA_ad62B, DFA_ad62C, DFA_ad62D, DFA_ad62E, DFA_ad62F, DFA_ad62G, DFA_ad62H, DFA_ad62T},
-    {DFA_ad63A, DFA_ad63B, DFA_ad63C, DFA_ad63D, DFA_ad63E, DFA_ad63F, DFA_ad63G, DFA_ad63H, DFA_ad63T},
-    {DFA_ad64A, DFA_ad64B, DFA_ad64C, DFA_ad64D, DFA_ad64E, DFA_ad64F, DFA_ad64G, DFA_ad64H, DFA_ad64T},
-#endif
-};
-
-// TODO calculate index; expected distance should be protected by compile error
-// Define (relative) parameter address-index for timeout duration and timeout state
-const uint16_t DfaChannel::_timeoutPRI[DFA_DEF_STATES_COUNT] = {
-    {DFA_ad01TTime},
-    {DFA_ad02TTime},
-    {DFA_ad03TTime},
-    {DFA_ad04TTime},
-    {DFA_ad05TTime},
-    {DFA_ad06TTime},
-    {DFA_ad07TTime},
-    {DFA_ad08TTime},
-    {DFA_ad09TTime},
-    {DFA_ad10TTime},
-    {DFA_ad11TTime},
-    {DFA_ad12TTime},
-    {DFA_ad13TTime},
-    {DFA_ad14TTime},
-    {DFA_ad15TTime},
-    {DFA_ad16TTime},
-#if DFA_DEF_STATES_COUNT > 16
-    {DFA_ad17TTime},
-    {DFA_ad18TTime},
-    {DFA_ad19TTime},
-    {DFA_ad20TTime},
-    {DFA_ad21TTime},
-    {DFA_ad22TTime},
-    {DFA_ad23TTime},
-    {DFA_ad24TTime},
-    {DFA_ad25TTime},
-    {DFA_ad26TTime},
-    {DFA_ad27TTime},
-    {DFA_ad28TTime},
-    {DFA_ad29TTime},
-    {DFA_ad30TTime},
-    {DFA_ad31TTime},
-    {DFA_ad32TTime},
-#endif
-#if DFA_DEF_STATES_COUNT > 32
-    {DFA_ad33TTime},
-    {DFA_ad34TTime},
-    {DFA_ad35TTime},
-    {DFA_ad36TTime},
-    {DFA_ad37TTime},
-    {DFA_ad38TTime},
-    {DFA_ad39TTime},
-    {DFA_ad40TTime},
-    {DFA_ad41TTime},
-    {DFA_ad42TTime},
-    {DFA_ad43TTime},
-    {DFA_ad44TTime},
-    {DFA_ad45TTime},
-    {DFA_ad46TTime},
-    {DFA_ad47TTime},
-    {DFA_ad48TTime},
-    {DFA_ad49TTime},
-    {DFA_ad50TTime},
-    {DFA_ad51TTime},
-    {DFA_ad52TTime},
-    {DFA_ad53TTime},
-    {DFA_ad54TTime},
-    {DFA_ad55TTime},
-    {DFA_ad56TTime},
-    {DFA_ad57TTime},
-    {DFA_ad58TTime},
-    {DFA_ad59TTime},
-    {DFA_ad60TTime},
-    {DFA_ad61TTime},
-    {DFA_ad62TTime},
-    {DFA_ad63TTime},
-    {DFA_ad64TTime},
-#endif
-};
-
-#pragma endregion "DFA_CHANNEL_ADDR"
 
 #pragma region "DFA_CHANNEL_BASE"
 
@@ -243,7 +27,7 @@ const std::string DfaChannel::name()
 
 void DfaChannel::setup()
 {
-    _channelActive = (ParamDFA_aActive == 0b01);
+    _channelActive = ParamDFA_aActive && !(ParamDFA_fSuspended);
     if (_channelActive)
     {
         logDebugP("setup(delay=%ds run=%d)", _channelActive, ParamDFA_aStartupDelayTimeMS / 1000, ParamDFA_aStartPause != 2);
@@ -265,32 +49,6 @@ void DfaChannel::setup()
 
 #pragma region "DFA_CHANNEL_INPUT_INIT"
 
-#if (DFA_aSymbolBInputMask != DFA_aSymbolAInputMask) || (DFA_aSymbolBInputShift != DFA_aSymbolAInputShift) || (DFA_aSymbolBTriggerMask != DFA_aSymbolAInputMask) || (DFA_aSymbolBInputShift != DFA_aSymbolATriggerShift)
-    #error "Symbol{Input,Trigger}{Mask,Shift} mismatch for Symbol B and A"
-#endif
-#if (DFA_aSymbolCInputMask != DFA_aSymbolAInputMask) || (DFA_aSymbolCInputShift != DFA_aSymbolAInputShift) || (DFA_aSymbolCTriggerMask != DFA_aSymbolAInputMask) || (DFA_aSymbolCInputShift != DFA_aSymbolATriggerShift)
-    #error "Symbol{Input,Trigger}{Mask,Shift} mismatch for Symbol C and A"
-#endif
-#if (DFA_aSymbolDInputMask != DFA_aSymbolAInputMask) || (DFA_aSymbolDInputShift != DFA_aSymbolAInputShift) || (DFA_aSymbolDTriggerMask != DFA_aSymbolAInputMask) || (DFA_aSymbolDInputShift != DFA_aSymbolATriggerShift)
-    #error "Symbol{Input,Trigger}{Mask,Shift} mismatch for Symbol D and A"
-#endif
-#if (DFA_aSymbolEInputMask != DFA_aSymbolAInputMask) || (DFA_aSymbolEInputShift != DFA_aSymbolAInputShift) || (DFA_aSymbolETriggerMask != DFA_aSymbolAInputMask) || (DFA_aSymbolEInputShift != DFA_aSymbolATriggerShift)
-    #error "Symbol{Input,Trigger}{Mask,Shift} mismatch for Symbol E and A"
-#endif
-#if (DFA_aSymbolFInputMask != DFA_aSymbolAInputMask) || (DFA_aSymbolFInputShift != DFA_aSymbolAInputShift) || (DFA_aSymbolFTriggerMask != DFA_aSymbolAInputMask) || (DFA_aSymbolFInputShift != DFA_aSymbolATriggerShift)
-    #error "Symbol{Input,Trigger}{Mask,Shift} mismatch for Symbol F and A"
-#endif
-#if (DFA_aSymbolGInputMask != DFA_aSymbolAInputMask) || (DFA_aSymbolGInputShift != DFA_aSymbolAInputShift) || (DFA_aSymbolGTriggerMask != DFA_aSymbolAInputMask) || (DFA_aSymbolGInputShift != DFA_aSymbolATriggerShift)
-    #error "Symbol{Input,Trigger}{Mask,Shift} mismatch for Symbol G and A"
-#endif
-#if (DFA_aSymbolHInputMask != DFA_aSymbolAInputMask) || (DFA_aSymbolHInputShift != DFA_aSymbolAInputShift) || (DFA_aSymbolHTriggerMask != DFA_aSymbolAInputMask) || (DFA_aSymbolHInputShift != DFA_aSymbolATriggerShift)
-    #error "Symbol{Input,Trigger}{Mask,Shift} mismatch for Symbol H and A"
-#endif
-#define DFA_aSymbol___InputMask DFA_aSymbolAInputMask
-#define DFA_aSymbol___InputShift DFA_aSymbolAInputShift
-#define DFA_aSymbol___TriggerMask DFA_aSymbolATriggerMask
-#define DFA_aSymbol___TriggerShift DFA_aSymbolATriggerShift
-
 uint16_t DfaChannel::getLogicOutputKoNumber(const uint8_t /* intended overlapping name for usage in macro! */ _channelIndex)
 {
     return LOG_KoCalcNumber(LOG_KoKOfO);
@@ -298,48 +56,27 @@ uint16_t DfaChannel::getLogicOutputKoNumber(const uint8_t /* intended overlappin
 
 uint16_t DfaChannel::getInputKoNumber(const uint8_t input)
 {
-    // TODO ensure position of T
-    const uint8_t inputConf = ((knx.paramByte(DFA_ParamCalcIndex(_inputConfPRI[input])) & DFA_aSymbol___InputMask) >> DFA_aSymbol___InputShift);
-    // logDebugP("  get ko for input=%i -> conf=%i", input, inputConf);
-    switch (inputConf)
+    if (input < DFA_DEF_INPUTS_WITH_T_COUNT)
     {
-        case 1: // Own KO
-            return DFA_KoCalcNumber(_inputKo[input]);
-        case 3: // Logic-Output (KO)
-            {
-                // TODO optimize/use API for this
-                const u_int16_t logicNumber = knx.paramWord(DFA_ParamCalcIndex(_inputConfNumberPRI[input]));
-                if (logicNumber > LOG_ChannelCount || logicNumber > 99)
+        const uint8_t inputConf = _ParamDFA_aSymbol___Input(input);
+        // logDebugP("  get ko for input=%i -> conf=%i", input, inputConf);
+        switch (inputConf)
+        {
+            case 1: // Own KO
+                return _KoDFA_KOaInput___(input);
+            case 3: // Logic-Output (KO)
                 {
-                    logErrorP("Invalid LOG-channel %u for input %u", logicNumber, input);
-                    return 0;
+                    const u_int16_t logicNumber = _ParamDFA_aSymbol___LogicNumber(input);
+                    if (logicNumber > LOG_ChannelCount || logicNumber > 99)
+                    {
+                        logErrorP("Invalid LOG-channel %u for input %u", logicNumber, input);
+                        return 0;
+                    }
+                    return getLogicOutputKoNumber(logicNumber - 1);
                 }
-                return getLogicOutputKoNumber(logicNumber - 1);
-            }
-        case 2: // Existing KO
-
-            // TODO move asserts to separate file and refactor parameter handling!
-            static_assert(DFA_aSymbolBKoNumberMask == DFA_aSymbolAKoNumberMask, "DFA_aSymbol{?}KoNumberMask mismatch for {A,B}");
-            static_assert(DFA_aSymbolCKoNumberMask == DFA_aSymbolAKoNumberMask, "DFA_aSymbol{?}KoNumberMask mismatch for {A,C}");
-            static_assert(DFA_aSymbolDKoNumberMask == DFA_aSymbolAKoNumberMask, "DFA_aSymbol{?}KoNumberMask mismatch for {A,D}");
-            static_assert(DFA_aSymbolEKoNumberMask == DFA_aSymbolAKoNumberMask, "DFA_aSymbol{?}KoNumberMask mismatch for {A,E}");
-            static_assert(DFA_aSymbolFKoNumberMask == DFA_aSymbolAKoNumberMask, "DFA_aSymbol{?}KoNumberMask mismatch for {A,F}");
-            static_assert(DFA_aSymbolGKoNumberMask == DFA_aSymbolAKoNumberMask, "DFA_aSymbol{?}KoNumberMask mismatch for {A,G}");
-            static_assert(DFA_aSymbolHKoNumberMask == DFA_aSymbolAKoNumberMask, "DFA_aSymbol{?}KoNumberMask mismatch for {A,H}");
-            static_assert(DFA_aSymbolTKoNumberMask == DFA_aSymbolAKoNumberMask, "DFA_aSymbol{?}KoNumberMask mismatch for {A,T}");
-
-            static_assert(DFA_aSymbolBKoNumberShift == DFA_aSymbolAKoNumberShift, "DFA_aSymbol{?}KoNumberShift mismatch for {A,B}");
-            static_assert(DFA_aSymbolCKoNumberShift == DFA_aSymbolAKoNumberShift, "DFA_aSymbol{?}KoNumberShift mismatch for {A,C}");
-            static_assert(DFA_aSymbolDKoNumberShift == DFA_aSymbolAKoNumberShift, "DFA_aSymbol{?}KoNumberShift mismatch for {A,D}");
-            static_assert(DFA_aSymbolEKoNumberShift == DFA_aSymbolAKoNumberShift, "DFA_aSymbol{?}KoNumberShift mismatch for {A,E}");
-            static_assert(DFA_aSymbolFKoNumberShift == DFA_aSymbolAKoNumberShift, "DFA_aSymbol{?}KoNumberShift mismatch for {A,F}");
-            static_assert(DFA_aSymbolGKoNumberShift == DFA_aSymbolAKoNumberShift, "DFA_aSymbol{?}KoNumberShift mismatch for {A,G}");
-            static_assert(DFA_aSymbolHKoNumberShift == DFA_aSymbolAKoNumberShift, "DFA_aSymbol{?}KoNumberShift mismatch for {A,H}");
-            static_assert(DFA_aSymbolTKoNumberShift == DFA_aSymbolAKoNumberShift, "DFA_aSymbol{?}KoNumberShift mismatch for {A,T}");
-
-            // #define ParamDFA_aSymbolAKoNumber
-            //     ((knx.paramWord(DFA_ParamCalcIndex(DFA_aSymbolAKoNumber      )) & DFA_aSymbolAKoNumberMask) >> DFA_aSymbolAKoNumberShift)
-            return ((knx.paramWord(DFA_ParamCalcIndex(_inputConfNumberPRI[input])) & DFA_aSymbolAKoNumberMask) >> DFA_aSymbolAKoNumberShift);
+            case 2: // Existing KO
+                return _ParamDFA_aSymbol___KoNumber(input);
+        }
     }
     // default, including case 0 (disabled)
     return 0;
@@ -349,7 +86,7 @@ void DfaChannel::initNonPairedInput(const uint8_t i)
 {
     const uint16_t koNumber = getInputKoNumber(i);
     _inputs[i].koNumber = koNumber;
-    _inputs[i].trigger = (koNumber > 0) ? static_cast<DfaInputTrigger>((knx.paramByte(DFA_ParamCalcIndex(_inputTriggerPRI[i])) & DFA_aSymbol___TriggerMask) >> DFA_aSymbol___TriggerShift) : DfaInputTrigger::disabled;
+    _inputs[i].trigger = (koNumber > 0) ? static_cast<DfaInputTrigger>(_ParamDFA_aSymbol___Trigger(i)) : DfaInputTrigger::disabled;
     if (koNumber != 0 || _inputs[i].trigger != DfaInputTrigger::disabled)
     {
         logDebugP("separate: %d ko=%-4i trigger=%c%c", i, koNumber, (static_cast<uint8_t>(_inputs[i].trigger) & 0b10) ? '1' : '_', (static_cast<uint8_t>(_inputs[i].trigger) & 0b01) ? '0' : '_');
@@ -558,8 +295,7 @@ void DfaChannel::setRunning(const bool requestRun, const bool first /*= false*/)
 
 uint32_t DfaChannel::getStateTimeoutDelay_ms(const uint8_t state)
 {
-    // TODO ensure returning 0 for undefined timeout state
-    return paramDelay(knx.paramWord(DFA_ParamCalcIndex(_timeoutPRI[state])));
+    return (state < DFA_DEF_STATES_COUNT) ? _ParamDFA_ad___TTimeMS(state) : 0;
 }
 
 bool DfaChannel::isValidState(const uint8_t state)
@@ -655,8 +391,6 @@ uint8_t DfaChannel::transferGetNextForInput(const uint8_t input)
         // 1a) regular symbols (X_z)
         // 1b) timeout symbols (X_t) // TODO check inclusion of '<'
 
-        const uint16_t nextStateParamIdx = DFA_ParamCalcIndex(_transPRI[_state][input]);
-
         // Expected Values: ETS-Param => Converted by -1
         // 0 - no following state    => 255
         // 1-16/1-32/1-64 next state => 0-15/1-31/1-63
@@ -664,7 +398,7 @@ uint8_t DfaChannel::transferGetNextForInput(const uint8_t input)
         // 127 timeout reset         => 126
 
         // must be uint8_t to ensure conversion from ETS-param to required state (0x00 -> 0xff)
-        const uint8_t nextState = knx.paramByte(nextStateParamIdx) - 1;
+        const uint8_t nextState = _ParamDFA_ad___(_state, input) - 1;
 
         logDebugP("State<z%u>: transfer(%c)->%u", _state + 1, input == DFA_INPUT_SYMBOL_T ? 'T' : ('A' + input), nextState);
         return nextState;
@@ -727,8 +461,7 @@ uint8_t DfaChannel::transferEvaluateChoice(const uint8_t nextState)
     }
 
     // 2b) get choice-state config
-    // TODO ensure expected memory layout!
-    const uint8_t choiceStateLogChannel = knx.paramByte(DFA_ParamCalcIndex(DFA_aCaLOG + choiceState * (DFA_aCbLOG - DFA_aCaLOG)));
+    const uint8_t choiceStateLogChannel = _DFA_aC___LOG(choiceState);
 
     // 2c) check choice enabled
     if (choiceStateLogChannel == 0)
@@ -759,8 +492,7 @@ uint8_t DfaChannel::transferEvaluateChoice(const uint8_t nextState)
     {
         logInfoP("ChoiceState<%c>: Uninitialized LOG[%u](KO %u)", 'a' + choiceState, choiceStateLogChannel, logOutputKoNumber);
         // 2g) get the following state
-        // TODO ensure expected memory layout!
-        selectedNext = knx.paramByte(DFA_ParamCalcIndex(DFA_aCaU + choiceState * (DFA_aCbU - DFA_aCaU)));
+        selectedNext = _ParamDFA_aC___U(choiceState);
     }
     else
     {
@@ -768,10 +500,9 @@ uint8_t DfaChannel::transferEvaluateChoice(const uint8_t nextState)
         const bool choice = logOutputKo->value(DPT_Switch);
         logDebugP("ChoiceState<%c>: LOG[%u](KO %u)=%d", 'a' + choiceState, choiceStateLogChannel, logOutputKoNumber, choice);
         // 2g) get the following state
-        // TODO ensure expected memory layout!
         selectedNext = choice
-                           ? knx.paramByte(DFA_ParamCalcIndex(DFA_aCaT + choiceState * (DFA_aCbT - DFA_aCaT)))
-                           : knx.paramByte(DFA_ParamCalcIndex(DFA_aCaF + choiceState * (DFA_aCbF - DFA_aCaF)));
+                           ? _ParamDFA_aC___T(choiceState)
+                           : _ParamDFA_aC___F(choiceState);
     }
 
     const uint8_t selectedNextState = selectedNext - 1;
@@ -833,17 +564,6 @@ void DfaChannel::transferProcessNext(const uint8_t nextState)
 #pragma endregion "DFA_CHANNEL_TRANSFER"
 
 #pragma region "DFA_CHANNEL_STATE_TIMEOUT"
-
-void DfaChannel::endTimeout()
-{
-    if (_stateTimeoutDelay_ms > 0)
-    {
-        logDebugP("change timeout %d -> 1ms", _stateTimeoutDelay_ms);
-
-        // set to shortest possible valid timeout of 1ms; might result in up to 1ms delay until end, when executed directly after state change
-        _stateTimeoutDelay_ms = 1;
-    }
-}
 
 void DfaChannel::resetTimeout()
 {
@@ -998,14 +718,6 @@ bool DfaChannel::processCommandDfa(bool diagnoseKo)
     return true;
 }
 
-bool DfaChannel::processCommandDfaTimeout(bool diagnoseKo)
-{
-    logInfoP("timeout end now!");
-    // TODO define behaviour when disabled
-    endTimeout();
-    return true;
-}
-
 bool DfaChannel::processCommandDfaStateSet(const uint8_t stateStarting1, bool diagnoseKo)
 {
     const uint8_t state = stateStarting1 - 1;
@@ -1072,6 +784,53 @@ bool DfaChannel::processCommandDfaTesting()
         if (i > iFirst)
             logDebugP("... %ux ...", i - iFirst);
     }
+    return true;
+}
+
+bool DfaChannel::processCommandDfaParams()
+{
+    logDebugP("PARAM Collect:");
+    for (uint8_t i = 0; i <= 8; i++)
+    {
+        // _DFA_KoKOaInput___(i)
+        // _KoDFA_KOaInput___(i)
+
+        logDebugP("Input[%u]: %u {LOG=%u KO=%u} trigger=%u", i,
+            _ParamDFA_aSymbol___Input(i),        // _DFA_aSymbol___Input(i)
+            _ParamDFA_aSymbol___LogicNumber(i),  // _DFA_aSymbol___LogicNumber(i)
+            _ParamDFA_aSymbol___KoNumber(i),     // _DFA_aSymbol___KoNumber(i)
+            _ParamDFA_aSymbol___Trigger(i)       // _DFA_aSymbol___Trigger(i)
+        );
+    }
+
+    //       ("State z%02u: %3u %3u %3u %3u %3u %3u %3u %3u | %3u @ %10ums (%u)", z + 1);
+    logDebugP("[Address]    A   B   C   D   E   F   G   H     T     Timeout | Send/Dpt1 for 4 outputs");
+    for (uint8_t z = 0; z < DFA_DEF_STATES_COUNT; z++)
+    {
+        logDebugP("State z%02u: %3u %3u %3u %3u %3u %3u %3u %3u | %3u @ %3u | %03u %03u %03u %03u %03u %03u %03u %03u", z + 1,
+            _DFA_ad___(z, 0), _DFA_ad___(z, 1), _DFA_ad___(z, 2), _DFA_ad___(z, 3),
+            _DFA_ad___(z, 4), _DFA_ad___(z, 5), _DFA_ad___(z, 6), _DFA_ad___(z, 7),
+            _DFA_ad___(z, 8), _DFA_ad___TTime(z),
+            _DFA_az___o___Send(z, 0), _DFA_az___o___Dpt1(z, 0),
+            _DFA_az___o___Send(z, 1), _DFA_az___o___Dpt1(z, 1),
+            _DFA_az___o___Send(z, 2), _DFA_az___o___Dpt1(z, 2),
+            _DFA_az___o___Send(z, 3), _DFA_az___o___Dpt1(z, 3)
+        );
+    }
+    logDebugP("[Values]     A   B   C   D   E   F   G   H     T     Timeout   | Send/Spt for 4 outputs");
+    for (uint8_t z = 0; z < DFA_DEF_STATES_COUNT; z++)
+    {
+        logDebugP("State z%02u: %3u %3u %3u %3u %3u %3u %3u %3u | %3u @ %10ums | %2x %08x %2x %08x %2x %08x %2x %08x", z + 1,
+            _ParamDFA_ad___(z, 0), _ParamDFA_ad___(z, 1), _ParamDFA_ad___(z, 2), _ParamDFA_ad___(z, 3),
+            _ParamDFA_ad___(z, 4), _ParamDFA_ad___(z, 5), _ParamDFA_ad___(z, 6), _ParamDFA_ad___(z, 7),
+            _ParamDFA_ad___(z, 8), _ParamDFA_ad___TTimeMS(z),
+            _ParamDFA_az___o___Send(z, 0), knx.paramInt(DFA_ParamCalcIndex(_DFA_az___o___Dpt1(z, 0))),
+            _ParamDFA_az___o___Send(z, 1), knx.paramInt(DFA_ParamCalcIndex(_DFA_az___o___Dpt1(z, 1))),
+            _ParamDFA_az___o___Send(z, 2), knx.paramInt(DFA_ParamCalcIndex(_DFA_az___o___Dpt1(z, 2))),
+            _ParamDFA_az___o___Send(z, 3), knx.paramInt(DFA_ParamCalcIndex(_DFA_az___o___Dpt1(z, 3)))
+        );
+    }
+
     return true;
 }
 #endif
